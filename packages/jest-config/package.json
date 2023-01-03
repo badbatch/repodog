@@ -1,26 +1,26 @@
 {
   "name": "@repodog/jest-config",
-  "version": "0.3.32",
-  "description": "The RepoDog jest-config module.",
-  "author": "Dylan Aubrey <dylanaubrey@gmail.com>",
-  "license": "MIT",
+  "version": "0.0.1",
+  "description": "The RepoDog Jest config module.",
   "homepage": "https://github.com/badbatch/repodog",
   "bugs": {
     "url": "https://github.com/badbatch/repodog/issues"
   },
   "repository": {
+    "directory": "packages/jest-config",
     "type": "git",
-    "url": "https://github.com/badbatch/repodog"
+    "url": "https://github.com/badbatch/repodog/configs/jest-config"
   },
   "publishConfig": {
     "access": "public"
   },
-  "main": "index.js",
-  "keywords": [
-    "jest",
-    "configuration"
-  ],
+  "main": "index.cjs",
+  "license": "MIT",
+  "author": "Dylan Aubrey",
   "peerDependencies": {
-    "@repodog/config-helpers": "< 1"
+    "@jest/globals": "< 30",
+    "babel-jest": "< 30",
+    "identity-obj-proxy": "< 4",
+    "jest": "< 30"
   }
 }

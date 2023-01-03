@@ -1,27 +1,23 @@
 {
   "name": "@repodog/ts-config",
-  "version": "0.3.25",
-  "description": "The RepoDog ts-config module.",
-  "author": "Dylan Aubrey <dylanaubrey@gmail.com>",
-  "license": "MIT",
+  "version": "0.0.1",
+  "description": "The RepoDog Typescript config module.",
   "homepage": "https://github.com/badbatch/repodog",
   "bugs": {
     "url": "https://github.com/badbatch/repodog/issues"
   },
   "repository": {
+    "directory": "packages/ts-config",
     "type": "git",
-    "url": "https://github.com/badbatch/repodog"
+    "url": "https://github.com/badbatch/repodog/configs/ts-config"
   },
   "publishConfig": {
     "access": "public"
   },
-  "main": "tsconfig.root.json",
-  "keywords": [
-    "typescript",
-    "tsconfig",
-    "configuration"
-  ],
+  "main": "index.json",
+  "license": "MIT",
+  "author": "Dylan Aubrey",
   "peerDependencies": {
-    "typescript": "< 4"
+    "typescript": "< 5"
   }
 }
