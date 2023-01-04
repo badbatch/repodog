@@ -1,6 +1,6 @@
 {
   "name": "@repodog/babel-config",
-  "version": "0.0.1",
+  "version": "0.3.32",
   "description": "The RepoDog Babel config module.",
   "homepage": "https://github.com/badbatch/repodog",
   "bugs": {

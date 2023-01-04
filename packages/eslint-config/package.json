@@ -1,6 +1,6 @@
 {
   "name": "@repodog/eslint-config",
-  "version": "0.0.1",
+  "version": "0.3.27",
   "description": "The RepoDog ESLint config module.",
   "homepage": "https://github.com/badbatch/repodog",
   "bugs": {

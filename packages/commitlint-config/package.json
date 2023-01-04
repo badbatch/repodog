@@ -1,0 +1,25 @@
+{
+  "name": "@repodog/commitlint-config",
+  "version": "0.3.25",
+  "description": "The RepoDog Commitlint config module.",
+  "homepage": "https://github.com/badbatch/repodog",
+  "bugs": {
+    "url": "https://github.com/badbatch/repodog/issues"
+  },
+  "repository": {
+    "directory": "packages/commitlint-config",
+    "type": "git",
+    "url": "https://github.com/badbatch/repodog/packages/commitlint-config"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "main": "index.cjs",
+  "license": "MIT",
+  "author": "Dylan Aubrey",
+  "peerDependencies": {
+    "@commitlint/cli": "< 18",
+    "@commitlint/config-conventional": "< 18",
+    "@commitlint/prompt-cli": "< 18"
+  }
+}

@@ -6,6 +6,7 @@
     "packages/*"
   ],
   "scripts": {
+    "commit": "commit",
     "lint": "eslint . --ext .ts,.cjs"
   },
   "devDependencies": {
@@ -19,6 +20,9 @@
     "@babel/preset-env": "7.20.2",
     "@babel/preset-react": "7.18.6",
     "@babel/preset-typescript": "7.18.6",
+    "@commitlint/cli": "17.3.0",
+    "@commitlint/config-conventional": "17.3.0",
+    "@commitlint/prompt-cli": "17.3.0",
     "@jest/globals": "29.3.1",
     "@repodog/babel-config": "workspace:./packages/babel-config",
     "@repodog/eslint-config": "workspace:./packages/eslint-config",
@@ -52,6 +56,7 @@
     "fs-extra": "11.1.0",
     "identity-obj-proxy": "3.0.0",
     "jest": "29.3.1",
+    "markdownlint-cli": "0.32.2",
     "prettier": "2.8.1",
     "rollup": "3.7.0",
     "rollup-plugin-analyzer": "4.0.0",

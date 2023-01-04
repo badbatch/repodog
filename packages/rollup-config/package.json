@@ -1,6 +1,6 @@
 {
   "name": "@repodog/rollup-config",
-  "version": "0.0.1",
+  "version": "0.3.28",
   "description": "The RepoDog Rollup config module.",
   "homepage": "https://github.com/badbatch/repodog",
   "bugs": {
