@@ -1,8 +1,6 @@
-// eslint-disable-next-line import/no-extraneous-dependencies
-const { jest } = require('@jest/globals');
-
 const { DEBUG } = process.env;
 
 if (DEBUG) {
+  // eslint-disable-next-line no-undef
   jest.setTimeout(999999);
 }

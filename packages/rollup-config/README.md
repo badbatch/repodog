@@ -13,6 +13,13 @@ npm install @repodog/rollup-config --save-dev
 
 ## Usage
 
+```json
+// package.json
+"scripts": {
+  "build": "rollup -c ./rollup.config.cjs"
+}
+```
+
 ```javascript
 // rollup.config.cjs
 const repodogConfig = require('@repodog/rollup-config');

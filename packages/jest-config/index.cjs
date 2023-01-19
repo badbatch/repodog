@@ -59,7 +59,6 @@ module.exports = {
   extensionsToTreatAsEsm: ['.jsx', '.ts', '.tsx'],
   moduleFileExtensions: ['mjs', 'cjs', 'js', 'jsx', 'json', 'ts', 'tsx'],
   moduleNameMapper,
-  projects: ['<rootDir>/packages/*'],
   rootDir: packageDir,
   testEnvironment: isJsEnvWeb ? 'jsdom' : 'node',
   testMatch,

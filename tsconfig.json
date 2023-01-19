@@ -1,6 +1,5 @@
 {
   "extends": "./packages/ts-config/index.json",
-  "exclude": [],
   "include": [
     "packages"
   ]

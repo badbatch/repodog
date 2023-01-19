@@ -12,6 +12,14 @@ module.exports = {
   ],
   overrides: [
     {
+      env: {
+        'jest/globals': true,
+      },
+      extends: ['plugin:jest/recommended'],
+      files: ['**/*.{spec,test}.*'],
+      plugins: ['jest'],
+    },
+    {
       extends: [
         'plugin:@typescript-eslint/eslint-recommended',
         'plugin:@typescript-eslint/recommended',
@@ -22,7 +30,7 @@ module.exports = {
       files: ['**/*.{ts,tsx}'],
       parser: '@typescript-eslint/parser',
       parserOptions: {
-        project: ['./tsconfig.json', './packages/*/tsconfig.json'],
+        project: ['./tsconfig.json'],
       },
       plugins: ['@typescript-eslint', 'typescript-sort-keys'],
       rules: {
@@ -57,14 +65,18 @@ module.exports = {
             selector: 'typeLike',
           },
         ],
+        '@typescript-eslint/no-non-null-assertion': 0,
         '@typescript-eslint/no-unused-vars': [
           2,
           { args: 'all', argsIgnorePattern: '^_', ignoreRestSiblings: true, vars: 'all' },
         ],
         '@typescript-eslint/no-use-before-define': [
           2,
-          { enums: true, functions: false, ignoreTypeReferences: false, typedefs: true },
+          { enums: true, functions: false, ignoreTypeReferences: false, typedefs: false },
         ],
+        'import/no-named-as-default': 0,
+        'import/no-named-as-default-member': 0,
+        'no-use-before-define': 0,
         'typescript-sort-keys/interface': 2,
         'typescript-sort-keys/string-enum': 2,
       },
@@ -80,7 +92,7 @@ module.exports = {
     {
       files: ['**/*.{mjs,cjs,js,jsx}'],
       rules: {
-        'import/extensions': 2,
+        'import/extensions': [2, 'always'],
       },
     },
   ],
@@ -103,6 +115,7 @@ module.exports = {
   rules: {
     // Conflicts with aliasing .ts files as .js in import paths
     'import/extensions': 0,
+    // Outstanding bug impacting this rule: https://github.com/import-js/eslint-plugin-import/issues/2168
     'import/no-extraneous-dependencies': [
       2,
       {

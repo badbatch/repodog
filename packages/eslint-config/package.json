@@ -25,6 +25,7 @@
     "eslint-config-prettier": "< 9",
     "eslint-import-resolver-typescript": "< 4",
     "eslint-plugin-import": "< 3",
+    "eslint-plugin-jest": "< 28",
     "eslint-plugin-jsx-a11y": "< 7",
     "eslint-plugin-prettier": "< 5",
     "eslint-plugin-react": "< 8",

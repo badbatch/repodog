@@ -3,15 +3,15 @@ const { babel } = require('@rollup/plugin-babel');
 const image = require('@rollup/plugin-image');
 const json = require('@rollup/plugin-json');
 const { nodeResolve } = require('@rollup/plugin-node-resolve');
+const terser = require('@rollup/plugin-terser');
 const { outputFileSync } = require('fs-extra');
 const { basename } = require('path');
 const { plugin: analyzer } = require('rollup-plugin-analyzer');
 const copy = require('rollup-plugin-copy');
 const sourcemaps = require('rollup-plugin-sourcemaps');
-const { terser } = require('rollup-plugin-terser');
 
 const { NODE_ENV } = process.env;
-const isNodeEnvProd = NODE_ENV === 'production' || NODE_ENV === 'prod';
+const isProdEnv = NODE_ENV === 'production' || NODE_ENV === 'prod';
 const packageDir = process.cwd();
 
 module.exports = (config = {}) => {
@@ -44,7 +44,7 @@ module.exports = (config = {}) => {
     plugins.push(copy(config.copy));
   }
 
-  if (isNodeEnvProd) {
+  if (isProdEnv) {
     plugins.push(
       terser(),
       analyzer({
@@ -55,7 +55,7 @@ module.exports = (config = {}) => {
     );
   }
 
-  if (!isNodeEnvProd) {
+  if (!isProdEnv) {
     plugins.push(sourcemaps());
   }
 
