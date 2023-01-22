@@ -33,6 +33,7 @@
     "eslint-plugin-sort-class-members": "< 2",
     "eslint-plugin-sort-destructure-keys": "< 2",
     "eslint-plugin-sort-keys-fix": "< 2",
-    "eslint-plugin-typescript-sort-keys": "< 3"
+    "eslint-plugin-typescript-sort-keys": "< 3",
+    "eslint-plugin-unicorn": "< 46"
   }
 }

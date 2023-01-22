@@ -8,6 +8,7 @@ module.exports = {
     'plugin:import/recommended',
     'plugin:jsx-a11y/recommended',
     'plugin:react/recommended',
+    'plugin:unicorn/recommended',
     'prettier',
   ],
   overrides: [
@@ -110,11 +111,13 @@ module.exports = {
     'sort-class-members',
     'sort-destructure-keys',
     'sort-keys-fix',
+    'unicorn',
     'prettier',
   ],
   rules: {
     // Conflicts with aliasing .ts files as .js in import paths
     'import/extensions': 0,
+    'import/no-default-export': 2,
     // Outstanding bug impacting this rule: https://github.com/import-js/eslint-plugin-import/issues/2168
     'import/no-extraneous-dependencies': [
       2,
@@ -255,6 +258,15 @@ module.exports = {
     'sort-keys': 0,
     'sort-keys-fix/sort-keys-fix': [2, 'asc', { caseSensitive: true, natural: true }],
     'sort-vars': [2, { ignoreCase: false }],
+    'unicorn/filename-case': [
+      2,
+      {
+        cases: {
+          camelCase: true,
+          pascalCase: true,
+        },
+      },
+    ],
   },
   settings: {
     react: {

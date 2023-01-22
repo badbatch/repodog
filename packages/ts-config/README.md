@@ -14,8 +14,36 @@ npm install @repodog/ts-config --save-dev
 ## Usage
 
 ```json
+// package.json
+{
+  "scripts": {
+    "compile:types": "tsc --declaration --declarationMap --emitDeclarationOnly --project ./tsconfig.build.json"
+  }
+}
+```
+
+```json
 // tsconfig.json
 {
-  "extends": "./packages/ts-config/index.json"
+  "extends": "./packages/ts-config/index.json",
+  "compilerOptions": {
+    "rootDir": "src"
+  },
+  "include": [
+    "src/**/*"
+  ]
+}
+```
+
+```json
+// tsconfig.build.json
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "outDir": "dist/types"
+  },
+  "exclude": [
+    "**/*.test.*"
+  ]
 }
 ```

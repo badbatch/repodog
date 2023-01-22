@@ -21,6 +21,7 @@
     "@jest/globals": "< 30",
     "babel-jest": "< 30",
     "identity-obj-proxy": "< 4",
-    "jest": "< 30"
+    "jest": "< 30",
+    "suppress-experimental-warnings": "< 2"
   }
 }

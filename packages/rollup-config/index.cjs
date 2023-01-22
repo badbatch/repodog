@@ -4,27 +4,27 @@ const image = require('@rollup/plugin-image');
 const json = require('@rollup/plugin-json');
 const { nodeResolve } = require('@rollup/plugin-node-resolve');
 const terser = require('@rollup/plugin-terser');
-const { outputFileSync } = require('fs-extra');
-const { basename } = require('path');
+const { existsSync, mkdirSync, writeFileSync } = require('node:fs');
+const { basename } = require('node:path');
 const { plugin: analyzer } = require('rollup-plugin-analyzer');
 const copy = require('rollup-plugin-copy');
 const sourcemaps = require('rollup-plugin-sourcemaps');
 
 const { NODE_ENV } = process.env;
-const isProdEnv = NODE_ENV === 'production' || NODE_ENV === 'prod';
-const packageDir = process.cwd();
+const isProductionEnvironment = NODE_ENV === 'production' || NODE_ENV === 'prod';
+const packageDirectory = process.cwd();
+const external = id => !id.startsWith('.') && !id.startsWith('/');
+
+const sourcemapPathTransform = sourcePath => {
+  if (/node_modules/.test(sourcePath)) {
+    return sourcePath;
+  }
+
+  return sourcePath.replace('../../src', `../${basename(packageDirectory)}/src/`);
+};
 
 module.exports = (config = {}) => {
   const extensions = ['.mjs', '.cjs', '.js', '.jsx', '.json', '.ts', '.tsx'];
-  const external = id => !id.startsWith('.') && !id.startsWith('/');
-
-  const sourcemapPathTransform = sourcePath => {
-    if (/node_modules/.test(sourcePath)) {
-      return sourcePath;
-    }
-
-    return sourcePath.replace('../../src', `../${basename(packageDir)}/src/`);
-  };
 
   const plugins = [
     nodeResolve({
@@ -44,31 +44,35 @@ module.exports = (config = {}) => {
     plugins.push(copy(config.copy));
   }
 
-  if (isProdEnv) {
+  if (isProductionEnvironment) {
     plugins.push(
       terser(),
       analyzer({
         writeTo: analysis => {
-          outputFileSync(`${packageDir}/dist/production.analysis.txt`, analysis);
+          if (!existsSync(`${packageDirectory}/dist`)) {
+            mkdirSync(`${packageDirectory}/dist`);
+          }
+
+          writeFileSync(`${packageDirectory}/dist/production.analysis.txt`, analysis);
         },
       })
     );
   }
 
-  if (!isProdEnv) {
+  if (!isProductionEnvironment) {
     plugins.push(sourcemaps());
   }
 
   return {
     external,
-    input: `${packageDir}/src/index`,
+    input: `${packageDirectory}/src/index`,
     onwarn: ({ code, message }) => {
       if (code !== 'THIS_IS_UNDEFIEND') {
         console.error(message); // eslint-disable-line no-console
       }
     },
     output: {
-      file: `${packageDir}/dist/main/index.mjs`,
+      file: `${packageDirectory}/dist/main/index.mjs`,
       format: 'esm',
       sourcemap: true,
       sourcemapPathTransform,

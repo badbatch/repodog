@@ -17,7 +17,7 @@ npm install @repodog/jest-config --save-dev
 // package.json
 {
   "scripts": {
-    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js"
+    "test": "node --require=suppress-experimental-warnings --experimental-vm-modules node_modules/jest/bin/jest.js"
   }
 }
 ```
