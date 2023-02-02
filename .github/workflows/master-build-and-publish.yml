@@ -25,8 +25,6 @@ on:
 jobs:
   build-and-publish:
     runs-on: ubuntu-latest
-    env:
-      PackageManager: Hello
     steps:
       - name: Log build trigger
         run: |
@@ -60,24 +58,19 @@ jobs:
           corepack prepare pnpm@${{ inputs.package-manager-version }} --activate
 
       - name: Install dependencies
-        run: |
-          ${{ inputs.package_manager }} install
+        run: "${{ inputs.package_manager }} install"
 
       - name: Build packages
-        run: |
-          ${{ inputs.package_manager }} run build
+        run: "${{ inputs.package_manager }} run build"
 
       - name: Lint packages
-        run: |
-          ${{ inputs.package_manager }} run lint
+        run: "${{ inputs.package_manager }} run lint"
 
       - name: Type check packages
-        run: |
-          ${{ inputs.package_manager }} run type-check
+        run: "${{ inputs.package_manager }} run type-check"
 
       - name: Run unit tests
-        run: |
-          ${{ inputs.package_manager }} run test
+        run: "${{ inputs.package_manager }} run test"
 
       - name: Publish packages
         if: github.ref_type == 'tag'
