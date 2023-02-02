@@ -59,15 +59,15 @@ jobs:
 
       - name: Install dependencies with pnpm
         if: inputs.package-manager == 'pnpm'
-        run: 'pnpm install'
+        run: pnpm install
 
       - name: Install dependencies with yarn
         if: inputs.package-manager == 'yarn'
-        run: 'yarn install'
+        run: yarn install
 
       - name: Install dependencies with npm
         if: inputs.package-manager == 'npm'
-        run: 'npm install'
+        run: npm install
 
       - name: Build packages
         run: npm run build
