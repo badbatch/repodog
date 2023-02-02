@@ -12,7 +12,6 @@ on:
         required: false
         type: string
       package-manager-version:
-        default: 'stable'
         required: false
         type: string
       yarn-version:

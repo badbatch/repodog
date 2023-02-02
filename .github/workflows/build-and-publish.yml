@@ -13,5 +13,7 @@ on:
 jobs:
   build-and-publish:
     uses: ./.github/workflows/master-build-and-publish.yml
+    with:
+      package-manager-version: .github/labeler.yml
     secrets:
       npm_auth_token: ${{ secrets.NPM_AUTH_TOKEN }}
