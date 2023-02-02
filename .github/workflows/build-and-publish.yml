@@ -12,6 +12,6 @@ on:
 
 jobs:
   build-and-publish:
-    uses: .github/workflows/master-build-and-publish.yml@v1
+    uses: ./.github/workflows/master-build-and-publish.yml@v1
     secrets:
       npm_auth_token: ${{ secrets.NPM_AUTH_TOKEN }}
