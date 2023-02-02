@@ -41,19 +41,19 @@ jobs:
           node-version: ${{ inputs.node-version }}
 
       - name: Install yarn classic
-        if: ${{ inputs.package-manager }} == 'yarn' && ${{ inputs.yarn-version }} == 1
+        if: inputs.package-manager == 'yarn' && inputs.yarn-version == 1
         run: |
           curl -o- -L https://yarnpkg.com/install.sh | bash
           export PATH=$HOME/.yarn/bin:$PATH
 
       - name: Install modern yarn
-        if: ${{ inputs.package-manager }} == 'yarn' && ${{ inputs.yarn-version }} != 1
+        if: inputs.package-manager == 'yarn' && inputs.yarn-version != 1
         run: |
           corepack enable
           corepack prepare yarn@${{ inputs.package-manager-version }} --activate
 
       - name: Install pnpm
-        if: ${{ inputs.package-manager }} == 'pnpm'
+        if: inputs.package-manager == 'pnpm'
         run: |
           corepack enable
           corepack prepare pnpm@${{ inputs.package-manager-version }} --activate
