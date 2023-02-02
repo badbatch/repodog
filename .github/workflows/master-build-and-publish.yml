@@ -57,20 +57,29 @@ jobs:
           corepack enable
           corepack prepare pnpm@${{ inputs.package-manager-version }} --activate
 
-      - name: Install dependencies
-        run: $(inputs.package_manager) install
+      - name: Install dependencies with pnpm
+        if: inputs.package-manager == 'pnpm'
+        run: 'pnpm install'
+
+      - name: Install dependencies with yarn
+        if: inputs.package-manager == 'yarn'
+        run: 'yarn install'
+
+      - name: Install dependencies with npm
+        if: inputs.package-manager == 'npm'
+        run: 'npm install'
 
       - name: Build packages
-        run: $(inputs.package_manager) run build
+        run: npm run build
 
       - name: Lint packages
-        run: $(inputs.package_manager) run lint
+        run: npm run lint
 
       - name: Type check packages
-        run: $(inputs.package_manager) run type-check
+        run: npm run type-check
 
       - name: Run unit tests
-        run: $(inputs.package_manager) run test
+        run: npm run test
 
       - name: Publish packages
         if: github.ref_type == 'tag'
@@ -78,4 +87,4 @@ jobs:
           NPM_AUTH_TOKEN: ${{ secrets.npm_auth_token }}
         run: |
           echo "//registry.npmjs.org/:_authToken=\$env:NPM_AUTH_TOKEN" >> .npmrc
-          $(inputs.package_manager) run cutoff:publish
+          npm run cutoff:publish
