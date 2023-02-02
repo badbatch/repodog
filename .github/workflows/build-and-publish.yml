@@ -1,0 +1,17 @@
+name: Build and publish
+
+on:
+  push:
+    branches:
+      - master
+    tags:
+      - v**
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  build-and-publish:
+    uses: ./master-build-and-publish.yml
+    secrets:
+      npm_auth_token: ${{ secrets.NPM_AUTH_TOKEN }}

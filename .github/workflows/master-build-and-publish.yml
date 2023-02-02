@@ -1,0 +1,82 @@
+name: RepoDog build and publish
+
+on:
+  workflow_call:
+    inputs:
+      node-version:
+        default: 18.13.0
+        required: false
+        type: number
+      package-manager:
+        default: 'pnpm'
+        required: false
+        type: string
+      package-manager-version:
+        default: 'latest'
+        required: false
+        type: string
+      yarn-version:
+        default: 1
+        required: false
+        type: number
+    secrets:
+      npm_auth_token:
+        required: true
+
+jobs:
+  build-and-publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Log build trigger
+        run: |
+          echo ${{ github.ref }}
+          echo ${{ github.ref_type }}
+
+      - name: Checkout repo
+        uses: actions/checkout@v2
+
+      - name: Use Node.js ${{ inputs.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ inputs.node-version }}
+
+      - name: Install yarn classic
+        if: ${{ inputs.package-manager }} == 'yarn' && ${{ inputs.yarn-version }} == 1
+        run: |
+          curl -o- -L https://yarnpkg.com/install.sh | bash
+          export PATH=$HOME/.yarn/bin:$PATH
+
+      - name: Install modern yarn
+        if: ${{ inputs.package-manager }} == 'yarn' && ${{ inputs.yarn-version }} != 1
+        run: |
+          corepack enable
+          corepack prepare yarn@${{ inputs.package-manager-version }} --activate
+
+      - name: Install pnpm
+        if: ${{ inputs.package-manager }} == 'pnpm'
+        run: |
+          corepack enable
+          corepack prepare pnpm@${{ inputs.package-manager-version }} --activate
+
+      - name: Install dependencies
+        run: ${{ inputs.package_manager }} install
+
+      - name: Build packages
+        run: ${{ inputs.package_manager }} run build
+
+      - name: Lint packages
+        run: ${{ inputs.package_manager }} run lint
+
+      - name: Type check packages
+        run: ${{ inputs.package_manager }} run type-check
+
+      - name: Run unit tests
+        run: ${{ inputs.package_manager }} run test
+
+      - name: Publish packages
+        if: github.ref_type == 'tag'
+        env:
+          NPM_AUTH_TOKEN: ${{ secrets.npm_auth_token }}
+        run: |
+          echo "//registry.npmjs.org/:_authToken=\$env:NPM_AUTH_TOKEN" >> .npmrc
+          ${{ inputs.package_manager }} run cutoff:publish
