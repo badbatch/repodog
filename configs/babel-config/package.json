@@ -7,9 +7,9 @@
     "url": "https://github.com/badbatch/repodog/issues"
   },
   "repository": {
-    "directory": "packages/babel-config",
+    "directory": "configs/babel-config",
     "type": "git",
-    "url": "https://github.com/badbatch/repodog/packages/babel-config"
+    "url": "https://github.com/badbatch/repodog/configs/babel-config"
   },
   "publishConfig": {
     "access": "public"

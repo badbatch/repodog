@@ -5,13 +5,21 @@ The RepoDog MarkdownLint config.
 [![npm version](https://badge.fury.io/js/%40repodog%2Fmarkdownlint-config.svg)](https://badge.fury.io/js/%40repodog%2Fmarkdownlint-config)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-## Installation
+## Install package
 
 ```shell
+# terminal
 npm install @repodog/markdownlint-config --save-dev
 ```
 
-## Usage
+## Install vscode extension
+
+```shell
+# terminal
+code --install-extension DavidAnson.vscode-markdownlint
+```
+
+## Use package
 
 ```json
 // .markdownlint.json

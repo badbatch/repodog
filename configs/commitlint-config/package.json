@@ -7,9 +7,9 @@
     "url": "https://github.com/badbatch/repodog/issues"
   },
   "repository": {
-    "directory": "packages/commitlint-config",
+    "directory": "configs/commitlint-config",
     "type": "git",
-    "url": "https://github.com/badbatch/repodog/packages/commitlint-config"
+    "url": "https://github.com/badbatch/repodog/configs/commitlint-config"
   },
   "publishConfig": {
     "access": "public"

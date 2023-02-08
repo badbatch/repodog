@@ -1,15 +1,15 @@
 {
-  "name": "@repodog/markdownlint-config",
+  "name": "@repodog/ts-config",
   "version": "0.3.25",
-  "description": "The RepoDog MarkdownLint config module.",
+  "description": "The RepoDog Typescript config module.",
   "homepage": "https://github.com/badbatch/repodog",
   "bugs": {
     "url": "https://github.com/badbatch/repodog/issues"
   },
   "repository": {
-    "directory": "packages/markdownlint-config",
+    "directory": "configs/ts-config",
     "type": "git",
-    "url": "https://github.com/badbatch/repodog/packages/markdownlint-config"
+    "url": "https://github.com/badbatch/repodog/configs/ts-config"
   },
   "publishConfig": {
     "access": "public"
@@ -18,6 +18,6 @@
   "license": "MIT",
   "author": "Dylan Aubrey",
   "peerDependencies": {
-    "markdownlint-cli": "< 1"
+    "typescript": "< 5"
   }
 }

@@ -5,19 +5,20 @@ The RepoDog tsconfig.
 [![npm version](https://badge.fury.io/js/%40repodog%2Fts-config.svg)](https://badge.fury.io/js/%40repodog%2Fts-config)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-## Installation
+## Install package
 
 ```shell
+# terminal
 npm install @repodog/ts-config --save-dev
 ```
 
-## Usage
+## Use package
 
 ```json
 // package.json
 {
   "scripts": {
-    "compile:types": "tsc --declaration --declarationMap --emitDeclarationOnly --project ./tsconfig.build.json"
+    "compile:types": "tsc --project ./tsconfig.build.json"
   }
 }
 ```
@@ -25,7 +26,7 @@ npm install @repodog/ts-config --save-dev
 ```json
 // tsconfig.json
 {
-  "extends": "./packages/ts-config/index.json",
+  "extends": "@repodog/ts-config/index.json",
   "compilerOptions": {
     "rootDir": "src"
   },
@@ -38,7 +39,7 @@ npm install @repodog/ts-config --save-dev
 ```json
 // tsconfig.build.json
 {
-  "extends": "./tsconfig.json",
+  "extends": "@repodog/ts-config/build.json",
   "compilerOptions": {
     "outDir": "dist/types"
   },

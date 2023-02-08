@@ -6,9 +6,6 @@
     "node": "^18.13.0",
     "pnpm": "^7.25.1"
   },
-  "workspaces": [
-    "packages/*"
-  ],
   "scripts": {
     "commit": "commit",
     "lint": "eslint . --ext .ts,.cjs"
@@ -29,14 +26,14 @@
     "@commitlint/config-conventional": "17.3.0",
     "@commitlint/prompt-cli": "17.3.0",
     "@jest/globals": "29.3.1",
-    "@repodog/babel-config": "workspace:./packages/babel-config",
-    "@repodog/commitlint-config": "workspace:./packages/commitlint-config",
-    "@repodog/eslint-config": "workspace:./packages/eslint-config",
-    "@repodog/jest-config": "workspace:./packages/jest-config",
-    "@repodog/markdownlint-config": "workspace:./packages/markdownlint-config",
-    "@repodog/prettier-config": "workspace:./packages/prettier-config",
-    "@repodog/rollup-config": "workspace:./packages/rollup-config",
-    "@repodog/ts-config": "workspace:./packages/ts-config",
+    "@repodog/babel-config": "workspace:./configs/babel-config",
+    "@repodog/commitlint-config": "workspace:./configs/commitlint-config",
+    "@repodog/eslint-config": "workspace:./configs/eslint-config",
+    "@repodog/jest-config": "workspace:./configs/jest-config",
+    "@repodog/markdownlint-config": "workspace:./configs/markdownlint-config",
+    "@repodog/prettier-config": "workspace:./configs/prettier-config",
+    "@repodog/rollup-config": "workspace:./configs/rollup-config",
+    "@repodog/ts-config": "workspace:./configs/ts-config",
     "@rollup/plugin-babel": "6.0.3",
     "@rollup/plugin-image": "3.0.1",
     "@rollup/plugin-json": "5.0.2",

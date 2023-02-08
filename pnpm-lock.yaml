@@ -19,14 +19,14 @@ importers:
       '@commitlint/config-conventional': 17.3.0
       '@commitlint/prompt-cli': 17.3.0
       '@jest/globals': 29.3.1
-      '@repodog/babel-config': workspace:./packages/babel-config
-      '@repodog/commitlint-config': workspace:./packages/commitlint-config
-      '@repodog/eslint-config': workspace:./packages/eslint-config
-      '@repodog/jest-config': workspace:./packages/jest-config
-      '@repodog/markdownlint-config': workspace:./packages/markdownlint-config
-      '@repodog/prettier-config': workspace:./packages/prettier-config
-      '@repodog/rollup-config': workspace:./packages/rollup-config
-      '@repodog/ts-config': workspace:./packages/ts-config
+      '@repodog/babel-config': workspace:./configs/babel-config
+      '@repodog/commitlint-config': workspace:./configs/commitlint-config
+      '@repodog/eslint-config': workspace:./configs/eslint-config
+      '@repodog/jest-config': workspace:./configs/jest-config
+      '@repodog/markdownlint-config': workspace:./configs/markdownlint-config
+      '@repodog/prettier-config': workspace:./configs/prettier-config
+      '@repodog/rollup-config': workspace:./configs/rollup-config
+      '@repodog/ts-config': workspace:./configs/ts-config
       '@rollup/plugin-babel': 6.0.3
       '@rollup/plugin-image': 3.0.1
       '@rollup/plugin-json': 5.0.2
@@ -79,14 +79,14 @@ importers:
       '@commitlint/config-conventional': 17.3.0
       '@commitlint/prompt-cli': 17.3.0_@types+node@18.11.18
       '@jest/globals': 29.3.1
-      '@repodog/babel-config': link:packages/babel-config
-      '@repodog/commitlint-config': link:packages/commitlint-config
-      '@repodog/eslint-config': link:packages/eslint-config
-      '@repodog/jest-config': link:packages/jest-config
-      '@repodog/markdownlint-config': link:packages/markdownlint-config
-      '@repodog/prettier-config': link:packages/prettier-config
-      '@repodog/rollup-config': link:packages/rollup-config
-      '@repodog/ts-config': link:packages/ts-config
+      '@repodog/babel-config': link:configs/babel-config
+      '@repodog/commitlint-config': link:configs/commitlint-config
+      '@repodog/eslint-config': link:configs/eslint-config
+      '@repodog/jest-config': link:configs/jest-config
+      '@repodog/markdownlint-config': link:configs/markdownlint-config
+      '@repodog/prettier-config': link:configs/prettier-config
+      '@repodog/rollup-config': link:configs/rollup-config
+      '@repodog/ts-config': link:configs/ts-config
       '@rollup/plugin-babel': 6.0.3_6fu2qgbbhfkoj7hoxs2776q6ay
       '@rollup/plugin-image': 3.0.1_rollup@3.7.0
       '@rollup/plugin-json': 5.0.2_rollup@3.7.0
@@ -124,28 +124,28 @@ importers:
       suppress-experimental-warnings: 1.1.3
       typescript: 4.9.4
 
-  packages/babel-config:
+  configs/babel-config:
     specifiers: {}
 
-  packages/commitlint-config:
+  configs/commitlint-config:
     specifiers: {}
 
-  packages/eslint-config:
+  configs/eslint-config:
     specifiers: {}
 
-  packages/jest-config:
+  configs/jest-config:
     specifiers: {}
 
-  packages/markdownlint-config:
+  configs/markdownlint-config:
     specifiers: {}
 
-  packages/prettier-config:
+  configs/prettier-config:
     specifiers: {}
 
-  packages/rollup-config:
+  configs/rollup-config:
     specifiers: {}
 
-  packages/ts-config:
+  configs/ts-config:
     specifiers: {}
 
 packages:

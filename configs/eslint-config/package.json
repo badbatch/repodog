@@ -7,7 +7,7 @@
     "url": "https://github.com/badbatch/repodog/issues"
   },
   "repository": {
-    "directory": "packages/eslint-config",
+    "directory": "configs/eslint-config",
     "type": "git",
     "url": "https://github.com/badbatch/repodog/configs/eslint-config"
   },

@@ -5,13 +5,14 @@ The RepoDog Rollup config.
 [![npm version](https://badge.fury.io/js/%40repodog%2Frollup-config.svg)](https://badge.fury.io/js/%40repodog%2Frollup-config)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-## Installation
+## Install package
 
 ```shell
+# terminal
 npm install @repodog/rollup-config --save-dev
 ```
 
-## Usage
+## Use package
 
 ```json
 // package.json

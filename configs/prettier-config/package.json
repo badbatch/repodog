@@ -7,7 +7,7 @@
     "url": "https://github.com/badbatch/repodog/issues"
   },
   "repository": {
-    "directory": "packages/prettier-config",
+    "directory": "configs/prettier-config",
     "type": "git",
     "url": "https://github.com/badbatch/repodog/configs/prettier-config"
   },

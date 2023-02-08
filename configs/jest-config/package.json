@@ -7,7 +7,7 @@
     "url": "https://github.com/badbatch/repodog/issues"
   },
   "repository": {
-    "directory": "packages/jest-config",
+    "directory": "configs/jest-config",
     "type": "git",
     "url": "https://github.com/badbatch/repodog/configs/jest-config"
   },

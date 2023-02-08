@@ -1,6 +1,6 @@
 {
-  "extends": "./packages/ts-config/index.json",
+  "extends": "./configs/ts-config/index.json",
   "include": [
-    "packages"
+    "cli/**/*"
   ]
 }
