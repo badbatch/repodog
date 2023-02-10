@@ -1,0 +1,10 @@
+{
+  "extends": "../../configs/ts-config/build.json",
+  "compilerOptions": {
+    "rootDir": "src"
+  },
+  "include": [
+    "src/**/*"
+  ],
+  "references": []
+}

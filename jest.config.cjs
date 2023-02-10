@@ -1,7 +1,11 @@
 const config = require('@repodog/jest-config');
 
+const { DEBUG } = process.env;
+const isDebug = DEBUG === 'true';
+
 module.exports = {
   ...config,
-  projects: ['<rootDir>/configs/*', '<rootDir>/cli/*'],
-  setupFilesAfterEnv: ['./jest.setup.cjs'],
+  collectCoverageFrom: ['cli/**/*.ts', ...config.collectCoverageFrom.slice(1)],
+  setupFilesAfterEnv: ['<rootDir>/jest.setup.cjs'],
+  ...(isDebug ? {} : { testMatch: ['**/src/**/*.test.ts'] }),
 };

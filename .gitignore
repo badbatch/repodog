@@ -4,5 +4,5 @@
 .eslintcache
 .vscode/settings.json
 coverage/
-lib/
+dist/
 node_modules/

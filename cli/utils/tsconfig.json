@@ -1,0 +1,18 @@
+{
+  "extends": "../../configs/ts-config/build.json",
+  "compilerOptions": {
+    "rootDir": "src",
+    "outDir": "dist/types"
+  },
+  "include": [
+    "src/**/*"
+  ],
+  "exclude": [
+    "**/*.test.*"
+  ],
+  "references": [
+    {
+      "path": "../test-utils"
+    }
+  ]
+}

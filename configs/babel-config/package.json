@@ -28,6 +28,7 @@
     "@babel/preset-env": "< 8",
     "@babel/preset-react": "< 8",
     "@babel/preset-typescript": "< 8",
+    "@babel/runtime": "< 8",
     "babel-plugin-codegen": "< 5",
     "babel-plugin-lodash": "< 4",
     "babel-plugin-macros": "< 4"
