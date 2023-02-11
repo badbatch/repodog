@@ -1,6 +1,7 @@
 {
   "name": "repodog",
   "type": "module",
+  "version": "0.3.32",
   "private": true,
   "engines": {
     "node": "^18.13.0",

@@ -4,11 +4,8 @@ import {
   type ReleaseMeta,
   VALID_RELEASE_TAGS,
   VALID_RELEASE_TYPES,
-  formatListLogMessage,
   isValidReleaseTag,
   isValidReleaseType,
-  setVerbose,
-  verboseLog,
 } from '@repodog/cli-utils';
 import type { PathOrFileDescriptor, WriteFileOptions } from 'node:fs';
 import type { PackageJson, SetRequired } from 'type-fest';
@@ -19,7 +16,7 @@ jest.unstable_mockModule('@repodog/cli-utils', () => ({
   VALID_RELEASE_TAGS,
   VALID_RELEASE_TYPES,
   addCommitPushRelease: jest.fn(),
-  formatListLogMessage,
+  formatListLogMessage: jest.fn().mockImplementation(message => message),
   getChangedFiles: jest.fn().mockReturnValue([]),
   getLastReleaseTag: jest.fn().mockReturnValue('v1.0.0'),
   getNewVersion: jest.fn().mockReturnValue('1.1.0'),
@@ -31,8 +28,8 @@ jest.unstable_mockModule('@repodog/cli-utils', () => ({
   loadPackageJson: jest.fn().mockReturnValue({
     version: '1.0.0',
   }),
-  setVerbose,
-  verboseLog,
+  setVerbose: jest.fn(),
+  verboseLog: jest.fn(),
 }));
 
 jest.unstable_mockModule('./utils/versionMonorepoPackages.js', () => ({

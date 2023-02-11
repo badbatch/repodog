@@ -1,10 +1,10 @@
 import { jest } from '@jest/globals';
 import { loadPackageJsonMock } from '@repodog/cli-test-utils';
-import { type ReleaseMeta, formatListLogMessage, getInternalDepsPackageMeta, verboseLog } from '@repodog/cli-utils';
+import { type ReleaseMeta, getInternalDepsPackageMeta } from '@repodog/cli-utils';
 import type { PackageJson, SetRequired } from 'type-fest';
 
 jest.unstable_mockModule('@repodog/cli-utils', () => ({
-  formatListLogMessage,
+  formatListLogMessage: jest.fn().mockImplementation(message => message),
   getChangedFiles: jest
     .fn()
     .mockReturnValue(['apps/client/alpha/src/index.ts', 'configs/delta/README.md', 'configs/delta/src/index.ts']),
@@ -32,7 +32,7 @@ jest.unstable_mockModule('@repodog/cli-utils', () => ({
       path: '/root/configs/echo/package.json',
     },
   }),
-  verboseLog,
+  verboseLog: jest.fn(),
   ...loadPackageJsonMock(),
 }));
 

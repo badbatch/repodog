@@ -1,11 +1,10 @@
 import { jest } from '@jest/globals';
-import { verboseLog } from '@repodog/cli-utils';
 import type { PathOrFileDescriptor, WriteFileOptions } from 'node:fs';
 
 jest.unstable_mockModule('@repodog/cli-utils', () => ({
   getLatestPackageVersionOnNpm: jest.fn().mockReturnValue('1.0.0'),
   getNewVersion: jest.fn().mockReturnValue('1.1.0'),
-  verboseLog,
+  verboseLog: jest.fn(),
 }));
 
 jest.unstable_mockModule('node:fs', () => ({
@@ -63,6 +62,36 @@ describe('versionPackage', () => {
 
       expect(() => versionPackage(packageJson, { packageJsonPath, type: 'minor' })).toThrow(
         new Error('The new package verison 1.1.0 is less than or equal to the lastest version 2.0.0 on npm')
+      );
+    });
+  });
+
+  describe('when there is no latest version on npm', () => {
+    let mockedWriteFileSync: jest.MockedFunction<
+      (
+        file: PathOrFileDescriptor,
+        data: string | NodeJS.ArrayBufferView,
+        options?: WriteFileOptions | undefined
+      ) => void
+    >;
+
+    beforeEach(async () => {
+      const { getLatestPackageVersionOnNpm } = await import('@repodog/cli-utils');
+      const mockedGetLatestPackageVersionOnNpm = jest.mocked(getLatestPackageVersionOnNpm);
+      mockedGetLatestPackageVersionOnNpm.mockReturnValueOnce('');
+
+      const { writeFileSync } = await import('node:fs');
+      mockedWriteFileSync = jest.mocked(writeFileSync);
+      mockedWriteFileSync.mockClear();
+    });
+
+    it('should writeFileSync with the correct arguments', async () => {
+      const { versionPackage } = await import('./versionPackage.js');
+      versionPackage(packageJson, { packageJsonPath, type: 'minor' });
+
+      expect(mockedWriteFileSync).toHaveBeenCalledWith(
+        packageJsonPath,
+        JSON.stringify({ ...packageJson, version: '1.1.0' }, undefined, 2)
       );
     });
   });

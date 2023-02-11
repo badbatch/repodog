@@ -7,7 +7,7 @@ export const publishPackage = (packageJsonPath: string, { packageManager }: Pick
   const { name, version } = loadPackageJson(packageJsonPath);
   const latestNpmPackageVersion = getLatestPackageVersionOnNpm(name);
 
-  if (version === latestNpmPackageVersion || semver.lt(version, latestNpmPackageVersion)) {
+  if (latestNpmPackageVersion && (version === latestNpmPackageVersion || semver.lt(version, latestNpmPackageVersion))) {
     throw new Error(
       `The new ${name} package verison ${version} is less than or equal to the lastest version on npm: ${latestNpmPackageVersion}`
     );

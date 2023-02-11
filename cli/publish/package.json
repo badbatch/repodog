@@ -2,7 +2,7 @@
   "name": "@repodog/cli-publish",
   "type": "module",
   "version": "0.1.0",
-  "description": "The RepoDog publish cli module.",
+  "description": "The RepoDog cli publish module.",
   "homepage": "https://github.com/badbatch/repodog",
   "bugs": {
     "url": "https://github.com/badbatch/repodog/issues"

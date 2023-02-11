@@ -1,12 +1,12 @@
 import { jest } from '@jest/globals';
 import { loadPackageJsonMock, shelljsMock } from '@repodog/cli-test-utils';
-import { type PackageManager, getTag } from '@repodog/cli-utils';
+import { type PackageManager } from '@repodog/cli-utils';
 
 jest.unstable_mockModule('shelljs', shelljsMock);
 
 jest.unstable_mockModule('@repodog/cli-utils', () => ({
   getLatestPackageVersionOnNpm: jest.fn(),
-  getTag,
+  getTag: jest.fn(),
   ...loadPackageJsonMock(),
 }));
 
@@ -46,6 +46,28 @@ describe('publishPackage', () => {
       expect(() => publishPackage(packageJsonPath, { packageManager: 'npm' })).toThrow(
         new Error('The new alpha package verison 1.0.0 is less than or equal to the lastest version on npm: 1.0.0')
       );
+    });
+  });
+
+  describe('when there is no latest version on npm', () => {
+    let mockedGetPublishCmd: jest.MockedFunction<
+      (packageManager: PackageManager, version: string, tag?: string) => string
+    >;
+
+    beforeEach(async () => {
+      const { getLatestPackageVersionOnNpm } = await import('@repodog/cli-utils');
+      const mockedGetLatestPackageVersionOnNpm = jest.mocked(getLatestPackageVersionOnNpm);
+      mockedGetLatestPackageVersionOnNpm.mockReturnValueOnce('');
+
+      const { getPublishCmd } = await import('./getPublishCmd.js');
+      mockedGetPublishCmd = jest.mocked(getPublishCmd);
+      mockedGetPublishCmd.mockClear();
+    });
+
+    it('should run the correct publish command', async () => {
+      const { publishPackage } = await import('./publishPackage.js');
+      publishPackage(packageJsonPath, { packageManager: 'npm' });
+      expect(mockedGetPublishCmd).toHaveBeenCalledWith('npm', '1.0.0', undefined);
     });
   });
 

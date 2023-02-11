@@ -17,9 +17,12 @@ export const versionPackage = (
 
   const latestNpmPackageVersion = getLatestPackageVersionOnNpm(name);
   verboseLog(`New version: ${newVersion}`);
-  verboseLog(`Latest version on npm: ${latestNpmPackageVersion}`);
+  verboseLog(`Latest version on npm: ${latestNpmPackageVersion || 'None'}`);
 
-  if (newVersion === latestNpmPackageVersion || semver.lt(newVersion, latestNpmPackageVersion)) {
+  if (
+    latestNpmPackageVersion &&
+    (newVersion === latestNpmPackageVersion || semver.lt(newVersion, latestNpmPackageVersion))
+  ) {
     throw new Error(
       `The new package verison ${newVersion} is less than or equal to the lastest version ${latestNpmPackageVersion} on npm`
     );
