@@ -3,6 +3,7 @@ import {
   VALID_RELEASE_TAGS,
   VALID_RELEASE_TYPES,
   addCommitPushRelease,
+  calculateDuration,
   formatListLogMessage,
   getChangedFiles,
   getLastReleaseTag,
@@ -19,12 +20,14 @@ import {
 import colors from 'ansi-colors';
 import { writeFileSync } from 'node:fs';
 import { resolve } from 'node:path';
+import { performance } from 'node:perf_hooks';
 import shelljs from 'shelljs';
 import type { CutReleaseArguments } from './types.js';
 import { versionMonorepoPackages } from './utils/versionMonorepoPackages.js';
 import { versionPackage } from './utils/versionPackage.js';
 
 export const handler = (argv: CutReleaseArguments) => {
+  const startTime = performance.now();
   const dryRun = argv['dry-run'] ?? false;
   const force = argv.force ?? false;
   const preReleaseId = argv.preid;
@@ -139,16 +142,19 @@ export const handler = (argv: CutReleaseArguments) => {
 
     if (dryRun) {
       verboseLog('Exiting process as dry-run set to true');
+      verboseLog(`Handler duration: ${String(calculateDuration(startTime))}sec`);
       verboseLog('>>>> PROJECT ROOT END <<<<\n');
       return shelljs.exit(0);
     }
 
     verboseLog(`Adding, committing and pushing new version: ${newVersion}`);
     addCommitPushRelease(newVersion);
+    verboseLog(`Handler duration: ${String(calculateDuration(startTime))}sec`);
     verboseLog('>>>> PROJECT ROOT END <<<<\n');
     return shelljs.exit(0);
   } catch (error: unknown) {
     shelljs.echo(`${colors.magenta('Cutoff')} ${colors.dim('=>')} ${colors.red(`Error: ${(error as Error).message}`)}`);
+    verboseLog(`Handler duration: ${String(calculateDuration(startTime))}sec`);
     verboseLog('>>>> PROJECT ROOT END <<<<\n');
     return shelljs.exit(1);
   }

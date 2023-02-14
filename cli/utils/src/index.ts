@@ -1,4 +1,5 @@
 export * from './addCommitPushRelease.js';
+export * from './calculateDuration.js';
 export * from './formatListLogMessage.js';
 export * from './getChangedFiles.js';
 export * from './getInternalDepsPackageMeta.js';
