@@ -1,6 +1,6 @@
 import { jest } from '@jest/globals';
 import { loadPackageJsonMock, shelljsMock } from '@repodog/cli-test-utils';
-import { type PackageManager } from '@repodog/cli-utils';
+import type { PackageManager } from '@repodog/cli-utils';
 
 jest.unstable_mockModule('shelljs', shelljsMock);
 
@@ -16,6 +16,29 @@ jest.unstable_mockModule('./getPublishCmd.js', () => ({
 
 describe('publishPackage', () => {
   const packageJsonPath = '/root/alpha/package.json';
+
+  describe('when package publishConfig.access is not public', () => {
+    let mockedGetLatestPackageVersionOnNpm: jest.MockedFunction<(name: string) => string>;
+
+    beforeEach(async () => {
+      const { loadPackageJson } = await import('@repodog/cli-utils');
+      const mockedLoadPackageJson = jest.mocked(loadPackageJson);
+
+      mockedLoadPackageJson.mockReturnValueOnce({
+        name: 'alpha',
+        version: '1.0.0',
+      });
+
+      const { getLatestPackageVersionOnNpm } = await import('@repodog/cli-utils');
+      mockedGetLatestPackageVersionOnNpm = jest.mocked(getLatestPackageVersionOnNpm);
+    });
+
+    it('should not call getLatestPackageVersionOnNpm', async () => {
+      const { publishPackage } = await import('./publishPackage.js');
+      publishPackage(packageJsonPath, { packageManager: 'npm' });
+      expect(mockedGetLatestPackageVersionOnNpm).not.toHaveBeenCalled();
+    });
+  });
 
   describe('when package version is less than the latest version on npm', () => {
     beforeEach(async () => {

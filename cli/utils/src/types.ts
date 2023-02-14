@@ -6,6 +6,7 @@ export interface PackageMeta {
   force: boolean;
   name: string;
   path: string;
+  versioned: boolean;
 }
 
 export type PackageMetaRecord = Record<string, PackageMeta>;

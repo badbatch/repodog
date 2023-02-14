@@ -2,7 +2,7 @@ export * from './addCommitPushRelease.js';
 export * from './calculateDuration.js';
 export * from './formatListLogMessage.js';
 export * from './getChangedFiles.js';
-export * from './getInternalDepsPackageMeta.js';
+export * from './getInternalDependencies.js';
 export * from './getLastReleaseTag.js';
 export * from './getLatestPackageVersionOnNpm.js';
 export * from './getMonorepoPackageJsonPaths.js';

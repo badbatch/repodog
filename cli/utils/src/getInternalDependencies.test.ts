@@ -1,4 +1,4 @@
-describe('getInternalDepsPackageMeta', () => {
+describe('getInternalDependencies', () => {
   const packageJson = {
     dependencies: {
       alpha: '1.0.0',
@@ -18,33 +18,24 @@ describe('getInternalDepsPackageMeta', () => {
       force: false,
       name: 'alpha',
       path: '/path/to/alpha',
+      versioned: false,
     },
     bravo: {
       force: false,
       name: 'bravo',
       path: '/path/to/bravo',
+      versioned: false,
     },
     charlie: {
       force: false,
       name: 'charlie',
       path: '/path/to/charlie',
+      versioned: false,
     },
   };
 
   it('should return the correct package meta', async () => {
-    const { getInternalDepsPackageMeta } = await import('./getInternalDepsPackageMeta.js');
-
-    expect(getInternalDepsPackageMeta(packageJson, packageMetaRecord)).toEqual([
-      {
-        force: false,
-        name: 'alpha',
-        path: '/path/to/alpha',
-      },
-      {
-        force: false,
-        name: 'charlie',
-        path: '/path/to/charlie',
-      },
-    ]);
+    const { getInternalDependencies } = await import('./getInternalDependencies.js');
+    expect(getInternalDependencies(packageJson, packageMetaRecord)).toEqual(['alpha', 'charlie']);
   });
 });

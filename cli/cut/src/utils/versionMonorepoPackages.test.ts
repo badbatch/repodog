@@ -1,6 +1,6 @@
 import { jest } from '@jest/globals';
 import { loadPackageJsonMock } from '@repodog/cli-test-utils';
-import { type ReleaseMeta, getInternalDepsPackageMeta } from '@repodog/cli-utils';
+import { type ReleaseMeta, getInternalDependencies } from '@repodog/cli-utils';
 import type { PackageJson, SetRequired } from 'type-fest';
 
 jest.unstable_mockModule('@repodog/cli-utils', () => ({
@@ -8,30 +8,34 @@ jest.unstable_mockModule('@repodog/cli-utils', () => ({
   getChangedFiles: jest
     .fn()
     .mockReturnValue(['apps/client/alpha/src/index.ts', 'configs/delta/README.md', 'configs/delta/src/index.ts']),
-  getInternalDepsPackageMeta,
+  getInternalDependencies,
   getLastReleaseTag: jest.fn().mockReturnValue('1.0.0'),
-  getMonorepoPackageMeta: jest.fn().mockReturnValue({
+  getMonorepoPackageMeta: jest.fn().mockImplementation(() => ({
     alpha: {
       force: false,
       name: 'alpha',
       path: '/root/apps/client/alpha/package.json',
+      versioned: false,
     },
     bravo: {
       force: false,
       name: 'bravo',
       path: '/root/apps/server/bravo/package.json',
+      versioned: false,
     },
     delta: {
       force: false,
       name: 'delta',
       path: '/root/configs/delta/package.json',
+      versioned: false,
     },
     echo: {
       force: false,
       name: 'echo',
       path: '/root/configs/echo/package.json',
+      versioned: false,
     },
-  }),
+  })),
   verboseLog: jest.fn(),
   ...loadPackageJsonMock(),
 }));
@@ -63,7 +67,7 @@ describe('versionMonorepoPackages', () => {
 
       expect(mockedVersionPackage.mock.calls).toEqual([
         [
-          { name: 'delta', version: '1.0.0' },
+          { name: 'delta', publishConfig: { access: 'public' }, version: '1.0.0' },
           {
             packageJsonPath: '/root/configs/delta/package.json',
             preReleaseId: undefined,
@@ -72,7 +76,7 @@ describe('versionMonorepoPackages', () => {
           },
         ],
         [
-          { name: 'alpha', version: '1.0.0' },
+          { name: 'alpha', publishConfig: { access: 'public' }, version: '1.0.0' },
           {
             packageJsonPath: '/root/apps/client/alpha/package.json',
             preReleaseId: undefined,
@@ -104,7 +108,7 @@ describe('versionMonorepoPackages', () => {
 
       expect(mockedVersionPackage.mock.calls).toEqual([
         [
-          { name: 'echo', version: '1.0.0' },
+          { name: 'echo', publishConfig: { access: 'public' }, version: '1.0.0' },
           {
             packageJsonPath: '/root/configs/echo/package.json',
             preReleaseId: undefined,
@@ -113,7 +117,7 @@ describe('versionMonorepoPackages', () => {
           },
         ],
         [
-          { name: 'delta', version: '1.0.0' },
+          { name: 'delta', publishConfig: { access: 'public' }, version: '1.0.0' },
           {
             packageJsonPath: '/root/configs/delta/package.json',
             preReleaseId: undefined,
@@ -122,7 +126,7 @@ describe('versionMonorepoPackages', () => {
           },
         ],
         [
-          { name: 'bravo', version: '1.0.0' },
+          { name: 'bravo', publishConfig: { access: 'public' }, version: '1.0.0' },
           {
             packageJsonPath: '/root/apps/server/bravo/package.json',
             preReleaseId: undefined,
@@ -131,7 +135,7 @@ describe('versionMonorepoPackages', () => {
           },
         ],
         [
-          { name: 'alpha', version: '1.0.0' },
+          { name: 'alpha', publishConfig: { access: 'public' }, version: '1.0.0' },
           {
             packageJsonPath: '/root/apps/client/alpha/package.json',
             preReleaseId: undefined,

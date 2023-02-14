@@ -2,7 +2,7 @@ import {
   type ReleaseMeta,
   formatListLogMessage,
   getChangedFiles,
-  getInternalDepsPackageMeta,
+  getInternalDependencies,
   getLastReleaseTag,
   getMonorepoPackageMeta,
   loadPackageJson,
@@ -31,10 +31,11 @@ export const versionMonorepoPackages = ({
   const packageMetaKeys = Object.keys(packageMetaRecord);
 
   for (let index = packageMetaKeys.length - 1; index >= 0; index -= 1) {
+    verboseLog('>>>> PACKAGE START <<<<');
+    const packageMetaKey = packageMetaKeys[index]!;
+    const packageMeta = packageMetaRecord[packageMetaKey]!;
+
     try {
-      verboseLog('>>>> PACKAGE START <<<<');
-      const packageMetaKey = packageMetaKeys[index]!;
-      const packageMeta = packageMetaRecord[packageMetaKey]!;
       const packageJson = loadPackageJson(packageMeta.path);
       const { name } = packageJson;
       verboseLog(`Versioning package: ${name}`);
@@ -75,19 +76,20 @@ export const versionMonorepoPackages = ({
         type,
       });
 
-      const internalDepsPackageMeta = getInternalDepsPackageMeta(packageJson, packageMetaRecord);
+      packageMeta.versioned = true;
+      const internalDependencies = getInternalDependencies(packageJson, packageMetaRecord);
 
-      for (const { name } of internalDepsPackageMeta) {
-        const depsPackageMeta = packageMetaRecord[name];
+      for (const name of internalDependencies) {
+        const depsPackageMeta = packageMetaRecord[name]!;
 
-        if (depsPackageMeta) {
+        if (!depsPackageMeta.versioned) {
           depsPackageMeta.force = true;
-        }
 
-        if (!packageMetaKeys.includes(name)) {
-          verboseLog(`${name} added to packages to version`);
-          packageMetaKeys.unshift(name);
-          index += 1;
+          if (!packageMetaKeys.includes(name)) {
+            verboseLog(`${name} added to packages to version`);
+            packageMetaKeys.unshift(name);
+            index += 1;
+          }
         }
       }
 

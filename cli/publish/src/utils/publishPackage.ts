@@ -4,7 +4,12 @@ import shelljs from 'shelljs';
 import { getPublishCmd } from './getPublishCmd.js';
 
 export const publishPackage = (packageJsonPath: string, { packageManager }: Pick<ReleaseMeta, 'packageManager'>) => {
-  const { name, version } = loadPackageJson(packageJsonPath);
+  const { name, publishConfig, version } = loadPackageJson(packageJsonPath);
+
+  if (publishConfig?.access !== 'public') {
+    return;
+  }
+
   const latestNpmPackageVersion = getLatestPackageVersionOnNpm(name);
 
   if (latestNpmPackageVersion && (version === latestNpmPackageVersion || semver.lt(version, latestNpmPackageVersion))) {

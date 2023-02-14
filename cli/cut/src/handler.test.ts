@@ -16,6 +16,7 @@ jest.unstable_mockModule('@repodog/cli-utils', () => ({
   VALID_RELEASE_TAGS,
   VALID_RELEASE_TYPES,
   addCommitPushRelease: jest.fn(),
+  calculateDuration: jest.fn().mockReturnValue('1'),
   formatListLogMessage: jest.fn().mockImplementation(message => message),
   getChangedFiles: jest.fn().mockReturnValue([]),
   getLastReleaseTag: jest.fn().mockReturnValue('v1.0.0'),
@@ -327,12 +328,23 @@ describe('cut', () => {
     beforeEach(async () => {
       shelljs = jest.mocked(await import('shelljs')).default;
       clearShelljsMock(shelljs);
+
+      const { loadPackageJson } = await import('@repodog/cli-utils');
+      const mockedLoadPackageJson = jest.mocked(loadPackageJson);
+
+      mockedLoadPackageJson.mockReturnValueOnce({
+        name: 'alpha',
+        scripts: {
+          'cutoff:changelog': 'pnpm run changelog',
+        },
+        version: '1.0.0',
+      });
     });
 
     it.each([['patch'], ['minor'], ['major']])('%p release should run changelog', async type => {
       const { handler } = await import('./handler.js');
       handler({ type });
-      expect(shelljs.exec).toHaveBeenCalledWith(`pnpm run changelog -- --${type}`);
+      expect(shelljs.exec).toHaveBeenCalledWith(`pnpm run cutoff:changelog -- --${type}`);
     });
   });
 
@@ -342,12 +354,38 @@ describe('cut', () => {
     beforeEach(async () => {
       shelljs = jest.mocked(await import('shelljs')).default;
       clearShelljsMock(shelljs);
+
+      const { loadPackageJson } = await import('@repodog/cli-utils');
+      const mockedLoadPackageJson = jest.mocked(loadPackageJson);
+
+      mockedLoadPackageJson.mockReturnValueOnce({
+        name: 'alpha',
+        scripts: {
+          'cutoff:changelog': 'pnpm run changelog',
+        },
+        version: '1.0.0',
+      });
     });
 
     it.each([['prepatch'], ['preminor'], ['premajor']])('%p release should not run changelog', async type => {
       const { handler } = await import('./handler.js');
       handler({ type });
-      expect(shelljs.exec).not.toHaveBeenCalledWith(`pnpm run changelog -- --${type}`);
+      expect(shelljs.exec).not.toHaveBeenCalledWith(`pnpm run cutoff:changelog -- --${type}`);
+    });
+  });
+
+  describe('when the cutoff:changelog script is not provided', () => {
+    let shelljs: jest.MockedObject<typeof import('shelljs')>;
+
+    beforeEach(async () => {
+      shelljs = jest.mocked(await import('shelljs')).default;
+      clearShelljsMock(shelljs);
+    });
+
+    it.each([['patch'], ['minor'], ['major']])('%p release should not run changelog', async type => {
+      const { handler } = await import('./handler.js');
+      handler({ type });
+      expect(shelljs.exec).not.toHaveBeenCalledWith(`pnpm run cutoff:changelog -- --${type}`);
     });
   });
 

@@ -22,16 +22,19 @@ describe('getMonorepoPackageMeta', () => {
         force: false,
         name: 'alpha',
         path: '/root/apps/client/alpha/package.json',
+        versioned: false,
       },
       bravo: {
         force: false,
         name: 'bravo',
         path: '/root/apps/server/bravo/package.json',
+        versioned: false,
       },
       delta: {
         force: false,
         name: 'delta',
         path: '/root/configs/delta/package.json',
+        versioned: false,
       },
     });
   });
