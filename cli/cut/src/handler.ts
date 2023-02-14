@@ -117,9 +117,9 @@ export const handler = (argv: CutReleaseArguments) => {
       verboseLog(`cutoff:post-version script not provided`);
     }
 
-    if (['patch', 'minor', 'major'].includes(type)) {
+    if (['patch', 'minor', 'major'].includes(type) && scripts['cutoff:changelog']) {
       verboseLog(`Generating changelog for ${type} release`);
-      shelljs.exec(`${packageManager} run changelog -- --${type}`);
+      shelljs.exec(`${packageManager} run cutoff:changelog -- --${type}`);
     }
 
     const newVersion = getNewVersion(version, type, tag, preReleaseId);
