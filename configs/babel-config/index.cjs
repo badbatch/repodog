@@ -1,7 +1,7 @@
 module.exports = api => {
   const { BABEL_DISABLE_CACHE, DEBUG, JS_ENV, NODE_ENV, TEST_ENV } = process.env;
 
-  if (BABEL_DISABLE_CACHE) {
+  if (BABEL_DISABLE_CACHE === 'true') {
     api.cache.never();
   } else {
     api.cache.using(() => JS_ENV);

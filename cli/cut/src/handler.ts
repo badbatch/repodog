@@ -80,14 +80,14 @@ export const handler = (argv: CutReleaseArguments) => {
     const packageJson = loadPackageJson(packageJsonPath);
     const { scripts = {}, version } = packageJson;
 
-    if (!skipPrehook && scripts['cutoff:pre-version']) {
-      verboseLog(`Running cutoff:pre-version script: ${scripts['cutoff:pre-version']}\n`);
-      shelljs.exec(`${packageManager} run cutoff:pre-version`);
+    if (!skipPrehook && scripts['cut:pre-version']) {
+      verboseLog(`Running cut:pre-version script: ${scripts['cut:pre-version']}\n`);
+      shelljs.exec(`${packageManager} run cut:pre-version`);
       shelljs.echo('\n');
-    } else if (skipPrehook && scripts['cutoff:pre-version']) {
-      verboseLog(`cutoff:pre-version script skipped, skipPrehook set to true`);
+    } else if (skipPrehook && scripts['cut:pre-version']) {
+      verboseLog(`cut:pre-version script skipped, skipPrehook set to true`);
     } else {
-      verboseLog(`cutoff:pre-version script not provided`);
+      verboseLog(`cut:pre-version script not provided`);
     }
 
     if (isProjectMonorepo(packageManager)) {
@@ -107,19 +107,19 @@ export const handler = (argv: CutReleaseArguments) => {
       });
     }
 
-    if (!skipPosthook && scripts['cutoff:post-version']) {
-      verboseLog(`Running cutoff:post-version script: ${scripts['cutoff:post-version']}\n`);
-      shelljs.exec(`${packageManager} run cutoff:post-version`);
+    if (!skipPosthook && scripts['cut:post-version']) {
+      verboseLog(`Running cut:post-version script: ${scripts['cut:post-version']}\n`);
+      shelljs.exec(`${packageManager} run cut:post-version`);
       shelljs.echo('\n');
-    } else if (skipPosthook && scripts['cutoff:post-version']) {
-      verboseLog(`cutoff:post-version skipped, skipPosthook set to true`);
+    } else if (skipPosthook && scripts['cut:post-version']) {
+      verboseLog(`cut:post-version skipped, skipPosthook set to true`);
     } else {
-      verboseLog(`cutoff:post-version script not provided`);
+      verboseLog(`cut:post-version script not provided`);
     }
 
-    if (['patch', 'minor', 'major'].includes(type) && scripts['cutoff:changelog']) {
+    if (['patch', 'minor', 'major'].includes(type) && scripts['cut:changelog']) {
       verboseLog(`Generating changelog for ${type} release`);
-      shelljs.exec(`${packageManager} run cutoff:changelog -- --${type}`);
+      shelljs.exec(`${packageManager} run cut:changelog -- --${type}`);
     }
 
     const newVersion = getNewVersion(version, type, tag, preReleaseId);

@@ -1,52 +1,33 @@
 # RepoDog
 
-An opinionated command line utility for managing repositories.
+An command line module for managing repositories and a set of configs for popular tooling.
 
 [![build-and-deploy](https://github.com/badbatch/repodog/actions/workflows/build-and-deploy.yml/badge.svg)](https://github.com/badbatch/repodog/actions/workflows/build-and-deploy.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 ## Summary
 
-* Extensible configurations for Typescript, popular linters, and build tools.
-* CLI command for creating a single package repository.
-* CLI commands for creating a monorepo and individual packages within it.
-* Set of scripts for common repository management tasks.
+* Cut and publish releases from the command line with [`@repodog/cli`](./cli/core//README.md)
+* Build code with [`@repodog/rollup-config`](./configs/rollup-config/README.md) and [`@repodog/babel-config`](./configs/babel-config/README.md)
+* Lint code with [`@repodog/eslint-config`](./configs/eslint-config/README.md) and [@repodog/prettier-config](./configs/prettier-config/README.md)
+* Test code with [`@repodog/jest-config`](./configs/jest-config/README.md)
 
-## Installation
+## Documentation
 
-RepoDog is structured as a [monorepo](https://github.com/lerna/lerna), so each package is published to npm under the
-`@repodog` scope and can be installed in a project in the same way as any other npm package.
+### CLI
 
-```shell
-yarn add @repodog/<package>
-```
+* [@repodog/cli](./cli/core/README.md)
 
-## Packages
+### Comfigs
 
-* [@repodog/babel-config](packages/babel-config)
-* [@repodog/build-references](packages/build-references)
-* [@repodog/commitlint-config](packages/commitlint-config)
-* [@repodog/config-helpers](packages/config-helpers)
-* [@repodog/constants](packages/constants)
-* [@repodog/eslint-config](packages/eslint-config)
-* [@repodog/helpers](packages/helpers)
-* [@repodog/jest-config](packages/jest-config)
-* [@repodog/lerna-config](packages/lerna-config)
-* [@repodog/markdownlint-config](packages/markdownlint-config)
-* [@repodog/new-monorepo](packages/new-monorepo)
-* [@repodog/new-package](packages/new-package)
-* [@repodog/new-repo](packages/new-repo)
-* [@repodog/prettier-config](packages/prettier-config)
-* [@repodog/rollup-config](packages/rollup-config)
-* [@repodog/stylelint-config](packages/stylelint-config)
-* [@repodog/ts-config](packages/ts-config)
-* [@repodog/tslint-config](packages/tslint-config)
-* [@repodog/typedoc-config](packages/typedoc-config)
-* [@repodog/types](packages/types)
-
-## Usage
-
-For usage instructions, see the individual package README files.
+* [@repodog/babel-config](./configs/babel-config/README.md)
+* [@repodog/commitlint-config](./configs/commitlint-config/README.md)
+* [@repodog/eslint-config](./configs/eslint-config/README.md)
+* [@repodog/jest-config](./configs/jest-config/README.md)
+* [@repodog/markdownlint-config](./configs/markdownlint-config/README.md)
+* [@repodog/prettier-config](./configs/prettier-config/README.md)
+* [@repodog/rollup-config](./configs/rollup-config/README.md)
+* [@repodog/ts-config](./configs/ts-config/README.md)
 
 ## Changelog
 

@@ -12,12 +12,23 @@ The RepoDog Rollup config.
 npm install @repodog/rollup-config --save-dev
 ```
 
+## Install dependencies
+
+```shell
+# terminal
+npm install @rollup/plugin-babel @rollup/plugin-image @rollup/plugin-json @rollup/plugin-node-resolve @rollup/plugin-terser rollup rollup-plugin-analyzer rollup-plugin-copy rollup-plugin-sourcemaps --save-dev
+```
+
+**Rollup uses Babel for code transformations so you will also need to install [`@repodog/babel-config`](../babel-config/README.md) and its dependencies.**
+
 ## Use package
 
 ```json
 // package.json
-"scripts": {
-  "build": "rollup -c ./rollup.config.cjs"
+{
+  "scripts": {
+    "build": "rollup -c ./rollup.config.cjs"
+  }
 }
 ```
 
@@ -26,6 +37,14 @@ npm install @repodog/rollup-config --save-dev
 const repodogConfig = require('@repodog/rollup-config');
 
 module.exports = {
-  ...repodogConfig,
+  ...repodogConfig(),
 };
 ```
+
+### Environment variables
+
+`NODE_ENV` = `''prod' || 'production' || 'dev' || 'development'`
+
+When set to `''prod'` or `'production'`, terser mangles and compresses, the bundle analyser runs, and source maps are omitted.
+
+**You cam also use the environment variables outlined in [`@repodog/babel-config`](../babel-config/README.md#environment-variables) to control what is output.**

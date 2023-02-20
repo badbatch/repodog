@@ -184,7 +184,7 @@ describe('cut', () => {
     });
   });
 
-  describe('cutoff:pre-version script', () => {
+  describe('cut:pre-version script', () => {
     describe('when the script is provided and skipPrehook is false', () => {
       let shelljs: jest.MockedObject<typeof import('shelljs')>;
 
@@ -198,7 +198,7 @@ describe('cut', () => {
         mockedLoadPackageJson.mockReturnValueOnce({
           name: 'alpha',
           scripts: {
-            'cutoff:pre-version': 'pnpm run pre-version-script',
+            'cut:pre-version': 'pnpm run pre-version-script',
           },
           version: '1.0.0',
         });
@@ -207,7 +207,7 @@ describe('cut', () => {
       it('should execute the script', async () => {
         const { handler } = await import('./handler.js');
         handler({ type: 'preminor' });
-        expect(shelljs.exec).toHaveBeenNthCalledWith(1, 'pnpm run cutoff:pre-version');
+        expect(shelljs.exec).toHaveBeenNthCalledWith(1, 'pnpm run cut:pre-version');
       });
     });
 
@@ -224,7 +224,7 @@ describe('cut', () => {
         mockedLoadPackageJson.mockReturnValueOnce({
           name: 'alpha',
           scripts: {
-            'cutoff:pre-version': 'pnpm run pre-version-script',
+            'cut:pre-version': 'pnpm run pre-version-script',
           },
           version: '1.0.0',
         });
@@ -233,7 +233,7 @@ describe('cut', () => {
       it('should not execute the script', async () => {
         const { handler } = await import('./handler.js');
         handler({ 'skip-prehook': true, type: 'preminor' });
-        expect(shelljs.exec).not.toHaveBeenNthCalledWith(1, 'pnpm run cutoff:pre-version');
+        expect(shelljs.exec).not.toHaveBeenNthCalledWith(1, 'pnpm run cut:pre-version');
       });
     });
 
@@ -248,12 +248,12 @@ describe('cut', () => {
       it('should not execute the script', async () => {
         const { handler } = await import('./handler.js');
         handler({ type: 'preminor' });
-        expect(shelljs.exec).not.toHaveBeenNthCalledWith(1, 'pnpm run cutoff:pre-version');
+        expect(shelljs.exec).not.toHaveBeenNthCalledWith(1, 'pnpm run cut:pre-version');
       });
     });
   });
 
-  describe('cutoff:post-version script', () => {
+  describe('cut:post-version script', () => {
     describe('when the script is provided and skipPosthook is false', () => {
       let shelljs: jest.MockedObject<typeof import('shelljs')>;
 
@@ -267,7 +267,7 @@ describe('cut', () => {
         mockedLoadPackageJson.mockReturnValueOnce({
           name: 'alpha',
           scripts: {
-            'cutoff:post-version': 'pnpm run post-version-script',
+            'cut:post-version': 'pnpm run post-version-script',
           },
           version: '1.0.0',
         });
@@ -276,7 +276,7 @@ describe('cut', () => {
       it('should execute the script', async () => {
         const { handler } = await import('./handler.js');
         handler({ type: 'preminor' });
-        expect(shelljs.exec).toHaveBeenNthCalledWith(1, 'pnpm run cutoff:post-version');
+        expect(shelljs.exec).toHaveBeenNthCalledWith(1, 'pnpm run cut:post-version');
       });
     });
 
@@ -293,7 +293,7 @@ describe('cut', () => {
         mockedLoadPackageJson.mockReturnValueOnce({
           name: 'alpha',
           scripts: {
-            'cutoff:post-version': 'pnpm run post-version-script',
+            'cut:post-version': 'pnpm run post-version-script',
           },
           version: '1.0.0',
         });
@@ -302,7 +302,7 @@ describe('cut', () => {
       it('should not execute the script', async () => {
         const { handler } = await import('./handler.js');
         handler({ 'skip-posthook': true, type: 'preminor' });
-        expect(shelljs.exec).not.toHaveBeenNthCalledWith(1, 'pnpm run cutoff:post-version');
+        expect(shelljs.exec).not.toHaveBeenNthCalledWith(1, 'pnpm run cut:post-version');
       });
     });
 
@@ -317,7 +317,7 @@ describe('cut', () => {
       it('should not execute the script', async () => {
         const { handler } = await import('./handler.js');
         handler({ type: 'preminor' });
-        expect(shelljs.exec).not.toHaveBeenNthCalledWith(1, 'pnpm run cutoff:post-version');
+        expect(shelljs.exec).not.toHaveBeenNthCalledWith(1, 'pnpm run cut:post-version');
       });
     });
   });
@@ -335,7 +335,7 @@ describe('cut', () => {
       mockedLoadPackageJson.mockReturnValueOnce({
         name: 'alpha',
         scripts: {
-          'cutoff:changelog': 'pnpm run changelog',
+          'cut:changelog': 'pnpm run changelog',
         },
         version: '1.0.0',
       });
@@ -344,7 +344,7 @@ describe('cut', () => {
     it.each([['patch'], ['minor'], ['major']])('%p release should run changelog', async type => {
       const { handler } = await import('./handler.js');
       handler({ type });
-      expect(shelljs.exec).toHaveBeenCalledWith(`pnpm run cutoff:changelog -- --${type}`);
+      expect(shelljs.exec).toHaveBeenCalledWith(`pnpm run cut:changelog -- --${type}`);
     });
   });
 
@@ -361,7 +361,7 @@ describe('cut', () => {
       mockedLoadPackageJson.mockReturnValueOnce({
         name: 'alpha',
         scripts: {
-          'cutoff:changelog': 'pnpm run changelog',
+          'cut:changelog': 'pnpm run changelog',
         },
         version: '1.0.0',
       });
@@ -370,11 +370,11 @@ describe('cut', () => {
     it.each([['prepatch'], ['preminor'], ['premajor']])('%p release should not run changelog', async type => {
       const { handler } = await import('./handler.js');
       handler({ type });
-      expect(shelljs.exec).not.toHaveBeenCalledWith(`pnpm run cutoff:changelog -- --${type}`);
+      expect(shelljs.exec).not.toHaveBeenCalledWith(`pnpm run cut:changelog -- --${type}`);
     });
   });
 
-  describe('when the cutoff:changelog script is not provided', () => {
+  describe('when the cut:changelog script is not provided', () => {
     let shelljs: jest.MockedObject<typeof import('shelljs')>;
 
     beforeEach(async () => {
@@ -385,7 +385,7 @@ describe('cut', () => {
     it.each([['patch'], ['minor'], ['major']])('%p release should not run changelog', async type => {
       const { handler } = await import('./handler.js');
       handler({ type });
-      expect(shelljs.exec).not.toHaveBeenCalledWith(`pnpm run cutoff:changelog -- --${type}`);
+      expect(shelljs.exec).not.toHaveBeenCalledWith(`pnpm run cut:changelog -- --${type}`);
     });
   });
 

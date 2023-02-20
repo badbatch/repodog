@@ -12,11 +12,22 @@ The RepoDog ESlint config.
 npm install @repodog/eslint-config --save-dev
 ```
 
+## Install dependencies
+
+```shell
+# terminal
+npm install @babel/eslint-parser @typescript-eslint/eslint-plugin @typescript-eslint/parser eslint eslint-config-prettier eslint-import-resolver-typescript eslint-plugin-import eslint-plugin-jest eslint-plugin-jsx-a11y eslint-plugin-prettier eslint-plugin-react eslint-plugin-react-hooks eslint-plugin-sort-class-members eslint-plugin-sort-destructure-keys eslint-plugin-sort-keys-fix eslint-plugin-typescript-sort-keys eslint-plugin-unicorn --save-dev
+```
+
 ## Use package
 
 ```javascript
 // .eslintrc.cjs
 module.exports = {
-  extends: ['@repodog/eslint-config']
+  extends: ['@repodog/eslint-config'],
+  parserOptions: {
+    tsconfigRootDir: __dirname,
+  },
+  root: true,
 };
 ```

@@ -12,7 +12,25 @@ The RepoDog Commitlint config.
 npm install @repodog/commitlint-config --save-dev
 ```
 
+## Install dependencies
+
+```shell
+# terminal
+npm install husky @commitlint/cli @commitlint/config-conventional @commitlint/prompt-cli --save-dev
+```
+
+Please refer to the [husky documentation](https://typicode.github.io/husky/#/?id=manual) on how to automatically enable Git hooks.
+
 ## Use package
+
+```json
+// package.json
+{
+  "scripts": {
+    "commit": "commit"
+  }
+}
+```
 
 ```javascript
 // commitlint.config.cjs
