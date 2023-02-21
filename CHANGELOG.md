@@ -1,3 +1,9 @@
+#### 1.0.3-alpha.0 (2023-02-21)
+
+##### Refactors
+
+*  add verbose logging to publish command (4560bb8d)
+
 #### 1.0.2-alpha.0 (2023-02-21)
 
 ##### Bug Fixes
