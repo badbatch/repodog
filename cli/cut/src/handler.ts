@@ -146,7 +146,7 @@ export const handler = (argv: CutReleaseArguments) => {
       verboseLog(`cut:post-version script not provided`);
     }
 
-    if (['patch', 'minor', 'major'].includes(type) && scripts['cut:changelog']) {
+    if (scripts['cut:changelog']) {
       verboseLog(`Generating changelog for ${type} release`);
       shelljs.exec(`${packageManager} run cut:changelog -- --${type}`);
     }

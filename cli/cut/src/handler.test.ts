@@ -424,7 +424,7 @@ describe('cut', () => {
     });
   });
 
-  describe('when release type is either patch, minor or major', () => {
+  describe('when the cut:changelog script is provided', () => {
     let shelljs: jest.MockedObject<typeof import('shelljs')>;
 
     beforeEach(async () => {
@@ -447,32 +447,6 @@ describe('cut', () => {
       const { handler } = await import('./handler.js');
       handler({ type });
       expect(shelljs.exec).toHaveBeenCalledWith(`pnpm run cut:changelog -- --${type}`);
-    });
-  });
-
-  describe('when release type is not either patch, minor or major', () => {
-    let shelljs: jest.MockedObject<typeof import('shelljs')>;
-
-    beforeEach(async () => {
-      shelljs = jest.mocked(await import('shelljs')).default;
-      clearShelljsMock(shelljs);
-
-      const { loadPackageJson } = await import('@repodog/cli-utils');
-      const mockedLoadPackageJson = jest.mocked(loadPackageJson);
-
-      mockedLoadPackageJson.mockReturnValueOnce({
-        name: 'alpha',
-        scripts: {
-          'cut:changelog': 'pnpm run changelog',
-        },
-        version: '1.0.0',
-      });
-    });
-
-    it.each([['prepatch'], ['preminor'], ['premajor']])('%p release should not run changelog', async type => {
-      const { handler } = await import('./handler.js');
-      handler({ type });
-      expect(shelljs.exec).not.toHaveBeenCalledWith(`pnpm run cut:changelog -- --${type}`);
     });
   });
 
