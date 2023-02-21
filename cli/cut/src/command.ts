@@ -4,7 +4,7 @@ export const builder = (argv: Argv) =>
   argv
     .positional('type', {
       demandOption: true,
-      desc: 'The release type: major | premajor | minor | preminor | patch | prepatch | prerelease',
+      desc: 'The release type: major | premajor | minor | preminor | patch | prepatch | prerelease | dry-run',
       type: 'string',
     })
     .option('tag', {

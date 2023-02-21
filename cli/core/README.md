@@ -72,7 +72,7 @@ Cut release to current branch
 
 Positionals:
   type  The release type: major | premajor | minor | preminor | patch | prepatch
-        | prerelease                                         [string] [required]
+        | prerelease | dry-run                               [string] [required]
 
 Options:
   --version        Show version number                                 [boolean]

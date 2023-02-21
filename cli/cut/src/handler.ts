@@ -49,6 +49,16 @@ export const handler = (argv: CutReleaseArguments) => {
   verboseLog('>>>> USER CONFIG END <<<<\n');
 
   try {
+    const packageJsonPath = resolve(process.cwd(), 'package.json');
+    const packageJson = loadPackageJson(packageJsonPath);
+
+    if (argv.type === 'dry-run') {
+      verboseLog(`Adding, committing and pushing new version: ${packageJson.version}`);
+      addCommitPushRelease(packageJson.version);
+      verboseLog('>>>> PROJECT ROOT END <<<<\n');
+      return shelljs.exit(0);
+    }
+
     if (!isValidReleaseType(argv.type)) {
       throw new Error(`Expected type to be a valid release type: ${VALID_RELEASE_TYPES.join(', ')}`);
     }
@@ -84,8 +94,6 @@ export const handler = (argv: CutReleaseArguments) => {
     verboseLog(`Have files changed: ${String(filesChanged)}`);
     verboseLog('>>>> DERIVED VALUES END <<<<\n');
     verboseLog('>>>> PROJECT ROOT START <<<<');
-    const packageJsonPath = resolve(process.cwd(), 'package.json');
-    const packageJson = loadPackageJson(packageJsonPath);
     const { scripts = {}, version } = packageJson;
 
     if (!skipPrehook && scripts['cut:pre-version']) {

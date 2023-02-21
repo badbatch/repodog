@@ -52,6 +52,32 @@ jest.unstable_mockModule('node:fs', () => ({
 process.cwd = jest.fn().mockReturnValue('/root') as jest.Mocked<() => string>;
 
 describe('cut', () => {
+  describe('when release type is "dry-run"', () => {
+    let shelljs: jest.MockedObject<typeof import('shelljs')>;
+    let mockedAddCommitPushRelease: jest.MockedFunction<(version: string) => void>;
+
+    beforeEach(async () => {
+      shelljs = jest.mocked(await import('shelljs')).default;
+      clearShelljsMock(shelljs);
+
+      const { addCommitPushRelease } = await import('@repodog/cli-utils');
+      mockedAddCommitPushRelease = jest.mocked(addCommitPushRelease);
+      mockedAddCommitPushRelease.mockClear();
+    });
+
+    it('should call addCommitPushRelease', async () => {
+      const { handler } = await import('./handler.js');
+      handler({ type: 'dry-run' });
+      expect(mockedAddCommitPushRelease).toHaveBeenCalled();
+    });
+
+    it('should exit with the correct code', async () => {
+      const { handler } = await import('./handler.js');
+      handler({ type: 'dry-run' });
+      expect(shelljs.exit).toHaveBeenCalledWith(0);
+    });
+  });
+
   describe('when release type is not valid', () => {
     let shelljs: jest.MockedObject<typeof import('shelljs')>;
 
