@@ -1,3 +1,9 @@
+#### 1.0.2-alpha.0 (2023-02-21)
+
+##### Bug Fixes
+
+*  update how publish script is called in pipeline (d0e8f136)
+
 #### 1.0.1-alpha.0 (2023-02-21)
 
 ##### Bug Fixes
