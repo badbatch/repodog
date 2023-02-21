@@ -1,3 +1,9 @@
+#### 1.0.4-alpha.0 (2023-02-21)
+
+##### Bug Fixes
+
+*  adding change directory into publish package flow (cb1b692f)
+
 #### 1.0.3-alpha.0 (2023-02-21)
 
 ##### Refactors
