@@ -5,8 +5,11 @@ import type { PackageManager, ReleaseMeta } from '@repodog/cli-utils';
 jest.unstable_mockModule('shelljs', shelljsMock);
 
 jest.unstable_mockModule('@repodog/cli-utils', () => ({
+  calculateDuration: jest.fn().mockReturnValue('1'),
   getPackageManager: jest.fn().mockReturnValue('pnpm'),
   isProjectMonorepo: jest.fn().mockReturnValue(false),
+  setVerbose: jest.fn(),
+  verboseLog: jest.fn(),
 }));
 
 jest.unstable_mockModule('./utils/publishMonorepoPackages.js', () => ({

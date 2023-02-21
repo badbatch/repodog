@@ -87,4 +87,4 @@ jobs:
           NPM_AUTH_TOKEN: ${{ secrets.npm_auth_token }}
         run: |
           echo "//registry.npmjs.org/:_authToken=\$env:NPM_AUTH_TOKEN" >> .npmrc
-          npm run --if-present repodog -- publish
+          npm run --if-present repodog -- publish --verbose

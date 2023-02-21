@@ -30,6 +30,10 @@ export const builder = (argv: Argv) =>
     .option('skip-prehook', {
       desc: 'To skip pre version lifecycle hook',
       type: 'boolean',
+    })
+    .option('verbose', {
+      desc: 'Whether to output verbose logs.',
+      type: 'boolean',
     });
 
 export const command = 'cut <type>';

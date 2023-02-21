@@ -7,6 +7,7 @@ jest.unstable_mockModule('shelljs', shelljsMock);
 jest.unstable_mockModule('@repodog/cli-utils', () => ({
   getLatestPackageVersionOnNpm: jest.fn(),
   getTag: jest.fn(),
+  verboseLog: jest.fn(),
   ...loadPackageJsonMock(),
 }));
 

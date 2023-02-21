@@ -1,4 +1,4 @@
-export interface CutReleaseArguments {
+export interface CutHandlerArguments {
   'dry-run'?: boolean;
   force?: boolean;
   preid?: string;

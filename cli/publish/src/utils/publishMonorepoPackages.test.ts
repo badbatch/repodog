@@ -10,6 +10,7 @@ jest.unstable_mockModule('@repodog/cli-utils', () => ({
     bravo: { name: 'bravo', path: '/root/bravo/package.json' },
     charlie: { name: 'charlie', path: '/root/charlie/package.json' },
   }),
+  verboseLog: jest.fn(),
 }));
 
 jest.unstable_mockModule('./publishPackage.js', () => ({

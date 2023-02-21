@@ -27,11 +27,11 @@ import { writeFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { performance } from 'node:perf_hooks';
 import shelljs from 'shelljs';
-import type { CutReleaseArguments } from './types.js';
+import type { CutHandlerArguments } from './types.js';
 import { versionMonorepoPackages } from './utils/versionMonorepoPackages.js';
 import { versionPackage } from './utils/versionPackage.js';
 
-export const handler = (argv: CutReleaseArguments) => {
+export const handler = (argv: CutHandlerArguments) => {
   const startTime = performance.now();
   const dryRun = argv['dry-run'] ?? false;
   const force = argv.force ?? false;
