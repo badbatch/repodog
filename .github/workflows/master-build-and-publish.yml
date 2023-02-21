@@ -70,16 +70,16 @@ jobs:
         run: npm install
 
       - name: Build packages
-        run: npm run build --if-present
+        run: npm run --if-present build
 
       - name: Lint packages
-        run: npm run lint --if-present
+        run: npm run --if-present lint
 
       - name: Type check packages
-        run: npm run type-check --if-present
+        run: npm run --if-present type-check
 
       - name: Run unit tests
-        run: npm run test --if-present
+        run: npm run --if-present test
 
       - name: Publish packages
         if: github.ref_type == 'tag'
@@ -87,4 +87,4 @@ jobs:
           NPM_AUTH_TOKEN: ${{ secrets.npm_auth_token }}
         run: |
           echo "//registry.npmjs.org/:_authToken=\$env:NPM_AUTH_TOKEN" >> .npmrc
-          npm run repodog:publish --if-present
+          npm run --if-present repodog -- publish
