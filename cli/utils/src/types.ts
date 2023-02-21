@@ -30,3 +30,7 @@ export interface ReleaseMeta {
 }
 
 export type ReleaseTag = 'alpha' | 'beta' | 'unstable';
+
+export interface RepodogConfig {
+  __activeDryRun?: boolean;
+}

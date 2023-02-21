@@ -1,5 +1,7 @@
 export * from './addCommitPushRelease.js';
 export * from './calculateDuration.js';
+export * from './constants.js';
+export * from './dryRunFlag.js';
 export * from './formatListLogMessage.js';
 export * from './getChangedFiles.js';
 export * from './getInternalDependencies.js';
@@ -17,5 +19,6 @@ export * from './isProjectMonorepo.js';
 export * from './isValidReleaseTag.js';
 export * from './isValidReleaseType.js';
 export * from './loadPackageJson.js';
+export * from './loadRepodogConfig.js';
 export * from './types.js';
 export * from './verboseLog.js';

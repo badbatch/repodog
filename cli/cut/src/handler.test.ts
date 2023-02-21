@@ -20,11 +20,13 @@ jest.unstable_mockModule('@repodog/cli-utils', () => ({
   VALID_RELEASE_TYPES,
   addCommitPushRelease: jest.fn(),
   calculateDuration: jest.fn().mockReturnValue('1'),
+  clearDryRunFlag: jest.fn(),
   formatListLogMessage: jest.fn().mockImplementation(message => message),
   getChangedFiles: jest.fn().mockReturnValue([]),
   getLastReleaseTag: jest.fn().mockReturnValue('v1.0.0'),
   getNewVersion: jest.fn().mockReturnValue('1.1.0'),
   getPackageManager: jest.fn().mockReturnValue('pnpm'),
+  hasDryRunFlag: jest.fn().mockReturnValue(false),
   haveFilesChanged: jest.fn().mockReturnValue(true),
   isPreRelease,
   isProjectMonorepo: jest.fn().mockReturnValue(false),
@@ -33,6 +35,7 @@ jest.unstable_mockModule('@repodog/cli-utils', () => ({
   loadPackageJson: jest.fn().mockReturnValue({
     version: '1.0.0',
   }),
+  setDryRunFlag: jest.fn(),
   setVerbose: jest.fn(),
   verboseLog: jest.fn(),
 }));
@@ -52,29 +55,74 @@ jest.unstable_mockModule('node:fs', () => ({
 process.cwd = jest.fn().mockReturnValue('/root') as jest.Mocked<() => string>;
 
 describe('cut', () => {
-  describe('when release type is "dry-run"', () => {
-    let shelljs: jest.MockedObject<typeof import('shelljs')>;
-    let mockedAddCommitPushRelease: jest.MockedFunction<(version: string) => void>;
+  describe('when dry-run flag is present in .repodogrc', () => {
+    describe('when release type is "dry-run"', () => {
+      let shelljs: jest.MockedObject<typeof import('shelljs')>;
+      let mockedAddCommitPushRelease: jest.MockedFunction<(version: string) => void>;
 
-    beforeEach(async () => {
-      shelljs = jest.mocked(await import('shelljs')).default;
-      clearShelljsMock(shelljs);
+      beforeEach(async () => {
+        shelljs = jest.mocked(await import('shelljs')).default;
+        clearShelljsMock(shelljs);
 
-      const { addCommitPushRelease } = await import('@repodog/cli-utils');
-      mockedAddCommitPushRelease = jest.mocked(addCommitPushRelease);
-      mockedAddCommitPushRelease.mockClear();
+        const { addCommitPushRelease, hasDryRunFlag } = await import('@repodog/cli-utils');
+        mockedAddCommitPushRelease = jest.mocked(addCommitPushRelease);
+        mockedAddCommitPushRelease.mockClear();
+
+        const mockedHasDryRunFlag = jest.mocked(hasDryRunFlag);
+        mockedHasDryRunFlag.mockClear();
+        mockedHasDryRunFlag.mockReturnValueOnce(true);
+      });
+
+      it('should call addCommitPushRelease', async () => {
+        const { handler } = await import('./handler.js');
+        handler({ type: 'dry-run' });
+        expect(mockedAddCommitPushRelease).toHaveBeenCalled();
+      });
+
+      it('should exit with the correct code', async () => {
+        const { handler } = await import('./handler.js');
+        handler({ type: 'dry-run' });
+        expect(shelljs.exit).toHaveBeenCalledWith(0);
+      });
     });
 
-    it('should call addCommitPushRelease', async () => {
-      const { handler } = await import('./handler.js');
-      handler({ type: 'dry-run' });
-      expect(mockedAddCommitPushRelease).toHaveBeenCalled();
-    });
+    describe('when release type is not "dry-run"', () => {
+      let shelljs: jest.MockedObject<typeof import('shelljs')>;
+      let mockedAddCommitPushRelease: jest.MockedFunction<(version: string) => void>;
 
-    it('should exit with the correct code', async () => {
-      const { handler } = await import('./handler.js');
-      handler({ type: 'dry-run' });
-      expect(shelljs.exit).toHaveBeenCalledWith(0);
+      beforeEach(async () => {
+        shelljs = jest.mocked(await import('shelljs')).default;
+        clearShelljsMock(shelljs);
+
+        const { addCommitPushRelease, hasDryRunFlag } = await import('@repodog/cli-utils');
+        mockedAddCommitPushRelease = jest.mocked(addCommitPushRelease);
+        mockedAddCommitPushRelease.mockClear();
+
+        const mockedHasDryRunFlag = jest.mocked(hasDryRunFlag);
+        mockedHasDryRunFlag.mockClear();
+        mockedHasDryRunFlag.mockReturnValueOnce(true);
+      });
+
+      it('should not call addCommitPushRelease', async () => {
+        const { handler } = await import('./handler.js');
+        handler({ type: 'major' });
+        expect(mockedAddCommitPushRelease).not.toHaveBeenCalled();
+      });
+
+      it('should log the correct error message', async () => {
+        const { handler } = await import('./handler.js');
+        handler({ type: 'major' });
+
+        expect(shelljs.echo).toHaveBeenCalledWith(
+          expect.stringContaining('Error: Expected type to be dry-run as __activeDryRun is set to true in .repodogrc')
+        );
+      });
+
+      it('should exit with the correct code', async () => {
+        const { handler } = await import('./handler.js');
+        handler({ type: 'major' });
+        expect(shelljs.exit).toHaveBeenCalledWith(1);
+      });
     });
   });
 

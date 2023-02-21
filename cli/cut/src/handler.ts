@@ -5,17 +5,20 @@ import {
   VALID_RELEASE_TYPES,
   addCommitPushRelease,
   calculateDuration,
+  clearDryRunFlag,
   formatListLogMessage,
   getChangedFiles,
   getLastReleaseTag,
   getNewVersion,
   getPackageManager,
+  hasDryRunFlag,
   haveFilesChanged,
   isPreRelease,
   isProjectMonorepo,
   isValidReleaseTag,
   isValidReleaseType,
   loadPackageJson,
+  setDryRunFlag,
   setVerbose,
   verboseLog,
 } from '@repodog/cli-utils';
@@ -52,8 +55,18 @@ export const handler = (argv: CutReleaseArguments) => {
     const packageJsonPath = resolve(process.cwd(), 'package.json');
     const packageJson = loadPackageJson(packageJsonPath);
 
-    if (argv.type === 'dry-run') {
+    if (hasDryRunFlag()) {
+      verboseLog('__activeDryRun flag found in .repodogrc');
+
+      if (argv.type !== 'dry-run') {
+        throw new Error(`Expected type to be dry-run as __activeDryRun is set to true in .repodogrc. Cut a release from
+          the existing dry-run output by re-running the cut command with a type of "dry-run" or delete the output and
+          re-run the cut command with another type
+        `);
+      }
+
       verboseLog(`Adding, committing and pushing new version: ${packageJson.version}`);
+      clearDryRunFlag();
       addCommitPushRelease(packageJson.version);
       verboseLog('>>>> PROJECT ROOT END <<<<\n');
       return shelljs.exit(0);
@@ -160,6 +173,7 @@ export const handler = (argv: CutReleaseArguments) => {
       verboseLog('Exiting process as dry-run set to true');
       verboseLog(`Handler duration: ${String(calculateDuration(startTime))}sec`);
       verboseLog('>>>> PROJECT ROOT END <<<<\n');
+      setDryRunFlag();
       return shelljs.exit(0);
     }
 
