@@ -1,5 +1,6 @@
 import { type PackageManager, getMonorepoPackageMeta, verboseLog } from '@repodog/cli-utils';
 import colors from 'ansi-colors';
+import { parse } from 'node:path';
 import shelljs from 'shelljs';
 import { publishPackage } from './publishPackage.js';
 
@@ -7,6 +8,7 @@ export const publishMonorepoPackages = (packageManager: PackageManager) => {
   verboseLog('Publishing monorepo packages');
   verboseLog('>>>> PROJECT ROOT END <<<<\n');
   const packageMeta = getMonorepoPackageMeta(packageManager);
+  const projectRoot = process.cwd();
 
   for (const name in packageMeta) {
     verboseLog('>>>> PACKAGE START <<<<');
@@ -14,6 +16,9 @@ export const publishMonorepoPackages = (packageManager: PackageManager) => {
 
     try {
       const { path } = packageMeta[name]!;
+      const { dir } = parse(path);
+      verboseLog(`Changing current working directory to: ${dir}`);
+      process.chdir(dir);
       publishPackage(path, { packageManager });
       verboseLog('>>>> PACKAGE END <<<<\n');
     } catch (error: unknown) {
@@ -24,4 +29,7 @@ export const publishMonorepoPackages = (packageManager: PackageManager) => {
       verboseLog('>>>> PACKAGE END <<<<\n');
     }
   }
+
+  verboseLog(`Changing current working directory back to: ${projectRoot}`);
+  process.chdir(projectRoot);
 };

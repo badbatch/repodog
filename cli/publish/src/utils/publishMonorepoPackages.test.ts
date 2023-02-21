@@ -17,6 +17,9 @@ jest.unstable_mockModule('./publishPackage.js', () => ({
   publishPackage: jest.fn(),
 }));
 
+process.cwd = () => '/root';
+const mockedProcessChdir = (process.chdir = jest.fn());
+
 describe('publishMonorepoPackages', () => {
   describe('when packages are published successfully', () => {
     let mockedPublishPackage: jest.MockedFunction<
@@ -30,6 +33,14 @@ describe('publishMonorepoPackages', () => {
       const { publishPackage } = await import('./publishPackage.js');
       mockedPublishPackage = jest.mocked(publishPackage);
       mockedPublishPackage.mockClear();
+
+      mockedProcessChdir.mockClear();
+    });
+
+    it('should change current working directory correctly', async () => {
+      const { publishMonorepoPackages } = await import('./publishMonorepoPackages.js');
+      publishMonorepoPackages('npm');
+      expect(mockedProcessChdir.mock.calls).toEqual([['/root/alpha'], ['/root/bravo'], ['/root/charlie'], ['/root']]);
     });
 
     it('should call publishPackage with the correct arguments', async () => {
