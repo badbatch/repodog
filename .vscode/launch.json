@@ -14,6 +14,20 @@
       },
       "console": "integratedTerminal",
       "internalConsoleOptions": "neverOpen"
-    }
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Repodog - cut",
+      "program": "${workspaceFolder}/cli/core/bin/repodog.mjs",
+      "args": [
+        "cut",
+        "premajor",
+        "--tag", "alpha",
+        "--dry-run"
+      ],
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen"
+    },
   ]
 }

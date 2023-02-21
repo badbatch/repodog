@@ -10,6 +10,7 @@ export * from './getMonorepoPackageMeta.js';
 export * from './getNewVersion.js';
 export * from './getPackageManager.js';
 export * from './getPackagePatterns.js';
+export * from './isPreRelease.js';
 export * from './getTag.js';
 export * from './haveFilesChanged.js';
 export * from './isProjectMonorepo.js';

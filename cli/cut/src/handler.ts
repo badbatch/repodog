@@ -1,4 +1,5 @@
 import {
+  PRE_RELEASE_TYPES,
   type ReleaseTag,
   VALID_RELEASE_TAGS,
   VALID_RELEASE_TYPES,
@@ -10,6 +11,7 @@ import {
   getNewVersion,
   getPackageManager,
   haveFilesChanged,
+  isPreRelease,
   isProjectMonorepo,
   isValidReleaseTag,
   isValidReleaseType,
@@ -51,8 +53,14 @@ export const handler = (argv: CutReleaseArguments) => {
       throw new Error(`Expected type to be a valid release type: ${VALID_RELEASE_TYPES.join(', ')}`);
     }
 
-    if (argv.tag && !isValidReleaseTag(argv.tag)) {
-      throw new Error(`Expected tag to be a valid release tag: ${VALID_RELEASE_TAGS.join(', ')}`);
+    if (argv.tag) {
+      if (!isValidReleaseTag(argv.tag)) {
+        throw new Error(`Expected tag to be a valid release tag: ${VALID_RELEASE_TAGS.join(', ')}`);
+      }
+
+      if (!isPreRelease(argv.type)) {
+        throw new Error(`Expected type to be pre release type: ${PRE_RELEASE_TYPES.join(', ')}`);
+      }
     }
 
     const tag = argv.tag as ReleaseTag | undefined;

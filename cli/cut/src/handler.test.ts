@@ -1,9 +1,11 @@
 import { jest } from '@jest/globals';
 import { clearShelljsMock, shelljsMock } from '@repodog/cli-test-utils';
 import {
+  PRE_RELEASE_TYPES,
   type ReleaseMeta,
   VALID_RELEASE_TAGS,
   VALID_RELEASE_TYPES,
+  isPreRelease,
   isValidReleaseTag,
   isValidReleaseType,
 } from '@repodog/cli-utils';
@@ -13,6 +15,7 @@ import type { PackageJson, SetRequired } from 'type-fest';
 jest.unstable_mockModule('shelljs', shelljsMock);
 
 jest.unstable_mockModule('@repodog/cli-utils', () => ({
+  PRE_RELEASE_TYPES,
   VALID_RELEASE_TAGS,
   VALID_RELEASE_TYPES,
   addCommitPushRelease: jest.fn(),
@@ -23,6 +26,7 @@ jest.unstable_mockModule('@repodog/cli-utils', () => ({
   getNewVersion: jest.fn().mockReturnValue('1.1.0'),
   getPackageManager: jest.fn().mockReturnValue('pnpm'),
   haveFilesChanged: jest.fn().mockReturnValue(true),
+  isPreRelease,
   isProjectMonorepo: jest.fn().mockReturnValue(false),
   isValidReleaseTag,
   isValidReleaseType,
@@ -94,6 +98,30 @@ describe('cut', () => {
     it('should exit with the correct code', async () => {
       const { handler } = await import('./handler.js');
       handler({ tag: 'blah', type: 'preminor' });
+      expect(shelljs.exit).toHaveBeenCalledWith(1);
+    });
+  });
+
+  describe('when release tag is valid, but type is not pre release', () => {
+    let shelljs: jest.MockedObject<typeof import('shelljs')>;
+
+    beforeEach(async () => {
+      shelljs = jest.mocked(await import('shelljs')).default;
+      clearShelljsMock(shelljs);
+    });
+
+    it('should log the correct error message', async () => {
+      const { handler } = await import('./handler.js');
+      handler({ tag: 'alpha', type: 'major' });
+
+      expect(shelljs.echo).toHaveBeenCalledWith(
+        expect.stringContaining('Error: Expected type to be pre release type: premajor, preminor, prepatch, prerelease')
+      );
+    });
+
+    it('should exit with the correct code', async () => {
+      const { handler } = await import('./handler.js');
+      handler({ tag: 'alpha', type: 'major' });
       expect(shelljs.exit).toHaveBeenCalledWith(1);
     });
   });

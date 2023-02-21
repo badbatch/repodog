@@ -13,7 +13,7 @@
     "clean:dist": "pnpm run -r clean:dist",
     "commit": "commit",
     "cut:changelog": "changelog",
-    "cut:post-version": "pnpm run compile",
+    "cut:post-version": "pnpm run build",
     "lint": "eslint . --ext .ts,.cjs",
     "repodog": "node ./cli/core/bin/repodog.mjs",
     "test": "node --require=suppress-experimental-warnings --experimental-vm-modules node_modules/jest/bin/jest.js",
