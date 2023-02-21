@@ -1,3 +1,9 @@
+#### 1.0.1-alpha.0 (2023-02-21)
+
+##### Bug Fixes
+
+*  update package manager version in action (b6d780f7)
+
 #### 1.0.0-alpha.0 (2023-02-21)
 
 ##### New Features
