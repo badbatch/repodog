@@ -1,6 +1,6 @@
 {
   "name": "@repodog/prettier-config",
-  "version": "0.3.26",
+  "version": "1.0.0-alpha.0",
   "description": "The RepoDog Prettier config module.",
   "homepage": "https://github.com/badbatch/repodog",
   "bugs": {
