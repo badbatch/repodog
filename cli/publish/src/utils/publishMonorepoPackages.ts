@@ -1,6 +1,6 @@
 import { type PackageManager, getMonorepoPackageMeta, verboseLog } from '@repodog/cli-utils';
 import colors from 'ansi-colors';
-import { parse } from 'node:path';
+import { parse, resolve } from 'node:path';
 import shelljs from 'shelljs';
 import { publishPackage } from './publishPackage.js';
 
@@ -18,7 +18,7 @@ export const publishMonorepoPackages = (packageManager: PackageManager) => {
       const { path } = packageMeta[name]!;
       const { dir } = parse(path);
       verboseLog(`Changing current working directory to: ${dir}`);
-      process.chdir(dir);
+      process.chdir(resolve(projectRoot, dir));
       publishPackage(path, { packageManager });
       verboseLog('>>>> PACKAGE END <<<<\n');
     } catch (error: unknown) {

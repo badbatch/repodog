@@ -29,5 +29,17 @@
       "console": "integratedTerminal",
       "internalConsoleOptions": "neverOpen"
     },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Repodog - publish",
+      "program": "${workspaceFolder}/cli/core/bin/repodog.mjs",
+      "args": [
+        "publish",
+        "--verbose"
+      ],
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen"
+    },
   ]
 }

@@ -28,6 +28,6 @@ export const publishPackage = (packageJsonPath: string, { packageManager }: Pick
   }
 
   const tag = getTag(version);
-  verboseLog(`Tag: ${version}`);
+  verboseLog(`Tag: ${tag ?? 'None'}`);
   shelljs.exec(getPublishCmd(packageManager, version, tag));
 };
