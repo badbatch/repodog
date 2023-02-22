@@ -1,3 +1,9 @@
+#### 1.0.5-alpha.0 (2023-02-22)
+
+##### Bug Fixes
+
+*  make sure chdir is passed absolute path (88d504a0)
+
 #### 1.0.4-alpha.0 (2023-02-21)
 
 ##### Bug Fixes
