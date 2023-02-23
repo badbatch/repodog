@@ -83,7 +83,10 @@ Options:
   --preid          The pre release ID                                   [string]
   --skip-posthook  To skip post version lifecycle hook                 [boolean]
   --skip-prehook   To skip pre version lifecycle hook                  [boolean]
+  --verbose        Whether to output verbose logs.                     [boolean]
 ```
+
+> If you run `repodog cut` with the `--dry-run` flag, you can subsequently cut the dry-run release by re-running `repodog cut` with `dry-run` as the release type.
 
 #### Script hooks
 
@@ -136,6 +139,7 @@ Publish packages to registry
 Options:
   --version  Show version number                                       [boolean]
   --help     Show help                                                 [boolean]
+  --verbose  Whether to output verbose logs.                           [boolean]
 ```
 
 ## Changelog

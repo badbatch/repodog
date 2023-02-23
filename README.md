@@ -18,7 +18,7 @@ An command line module for managing repositories and a set of configs for popula
 
 * [@repodog/cli](./cli/core/README.md)
 
-### Comfigs
+### Configs
 
 * [@repodog/babel-config](./configs/babel-config/README.md)
 * [@repodog/commitlint-config](./configs/commitlint-config/README.md)
