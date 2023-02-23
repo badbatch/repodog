@@ -1,3 +1,9 @@
+#### 1.0.6-alpha.0 (2023-02-23)
+
+##### Bug Fixes
+
+*  change way npm auth token is injected in pipeline (da575152)
+
 #### 1.0.5-alpha.0 (2023-02-22)
 
 ##### Bug Fixes
