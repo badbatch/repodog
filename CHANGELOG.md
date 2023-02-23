@@ -1,3 +1,9 @@
+#### 1.0.7-alpha.0 (2023-02-23)
+
+##### Bug Fixes
+
+*  typo in action workflow script (69d62563)
+
 #### 1.0.6-alpha.0 (2023-02-23)
 
 ##### Bug Fixes
