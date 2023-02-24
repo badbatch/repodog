@@ -1,5 +1,5 @@
-const repodogConfig = require('@repodog/rollup-config');
+const config = require('@repodog/rollup-config');
 
 module.exports = {
-  ...repodogConfig(),
+  ...config(),
 };

@@ -20,7 +20,7 @@
   "peerDependencies": {
     "@rollup/plugin-babel": "< 7",
     "@rollup/plugin-image": "< 4",
-    "@rollup/plugin-json": "< 6",
+    "@rollup/plugin-json": "< 7",
     "@rollup/plugin-node-resolve": "< 16",
     "@rollup/plugin-terser": "< 1",
     "rollup": "< 4",

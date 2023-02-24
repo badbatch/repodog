@@ -19,7 +19,13 @@ npm install @repodog/commitlint-config --save-dev
 npm install husky @commitlint/cli @commitlint/config-conventional @commitlint/prompt-cli --save-dev
 ```
 
-Please refer to the [husky documentation](https://typicode.github.io/husky/#/?id=manual) on how to automatically enable Git hooks.
+## Initialize husky
+
+```shell
+# terminal
+npx husky install
+npx husky add .husky/commit-msg  'npx --no -- commitlint --edit ${1}'
+```
 
 ## Use package
 
@@ -27,7 +33,8 @@ Please refer to the [husky documentation](https://typicode.github.io/husky/#/?id
 // package.json
 {
   "scripts": {
-    "commit": "commit"
+    "commit": "commit",
+    "prepare": "husky install"
   }
 }
 ```

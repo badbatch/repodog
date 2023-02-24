@@ -1,5 +1,6 @@
 !.*
-.repodog
+.github
+.husky
 .vscode
 coverage
 dist
