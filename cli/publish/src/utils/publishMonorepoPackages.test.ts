@@ -1,6 +1,6 @@
 import { jest } from '@jest/globals';
 import { clearShelljsMock, shelljsMock } from '@repodog/cli-test-utils';
-import type { ReleaseMeta } from '@repodog/cli-utils';
+import { PackageManager, type ReleaseMeta } from '@repodog/cli-utils';
 
 jest.unstable_mockModule('shelljs', shelljsMock);
 
@@ -39,18 +39,18 @@ describe('publishMonorepoPackages', () => {
 
     it('should change current working directory correctly', async () => {
       const { publishMonorepoPackages } = await import('./publishMonorepoPackages.js');
-      publishMonorepoPackages('npm');
+      publishMonorepoPackages(PackageManager.NPM);
       expect(mockedProcessChdir.mock.calls).toEqual([['/root/alpha'], ['/root/bravo'], ['/root/charlie'], ['/root']]);
     });
 
     it('should call publishPackage with the correct arguments', async () => {
       const { publishMonorepoPackages } = await import('./publishMonorepoPackages.js');
-      publishMonorepoPackages('npm');
+      publishMonorepoPackages(PackageManager.NPM);
 
       expect(mockedPublishPackage.mock.calls).toEqual([
-        ['/root/alpha/package.json', { packageManager: 'npm' }],
-        ['/root/bravo/package.json', { packageManager: 'npm' }],
-        ['/root/charlie/package.json', { packageManager: 'npm' }],
+        ['/root/alpha/package.json', { packageManager: PackageManager.NPM }],
+        ['/root/bravo/package.json', { packageManager: PackageManager.NPM }],
+        ['/root/charlie/package.json', { packageManager: PackageManager.NPM }],
       ]);
     });
   });
@@ -79,18 +79,18 @@ describe('publishMonorepoPackages', () => {
 
     it('should call publishPackage with the correct arguments', async () => {
       const { publishMonorepoPackages } = await import('./publishMonorepoPackages.js');
-      publishMonorepoPackages('npm');
+      publishMonorepoPackages(PackageManager.NPM);
 
       expect(mockedPublishPackage.mock.calls).toEqual([
-        ['/root/alpha/package.json', { packageManager: 'npm' }],
-        ['/root/bravo/package.json', { packageManager: 'npm' }],
-        ['/root/charlie/package.json', { packageManager: 'npm' }],
+        ['/root/alpha/package.json', { packageManager: PackageManager.NPM }],
+        ['/root/bravo/package.json', { packageManager: PackageManager.NPM }],
+        ['/root/charlie/package.json', { packageManager: PackageManager.NPM }],
       ]);
     });
 
     it('should log the correct message', async () => {
       const { publishMonorepoPackages } = await import('./publishMonorepoPackages.js');
-      publishMonorepoPackages('npm');
+      publishMonorepoPackages(PackageManager.NPM);
       expect(shelljs.echo).toHaveBeenCalledWith(expect.stringContaining('Error publishing bravo: oops'));
     });
   });

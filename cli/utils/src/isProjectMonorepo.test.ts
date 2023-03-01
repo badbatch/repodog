@@ -1,4 +1,5 @@
 import { jest } from '@jest/globals';
+import { PackageManager } from './types.js';
 
 jest.unstable_mockModule('js-yaml', () => ({
   load: jest.fn<(value: string) => unknown>().mockImplementation((value: string) => JSON.parse(value)),
@@ -26,7 +27,7 @@ describe('isProjectMonorepo', () => {
 
       it('should return false', async () => {
         const { isProjectMonorepo } = await import('./isProjectMonorepo.js');
-        expect(isProjectMonorepo('npm')).toBe(false);
+        expect(isProjectMonorepo(PackageManager.NPM)).toBe(false);
       });
     });
 
@@ -45,7 +46,7 @@ describe('isProjectMonorepo', () => {
 
       it('should return true', async () => {
         const { isProjectMonorepo } = await import('./isProjectMonorepo.js');
-        expect(isProjectMonorepo('npm')).toBe(true);
+        expect(isProjectMonorepo(PackageManager.NPM)).toBe(true);
       });
     });
 
@@ -64,7 +65,7 @@ describe('isProjectMonorepo', () => {
 
       it('should return true', async () => {
         const { isProjectMonorepo } = await import('./isProjectMonorepo.js');
-        expect(isProjectMonorepo('npm')).toBe(true);
+        expect(isProjectMonorepo(PackageManager.NPM)).toBe(true);
       });
     });
   });
@@ -80,7 +81,7 @@ describe('isProjectMonorepo', () => {
 
       it('should return false', async () => {
         const { isProjectMonorepo } = await import('./isProjectMonorepo.js');
-        expect(isProjectMonorepo('yarn')).toBe(false);
+        expect(isProjectMonorepo(PackageManager.YARN)).toBe(false);
       });
     });
 
@@ -99,7 +100,7 @@ describe('isProjectMonorepo', () => {
 
       it('should return true', async () => {
         const { isProjectMonorepo } = await import('./isProjectMonorepo.js');
-        expect(isProjectMonorepo('yarn')).toBe(true);
+        expect(isProjectMonorepo(PackageManager.YARN)).toBe(true);
       });
     });
 
@@ -118,7 +119,7 @@ describe('isProjectMonorepo', () => {
 
       it('should return true', async () => {
         const { isProjectMonorepo } = await import('./isProjectMonorepo.js');
-        expect(isProjectMonorepo('yarn')).toBe(true);
+        expect(isProjectMonorepo(PackageManager.YARN)).toBe(true);
       });
     });
   });
@@ -134,7 +135,7 @@ describe('isProjectMonorepo', () => {
 
       it('should return false', async () => {
         const { isProjectMonorepo } = await import('./isProjectMonorepo.js');
-        expect(isProjectMonorepo('pnpm')).toBe(false);
+        expect(isProjectMonorepo(PackageManager.PNPM)).toBe(false);
       });
     });
 
@@ -148,7 +149,7 @@ describe('isProjectMonorepo', () => {
 
       it('should return true', async () => {
         const { isProjectMonorepo } = await import('./isProjectMonorepo.js');
-        expect(isProjectMonorepo('pnpm')).toBe(true);
+        expect(isProjectMonorepo(PackageManager.PNPM)).toBe(true);
       });
     });
   });
@@ -166,7 +167,7 @@ describe('isProjectMonorepo', () => {
 
     it('should return false', async () => {
       const { isProjectMonorepo } = await import('./isProjectMonorepo.js');
-      expect(isProjectMonorepo('pnpm')).toBe(false);
+      expect(isProjectMonorepo(PackageManager.PNPM)).toBe(false);
     });
   });
 });

@@ -2,15 +2,15 @@ import { type LoadOptions, load } from 'js-yaml';
 import { readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { loadPackageJson } from './loadPackageJson.js';
-import type { PackageManager, PnpmWorkspaceYaml } from './types.js';
+import { PackageManager, type PnpmWorkspaceYaml } from './types.js';
 
 export const getPackagePatterns = (packageManager: PackageManager) => {
   try {
     switch (packageManager) {
-      case 'npm':
+      case PackageManager.NPM:
 
       // eslint-disable-next-line no-fallthrough
-      case 'yarn': {
+      case PackageManager.YARN: {
         const packageJsonPath = resolve(process.cwd(), 'package.json');
         const packageJson = loadPackageJson(packageJsonPath);
 
@@ -21,7 +21,7 @@ export const getPackagePatterns = (packageManager: PackageManager) => {
         return (Array.isArray(packageJson.workspaces) ? packageJson.workspaces : packageJson.workspaces.packages) ?? [];
       }
 
-      case 'pnpm': {
+      case PackageManager.PNPM: {
         const pnpmWorkspaceYamlPath = resolve(process.cwd(), 'pnpm-workspace.yaml');
         const typedLoad = load as (path: string, options?: LoadOptions) => unknown;
 

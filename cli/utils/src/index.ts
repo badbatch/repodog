@@ -19,6 +19,6 @@ export * from './isProjectMonorepo.js';
 export * from './isValidReleaseTag.js';
 export * from './isValidReleaseType.js';
 export * from './loadPackageJson.js';
-export * from './loadRepodogConfig.js';
+export * from './repodogConfig.js';
 export * from './types.js';
 export * from './verboseLog.js';

@@ -1,6 +1,10 @@
 import type { ReleaseType } from 'semver';
 
-export type PackageManager = 'npm' | 'yarn' | 'pnpm';
+export enum PackageManager {
+  NPM = 'npm',
+  PNPM = 'pnpm',
+  YARN = 'yarn',
+}
 
 export interface PackageMeta {
   force: boolean;
@@ -29,8 +33,17 @@ export interface ReleaseMeta {
   type: ReleaseType;
 }
 
-export type ReleaseTag = 'alpha' | 'beta' | 'unstable';
+export enum ReleaseTag {
+  ALPHA = 'alpha',
+  BETA = 'beta',
+  UNSTABLE = 'unstable',
+}
 
 export interface RepodogConfig {
   __activeDryRun?: boolean;
+  templateVariables?: Record<'new', TemplateVariables>;
+}
+
+export interface TemplateVariables {
+  [key: string]: string | number | TemplateVariables;
 }

@@ -1,6 +1,6 @@
 import { jest } from '@jest/globals';
 import { loadPackageJsonMock } from '@repodog/cli-test-utils';
-import { type ReleaseMeta, getInternalDependencies } from '@repodog/cli-utils';
+import { PackageManager, type ReleaseMeta, getInternalDependencies } from '@repodog/cli-utils';
 import type { PackageJson, SetRequired } from 'type-fest';
 
 jest.unstable_mockModule('@repodog/cli-utils', () => ({
@@ -63,7 +63,7 @@ describe('versionMonorepoPackages', () => {
 
     it('should version packages in which files have changed since last tag', async () => {
       const { versionMonorepoPackages } = await import('./versionMonorepoPackages.js');
-      versionMonorepoPackages({ force: false, packageManager: 'npm', type: 'major' });
+      versionMonorepoPackages({ force: false, packageManager: PackageManager.NPM, type: 'major' });
 
       expect(mockedVersionPackage.mock.calls).toEqual([
         [
@@ -104,7 +104,7 @@ describe('versionMonorepoPackages', () => {
 
     it('should version packages regardless of whether files have changed', async () => {
       const { versionMonorepoPackages } = await import('./versionMonorepoPackages.js');
-      versionMonorepoPackages({ force: true, packageManager: 'npm', type: 'major' });
+      versionMonorepoPackages({ force: true, packageManager: PackageManager.NPM, type: 'major' });
 
       expect(mockedVersionPackage.mock.calls).toEqual([
         [
@@ -182,7 +182,7 @@ describe('versionMonorepoPackages', () => {
 
     it('should version the internal dependency packages regardless of whether their files have changed', async () => {
       const { versionMonorepoPackages } = await import('./versionMonorepoPackages.js');
-      versionMonorepoPackages({ force: false, packageManager: 'npm', type: 'major' });
+      versionMonorepoPackages({ force: false, packageManager: PackageManager.NPM, type: 'major' });
 
       expect(mockedVersionPackage.mock.calls).toEqual([
         [

@@ -1,19 +1,19 @@
 import { existsSync } from 'node:fs';
 import { resolve } from 'node:path';
-import type { PackageManager } from './types.js';
+import { PackageManager } from './types.js';
 
 export const getPackageManager = (): PackageManager | undefined => {
   switch (true) {
     case existsSync(resolve(process.cwd(), 'package-lock.json')): {
-      return 'npm';
+      return PackageManager.NPM;
     }
 
     case existsSync(resolve(process.cwd(), 'pnpm-lock.yaml')): {
-      return 'pnpm';
+      return PackageManager.PNPM;
     }
 
     case existsSync(resolve(process.cwd(), 'yarn.lock')): {
-      return 'yarn';
+      return PackageManager.YARN;
     }
 
     default: {

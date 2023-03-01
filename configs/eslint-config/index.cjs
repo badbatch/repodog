@@ -73,7 +73,7 @@ module.exports = {
         ],
         '@typescript-eslint/no-use-before-define': [
           2,
-          { enums: true, functions: false, ignoreTypeReferences: false, typedefs: false },
+          { enums: true, functions: false, ignoreTypeReferences: true, typedefs: false },
         ],
         'import/no-named-as-default': 0,
         'import/no-named-as-default-member': 0,
