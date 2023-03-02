@@ -182,7 +182,7 @@ module.exports = {
       { blankLine: 'never', next: 'cjs-import', prev: 'cjs-import' },
       { blankLine: 'always', next: 'case', prev: '*' },
       { blankLine: 'always', next: 'default', prev: '*' },
-      { blankLine: 'always', next: 'break', prev: '*' },
+      { blankLine: 'always', next: '*', prev: 'break' },
     ],
     'prettier/prettier': 2,
     'react/jsx-filename-extension': [2, { extensions: ['.jsx', '.tsx'] }],

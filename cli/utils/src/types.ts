@@ -41,9 +41,11 @@ export enum ReleaseTag {
 
 export interface RepodogConfig {
   __activeDryRun?: boolean;
-  templateVariables?: Record<'new', TemplateVariables>;
+  templateVariables?: Record<string, TemplateVariables>;
 }
 
 export interface TemplateVariables {
-  [key: string]: string | number | TemplateVariables;
+  [key: string]: string | number | boolean | TemplateVariables;
 }
+
+export type TemplateVariablesLeaf = Record<string, string | number | boolean>;
