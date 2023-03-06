@@ -19,10 +19,15 @@ describe('convertObjectToCliOptions', () => {
       },
     };
 
-    const { convertTemplateVariablesToCliOptions } = await import('./convertTemplateVariablesToCliOptions.js');
+    const { flattenAndMergeTemplateVariables } = await import('./flattenAndMergeTemplateVariables.js');
 
-    expect(convertTemplateVariablesToCliOptions(object, ['new', 'pkg'])).toBe(
-      '--alpha foxtrot --foxtrot golf --charlie 23 --hotel --delta'
-    );
+    expect(flattenAndMergeTemplateVariables(object, ['new', 'pkg'])).toEqual({
+      alpha: 'foxtrot',
+      charlie: 23,
+      delta: true,
+      echo: false,
+      foxtrot: 'golf',
+      hotel: true,
+    });
   });
 });

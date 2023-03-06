@@ -1,7 +1,7 @@
 export * from './addCommitPushRelease.js';
 export * from './calculateDuration.js';
 export * from './constants.js';
-export * from './convertTemplateVariablesToCliOptions.js';
+export * from './flattenAndMergeTemplateVariables.js';
 export * from './dryRunFlag.js';
 export * from './formatListLogMessage.js';
 export * from './getChangedFiles.js';
@@ -21,5 +21,6 @@ export * from './isValidReleaseTag.js';
 export * from './isValidReleaseType.js';
 export * from './loadPackageJson.js';
 export * from './repodogConfig.js';
+export * from './stringifyCliOptions.js';
 export * from './types.js';
 export * from './verboseLog.js';

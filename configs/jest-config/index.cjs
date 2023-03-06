@@ -54,6 +54,7 @@ module.exports = {
     '!**/__testUtils__/**',
   ],
   coverageDirectory: 'coverage',
+  coverageProvider: 'v8',
   coverageReporters: ['json', 'lcov', 'text-summary'],
   displayName: packageName,
   extensionsToTreatAsEsm: ['.jsx', '.ts', '.tsx'],

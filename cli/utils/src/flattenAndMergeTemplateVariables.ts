@@ -1,25 +1,5 @@
 import type { TemplateVariables, TemplateVariablesLeaf } from './types.js';
 
-const convertObjectToCliOptions = (object: Record<string, boolean | number | string>) => {
-  let options = '';
-
-  for (const key in object) {
-    switch (true) {
-      case typeof object[key] == 'boolean' && !!object[key]: {
-        options += ` --${key}`;
-        break;
-      }
-
-      case typeof object[key] == 'string' || typeof object[key] == 'number': {
-        options += ` --${key} ${String(object[key])}`;
-        break;
-      }
-    }
-  }
-
-  return options.trim();
-};
-
 const isTemplateVariablesLeaf = (
   slice: string | number | boolean | TemplateVariables | undefined
 ): slice is TemplateVariablesLeaf => {
@@ -32,7 +12,7 @@ const isTemplateVariablesLeaf = (
   );
 };
 
-export const convertTemplateVariablesToCliOptions = (object: Record<string, TemplateVariables>, paths: string[]) => {
+export const flattenAndMergeTemplateVariables = (object: Record<string, TemplateVariables>, paths: string[]) => {
   let options: Record<string, boolean | number | string> = {};
   let slice: Record<string, TemplateVariables> = object;
 
@@ -61,5 +41,5 @@ export const convertTemplateVariablesToCliOptions = (object: Record<string, Temp
     slice = templateVariablesBranch;
   }
 
-  return convertObjectToCliOptions(options);
+  return options;
 };
