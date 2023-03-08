@@ -12,7 +12,7 @@ const isTemplateVariablesLeaf = (
   );
 };
 
-export const flattenAndMergeTemplateVariables = (object: Record<string, TemplateVariables>, paths: string[]) => {
+export const flattenAndMergeTemplateVariables = (object: Record<string, TemplateVariables>, typePath: string[]) => {
   let options: Record<string, boolean | number | string> = {};
   let slice: Record<string, TemplateVariables> = object;
 
@@ -20,7 +20,7 @@ export const flattenAndMergeTemplateVariables = (object: Record<string, Template
     options = { ...options, ...object['*']! };
   }
 
-  for (const path of paths) {
+  for (const path of typePath) {
     const subslice = slice[path];
 
     if (!subslice) {

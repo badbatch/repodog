@@ -16,7 +16,7 @@ npm install @repodog/babel-config --save-dev
 
 ```shell
 # terminal
-npm install @babel/cli @babel/core @babel/plugin-proposal-class-properties @babel/plugin-proposal-export-namespace-from @babel/plugin-syntax-import-assertions @babel/plugin-syntax-dynamic-import @babel/plugin-transform-runtime @babel/preset-env @babel/preset-react @babel/preset-typescript @babel/runtime babel-plugin-codegen babel-plugin-lodash babel-plugin-macros --save-dev
+npm install @babel/cli @babel/core @babel/plugin-proposal-class-properties @babel/plugin-proposal-export-namespace-from @babel/plugin-syntax-import-assertions @babel/plugin-syntax-dynamic-import @babel/plugin-transform-runtime @babel/preset-env @babel/preset-react @babel/preset-typescript @babel/runtime babel-plugin-codegen babel-plugin-macros --save-dev
 ```
 
 ## Use package

@@ -39,7 +39,6 @@ module.exports = api => {
     '@babel/plugin-proposal-class-properties',
     '@babel/plugin-proposal-export-namespace-from',
     'babel-plugin-codegen',
-    'babel-plugin-lodash',
     'babel-plugin-macros',
   ];
 
