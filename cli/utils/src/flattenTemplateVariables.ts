@@ -12,7 +12,7 @@ const isTemplateVariablesLeaf = (
   );
 };
 
-export const flattenAndMergeTemplateVariables = (object: Record<string, TemplateVariables>, typePath: string[]) => {
+export const flattenTemplateVariables = (object: Record<string, TemplateVariables>, typePath: string[]) => {
   let options: Record<string, boolean | number | string> = {};
   let slice: Record<string, TemplateVariables> = object;
 
