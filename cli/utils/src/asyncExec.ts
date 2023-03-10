@@ -1,0 +1,15 @@
+import shelljs from 'shelljs';
+import { verboseLog } from './verboseLog.js';
+
+export const asyncExec = (cmd: string) =>
+  new Promise<string>((resolve, reject) => {
+    shelljs.exec(cmd, (code, stdout, stderr) => {
+      if (stderr) {
+        verboseLog(`Async exec failed, exited with code ${code}`);
+        reject(new Error(stderr));
+      } else {
+        verboseLog(`Async exec ran successfully, exited with code ${code}`);
+        resolve(stdout);
+      }
+    });
+  });

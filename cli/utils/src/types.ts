@@ -21,6 +21,25 @@ export interface PnpmWorkspaceYaml {
 
 export type PreReleaseId = string;
 
+export interface PromptOption {
+  initial?: boolean | number | string;
+  message: string;
+  name: string;
+  required?: boolean;
+  skip?: boolean;
+  type: string;
+}
+
+export interface QuestionOverride {
+  add?: PromptOption[];
+  remove?: string[];
+  replace?: PromptOption[];
+}
+
+export interface QuestionOverrides {
+  [key: string]: QuestionOverride | QuestionOverrides;
+}
+
 export interface ReleaseMeta {
   dryrun: boolean;
   force: boolean;
@@ -41,7 +60,13 @@ export enum ReleaseTag {
 
 export interface RepodogConfig {
   __activeDryRun?: boolean;
+  questionOverrides?: Record<string, QuestionOverrides>;
+  templateOverridesPath?: string;
   templateVariables?: Record<string, TemplateVariables>;
+}
+
+export interface TemplateOverride {
+  [key: string]: string | TemplateOverride;
 }
 
 export interface TemplateVariables {

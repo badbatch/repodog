@@ -1,0 +1,39 @@
+{
+  "questionOverrides": {
+    "new": {
+      "pkg": {
+        "cli": {
+          "add": [
+            {
+              "message": "What is the cli command?",
+              "name": "cliCommand",
+              "required": true,
+              "type": "input"
+            },
+            {
+              "message": "What is the cli description?",
+              "name": "cliDescription",
+              "required": true,
+              "type": "input"
+            }
+          ]
+        }
+      }
+    }
+  },
+  "templateOverridesPath": "./_templates",
+  "templateVariables": {
+    "*": {
+      "author": "Dylan Aubrey",
+      "homepage": "https://github.com/badbatch/repodog",
+      "org": "repodog"
+    },
+    "new": {
+      "pkg": {
+        "cli": {
+          "mainFilename": "handler"
+        }
+      }
+    }
+  }
+}

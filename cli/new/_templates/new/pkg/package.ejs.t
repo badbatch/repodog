@@ -1,24 +1,25 @@
+---
+to: <%= path %>/package.json
+sh: <%= packageManager %> install
+---
 {
-  "name": "@repodog/cli",
+  "name": "@<%= org %>/<%= name %>",
   "type": "module",
-  "version": "1.0.0-alpha.0",
-  "description": "The RepoDog cli module.",
-  "homepage": "https://github.com/badbatch/repodog",
+  "version": "0.0.1",
+  "description": "<%= desc %>",
+  "homepage": "<%= homepage %>",
   "bugs": {
-    "url": "https://github.com/badbatch/repodog/issues"
+    "url": "<%= homepage %>/issues"
   },
   "repository": {
-    "directory": "cli/core",
+    "directory": "<%= path %>",
     "type": "git",
-    "url": "https://github.com/badbatch/repodog/cli/core"
+    "url": "<%= homepage %>/<%= path %>"
   },
   "license": "MIT",
-  "author": "Dylan Aubrey",
+  "author": "<%= author %>",
   "main": "./dist/main/index.mjs",
   "types": "./dist/types/index.d.ts",
-  "bin": {
-    "repodog": "./bin/repodog.mjs"
-  },
   "publishConfig": {
     "access": "public"
   },
@@ -30,18 +31,13 @@
     "compile:main": "rollup -c ../../rollup.config.cjs",
     "compile:types": "tsc --project ./tsconfig.json"
   },
-  "dependencies": {
-    "@repodog/cli-cut": "workspace:../cut",
-    "@repodog/cli-new": "workspace:../new",
-    "@repodog/cli-publish": "workspace:../publish",
-    "yargs": "15.1.0"
-  },
+  "dependencies": {},
   "peerDependencies": {
     "@babel/runtime": "< 8",
     "core-js": "< 4"
   },
   "devDependencies": {
-    "@types/yargs": "15.0.4",
+    "@jest/globals": "29.3.1",
     "del-cli": "3.0.0"
   }
 }

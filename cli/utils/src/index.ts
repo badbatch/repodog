@@ -1,4 +1,5 @@
 export * from './addCommitPushRelease.js';
+export * from './asyncExec.js';
 export * from './calculateDuration.js';
 export * from './constants.js';
 export * from './flattenTemplateVariables.js';
