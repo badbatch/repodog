@@ -63,7 +63,7 @@ export const handler = async (argv: NewHandlerArguments) => {
       }`
     );
 
-    verboseLog(`Template overrides path: ${config.templateOverridesPath ?? 'None'}`);
+    verboseLog(`Template overrides path: ${config.additionalTemplatesPath ?? 'None'}`);
 
     verboseLog(
       `Template variables:${
@@ -86,6 +86,7 @@ export const handler = async (argv: NewHandlerArguments) => {
     verboseLog(`Questions:\n${JSON.stringify(questions, undefined, 2)}\n`);
 
     const cliOptions: Record<string, boolean | number | string> = {
+      ...flattenedTemplateVariables,
       ...(await enquirer.prompt(enrichQuestions(questions, flattenedTemplateVariables))),
       packageManager,
     };
@@ -94,11 +95,11 @@ export const handler = async (argv: NewHandlerArguments) => {
     await executeHygen(templatesPath, hygenPath, baseTypePath, cliOptions);
 
     if (
-      config.templateOverridesPath &&
-      existsSync(resolvePath(process.cwd(), [config.templateOverridesPath, ...typePath].join('/')))
+      config.additionalTemplatesPath &&
+      existsSync(resolvePath(process.cwd(), [config.additionalTemplatesPath, ...typePath].join('/')))
     ) {
       verboseLog('Template overrides path exists, re-running hygen with new path');
-      await executeHygen(resolvePath(process.cwd(), config.templateOverridesPath), hygenPath, typePath, cliOptions);
+      await executeHygen(resolvePath(process.cwd(), config.additionalTemplatesPath), hygenPath, typePath, cliOptions);
     }
 
     verboseLog(`Handler duration: ${String(calculateDuration(startTime))}sec`);

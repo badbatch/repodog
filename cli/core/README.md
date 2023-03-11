@@ -8,14 +8,9 @@ The RepoDog cli package.
 ## Summary
 
 * Provides scripts for cutting and publishing releases
-* Works with npm, yarn and pnpm.
-* Works with standard repo and monorepo structures.
-* Cuts major, minor, patch and pre- release types from any branch.
-* Generates changelog based on conventional commits since last git tag.
-* Updates package version and git tag automatically based on release type.
-* Exposes pre- and post-versioning npm script hooks to run custom tasks.
-* Commits changelog, version and custom task changes to remote prior to cutting tag.
-* Allows force updates of packages to next version regardless of files changed.
+* Provides scripts for scaffolding new folder structures
+* Works with npm, yarn and pnpm
+* Works with standard repo and monorepo structures
 
 ## Install package and dependencies
 
@@ -31,6 +26,7 @@ npm install @repodog/cli @babel/runtime core-js --save-dev
 {
   "scripts": {
     "repodog:cut": "repodog cut",
+    "repodog:new": "repodog new",
     "repodog:publish": "repodog publish"
   }
 }
@@ -125,6 +121,123 @@ Any tasks you want to run to generate/update the changelog should be run in this
 {
   "scripts": {
     "cut:changelog": "npm run changelog-tasks"
+  }
+}
+```
+
+### new
+
+```sh
+repodog new <type>
+
+Scaffold new folder structure
+
+Positionals:
+  type  The type of folder to scaffold: repo | pkg           [string] [required]
+
+Options:
+  --version   Show version number                                      [boolean]
+  --help      Show help                                                [boolean]
+  --subtypes  The sub types to apply to the scaffold. Multiple types should be
+              separated by a "." character                              [string]
+  --verbose   Whether to output verbose logs.                          [boolean]
+```
+
+#### `.repodogrc`
+
+Below are the config properties used in the `repodog new` script. The `.repodogrc` config file must be located at the
+root of your project, regardless of whether the repo has a standard or monorepo structure.
+
+##### `additionalTemplatesPath`
+
+Include additional templates as part of the set of templates used to generate a folder structure. You can use the `type` and `subtypes` options to target specific template sets based on the folder structure within your additional templates path. The additional templates path is relative to the current working directory.
+
+The templating functionality is powered by [`hygen`](https://www.hygen.io/) so all templates must to adhere to its
+rules.
+
+The example below uses the additional `command.ejs.t` template file when `repodog new` is called with `pkg --subtypes cli`.
+
+```txt
+// filesystem
+_templates/
+- new/
+  - pkg/
+    - cli/
+      - command.ejs.t
+```
+
+```json
+// .repodogrc
+{
+  "additionalTemplatesPath": "./_templates"
+}
+```
+
+##### `questionOverrides`
+
+Add, remove, and/or replace the [base set of questions](../new/src/questions) for a given `type`. You can use the `type` and `subtypes` options to target the overrides to create bespoke question sets.
+
+The example below adds two questions, removes one, and updates one when `repodog new` is called with `pkg --subtypes cli`.
+
+```json
+// .repodogrc
+{
+  "questionOverrides": {
+    "new": {
+      "pkg": {
+        "cli": {
+          "add": [
+            {
+              "message": "What is the cli command?",
+              "name": "cliCommand",
+              "required": true,
+              "type": "input"
+            },
+            {
+              "message": "What is the cli description?",
+              "name": "cliDescription",
+              "required": true,
+              "type": "input"
+            }
+          ],
+          "remove": ["mainFilename"],
+          "replace": [
+            {
+              "message": "What is the homepage for the package's repository?",
+              "name": "homepage",
+              "required": true,
+              "type": "input"
+            }
+          ]
+        }
+      }
+    }
+  }
+}
+```
+
+##### `templateVariables`
+
+Values to populate your templates with. You can use the `type` and `subtypes` options to target the variables to specific template sets. The config allows for variables to be applied to all templates or a branch of templates through the `*` character.
+
+Template variables are flattened and merged and the output is passed into the templates. If any of the keys match the name a question, then the key's value is used as the question's initial answer.
+
+```json
+// .repodogrc
+{
+  "templateVariables": {
+    "*": {
+      "author": "Dylan Aubrey",
+      "homepage": "https://github.com/badbatch/repodog",
+      "org": "repodog"
+    },
+    "new": {
+      "pkg": {
+        "cli": {
+          "mainFilename": "handler"
+        }
+      }
+    }
   }
 }
 ```

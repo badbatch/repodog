@@ -60,8 +60,8 @@ export enum ReleaseTag {
 
 export interface RepodogConfig {
   __activeDryRun?: boolean;
+  additionalTemplatesPath?: string;
   questionOverrides?: Record<string, QuestionOverrides>;
-  templateOverridesPath?: string;
   templateVariables?: Record<string, TemplateVariables>;
 }
 

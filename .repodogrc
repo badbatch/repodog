@@ -1,4 +1,5 @@
 {
+  "additionalTemplatesPath": "./_templates",
   "questionOverrides": {
     "new": {
       "pkg": {
@@ -21,7 +22,6 @@
       }
     }
   },
-  "templateOverridesPath": "./_templates",
   "templateVariables": {
     "*": {
       "author": "Dylan Aubrey",

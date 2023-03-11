@@ -148,7 +148,11 @@ describe('handler', () => {
           '/root/node_modules/.bin/hygen',
           ['new', 'pkg'],
           {
+            author: 'Dylan Aubrey',
+            homepage: 'https://github.com/badbatch/repodog',
+            mainFilename: 'handler',
             mock: 'answer to mock',
+            org: 'repodog',
             packageManager: 'pnpm',
             question1: 'answer to question1',
             question2: 'answer to question2',
@@ -165,7 +169,7 @@ describe('handler', () => {
 
           mockedLoadRepodogConfig.mockReturnValueOnce({
             ...repodogConfig,
-            templateOverridesPath: '../overrides/_templates',
+            additionalTemplatesPath: '../overrides/_templates',
           });
         });
 
@@ -178,7 +182,11 @@ describe('handler', () => {
             '/root/node_modules/.bin/hygen',
             ['new', 'pkg', 'cli'],
             {
+              author: 'Dylan Aubrey',
+              homepage: 'https://github.com/badbatch/repodog',
+              mainFilename: 'handler',
               mock: 'answer to mock',
+              org: 'repodog',
               packageManager: 'pnpm',
               question1: 'answer to question1',
               question2: 'answer to question2',
