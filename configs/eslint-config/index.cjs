@@ -35,6 +35,14 @@ module.exports = {
       },
       plugins: ['@typescript-eslint', 'typescript-sort-keys'],
       rules: {
+        '@typescript-eslint/consistent-type-imports': [
+          2,
+          {
+            disallowTypeAnnotations: false,
+            fixStyle: 'inline-type-imports',
+            prefer: 'type-imports',
+          },
+        ],
         '@typescript-eslint/naming-convention': [
           2,
           {

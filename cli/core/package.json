@@ -34,6 +34,7 @@
     "@repodog/cli-cut": "workspace:../cut",
     "@repodog/cli-new": "workspace:../new",
     "@repodog/cli-publish": "workspace:../publish",
+    "@repodog/cli-write": "workspace:../write",
     "yargs": "15.1.0"
   },
   "peerDependencies": {

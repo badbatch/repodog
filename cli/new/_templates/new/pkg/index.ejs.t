@@ -1,5 +1,5 @@
 ---
 to: <%= path %>/src/index.ts
 ---
-export * from './<%= mainFilename %>.js';
+export * as command from './command.js';
 export * from './types.js';

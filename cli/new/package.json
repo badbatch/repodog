@@ -31,7 +31,7 @@
   "dependencies": {
     "@repodog/cli-utils": "workspace:../utils",
     "ansi-colors": "4.1.3",
-    "enquirer": "^2.3.6",
+    "enquirer": "2.3.6",
     "hygen": "6.2.11",
     "shelljs": "0.8.1",
     "yargs": "15.1.0"

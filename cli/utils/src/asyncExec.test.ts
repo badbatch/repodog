@@ -24,20 +24,40 @@ describe('asyncExec', () => {
   });
 
   describe('when the execution fails', () => {
-    let shelljs: jest.MockedObject<typeof import('shelljs')>;
+    describe('when options.silent is not true', () => {
+      let shelljs: jest.MockedObject<typeof import('shelljs')>;
 
-    beforeEach(async () => {
-      shelljs = jest.mocked(await import('shelljs')).default;
-      clearShelljsMock(shelljs);
+      beforeEach(async () => {
+        shelljs = jest.mocked(await import('shelljs')).default;
+        clearShelljsMock(shelljs);
 
-      shelljs.exec.mockImplementationOnce(function (_cmd: string, callback: ExecCallback) {
-        callback(0, '', 'failure');
-      } as ExecFunction);
+        shelljs.exec.mockImplementationOnce(function (_cmd: string, callback: ExecCallback) {
+          callback(0, '', 'failure');
+        } as ExecFunction);
+      });
+
+      it('should reject with an error with stderr', async () => {
+        const { asyncExec } = await import('./asyncExec.js');
+        await expect(() => asyncExec('cmd')).rejects.toEqual(new Error('failure'));
+      });
     });
 
-    it('should reject with an error with stderr', async () => {
-      const { asyncExec } = await import('./asyncExec.js');
-      await expect(() => asyncExec('cmd')).rejects.toEqual(new Error('failure'));
+    describe('when options.silent is true', () => {
+      let shelljs: jest.MockedObject<typeof import('shelljs')>;
+
+      beforeEach(async () => {
+        shelljs = jest.mocked(await import('shelljs')).default;
+        clearShelljsMock(shelljs);
+
+        shelljs.exec.mockImplementationOnce(function (_cmd: string, callback: ExecCallback) {
+          callback(0, '', 'failure');
+        } as ExecFunction);
+      });
+
+      it('should resolve the stdout', async () => {
+        const { asyncExec } = await import('./asyncExec.js');
+        expect(await asyncExec('cmd', { silent: true })).toBe('');
+      });
     });
   });
 });

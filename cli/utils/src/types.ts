@@ -1,5 +1,10 @@
 import type { ReleaseType } from 'semver';
 
+export enum Language {
+  JAVASCRIPT = 'javascript',
+  TYPESCRIPT = 'typescript',
+}
+
 export enum PackageManager {
   NPM = 'npm',
   PNPM = 'pnpm',
@@ -61,6 +66,8 @@ export enum ReleaseTag {
 export interface RepodogConfig {
   __activeDryRun?: boolean;
   additionalTemplatesPath?: string;
+  environmentVariablesPath?: string;
+  language?: Language;
   questionOverrides?: Record<string, QuestionOverrides>;
   templateVariables?: Record<string, TemplateVariables>;
 }

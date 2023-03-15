@@ -41,5 +41,19 @@
       "console": "integratedTerminal",
       "internalConsoleOptions": "neverOpen"
     },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Repodog - write",
+      "program": "${workspaceFolder}/cli/core/bin/repodog.mjs",
+      "args": [
+        "write",
+        "test",
+        "./cli/write/src/utils/isValidWriteType.ts",
+        "--verbose"
+      ],
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen"
+    },
   ]
 }
