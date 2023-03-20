@@ -1,3 +1,16 @@
+#### 1.0.8-alpha.0 (2023-03-20)
+
+##### New Features
+
+*  add write command (ee7605c2)
+*  new package script (402627b7)
+
+##### Refactors
+
+*  update shared files and utils to support write package (a97c7e79)
+*  remove babel lodash plugin (555160a5)
+*  make use of enums (9a876b38)
+
 #### 1.0.7-alpha.0 (2023-02-23)
 
 ##### Bug Fixes
