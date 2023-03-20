@@ -293,6 +293,7 @@ importers:
   cli/write:
     specifiers:
       '@jest/globals': 29.3.1
+      '@repodog/cli-test-utils': workspace:../test-utils
       '@repodog/cli-utils': workspace:../utils
       '@types/shelljs': 0.8.11
       '@types/yargs': 15.0.4
@@ -311,6 +312,7 @@ importers:
       yargs: 15.1.0
     devDependencies:
       '@jest/globals': 29.3.1
+      '@repodog/cli-test-utils': link:../test-utils
       '@types/shelljs': 0.8.11
       '@types/yargs': 15.0.4
       del-cli: 3.0.0

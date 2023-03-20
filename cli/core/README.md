@@ -7,8 +7,9 @@ The RepoDog cli package.
 
 ## Summary
 
-* Provides scripts for cutting and publishing releases
-* Provides scripts for scaffolding new folder structures
+* Scripts for cutting and publishing releases
+* Scripts for scaffolding new folder structures
+* Scripts for writing files with ChatGPT
 * Works with npm, yarn and pnpm
 * Works with standard repo and monorepo structures
 
@@ -27,7 +28,8 @@ npm install @repodog/cli @babel/runtime core-js --save-dev
   "scripts": {
     "repodog:cut": "repodog cut",
     "repodog:new": "repodog new",
-    "repodog:publish": "repodog publish"
+    "repodog:publish": "repodog publish",
+    "repodog:write": "repodog write"
   }
 }
 ```
@@ -143,7 +145,7 @@ Options:
   --verbose   Whether to output verbose logs.                          [boolean]
 ```
 
-#### `.repodogrc`
+#### `new` config
 
 Below are the config properties used in the `repodog new` script. The `.repodogrc` config file must be located at the
 root of your project, regardless of whether the repo has a standard or monorepo structure.
@@ -254,6 +256,45 @@ Options:
   --help     Show help                                                 [boolean]
   --verbose  Whether to output verbose logs.                           [boolean]
 ```
+
+### write
+
+```sh
+repodog write <type> <filePath>
+
+Write the content of a new file
+
+Positionals:
+  type      The write type: test                             [string] [required]
+  filePath  Path to file to execute write type against. Relative to cwd
+                                                             [string] [required]
+
+Options:
+  --version     Show version number                                    [boolean]
+  --help        Show help                                              [boolean]
+  --skipFormat  Whether to skip formatting of the content of the new file
+                                                                       [boolean]
+  --verbose     Whether to output verbose logs.                        [boolean]
+```
+
+#### Environment variables
+
+`OPENAI_API_KEY` = `*****`
+
+Required in order to communicate with ChatGPT API. To get an OpenAI API key, [sign up on their website](https://openai.com/).
+
+#### `write` config
+
+Below are the config properties used in the `repodog write` script. The `.repodogrc` config file must be located at the
+root of your project, regardless of whether the repo has a standard or monorepo structure.
+
+##### `language`
+
+The programming language, either `'javascript'` or `'typescript'`.
+
+##### `environmentVariablesPath`
+
+The path to the file where your environment variables are stored. The path is relative to the current working directory.
 
 ## Changelog
 

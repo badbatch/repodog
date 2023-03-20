@@ -49,7 +49,7 @@
       "args": [
         "write",
         "test",
-        "./cli/write/src/utils/isValidWriteType.ts",
+        "./cli/write/src/handler.ts",
         "--verbose"
       ],
       "console": "integratedTerminal",
