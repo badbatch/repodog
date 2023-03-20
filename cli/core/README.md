@@ -281,7 +281,7 @@ Options:
 
 `OPENAI_API_KEY` = `*****`
 
-Required in order to communicate with ChatGPT API. To get an OpenAI API key, [sign up on their website](https://openai.com/).
+Required in order to communicate with the ChatGPT API. To get an OpenAI API key, [sign up on their website](https://openai.com/).
 
 #### `write` config
 
@@ -290,11 +290,11 @@ root of your project, regardless of whether the repo has a standard or monorepo 
 
 ##### `language`
 
-The programming language, either `'javascript'` or `'typescript'`.
+The programming language, either `'javascript'` or `'typescript'`. The default is `'javascript'`.
 
 ##### `environmentVariablesPath`
 
-The path to the file where your environment variables are stored. The path is relative to the current working directory.
+The path to the file where your environment variables are stored. The path is relative to the current working directory. The default is `'.env'`.
 
 ## Changelog
 
