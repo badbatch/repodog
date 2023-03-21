@@ -57,7 +57,7 @@ describe('handler', () => {
 
     it('should throw the correct error', async () => {
       const { handler } = await import('./handler.js');
-      await handler({ filePath, type: 'blah' });
+      await handler({ 'file-path': filePath, type: 'blah' });
 
       expect(shelljs.echo).toHaveBeenCalledWith(
         expect.stringContaining('Error: Expected type to be a valid write type: test')
@@ -66,7 +66,7 @@ describe('handler', () => {
 
     it('should exit with the correct code', async () => {
       const { handler } = await import('./handler.js');
-      await handler({ filePath, type: 'blah' });
+      await handler({ 'file-path': filePath, type: 'blah' });
       expect(shelljs.exit).toHaveBeenCalledWith(1);
     });
   });
@@ -84,7 +84,7 @@ describe('handler', () => {
 
     it('should throw the correct error', async () => {
       const { handler } = await import('./handler.js');
-      await handler({ filePath, type });
+      await handler({ 'file-path': filePath, type });
 
       expect(shelljs.echo).toHaveBeenCalledWith(
         expect.stringContaining('Error: Code could not be extracted from raw answer.')
@@ -93,7 +93,7 @@ describe('handler', () => {
 
     it('should exit with the correct code', async () => {
       const { handler } = await import('./handler.js');
-      await handler({ filePath, type });
+      await handler({ 'file-path': filePath, type });
       expect(shelljs.exit).toHaveBeenCalledWith(1);
     });
   });
@@ -110,7 +110,7 @@ describe('handler', () => {
 
     it('should calll writeTestFile with the correct arguments', async () => {
       const { handler } = await import('./handler.js');
-      await handler({ filePath, type });
+      await handler({ 'file-path': filePath, type });
 
       expect(writeTestFile).toHaveBeenCalledWith('/root', 'alpha.test', DESCRIBE_BLOCK, {
         language: 'javascript',
@@ -121,7 +121,7 @@ describe('handler', () => {
 
     it('should exit with the correct code', async () => {
       const { handler } = await import('./handler.js');
-      await handler({ filePath, type });
+      await handler({ 'file-path': filePath, type });
       expect(shelljs.exit).toHaveBeenCalledWith(0);
     });
   });

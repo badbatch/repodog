@@ -1,8 +1,8 @@
 import type { Language, PackageManager } from '@repodog/cli-utils';
 
 export interface WriteHandlerArguments {
-  filePath: string;
-  skipFormat?: boolean;
+  'file-path': string;
+  'skip-format'?: boolean;
   type: string;
   verbose?: boolean;
 }

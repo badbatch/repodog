@@ -20,12 +20,12 @@ import { writeTestFile } from './utils/writeTestFile.js';
 
 export const handler = async (argv: WriteHandlerArguments) => {
   const startTime = performance.now();
-  const skipFormat = argv.skipFormat ?? false;
+  const skipFormat = argv['skip-format'] ?? false;
   const verbose = argv.verbose ?? false;
 
   setVerbose(verbose);
   verboseLog('>>>> USER CONFIG START <<<<');
-  verboseLog(`filePath: ${argv.filePath}`);
+  verboseLog(`filePath: ${argv['file-path']}`);
   verboseLog(`skipFormat: ${String(skipFormat)}`);
   verboseLog(`type: ${argv.type}`);
   verboseLog('>>>> USER CONFIG END <<<<\n');
@@ -41,7 +41,7 @@ export const handler = async (argv: WriteHandlerArguments) => {
       throw new Error('Could not derive the package manager from the lock file in the current working directory');
     }
 
-    const filePath = resolve(process.cwd(), argv.filePath);
+    const filePath = resolve(process.cwd(), argv['file-path']);
 
     verboseLog('>>>> DERIVED VALUES START <<<<');
     verboseLog(`Package manager: ${packageManager}`);

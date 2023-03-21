@@ -260,19 +260,19 @@ Options:
 ### write
 
 ```sh
-repodog write <type> <filePath>
+repodog write <type> <file-path>
 
 Write the content of a new file
 
 Positionals:
   type      The write type: test                             [string] [required]
-  filePath  Path to file to execute write type against. Relative to cwd
+  file-path  Path to file to execute write type against. Relative to cwd
                                                              [string] [required]
 
 Options:
   --version     Show version number                                    [boolean]
   --help        Show help                                              [boolean]
-  --skipFormat  Whether to skip formatting of the content of the new file
+  --skip-format  Whether to skip formatting of the content of the new file
                                                                        [boolean]
   --verbose     Whether to output verbose logs.                        [boolean]
 ```

@@ -7,12 +7,12 @@ export const builder = (argv: Argv) =>
       desc: 'The write type: test',
       type: 'string',
     })
-    .positional('filePath', {
+    .positional('file-path', {
       demandOption: true,
       desc: 'Path to file to execute write type against. Relative to cwd',
       type: 'string',
     })
-    .option('skipFormat', {
+    .option('skip-format', {
       desc: 'Whether to skip formatting of the content of the new file',
       type: 'boolean',
     })
@@ -21,6 +21,6 @@ export const builder = (argv: Argv) =>
       type: 'boolean',
     });
 
-export const command = 'write <type> <filePath>';
+export const command = 'write <type> <file-path>';
 export const desc = 'Write the content of a new file';
 export { handler } from './handler.js';
