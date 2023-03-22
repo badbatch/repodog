@@ -304,6 +304,8 @@ The programming language, either `'javascript'` or `'typescript'`. The default i
 
 The path to the file where your environment variables are stored. The path is relative to the current working directory. The default is `'.env'`.
 
+---
+
 ## Changelog
 
 Check out the [features, fixes and more](CHANGELOG.md) that go into each major, minor and patch version.
