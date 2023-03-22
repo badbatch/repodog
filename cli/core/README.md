@@ -7,8 +7,6 @@ The RepoDog cli package.
 
 ## Summary
 
----
-
 * Scripts for cutting and publishing releases
 * Scripts for scaffolding new folder structures
 * Scripts for writing files with ChatGPT
@@ -17,16 +15,12 @@ The RepoDog cli package.
 
 ## Install package and dependencies
 
----
-
 ```sh
 # terminal
 npm install @repodog/cli @babel/runtime core-js --save-dev
 ```
 
 ## Configuration
-
----
 
 ```json
 // package.json
@@ -66,8 +60,6 @@ jobs:
 ```
 
 ## Usage
-
----
 
 ### cut
 
@@ -314,12 +306,8 @@ The path to the file where your environment variables are stored. The path is re
 
 ## Changelog
 
----
-
 Check out the [features, fixes and more](CHANGELOG.md) that go into each major, minor and patch version.
 
 ## License
-
----
 
 @repodog/cli is [MIT Licensed](LICENSE).
