@@ -25,8 +25,9 @@ export const handler = async (argv: NewHandlerArguments) => {
 
   setVerbose(verbose);
   verboseLog('>>>> USER CONFIG START <<<<');
+  verboseLog(`customTypePath: ${argv.customTypePath ?? 'undefined'}`);
+  verboseLog(`subtype: ${argv.subtype ?? 'undefined'}`);
   verboseLog(`type: ${argv.type}`);
-  verboseLog(`subtypes: ${argv.subtypes ?? 'undefined'}`);
   verboseLog('>>>> USER CONFIG END <<<<\n');
 
   try {
@@ -34,8 +35,9 @@ export const handler = async (argv: NewHandlerArguments) => {
       throw new Error(`Expected type to be a valid new type: ${VALID_NEW_TYPES.join(', ')}`);
     }
 
+    const customTypePath = argv.customTypePath ?? '';
+    const subtype = argv.subtype ?? '';
     const type = argv.type;
-    const subtypes = argv.subtypes ?? '';
     const packageManager = getPackageManager();
 
     if (!packageManager) {
@@ -73,8 +75,8 @@ export const handler = async (argv: NewHandlerArguments) => {
 
     verboseLog('>>>> CONFIG VALUES ENDS <<<<');
 
-    const baseTypePath = ['new', type];
-    const typePath = [...baseTypePath, ...subtypes.split('.')];
+    const baseTypePath = subtype ? ['new', type, subtype] : ['new', type];
+    const typePath = [...baseTypePath, ...customTypePath.split('.')];
     let flattenedTemplateVariables: Record<string, string | number | boolean> = {};
 
     if (config.templateVariables) {

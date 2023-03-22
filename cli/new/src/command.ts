@@ -7,8 +7,13 @@ export const builder = (argv: Argv) =>
       desc: 'The type of folder to scaffold: repo | pkg',
       type: 'string',
     })
-    .option('subtypes', {
-      desc: 'The sub types to apply to the scaffold. Multiple types should be separated by a "." character',
+    .positional('subtype', {
+      demandOption: false,
+      desc: 'The subtype of folder to scaffold. Only relevant when type is "repo": app | library | server',
+      type: 'string',
+    })
+    .option('customTypePath', {
+      desc: 'The additional types to apply to the scaffold. Multiple types should be separated by a "." character',
       type: 'string',
     })
     .option('verbose', {
@@ -16,6 +21,6 @@ export const builder = (argv: Argv) =>
       type: 'boolean',
     });
 
-export const command = 'new <type>';
+export const command = 'new <type> [subtype]';
 export const desc = 'Scaffold new folder structure';
 export { handler } from './handler.js';

@@ -133,15 +133,15 @@ describe('handler', () => {
         mockedExecuteHygen.mockClear();
       });
 
-      it('should load the questions for the specified new type and subtypes', async () => {
+      it('should load the questions for the specified new type and customTypePath', async () => {
         const { handler } = await import('./handler.js');
-        await handler({ subtypes: 'cli', type: 'pkg' });
+        await handler({ customTypePath: 'cli', type: 'pkg' });
         expect(mockedLoadQuestions).toHaveBeenCalledWith(['new', 'pkg', 'cli'], repodogConfig.questionOverrides);
       });
 
       it('should execute hygen with the specified options and base type path', async () => {
         const { handler } = await import('./handler.js');
-        await handler({ subtypes: 'cli', type: 'pkg' });
+        await handler({ customTypePath: 'cli', type: 'pkg' });
 
         expect(mockedExecuteHygen).toHaveBeenCalledWith(
           '/root/_templates',
@@ -175,7 +175,7 @@ describe('handler', () => {
 
         it('should execute hygen again with the template overrides path and specified options and base type path', async () => {
           const { handler } = await import('./handler.js');
-          await handler({ subtypes: 'cli', type: 'pkg' });
+          await handler({ customTypePath: 'cli', type: 'pkg' });
 
           expect(mockedExecuteHygen.mock.calls[1]).toEqual([
             '/root/overrides/_templates',

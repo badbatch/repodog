@@ -7,6 +7,8 @@ The RepoDog cli package.
 
 ## Summary
 
+---
+
 * Scripts for cutting and publishing releases
 * Scripts for scaffolding new folder structures
 * Scripts for writing files with ChatGPT
@@ -15,12 +17,16 @@ The RepoDog cli package.
 
 ## Install package and dependencies
 
+---
+
 ```sh
 # terminal
 npm install @repodog/cli @babel/runtime core-js --save-dev
 ```
 
 ## Configuration
+
+---
 
 ```json
 // package.json
@@ -60,6 +66,8 @@ jobs:
 ```
 
 ## Usage
+
+---
 
 ### cut
 
@@ -127,22 +135,26 @@ Any tasks you want to run to generate/update the changelog should be run in this
 }
 ```
 
+---
+
 ### new
 
 ```sh
-repodog new <type>
+repodog new <type> [subtype]
 
 Scaffold new folder structure
 
 Positionals:
-  type  The type of folder to scaffold: repo | pkg           [string] [required]
+  type     The type of folder to scaffold: repo | pkg        [string] [required]
+  subtype  The subtype of folder to scaffold. Only relevant when type is "repo":
+           app | library | server                                       [string]
 
 Options:
-  --version   Show version number                                      [boolean]
-  --help      Show help                                                [boolean]
-  --subtypes  The sub types to apply to the scaffold. Multiple types should be
-              separated by a "." character                              [string]
-  --verbose   Whether to output verbose logs.                          [boolean]
+  --version         Show version number                                [boolean]
+  --help            Show help                                          [boolean]
+  --customTypePath  The additional types to apply to the scaffold. Multiple
+                    types should be separated by a "." character        [string]
+  --verbose         Whether to output verbose logs.                    [boolean]
 ```
 
 #### `new` config
@@ -152,12 +164,12 @@ root of your project, regardless of whether the repo has a standard or monorepo 
 
 ##### `additionalTemplatesPath`
 
-Include additional templates as part of the set of templates used to generate a folder structure. You can use the `type` and `subtypes` options to target specific template sets based on the folder structure within your additional templates path. The additional templates path is relative to the current working directory.
+Include additional templates as part of the set of templates used to generate a folder structure. You can use the `type` and `customTypePath` options to target specific template sets based on the folder structure within your additional templates path. The additional templates path is relative to the current working directory.
 
 The templating functionality is powered by [`hygen`](https://www.hygen.io/) so all templates must to adhere to its
 rules.
 
-The example below uses the additional `command.ejs.t` template file when `repodog new` is called with `pkg --subtypes cli`.
+The example below uses the additional `command.ejs.t` template file when `repodog new` is called with `pkg --customTypePath cli`.
 
 ```txt
 // filesystem
@@ -177,9 +189,9 @@ _templates/
 
 ##### `questionOverrides`
 
-Add, remove, and/or replace the [base set of questions](../new/src/questions) for a given `type`. You can use the `type` and `subtypes` options to target the overrides to create bespoke question sets.
+Add, remove, and/or replace the [base set of questions](../new/src/questions) for a given `type`. You can use the `type`, `subtype` and `customTypePath` options to target the overrides to create bespoke question sets.
 
-The example below adds two questions, removes one, and updates one when `repodog new` is called with `pkg --subtypes cli`.
+The example below adds two questions, removes one, and updates one when `repodog new` is called with `pkg --customTypePath cli`.
 
 ```json
 // .repodogrc
@@ -220,7 +232,7 @@ The example below adds two questions, removes one, and updates one when `repodog
 
 ##### `templateVariables`
 
-Values to populate your templates with. You can use the `type` and `subtypes` options to target the variables to specific template sets. The config allows for variables to be applied to all templates or a branch of templates through the `*` character.
+Values to populate your templates with. You can use the `type`, `subtype` and `customTypePath` options to target the variables to specific template sets. The config allows for variables to be applied to all templates or a branch of templates through the `*` character.
 
 Template variables are flattened and merged and the output is passed into the templates. If any of the keys match the name a question, then the key's value is used as the question's initial answer.
 
@@ -244,6 +256,8 @@ Template variables are flattened and merged and the output is passed into the te
 }
 ```
 
+---
+
 ### publish
 
 ```sh
@@ -256,6 +270,8 @@ Options:
   --help     Show help                                                 [boolean]
   --verbose  Whether to output verbose logs.                           [boolean]
 ```
+
+---
 
 ### write
 
@@ -298,8 +314,12 @@ The path to the file where your environment variables are stored. The path is re
 
 ## Changelog
 
+---
+
 Check out the [features, fixes and more](CHANGELOG.md) that go into each major, minor and patch version.
 
 ## License
+
+---
 
 @repodog/cli is [MIT Licensed](LICENSE).
