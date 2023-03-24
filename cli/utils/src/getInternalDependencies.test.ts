@@ -15,18 +15,21 @@ describe('getInternalDependencies', () => {
 
   const packageMetaRecord = {
     alpha: {
+      checked: false,
       force: false,
       name: 'alpha',
       path: '/path/to/alpha',
       versioned: false,
     },
     bravo: {
+      checked: false,
       force: false,
       name: 'bravo',
       path: '/path/to/bravo',
       versioned: false,
     },
     charlie: {
+      checked: false,
       force: false,
       name: 'charlie',
       path: '/path/to/charlie',

@@ -12,6 +12,7 @@ export enum PackageManager {
 }
 
 export interface PackageMeta {
+  checked: boolean;
   force: boolean;
   name: string;
   path: string;

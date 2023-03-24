@@ -20,7 +20,7 @@
     "repodog": "node ./cli/core/bin/repodog.mjs",
     "test": "node --require=suppress-experimental-warnings --experimental-vm-modules node_modules/jest/bin/jest.js",
     "type-check": "tsc --noEmit",
-    "validate": "pnpm run lint && pnpm run type-check && pnpm run build && pnpm run test"
+    "validate": "pnpm run build && pnpm run lint && pnpm run type-check && pnpm run test"
   },
   "devDependencies": {
     "@babel/cli": "7.19.3",

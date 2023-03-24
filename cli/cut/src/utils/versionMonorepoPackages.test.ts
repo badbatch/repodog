@@ -12,24 +12,28 @@ jest.unstable_mockModule('@repodog/cli-utils', () => ({
   getLastReleaseTag: jest.fn().mockReturnValue('1.0.0'),
   getMonorepoPackageMeta: jest.fn().mockImplementation(() => ({
     alpha: {
+      checked: false,
       force: false,
       name: 'alpha',
       path: '/root/apps/client/alpha/package.json',
       versioned: false,
     },
     bravo: {
+      checked: false,
       force: false,
       name: 'bravo',
       path: '/root/apps/server/bravo/package.json',
       versioned: false,
     },
     delta: {
+      checked: false,
       force: false,
       name: 'delta',
       path: '/root/configs/delta/package.json',
       versioned: false,
     },
     echo: {
+      checked: false,
       force: false,
       name: 'echo',
       path: '/root/configs/echo/package.json',
@@ -147,7 +151,7 @@ describe('versionMonorepoPackages', () => {
     });
   });
 
-  describe('when versioned package has internal dependencies', () => {
+  describe('when package has versioned internal dependencies', () => {
     let mockedVersionPackage: jest.MockedFunction<
       (
         packageJson: SetRequired<PackageJson, 'name' | 'version'>,
@@ -164,12 +168,12 @@ describe('versionMonorepoPackages', () => {
         const match = /\/([a-z]+)\/package.json$/.exec(path)!;
         const name = match[1]!;
 
-        if (name === 'alpha') {
-          return { name, peerDependencies: { echo: '< 2' }, version: '1.0.0' };
+        if (name === 'echo') {
+          return { name, peerDependencies: { alpha: '< 2' }, version: '1.0.0' };
         }
 
-        if (name === 'delta') {
-          return { name, peerDependencies: { bravo: '< 2' }, version: '1.0.0' };
+        if (name === 'bravo') {
+          return { name, peerDependencies: { delta: '< 2' }, version: '1.0.0' };
         }
 
         return { name, version: '1.0.0' };
@@ -180,13 +184,13 @@ describe('versionMonorepoPackages', () => {
       mockedVersionPackage.mockClear();
     });
 
-    it('should version the internal dependency packages regardless of whether their files have changed', async () => {
+    it('should version the package regardless of whether its files have changed', async () => {
       const { versionMonorepoPackages } = await import('./versionMonorepoPackages.js');
       versionMonorepoPackages({ force: false, packageManager: PackageManager.NPM, type: 'major' });
 
       expect(mockedVersionPackage.mock.calls).toEqual([
         [
-          { name: 'delta', peerDependencies: { bravo: '< 2' }, version: '1.0.0' },
+          { name: 'delta', version: '1.0.0' },
           {
             packageJsonPath: '/root/configs/delta/package.json',
             preReleaseId: undefined,
@@ -195,7 +199,7 @@ describe('versionMonorepoPackages', () => {
           },
         ],
         [
-          { name: 'bravo', version: '1.0.0' },
+          { name: 'bravo', peerDependencies: { delta: '< 2' }, version: '1.0.0' },
           {
             packageJsonPath: '/root/apps/server/bravo/package.json',
             preReleaseId: undefined,
@@ -204,7 +208,7 @@ describe('versionMonorepoPackages', () => {
           },
         ],
         [
-          { name: 'alpha', peerDependencies: { echo: '< 2' }, version: '1.0.0' },
+          { name: 'alpha', version: '1.0.0' },
           {
             packageJsonPath: '/root/apps/client/alpha/package.json',
             preReleaseId: undefined,
@@ -213,7 +217,7 @@ describe('versionMonorepoPackages', () => {
           },
         ],
         [
-          { name: 'echo', version: '1.0.0' },
+          { name: 'echo', peerDependencies: { alpha: '< 2' }, version: '1.0.0' },
           {
             packageJsonPath: '/root/configs/echo/package.json',
             preReleaseId: undefined,

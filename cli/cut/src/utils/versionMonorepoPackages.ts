@@ -38,7 +38,17 @@ export const versionMonorepoPackages = ({
     try {
       const packageJson = loadPackageJson(packageMeta.path);
       const { name } = packageJson;
-      verboseLog(`Versioning package: ${name}`);
+      const internalDependencies = getInternalDependencies(packageJson, packageMetaRecord);
+
+      if (internalDependencies.some(name => !packageMetaRecord[name]?.checked)) {
+        packageMetaKeys.unshift(name);
+        index += 1;
+        continue;
+      }
+
+      verboseLog(`Checking package: ${name}`);
+      packageMeta.checked = true;
+      packageMeta.force = internalDependencies.some(name => !!packageMetaRecord[name]?.versioned);
       const { dir } = parse(packageMeta.path);
       let relativeDirectory = dir.replace(cwd, '');
 
@@ -69,6 +79,8 @@ export const versionMonorepoPackages = ({
         verboseLog(formatListLogMessage(`Package changed files`, packageChangedFiles));
       }
 
+      verboseLog(`Versioning package: ${name}`);
+
       versionPackage(packageJson, {
         packageJsonPath: packageMeta.path,
         preReleaseId,
@@ -77,22 +89,6 @@ export const versionMonorepoPackages = ({
       });
 
       packageMeta.versioned = true;
-      const internalDependencies = getInternalDependencies(packageJson, packageMetaRecord);
-
-      for (const name of internalDependencies) {
-        const depsPackageMeta = packageMetaRecord[name]!;
-
-        if (!depsPackageMeta.versioned) {
-          depsPackageMeta.force = true;
-
-          if (!packageMetaKeys.includes(name)) {
-            verboseLog(`${name} added to packages to version`);
-            packageMetaKeys.unshift(name);
-            index += 1;
-          }
-        }
-      }
-
       verboseLog('>>>> PACKAGE END <<<<\n');
     } catch (error: unknown) {
       shelljs.echo(
