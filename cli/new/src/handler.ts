@@ -16,6 +16,7 @@ import shelljs from 'shelljs';
 import type { NewHandlerArguments } from './types.js';
 import { enrichQuestions } from './utils/enrichQuestions.js';
 import { executeHygen } from './utils/executeHygen.js';
+import { VALID_NEW_SUBTYPES, isValidNewSubtype } from './utils/isValidNewSubtype.js';
 import { VALID_NEW_TYPES, isValidNewType } from './utils/isValidNewType.js';
 import { loadQuestions } from './utils/loadQuestions.js';
 
@@ -33,6 +34,12 @@ export const handler = async (argv: NewHandlerArguments) => {
   try {
     if (!isValidNewType(argv.type)) {
       throw new Error(`Expected type to be a valid new type: ${VALID_NEW_TYPES.join(', ')}`);
+    }
+
+    if (!isValidNewSubtype(argv.type, argv.subtype)) {
+      throw new Error(
+        `Expected subtype to be a valid new ${argv.type} subtype: ${VALID_NEW_SUBTYPES[argv.type].join(', ')}`
+      );
     }
 
     const customTypePath = argv.customTypePath ?? '';

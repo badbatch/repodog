@@ -6,6 +6,7 @@ import {
   type QuestionOverrides,
   flattenTemplateVariables,
 } from '@repodog/cli-utils';
+import { VALID_NEW_SUBTYPES } from './utils/isValidNewSubtype.js';
 import { VALID_NEW_TYPES } from './utils/isValidNewType.js';
 
 jest.unstable_mockModule('shelljs', shelljsMock);
@@ -84,6 +85,11 @@ jest.unstable_mockModule('./utils/executeHygen.js', () => ({
 jest.unstable_mockModule('./utils/isValidNewType.js', () => ({
   VALID_NEW_TYPES,
   isValidNewType: jest.fn().mockReturnValue(true),
+}));
+
+jest.unstable_mockModule('./utils/isValidNewSubtype.js', () => ({
+  VALID_NEW_SUBTYPES,
+  isValidNewSubtype: jest.fn().mockReturnValue(true),
 }));
 
 jest.unstable_mockModule('./utils/loadQuestions.js', () => ({
@@ -235,7 +241,33 @@ describe('handler', () => {
     });
   });
 
-  describe('when given invalid arguments', () => {
+  describe('when given invalid type', () => {
+    let shelljs: jest.MockedObject<typeof import('shelljs')>;
+
+    beforeEach(async () => {
+      shelljs = jest.mocked(await import('shelljs')).default;
+      clearShelljsMock(shelljs);
+
+      const { isValidNewSubtype } = await import('./utils/isValidNewSubtype.js');
+      const mockedIsValidNewSubtype = jest.mocked(isValidNewSubtype);
+      mockedIsValidNewSubtype.mockClear();
+      mockedIsValidNewSubtype.mockReturnValueOnce(false);
+    });
+
+    it('should throw an error', async () => {
+      const { handler } = await import('./handler.js');
+      await handler({ subtype: 'blah', type: 'repo' });
+      expect(shelljs.echo).toHaveBeenCalledWith(expect.stringContaining('Error: Expected subtype to be a valid new'));
+    });
+
+    it('should exit with a code of 1', async () => {
+      const { handler } = await import('./handler.js');
+      await handler({ subtype: 'blah', type: 'repo' });
+      expect(shelljs.exit).toHaveBeenCalledWith(1);
+    });
+  });
+
+  describe('when given invalid subtype', () => {
     let shelljs: jest.MockedObject<typeof import('shelljs')>;
 
     beforeEach(async () => {
