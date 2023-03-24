@@ -1,7 +1,9 @@
 import {
+  Language,
   calculateDuration,
   flattenTemplateVariables,
   getPackageManager,
+  getPackageManagerTemporaryCmd,
   loadRepodogConfig,
   setVerbose,
   verboseLog,
@@ -62,22 +64,23 @@ export const handler = async (argv: NewHandlerArguments) => {
     verboseLog(`Default templates path: ${templatesPath}`);
     verboseLog('>>>> DERIVED VALUES END <<<<\n');
 
-    const config = loadRepodogConfig();
+    const {
+      additionalTemplatesPath,
+      language = Language.JAVASCRIPT,
+      questionOverrides,
+      templateVariables,
+    } = loadRepodogConfig();
 
     verboseLog('>>>> CONFIG VALUES START <<<<');
 
     verboseLog(
-      `Question overrides:${
-        config.questionOverrides ? `\n${JSON.stringify(config.questionOverrides, undefined, 2)}\n` : 'None'
-      }`
+      `Question overrides:${questionOverrides ? `\n${JSON.stringify(questionOverrides, undefined, 2)}\n` : 'None'}`
     );
 
-    verboseLog(`Template overrides path: ${config.additionalTemplatesPath ?? 'None'}`);
+    verboseLog(`Template overrides path: ${additionalTemplatesPath ?? 'None'}`);
 
     verboseLog(
-      `Template variables:${
-        config.templateVariables ? `\n${JSON.stringify(config.templateVariables, undefined, 2)}\n` : 'None'
-      }`
+      `Template variables:${templateVariables ? `\n${JSON.stringify(templateVariables, undefined, 2)}\n` : 'None'}`
     );
 
     verboseLog('>>>> CONFIG VALUES ENDS <<<<');
@@ -86,29 +89,31 @@ export const handler = async (argv: NewHandlerArguments) => {
     const typePath = [...baseTypePath, ...customTypePath.split('.')];
     let flattenedTemplateVariables: Record<string, string | number | boolean> = {};
 
-    if (config.templateVariables) {
-      flattenedTemplateVariables = flattenTemplateVariables(config.templateVariables, typePath);
+    if (templateVariables) {
+      flattenedTemplateVariables = flattenTemplateVariables(templateVariables, typePath);
       verboseLog(`Flattened template variables:\n${JSON.stringify(flattenedTemplateVariables, undefined, 2)}\n`);
     }
 
-    const questions = await loadQuestions(typePath, config.questionOverrides);
+    const questions = await loadQuestions(typePath, questionOverrides);
     verboseLog(`Questions:\n${JSON.stringify(questions, undefined, 2)}\n`);
 
     const cliOptions: Record<string, boolean | number | string> = {
       ...flattenedTemplateVariables,
       ...(await enquirer.prompt(enrichQuestions(questions, flattenedTemplateVariables))),
+      language,
       packageManager,
+      packageManagerTemporaryCmd: getPackageManagerTemporaryCmd(packageManager),
     };
 
     verboseLog(`Hygen cli options:\n${JSON.stringify(cliOptions, undefined, 2)}\n`);
     await executeHygen(templatesPath, hygenPath, baseTypePath, cliOptions);
 
     if (
-      config.additionalTemplatesPath &&
-      existsSync(resolvePath(process.cwd(), [config.additionalTemplatesPath, ...typePath].join('/')))
+      additionalTemplatesPath &&
+      existsSync(resolvePath(process.cwd(), [additionalTemplatesPath, ...typePath].join('/')))
     ) {
       verboseLog('Template overrides path exists, re-running hygen with new path');
-      await executeHygen(resolvePath(process.cwd(), config.additionalTemplatesPath), hygenPath, typePath, cliOptions);
+      await executeHygen(resolvePath(process.cwd(), additionalTemplatesPath), hygenPath, typePath, cliOptions);
     }
 
     verboseLog(`Handler duration: ${String(calculateDuration(startTime))}sec`);

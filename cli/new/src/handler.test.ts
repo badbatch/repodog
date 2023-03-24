@@ -1,10 +1,12 @@
 import { jest } from '@jest/globals';
 import { clearShelljsMock, shelljsMock } from '@repodog/cli-test-utils';
 import {
+  Language,
   type PromptOption,
   type QuestionOverride,
   type QuestionOverrides,
   flattenTemplateVariables,
+  getPackageManagerTemporaryCmd,
 } from '@repodog/cli-utils';
 import { VALID_NEW_SUBTYPES } from './utils/isValidNewSubtype.js';
 import { VALID_NEW_TYPES } from './utils/isValidNewType.js';
@@ -44,9 +46,11 @@ const repodogConfig = {
 };
 
 jest.unstable_mockModule('@repodog/cli-utils', () => ({
+  Language,
   calculateDuration: jest.fn().mockReturnValue('1'),
   flattenTemplateVariables,
   getPackageManager: jest.fn().mockReturnValue('pnpm'),
+  getPackageManagerTemporaryCmd,
   loadRepodogConfig: jest.fn().mockReturnValue(repodogConfig),
   setVerbose: jest.fn(),
   verboseLog: jest.fn(),
@@ -156,10 +160,12 @@ describe('handler', () => {
           {
             author: 'Dylan Aubrey',
             homepage: 'https://github.com/badbatch/repodog',
+            language: 'javascript',
             mainFilename: 'handler',
             mock: 'answer to mock',
             org: 'repodog',
             packageManager: 'pnpm',
+            packageManagerTemporaryCmd: 'pnpm dlx',
             question1: 'answer to question1',
             question2: 'answer to question2',
             question3: 'answer to question3',
@@ -190,10 +196,12 @@ describe('handler', () => {
             {
               author: 'Dylan Aubrey',
               homepage: 'https://github.com/badbatch/repodog',
+              language: 'javascript',
               mainFilename: 'handler',
               mock: 'answer to mock',
               org: 'repodog',
               packageManager: 'pnpm',
+              packageManagerTemporaryCmd: 'pnpm dlx',
               question1: 'answer to question1',
               question2: 'answer to question2',
               question3: 'answer to question3',
