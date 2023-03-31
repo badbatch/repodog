@@ -22,7 +22,7 @@
       "program": "${workspaceFolder}/cli/core/bin/repodog.mjs",
       "args": [
         "cut",
-        "premajor",
+        "prepatch",
         "--tag", "alpha",
         "--dry-run"
       ],

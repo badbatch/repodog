@@ -38,15 +38,16 @@ export const versionMonorepoPackages = ({
     try {
       const packageJson = loadPackageJson(packageMeta.path);
       const { name } = packageJson;
+      verboseLog(`Checking package: ${name}`);
       const internalDependencies = getInternalDependencies(packageJson, packageMetaRecord);
 
       if (internalDependencies.some(name => !packageMetaRecord[name]?.checked)) {
+        verboseLog('Not all internal dependencies have been checked, pushing to back of queue\n');
         packageMetaKeys.unshift(name);
         index += 1;
         continue;
       }
 
-      verboseLog(`Checking package: ${name}`);
       packageMeta.checked = true;
       packageMeta.force = internalDependencies.some(name => !!packageMetaRecord[name]?.versioned);
       const { dir } = parse(packageMeta.path);
@@ -69,7 +70,7 @@ export const versionMonorepoPackages = ({
         if (force) {
           verboseLog('Force is set to true, proceeding regardless of file changes');
         } else if (packageMeta.force) {
-          verboseLog('Package is an internal dependency of a package with file changes');
+          verboseLog('Package has an internal dependency with file changes');
         }
       }
 
