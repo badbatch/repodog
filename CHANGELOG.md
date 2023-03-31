@@ -1,3 +1,26 @@
+#### 1.0.8-alpha.0 (2023-03-31)
+
+##### Documentation Changes
+
+*  add divider back in (86e9bb4b)
+*  remove dividers (eaaa21a7)
+*  minor wording change on readme (bfdca08a)
+
+##### New Features
+
+*  add validation of subtype in new script (a8276d5a)
+
+##### Bug Fixes
+
+*  move log messages (b03b01ea)
+*  versioning packages with versioned internal deps (28645924)
+
+##### Refactors
+
+*  get language and pass to template engine (c8b36822)
+*  add subtype for new repo command support (6cf2c651)
+*  update to write cmd arg casing (55194273)
+
 #### 1.0.8-alpha.0 (2023-03-20)
 
 ##### New Features
