@@ -7,10 +7,9 @@ jest.unstable_mockModule('./getChangedFiles.ts', () => ({
 describe('haveFilesChanged', () => {
   describe('when the number of changed files is greater than 0', () => {
     beforeEach(async () => {
-      const { getChangedFiles } = await import('./getChangedFiles.ts');
-      const mockedGetChangedFiles = jest.mocked(getChangedFiles);
-      mockedGetChangedFiles.mockClear();
-      mockedGetChangedFiles.mockReturnValueOnce(['.editorconfig', '.gitignore', 'package.json', 'pnpm-lock.yaml']);
+      jest.clearAllMocks();
+      const { getChangedFiles } = jest.mocked(await import('./getChangedFiles.ts'));
+      getChangedFiles.mockReturnValueOnce(['.editorconfig', '.gitignore', 'package.json', 'pnpm-lock.yaml']);
     });
 
     it('should return true', async () => {
@@ -20,10 +19,8 @@ describe('haveFilesChanged', () => {
   });
 
   describe('when the number of changed files is 0', () => {
-    beforeEach(async () => {
-      const { getChangedFiles } = await import('./getChangedFiles.ts');
-      const mockedGetChangedFiles = jest.mocked(getChangedFiles);
-      mockedGetChangedFiles.mockClear();
+    beforeEach(() => {
+      jest.clearAllMocks();
     });
 
     it('should return false', async () => {

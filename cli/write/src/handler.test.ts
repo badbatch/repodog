@@ -48,7 +48,7 @@ const type = WriteType.TEST;
 
 describe('handler', () => {
   describe('when the write type is invalid', () => {
-    let shelljs: jest.MockedObject<typeof import('shelljs')>;
+    let shelljs: jest.Mocked<typeof import('shelljs')>;
 
     beforeEach(async () => {
       jest.clearAllMocks();
@@ -72,12 +72,11 @@ describe('handler', () => {
   });
 
   describe('when no code is extracted', () => {
-    let shelljs: jest.MockedObject<typeof import('shelljs')>;
+    let shelljs: jest.Mocked<typeof import('shelljs')>;
 
     beforeEach(async () => {
       jest.clearAllMocks();
       shelljs = jest.mocked(await import('shelljs')).default;
-
       const { extractCode } = jest.mocked(await import('./utils/extractCode.ts'));
       extractCode.mockReturnValueOnce(undefined); // eslint-disable-line unicorn/no-useless-undefined
     });
@@ -99,7 +98,7 @@ describe('handler', () => {
   });
 
   describe('when code is extracted correctly', () => {
-    let shelljs: jest.MockedObject<typeof import('shelljs')>;
+    let shelljs: jest.Mocked<typeof import('shelljs')>;
     let writeTestFile: jest.MockedFunction<typeof import('./utils/writeTestFile.ts')['writeTestFile']>;
 
     beforeEach(async () => {

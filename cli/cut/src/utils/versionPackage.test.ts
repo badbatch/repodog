@@ -1,5 +1,4 @@
 import { jest } from '@jest/globals';
-import type { PathOrFileDescriptor, WriteFileOptions } from 'node:fs';
 
 jest.unstable_mockModule('@repodog/cli-utils', () => ({
   getLatestPackageVersionOnNpm: jest.fn().mockReturnValue('1.0.0'),
@@ -17,10 +16,9 @@ describe('versionPackage', () => {
 
   describe('when the new version is invalid', () => {
     beforeEach(async () => {
-      const { getNewVersion } = await import('@repodog/cli-utils');
-      const mockedGetNewVersion = jest.mocked(getNewVersion);
-      mockedGetNewVersion.mockClear();
-      mockedGetNewVersion.mockReturnValueOnce(null); // eslint-disable-line unicorn/no-null
+      jest.clearAllMocks();
+      const { getNewVersion } = jest.mocked(await import('@repodog/cli-utils'));
+      getNewVersion.mockReturnValueOnce(null); // eslint-disable-line unicorn/no-null
     });
 
     it('should throw the correct error', async () => {
@@ -34,10 +32,9 @@ describe('versionPackage', () => {
 
   describe('when the new version is equal to the latest version on npm', () => {
     beforeEach(async () => {
-      const { getLatestPackageVersionOnNpm } = await import('@repodog/cli-utils');
-      const mockedGetLatestPackageVersionOnNpm = jest.mocked(getLatestPackageVersionOnNpm);
-      mockedGetLatestPackageVersionOnNpm.mockClear();
-      mockedGetLatestPackageVersionOnNpm.mockReturnValueOnce('1.1.0');
+      jest.clearAllMocks();
+      const { getLatestPackageVersionOnNpm } = jest.mocked(await import('@repodog/cli-utils'));
+      getLatestPackageVersionOnNpm.mockReturnValueOnce('1.1.0');
     });
 
     it('should throw the correct error', async () => {
@@ -51,10 +48,9 @@ describe('versionPackage', () => {
 
   describe('when the new version is less than the latest version on npm', () => {
     beforeEach(async () => {
-      const { getLatestPackageVersionOnNpm } = await import('@repodog/cli-utils');
-      const mockedGetLatestPackageVersionOnNpm = jest.mocked(getLatestPackageVersionOnNpm);
-      mockedGetLatestPackageVersionOnNpm.mockClear();
-      mockedGetLatestPackageVersionOnNpm.mockReturnValueOnce('2.0.0');
+      jest.clearAllMocks();
+      const { getLatestPackageVersionOnNpm } = jest.mocked(await import('@repodog/cli-utils'));
+      getLatestPackageVersionOnNpm.mockReturnValueOnce('2.0.0');
     });
 
     it('should throw the correct error', async () => {
@@ -67,29 +63,20 @@ describe('versionPackage', () => {
   });
 
   describe('when there is no latest version on npm', () => {
-    let mockedWriteFileSync: jest.MockedFunction<
-      (
-        file: PathOrFileDescriptor,
-        data: string | NodeJS.ArrayBufferView,
-        options?: WriteFileOptions | undefined
-      ) => void
-    >;
+    let writeFileSync: jest.Mocked<typeof import('node:fs')['writeFileSync']>;
 
     beforeEach(async () => {
-      const { getLatestPackageVersionOnNpm } = await import('@repodog/cli-utils');
-      const mockedGetLatestPackageVersionOnNpm = jest.mocked(getLatestPackageVersionOnNpm);
-      mockedGetLatestPackageVersionOnNpm.mockReturnValueOnce('');
-
-      const { writeFileSync } = await import('node:fs');
-      mockedWriteFileSync = jest.mocked(writeFileSync);
-      mockedWriteFileSync.mockClear();
+      jest.clearAllMocks();
+      const { getLatestPackageVersionOnNpm } = jest.mocked(await import('@repodog/cli-utils'));
+      getLatestPackageVersionOnNpm.mockReturnValueOnce('');
+      ({ writeFileSync } = jest.mocked(await import('node:fs')));
     });
 
     it('should writeFileSync with the correct arguments', async () => {
       const { versionPackage } = await import('./versionPackage.ts');
       versionPackage(packageJson, { packageJsonPath, type: 'minor' });
 
-      expect(mockedWriteFileSync).toHaveBeenCalledWith(
+      expect(writeFileSync).toHaveBeenCalledWith(
         packageJsonPath,
         JSON.stringify({ ...packageJson, version: '1.1.0' }, undefined, 2)
       );
@@ -97,25 +84,18 @@ describe('versionPackage', () => {
   });
 
   describe('when the new version is greater than the latest version on npm', () => {
-    let mockedWriteFileSync: jest.MockedFunction<
-      (
-        file: PathOrFileDescriptor,
-        data: string | NodeJS.ArrayBufferView,
-        options?: WriteFileOptions | undefined
-      ) => void
-    >;
+    let writeFileSync: jest.Mocked<typeof import('node:fs')['writeFileSync']>;
 
     beforeEach(async () => {
-      const { writeFileSync } = await import('node:fs');
-      mockedWriteFileSync = jest.mocked(writeFileSync);
-      mockedWriteFileSync.mockClear();
+      jest.clearAllMocks();
+      ({ writeFileSync } = jest.mocked(await import('node:fs')));
     });
 
     it('should writeFileSync with the correct arguments', async () => {
       const { versionPackage } = await import('./versionPackage.ts');
       versionPackage(packageJson, { packageJsonPath, type: 'minor' });
 
-      expect(mockedWriteFileSync).toHaveBeenCalledWith(
+      expect(writeFileSync).toHaveBeenCalledWith(
         packageJsonPath,
         JSON.stringify({ ...packageJson, version: '1.1.0' }, undefined, 2)
       );
@@ -124,11 +104,10 @@ describe('versionPackage', () => {
 
   describe('when there is an exception throw writing the package.json', () => {
     beforeEach(async () => {
-      const { writeFileSync } = await import('node:fs');
-      const mockedWriteFileSync = jest.mocked(writeFileSync);
-      mockedWriteFileSync.mockClear();
+      jest.clearAllMocks();
+      const { writeFileSync } = jest.mocked(await import('node:fs'));
 
-      mockedWriteFileSync.mockImplementationOnce(() => {
+      writeFileSync.mockImplementationOnce(() => {
         throw new Error('oops');
       });
     });

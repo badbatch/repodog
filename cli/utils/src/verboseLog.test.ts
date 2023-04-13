@@ -1,16 +1,15 @@
 import { jest } from '@jest/globals';
-import { clearShelljsMock, shelljsMock } from '@repodog/cli-test-utils';
+import { shelljsMock } from '@repodog/cli-test-utils';
 
 jest.unstable_mockModule('shelljs', shelljsMock);
 
 describe('verboseLog', () => {
   describe('when verbose is true', () => {
-    let shelljs: jest.MockedObject<typeof import('shelljs')>;
+    let shelljs: jest.Mocked<typeof import('shelljs')>;
 
     beforeEach(async () => {
+      jest.clearAllMocks();
       shelljs = jest.mocked(await import('shelljs')).default;
-      clearShelljsMock(shelljs);
-
       const { setVerbose } = await import('./verboseLog.ts');
       setVerbose(true);
     });
@@ -23,12 +22,11 @@ describe('verboseLog', () => {
   });
 
   describe('when verbose is false', () => {
-    let shelljs: jest.MockedObject<typeof import('shelljs')>;
+    let shelljs: jest.Mocked<typeof import('shelljs')>;
 
     beforeEach(async () => {
+      jest.clearAllMocks();
       shelljs = jest.mocked(await import('shelljs')).default;
-      clearShelljsMock(shelljs);
-
       const { setVerbose } = await import('./verboseLog.ts');
       setVerbose(false);
     });

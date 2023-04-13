@@ -1,6 +1,6 @@
 import { jest } from '@jest/globals';
-import { clearShelljsMock, shelljsMock } from '@repodog/cli-test-utils';
-import { PackageManager, type ReleaseMeta } from '@repodog/cli-utils';
+import { shelljsMock } from '@repodog/cli-test-utils';
+import { PackageManager } from '@repodog/cli-utils';
 
 jest.unstable_mockModule('shelljs', shelljsMock);
 
@@ -22,19 +22,11 @@ const mockedProcessChdir = (process.chdir = jest.fn());
 
 describe('publishMonorepoPackages', () => {
   describe('when packages are published successfully', () => {
-    let mockedPublishPackage: jest.MockedFunction<
-      (packageJsonPath: string, { packageManager }: Pick<ReleaseMeta, 'packageManager'>) => void
-    >;
+    let publishPackage: jest.Mocked<typeof import('./publishPackage.ts')['publishPackage']>;
 
     beforeEach(async () => {
-      const shelljs = jest.mocked(await import('shelljs')).default;
-      clearShelljsMock(shelljs);
-
-      const { publishPackage } = await import('./publishPackage.ts');
-      mockedPublishPackage = jest.mocked(publishPackage);
-      mockedPublishPackage.mockClear();
-
-      mockedProcessChdir.mockClear();
+      jest.clearAllMocks();
+      ({ publishPackage } = jest.mocked(await import('./publishPackage.ts')));
     });
 
     it('should change current working directory correctly', async () => {
@@ -47,7 +39,7 @@ describe('publishMonorepoPackages', () => {
       const { publishMonorepoPackages } = await import('./publishMonorepoPackages.ts');
       publishMonorepoPackages(PackageManager.NPM);
 
-      expect(mockedPublishPackage.mock.calls).toEqual([
+      expect(publishPackage.mock.calls).toEqual([
         ['/root/alpha/package.json', { packageManager: PackageManager.NPM }],
         ['/root/bravo/package.json', { packageManager: PackageManager.NPM }],
         ['/root/charlie/package.json', { packageManager: PackageManager.NPM }],
@@ -56,21 +48,15 @@ describe('publishMonorepoPackages', () => {
   });
 
   describe('when there is an error publishing a package', () => {
-    let shelljs: jest.MockedObject<typeof import('shelljs')>;
-
-    let mockedPublishPackage: jest.MockedFunction<
-      (packageJsonPath: string, { packageManager }: Pick<ReleaseMeta, 'packageManager'>) => void
-    >;
+    let shelljs: jest.Mocked<typeof import('shelljs')>;
+    let publishPackage: jest.Mocked<typeof import('./publishPackage.ts')['publishPackage']>;
 
     beforeEach(async () => {
+      jest.clearAllMocks();
       shelljs = jest.mocked(await import('shelljs')).default;
-      clearShelljsMock(shelljs);
+      ({ publishPackage } = jest.mocked(await import('./publishPackage.ts')));
 
-      const { publishPackage } = await import('./publishPackage.ts');
-      mockedPublishPackage = jest.mocked(publishPackage);
-      mockedPublishPackage.mockClear();
-
-      mockedPublishPackage.mockImplementation(path => {
+      publishPackage.mockImplementation(path => {
         if (path.includes('bravo')) {
           throw new Error('oops');
         }
@@ -81,7 +67,7 @@ describe('publishMonorepoPackages', () => {
       const { publishMonorepoPackages } = await import('./publishMonorepoPackages.ts');
       publishMonorepoPackages(PackageManager.NPM);
 
-      expect(mockedPublishPackage.mock.calls).toEqual([
+      expect(publishPackage.mock.calls).toEqual([
         ['/root/alpha/package.json', { packageManager: PackageManager.NPM }],
         ['/root/bravo/package.json', { packageManager: PackageManager.NPM }],
         ['/root/charlie/package.json', { packageManager: PackageManager.NPM }],

@@ -8,11 +8,11 @@ jest.unstable_mockModule('@repodog/cli-utils', () => ({
 }));
 
 describe('executeHygen', () => {
-  let mockedAsyncExec: jest.MockedFunction<(cmd: string) => Promise<string>>;
+  let asyncExec: jest.Mocked<typeof import('@repodog/cli-utils')['asyncExec']>;
 
   beforeEach(async () => {
-    const { asyncExec } = await import('@repodog/cli-utils');
-    mockedAsyncExec = jest.mocked(asyncExec);
+    jest.resetAllMocks();
+    ({ asyncExec } = jest.mocked(await import('@repodog/cli-utils')));
   });
 
   it('should call asyncExec with the correct command', async () => {
@@ -27,7 +27,7 @@ describe('executeHygen', () => {
       hotel: true,
     });
 
-    expect(mockedAsyncExec).toHaveBeenCalledWith(
+    expect(asyncExec).toHaveBeenCalledWith(
       'HYGEN_TMPLS=root/_templates root/node_modules/bin/hygen new pkg --alpha "foxtrot" --charlie "23" --delta --foxtrot "golf" --hotel'
     );
   });

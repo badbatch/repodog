@@ -1,5 +1,5 @@
 import { jest } from '@jest/globals';
-import { clearGlobMock, globMock } from '@repodog/cli-test-utils';
+import { globMock } from '@repodog/cli-test-utils';
 import { PackageManager } from './types.ts';
 
 jest.unstable_mockModule('glob', globMock);
@@ -9,11 +9,11 @@ jest.unstable_mockModule('./getPackagePatterns.ts', () => ({
 }));
 
 describe('getMonorepoPackageJsonPaths', () => {
-  let glob: jest.MockedObject<typeof import('glob')>;
+  let glob: jest.Mocked<typeof import('glob')>;
 
   beforeEach(async () => {
+    jest.clearAllMocks();
     glob = jest.mocked(await import('glob')).default;
-    clearGlobMock(glob);
 
     glob.sync.mockImplementation(pattern => {
       switch (pattern) {

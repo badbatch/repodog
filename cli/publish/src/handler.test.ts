@@ -1,6 +1,5 @@
 import { jest } from '@jest/globals';
-import { clearShelljsMock, shelljsMock } from '@repodog/cli-test-utils';
-import type { PackageManager, ReleaseMeta } from '@repodog/cli-utils';
+import { shelljsMock } from '@repodog/cli-test-utils';
 
 jest.unstable_mockModule('shelljs', shelljsMock);
 
@@ -24,15 +23,13 @@ process.cwd = jest.fn().mockReturnValue('/root') as jest.Mocked<() => string>;
 
 describe('publish', () => {
   describe('when package manager is not found', () => {
-    let shelljs: jest.MockedObject<typeof import('shelljs')>;
+    let shelljs: jest.Mocked<typeof import('shelljs')>;
 
     beforeEach(async () => {
+      jest.clearAllMocks();
       shelljs = jest.mocked(await import('shelljs')).default;
-      clearShelljsMock(shelljs);
-
-      const { getPackageManager } = await import('@repodog/cli-utils');
-      const mockedGetPackageManager = jest.mocked(getPackageManager);
-      mockedGetPackageManager.mockReturnValueOnce(undefined); // eslint-disable-line unicorn/no-useless-undefined
+      const { getPackageManager } = jest.mocked(await import('@repodog/cli-utils'));
+      getPackageManager.mockReturnValueOnce(undefined); // eslint-disable-line unicorn/no-useless-undefined
     });
 
     it('should log the correct error message', async () => {
@@ -54,26 +51,20 @@ describe('publish', () => {
   });
 
   describe('when project has a standard repo structure', () => {
-    let shelljs: jest.MockedObject<typeof import('shelljs')>;
-
-    let mockedPublishPackage: jest.MockedFunction<
-      (packageJsonPath: string, releaseMeta: Pick<ReleaseMeta, 'packageManager'>) => void
-    >;
+    let shelljs: jest.Mocked<typeof import('shelljs')>;
+    let publishPackage: jest.Mocked<typeof import('./utils/publishPackage.ts')['publishPackage']>;
 
     beforeEach(async () => {
+      jest.clearAllMocks();
       shelljs = jest.mocked(await import('shelljs')).default;
-      clearShelljsMock(shelljs);
-
-      const { publishPackage } = await import('./utils/publishPackage.ts');
-      mockedPublishPackage = jest.mocked(publishPackage);
-      mockedPublishPackage.mockClear();
+      ({ publishPackage } = jest.mocked(await import('./utils/publishPackage.ts')));
     });
 
     it('should call publishPackage with the correct arguments', async () => {
       const { handler } = await import('./handler.ts');
       handler();
 
-      expect(mockedPublishPackage).toHaveBeenCalledWith('/root/package.json', {
+      expect(publishPackage).toHaveBeenCalledWith('/root/package.json', {
         packageManager: 'pnpm',
       });
     });
@@ -86,26 +77,24 @@ describe('publish', () => {
   });
 
   describe('when project has a monorepo structure', () => {
-    let shelljs: jest.MockedObject<typeof import('shelljs')>;
-    let mockedPublishMonorepoPackages: jest.MockedFunction<(packageManager: PackageManager) => void>;
+    let shelljs: jest.Mocked<typeof import('shelljs')>;
+
+    let publishMonorepoPackages: jest.Mocked<
+      typeof import('./utils/publishMonorepoPackages.ts')['publishMonorepoPackages']
+    >;
 
     beforeEach(async () => {
+      jest.clearAllMocks();
       shelljs = jest.mocked(await import('shelljs')).default;
-      clearShelljsMock(shelljs);
-
-      const { isProjectMonorepo } = await import('@repodog/cli-utils');
-      const mockedIsProjectMonorepo = jest.mocked(isProjectMonorepo);
-      mockedIsProjectMonorepo.mockReturnValue(true);
-
-      const { publishMonorepoPackages } = await import('./utils/publishMonorepoPackages.ts');
-      mockedPublishMonorepoPackages = jest.mocked(publishMonorepoPackages);
-      mockedPublishMonorepoPackages.mockClear();
+      const { isProjectMonorepo } = jest.mocked(await import('@repodog/cli-utils'));
+      isProjectMonorepo.mockReturnValue(true);
+      ({ publishMonorepoPackages } = jest.mocked(await import('./utils/publishMonorepoPackages.ts')));
     });
 
     it('should call publishMonorepoPackages with the correct argument', async () => {
       const { handler } = await import('./handler.ts');
       handler();
-      expect(mockedPublishMonorepoPackages).toHaveBeenCalledWith('pnpm');
+      expect(publishMonorepoPackages).toHaveBeenCalledWith('pnpm');
     });
 
     it('should exit with the correct code', async () => {

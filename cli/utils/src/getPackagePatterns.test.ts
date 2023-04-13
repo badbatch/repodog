@@ -20,10 +20,9 @@ describe('getPackagePatterns', () => {
   describe('when the package manager is npm', () => {
     describe('when there are no workspaces declared', () => {
       beforeEach(async () => {
-        const { loadPackageJson } = await import('./loadPackageJson.ts');
-        const mockedLoadPackageJson = jest.mocked(loadPackageJson);
-        mockedLoadPackageJson.mockClear();
-        mockedLoadPackageJson.mockReturnValue({ name: 'alpha', version: '1.0.0' });
+        jest.clearAllMocks();
+        const { loadPackageJson } = jest.mocked(await import('./loadPackageJson.ts'));
+        loadPackageJson.mockReturnValue({ name: 'alpha', version: '1.0.0' });
       });
 
       it('should return the correct patterns', async () => {
@@ -34,11 +33,10 @@ describe('getPackagePatterns', () => {
 
     describe('when workspaces is an array', () => {
       beforeEach(async () => {
-        const { loadPackageJson } = await import('./loadPackageJson.ts');
-        const mockedLoadPackageJson = jest.mocked(loadPackageJson);
-        mockedLoadPackageJson.mockClear();
+        jest.clearAllMocks();
+        const { loadPackageJson } = jest.mocked(await import('./loadPackageJson.ts'));
 
-        mockedLoadPackageJson.mockReturnValue({
+        loadPackageJson.mockReturnValue({
           name: 'alpha',
           version: '1.0.0',
           workspaces: ['apps/**', 'configs/*', 'graphql/*'],
@@ -53,11 +51,10 @@ describe('getPackagePatterns', () => {
 
     describe('when workspaces is not an array', () => {
       beforeEach(async () => {
-        const { loadPackageJson } = await import('./loadPackageJson.ts');
-        const mockedLoadPackageJson = jest.mocked(loadPackageJson);
-        mockedLoadPackageJson.mockClear();
+        jest.clearAllMocks();
+        const { loadPackageJson } = jest.mocked(await import('./loadPackageJson.ts'));
 
-        mockedLoadPackageJson.mockReturnValue({
+        loadPackageJson.mockReturnValue({
           name: 'alpha',
           version: '1.0.0',
           workspaces: { packages: ['apps/**', 'configs/*', 'graphql/*'] },
@@ -74,10 +71,9 @@ describe('getPackagePatterns', () => {
   describe('when the package manager is yarn', () => {
     describe('when there are no workspaces declared', () => {
       beforeEach(async () => {
-        const { loadPackageJson } = await import('./loadPackageJson.ts');
-        const mockedLoadPackageJson = jest.mocked(loadPackageJson);
-        mockedLoadPackageJson.mockClear();
-        mockedLoadPackageJson.mockReturnValue({ name: 'alpha', version: '1.0.0' });
+        jest.clearAllMocks();
+        const { loadPackageJson } = jest.mocked(await import('./loadPackageJson.ts'));
+        loadPackageJson.mockReturnValue({ name: 'alpha', version: '1.0.0' });
       });
 
       it('should return the correct patterns', async () => {
@@ -88,11 +84,10 @@ describe('getPackagePatterns', () => {
 
     describe('when workspaces is an array', () => {
       beforeEach(async () => {
-        const { loadPackageJson } = await import('./loadPackageJson.ts');
-        const mockedLoadPackageJson = jest.mocked(loadPackageJson);
-        mockedLoadPackageJson.mockClear();
+        jest.clearAllMocks();
+        const { loadPackageJson } = jest.mocked(await import('./loadPackageJson.ts'));
 
-        mockedLoadPackageJson.mockReturnValue({
+        loadPackageJson.mockReturnValue({
           name: 'alpha',
           version: '1.0.0',
           workspaces: ['apps/**', 'configs/*', 'graphql/*'],
@@ -107,11 +102,10 @@ describe('getPackagePatterns', () => {
 
     describe('when workspaces is not an array', () => {
       beforeEach(async () => {
-        const { loadPackageJson } = await import('./loadPackageJson.ts');
-        const mockedLoadPackageJson = jest.mocked(loadPackageJson);
-        mockedLoadPackageJson.mockClear();
+        jest.clearAllMocks();
+        const { loadPackageJson } = jest.mocked(await import('./loadPackageJson.ts'));
 
-        mockedLoadPackageJson.mockReturnValue({
+        loadPackageJson.mockReturnValue({
           name: 'alpha',
           version: '1.0.0',
           workspaces: { packages: ['apps/**', 'configs/*', 'graphql/*'] },
@@ -127,10 +121,9 @@ describe('getPackagePatterns', () => {
 
   describe('when the package manager is pnpm', () => {
     beforeEach(async () => {
-      const { readFileSync } = await import('node:fs');
-      const mockedReadFileSync = jest.mocked(readFileSync);
-      mockedReadFileSync.mockClear();
-      mockedReadFileSync.mockReturnValue('{ "packages": ["apps/**", "configs/*", "graphql/*"] }');
+      jest.clearAllMocks();
+      const { readFileSync } = jest.mocked(await import('node:fs'));
+      readFileSync.mockReturnValue('{ "packages": ["apps/**", "configs/*", "graphql/*"] }');
     });
 
     it('should return the correct patterns', async () => {
@@ -141,11 +134,10 @@ describe('getPackagePatterns', () => {
 
   describe('when an exception is thrown retreiving patterns', () => {
     beforeEach(async () => {
-      const { readFileSync } = await import('node:fs');
-      const mockedReadFileSync = jest.mocked(readFileSync);
-      mockedReadFileSync.mockClear();
+      jest.clearAllMocks();
+      const { readFileSync } = jest.mocked(await import('node:fs'));
 
-      mockedReadFileSync.mockImplementation(() => {
+      readFileSync.mockImplementation(() => {
         throw new Error('oops');
       });
     });

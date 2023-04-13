@@ -1,6 +1,6 @@
 import { jest } from '@jest/globals';
 import { loadPackageJsonMock } from '@repodog/cli-test-utils';
-import { PackageManager, type ReleaseMeta, getInternalDependencies } from '@repodog/cli-utils';
+import { PackageManager, getInternalDependencies } from '@repodog/cli-utils';
 import type { PackageJson, SetRequired } from 'type-fest';
 
 jest.unstable_mockModule('@repodog/cli-utils', () => ({
@@ -52,24 +52,18 @@ process.cwd = jest.fn().mockReturnValue('/root') as jest.Mocked<() => string>;
 
 describe('versionMonorepoPackages', () => {
   describe('when force is false', () => {
-    let mockedVersionPackage: jest.MockedFunction<
-      (
-        packageJson: SetRequired<PackageJson, 'name' | 'version'>,
-        meta: Pick<ReleaseMeta, 'packageJsonPath' | 'preReleaseId' | 'tag' | 'type'>
-      ) => void
-    >;
+    let versionPackage: jest.Mocked<typeof import('./versionPackage.ts')['versionPackage']>;
 
     beforeEach(async () => {
-      const { versionPackage } = await import('./versionPackage.ts');
-      mockedVersionPackage = jest.mocked(versionPackage);
-      mockedVersionPackage.mockClear();
+      jest.clearAllMocks();
+      ({ versionPackage } = jest.mocked(await import('./versionPackage.ts')));
     });
 
     it('should version packages in which files have changed since last tag', async () => {
       const { versionMonorepoPackages } = await import('./versionMonorepoPackages.ts');
       versionMonorepoPackages({ force: false, packageManager: PackageManager.NPM, type: 'major' });
 
-      expect(mockedVersionPackage.mock.calls).toEqual([
+      expect(versionPackage.mock.calls).toEqual([
         [
           { name: 'delta', publishConfig: { access: 'public' }, version: '1.0.0' },
           {
@@ -93,24 +87,18 @@ describe('versionMonorepoPackages', () => {
   });
 
   describe('when force is true', () => {
-    let mockedVersionPackage: jest.MockedFunction<
-      (
-        packageJson: SetRequired<PackageJson, 'name' | 'version'>,
-        meta: Pick<ReleaseMeta, 'packageJsonPath' | 'preReleaseId' | 'tag' | 'type'>
-      ) => void
-    >;
+    let versionPackage: jest.Mocked<typeof import('./versionPackage.ts')['versionPackage']>;
 
     beforeEach(async () => {
-      const { versionPackage } = await import('./versionPackage.ts');
-      mockedVersionPackage = jest.mocked(versionPackage);
-      mockedVersionPackage.mockClear();
+      jest.clearAllMocks();
+      ({ versionPackage } = jest.mocked(await import('./versionPackage.ts')));
     });
 
     it('should version packages regardless of whether files have changed', async () => {
       const { versionMonorepoPackages } = await import('./versionMonorepoPackages.ts');
       versionMonorepoPackages({ force: true, packageManager: PackageManager.NPM, type: 'major' });
 
-      expect(mockedVersionPackage.mock.calls).toEqual([
+      expect(versionPackage.mock.calls).toEqual([
         [
           { name: 'echo', publishConfig: { access: 'public' }, version: '1.0.0' },
           {
@@ -152,19 +140,13 @@ describe('versionMonorepoPackages', () => {
   });
 
   describe('when package has versioned internal dependencies', () => {
-    let mockedVersionPackage: jest.MockedFunction<
-      (
-        packageJson: SetRequired<PackageJson, 'name' | 'version'>,
-        meta: Pick<ReleaseMeta, 'packageJsonPath' | 'preReleaseId' | 'tag' | 'type'>
-      ) => void
-    >;
+    let versionPackage: jest.Mocked<typeof import('./versionPackage.ts')['versionPackage']>;
 
     beforeEach(async () => {
-      const { loadPackageJson } = await import('@repodog/cli-utils');
-      const mockedLoadPackageJson = jest.mocked(loadPackageJson);
-      mockedLoadPackageJson.mockClear();
+      jest.clearAllMocks();
+      const { loadPackageJson } = jest.mocked(await import('@repodog/cli-utils'));
 
-      mockedLoadPackageJson.mockImplementation((path): SetRequired<PackageJson, 'name' | 'version'> => {
+      loadPackageJson.mockImplementation((path): SetRequired<PackageJson, 'name' | 'version'> => {
         const match = /\/([a-z]+)\/package.json$/.exec(path)!;
         const name = match[1]!;
 
@@ -179,16 +161,14 @@ describe('versionMonorepoPackages', () => {
         return { name, version: '1.0.0' };
       });
 
-      const { versionPackage } = await import('./versionPackage.ts');
-      mockedVersionPackage = jest.mocked(versionPackage);
-      mockedVersionPackage.mockClear();
+      ({ versionPackage } = jest.mocked(await import('./versionPackage.ts')));
     });
 
     it('should version the package regardless of whether its files have changed', async () => {
       const { versionMonorepoPackages } = await import('./versionMonorepoPackages.ts');
       versionMonorepoPackages({ force: false, packageManager: PackageManager.NPM, type: 'major' });
 
-      expect(mockedVersionPackage.mock.calls).toEqual([
+      expect(versionPackage.mock.calls).toEqual([
         [
           { name: 'delta', version: '1.0.0' },
           {

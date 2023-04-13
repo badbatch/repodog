@@ -1,17 +1,16 @@
 import { jest } from '@jest/globals';
-import { clearShelljsMock, shelljsMock } from '@repodog/cli-test-utils';
+import { shelljsMock } from '@repodog/cli-test-utils';
 import type { ChildProcess } from 'node:child_process';
 
 jest.unstable_mockModule('shelljs', shelljsMock);
 
 describe('getLastReleaseTag', () => {
   describe('when there are cached changed files', () => {
-    let shelljs: jest.MockedObject<typeof import('shelljs')>;
+    let shelljs: jest.Mocked<typeof import('shelljs')>;
 
     beforeEach(async () => {
+      jest.clearAllMocks();
       shelljs = jest.mocked(await import('shelljs')).default;
-      clearShelljsMock(shelljs);
-
       const { addLastReleaseTagToCache, clearLastReleaseTagCache } = await import('./getLastReleaseTag.ts');
       clearLastReleaseTagCache();
       addLastReleaseTagToCache('v1.1.0');
@@ -30,11 +29,11 @@ describe('getLastReleaseTag', () => {
   });
 
   describe('when there are no cached changed files', () => {
-    let shelljs: jest.MockedObject<typeof import('shelljs')>;
+    let shelljs: jest.Mocked<typeof import('shelljs')>;
 
     beforeEach(async () => {
+      jest.clearAllMocks();
       shelljs = jest.mocked(await import('shelljs')).default;
-      clearShelljsMock(shelljs);
 
       shelljs.exec.mockReturnValue({
         stdout: 'v1.2.0',

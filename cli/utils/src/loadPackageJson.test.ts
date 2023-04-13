@@ -9,16 +9,14 @@ describe('loadPackageJson', () => {
   const packageJson = { name: 'alpha', version: '1.0.0' };
 
   describe('when there is a cached package.json', () => {
-    let mockedReadFileSync: jest.Mocked<typeof import('node:fs')['readFileSync']>;
+    let readFileSync: jest.Mocked<typeof import('node:fs')['readFileSync']>;
 
     beforeEach(async () => {
+      jest.clearAllMocks();
       const { addPackageJsonToCache, clearPackageJsonCache } = await import('./loadPackageJson.ts');
       clearPackageJsonCache();
       addPackageJsonToCache(packageJsonPath, packageJson);
-
-      const { readFileSync } = await import('node:fs');
-      mockedReadFileSync = jest.mocked(readFileSync);
-      mockedReadFileSync.mockClear();
+      ({ readFileSync } = jest.mocked(await import('node:fs')));
     });
 
     it('should return the cached package.json', async () => {
@@ -29,22 +27,20 @@ describe('loadPackageJson', () => {
     it('should not load the package.json', async () => {
       const { loadPackageJson } = await import('./loadPackageJson.ts');
       loadPackageJson(packageJsonPath);
-      expect(mockedReadFileSync).not.toHaveBeenCalled();
+      expect(readFileSync).not.toHaveBeenCalled();
     });
   });
 
   describe('when there is an error loading the package.json', () => {
-    let mockedReadFileSync: jest.Mocked<typeof import('node:fs')['readFileSync']>;
+    let readFileSync: jest.Mocked<typeof import('node:fs')['readFileSync']>;
 
     beforeEach(async () => {
+      jest.clearAllMocks();
       const { clearPackageJsonCache } = await import('./loadPackageJson.ts');
       clearPackageJsonCache();
+      ({ readFileSync } = jest.mocked(await import('node:fs')));
 
-      const { readFileSync } = await import('node:fs');
-      mockedReadFileSync = jest.mocked(readFileSync);
-      mockedReadFileSync.mockClear();
-
-      mockedReadFileSync.mockImplementationOnce(() => {
+      readFileSync.mockImplementationOnce(() => {
         throw new Error('oops');
       });
     });
@@ -59,16 +55,14 @@ describe('loadPackageJson', () => {
   });
 
   describe('when the package.json name is missing', () => {
-    let mockedReadFileSync: jest.Mocked<typeof import('node:fs')['readFileSync']>;
+    let readFileSync: jest.Mocked<typeof import('node:fs')['readFileSync']>;
 
     beforeEach(async () => {
+      jest.clearAllMocks();
       const { clearPackageJsonCache } = await import('./loadPackageJson.ts');
       clearPackageJsonCache();
-
-      const { readFileSync } = await import('node:fs');
-      mockedReadFileSync = jest.mocked(readFileSync);
-      mockedReadFileSync.mockClear();
-      mockedReadFileSync.mockReturnValueOnce('{ "version": "1.0.0" }');
+      ({ readFileSync } = jest.mocked(await import('node:fs')));
+      readFileSync.mockReturnValueOnce('{ "version": "1.0.0" }');
     });
 
     it('should throw the correct error', async () => {
@@ -81,16 +75,14 @@ describe('loadPackageJson', () => {
   });
 
   describe('when the package.json version is missing', () => {
-    let mockedReadFileSync: jest.Mocked<typeof import('node:fs')['readFileSync']>;
+    let readFileSync: jest.Mocked<typeof import('node:fs')['readFileSync']>;
 
     beforeEach(async () => {
+      jest.clearAllMocks();
       const { clearPackageJsonCache } = await import('./loadPackageJson.ts');
       clearPackageJsonCache();
-
-      const { readFileSync } = await import('node:fs');
-      mockedReadFileSync = jest.mocked(readFileSync);
-      mockedReadFileSync.mockClear();
-      mockedReadFileSync.mockReturnValueOnce('{ "name": "alpha" }');
+      ({ readFileSync } = jest.mocked(await import('node:fs')));
+      readFileSync.mockReturnValueOnce('{ "name": "alpha" }');
     });
 
     it('should throw the correct error', async () => {
@@ -104,6 +96,7 @@ describe('loadPackageJson', () => {
 
   describe('when the package.json name and version are present', () => {
     beforeEach(async () => {
+      jest.clearAllMocks();
       const { clearPackageJsonCache } = await import('./loadPackageJson.ts');
       clearPackageJsonCache();
     });

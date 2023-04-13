@@ -8,32 +8,28 @@ jest.unstable_mockModule('./repodogConfig.ts', () => ({
 
 describe('dryRunFlag', () => {
   describe('clearDryRunFlag', () => {
-    let mockedWriteRepodogConfig: jest.MockedFunction<(repodogConfig: RepodogConfig) => void>;
+    let writeRepodogConfig: jest.Mocked<typeof import('./repodogConfig.ts')['writeRepodogConfig']>;
 
     beforeEach(async () => {
-      const { loadRepodogConfig, writeRepodogConfig } = await import('./repodogConfig.ts');
-      const mockedLoadRepodogConfig = jest.mocked(loadRepodogConfig);
-      mockedLoadRepodogConfig.mockReset();
-      mockedLoadRepodogConfig.mockReturnValueOnce({ __activeDryRun: true });
-
-      mockedWriteRepodogConfig = jest.mocked(writeRepodogConfig);
-      mockedWriteRepodogConfig.mockClear();
+      jest.clearAllMocks();
+      let loadRepodogConfig: jest.Mocked<typeof import('./repodogConfig.ts')['loadRepodogConfig']>;
+      ({ loadRepodogConfig, writeRepodogConfig } = jest.mocked(await import('./repodogConfig.ts')));
+      loadRepodogConfig.mockReturnValueOnce({ __activeDryRun: true });
     });
 
     it('should call writeRepodogConfig with the correct argument', async () => {
       const { clearDryRunFlag } = await import('./dryRunFlag.ts');
       clearDryRunFlag();
-      expect(mockedWriteRepodogConfig).toHaveBeenCalledWith({});
+      expect(writeRepodogConfig).toHaveBeenCalledWith({});
     });
   });
 
   describe('hasDryRunFlag', () => {
     describe('when the config does not include __activeDryRun flag', () => {
       beforeEach(async () => {
-        const { loadRepodogConfig } = await import('./repodogConfig.ts');
-        const mockedLoadRepodogConfig = jest.mocked(loadRepodogConfig);
-        mockedLoadRepodogConfig.mockReset();
-        mockedLoadRepodogConfig.mockReturnValueOnce({});
+        jest.clearAllMocks();
+        const { loadRepodogConfig } = jest.mocked(await import('./repodogConfig.ts'));
+        loadRepodogConfig.mockReturnValueOnce({});
       });
 
       it('should return false', async () => {
@@ -44,10 +40,9 @@ describe('dryRunFlag', () => {
 
     describe('when the config does include __activeDryRun flag', () => {
       beforeEach(async () => {
-        const { loadRepodogConfig } = await import('./repodogConfig.ts');
-        const mockedLoadRepodogConfig = jest.mocked(loadRepodogConfig);
-        mockedLoadRepodogConfig.mockReset();
-        mockedLoadRepodogConfig.mockReturnValueOnce({ __activeDryRun: true });
+        jest.clearAllMocks();
+        const { loadRepodogConfig } = jest.mocked(await import('./repodogConfig.ts'));
+        loadRepodogConfig.mockReturnValueOnce({ __activeDryRun: true });
       });
 
       it('should return true', async () => {
@@ -58,22 +53,19 @@ describe('dryRunFlag', () => {
   });
 
   describe('setDryRunFlag', () => {
-    let mockedWriteRepodogConfig: jest.MockedFunction<(repodogConfig: RepodogConfig) => void>;
+    let writeRepodogConfig: jest.Mocked<typeof import('./repodogConfig.ts')['writeRepodogConfig']>;
 
     beforeEach(async () => {
-      const { loadRepodogConfig, writeRepodogConfig } = await import('./repodogConfig.ts');
-      const mockedLoadRepodogConfig = jest.mocked(loadRepodogConfig);
-      mockedLoadRepodogConfig.mockReset();
-      mockedLoadRepodogConfig.mockReturnValueOnce({ alpha: 'bravo' } as RepodogConfig);
-
-      mockedWriteRepodogConfig = jest.mocked(writeRepodogConfig);
-      mockedWriteRepodogConfig.mockClear();
+      jest.clearAllMocks();
+      let loadRepodogConfig: jest.Mocked<typeof import('./repodogConfig.ts')['loadRepodogConfig']>;
+      ({ loadRepodogConfig, writeRepodogConfig } = jest.mocked(await import('./repodogConfig.ts')));
+      loadRepodogConfig.mockReturnValueOnce({ alpha: 'bravo' } as RepodogConfig);
     });
 
     it('should call writeRepodogConfig with enriched existing config', async () => {
       const { setDryRunFlag } = await import('./dryRunFlag.ts');
       setDryRunFlag();
-      expect(mockedWriteRepodogConfig).toHaveBeenCalledWith({ __activeDryRun: true, alpha: 'bravo' });
+      expect(writeRepodogConfig).toHaveBeenCalledWith({ __activeDryRun: true, alpha: 'bravo' });
     });
   });
 });

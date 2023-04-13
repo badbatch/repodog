@@ -1,15 +1,11 @@
 describe('isValidWriteType', () => {
-  let isValidWriteType: typeof import('./isValidWriteType.ts')['isValidWriteType'];
-
-  beforeEach(async () => {
-    ({ isValidWriteType } = await import('./isValidWriteType.ts'));
-  });
-
-  it('should return true for a valid write type', () => {
+  it('should return true for a valid write type', async () => {
+    const { isValidWriteType } = await import('./isValidWriteType.ts');
     expect(isValidWriteType('test')).toBe(true);
   });
 
-  it('should return false for an invalid write type', () => {
+  it('should return false for an invalid write type', async () => {
+    const { isValidWriteType } = await import('./isValidWriteType.ts');
     expect(isValidWriteType('invalid')).toBe(false);
   });
 });

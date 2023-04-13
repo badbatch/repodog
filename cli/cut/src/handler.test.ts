@@ -1,23 +1,11 @@
 import { jest } from '@jest/globals';
-import { clearShelljsMock, shelljsMock } from '@repodog/cli-test-utils';
-import {
-  PRE_RELEASE_TYPES,
-  type ReleaseMeta,
-  VALID_RELEASE_TAGS,
-  VALID_RELEASE_TYPES,
-  isPreRelease,
-  isValidReleaseTag,
-  isValidReleaseType,
-} from '@repodog/cli-utils';
-import type { PathOrFileDescriptor, WriteFileOptions } from 'node:fs';
-import type { PackageJson, SetRequired } from 'type-fest';
+import { shelljsMock } from '@repodog/cli-test-utils';
+import * as cliUtils from '@repodog/cli-utils';
 
 jest.unstable_mockModule('shelljs', shelljsMock);
 
 jest.unstable_mockModule('@repodog/cli-utils', () => ({
-  PRE_RELEASE_TYPES,
-  VALID_RELEASE_TAGS,
-  VALID_RELEASE_TYPES,
+  ...cliUtils,
   addCommitPushRelease: jest.fn(),
   calculateDuration: jest.fn().mockReturnValue('1'),
   clearDryRunFlag: jest.fn(),
@@ -28,10 +16,7 @@ jest.unstable_mockModule('@repodog/cli-utils', () => ({
   getPackageManager: jest.fn().mockReturnValue('pnpm'),
   hasDryRunFlag: jest.fn().mockReturnValue(false),
   haveFilesChanged: jest.fn().mockReturnValue(true),
-  isPreRelease,
   isProjectMonorepo: jest.fn().mockReturnValue(false),
-  isValidReleaseTag,
-  isValidReleaseType,
   loadPackageJson: jest.fn().mockReturnValue({
     version: '1.0.0',
   }),
@@ -57,26 +42,21 @@ process.cwd = jest.fn().mockReturnValue('/root') as jest.Mocked<() => string>;
 describe('cut', () => {
   describe('when dry-run flag is present in .repodogrc', () => {
     describe('when release type is "dry-run"', () => {
-      let shelljs: jest.MockedObject<typeof import('shelljs')>;
-      let mockedAddCommitPushRelease: jest.MockedFunction<(version: string) => void>;
+      let shelljs: jest.Mocked<typeof import('shelljs')>;
+      let addCommitPushRelease: jest.Mocked<typeof import('@repodog/cli-utils')['addCommitPushRelease']>;
 
       beforeEach(async () => {
+        jest.clearAllMocks();
         shelljs = jest.mocked(await import('shelljs')).default;
-        clearShelljsMock(shelljs);
-
-        const { addCommitPushRelease, hasDryRunFlag } = await import('@repodog/cli-utils');
-        mockedAddCommitPushRelease = jest.mocked(addCommitPushRelease);
-        mockedAddCommitPushRelease.mockClear();
-
-        const mockedHasDryRunFlag = jest.mocked(hasDryRunFlag);
-        mockedHasDryRunFlag.mockClear();
-        mockedHasDryRunFlag.mockReturnValueOnce(true);
+        let hasDryRunFlag: jest.Mocked<typeof import('@repodog/cli-utils')['hasDryRunFlag']>;
+        ({ addCommitPushRelease, hasDryRunFlag } = jest.mocked(await import('@repodog/cli-utils')));
+        hasDryRunFlag.mockReturnValueOnce(true);
       });
 
       it('should call addCommitPushRelease', async () => {
         const { handler } = await import('./handler.ts');
         handler({ type: 'dry-run' });
-        expect(mockedAddCommitPushRelease).toHaveBeenCalled();
+        expect(addCommitPushRelease).toHaveBeenCalled();
       });
 
       it('should exit with the correct code', async () => {
@@ -87,26 +67,21 @@ describe('cut', () => {
     });
 
     describe('when release type is not "dry-run"', () => {
-      let shelljs: jest.MockedObject<typeof import('shelljs')>;
-      let mockedAddCommitPushRelease: jest.MockedFunction<(version: string) => void>;
+      let shelljs: jest.Mocked<typeof import('shelljs')>;
+      let addCommitPushRelease: jest.Mocked<typeof import('@repodog/cli-utils')['addCommitPushRelease']>;
 
       beforeEach(async () => {
+        jest.clearAllMocks();
         shelljs = jest.mocked(await import('shelljs')).default;
-        clearShelljsMock(shelljs);
-
-        const { addCommitPushRelease, hasDryRunFlag } = await import('@repodog/cli-utils');
-        mockedAddCommitPushRelease = jest.mocked(addCommitPushRelease);
-        mockedAddCommitPushRelease.mockClear();
-
-        const mockedHasDryRunFlag = jest.mocked(hasDryRunFlag);
-        mockedHasDryRunFlag.mockClear();
-        mockedHasDryRunFlag.mockReturnValueOnce(true);
+        let hasDryRunFlag: jest.Mocked<typeof import('@repodog/cli-utils')['hasDryRunFlag']>;
+        ({ addCommitPushRelease, hasDryRunFlag } = jest.mocked(await import('@repodog/cli-utils')));
+        hasDryRunFlag.mockReturnValueOnce(true);
       });
 
       it('should not call addCommitPushRelease', async () => {
         const { handler } = await import('./handler.ts');
         handler({ type: 'major' });
-        expect(mockedAddCommitPushRelease).not.toHaveBeenCalled();
+        expect(addCommitPushRelease).not.toHaveBeenCalled();
       });
 
       it('should log the correct error message', async () => {
@@ -127,11 +102,11 @@ describe('cut', () => {
   });
 
   describe('when release type is not valid', () => {
-    let shelljs: jest.MockedObject<typeof import('shelljs')>;
+    let shelljs: jest.Mocked<typeof import('shelljs')>;
 
     beforeEach(async () => {
+      jest.clearAllMocks();
       shelljs = jest.mocked(await import('shelljs')).default;
-      clearShelljsMock(shelljs);
     });
 
     it('should log the correct error message', async () => {
@@ -153,11 +128,11 @@ describe('cut', () => {
   });
 
   describe('when release tag is not valid', () => {
-    let shelljs: jest.MockedObject<typeof import('shelljs')>;
+    let shelljs: jest.Mocked<typeof import('shelljs')>;
 
     beforeEach(async () => {
+      jest.clearAllMocks();
       shelljs = jest.mocked(await import('shelljs')).default;
-      clearShelljsMock(shelljs);
     });
 
     it('should log the correct error message', async () => {
@@ -177,11 +152,11 @@ describe('cut', () => {
   });
 
   describe('when release tag is valid, but type is not pre release', () => {
-    let shelljs: jest.MockedObject<typeof import('shelljs')>;
+    let shelljs: jest.Mocked<typeof import('shelljs')>;
 
     beforeEach(async () => {
+      jest.clearAllMocks();
       shelljs = jest.mocked(await import('shelljs')).default;
-      clearShelljsMock(shelljs);
     });
 
     it('should log the correct error message', async () => {
@@ -201,15 +176,13 @@ describe('cut', () => {
   });
 
   describe('when package manager is not found', () => {
-    let shelljs: jest.MockedObject<typeof import('shelljs')>;
+    let shelljs: jest.Mocked<typeof import('shelljs')>;
 
     beforeEach(async () => {
+      jest.clearAllMocks();
       shelljs = jest.mocked(await import('shelljs')).default;
-      clearShelljsMock(shelljs);
-
-      const { getPackageManager } = await import('@repodog/cli-utils');
-      const mockedGetPackageManager = jest.mocked(getPackageManager);
-      mockedGetPackageManager.mockReturnValueOnce(undefined); // eslint-disable-line unicorn/no-useless-undefined
+      const { getPackageManager } = jest.mocked(await import('@repodog/cli-utils'));
+      getPackageManager.mockReturnValueOnce(undefined); // eslint-disable-line unicorn/no-useless-undefined
     });
 
     it('should log the correct error message', async () => {
@@ -231,15 +204,13 @@ describe('cut', () => {
   });
 
   describe('when force is false and no files have changed', () => {
-    let shelljs: jest.MockedObject<typeof import('shelljs')>;
+    let shelljs: jest.Mocked<typeof import('shelljs')>;
 
     beforeEach(async () => {
+      jest.clearAllMocks();
       shelljs = jest.mocked(await import('shelljs')).default;
-      clearShelljsMock(shelljs);
-
-      const { haveFilesChanged } = await import('@repodog/cli-utils');
-      const mockedHaveFilesChanged = jest.mocked(haveFilesChanged);
-      mockedHaveFilesChanged.mockReturnValueOnce(false);
+      const { haveFilesChanged } = jest.mocked(await import('@repodog/cli-utils'));
+      haveFilesChanged.mockReturnValueOnce(false);
     });
 
     it('should log the correct error message', async () => {
@@ -259,15 +230,13 @@ describe('cut', () => {
   });
 
   describe('when the new project version is invalid', () => {
-    let shelljs: jest.MockedObject<typeof import('shelljs')>;
+    let shelljs: jest.Mocked<typeof import('shelljs')>;
 
     beforeEach(async () => {
+      jest.clearAllMocks();
       shelljs = jest.mocked(await import('shelljs')).default;
-      clearShelljsMock(shelljs);
-
-      const { getNewVersion } = await import('@repodog/cli-utils');
-      const mockedGetNewVersion = jest.mocked(getNewVersion);
-      mockedGetNewVersion.mockReturnValueOnce(null); // eslint-disable-line unicorn/no-null
+      const { getNewVersion } = jest.mocked(await import('@repodog/cli-utils'));
+      getNewVersion.mockReturnValueOnce(null); // eslint-disable-line unicorn/no-null
     });
 
     it('should log the correct error message', async () => {
@@ -288,16 +257,14 @@ describe('cut', () => {
 
   describe('cut:pre-version script', () => {
     describe('when the script is provided and skipPrehook is false', () => {
-      let shelljs: jest.MockedObject<typeof import('shelljs')>;
+      let shelljs: jest.Mocked<typeof import('shelljs')>;
 
       beforeEach(async () => {
+        jest.clearAllMocks();
         shelljs = jest.mocked(await import('shelljs')).default;
-        clearShelljsMock(shelljs);
+        const { loadPackageJson } = jest.mocked(await import('@repodog/cli-utils'));
 
-        const { loadPackageJson } = await import('@repodog/cli-utils');
-        const mockedLoadPackageJson = jest.mocked(loadPackageJson);
-
-        mockedLoadPackageJson.mockReturnValueOnce({
+        loadPackageJson.mockReturnValueOnce({
           name: 'alpha',
           scripts: {
             'cut:pre-version': 'pnpm run pre-version-script',
@@ -314,16 +281,14 @@ describe('cut', () => {
     });
 
     describe('when the script is provided and skipPrehook is true', () => {
-      let shelljs: jest.MockedObject<typeof import('shelljs')>;
+      let shelljs: jest.Mocked<typeof import('shelljs')>;
 
       beforeEach(async () => {
+        jest.clearAllMocks();
         shelljs = jest.mocked(await import('shelljs')).default;
-        clearShelljsMock(shelljs);
+        const { loadPackageJson } = jest.mocked(await import('@repodog/cli-utils'));
 
-        const { loadPackageJson } = await import('@repodog/cli-utils');
-        const mockedLoadPackageJson = jest.mocked(loadPackageJson);
-
-        mockedLoadPackageJson.mockReturnValueOnce({
+        loadPackageJson.mockReturnValueOnce({
           name: 'alpha',
           scripts: {
             'cut:pre-version': 'pnpm run pre-version-script',
@@ -340,11 +305,11 @@ describe('cut', () => {
     });
 
     describe('when the script is not provided', () => {
-      let shelljs: jest.MockedObject<typeof import('shelljs')>;
+      let shelljs: jest.Mocked<typeof import('shelljs')>;
 
       beforeEach(async () => {
+        jest.clearAllMocks();
         shelljs = jest.mocked(await import('shelljs')).default;
-        clearShelljsMock(shelljs);
       });
 
       it('should not execute the script', async () => {
@@ -357,16 +322,14 @@ describe('cut', () => {
 
   describe('cut:post-version script', () => {
     describe('when the script is provided and skipPosthook is false', () => {
-      let shelljs: jest.MockedObject<typeof import('shelljs')>;
+      let shelljs: jest.Mocked<typeof import('shelljs')>;
 
       beforeEach(async () => {
+        jest.clearAllMocks();
         shelljs = jest.mocked(await import('shelljs')).default;
-        clearShelljsMock(shelljs);
+        const { loadPackageJson } = jest.mocked(await import('@repodog/cli-utils'));
 
-        const { loadPackageJson } = await import('@repodog/cli-utils');
-        const mockedLoadPackageJson = jest.mocked(loadPackageJson);
-
-        mockedLoadPackageJson.mockReturnValueOnce({
+        loadPackageJson.mockReturnValueOnce({
           name: 'alpha',
           scripts: {
             'cut:post-version': 'pnpm run post-version-script',
@@ -383,16 +346,14 @@ describe('cut', () => {
     });
 
     describe('when the script is provided and skipPosthook is true', () => {
-      let shelljs: jest.MockedObject<typeof import('shelljs')>;
+      let shelljs: jest.Mocked<typeof import('shelljs')>;
 
       beforeEach(async () => {
+        jest.clearAllMocks();
         shelljs = jest.mocked(await import('shelljs')).default;
-        clearShelljsMock(shelljs);
+        const { loadPackageJson } = jest.mocked(await import('@repodog/cli-utils'));
 
-        const { loadPackageJson } = await import('@repodog/cli-utils');
-        const mockedLoadPackageJson = jest.mocked(loadPackageJson);
-
-        mockedLoadPackageJson.mockReturnValueOnce({
+        loadPackageJson.mockReturnValueOnce({
           name: 'alpha',
           scripts: {
             'cut:post-version': 'pnpm run post-version-script',
@@ -409,11 +370,11 @@ describe('cut', () => {
     });
 
     describe('when the script is not provided', () => {
-      let shelljs: jest.MockedObject<typeof import('shelljs')>;
+      let shelljs: jest.Mocked<typeof import('shelljs')>;
 
       beforeEach(async () => {
+        jest.clearAllMocks();
         shelljs = jest.mocked(await import('shelljs')).default;
-        clearShelljsMock(shelljs);
       });
 
       it('should not execute the script', async () => {
@@ -425,16 +386,14 @@ describe('cut', () => {
   });
 
   describe('when the cut:changelog script is provided', () => {
-    let shelljs: jest.MockedObject<typeof import('shelljs')>;
+    let shelljs: jest.Mocked<typeof import('shelljs')>;
 
     beforeEach(async () => {
+      jest.clearAllMocks();
       shelljs = jest.mocked(await import('shelljs')).default;
-      clearShelljsMock(shelljs);
+      const { loadPackageJson } = jest.mocked(await import('@repodog/cli-utils'));
 
-      const { loadPackageJson } = await import('@repodog/cli-utils');
-      const mockedLoadPackageJson = jest.mocked(loadPackageJson);
-
-      mockedLoadPackageJson.mockReturnValueOnce({
+      loadPackageJson.mockReturnValueOnce({
         name: 'alpha',
         scripts: {
           'cut:changelog': 'pnpm run changelog',
@@ -451,11 +410,11 @@ describe('cut', () => {
   });
 
   describe('when the cut:changelog script is not provided', () => {
-    let shelljs: jest.MockedObject<typeof import('shelljs')>;
+    let shelljs: jest.Mocked<typeof import('shelljs')>;
 
     beforeEach(async () => {
+      jest.clearAllMocks();
       shelljs = jest.mocked(await import('shelljs')).default;
-      clearShelljsMock(shelljs);
     });
 
     it.each([['patch'], ['minor'], ['major']])('%p release should not run changelog', async type => {
@@ -466,44 +425,29 @@ describe('cut', () => {
   });
 
   describe('when project has a standard repo structure', () => {
-    let shelljs: jest.MockedObject<typeof import('shelljs')>;
-    let mockedGetChangedFiles: jest.MockedFunction<(releaseTag: string) => string[]>;
-
-    let mockedVersionPackage: jest.MockedFunction<
-      (
-        packageJson: SetRequired<PackageJson, 'name' | 'version'>,
-        releaseMeta: Pick<ReleaseMeta, 'packageJsonPath' | 'preReleaseId' | 'tag' | 'type'>
-      ) => void
-    >;
-
-    let mockedAddCommitPushRelease: jest.MockedFunction<(version: string) => void>;
+    let shelljs: jest.Mocked<typeof import('shelljs')>;
+    let getChangedFiles: jest.Mocked<typeof import('@repodog/cli-utils')['getChangedFiles']>;
+    let versionPackage: jest.Mocked<typeof import('./utils/versionPackage.ts')['versionPackage']>;
+    let addCommitPushRelease: jest.Mocked<typeof import('@repodog/cli-utils')['addCommitPushRelease']>;
 
     beforeEach(async () => {
+      jest.clearAllMocks();
       shelljs = jest.mocked(await import('shelljs')).default;
-      clearShelljsMock(shelljs);
-
-      const { addCommitPushRelease, getChangedFiles } = await import('@repodog/cli-utils');
-      mockedAddCommitPushRelease = jest.mocked(addCommitPushRelease);
-      mockedAddCommitPushRelease.mockClear();
-      mockedGetChangedFiles = jest.mocked(getChangedFiles);
-      mockedGetChangedFiles.mockClear();
-
-      const { versionPackage } = await import('./utils/versionPackage.ts');
-      mockedVersionPackage = jest.mocked(versionPackage);
-      mockedVersionPackage.mockClear();
+      ({ addCommitPushRelease, getChangedFiles } = jest.mocked(await import('@repodog/cli-utils')));
+      ({ versionPackage } = jest.mocked(await import('./utils/versionPackage.ts')));
     });
 
     it('should call getChangedFiles with the correct argument', async () => {
       const { handler } = await import('./handler.ts');
       handler({ preid: '12345', tag: 'alpha', type: 'preminor' });
-      expect(mockedGetChangedFiles).toHaveBeenCalledWith('v1.0.0');
+      expect(getChangedFiles).toHaveBeenCalledWith('v1.0.0');
     });
 
     it('should call versionPackage with the correct arguments', async () => {
       const { handler } = await import('./handler.ts');
       handler({ preid: '12345', tag: 'alpha', type: 'preminor' });
 
-      expect(mockedVersionPackage).toHaveBeenCalledWith(
+      expect(versionPackage).toHaveBeenCalledWith(
         {
           version: '1.0.0',
         },
@@ -519,7 +463,7 @@ describe('cut', () => {
     it('should call addCommitPushRelease', async () => {
       const { handler } = await import('./handler.ts');
       handler({ preid: '12345', tag: 'alpha', type: 'preminor' });
-      expect(mockedAddCommitPushRelease).toHaveBeenCalled();
+      expect(addCommitPushRelease).toHaveBeenCalled();
     });
 
     it('should exit with the correct code', async () => {
@@ -530,46 +474,30 @@ describe('cut', () => {
   });
 
   describe('when project has a monorepo structure', () => {
-    let shelljs: jest.MockedObject<typeof import('shelljs')>;
+    let shelljs: jest.Mocked<typeof import('shelljs')>;
 
-    let mockedVersionMonorepoPackages: jest.MockedFunction<
-      (releaseMeta: Pick<ReleaseMeta, 'force' | 'packageManager' | 'preReleaseId' | 'tag' | 'type'>) => void
+    let versionMonorepoPackages: jest.Mocked<
+      typeof import('./utils/versionMonorepoPackages.ts')['versionMonorepoPackages']
     >;
 
-    let mockedWriteFileSync: jest.MockedFunction<
-      (
-        file: PathOrFileDescriptor,
-        data: string | NodeJS.ArrayBufferView,
-        options?: WriteFileOptions | undefined
-      ) => void
-    >;
-
-    let mockedAddCommitPushRelease: jest.MockedFunction<(version: string) => void>;
+    let writeFileSync: jest.Mocked<typeof import('node:fs')['writeFileSync']>;
+    let addCommitPushRelease: jest.Mocked<typeof import('@repodog/cli-utils')['addCommitPushRelease']>;
 
     beforeEach(async () => {
+      jest.clearAllMocks();
       shelljs = jest.mocked(await import('shelljs')).default;
-      clearShelljsMock(shelljs);
-
-      const { addCommitPushRelease, isProjectMonorepo } = await import('@repodog/cli-utils');
-      mockedAddCommitPushRelease = jest.mocked(addCommitPushRelease);
-      mockedAddCommitPushRelease.mockClear();
-      const mockedIsProjectMonorepo = jest.mocked(isProjectMonorepo);
-      mockedIsProjectMonorepo.mockReturnValue(true);
-
-      const { versionMonorepoPackages } = await import('./utils/versionMonorepoPackages.ts');
-      mockedVersionMonorepoPackages = jest.mocked(versionMonorepoPackages);
-      mockedVersionMonorepoPackages.mockClear();
-
-      const { writeFileSync } = await import('node:fs');
-      mockedWriteFileSync = jest.mocked(writeFileSync);
-      mockedWriteFileSync.mockClear();
+      let isProjectMonorepo;
+      ({ addCommitPushRelease, isProjectMonorepo } = jest.mocked(await import('@repodog/cli-utils')));
+      isProjectMonorepo.mockReturnValue(true);
+      ({ versionMonorepoPackages } = jest.mocked(await import('./utils/versionMonorepoPackages.ts')));
+      ({ writeFileSync } = jest.mocked(await import('node:fs')));
     });
 
     it('should call versionMonorepoPackages with the correct argument', async () => {
       const { handler } = await import('./handler.ts');
       handler({ preid: '12345', tag: 'alpha', type: 'preminor' });
 
-      expect(mockedVersionMonorepoPackages).toHaveBeenCalledWith({
+      expect(versionMonorepoPackages).toHaveBeenCalledWith({
         force: false,
         packageManager: 'pnpm',
         preReleaseId: '12345',
@@ -582,7 +510,7 @@ describe('cut', () => {
       const { handler } = await import('./handler.ts');
       handler({ preid: '12345', tag: 'alpha', type: 'preminor' });
 
-      expect(mockedWriteFileSync).toHaveBeenCalledWith(
+      expect(writeFileSync).toHaveBeenCalledWith(
         '/root/package.json',
         JSON.stringify(
           {
@@ -597,7 +525,7 @@ describe('cut', () => {
     it('should call addCommitPushRelease', async () => {
       const { handler } = await import('./handler.ts');
       handler({ preid: '12345', tag: 'alpha', type: 'preminor' });
-      expect(mockedAddCommitPushRelease).toHaveBeenCalled();
+      expect(addCommitPushRelease).toHaveBeenCalled();
     });
 
     it('should exit with the correct code', async () => {
@@ -608,22 +536,19 @@ describe('cut', () => {
   });
 
   describe('when dry-run is set to true', () => {
-    let shelljs: jest.MockedObject<typeof import('shelljs')>;
-    let mockedAddCommitPushRelease: jest.MockedFunction<(version: string) => void>;
+    let shelljs: jest.Mocked<typeof import('shelljs')>;
+    let addCommitPushRelease: jest.Mocked<typeof import('@repodog/cli-utils')['addCommitPushRelease']>;
 
     beforeEach(async () => {
+      jest.clearAllMocks();
       shelljs = jest.mocked(await import('shelljs')).default;
-      clearShelljsMock(shelljs);
-
-      const { addCommitPushRelease } = await import('@repodog/cli-utils');
-      mockedAddCommitPushRelease = jest.mocked(addCommitPushRelease);
-      mockedAddCommitPushRelease.mockClear();
+      ({ addCommitPushRelease } = jest.mocked(await import('@repodog/cli-utils')));
     });
 
     it('should not call addCommitPushRelease', async () => {
       const { handler } = await import('./handler.ts');
       handler({ 'dry-run': true, type: 'preminor' });
-      expect(mockedAddCommitPushRelease).not.toHaveBeenCalled();
+      expect(addCommitPushRelease).not.toHaveBeenCalled();
     });
 
     it('should exit with the correct code', async () => {

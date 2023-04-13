@@ -14,16 +14,14 @@ describe('repodogConfig', () => {
     const config = { __activeDryRun: true };
 
     describe('when there is a cached .repodogrc', () => {
-      let mockedReadFileSync: jest.Mocked<typeof import('node:fs')['readFileSync']>;
+      let readFileSync: jest.Mocked<typeof import('node:fs')['readFileSync']>;
 
       beforeEach(async () => {
+        jest.clearAllMocks();
         const { addRepodogConfigToCache, clearRepodogConfigCache } = await import('./repodogConfig.ts');
         clearRepodogConfigCache();
         addRepodogConfigToCache(config);
-
-        const { readFileSync } = await import('node:fs');
-        mockedReadFileSync = jest.mocked(readFileSync);
-        mockedReadFileSync.mockClear();
+        ({ readFileSync } = jest.mocked(await import('node:fs')));
       });
 
       it('should return the cached .repodogrc', async () => {
@@ -34,23 +32,21 @@ describe('repodogConfig', () => {
       it('should not load the .repodogrc', async () => {
         const { loadRepodogConfig } = await import('./repodogConfig.ts');
         loadRepodogConfig();
-        expect(mockedReadFileSync).not.toHaveBeenCalled();
+        expect(readFileSync).not.toHaveBeenCalled();
       });
     });
 
     describe('when the config is required', () => {
       describe('when there is an error loading the .repodogrc', () => {
-        let mockedReadFileSync: jest.Mocked<typeof import('node:fs')['readFileSync']>;
+        let readFileSync: jest.Mocked<typeof import('node:fs')['readFileSync']>;
 
         beforeEach(async () => {
+          jest.clearAllMocks();
           const { clearRepodogConfigCache } = await import('./repodogConfig.ts');
           clearRepodogConfigCache();
+          ({ readFileSync } = jest.mocked(await import('node:fs')));
 
-          const { readFileSync } = await import('node:fs');
-          mockedReadFileSync = jest.mocked(readFileSync);
-          mockedReadFileSync.mockClear();
-
-          mockedReadFileSync.mockImplementationOnce(() => {
+          readFileSync.mockImplementationOnce(() => {
             throw new Error('oops');
           });
         });
@@ -66,6 +62,7 @@ describe('repodogConfig', () => {
 
       describe('when the .repodogrc is loaded from the file system', () => {
         beforeEach(async () => {
+          jest.clearAllMocks();
           const { clearRepodogConfigCache } = await import('./repodogConfig.ts');
           clearRepodogConfigCache();
         });
@@ -86,6 +83,7 @@ describe('repodogConfig', () => {
     describe('when the config is not required', () => {
       describe('when there is an existing config', () => {
         beforeEach(async () => {
+          jest.clearAllMocks();
           const { clearRepodogConfigCache } = await import('./repodogConfig.ts');
           clearRepodogConfigCache();
         });
@@ -104,13 +102,11 @@ describe('repodogConfig', () => {
 
       describe('when there is not an existing config', () => {
         beforeEach(async () => {
+          jest.clearAllMocks();
           const { clearRepodogConfigCache } = await import('./repodogConfig.ts');
           clearRepodogConfigCache();
-
-          const { existsSync } = await import('node:fs');
-          const mockedExistsSync = jest.mocked(existsSync);
-          mockedExistsSync.mockReset();
-          mockedExistsSync.mockReturnValueOnce(false);
+          const { existsSync } = jest.mocked(await import('node:fs'));
+          existsSync.mockReturnValueOnce(false);
         });
 
         it('should return an empty object', async () => {
@@ -129,35 +125,33 @@ describe('repodogConfig', () => {
 
   describe('writeRepodogConfig', () => {
     describe('when the config is empty', () => {
-      let mockedUnlinkSync: jest.Mocked<typeof import('node:fs')['unlinkSync']>;
+      let unlinkSync: jest.Mocked<typeof import('node:fs')['unlinkSync']>;
 
       beforeEach(async () => {
-        const { unlinkSync } = await import('node:fs');
-        mockedUnlinkSync = jest.mocked(unlinkSync);
-        mockedUnlinkSync.mockClear();
+        jest.clearAllMocks();
+        ({ unlinkSync } = jest.mocked(await import('node:fs')));
       });
 
       it('should call unlinkSync with the correct argument', async () => {
         const { writeRepodogConfig } = await import('./repodogConfig.ts');
         writeRepodogConfig({});
-        expect(mockedUnlinkSync).toHaveBeenCalledWith('/root/.repodogrc');
+        expect(unlinkSync).toHaveBeenCalledWith('/root/.repodogrc');
       });
     });
 
     describe('when the config still has properties', () => {
-      let mockedWriteFileSync: jest.Mocked<typeof import('node:fs')['writeFileSync']>;
+      let writeFileSync: jest.Mocked<typeof import('node:fs')['writeFileSync']>;
 
       beforeEach(async () => {
-        const { writeFileSync } = await import('node:fs');
-        mockedWriteFileSync = jest.mocked(writeFileSync);
-        mockedWriteFileSync.mockClear();
+        jest.clearAllMocks();
+        ({ writeFileSync } = jest.mocked(await import('node:fs')));
       });
 
       it('should call writeFileSync with the correct arguments', async () => {
         const { writeRepodogConfig } = await import('./repodogConfig.ts');
         writeRepodogConfig({ templateVariables: { new: {} } });
 
-        expect(mockedWriteFileSync).toHaveBeenCalledWith(
+        expect(writeFileSync).toHaveBeenCalledWith(
           '/root/.repodogrc',
           JSON.stringify({ templateVariables: { new: {} } }, undefined, 2)
         );
