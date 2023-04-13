@@ -1,6 +1,6 @@
 {
   "name": "@repodog/ts-config",
-  "version": "1.0.1-alpha.0",
+  "version": "1.0.2-alpha.0",
   "description": "The RepoDog Typescript config module.",
   "homepage": "https://github.com/badbatch/repodog",
   "bugs": {

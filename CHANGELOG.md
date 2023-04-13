@@ -1,3 +1,16 @@
+#### 1.0.9-alpha.0 (2023-04-13)
+
+##### Bug Fixes
+
+*  warnings (28c69d4d)
+*  subtype bug and add library questions (7e9826f1)
+
+##### Refactors
+
+*  change way mocks are structured (9e649b4c)
+*  move to .ts extensions with ts 5 (6762dd0e)
+*  upgrade typescript and add repo/lib templates (a9e378b9)
+
 #### 1.0.8-alpha.0 (2023-03-31)
 
 ##### Documentation Changes
