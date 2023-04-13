@@ -38,4 +38,4 @@ export const builder = (argv: Argv) =>
 
 export const command = 'cut <type>';
 export const desc = 'Cut release to current branch';
-export { handler } from './handler.js';
+export { handler } from './handler.ts';

@@ -11,7 +11,7 @@ import {
 import colors from 'ansi-colors';
 import { parse, sep } from 'node:path';
 import shelljs from 'shelljs';
-import { versionPackage } from './versionPackage.js';
+import { versionPackage } from './versionPackage.ts';
 
 export const versionMonorepoPackages = ({
   force,

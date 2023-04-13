@@ -7,7 +7,7 @@ import {
 } from '@repodog/cli-utils';
 import semver from 'semver';
 import shelljs from 'shelljs';
-import { getPublishCmd } from './getPublishCmd.js';
+import { getPublishCmd } from './getPublishCmd.ts';
 
 export const publishPackage = (packageJsonPath: string, { packageManager }: Pick<ReleaseMeta, 'packageManager'>) => {
   const { name, publishConfig, version } = loadPackageJson(packageJsonPath);

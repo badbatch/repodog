@@ -23,4 +23,4 @@ export const builder = (argv: Argv) =>
 
 export const command = 'write <type> <file-path>';
 export const desc = 'Write the content of a new file';
-export { handler } from './handler.js';
+export { handler } from './handler.ts';

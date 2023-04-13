@@ -1,4 +1,4 @@
-import type { ReleaseTag } from './types.js';
+import type { ReleaseTag } from './types.ts';
 
 export const VALID_RELEASE_TAGS = ['alpha', 'beta', 'unstable'];
 

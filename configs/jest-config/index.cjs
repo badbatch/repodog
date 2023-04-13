@@ -12,10 +12,7 @@ const isDebug = DEBUG === 'true';
 const isJsEnvironmentWeb = JS_ENV === 'web';
 process.env.TEST_ENV = 'true';
 
-const moduleNameMapper = {
-  // Required to map .js file extensions on relative import statements to .ts
-  '^(\\.{1,2}/.*)\\.js$': '$1',
-};
+const moduleNameMapper = {};
 
 const transform = {
   '^.+\\.(mjs|cjs|js|jsx|ts|tsx)$': `${__dirname}/babelTransformer.cjs`,

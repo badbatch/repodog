@@ -8,8 +8,8 @@ import {
   flattenTemplateVariables,
   getPackageManagerTemporaryCmd,
 } from '@repodog/cli-utils';
-import { VALID_NEW_SUBTYPES } from './utils/isValidNewSubtype.js';
-import { VALID_NEW_TYPES } from './utils/isValidNewType.js';
+import { VALID_NEW_SUBTYPES } from './utils/isValidNewSubtype.ts';
+import { VALID_NEW_TYPES } from './utils/isValidNewType.ts';
 
 jest.unstable_mockModule('shelljs', shelljsMock);
 
@@ -82,23 +82,23 @@ jest.unstable_mockModule('node:path', () => ({
     .mockImplementation((...paths) => `${paths[0]!}/${paths[1]!.replace(new RegExp('\\.\\.\\/', 'g'), '')}`),
 }));
 
-jest.unstable_mockModule('./utils/executeHygen.js', () => ({
+jest.unstable_mockModule('./utils/executeHygen.ts', () => ({
   executeHygen: jest.fn(),
 }));
 
-jest.unstable_mockModule('./utils/isValidNewType.js', () => ({
+jest.unstable_mockModule('./utils/isValidNewType.ts', () => ({
   VALID_NEW_TYPES,
   isValidNewType: jest.fn().mockReturnValue(true),
 }));
 
-jest.unstable_mockModule('./utils/isValidNewSubtype.js', () => ({
+jest.unstable_mockModule('./utils/isValidNewSubtype.ts', () => ({
   VALID_NEW_SUBTYPES,
   isValidNewSubtype: jest.fn().mockReturnValue(true),
 }));
 
-jest.unstable_mockModule('./utils/loadQuestions.js', () => ({
+jest.unstable_mockModule('./utils/loadQuestions.ts', () => ({
   loadQuestions: jest
-    .fn<typeof import('./utils/loadQuestions.js')['loadQuestions']>()
+    .fn<typeof import('./utils/loadQuestions.ts')['loadQuestions']>()
     .mockImplementation((_typePath, questionOverrides) =>
       Promise.resolve([
         {
@@ -127,30 +127,30 @@ describe('handler', () => {
   describe('when given valid arguments', () => {
     describe('when the package manager can be derived', () => {
       let shelljs: jest.MockedObject<typeof import('shelljs')>;
-      let mockedLoadQuestions: jest.MockedFunction<typeof import('./utils/loadQuestions.js')['loadQuestions']>;
-      let mockedExecuteHygen: jest.MockedFunction<typeof import('./utils/executeHygen.js')['executeHygen']>;
+      let mockedLoadQuestions: jest.MockedFunction<typeof import('./utils/loadQuestions.ts')['loadQuestions']>;
+      let mockedExecuteHygen: jest.MockedFunction<typeof import('./utils/executeHygen.ts')['executeHygen']>;
 
       beforeEach(async () => {
         shelljs = jest.mocked(await import('shelljs')).default;
         clearShelljsMock(shelljs);
 
-        const { loadQuestions } = await import('./utils/loadQuestions.js');
+        const { loadQuestions } = await import('./utils/loadQuestions.ts');
         mockedLoadQuestions = jest.mocked(loadQuestions);
         mockedLoadQuestions.mockClear();
 
-        const { executeHygen } = await import('./utils/executeHygen.js');
+        const { executeHygen } = await import('./utils/executeHygen.ts');
         mockedExecuteHygen = jest.mocked(executeHygen);
         mockedExecuteHygen.mockClear();
       });
 
       it('should load the questions for the specified new type and customTypePath', async () => {
-        const { handler } = await import('./handler.js');
+        const { handler } = await import('./handler.ts');
         await handler({ customTypePath: 'cli', type: 'pkg' });
         expect(mockedLoadQuestions).toHaveBeenCalledWith(['new', 'pkg', 'cli'], repodogConfig.questionOverrides);
       });
 
       it('should execute hygen with the specified options and base type path', async () => {
-        const { handler } = await import('./handler.js');
+        const { handler } = await import('./handler.ts');
         await handler({ customTypePath: 'cli', type: 'pkg' });
 
         expect(mockedExecuteHygen).toHaveBeenCalledWith(
@@ -186,7 +186,7 @@ describe('handler', () => {
         });
 
         it('should execute hygen again with the template overrides path and specified options and base type path', async () => {
-          const { handler } = await import('./handler.js');
+          const { handler } = await import('./handler.ts');
           await handler({ customTypePath: 'cli', type: 'pkg' });
 
           expect(mockedExecuteHygen.mock.calls[1]).toEqual([
@@ -211,7 +211,7 @@ describe('handler', () => {
       });
 
       it('should exit with a code of 0', async () => {
-        const { handler } = await import('./handler.js');
+        const { handler } = await import('./handler.ts');
         await handler({ type: 'pkg' });
         expect(shelljs.exit).toHaveBeenCalledWith(0);
       });
@@ -231,7 +231,7 @@ describe('handler', () => {
       });
 
       it('should throw an error', async () => {
-        const { handler } = await import('./handler.js');
+        const { handler } = await import('./handler.ts');
         await handler({ type: 'pkg' });
 
         expect(shelljs.echo).toHaveBeenCalledWith(
@@ -242,7 +242,7 @@ describe('handler', () => {
       });
 
       it('should exit with a code of 1', async () => {
-        const { handler } = await import('./handler.js');
+        const { handler } = await import('./handler.ts');
         await handler({ type: 'pkg' });
         expect(shelljs.exit).toHaveBeenCalledWith(1);
       });
@@ -256,20 +256,20 @@ describe('handler', () => {
       shelljs = jest.mocked(await import('shelljs')).default;
       clearShelljsMock(shelljs);
 
-      const { isValidNewSubtype } = await import('./utils/isValidNewSubtype.js');
+      const { isValidNewSubtype } = await import('./utils/isValidNewSubtype.ts');
       const mockedIsValidNewSubtype = jest.mocked(isValidNewSubtype);
       mockedIsValidNewSubtype.mockClear();
       mockedIsValidNewSubtype.mockReturnValueOnce(false);
     });
 
     it('should throw an error', async () => {
-      const { handler } = await import('./handler.js');
+      const { handler } = await import('./handler.ts');
       await handler({ subtype: 'blah', type: 'repo' });
       expect(shelljs.echo).toHaveBeenCalledWith(expect.stringContaining('Error: Expected subtype to be a valid new'));
     });
 
     it('should exit with a code of 1', async () => {
-      const { handler } = await import('./handler.js');
+      const { handler } = await import('./handler.ts');
       await handler({ subtype: 'blah', type: 'repo' });
       expect(shelljs.exit).toHaveBeenCalledWith(1);
     });
@@ -282,14 +282,14 @@ describe('handler', () => {
       shelljs = jest.mocked(await import('shelljs')).default;
       clearShelljsMock(shelljs);
 
-      const { isValidNewType } = await import('./utils/isValidNewType.js');
+      const { isValidNewType } = await import('./utils/isValidNewType.ts');
       const mockedIsValidNewType = jest.mocked(isValidNewType);
       mockedIsValidNewType.mockClear();
       mockedIsValidNewType.mockReturnValueOnce(false);
     });
 
     it('should throw an error', async () => {
-      const { handler } = await import('./handler.js');
+      const { handler } = await import('./handler.ts');
       await handler({ type: 'alpha' });
 
       expect(shelljs.echo).toHaveBeenCalledWith(
@@ -298,7 +298,7 @@ describe('handler', () => {
     });
 
     it('should exit with a code of 1', async () => {
-      const { handler } = await import('./handler.js');
+      const { handler } = await import('./handler.ts');
       await handler({ type: 'alpha' });
       expect(shelljs.exit).toHaveBeenCalledWith(1);
     });

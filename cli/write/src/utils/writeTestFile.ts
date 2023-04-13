@@ -1,9 +1,9 @@
 import { asyncExec, getLanguageExtension, getPackageManagerTemporaryCmd } from '@repodog/cli-utils';
 import { writeFileSync } from 'node:fs';
 import { resolve } from 'node:path';
-import type { WriteMeta } from '../types.js';
-import { injectFileExtension } from './injectFileExtension.js';
-import { removeComments } from './removeComments.js';
+import type { WriteMeta } from '../types.ts';
+import { injectFileExtension } from './injectFileExtension.ts';
+import { removeComments } from './removeComments.ts';
 
 export const writeTestFile = async (
   directory: string,

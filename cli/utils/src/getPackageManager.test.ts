@@ -1,5 +1,5 @@
 import { jest } from '@jest/globals';
-import { PackageManager } from './types.js';
+import { PackageManager } from './types.ts';
 
 jest.unstable_mockModule('node:fs', () => ({
   existsSync: jest.fn(),
@@ -16,7 +16,7 @@ describe('getPackageManager', () => {
     });
 
     it('should return npm', async () => {
-      const { getPackageManager } = await import('./getPackageManager.js');
+      const { getPackageManager } = await import('./getPackageManager.ts');
       expect(getPackageManager()).toBe(PackageManager.NPM);
     });
   });
@@ -29,7 +29,7 @@ describe('getPackageManager', () => {
     });
 
     it('should return pnpm', async () => {
-      const { getPackageManager } = await import('./getPackageManager.js');
+      const { getPackageManager } = await import('./getPackageManager.ts');
       expect(getPackageManager()).toBe('pnpm');
     });
   });
@@ -42,7 +42,7 @@ describe('getPackageManager', () => {
     });
 
     it('should return yarn', async () => {
-      const { getPackageManager } = await import('./getPackageManager.js');
+      const { getPackageManager } = await import('./getPackageManager.ts');
       expect(getPackageManager()).toBe('yarn');
     });
   });
@@ -55,7 +55,7 @@ describe('getPackageManager', () => {
     });
 
     it('should return undefined', async () => {
-      const { getPackageManager } = await import('./getPackageManager.js');
+      const { getPackageManager } = await import('./getPackageManager.ts');
       expect(getPackageManager()).toBeUndefined();
     });
   });

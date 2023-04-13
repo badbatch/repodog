@@ -27,9 +27,9 @@ import { writeFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { performance } from 'node:perf_hooks';
 import shelljs from 'shelljs';
-import type { CutHandlerArguments } from './types.js';
-import { versionMonorepoPackages } from './utils/versionMonorepoPackages.js';
-import { versionPackage } from './utils/versionPackage.js';
+import type { CutHandlerArguments } from './types.ts';
+import { versionMonorepoPackages } from './utils/versionMonorepoPackages.ts';
+import { versionPackage } from './utils/versionPackage.ts';
 
 export const handler = (argv: CutHandlerArguments) => {
   const startTime = performance.now();

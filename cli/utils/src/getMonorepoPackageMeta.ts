@@ -1,6 +1,6 @@
-import { getMonorepoPackageJsonPaths } from './getMonorepoPackageJsonPaths.js';
-import { loadPackageJson } from './loadPackageJson.js';
-import type { PackageManager, PackageMetaRecord } from './types.js';
+import { getMonorepoPackageJsonPaths } from './getMonorepoPackageJsonPaths.ts';
+import { loadPackageJson } from './loadPackageJson.ts';
+import type { PackageManager, PackageMetaRecord } from './types.ts';
 
 export const getMonorepoPackageMeta = (packageManager: PackageManager) => {
   const packageJsonPaths = getMonorepoPackageJsonPaths(packageManager);

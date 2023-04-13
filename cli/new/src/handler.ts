@@ -15,12 +15,12 @@ import { dirname, resolve as resolvePath } from 'node:path';
 import { performance } from 'node:perf_hooks';
 import { fileURLToPath } from 'node:url';
 import shelljs from 'shelljs';
-import type { NewHandlerArguments } from './types.js';
-import { enrichQuestions } from './utils/enrichQuestions.js';
-import { executeHygen } from './utils/executeHygen.js';
-import { VALID_NEW_SUBTYPES, isValidNewSubtype } from './utils/isValidNewSubtype.js';
-import { VALID_NEW_TYPES, isValidNewType } from './utils/isValidNewType.js';
-import { loadQuestions } from './utils/loadQuestions.js';
+import type { NewHandlerArguments } from './types.ts';
+import { enrichQuestions } from './utils/enrichQuestions.ts';
+import { executeHygen } from './utils/executeHygen.ts';
+import { VALID_NEW_SUBTYPES, isValidNewSubtype } from './utils/isValidNewSubtype.ts';
+import { VALID_NEW_TYPES, isValidNewType } from './utils/isValidNewType.ts';
+import { loadQuestions } from './utils/loadQuestions.ts';
 
 export const handler = async (argv: NewHandlerArguments) => {
   const startTime = performance.now();

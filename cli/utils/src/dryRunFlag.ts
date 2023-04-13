@@ -1,4 +1,4 @@
-import { loadRepodogConfig, writeRepodogConfig } from './repodogConfig.js';
+import { loadRepodogConfig, writeRepodogConfig } from './repodogConfig.ts';
 
 export const clearDryRunFlag = () => {
   const repodogConfig = loadRepodogConfig();

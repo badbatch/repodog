@@ -20,11 +20,11 @@ const messages = [
 const environmentVariablesPath = '.env';
 
 describe('createChatCompletion', () => {
-  let createChatCompletion: typeof import('./chatGptManager.js')['createChatCompletion'];
+  let createChatCompletion: typeof import('./chatGptManager.ts')['createChatCompletion'];
 
   beforeEach(async () => {
     jest.clearAllMocks();
-    ({ createChatCompletion } = await import('./chatGptManager.js'));
+    ({ createChatCompletion } = await import('./chatGptManager.ts'));
   });
 
   it('calls openai.createChatCompletion with the correct arguments', async () => {

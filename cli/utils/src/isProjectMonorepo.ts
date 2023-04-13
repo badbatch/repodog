@@ -1,8 +1,8 @@
 import { type LoadOptions, load } from 'js-yaml';
 import { readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
-import { loadPackageJson } from './loadPackageJson.js';
-import { PackageManager, type PnpmWorkspaceYaml } from './types.js';
+import { loadPackageJson } from './loadPackageJson.ts';
+import { PackageManager, type PnpmWorkspaceYaml } from './types.ts';
 
 export const isProjectMonorepo = (packageManager: PackageManager) => {
   try {

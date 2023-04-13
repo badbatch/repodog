@@ -11,12 +11,12 @@ import { readFileSync } from 'node:fs';
 import { parse, resolve } from 'node:path';
 import { performance } from 'node:perf_hooks';
 import shelljs from 'shelljs';
-import type { WriteHandlerArguments } from './types.js';
-import { createChatCompletion } from './utils/chatGptManager.js';
-import { extractCode } from './utils/extractCode.js';
-import { getMessagesByType } from './utils/getMessagesByType.js';
-import { VALID_WRITE_TYPES, isValidWriteType } from './utils/isValidWriteType.js';
-import { writeTestFile } from './utils/writeTestFile.js';
+import type { WriteHandlerArguments } from './types.ts';
+import { createChatCompletion } from './utils/chatGptManager.ts';
+import { extractCode } from './utils/extractCode.ts';
+import { getMessagesByType } from './utils/getMessagesByType.ts';
+import { VALID_WRITE_TYPES, isValidWriteType } from './utils/isValidWriteType.ts';
+import { writeTestFile } from './utils/writeTestFile.ts';
 
 export const handler = async (argv: WriteHandlerArguments) => {
   const startTime = performance.now();

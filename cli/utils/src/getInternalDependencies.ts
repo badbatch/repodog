@@ -1,7 +1,7 @@
 import type { PackageJson } from 'type-fest';
-import { formatListLogMessage } from './formatListLogMessage.js';
-import type { PackageMetaRecord } from './types.js';
-import { verboseLog } from './verboseLog.js';
+import { formatListLogMessage } from './formatListLogMessage.ts';
+import type { PackageMetaRecord } from './types.ts';
+import { verboseLog } from './verboseLog.ts';
 
 export const getInternalDependencies = (
   { dependencies = {}, devDependencies = {}, peerDependencies = {} }: PackageJson,

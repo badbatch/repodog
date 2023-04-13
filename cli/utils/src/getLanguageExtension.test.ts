@@ -1,10 +1,10 @@
-import { Language } from './types.js';
+import { Language } from './types.ts';
 
 describe('getLanguageExtension', () => {
-  let getLanguageExtension: typeof import('./getLanguageExtension.js')['getLanguageExtension'];
+  let getLanguageExtension: typeof import('./getLanguageExtension.ts')['getLanguageExtension'];
 
   beforeEach(async () => {
-    ({ getLanguageExtension } = await import('./getLanguageExtension.js'));
+    ({ getLanguageExtension } = await import('./getLanguageExtension.ts'));
   });
 
   it('returns "js" for Language.JAVASCRIPT', () => {

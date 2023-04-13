@@ -17,7 +17,7 @@ describe('repodogConfig', () => {
       let mockedReadFileSync: jest.Mocked<typeof import('node:fs')['readFileSync']>;
 
       beforeEach(async () => {
-        const { addRepodogConfigToCache, clearRepodogConfigCache } = await import('./repodogConfig.js');
+        const { addRepodogConfigToCache, clearRepodogConfigCache } = await import('./repodogConfig.ts');
         clearRepodogConfigCache();
         addRepodogConfigToCache(config);
 
@@ -27,12 +27,12 @@ describe('repodogConfig', () => {
       });
 
       it('should return the cached .repodogrc', async () => {
-        const { loadRepodogConfig } = await import('./repodogConfig.js');
+        const { loadRepodogConfig } = await import('./repodogConfig.ts');
         expect(loadRepodogConfig()).toEqual(config);
       });
 
       it('should not load the .repodogrc', async () => {
-        const { loadRepodogConfig } = await import('./repodogConfig.js');
+        const { loadRepodogConfig } = await import('./repodogConfig.ts');
         loadRepodogConfig();
         expect(mockedReadFileSync).not.toHaveBeenCalled();
       });
@@ -43,7 +43,7 @@ describe('repodogConfig', () => {
         let mockedReadFileSync: jest.Mocked<typeof import('node:fs')['readFileSync']>;
 
         beforeEach(async () => {
-          const { clearRepodogConfigCache } = await import('./repodogConfig.js');
+          const { clearRepodogConfigCache } = await import('./repodogConfig.ts');
           clearRepodogConfigCache();
 
           const { readFileSync } = await import('node:fs');
@@ -56,7 +56,7 @@ describe('repodogConfig', () => {
         });
 
         it('should throw the correct error', async () => {
-          const { loadRepodogConfig } = await import('./repodogConfig.js');
+          const { loadRepodogConfig } = await import('./repodogConfig.ts');
 
           expect(() => loadRepodogConfig({ required: true })).toThrow(
             new Error('Could not resolve the .repodogrc at: /root/.repodogrc')
@@ -66,17 +66,17 @@ describe('repodogConfig', () => {
 
       describe('when the .repodogrc is loaded from the file system', () => {
         beforeEach(async () => {
-          const { clearRepodogConfigCache } = await import('./repodogConfig.js');
+          const { clearRepodogConfigCache } = await import('./repodogConfig.ts');
           clearRepodogConfigCache();
         });
 
         it('should return the .repodogrc', async () => {
-          const { loadRepodogConfig } = await import('./repodogConfig.js');
+          const { loadRepodogConfig } = await import('./repodogConfig.ts');
           expect(loadRepodogConfig({ required: true })).toEqual(config);
         });
 
         it('should cache the .repodogrc', async () => {
-          const { getCachedRepodogConfig, loadRepodogConfig } = await import('./repodogConfig.js');
+          const { getCachedRepodogConfig, loadRepodogConfig } = await import('./repodogConfig.ts');
           loadRepodogConfig({ required: true });
           expect(getCachedRepodogConfig()).toEqual(config);
         });
@@ -86,17 +86,17 @@ describe('repodogConfig', () => {
     describe('when the config is not required', () => {
       describe('when there is an existing config', () => {
         beforeEach(async () => {
-          const { clearRepodogConfigCache } = await import('./repodogConfig.js');
+          const { clearRepodogConfigCache } = await import('./repodogConfig.ts');
           clearRepodogConfigCache();
         });
 
         it('should return the .repodogrc', async () => {
-          const { loadRepodogConfig } = await import('./repodogConfig.js');
+          const { loadRepodogConfig } = await import('./repodogConfig.ts');
           expect(loadRepodogConfig()).toEqual(config);
         });
 
         it('should cache the .repodogrc', async () => {
-          const { getCachedRepodogConfig, loadRepodogConfig } = await import('./repodogConfig.js');
+          const { getCachedRepodogConfig, loadRepodogConfig } = await import('./repodogConfig.ts');
           loadRepodogConfig();
           expect(getCachedRepodogConfig()).toEqual(config);
         });
@@ -104,7 +104,7 @@ describe('repodogConfig', () => {
 
       describe('when there is not an existing config', () => {
         beforeEach(async () => {
-          const { clearRepodogConfigCache } = await import('./repodogConfig.js');
+          const { clearRepodogConfigCache } = await import('./repodogConfig.ts');
           clearRepodogConfigCache();
 
           const { existsSync } = await import('node:fs');
@@ -114,12 +114,12 @@ describe('repodogConfig', () => {
         });
 
         it('should return an empty object', async () => {
-          const { loadRepodogConfig } = await import('./repodogConfig.js');
+          const { loadRepodogConfig } = await import('./repodogConfig.ts');
           expect(loadRepodogConfig()).toEqual({});
         });
 
         it('should cache the empty object', async () => {
-          const { getCachedRepodogConfig, loadRepodogConfig } = await import('./repodogConfig.js');
+          const { getCachedRepodogConfig, loadRepodogConfig } = await import('./repodogConfig.ts');
           loadRepodogConfig();
           expect(getCachedRepodogConfig()).toEqual({});
         });
@@ -138,7 +138,7 @@ describe('repodogConfig', () => {
       });
 
       it('should call unlinkSync with the correct argument', async () => {
-        const { writeRepodogConfig } = await import('./repodogConfig.js');
+        const { writeRepodogConfig } = await import('./repodogConfig.ts');
         writeRepodogConfig({});
         expect(mockedUnlinkSync).toHaveBeenCalledWith('/root/.repodogrc');
       });
@@ -154,7 +154,7 @@ describe('repodogConfig', () => {
       });
 
       it('should call writeFileSync with the correct arguments', async () => {
-        const { writeRepodogConfig } = await import('./repodogConfig.js');
+        const { writeRepodogConfig } = await import('./repodogConfig.ts');
         writeRepodogConfig({ templateVariables: { new: {} } });
 
         expect(mockedWriteFileSync).toHaveBeenCalledWith(

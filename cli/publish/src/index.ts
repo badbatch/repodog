@@ -1,1 +1,1 @@
-export * as command from './command.js';
+export * as command from './command.ts';

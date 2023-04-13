@@ -1,8 +1,8 @@
 import { existsSync, readFileSync, unlinkSync, writeFileSync } from 'node:fs';
 import { resolve } from 'node:path';
-import { REPODOG_CONFIG_FILENAME } from './constants.js';
-import type { RepodogConfig } from './types.js';
-import { verboseLog } from './verboseLog.js';
+import { REPODOG_CONFIG_FILENAME } from './constants.ts';
+import type { RepodogConfig } from './types.ts';
+import { verboseLog } from './verboseLog.ts';
 
 let cachedConfig: RepodogConfig | undefined;
 

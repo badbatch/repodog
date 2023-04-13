@@ -11,12 +11,12 @@ describe('verboseLog', () => {
       shelljs = jest.mocked(await import('shelljs')).default;
       clearShelljsMock(shelljs);
 
-      const { setVerbose } = await import('./verboseLog.js');
+      const { setVerbose } = await import('./verboseLog.ts');
       setVerbose(true);
     });
 
     it('should call echo with the correct message', async () => {
-      const { verboseLog } = await import('./verboseLog.js');
+      const { verboseLog } = await import('./verboseLog.ts');
       verboseLog('oops');
       expect(shelljs.echo).toHaveBeenCalledWith(expect.stringContaining('oops'));
     });
@@ -29,12 +29,12 @@ describe('verboseLog', () => {
       shelljs = jest.mocked(await import('shelljs')).default;
       clearShelljsMock(shelljs);
 
-      const { setVerbose } = await import('./verboseLog.js');
+      const { setVerbose } = await import('./verboseLog.ts');
       setVerbose(false);
     });
 
     it('should not call echo', async () => {
-      const { verboseLog } = await import('./verboseLog.js');
+      const { verboseLog } = await import('./verboseLog.ts');
       verboseLog('oops');
       expect(shelljs.echo).not.toHaveBeenCalled();
     });

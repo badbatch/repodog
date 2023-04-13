@@ -18,7 +18,7 @@ describe('asyncExec', () => {
     });
 
     it('should resolve the stdout', async () => {
-      const { asyncExec } = await import('./asyncExec.js');
+      const { asyncExec } = await import('./asyncExec.ts');
       expect(await asyncExec('cmd')).toBe('success');
     });
   });
@@ -37,7 +37,7 @@ describe('asyncExec', () => {
       });
 
       it('should reject with an error with stderr', async () => {
-        const { asyncExec } = await import('./asyncExec.js');
+        const { asyncExec } = await import('./asyncExec.ts');
         await expect(() => asyncExec('cmd')).rejects.toEqual(new Error('failure'));
       });
     });
@@ -55,7 +55,7 @@ describe('asyncExec', () => {
       });
 
       it('should resolve the stdout', async () => {
-        const { asyncExec } = await import('./asyncExec.js');
+        const { asyncExec } = await import('./asyncExec.ts');
         expect(await asyncExec('cmd', { silent: true })).toBe('');
       });
     });

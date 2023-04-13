@@ -1,1 +1,1 @@
-export { init } from './init.js';
+export { init } from './init.ts';

@@ -12,7 +12,7 @@ describe('loadPackageJson', () => {
     let mockedReadFileSync: jest.Mocked<typeof import('node:fs')['readFileSync']>;
 
     beforeEach(async () => {
-      const { addPackageJsonToCache, clearPackageJsonCache } = await import('./loadPackageJson.js');
+      const { addPackageJsonToCache, clearPackageJsonCache } = await import('./loadPackageJson.ts');
       clearPackageJsonCache();
       addPackageJsonToCache(packageJsonPath, packageJson);
 
@@ -22,12 +22,12 @@ describe('loadPackageJson', () => {
     });
 
     it('should return the cached package.json', async () => {
-      const { loadPackageJson } = await import('./loadPackageJson.js');
+      const { loadPackageJson } = await import('./loadPackageJson.ts');
       expect(loadPackageJson(packageJsonPath)).toEqual(packageJson);
     });
 
     it('should not load the package.json', async () => {
-      const { loadPackageJson } = await import('./loadPackageJson.js');
+      const { loadPackageJson } = await import('./loadPackageJson.ts');
       loadPackageJson(packageJsonPath);
       expect(mockedReadFileSync).not.toHaveBeenCalled();
     });
@@ -37,7 +37,7 @@ describe('loadPackageJson', () => {
     let mockedReadFileSync: jest.Mocked<typeof import('node:fs')['readFileSync']>;
 
     beforeEach(async () => {
-      const { clearPackageJsonCache } = await import('./loadPackageJson.js');
+      const { clearPackageJsonCache } = await import('./loadPackageJson.ts');
       clearPackageJsonCache();
 
       const { readFileSync } = await import('node:fs');
@@ -50,7 +50,7 @@ describe('loadPackageJson', () => {
     });
 
     it('should throw the correct error', async () => {
-      const { loadPackageJson } = await import('./loadPackageJson.js');
+      const { loadPackageJson } = await import('./loadPackageJson.ts');
 
       expect(() => loadPackageJson(packageJsonPath)).toThrow(
         new Error(`Could not resolve the package.json at: ${packageJsonPath}`)
@@ -62,7 +62,7 @@ describe('loadPackageJson', () => {
     let mockedReadFileSync: jest.Mocked<typeof import('node:fs')['readFileSync']>;
 
     beforeEach(async () => {
-      const { clearPackageJsonCache } = await import('./loadPackageJson.js');
+      const { clearPackageJsonCache } = await import('./loadPackageJson.ts');
       clearPackageJsonCache();
 
       const { readFileSync } = await import('node:fs');
@@ -72,7 +72,7 @@ describe('loadPackageJson', () => {
     });
 
     it('should throw the correct error', async () => {
-      const { loadPackageJson } = await import('./loadPackageJson.js');
+      const { loadPackageJson } = await import('./loadPackageJson.ts');
 
       expect(() => loadPackageJson(packageJsonPath)).toThrow(
         new Error(`Expected the package.json at "${packageJsonPath}" to have a name`)
@@ -84,7 +84,7 @@ describe('loadPackageJson', () => {
     let mockedReadFileSync: jest.Mocked<typeof import('node:fs')['readFileSync']>;
 
     beforeEach(async () => {
-      const { clearPackageJsonCache } = await import('./loadPackageJson.js');
+      const { clearPackageJsonCache } = await import('./loadPackageJson.ts');
       clearPackageJsonCache();
 
       const { readFileSync } = await import('node:fs');
@@ -94,7 +94,7 @@ describe('loadPackageJson', () => {
     });
 
     it('should throw the correct error', async () => {
-      const { loadPackageJson } = await import('./loadPackageJson.js');
+      const { loadPackageJson } = await import('./loadPackageJson.ts');
 
       expect(() => loadPackageJson(packageJsonPath)).toThrow(
         new Error(`Expected the package.json at "${packageJsonPath}" to have a version`)
@@ -104,17 +104,17 @@ describe('loadPackageJson', () => {
 
   describe('when the package.json name and version are present', () => {
     beforeEach(async () => {
-      const { clearPackageJsonCache } = await import('./loadPackageJson.js');
+      const { clearPackageJsonCache } = await import('./loadPackageJson.ts');
       clearPackageJsonCache();
     });
 
     it('should return the package.json', async () => {
-      const { loadPackageJson } = await import('./loadPackageJson.js');
+      const { loadPackageJson } = await import('./loadPackageJson.ts');
       expect(loadPackageJson(packageJsonPath)).toEqual(packageJson);
     });
 
     it('should cache the package.json', async () => {
-      const { getCachedPackageJsons, loadPackageJson } = await import('./loadPackageJson.js');
+      const { getCachedPackageJsons, loadPackageJson } = await import('./loadPackageJson.ts');
       loadPackageJson(packageJsonPath);
       expect(getCachedPackageJsons()).toEqual({ [packageJsonPath]: packageJson });
     });

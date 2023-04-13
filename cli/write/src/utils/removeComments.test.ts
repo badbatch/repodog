@@ -1,6 +1,6 @@
 describe('removeComments', () => {
   it('should remove single-line comments', async () => {
-    const { removeComments } = await import('./removeComments.js');
+    const { removeComments } = await import('./removeComments.ts');
 
     const inputCode = `
       const a = 1; // this is a comment
@@ -16,7 +16,7 @@ describe('removeComments', () => {
   });
 
   it('should remove multi-line comments', async () => {
-    const { removeComments } = await import('./removeComments.js');
+    const { removeComments } = await import('./removeComments.ts');
 
     const inputCode = `
       const a = 1; /* this is a

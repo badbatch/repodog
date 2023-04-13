@@ -16,7 +16,7 @@ describe('executeHygen', () => {
   });
 
   it('should call asyncExec with the correct command', async () => {
-    const { executeHygen } = await import('./executeHygen.js');
+    const { executeHygen } = await import('./executeHygen.ts');
 
     await executeHygen('root/_templates', 'root/node_modules/bin/hygen', ['new', 'pkg'], {
       alpha: 'foxtrot',

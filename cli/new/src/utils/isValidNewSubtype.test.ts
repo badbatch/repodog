@@ -1,12 +1,12 @@
 import { jest } from '@jest/globals';
-import { NewRepoSubtype, NewType } from '../types.js';
+import { NewRepoSubtype, NewType } from '../types.ts';
 
 describe('isValidNewSubtype', () => {
   let isValidNewSubtype: (type: NewType, subtype?: string) => boolean;
 
   beforeEach(async () => {
     jest.resetModules();
-    ({ isValidNewSubtype } = await import('./isValidNewSubtype.js'));
+    ({ isValidNewSubtype } = await import('./isValidNewSubtype.ts'));
   });
 
   describe('when type is REPO', () => {

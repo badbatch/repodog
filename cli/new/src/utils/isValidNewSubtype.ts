@@ -1,4 +1,4 @@
-import { NewRepoSubtype, NewType } from '../types.js';
+import { NewRepoSubtype, NewType } from '../types.ts';
 
 export const VALID_NEW_SUBTYPES = {
   [NewType.REPO]: Object.values(NewRepoSubtype) as string[],

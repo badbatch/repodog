@@ -1,4 +1,4 @@
-import { ReleaseTag } from './types.js';
+import { ReleaseTag } from './types.ts';
 
 export const getTag = (version: string): string | undefined => {
   if (version.includes(ReleaseTag.ALPHA)) {

@@ -8,7 +8,7 @@ jest.unstable_mockModule('../questions/new/pkg.json', () => ({
 describe('loadQuestions', () => {
   it('should load base questions when no question overrides are provided', async () => {
     const typePath = ['new', 'pkg', 'base'];
-    const { loadQuestions } = await import('./loadQuestions.js');
+    const { loadQuestions } = await import('./loadQuestions.ts');
     const result = await loadQuestions(typePath);
     expect(result).toEqual([{ name: 'question1' }, { name: 'question2' }]);
   });
@@ -26,7 +26,7 @@ describe('loadQuestions', () => {
       },
     };
 
-    const { loadQuestions } = await import('./loadQuestions.js');
+    const { loadQuestions } = await import('./loadQuestions.ts');
     const result = await loadQuestions(typePath, questionOverrides);
     expect(result).toEqual([{ name: 'question1' }]);
   });
@@ -50,7 +50,7 @@ describe('loadQuestions', () => {
       },
     };
 
-    const { loadQuestions } = await import('./loadQuestions.js');
+    const { loadQuestions } = await import('./loadQuestions.ts');
     const result = await loadQuestions(typePath, questionOverrides);
 
     expect(result).toEqual([
@@ -79,7 +79,7 @@ describe('loadQuestions', () => {
       },
     };
 
-    const { loadQuestions } = await import('./loadQuestions.js');
+    const { loadQuestions } = await import('./loadQuestions.ts');
     const result = await loadQuestions(typePath, questionOverrides);
 
     expect(result).toEqual([

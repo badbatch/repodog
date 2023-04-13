@@ -8,4 +8,4 @@ export const builder = (argv: Argv) =>
 
 export const command = 'publish';
 export const desc = 'Publish packages to registry';
-export { handler } from './handler.js';
+export { handler } from './handler.ts';

@@ -100,9 +100,7 @@ module.exports = {
     },
     {
       files: ['**/*.{mjs,cjs,js,jsx}'],
-      rules: {
-        'import/extensions': [2, 'always'],
-      },
+      rules: {},
     },
   ],
   parser: '@babel/eslint-parser',
@@ -123,8 +121,8 @@ module.exports = {
     'prettier',
   ],
   rules: {
-    // Conflicts with aliasing .ts files as .js in import paths
-    'import/extensions': 0,
+    'import/extensions': [2, 'ignorePackages'],
+    'import/namespace': 0,
     'import/no-default-export': 2,
     // Outstanding bug impacting this rule: https://github.com/import-js/eslint-plugin-import/issues/2168
     'import/no-extraneous-dependencies': [

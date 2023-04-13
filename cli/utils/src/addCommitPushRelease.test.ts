@@ -12,7 +12,7 @@ describe('addCommitPushRelease', () => {
   });
 
   it('should run the correct git commands', async () => {
-    const { addCommitPushRelease } = await import('./addCommitPushRelease.js');
+    const { addCommitPushRelease } = await import('./addCommitPushRelease.ts');
     addCommitPushRelease('1.1.0');
 
     expect(shelljs.exec.mock.calls).toEqual([

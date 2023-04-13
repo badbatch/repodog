@@ -2,7 +2,7 @@ import { type PackageManager, getMonorepoPackageMeta, verboseLog } from '@repodo
 import colors from 'ansi-colors';
 import { parse, resolve } from 'node:path';
 import shelljs from 'shelljs';
-import { publishPackage } from './publishPackage.js';
+import { publishPackage } from './publishPackage.ts';
 
 export const publishMonorepoPackages = (packageManager: PackageManager) => {
   verboseLog('Publishing monorepo packages');

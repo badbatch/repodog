@@ -2,7 +2,7 @@ import type { PromptOption } from '@repodog/cli-utils';
 
 describe('enrichQuestions', () => {
   it('should return the correct output', async () => {
-    const { enrichQuestions } = await import('./enrichQuestions.js');
+    const { enrichQuestions } = await import('./enrichQuestions.ts');
 
     const { default: baseQuestions } = (await import('../questions/new/pkg.json', {
       assert: { type: 'json' },

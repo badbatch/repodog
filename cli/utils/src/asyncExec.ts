@@ -1,5 +1,5 @@
 import shelljs from 'shelljs';
-import { verboseLog } from './verboseLog.js';
+import { verboseLog } from './verboseLog.ts';
 
 export interface AsyncExecOptions {
   silent?: boolean;

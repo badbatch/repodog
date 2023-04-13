@@ -23,4 +23,4 @@ export const builder = (argv: Argv) =>
 
 export const command = 'new <type> [subtype]';
 export const desc = 'Scaffold new folder structure';
-export { handler } from './handler.js';
+export { handler } from './handler.ts';

@@ -13,7 +13,7 @@ jest.unstable_mockModule('@repodog/cli-utils', () => ({
   verboseLog: jest.fn(),
 }));
 
-jest.unstable_mockModule('./publishPackage.js', () => ({
+jest.unstable_mockModule('./publishPackage.ts', () => ({
   publishPackage: jest.fn(),
 }));
 
@@ -30,7 +30,7 @@ describe('publishMonorepoPackages', () => {
       const shelljs = jest.mocked(await import('shelljs')).default;
       clearShelljsMock(shelljs);
 
-      const { publishPackage } = await import('./publishPackage.js');
+      const { publishPackage } = await import('./publishPackage.ts');
       mockedPublishPackage = jest.mocked(publishPackage);
       mockedPublishPackage.mockClear();
 
@@ -38,13 +38,13 @@ describe('publishMonorepoPackages', () => {
     });
 
     it('should change current working directory correctly', async () => {
-      const { publishMonorepoPackages } = await import('./publishMonorepoPackages.js');
+      const { publishMonorepoPackages } = await import('./publishMonorepoPackages.ts');
       publishMonorepoPackages(PackageManager.NPM);
       expect(mockedProcessChdir.mock.calls).toEqual([['/root/alpha'], ['/root/bravo'], ['/root/charlie'], ['/root']]);
     });
 
     it('should call publishPackage with the correct arguments', async () => {
-      const { publishMonorepoPackages } = await import('./publishMonorepoPackages.js');
+      const { publishMonorepoPackages } = await import('./publishMonorepoPackages.ts');
       publishMonorepoPackages(PackageManager.NPM);
 
       expect(mockedPublishPackage.mock.calls).toEqual([
@@ -66,7 +66,7 @@ describe('publishMonorepoPackages', () => {
       shelljs = jest.mocked(await import('shelljs')).default;
       clearShelljsMock(shelljs);
 
-      const { publishPackage } = await import('./publishPackage.js');
+      const { publishPackage } = await import('./publishPackage.ts');
       mockedPublishPackage = jest.mocked(publishPackage);
       mockedPublishPackage.mockClear();
 
@@ -78,7 +78,7 @@ describe('publishMonorepoPackages', () => {
     });
 
     it('should call publishPackage with the correct arguments', async () => {
-      const { publishMonorepoPackages } = await import('./publishMonorepoPackages.js');
+      const { publishMonorepoPackages } = await import('./publishMonorepoPackages.ts');
       publishMonorepoPackages(PackageManager.NPM);
 
       expect(mockedPublishPackage.mock.calls).toEqual([
@@ -89,7 +89,7 @@ describe('publishMonorepoPackages', () => {
     });
 
     it('should log the correct message', async () => {
-      const { publishMonorepoPackages } = await import('./publishMonorepoPackages.js');
+      const { publishMonorepoPackages } = await import('./publishMonorepoPackages.ts');
       publishMonorepoPackages(PackageManager.NPM);
       expect(shelljs.echo).toHaveBeenCalledWith(expect.stringContaining('Error publishing bravo: oops'));
     });

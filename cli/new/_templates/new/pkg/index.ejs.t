@@ -1,5 +1,5 @@
 ---
 to: <%= path %>/src/index.ts
 ---
-export * from './main.js';
-export * from './types.js';
+export * from './main.ts';
+export * from './types.ts';

@@ -1,8 +1,8 @@
 import glob from 'glob';
-import { formatListLogMessage } from './formatListLogMessage.js';
-import { getPackagePatterns } from './getPackagePatterns.js';
-import type { PackageManager } from './types.js';
-import { verboseLog } from './verboseLog.js';
+import { formatListLogMessage } from './formatListLogMessage.ts';
+import { getPackagePatterns } from './getPackagePatterns.ts';
+import type { PackageManager } from './types.ts';
+import { verboseLog } from './verboseLog.ts';
 
 export const getMonorepoPackageJsonPaths = (packageManager: PackageManager) => {
   const packagePatterns = getPackagePatterns(packageManager);

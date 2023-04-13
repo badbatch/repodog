@@ -28,21 +28,21 @@
     "clean:dist": "del-cli ./dist",
     "compile": "pnpm run /^compile:.*/",
     "compile:main": "rollup -c ../../rollup.config.cjs",
-    "compile:types": "tsc --project ./tsconfig.json"
+    "compile:types": "tsc --project ./tsconfig.build.json"
   },
   "dependencies": {
     "@repodog/cli-cut": "workspace:../cut",
     "@repodog/cli-new": "workspace:../new",
     "@repodog/cli-publish": "workspace:../publish",
     "@repodog/cli-write": "workspace:../write",
-    "yargs": "15.1.0"
+    "yargs": "^15.1.0"
   },
   "peerDependencies": {
     "@babel/runtime": "< 8",
     "core-js": "< 4"
   },
   "devDependencies": {
-    "@types/yargs": "15.0.4",
-    "del-cli": "3.0.0"
+    "@types/yargs": "^15.0.4",
+    "del-cli": "^3.0.0"
   }
 }

@@ -1,4 +1,4 @@
-import type { WriteType } from '../types.js';
+import type { WriteType } from '../types.ts';
 
 export const VALID_WRITE_TYPES = ['test'];
 

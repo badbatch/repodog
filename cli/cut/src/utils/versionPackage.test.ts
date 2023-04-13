@@ -24,7 +24,7 @@ describe('versionPackage', () => {
     });
 
     it('should throw the correct error', async () => {
-      const { versionPackage } = await import('./versionPackage.js');
+      const { versionPackage } = await import('./versionPackage.ts');
 
       expect(() => versionPackage(packageJson, { packageJsonPath, type: 'minor' })).toThrow(
         new Error('The new package verison for a minor increment on 1.0.0 is invalid')
@@ -41,7 +41,7 @@ describe('versionPackage', () => {
     });
 
     it('should throw the correct error', async () => {
-      const { versionPackage } = await import('./versionPackage.js');
+      const { versionPackage } = await import('./versionPackage.ts');
 
       expect(() => versionPackage(packageJson, { packageJsonPath, type: 'minor' })).toThrow(
         new Error('The new package verison 1.1.0 is less than or equal to the lastest version 1.1.0 on npm')
@@ -58,7 +58,7 @@ describe('versionPackage', () => {
     });
 
     it('should throw the correct error', async () => {
-      const { versionPackage } = await import('./versionPackage.js');
+      const { versionPackage } = await import('./versionPackage.ts');
 
       expect(() => versionPackage(packageJson, { packageJsonPath, type: 'minor' })).toThrow(
         new Error('The new package verison 1.1.0 is less than or equal to the lastest version 2.0.0 on npm')
@@ -86,7 +86,7 @@ describe('versionPackage', () => {
     });
 
     it('should writeFileSync with the correct arguments', async () => {
-      const { versionPackage } = await import('./versionPackage.js');
+      const { versionPackage } = await import('./versionPackage.ts');
       versionPackage(packageJson, { packageJsonPath, type: 'minor' });
 
       expect(mockedWriteFileSync).toHaveBeenCalledWith(
@@ -112,7 +112,7 @@ describe('versionPackage', () => {
     });
 
     it('should writeFileSync with the correct arguments', async () => {
-      const { versionPackage } = await import('./versionPackage.js');
+      const { versionPackage } = await import('./versionPackage.ts');
       versionPackage(packageJson, { packageJsonPath, type: 'minor' });
 
       expect(mockedWriteFileSync).toHaveBeenCalledWith(
@@ -134,7 +134,7 @@ describe('versionPackage', () => {
     });
 
     it('should throw the correct error', async () => {
-      const { versionPackage } = await import('./versionPackage.js');
+      const { versionPackage } = await import('./versionPackage.ts');
 
       expect(() => versionPackage(packageJson, { packageJsonPath, type: 'minor' })).toThrow(
         new Error('Could not write the package.json to: /root/alpha/package.json')

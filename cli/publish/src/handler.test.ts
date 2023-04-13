@@ -12,11 +12,11 @@ jest.unstable_mockModule('@repodog/cli-utils', () => ({
   verboseLog: jest.fn(),
 }));
 
-jest.unstable_mockModule('./utils/publishMonorepoPackages.js', () => ({
+jest.unstable_mockModule('./utils/publishMonorepoPackages.ts', () => ({
   publishMonorepoPackages: jest.fn(),
 }));
 
-jest.unstable_mockModule('./utils/publishPackage.js', () => ({
+jest.unstable_mockModule('./utils/publishPackage.ts', () => ({
   publishPackage: jest.fn(),
 }));
 
@@ -36,7 +36,7 @@ describe('publish', () => {
     });
 
     it('should log the correct error message', async () => {
-      const { handler } = await import('./handler.js');
+      const { handler } = await import('./handler.ts');
       handler();
 
       expect(shelljs.echo).toHaveBeenCalledWith(
@@ -47,7 +47,7 @@ describe('publish', () => {
     });
 
     it('should exit with the correct code', async () => {
-      const { handler } = await import('./handler.js');
+      const { handler } = await import('./handler.ts');
       handler();
       expect(shelljs.exit).toHaveBeenCalledWith(1);
     });
@@ -64,13 +64,13 @@ describe('publish', () => {
       shelljs = jest.mocked(await import('shelljs')).default;
       clearShelljsMock(shelljs);
 
-      const { publishPackage } = await import('./utils/publishPackage.js');
+      const { publishPackage } = await import('./utils/publishPackage.ts');
       mockedPublishPackage = jest.mocked(publishPackage);
       mockedPublishPackage.mockClear();
     });
 
     it('should call publishPackage with the correct arguments', async () => {
-      const { handler } = await import('./handler.js');
+      const { handler } = await import('./handler.ts');
       handler();
 
       expect(mockedPublishPackage).toHaveBeenCalledWith('/root/package.json', {
@@ -79,7 +79,7 @@ describe('publish', () => {
     });
 
     it('should exit with the correct code', async () => {
-      const { handler } = await import('./handler.js');
+      const { handler } = await import('./handler.ts');
       handler();
       expect(shelljs.exit).toHaveBeenCalledWith(0);
     });
@@ -97,19 +97,19 @@ describe('publish', () => {
       const mockedIsProjectMonorepo = jest.mocked(isProjectMonorepo);
       mockedIsProjectMonorepo.mockReturnValue(true);
 
-      const { publishMonorepoPackages } = await import('./utils/publishMonorepoPackages.js');
+      const { publishMonorepoPackages } = await import('./utils/publishMonorepoPackages.ts');
       mockedPublishMonorepoPackages = jest.mocked(publishMonorepoPackages);
       mockedPublishMonorepoPackages.mockClear();
     });
 
     it('should call publishMonorepoPackages with the correct argument', async () => {
-      const { handler } = await import('./handler.js');
+      const { handler } = await import('./handler.ts');
       handler();
       expect(mockedPublishMonorepoPackages).toHaveBeenCalledWith('pnpm');
     });
 
     it('should exit with the correct code', async () => {
-      const { handler } = await import('./handler.js');
+      const { handler } = await import('./handler.ts');
       handler();
       expect(shelljs.exit).toHaveBeenCalledWith(0);
     });

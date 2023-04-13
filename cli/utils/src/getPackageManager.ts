@@ -1,6 +1,6 @@
 import { existsSync } from 'node:fs';
 import { resolve } from 'node:path';
-import { PackageManager } from './types.js';
+import { PackageManager } from './types.ts';
 
 export const getPackageManager = (): PackageManager | undefined => {
   switch (true) {

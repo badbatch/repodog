@@ -1,6 +1,6 @@
 import type { Language } from '@repodog/cli-utils';
 import { ChatCompletionRequestMessageRoleEnum } from 'openai';
-import { WriteType } from '../types.js';
+import { WriteType } from '../types.ts';
 
 const testInitialMessages = (fileName: string, fileContents: string, language: Language) => [
   {

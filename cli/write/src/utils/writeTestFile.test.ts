@@ -15,11 +15,11 @@ jest.unstable_mockModule('node:path', () => ({
   resolve: jest.fn().mockImplementation((...paths) => paths.join('/')),
 }));
 
-jest.unstable_mockModule('./injectFileExtension.js', () => ({
+jest.unstable_mockModule('./injectFileExtension.ts', () => ({
   injectFileExtension: jest.fn().mockImplementation(code => code),
 }));
 
-jest.unstable_mockModule('./removeComments.js', () => ({
+jest.unstable_mockModule('./removeComments.ts', () => ({
   removeComments: jest.fn().mockImplementation(code => code),
 }));
 
@@ -44,19 +44,19 @@ describe('writeTestFile', () => {
   });
 
   it('should write the test file with the correct name and extension', async () => {
-    const { writeTestFile } = await import('./writeTestFile.js');
+    const { writeTestFile } = await import('./writeTestFile.ts');
     await writeTestFile(directory, name, code, { ...options, skipFormat: false });
     expect(writeFileSync).toHaveBeenCalledWith(testFilePath, code);
   });
 
   it('should skip formatting if skipFormat is true', async () => {
-    const { writeTestFile } = await import('./writeTestFile.js');
+    const { writeTestFile } = await import('./writeTestFile.ts');
     await writeTestFile(directory, name, code, { ...options, skipFormat: true });
     expect(asyncExec).not.toHaveBeenCalled();
   });
 
   it('should format the test file if skipFormat is false', async () => {
-    const { writeTestFile } = await import('./writeTestFile.js');
+    const { writeTestFile } = await import('./writeTestFile.ts');
     await writeTestFile(directory, name, code, { ...options, skipFormat: false });
 
     expect(asyncExec).toHaveBeenCalledWith(`pnpm dlx eslint --fix ${testFilePath}`, {

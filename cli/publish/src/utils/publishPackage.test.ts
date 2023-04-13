@@ -11,7 +11,7 @@ jest.unstable_mockModule('@repodog/cli-utils', () => ({
   ...loadPackageJsonMock(),
 }));
 
-jest.unstable_mockModule('./getPublishCmd.js', () => ({
+jest.unstable_mockModule('./getPublishCmd.ts', () => ({
   getPublishCmd: jest.fn(),
 }));
 
@@ -35,7 +35,7 @@ describe('publishPackage', () => {
     });
 
     it('should not call getLatestPackageVersionOnNpm', async () => {
-      const { publishPackage } = await import('./publishPackage.js');
+      const { publishPackage } = await import('./publishPackage.ts');
       publishPackage(packageJsonPath, { packageManager: PackageManager.NPM });
       expect(mockedGetLatestPackageVersionOnNpm).not.toHaveBeenCalled();
     });
@@ -49,7 +49,7 @@ describe('publishPackage', () => {
     });
 
     it('should throw the correct error', async () => {
-      const { publishPackage } = await import('./publishPackage.js');
+      const { publishPackage } = await import('./publishPackage.ts');
 
       expect(() => publishPackage(packageJsonPath, { packageManager: PackageManager.NPM })).toThrow(
         new Error('The new alpha package verison 1.0.0 is less than or equal to the lastest version on npm: 2.0.0')
@@ -65,7 +65,7 @@ describe('publishPackage', () => {
     });
 
     it('should throw the correct error', async () => {
-      const { publishPackage } = await import('./publishPackage.js');
+      const { publishPackage } = await import('./publishPackage.ts');
 
       expect(() => publishPackage(packageJsonPath, { packageManager: PackageManager.NPM })).toThrow(
         new Error('The new alpha package verison 1.0.0 is less than or equal to the lastest version on npm: 1.0.0')
@@ -83,13 +83,13 @@ describe('publishPackage', () => {
       const mockedGetLatestPackageVersionOnNpm = jest.mocked(getLatestPackageVersionOnNpm);
       mockedGetLatestPackageVersionOnNpm.mockReturnValueOnce('');
 
-      const { getPublishCmd } = await import('./getPublishCmd.js');
+      const { getPublishCmd } = await import('./getPublishCmd.ts');
       mockedGetPublishCmd = jest.mocked(getPublishCmd);
       mockedGetPublishCmd.mockClear();
     });
 
     it('should run the correct publish command', async () => {
-      const { publishPackage } = await import('./publishPackage.js');
+      const { publishPackage } = await import('./publishPackage.ts');
       publishPackage(packageJsonPath, { packageManager: PackageManager.NPM });
       expect(mockedGetPublishCmd).toHaveBeenCalledWith(PackageManager.NPM, '1.0.0', undefined);
     });
@@ -105,13 +105,13 @@ describe('publishPackage', () => {
       const mockedGetLatestPackageVersionOnNpm = jest.mocked(getLatestPackageVersionOnNpm);
       mockedGetLatestPackageVersionOnNpm.mockReturnValueOnce('0.5.0');
 
-      const { getPublishCmd } = await import('./getPublishCmd.js');
+      const { getPublishCmd } = await import('./getPublishCmd.ts');
       mockedGetPublishCmd = jest.mocked(getPublishCmd);
       mockedGetPublishCmd.mockClear();
     });
 
     it('should run the correct publish command', async () => {
-      const { publishPackage } = await import('./publishPackage.js');
+      const { publishPackage } = await import('./publishPackage.ts');
       publishPackage(packageJsonPath, { packageManager: PackageManager.NPM });
       expect(mockedGetPublishCmd).toHaveBeenCalledWith(PackageManager.NPM, '1.0.0', undefined);
     });

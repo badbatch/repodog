@@ -1,3 +1,3 @@
-export * from './glob.js';
-export * from './loadPackageJson.js';
-export * from './shelljs.js';
+export * from './glob.ts';
+export * from './loadPackageJson.ts';
+export * from './shelljs.ts';

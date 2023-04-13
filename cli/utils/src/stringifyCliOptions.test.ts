@@ -1,6 +1,6 @@
 describe('stringifyCliOptions', () => {
   it('should return the stringified cli options', async () => {
-    const { stringifyCliOptions } = await import('./stringifyCliOptions.js');
+    const { stringifyCliOptions } = await import('./stringifyCliOptions.ts');
 
     expect(
       stringifyCliOptions({

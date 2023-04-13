@@ -3,7 +3,7 @@ import { shelljsMock } from '@repodog/cli-test-utils';
 import * as cliUtils from '@repodog/cli-utils';
 import * as fs from 'node:fs';
 import * as path from 'node:path';
-import { WriteType } from './types.js';
+import { WriteType } from './types.ts';
 
 jest.unstable_mockModule('@repodog/cli-utils', () => ({
   ...cliUtils,
@@ -27,17 +27,17 @@ jest.unstable_mockModule('shelljs', shelljsMock);
 
 const DESCRIBE_BLOCK = 'describe("hello world!", () => {});';
 
-jest.unstable_mockModule('./utils/chatGptManager.js', () => ({
+jest.unstable_mockModule('./utils/chatGptManager.ts', () => ({
   createChatCompletion: jest.fn().mockReturnValue(`
     Here are the Jest unit tests for the typescript file \`./alpha.ts\`:\n\`\`\`\n${DESCRIBE_BLOCK}\n\`\`\`
   `),
 }));
 
-jest.unstable_mockModule('./utils/extractCode.js', () => ({
+jest.unstable_mockModule('./utils/extractCode.ts', () => ({
   extractCode: jest.fn().mockReturnValue(DESCRIBE_BLOCK),
 }));
 
-jest.unstable_mockModule('./utils/writeTestFile.js', () => ({
+jest.unstable_mockModule('./utils/writeTestFile.ts', () => ({
   writeTestFile: jest.fn(),
 }));
 
@@ -56,7 +56,7 @@ describe('handler', () => {
     });
 
     it('should throw the correct error', async () => {
-      const { handler } = await import('./handler.js');
+      const { handler } = await import('./handler.ts');
       await handler({ 'file-path': filePath, type: 'blah' });
 
       expect(shelljs.echo).toHaveBeenCalledWith(
@@ -65,7 +65,7 @@ describe('handler', () => {
     });
 
     it('should exit with the correct code', async () => {
-      const { handler } = await import('./handler.js');
+      const { handler } = await import('./handler.ts');
       await handler({ 'file-path': filePath, type: 'blah' });
       expect(shelljs.exit).toHaveBeenCalledWith(1);
     });
@@ -78,12 +78,12 @@ describe('handler', () => {
       jest.clearAllMocks();
       shelljs = jest.mocked(await import('shelljs')).default;
 
-      const { extractCode } = jest.mocked(await import('./utils/extractCode.js'));
+      const { extractCode } = jest.mocked(await import('./utils/extractCode.ts'));
       extractCode.mockReturnValueOnce(undefined); // eslint-disable-line unicorn/no-useless-undefined
     });
 
     it('should throw the correct error', async () => {
-      const { handler } = await import('./handler.js');
+      const { handler } = await import('./handler.ts');
       await handler({ 'file-path': filePath, type });
 
       expect(shelljs.echo).toHaveBeenCalledWith(
@@ -92,7 +92,7 @@ describe('handler', () => {
     });
 
     it('should exit with the correct code', async () => {
-      const { handler } = await import('./handler.js');
+      const { handler } = await import('./handler.ts');
       await handler({ 'file-path': filePath, type });
       expect(shelljs.exit).toHaveBeenCalledWith(1);
     });
@@ -100,16 +100,16 @@ describe('handler', () => {
 
   describe('when code is extracted correctly', () => {
     let shelljs: jest.MockedObject<typeof import('shelljs')>;
-    let writeTestFile: jest.MockedFunction<typeof import('./utils/writeTestFile.js')['writeTestFile']>;
+    let writeTestFile: jest.MockedFunction<typeof import('./utils/writeTestFile.ts')['writeTestFile']>;
 
     beforeEach(async () => {
       jest.clearAllMocks();
       shelljs = jest.mocked(await import('shelljs')).default;
-      ({ writeTestFile } = jest.mocked(await import('./utils/writeTestFile.js')));
+      ({ writeTestFile } = jest.mocked(await import('./utils/writeTestFile.ts')));
     });
 
     it('should calll writeTestFile with the correct arguments', async () => {
-      const { handler } = await import('./handler.js');
+      const { handler } = await import('./handler.ts');
       await handler({ 'file-path': filePath, type });
 
       expect(writeTestFile).toHaveBeenCalledWith('/root', 'alpha.test', DESCRIBE_BLOCK, {
@@ -120,7 +120,7 @@ describe('handler', () => {
     });
 
     it('should exit with the correct code', async () => {
-      const { handler } = await import('./handler.js');
+      const { handler } = await import('./handler.ts');
       await handler({ 'file-path': filePath, type });
       expect(shelljs.exit).toHaveBeenCalledWith(0);
     });

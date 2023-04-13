@@ -1,4 +1,4 @@
-import type { NewType } from '../types.js';
+import type { NewType } from '../types.ts';
 
 export const VALID_NEW_TYPES = ['pkg', 'repo'];
 

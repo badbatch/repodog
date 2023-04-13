@@ -1,4 +1,4 @@
-import { PackageManager } from './types.js';
+import { PackageManager } from './types.ts';
 
 export const getPackageManagerTemporaryCmd = (packageManager: PackageManager) => {
   switch (packageManager) {

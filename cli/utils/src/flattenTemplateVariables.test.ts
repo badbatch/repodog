@@ -20,7 +20,7 @@ describe('convertObjectToCliOptions', () => {
     };
 
     const { flattenTemplateVariables: flattenAndMergeTemplateVariables } = await import(
-      './flattenTemplateVariables.js'
+      './flattenTemplateVariables.ts'
     );
 
     expect(flattenAndMergeTemplateVariables(object, ['new', 'pkg'])).toEqual({

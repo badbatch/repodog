@@ -1,2 +1,2 @@
-export * as command from './command.js';
-export * from './types.js';
+export * as command from './command.ts';
+export * from './types.ts';

@@ -1,4 +1,4 @@
-import { Language } from './types.js';
+import { Language } from './types.ts';
 
 export const getLanguageExtension = (language: Language) => {
   switch (language) {

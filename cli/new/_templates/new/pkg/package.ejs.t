@@ -37,7 +37,7 @@ sh: <%= packageManager %> install
     "core-js": "< 4"
   },
   "devDependencies": {
-    "@jest/globals": "29.3.1",
-    "del-cli": "3.0.0"
+    "@jest/globals": "^29.3.1",
+    "del-cli": "^3.0.0"
   }
 }

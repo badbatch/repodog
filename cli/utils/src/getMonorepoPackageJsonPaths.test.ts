@@ -1,10 +1,10 @@
 import { jest } from '@jest/globals';
 import { clearGlobMock, globMock } from '@repodog/cli-test-utils';
-import { PackageManager } from './types.js';
+import { PackageManager } from './types.ts';
 
 jest.unstable_mockModule('glob', globMock);
 
-jest.unstable_mockModule('./getPackagePatterns.js', () => ({
+jest.unstable_mockModule('./getPackagePatterns.ts', () => ({
   getPackagePatterns: jest.fn().mockReturnValue(['apps/**', 'configs/*', 'graphql/*', '!apps/shared/test-utils']),
 }));
 
@@ -49,7 +49,7 @@ describe('getMonorepoPackageJsonPaths', () => {
   });
 
   it('should return the correct package.json paths', async () => {
-    const { getMonorepoPackageJsonPaths } = await import('./getMonorepoPackageJsonPaths.js');
+    const { getMonorepoPackageJsonPaths } = await import('./getMonorepoPackageJsonPaths.ts');
 
     expect(getMonorepoPackageJsonPaths(PackageManager.PNPM)).toEqual([
       '/root/apps/client/alpha/package.json',

@@ -1,5 +1,5 @@
 import { jest } from '@jest/globals';
-import { PackageManager } from './types.js';
+import { PackageManager } from './types.ts';
 
 jest.unstable_mockModule('js-yaml', () => ({
   load: jest.fn<(value: string) => unknown>().mockImplementation((value: string) => JSON.parse(value)),
@@ -10,7 +10,7 @@ jest.unstable_mockModule('node:fs', () => ({
   readFileSync: jest.fn(),
 }));
 
-jest.unstable_mockModule('./loadPackageJson.js', () => ({
+jest.unstable_mockModule('./loadPackageJson.ts', () => ({
   loadPackageJson: jest.fn(),
 }));
 
@@ -20,21 +20,21 @@ describe('getPackagePatterns', () => {
   describe('when the package manager is npm', () => {
     describe('when there are no workspaces declared', () => {
       beforeEach(async () => {
-        const { loadPackageJson } = await import('./loadPackageJson.js');
+        const { loadPackageJson } = await import('./loadPackageJson.ts');
         const mockedLoadPackageJson = jest.mocked(loadPackageJson);
         mockedLoadPackageJson.mockClear();
         mockedLoadPackageJson.mockReturnValue({ name: 'alpha', version: '1.0.0' });
       });
 
       it('should return the correct patterns', async () => {
-        const { getPackagePatterns } = await import('./getPackagePatterns.js');
+        const { getPackagePatterns } = await import('./getPackagePatterns.ts');
         expect(getPackagePatterns(PackageManager.NPM)).toEqual([]);
       });
     });
 
     describe('when workspaces is an array', () => {
       beforeEach(async () => {
-        const { loadPackageJson } = await import('./loadPackageJson.js');
+        const { loadPackageJson } = await import('./loadPackageJson.ts');
         const mockedLoadPackageJson = jest.mocked(loadPackageJson);
         mockedLoadPackageJson.mockClear();
 
@@ -46,14 +46,14 @@ describe('getPackagePatterns', () => {
       });
 
       it('should return the correct patterns', async () => {
-        const { getPackagePatterns } = await import('./getPackagePatterns.js');
+        const { getPackagePatterns } = await import('./getPackagePatterns.ts');
         expect(getPackagePatterns(PackageManager.NPM)).toEqual(['apps/**', 'configs/*', 'graphql/*']);
       });
     });
 
     describe('when workspaces is not an array', () => {
       beforeEach(async () => {
-        const { loadPackageJson } = await import('./loadPackageJson.js');
+        const { loadPackageJson } = await import('./loadPackageJson.ts');
         const mockedLoadPackageJson = jest.mocked(loadPackageJson);
         mockedLoadPackageJson.mockClear();
 
@@ -65,7 +65,7 @@ describe('getPackagePatterns', () => {
       });
 
       it('should return the correct patterns', async () => {
-        const { getPackagePatterns } = await import('./getPackagePatterns.js');
+        const { getPackagePatterns } = await import('./getPackagePatterns.ts');
         expect(getPackagePatterns(PackageManager.NPM)).toEqual(['apps/**', 'configs/*', 'graphql/*']);
       });
     });
@@ -74,21 +74,21 @@ describe('getPackagePatterns', () => {
   describe('when the package manager is yarn', () => {
     describe('when there are no workspaces declared', () => {
       beforeEach(async () => {
-        const { loadPackageJson } = await import('./loadPackageJson.js');
+        const { loadPackageJson } = await import('./loadPackageJson.ts');
         const mockedLoadPackageJson = jest.mocked(loadPackageJson);
         mockedLoadPackageJson.mockClear();
         mockedLoadPackageJson.mockReturnValue({ name: 'alpha', version: '1.0.0' });
       });
 
       it('should return the correct patterns', async () => {
-        const { getPackagePatterns } = await import('./getPackagePatterns.js');
+        const { getPackagePatterns } = await import('./getPackagePatterns.ts');
         expect(getPackagePatterns(PackageManager.YARN)).toEqual([]);
       });
     });
 
     describe('when workspaces is an array', () => {
       beforeEach(async () => {
-        const { loadPackageJson } = await import('./loadPackageJson.js');
+        const { loadPackageJson } = await import('./loadPackageJson.ts');
         const mockedLoadPackageJson = jest.mocked(loadPackageJson);
         mockedLoadPackageJson.mockClear();
 
@@ -100,14 +100,14 @@ describe('getPackagePatterns', () => {
       });
 
       it('should return the correct patterns', async () => {
-        const { getPackagePatterns } = await import('./getPackagePatterns.js');
+        const { getPackagePatterns } = await import('./getPackagePatterns.ts');
         expect(getPackagePatterns(PackageManager.YARN)).toEqual(['apps/**', 'configs/*', 'graphql/*']);
       });
     });
 
     describe('when workspaces is not an array', () => {
       beforeEach(async () => {
-        const { loadPackageJson } = await import('./loadPackageJson.js');
+        const { loadPackageJson } = await import('./loadPackageJson.ts');
         const mockedLoadPackageJson = jest.mocked(loadPackageJson);
         mockedLoadPackageJson.mockClear();
 
@@ -119,7 +119,7 @@ describe('getPackagePatterns', () => {
       });
 
       it('should return the correct patterns', async () => {
-        const { getPackagePatterns } = await import('./getPackagePatterns.js');
+        const { getPackagePatterns } = await import('./getPackagePatterns.ts');
         expect(getPackagePatterns(PackageManager.YARN)).toEqual(['apps/**', 'configs/*', 'graphql/*']);
       });
     });
@@ -134,7 +134,7 @@ describe('getPackagePatterns', () => {
     });
 
     it('should return the correct patterns', async () => {
-      const { getPackagePatterns } = await import('./getPackagePatterns.js');
+      const { getPackagePatterns } = await import('./getPackagePatterns.ts');
       expect(getPackagePatterns(PackageManager.PNPM)).toEqual(['apps/**', 'configs/*', 'graphql/*']);
     });
   });
@@ -151,7 +151,7 @@ describe('getPackagePatterns', () => {
     });
 
     it('should return an empty array', async () => {
-      const { getPackagePatterns } = await import('./getPackagePatterns.js');
+      const { getPackagePatterns } = await import('./getPackagePatterns.ts');
       expect(getPackagePatterns(PackageManager.PNPM)).toEqual([]);
     });
   });

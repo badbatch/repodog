@@ -17,7 +17,7 @@ describe('getLatestPackageVersionOnNpm', () => {
   });
 
   it('should run the correct git commands', async () => {
-    const { getLatestPackageVersionOnNpm } = await import('./getLatestPackageVersionOnNpm.js');
+    const { getLatestPackageVersionOnNpm } = await import('./getLatestPackageVersionOnNpm.ts');
     getLatestPackageVersionOnNpm('alpha');
     expect(shelljs.exec).toHaveBeenCalledWith('npm view alpha version', { silent: true });
   });

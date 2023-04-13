@@ -40,11 +40,11 @@ jest.unstable_mockModule('@repodog/cli-utils', () => ({
   verboseLog: jest.fn(),
 }));
 
-jest.unstable_mockModule('./utils/versionMonorepoPackages.js', () => ({
+jest.unstable_mockModule('./utils/versionMonorepoPackages.ts', () => ({
   versionMonorepoPackages: jest.fn(),
 }));
 
-jest.unstable_mockModule('./utils/versionPackage.js', () => ({
+jest.unstable_mockModule('./utils/versionPackage.ts', () => ({
   versionPackage: jest.fn(),
 }));
 
@@ -74,13 +74,13 @@ describe('cut', () => {
       });
 
       it('should call addCommitPushRelease', async () => {
-        const { handler } = await import('./handler.js');
+        const { handler } = await import('./handler.ts');
         handler({ type: 'dry-run' });
         expect(mockedAddCommitPushRelease).toHaveBeenCalled();
       });
 
       it('should exit with the correct code', async () => {
-        const { handler } = await import('./handler.js');
+        const { handler } = await import('./handler.ts');
         handler({ type: 'dry-run' });
         expect(shelljs.exit).toHaveBeenCalledWith(0);
       });
@@ -104,13 +104,13 @@ describe('cut', () => {
       });
 
       it('should not call addCommitPushRelease', async () => {
-        const { handler } = await import('./handler.js');
+        const { handler } = await import('./handler.ts');
         handler({ type: 'major' });
         expect(mockedAddCommitPushRelease).not.toHaveBeenCalled();
       });
 
       it('should log the correct error message', async () => {
-        const { handler } = await import('./handler.js');
+        const { handler } = await import('./handler.ts');
         handler({ type: 'major' });
 
         expect(shelljs.echo).toHaveBeenCalledWith(
@@ -119,7 +119,7 @@ describe('cut', () => {
       });
 
       it('should exit with the correct code', async () => {
-        const { handler } = await import('./handler.js');
+        const { handler } = await import('./handler.ts');
         handler({ type: 'major' });
         expect(shelljs.exit).toHaveBeenCalledWith(1);
       });
@@ -135,7 +135,7 @@ describe('cut', () => {
     });
 
     it('should log the correct error message', async () => {
-      const { handler } = await import('./handler.js');
+      const { handler } = await import('./handler.ts');
       handler({ type: 'blah' });
 
       expect(shelljs.echo).toHaveBeenCalledWith(
@@ -146,7 +146,7 @@ describe('cut', () => {
     });
 
     it('should exit with the correct code', async () => {
-      const { handler } = await import('./handler.js');
+      const { handler } = await import('./handler.ts');
       handler({ type: 'blah' });
       expect(shelljs.exit).toHaveBeenCalledWith(1);
     });
@@ -161,7 +161,7 @@ describe('cut', () => {
     });
 
     it('should log the correct error message', async () => {
-      const { handler } = await import('./handler.js');
+      const { handler } = await import('./handler.ts');
       handler({ tag: 'blah', type: 'preminor' });
 
       expect(shelljs.echo).toHaveBeenCalledWith(
@@ -170,7 +170,7 @@ describe('cut', () => {
     });
 
     it('should exit with the correct code', async () => {
-      const { handler } = await import('./handler.js');
+      const { handler } = await import('./handler.ts');
       handler({ tag: 'blah', type: 'preminor' });
       expect(shelljs.exit).toHaveBeenCalledWith(1);
     });
@@ -185,7 +185,7 @@ describe('cut', () => {
     });
 
     it('should log the correct error message', async () => {
-      const { handler } = await import('./handler.js');
+      const { handler } = await import('./handler.ts');
       handler({ tag: 'alpha', type: 'major' });
 
       expect(shelljs.echo).toHaveBeenCalledWith(
@@ -194,7 +194,7 @@ describe('cut', () => {
     });
 
     it('should exit with the correct code', async () => {
-      const { handler } = await import('./handler.js');
+      const { handler } = await import('./handler.ts');
       handler({ tag: 'alpha', type: 'major' });
       expect(shelljs.exit).toHaveBeenCalledWith(1);
     });
@@ -213,7 +213,7 @@ describe('cut', () => {
     });
 
     it('should log the correct error message', async () => {
-      const { handler } = await import('./handler.js');
+      const { handler } = await import('./handler.ts');
       handler({ type: 'preminor' });
 
       expect(shelljs.echo).toHaveBeenCalledWith(
@@ -224,7 +224,7 @@ describe('cut', () => {
     });
 
     it('should exit with the correct code', async () => {
-      const { handler } = await import('./handler.js');
+      const { handler } = await import('./handler.ts');
       handler({ type: 'preminor' });
       expect(shelljs.exit).toHaveBeenCalledWith(1);
     });
@@ -243,7 +243,7 @@ describe('cut', () => {
     });
 
     it('should log the correct error message', async () => {
-      const { handler } = await import('./handler.js');
+      const { handler } = await import('./handler.ts');
       handler({ type: 'preminor' });
 
       expect(shelljs.echo).toHaveBeenCalledWith(
@@ -252,7 +252,7 @@ describe('cut', () => {
     });
 
     it('should exit with the correct code', async () => {
-      const { handler } = await import('./handler.js');
+      const { handler } = await import('./handler.ts');
       handler({ type: 'preminor' });
       expect(shelljs.exit).toHaveBeenCalledWith(1);
     });
@@ -271,7 +271,7 @@ describe('cut', () => {
     });
 
     it('should log the correct error message', async () => {
-      const { handler } = await import('./handler.js');
+      const { handler } = await import('./handler.ts');
       handler({ type: 'preminor' });
 
       expect(shelljs.echo).toHaveBeenCalledWith(
@@ -280,7 +280,7 @@ describe('cut', () => {
     });
 
     it('should exit with the correct code', async () => {
-      const { handler } = await import('./handler.js');
+      const { handler } = await import('./handler.ts');
       handler({ type: 'preminor' });
       expect(shelljs.exit).toHaveBeenCalledWith(1);
     });
@@ -307,7 +307,7 @@ describe('cut', () => {
       });
 
       it('should execute the script', async () => {
-        const { handler } = await import('./handler.js');
+        const { handler } = await import('./handler.ts');
         handler({ type: 'preminor' });
         expect(shelljs.exec).toHaveBeenNthCalledWith(1, 'pnpm run cut:pre-version');
       });
@@ -333,7 +333,7 @@ describe('cut', () => {
       });
 
       it('should not execute the script', async () => {
-        const { handler } = await import('./handler.js');
+        const { handler } = await import('./handler.ts');
         handler({ 'skip-prehook': true, type: 'preminor' });
         expect(shelljs.exec).not.toHaveBeenNthCalledWith(1, 'pnpm run cut:pre-version');
       });
@@ -348,7 +348,7 @@ describe('cut', () => {
       });
 
       it('should not execute the script', async () => {
-        const { handler } = await import('./handler.js');
+        const { handler } = await import('./handler.ts');
         handler({ type: 'preminor' });
         expect(shelljs.exec).not.toHaveBeenNthCalledWith(1, 'pnpm run cut:pre-version');
       });
@@ -376,7 +376,7 @@ describe('cut', () => {
       });
 
       it('should execute the script', async () => {
-        const { handler } = await import('./handler.js');
+        const { handler } = await import('./handler.ts');
         handler({ type: 'preminor' });
         expect(shelljs.exec).toHaveBeenNthCalledWith(1, 'pnpm run cut:post-version');
       });
@@ -402,7 +402,7 @@ describe('cut', () => {
       });
 
       it('should not execute the script', async () => {
-        const { handler } = await import('./handler.js');
+        const { handler } = await import('./handler.ts');
         handler({ 'skip-posthook': true, type: 'preminor' });
         expect(shelljs.exec).not.toHaveBeenNthCalledWith(1, 'pnpm run cut:post-version');
       });
@@ -417,7 +417,7 @@ describe('cut', () => {
       });
 
       it('should not execute the script', async () => {
-        const { handler } = await import('./handler.js');
+        const { handler } = await import('./handler.ts');
         handler({ type: 'preminor' });
         expect(shelljs.exec).not.toHaveBeenNthCalledWith(1, 'pnpm run cut:post-version');
       });
@@ -444,7 +444,7 @@ describe('cut', () => {
     });
 
     it.each([['patch'], ['minor'], ['major']])('%p release should run changelog', async type => {
-      const { handler } = await import('./handler.js');
+      const { handler } = await import('./handler.ts');
       handler({ type });
       expect(shelljs.exec).toHaveBeenCalledWith(`pnpm run cut:changelog -- --${type}`);
     });
@@ -459,7 +459,7 @@ describe('cut', () => {
     });
 
     it.each([['patch'], ['minor'], ['major']])('%p release should not run changelog', async type => {
-      const { handler } = await import('./handler.js');
+      const { handler } = await import('./handler.ts');
       handler({ type });
       expect(shelljs.exec).not.toHaveBeenCalledWith(`pnpm run cut:changelog -- --${type}`);
     });
@@ -488,19 +488,19 @@ describe('cut', () => {
       mockedGetChangedFiles = jest.mocked(getChangedFiles);
       mockedGetChangedFiles.mockClear();
 
-      const { versionPackage } = await import('./utils/versionPackage.js');
+      const { versionPackage } = await import('./utils/versionPackage.ts');
       mockedVersionPackage = jest.mocked(versionPackage);
       mockedVersionPackage.mockClear();
     });
 
     it('should call getChangedFiles with the correct argument', async () => {
-      const { handler } = await import('./handler.js');
+      const { handler } = await import('./handler.ts');
       handler({ preid: '12345', tag: 'alpha', type: 'preminor' });
       expect(mockedGetChangedFiles).toHaveBeenCalledWith('v1.0.0');
     });
 
     it('should call versionPackage with the correct arguments', async () => {
-      const { handler } = await import('./handler.js');
+      const { handler } = await import('./handler.ts');
       handler({ preid: '12345', tag: 'alpha', type: 'preminor' });
 
       expect(mockedVersionPackage).toHaveBeenCalledWith(
@@ -517,13 +517,13 @@ describe('cut', () => {
     });
 
     it('should call addCommitPushRelease', async () => {
-      const { handler } = await import('./handler.js');
+      const { handler } = await import('./handler.ts');
       handler({ preid: '12345', tag: 'alpha', type: 'preminor' });
       expect(mockedAddCommitPushRelease).toHaveBeenCalled();
     });
 
     it('should exit with the correct code', async () => {
-      const { handler } = await import('./handler.js');
+      const { handler } = await import('./handler.ts');
       handler({ preid: '12345', tag: 'alpha', type: 'preminor' });
       expect(shelljs.exit).toHaveBeenCalledWith(0);
     });
@@ -556,7 +556,7 @@ describe('cut', () => {
       const mockedIsProjectMonorepo = jest.mocked(isProjectMonorepo);
       mockedIsProjectMonorepo.mockReturnValue(true);
 
-      const { versionMonorepoPackages } = await import('./utils/versionMonorepoPackages.js');
+      const { versionMonorepoPackages } = await import('./utils/versionMonorepoPackages.ts');
       mockedVersionMonorepoPackages = jest.mocked(versionMonorepoPackages);
       mockedVersionMonorepoPackages.mockClear();
 
@@ -566,7 +566,7 @@ describe('cut', () => {
     });
 
     it('should call versionMonorepoPackages with the correct argument', async () => {
-      const { handler } = await import('./handler.js');
+      const { handler } = await import('./handler.ts');
       handler({ preid: '12345', tag: 'alpha', type: 'preminor' });
 
       expect(mockedVersionMonorepoPackages).toHaveBeenCalledWith({
@@ -579,7 +579,7 @@ describe('cut', () => {
     });
 
     it('should call writeFileSync with the correct arguments', async () => {
-      const { handler } = await import('./handler.js');
+      const { handler } = await import('./handler.ts');
       handler({ preid: '12345', tag: 'alpha', type: 'preminor' });
 
       expect(mockedWriteFileSync).toHaveBeenCalledWith(
@@ -595,13 +595,13 @@ describe('cut', () => {
     });
 
     it('should call addCommitPushRelease', async () => {
-      const { handler } = await import('./handler.js');
+      const { handler } = await import('./handler.ts');
       handler({ preid: '12345', tag: 'alpha', type: 'preminor' });
       expect(mockedAddCommitPushRelease).toHaveBeenCalled();
     });
 
     it('should exit with the correct code', async () => {
-      const { handler } = await import('./handler.js');
+      const { handler } = await import('./handler.ts');
       handler({ preid: '12345', tag: 'alpha', type: 'preminor' });
       expect(shelljs.exit).toHaveBeenCalledWith(0);
     });
@@ -621,13 +621,13 @@ describe('cut', () => {
     });
 
     it('should not call addCommitPushRelease', async () => {
-      const { handler } = await import('./handler.js');
+      const { handler } = await import('./handler.ts');
       handler({ 'dry-run': true, type: 'preminor' });
       expect(mockedAddCommitPushRelease).not.toHaveBeenCalled();
     });
 
     it('should exit with the correct code', async () => {
-      const { handler } = await import('./handler.js');
+      const { handler } = await import('./handler.ts');
       handler({ 'dry-run': true, type: 'preminor' });
       expect(shelljs.exit).toHaveBeenCalledWith(0);
     });
