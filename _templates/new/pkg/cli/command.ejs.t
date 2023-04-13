@@ -11,4 +11,4 @@ export const builder = (argv: Argv) =>
 
 export const command = '<%- cliCommand %>';
 export const desc = '<%= cliDescription %>';
-export { handler } from './handler.js';
+export { handler } from './handler.ts';

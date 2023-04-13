@@ -15,7 +15,7 @@ import { dirname, resolve as resolvePath } from 'node:path';
 import { performance } from 'node:perf_hooks';
 import { fileURLToPath } from 'node:url';
 import shelljs from 'shelljs';
-import type { NewHandlerArguments } from './types.ts';
+import { type NewHandlerArguments, NewType } from './types.ts';
 import { enrichQuestions } from './utils/enrichQuestions.ts';
 import { executeHygen } from './utils/executeHygen.ts';
 import { VALID_NEW_SUBTYPES, isValidNewSubtype } from './utils/isValidNewSubtype.ts';
@@ -38,7 +38,7 @@ export const handler = async (argv: NewHandlerArguments) => {
       throw new Error(`Expected type to be a valid new type: ${VALID_NEW_TYPES.join(', ')}`);
     }
 
-    if (!isValidNewSubtype(argv.type, argv.subtype)) {
+    if (argv.type === NewType.REPO && !isValidNewSubtype(argv.type, argv.subtype)) {
       throw new Error(
         `Expected subtype to be a valid new ${argv.type} subtype: ${VALID_NEW_SUBTYPES[argv.type].join(', ')}`
       );
