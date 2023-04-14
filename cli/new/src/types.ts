@@ -1,5 +1,5 @@
 export interface NewHandlerArguments {
-  customTypePath?: string;
+  'custom-type-path'?: string;
   subtype?: string;
   type: string;
   verbose?: boolean;

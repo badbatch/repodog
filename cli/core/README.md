@@ -142,11 +142,11 @@ Positionals:
            app | library | server                                       [string]
 
 Options:
-  --version         Show version number                                [boolean]
-  --help            Show help                                          [boolean]
-  --customTypePath  The additional types to apply to the scaffold. Multiple
-                    types should be separated by a "." character        [string]
-  --verbose         Whether to output verbose logs.                    [boolean]
+  --version           Show version number                              [boolean]
+  --help              Show help                                        [boolean]
+  --custom-type-path  The additional types to apply to the scaffold. Multiple
+                      types should be separated by a "." character      [string]
+  --verbose           Whether to output verbose logs.                  [boolean]
 ```
 
 #### `new` config

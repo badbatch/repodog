@@ -139,13 +139,13 @@ describe('handler', () => {
 
       it('should load the questions for the specified new type and customTypePath', async () => {
         const { handler } = await import('./handler.ts');
-        await handler({ customTypePath: 'cli', type: 'pkg' });
+        await handler({ 'custom-type-path': 'cli', type: 'pkg' });
         expect(loadQuestions).toHaveBeenCalledWith(['new', 'pkg', 'cli'], repodogConfig.questionOverrides);
       });
 
       it('should execute hygen with the specified options and base type path', async () => {
         const { handler } = await import('./handler.ts');
-        await handler({ customTypePath: 'cli', type: 'pkg' });
+        await handler({ 'custom-type-path': 'cli', type: 'pkg' });
 
         expect(executeHygen).toHaveBeenCalledWith('/root/_templates', '/root/node_modules/.bin/hygen', ['new', 'pkg'], {
           author: 'Dylan Aubrey',
@@ -175,7 +175,7 @@ describe('handler', () => {
 
         it('should execute hygen again with the template overrides path and specified options and base type path', async () => {
           const { handler } = await import('./handler.ts');
-          await handler({ customTypePath: 'cli', type: 'pkg' });
+          await handler({ 'custom-type-path': 'cli', type: 'pkg' });
 
           expect(executeHygen.mock.calls[1]).toEqual([
             '/root/overrides/_templates',

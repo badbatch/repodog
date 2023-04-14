@@ -25,10 +25,11 @@ import { loadQuestions } from './utils/loadQuestions.ts';
 export const handler = async (argv: NewHandlerArguments) => {
   const startTime = performance.now();
   const verbose = argv.verbose ?? false;
+  const customTypePath = argv['custom-type-path'] ?? '';
 
   setVerbose(verbose);
   verboseLog('>>>> USER CONFIG START <<<<');
-  verboseLog(`customTypePath: ${argv.customTypePath ?? 'undefined'}`);
+  verboseLog(`customTypePath: ${customTypePath || 'undefined'}`);
   verboseLog(`subtype: ${argv.subtype ?? 'undefined'}`);
   verboseLog(`type: ${argv.type}`);
   verboseLog('>>>> USER CONFIG END <<<<\n');
@@ -44,7 +45,6 @@ export const handler = async (argv: NewHandlerArguments) => {
       );
     }
 
-    const customTypePath = argv.customTypePath ?? '';
     const subtype = argv.subtype ?? '';
     const type = argv.type;
     const packageManager = getPackageManager();

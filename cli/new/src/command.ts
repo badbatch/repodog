@@ -12,7 +12,7 @@ export const builder = (argv: Argv) =>
       desc: 'The subtype of folder to scaffold. Only relevant when type is "repo": app | library | server',
       type: 'string',
     })
-    .option('customTypePath', {
+    .option('custom-type-path', {
       desc: 'The additional types to apply to the scaffold. Multiple types should be separated by a "." character',
       type: 'string',
     })
