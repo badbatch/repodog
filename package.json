@@ -1,7 +1,7 @@
 {
   "name": "repodog",
   "type": "module",
-  "version": "1.0.11-alpha.0",
+  "version": "1.0.12-alpha.0",
   "private": true,
   "author": "Dylan Aubrey",
   "engines": {

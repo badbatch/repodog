@@ -1,3 +1,9 @@
+#### 1.0.11-alpha.0 (2023-04-26)
+
+##### Bug Fixes
+
+*  create and cd into new lib if not in correct folder (d6ce7557)
+
 #### 1.0.10-alpha.0 (2023-04-26)
 
 ##### New Features
