@@ -29,7 +29,7 @@ import { loadQuestions } from './utils/loadQuestions.ts';
 export const handler = async (argv: NewHandlerArguments) => {
   const startTime = performance.now();
   const verbose = argv.verbose ?? false;
-  const customTypePath = argv['custom-type-path'] ?? '';
+  const customTypePath = argv['custom-type-path'] ?? undefined;
 
   if (!isRunWithinProject() && !hasGlobalRepodogConfig()) {
     await handleGlobalConfigSetup();
@@ -37,7 +37,7 @@ export const handler = async (argv: NewHandlerArguments) => {
 
   setVerbose(verbose);
   verboseLog('>>>> USER CONFIG START <<<<');
-  verboseLog(`customTypePath: ${customTypePath || 'undefined'}`);
+  verboseLog(`customTypePath: ${customTypePath ?? 'undefined'}`);
   verboseLog(`subtype: ${argv.subtype ?? 'undefined'}`);
   verboseLog(`type: ${argv.type}`);
   verboseLog('>>>> USER CONFIG END <<<<\n');
@@ -94,7 +94,8 @@ export const handler = async (argv: NewHandlerArguments) => {
     verboseLog('>>>> CONFIG VALUES ENDS <<<<');
 
     const baseTypePath = subtype ? ['new', type, subtype] : ['new', type];
-    const typePath = [...baseTypePath, ...customTypePath.split('.')];
+    const typePath = [...baseTypePath, ...(customTypePath?.split('.') ?? [])];
+    verboseLog(`typePath: ${typePath.join('.')}`);
     let flattenedTemplateVariables: Record<string, string | number | boolean> = {};
 
     if (templateVariables) {
