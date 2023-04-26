@@ -5,6 +5,7 @@ jest.unstable_mockModule('@repodog/cli-utils', () => ({
   ...cliUtils,
   enrichQuestions: jest.fn().mockImplementation(value => value),
   readRepodogConfig: jest.fn().mockReturnValue(undefined), // eslint-disable-line unicorn/no-useless-undefined
+  removeEmptyAnswers: jest.fn().mockImplementation(value => value),
   writeRepodogConfig: jest.fn(),
 }));
 

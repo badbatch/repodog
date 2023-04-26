@@ -59,6 +59,7 @@ jest.unstable_mockModule('@repodog/cli-utils', () => ({
   hasGlobalRepodogConfig: jest.fn().mockReturnValue(false),
   isRunWithinProject: jest.fn().mockReturnValue(true),
   loadRepodogConfig: jest.fn().mockReturnValue(repodogConfig),
+  removeEmptyAnswers: jest.fn().mockImplementation(value => value),
   setVerbose: jest.fn(),
   verboseLog: jest.fn(),
 }));

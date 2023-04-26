@@ -6,15 +6,15 @@ jest.unstable_mockModule('../questions/new/pkg.json', () => ({
 }));
 
 describe('loadQuestions', () => {
-  it('should load base questions when no question overrides are provided', async () => {
-    const typePath = ['new', 'pkg', 'base'];
+  it('should load questions when no question overrides are provided', async () => {
+    const typePath = ['new', 'pkg'];
     const { loadQuestions } = await import('./loadQuestions.ts');
     const result = await loadQuestions(typePath);
     expect(result).toEqual([{ name: 'question1' }, { name: 'question2' }]);
   });
 
   it('should apply remove question overrides', async () => {
-    const typePath = ['new', 'pkg', 'override'];
+    const typePath = ['new', 'pkg'];
 
     const questionOverrides: Record<string, QuestionOverrides> = {
       new: {
@@ -32,7 +32,7 @@ describe('loadQuestions', () => {
   });
 
   it('should apply add question overrides', async () => {
-    const typePath = ['new', 'pkg', 'override'];
+    const typePath = ['new', 'pkg'];
 
     const questionOverrides: Record<string, QuestionOverrides> = {
       new: {
@@ -61,7 +61,7 @@ describe('loadQuestions', () => {
   });
 
   it('should apply replace question overrides', async () => {
-    const typePath = ['new', 'pkg', 'override'];
+    const typePath = ['new', 'pkg'];
 
     const questionOverrides: Record<string, QuestionOverrides> = {
       new: {

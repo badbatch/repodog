@@ -9,6 +9,7 @@ import {
   hasGlobalRepodogConfig,
   isRunWithinProject,
   loadRepodogConfig,
+  removeEmptyAnswers,
   setVerbose,
   verboseLog,
 } from '@repodog/cli-utils';
@@ -81,13 +82,13 @@ export const handler = async (argv: NewHandlerArguments) => {
     verboseLog('>>>> CONFIG VALUES START <<<<');
 
     verboseLog(
-      `Question overrides:${questionOverrides ? `\n${JSON.stringify(questionOverrides, undefined, 2)}\n` : 'None'}`
+      `Question overrides:${questionOverrides ? `\n${JSON.stringify(questionOverrides, undefined, 2)}\n` : ' None'}`
     );
 
     verboseLog(`Template overrides path: ${additionalTemplatesPath ?? 'None'}`);
 
     verboseLog(
-      `Template variables:${templateVariables ? `\n${JSON.stringify(templateVariables, undefined, 2)}\n` : 'None'}`
+      `Template variables:${templateVariables ? `\n${JSON.stringify(templateVariables, undefined, 2)}\n` : ' None'}`
     );
 
     verboseLog('>>>> CONFIG VALUES ENDS <<<<');
@@ -106,7 +107,7 @@ export const handler = async (argv: NewHandlerArguments) => {
 
     const cliOptions: Record<string, boolean | number | string> = {
       ...flattenedTemplateVariables,
-      ...(await enquirer.prompt(enrichQuestions(questions, flattenedTemplateVariables))),
+      ...removeEmptyAnswers(await enquirer.prompt(enrichQuestions(questions, flattenedTemplateVariables))),
       language,
       packageManager,
       packageManagerTemporaryCmd: getPackageManagerTemporaryCmd(packageManager),

@@ -26,6 +26,7 @@ export * from './isRunWithinProject.ts';
 export * from './isValidReleaseTag.ts';
 export * from './isValidReleaseType.ts';
 export * from './loadPackageJson.ts';
+export * from './removeEmptyAnswers.ts';
 export * from './repodogConfig.ts';
 export * from './stringifyCliOptions.ts';
 export * from './types.ts';

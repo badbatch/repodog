@@ -7,7 +7,9 @@ export const createChatCompletion = async (
   messages: ChatCompletionRequestMessage[],
   environmentVariablesPath: string
 ) => {
-  dotenv.config({ path: resolve(process.cwd(), environmentVariablesPath) });
+  const path = resolve(process.cwd(), environmentVariablesPath);
+  verboseLog(`Loading environment variables from: ${path}`);
+  dotenv.config({ path });
 
   const configuration = new Configuration({
     apiKey: process.env.OPENAI_API_KEY,
