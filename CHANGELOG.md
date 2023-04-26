@@ -1,3 +1,13 @@
+#### 1.0.10-alpha.0 (2023-04-26)
+
+##### New Features
+
+*  add setup command (47597746)
+
+##### Bug Fixes
+
+*  add peers as deps, kebabcase arg (0d81e522)
+
 #### 1.0.9-alpha.0 (2023-04-13)
 
 ##### Bug Fixes
