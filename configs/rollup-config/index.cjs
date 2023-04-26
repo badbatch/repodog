@@ -27,6 +27,7 @@ module.exports = (config = {}) => {
   const extensions = ['.mjs', '.cjs', '.js', '.jsx', '.json', '.ts', '.tsx'];
 
   const plugins = [
+    json(),
     nodeResolve({
       extensions,
       preferBuiltins: true,
@@ -36,7 +37,6 @@ module.exports = (config = {}) => {
       extensions,
       rootMode: 'upward',
     }),
-    json(),
     image(),
   ];
 

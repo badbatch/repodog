@@ -1,13 +1,24 @@
-import { existsSync, readFileSync, unlinkSync, writeFileSync } from 'node:fs';
+import merge from 'lodash/merge.js';
+import { existsSync, readFileSync, writeFileSync } from 'node:fs';
+import { homedir } from 'node:os';
 import { resolve } from 'node:path';
 import { REPODOG_CONFIG_FILENAME } from './constants.ts';
-import type { RepodogConfig } from './types.ts';
-import { verboseLog } from './verboseLog.ts';
+import { resolveConfigPath } from './resolveConfigPath.ts';
+import { type GlobalRepodogConfig, Language, type RepodogConfig } from './types.ts';
 
 let cachedConfig: RepodogConfig | undefined;
 
-export const addRepodogConfigToCache = (config: RepodogConfig) => {
-  cachedConfig = config;
+export const addRepodogConfigToCache = (config: Partial<RepodogConfig>) => {
+  const newConfig = merge({}, cachedConfig ?? {}, config);
+
+  if (!newConfig.language) {
+    newConfig.language = existsSync(resolve(process.cwd(), 'tsconfig.json'))
+      ? Language.TYPESCRIPT
+      : Language.JAVASCRIPT;
+  }
+
+  cachedConfig = newConfig as RepodogConfig;
+  return newConfig;
 };
 
 export const clearRepodogConfigCache = () => {
@@ -15,6 +26,14 @@ export const clearRepodogConfigCache = () => {
 };
 
 export const getCachedRepodogConfig = () => cachedConfig;
+
+export const readRepodogConfig = <C>(basePath: string) => {
+  try {
+    return JSON.parse(readFileSync(resolve(basePath, REPODOG_CONFIG_FILENAME), { encoding: 'utf8' })) as C;
+  } catch {
+    return;
+  }
+};
 
 export interface LoadRepodogConfigArguments {
   required?: boolean;
@@ -25,31 +44,29 @@ export const loadRepodogConfig = ({ required = false }: LoadRepodogConfigArgumen
     return cachedConfig;
   }
 
-  const configPath = resolve(process.cwd(), REPODOG_CONFIG_FILENAME);
-  let config: RepodogConfig = {};
+  const globalConfig = readRepodogConfig<GlobalRepodogConfig>(homedir());
+  const projectConfig = readRepodogConfig<RepodogConfig>(process.cwd());
 
-  if (required) {
-    try {
-      config = JSON.parse(readFileSync(configPath, { encoding: 'utf8' })) as RepodogConfig;
-    } catch (error: unknown) {
-      verboseLog(`.repodogrc read error: ${(error as Error).name}, ${(error as Error).message}`);
-      throw new Error(`Could not resolve the .repodogrc at: ${configPath}`);
-    }
-  } else if (existsSync(configPath)) {
-    config = JSON.parse(readFileSync(configPath, { encoding: 'utf8' })) as RepodogConfig;
+  const config = (
+    globalConfig || projectConfig ? merge({}, globalConfig ?? {}, projectConfig ?? {}) : {}
+  ) as RepodogConfig;
+
+  if (required && Object.keys(config).length === 0) {
+    throw new Error('Could not resolve the .repodogrc either within a project or globally');
   }
 
-  cachedConfig = config;
-  return cachedConfig;
+  if (config.questionOverridesPath) {
+    resolveConfigPath(config, 'questionOverrides', config.questionOverridesPath);
+  }
+
+  if (config.templateVariablesPath) {
+    resolveConfigPath(config, 'templateVariables', config.templateVariablesPath);
+  }
+
+  return addRepodogConfigToCache(config);
 };
 
-export const writeRepodogConfig = (repodogConfig: RepodogConfig) => {
-  cachedConfig = repodogConfig;
-  const configPath = resolve(process.cwd(), REPODOG_CONFIG_FILENAME);
-
-  if (Object.keys(repodogConfig).length === 0) {
-    unlinkSync(configPath);
-  } else {
-    writeFileSync(configPath, JSON.stringify(repodogConfig, undefined, 2));
-  }
+export const writeRepodogConfig = (basePath: string, newConfig: Partial<RepodogConfig>) => {
+  const configPath = resolve(basePath, REPODOG_CONFIG_FILENAME);
+  writeFileSync(configPath, JSON.stringify(addRepodogConfigToCache(newConfig), undefined, 2));
 };

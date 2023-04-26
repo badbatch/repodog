@@ -3,7 +3,7 @@ import { loadRepodogConfig, writeRepodogConfig } from './repodogConfig.ts';
 export const clearDryRunFlag = () => {
   const repodogConfig = loadRepodogConfig();
   delete repodogConfig.__activeDryRun;
-  writeRepodogConfig(repodogConfig);
+  writeRepodogConfig(process.cwd(), repodogConfig);
 };
 
 export const hasDryRunFlag = () => {
@@ -14,5 +14,5 @@ export const hasDryRunFlag = () => {
 export const setDryRunFlag = () => {
   const repodogConfig = loadRepodogConfig();
   repodogConfig.__activeDryRun = true;
-  writeRepodogConfig(repodogConfig);
+  writeRepodogConfig(process.cwd(), repodogConfig);
 };

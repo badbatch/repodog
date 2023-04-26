@@ -1,9 +1,13 @@
+import { handleGlobalConfigSetup } from '@repodog/cli-setup';
 import {
   Language,
   calculateDuration,
+  enrichQuestions,
   flattenTemplateVariables,
   getPackageManager,
   getPackageManagerTemporaryCmd,
+  hasGlobalRepodogConfig,
+  isRunWithinProject,
   loadRepodogConfig,
   setVerbose,
   verboseLog,
@@ -16,7 +20,6 @@ import { performance } from 'node:perf_hooks';
 import { fileURLToPath } from 'node:url';
 import shelljs from 'shelljs';
 import { type NewHandlerArguments, NewType } from './types.ts';
-import { enrichQuestions } from './utils/enrichQuestions.ts';
 import { executeHygen } from './utils/executeHygen.ts';
 import { VALID_NEW_SUBTYPES, isValidNewSubtype } from './utils/isValidNewSubtype.ts';
 import { VALID_NEW_TYPES, isValidNewType } from './utils/isValidNewType.ts';
@@ -26,6 +29,10 @@ export const handler = async (argv: NewHandlerArguments) => {
   const startTime = performance.now();
   const verbose = argv.verbose ?? false;
   const customTypePath = argv['custom-type-path'] ?? '';
+
+  if (!isRunWithinProject() && !hasGlobalRepodogConfig()) {
+    await handleGlobalConfigSetup();
+  }
 
   setVerbose(verbose);
   verboseLog('>>>> USER CONFIG START <<<<');
@@ -50,7 +57,7 @@ export const handler = async (argv: NewHandlerArguments) => {
     const packageManager = getPackageManager();
 
     if (!packageManager) {
-      throw new Error('Could not derive the package manager from the lock file in the current working directory');
+      throw new Error('Could not derive the package manager');
     }
 
     const directoryPath = dirname(fileURLToPath(import.meta.url));

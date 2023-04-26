@@ -1,5 +1,6 @@
 import { existsSync } from 'node:fs';
 import { resolve } from 'node:path';
+import { loadRepodogConfig } from './repodogConfig.ts';
 import { PackageManager } from './types.ts';
 
 export const getPackageManager = (): PackageManager | undefined => {
@@ -17,7 +18,7 @@ export const getPackageManager = (): PackageManager | undefined => {
     }
 
     default: {
-      return undefined;
+      return loadRepodogConfig().packageManager;
     }
   }
 };

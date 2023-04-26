@@ -29,6 +29,7 @@ npm install @repodog/cli @babel/runtime core-js --save-dev
     "repodog:cut": "repodog cut",
     "repodog:new": "repodog new",
     "repodog:publish": "repodog publish",
+    "repodog:setup": "repodog setup",
     "repodog:write": "repodog write"
   }
 }
@@ -256,6 +257,21 @@ Template variables are flattened and merged and the output is passed into the te
 repodog publish
 
 Publish packages to registry
+
+Options:
+  --version  Show version number                                       [boolean]
+  --help     Show help                                                 [boolean]
+  --verbose  Whether to output verbose logs.                           [boolean]
+```
+
+---
+
+### setup
+
+```sh
+repodog setup
+
+Set up global config
 
 Options:
   --version  Show version number                                       [boolean]

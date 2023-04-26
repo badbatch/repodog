@@ -5,6 +5,12 @@ jest.unstable_mockModule('node:fs', () => ({
   existsSync: jest.fn(),
 }));
 
+jest.unstable_mockModule('./repodogConfig.ts', () => ({
+  loadRepodogConfig: () => ({
+    packageManager: 'npm',
+  }),
+}));
+
 process.cwd = jest.fn().mockReturnValue('/root') as jest.Mocked<() => string>;
 
 describe('getPackageManager', () => {
@@ -54,9 +60,9 @@ describe('getPackageManager', () => {
       existsSync.mockReturnValue(false);
     });
 
-    it('should return undefined', async () => {
+    it('should return the package manager specified in the config', async () => {
       const { getPackageManager } = await import('./getPackageManager.ts');
-      expect(getPackageManager()).toBeUndefined();
+      expect(getPackageManager()).toBe('npm');
     });
   });
 });

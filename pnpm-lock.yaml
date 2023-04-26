@@ -136,19 +136,29 @@ importers:
 
   cli/core:
     specifiers:
+      '@babel/runtime': ^7.20.13
       '@repodog/cli-cut': workspace:../cut
       '@repodog/cli-new': workspace:../new
       '@repodog/cli-publish': workspace:../publish
+      '@repodog/cli-setup': workspace:../setup
       '@repodog/cli-write': workspace:../write
       '@types/yargs': ^15.0.4
+      core-js: ^3.27.2
       del-cli: ^3.0.0
+      jiti: ^1.18.2
+      lodash: ^4.17.21
       suppress-experimental-warnings: ^1.1.3
       yargs: ^15.1.0
     dependencies:
+      '@babel/runtime': 7.20.13
       '@repodog/cli-cut': link:../cut
       '@repodog/cli-new': link:../new
       '@repodog/cli-publish': link:../publish
+      '@repodog/cli-setup': link:../setup
       '@repodog/cli-write': link:../write
+      core-js: 3.27.2
+      jiti: 1.18.2
+      lodash: 4.17.21
       suppress-experimental-warnings: 1.1.3
       yargs: 15.1.0
     devDependencies:
@@ -187,6 +197,7 @@ importers:
   cli/new:
     specifiers:
       '@jest/globals': ^29.3.1
+      '@repodog/cli-setup': workspace:../setup
       '@repodog/cli-test-utils': workspace:../test-utils
       '@repodog/cli-utils': workspace:../utils
       '@repodog/rollup-config': workspace:../../configs/rollup-config
@@ -201,6 +212,7 @@ importers:
       shelljs: ^0.8.4
       yargs: ^15.1.0
     dependencies:
+      '@repodog/cli-setup': link:../setup
       '@repodog/cli-utils': link:../utils
       ansi-colors: 4.1.3
       enquirer: 2.3.6
@@ -244,6 +256,31 @@ importers:
       '@types/yargs': 15.0.4
       del-cli: 3.0.0
 
+  cli/setup:
+    specifiers:
+      '@jest/globals': ^29.3.1
+      '@repodog/cli-test-utils': workspace:../test-utils
+      '@repodog/cli-utils': workspace:../utils
+      '@types/shelljs': ^0.8.11
+      '@types/yargs': ^15.0.4
+      ansi-colors: ^4.1.3
+      del-cli: ^3.0.0
+      enquirer: ^2.3.6
+      shelljs: ^0.8.4
+      yargs: ^15.1.0
+    dependencies:
+      '@repodog/cli-utils': link:../utils
+      ansi-colors: 4.1.3
+      enquirer: 2.3.6
+      shelljs: 0.8.5
+      yargs: 15.1.0
+    devDependencies:
+      '@jest/globals': 29.3.1
+      '@repodog/cli-test-utils': link:../test-utils
+      '@types/shelljs': 0.8.11
+      '@types/yargs': 15.0.4
+      del-cli: 3.0.0
+
   cli/test-utils:
     specifiers:
       '@jest/globals': ^29.3.1
@@ -267,12 +304,14 @@ importers:
       '@repodog/cli-test-utils': workspace:../test-utils
       '@types/glob': ^8.0.1
       '@types/js-yaml': ^4.0.5
+      '@types/lodash': ^4.14.191
       '@types/semver': ^7.1.0
       '@types/shelljs': ^0.8.11
       ansi-colors: ^4.1.3
       del-cli: ^3.0.0
       glob: ^8.1.0
       js-yaml: ^4.1.0
+      lodash: ^4.17.21
       semver: ^7.1.3
       shelljs: ^0.8.4
       type-fest: ^3.5.1
@@ -287,9 +326,11 @@ importers:
       '@repodog/cli-test-utils': link:../test-utils
       '@types/glob': 8.0.1
       '@types/js-yaml': 4.0.5
+      '@types/lodash': 4.14.191
       '@types/semver': 7.3.13
       '@types/shelljs': 0.8.11
       del-cli: 3.0.0
+      lodash: 4.17.21
       type-fest: 3.5.1
 
   cli/write:
@@ -1603,7 +1644,6 @@ packages:
     engines: {node: '>=6.9.0'}
     dependencies:
       regenerator-runtime: 0.13.11
-    dev: true
 
   /@babel/template/7.18.10:
     resolution: {integrity: sha512-TI+rCtooWHr3QJ27kJxfjutghu44DLnasDMwpDqCXVTal9RLp3RSYNh4NdBrRP2cQAoG9A8juOQl6P6oZG4JxA==}
@@ -3457,7 +3497,6 @@ packages:
   /core-js/3.27.2:
     resolution: {integrity: sha512-9ashVQskuh5AZEZ1JdQWp1GqSoC1e1G87MzRqg2gIfVAQ7Qn9K+uFj8EcniUFA4P2NLZfV+TOlX1SzoKfo+s7w==}
     requiresBuild: true
-    dev: true
 
   /cosmiconfig-typescript-loader/4.3.0_bxtyj3et3xbsdyxhh3oblnfbj4:
     resolution: {integrity: sha512-NTxV1MFfZDLPiBMjxbHRwSh5LaLcPMwNdCutmnHJCKoVnlvldPWlllonKwrsRJ5pYZBIBGRWWU2tfvzxgeSW5Q==}
@@ -5515,6 +5554,11 @@ packages:
       - ts-node
     dev: true
 
+  /jiti/1.18.2:
+    resolution: {integrity: sha512-QAdOptna2NYiSSpv0O/BwoHBSmz4YhpzJHyi+fnMRTXFjp7B8i/YG5Z8IfusxB1ufjcD2Sre1F3R+nX3fvy7gg==}
+    hasBin: true
+    dev: false
+
   /js-sdsl/4.2.0:
     resolution: {integrity: sha512-dyBIzQBDkCqCu+0upx25Y2jGdbTGxE9fshMsCdK0ViOongpV+n5tXRcZY9v7CaVQ79AGS9KA1KHtojxiM7aXSQ==}
     dev: true
@@ -5737,7 +5781,6 @@ packages:
 
   /lodash/4.17.21:
     resolution: {integrity: sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==}
-    dev: true
 
   /log-symbols/4.1.0:
     resolution: {integrity: sha512-8XPvpAA8uyhfteu8pIvQxpJZ7SYYdpUivZpGy6sFsBuKRY/7rQGavedeB8aK+Zkyq6upMFVL/9AW6vOYzfRyLg==}
@@ -6498,7 +6541,6 @@ packages:
 
   /regenerator-runtime/0.13.11:
     resolution: {integrity: sha512-kY1AZVr2Ra+t+piVaJ4gxaFaReZVH40AKNo7UCX6W+dEwBo/2oZJzqfuN1qLq1oL45o56cPaTXELwrTh8Fpggg==}
-    dev: true
 
   /regenerator-transform/0.15.1:
     resolution: {integrity: sha512-knzmNAcuyxV+gQCufkYcvOqX/qIIfHLv0u5x79kRxuGojfYVky1f15TzZEu2Avte8QGepvUNTnLskf8E6X6Vyg==}

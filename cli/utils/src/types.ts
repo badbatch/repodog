@@ -64,11 +64,17 @@ export enum ReleaseTag {
   UNSTABLE = 'unstable',
 }
 
-export interface RepodogConfig {
-  __activeDryRun?: boolean;
+export interface GlobalRepodogConfig {
   additionalTemplatesPath?: string;
   environmentVariablesPath?: string;
-  language?: Language;
+  language: Language;
+  packageManager?: PackageManager;
+  questionOverridesPath?: string;
+  templateVariablesPath?: string;
+}
+
+export interface RepodogConfig extends GlobalRepodogConfig {
+  __activeDryRun?: boolean;
   questionOverrides?: Record<string, QuestionOverrides>;
   templateVariables?: Record<string, TemplateVariables>;
 }

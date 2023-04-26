@@ -1,10 +1,12 @@
 import { jest } from '@jest/globals';
-import type { RepodogConfig } from './types.ts';
+import { Language, type RepodogConfig } from './types.ts';
 
 jest.unstable_mockModule('./repodogConfig.ts', () => ({
   loadRepodogConfig: jest.fn(),
   writeRepodogConfig: jest.fn(),
 }));
+
+process.cwd = () => '/root';
 
 describe('dryRunFlag', () => {
   describe('clearDryRunFlag', () => {
@@ -20,7 +22,7 @@ describe('dryRunFlag', () => {
     it('should call writeRepodogConfig with the correct argument', async () => {
       const { clearDryRunFlag } = await import('./dryRunFlag.ts');
       clearDryRunFlag();
-      expect(writeRepodogConfig).toHaveBeenCalledWith({});
+      expect(writeRepodogConfig).toHaveBeenCalledWith('/root', {});
     });
   });
 
@@ -59,13 +61,18 @@ describe('dryRunFlag', () => {
       jest.clearAllMocks();
       let loadRepodogConfig: jest.Mocked<typeof import('./repodogConfig.ts')['loadRepodogConfig']>;
       ({ loadRepodogConfig, writeRepodogConfig } = jest.mocked(await import('./repodogConfig.ts')));
-      loadRepodogConfig.mockReturnValueOnce({ alpha: 'bravo' } as RepodogConfig);
+      loadRepodogConfig.mockReturnValueOnce({ alpha: 'bravo', language: Language.TYPESCRIPT } as RepodogConfig);
     });
 
     it('should call writeRepodogConfig with enriched existing config', async () => {
       const { setDryRunFlag } = await import('./dryRunFlag.ts');
       setDryRunFlag();
-      expect(writeRepodogConfig).toHaveBeenCalledWith({ __activeDryRun: true, alpha: 'bravo' });
+
+      expect(writeRepodogConfig).toHaveBeenCalledWith('/root', {
+        __activeDryRun: true,
+        alpha: 'bravo',
+        language: Language.TYPESCRIPT,
+      });
     });
   });
 });

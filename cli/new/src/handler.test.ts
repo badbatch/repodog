@@ -45,12 +45,19 @@ const repodogConfig = {
   },
 };
 
+jest.unstable_mockModule('@repodog/cli-setup', () => ({
+  handleGlobalConfigSetup: jest.fn(),
+}));
+
 jest.unstable_mockModule('@repodog/cli-utils', () => ({
   Language,
   calculateDuration: jest.fn().mockReturnValue('1'),
+  enrichQuestions: jest.fn().mockImplementation(value => value),
   flattenTemplateVariables,
   getPackageManager: jest.fn().mockReturnValue('pnpm'),
   getPackageManagerTemporaryCmd,
+  hasGlobalRepodogConfig: jest.fn().mockReturnValue(false),
+  isRunWithinProject: jest.fn().mockReturnValue(true),
   loadRepodogConfig: jest.fn().mockReturnValue(repodogConfig),
   setVerbose: jest.fn(),
   verboseLog: jest.fn(),
@@ -124,6 +131,23 @@ jest.unstable_mockModule('./utils/loadQuestions.ts', () => ({
 process.cwd = () => '/root';
 
 describe('handler', () => {
+  describe('when isRunWithinProject is false and hasGlobalRepodogConfig is false', () => {
+    let handleGlobalConfigSetup: jest.Mocked<typeof import('@repodog/cli-setup')['handleGlobalConfigSetup']>;
+
+    beforeEach(async () => {
+      jest.clearAllMocks();
+      ({ handleGlobalConfigSetup } = jest.mocked(await import('@repodog/cli-setup')));
+      const { isRunWithinProject } = jest.mocked(await import('@repodog/cli-utils'));
+      isRunWithinProject.mockReturnValueOnce(false);
+    });
+
+    it('should execute handleGlobalConfigSetup', async () => {
+      const { handler } = await import('./handler.ts');
+      await handler({ type: 'blah' });
+      expect(handleGlobalConfigSetup).toHaveBeenCalled();
+    });
+  });
+
   describe('when given valid arguments', () => {
     describe('when the package manager can be derived', () => {
       let shelljs: jest.Mocked<typeof import('shelljs')>;
@@ -220,9 +244,7 @@ describe('handler', () => {
         await handler({ type: 'pkg' });
 
         expect(shelljs.echo).toHaveBeenCalledWith(
-          expect.stringContaining(
-            'Error: Could not derive the package manager from the lock file in the current working directory'
-          )
+          expect.stringContaining('Error: Could not derive the package manager')
         );
       });
 
