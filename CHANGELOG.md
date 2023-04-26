@@ -1,3 +1,9 @@
+#### 1.0.13-alpha.0 (2023-04-26)
+
+##### Bug Fixes
+
+*  custom type path should not default to empty string (dc9c4ce9)
+
 #### 1.0.12-alpha.0 (2023-04-26)
 
 ##### Bug Fixes
