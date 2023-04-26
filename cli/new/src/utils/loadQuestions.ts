@@ -2,7 +2,9 @@ import { type PromptOption, type QuestionOverride, type QuestionOverrides, verbo
 import get from 'lodash/get.js';
 
 export const loadQuestions = async (typePath: string[], questionOverrides?: Record<string, QuestionOverrides>) => {
-  const { default: baseQuestions } = (await import(`../questions/${typePath.join('/')}.json`)) as {
+  const { default: baseQuestions } = (await import(`../questions/${typePath.join('/')}.json`, {
+    assert: { type: 'json' },
+  })) as {
     default: PromptOption[];
   };
 
