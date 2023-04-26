@@ -1,6 +1,7 @@
 {
-  "additionalTemplatesPath": "./_templates",
   "language": "typescript",
+  "packageManager": "pnpm",
+  "additionalTemplatesPath": "./_templates",
   "questionOverrides": {
     "new": {
       "pkg": {

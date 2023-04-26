@@ -1,3 +1,9 @@
+#### 1.0.12-alpha.0 (2023-04-26)
+
+##### Bug Fixes
+
+*  remove empty string answers (2d71fae8)
+
 #### 1.0.11-alpha.0 (2023-04-26)
 
 ##### Bug Fixes

@@ -1,7 +1,7 @@
 {
   "name": "@repodog/cli-utils",
   "type": "module",
-  "version": "1.0.7-alpha.0",
+  "version": "1.0.8-alpha.0",
   "description": "The RepoDog cli utils module.",
   "homepage": "https://github.com/badbatch/repodog",
   "bugs": {
