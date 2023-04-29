@@ -1,3 +1,3 @@
 ---
-sh: [[ $(basename "$PWD") != <%= name %> ]] && mkdir -p ./<%= name %> && cd ./<%= name %>
+sh: "[[ $(basename \"$PWD\") != <%= name %> ]] && mkdir -p ./<%= name %> && cd ./<%= name %>"
 ---

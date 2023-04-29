@@ -1,6 +1,6 @@
 ---
 to: package.json
-sh: <%= packageManager %> install
+sh: "<%= packageManager %> install"
 ---
 {
   "name": "<%= name %>",
