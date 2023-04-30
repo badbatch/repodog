@@ -1,0 +1,37 @@
+module.exports = {
+  semverGroups: [
+    {
+      dependencies: ['**'],
+      dependencyTypes: ['dev', 'overrides', 'pnpmOverrides', 'prod', 'resolutions', 'workspace'],
+      packages: ['**'],
+      range: '^',
+    },
+    {
+      dependencies: ['**'],
+      dependencyTypes: ['peer'],
+      packages: ['**'],
+      range: '<',
+    },
+  ],
+  sortFirst: [
+    'name',
+    'description',
+    'version',
+    'author',
+    'license',
+    'private',
+    'homepage',
+    'repository',
+    'bugs',
+    'type',
+    'engines',
+    'bin',
+    'main',
+    'types',
+    'publishConfig',
+    'scripts',
+    'dependencies',
+    'peerDependencies',
+    'devDependencies',
+  ],
+};

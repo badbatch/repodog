@@ -1,19 +1,17 @@
 {
   "name": "@repodog/cli-cut",
-  "type": "module",
-  "version": "1.0.6-alpha.0",
   "description": "The RepoDog cli cut module.",
+  "version": "1.0.6-alpha.0",
+  "author": "Dylan Aubrey",
+  "license": "MIT",
   "homepage": "https://github.com/badbatch/repodog",
-  "bugs": {
-    "url": "https://github.com/badbatch/repodog/issues"
-  },
   "repository": {
     "directory": "cli/cut",
     "type": "git",
     "url": "https://github.com/badbatch/repodog/cli/cut"
   },
-  "license": "MIT",
-  "author": "Dylan Aubrey",
+  "bugs": "https://github.com/badbatch/repodog/issues",
+  "type": "module",
   "main": "./dist/main/index.mjs",
   "types": "./dist/types/index.d.ts",
   "publishConfig": {
@@ -35,8 +33,8 @@
     "yargs": "^15.1.0"
   },
   "peerDependencies": {
-    "@babel/runtime": "< 8",
-    "core-js": "< 4"
+    "@babel/runtime": "<8",
+    "core-js": "<4"
   },
   "devDependencies": {
     "@jest/globals": "^29.3.1",

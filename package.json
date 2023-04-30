@@ -1,9 +1,9 @@
 {
   "name": "repodog",
-  "type": "module",
   "version": "1.0.15-alpha.0",
-  "private": true,
   "author": "Dylan Aubrey",
+  "private": true,
+  "type": "module",
   "engines": {
     "node": "^18.13.0",
     "pnpm": "^7.27.0"
@@ -18,6 +18,7 @@
     "lint": "eslint . --ext .ts,.cjs",
     "prepare": "husky install",
     "repodog": "node ./cli/core/bin/repodog.mjs",
+    "syncpack": "syncpack",
     "test": "node --require=suppress-experimental-warnings --experimental-vm-modules node_modules/jest/bin/jest.js",
     "type-check": "tsc --noEmit",
     "validate": "pnpm run build && pnpm run lint && pnpm run type-check && pnpm run test"
@@ -46,6 +47,7 @@
     "@repodog/markdownlint-config": "workspace:./configs/markdownlint-config",
     "@repodog/prettier-config": "workspace:./configs/prettier-config",
     "@repodog/rollup-config": "workspace:./configs/rollup-config",
+    "@repodog/syncpack-config": "workspace:./configs/syncpack-config",
     "@repodog/ts-config": "workspace:./configs/ts-config",
     "@rollup/plugin-babel": "^6.0.3",
     "@rollup/plugin-image": "^3.0.1",
@@ -86,6 +88,7 @@
     "rollup-plugin-copy": "^3.4.0",
     "rollup-plugin-sourcemaps": "^0.6.3",
     "suppress-experimental-warnings": "^1.1.3",
+    "syncpack": "^9.8.6",
     "typescript": "^5.0.3"
   }
 }

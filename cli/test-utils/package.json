@@ -1,19 +1,17 @@
 {
   "name": "@repodog/cli-test-utils",
-  "type": "module",
-  "version": "1.0.5-alpha.0",
   "description": "The RepoDog cli test utils module.",
+  "version": "1.0.5-alpha.0",
+  "author": "Dylan Aubrey",
+  "license": "MIT",
   "homepage": "https://github.com/badbatch/repodog",
-  "bugs": {
-    "url": "https://github.com/badbatch/repodog/issues"
-  },
   "repository": {
     "directory": "cli/test-utils",
     "type": "git",
     "url": "https://github.com/badbatch/repodog/cli/test-utils"
   },
-  "license": "MIT",
-  "author": "Dylan Aubrey",
+  "bugs": "https://github.com/badbatch/repodog/issues",
+  "type": "module",
   "main": "./src/index.ts",
   "types": "./src/index.ts",
   "dependencies": {

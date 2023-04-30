@@ -1,31 +1,29 @@
 {
   "name": "@repodog/rollup-config",
-  "version": "1.0.2-alpha.0",
   "description": "The RepoDog Rollup config module.",
+  "version": "1.0.2-alpha.0",
+  "author": "Dylan Aubrey",
+  "license": "MIT",
   "homepage": "https://github.com/badbatch/repodog",
-  "bugs": {
-    "url": "https://github.com/badbatch/repodog/issues"
-  },
   "repository": {
     "directory": "packages/rollup-config",
     "type": "git",
     "url": "https://github.com/badbatch/repodog/configs/rollup-config"
   },
+  "bugs": "https://github.com/badbatch/repodog/issues",
+  "main": "index.cjs",
   "publishConfig": {
     "access": "public"
   },
-  "main": "index.cjs",
-  "license": "MIT",
-  "author": "Dylan Aubrey",
   "peerDependencies": {
-    "@rollup/plugin-babel": "< 7",
-    "@rollup/plugin-image": "< 4",
-    "@rollup/plugin-json": "< 7",
-    "@rollup/plugin-node-resolve": "< 16",
-    "@rollup/plugin-terser": "< 1",
-    "rollup": "< 4",
-    "rollup-plugin-analyzer": "< 5",
-    "rollup-plugin-copy": "< 4",
-    "rollup-plugin-sourcemaps": "< 1"
+    "@rollup/plugin-babel": "<7",
+    "@rollup/plugin-image": "<4",
+    "@rollup/plugin-json": "<7",
+    "@rollup/plugin-node-resolve": "<16",
+    "@rollup/plugin-terser": "<1",
+    "rollup": "<4",
+    "rollup-plugin-analyzer": "<5",
+    "rollup-plugin-copy": "<4",
+    "rollup-plugin-sourcemaps": "<1"
   }
 }

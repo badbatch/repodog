@@ -1,21 +1,22 @@
 {
-  "name": "@repodog/prettier-config",
-  "description": "The RepoDog Prettier config module.",
-  "version": "1.0.0-alpha.0",
+  "name": "@repodog/syncpack-config",
+  "description": "The RepoDog Syncpack config module.",
+  "version": "0.0.1",
   "author": "Dylan Aubrey",
   "license": "MIT",
   "homepage": "https://github.com/badbatch/repodog",
   "repository": {
-    "directory": "configs/prettier-config",
+    "directory": "configs/syncpack-config",
     "type": "git",
-    "url": "https://github.com/badbatch/repodog/configs/prettier-config"
+    "url": "https://github.com/badbatch/repodog/configs/syncpack-config"
   },
   "bugs": "https://github.com/badbatch/repodog/issues",
+  "type": "module",
   "main": "index.cjs",
   "publishConfig": {
     "access": "public"
   },
   "peerDependencies": {
-    "prettier": "<3"
+    "syncpack": "<10"
   }
 }

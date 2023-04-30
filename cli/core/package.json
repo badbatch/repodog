@@ -1,27 +1,25 @@
 {
   "name": "@repodog/cli",
-  "type": "module",
-  "version": "1.0.8-alpha.0",
   "description": "The RepoDog cli module.",
+  "version": "1.0.8-alpha.0",
+  "author": "Dylan Aubrey",
+  "license": "MIT",
   "homepage": "https://github.com/badbatch/repodog",
-  "bugs": {
-    "url": "https://github.com/badbatch/repodog/issues"
-  },
   "repository": {
     "directory": "cli/core",
     "type": "git",
     "url": "https://github.com/badbatch/repodog/cli/core"
   },
-  "license": "MIT",
-  "author": "Dylan Aubrey",
+  "bugs": "https://github.com/badbatch/repodog/issues",
+  "type": "module",
   "engines": {
     "node": "^18.13.0"
   },
-  "main": "./dist/main/index.mjs",
-  "types": "./dist/types/index.d.ts",
   "bin": {
     "repodog": "./bin/repodog.mjs"
   },
+  "main": "./dist/main/index.mjs",
+  "types": "./dist/types/index.d.ts",
   "publishConfig": {
     "access": "public"
   },

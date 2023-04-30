@@ -32,8 +32,8 @@ sh: "<%= packageManager %> install"
   },
   "dependencies": {},
   "peerDependencies": {
-    "@babel/runtime": "< 8",
-    "core-js": "< 4"
+    "@babel/runtime": "<8",
+    "core-js": "<4"
   },
   "devDependencies": {
     "@jest/globals": "^29.3.1",

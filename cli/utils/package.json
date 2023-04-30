@@ -1,19 +1,17 @@
 {
   "name": "@repodog/cli-utils",
-  "type": "module",
-  "version": "1.0.8-alpha.0",
   "description": "The RepoDog cli utils module.",
+  "version": "1.0.8-alpha.0",
+  "author": "Dylan Aubrey",
+  "license": "MIT",
   "homepage": "https://github.com/badbatch/repodog",
-  "bugs": {
-    "url": "https://github.com/badbatch/repodog/issues"
-  },
   "repository": {
     "directory": "cli/utils",
     "type": "git",
     "url": "https://github.com/badbatch/repodog/cli/utils"
   },
-  "license": "MIT",
-  "author": "Dylan Aubrey",
+  "bugs": "https://github.com/badbatch/repodog/issues",
+  "type": "module",
   "main": "./dist/main/index.mjs",
   "types": "./dist/types/index.d.ts",
   "publishConfig": {
@@ -35,9 +33,9 @@
     "shelljs": "^0.8.4"
   },
   "peerDependencies": {
-    "@babel/runtime": "< 8",
-    "core-js": "< 4",
-    "lodash": "< 5"
+    "@babel/runtime": "<8",
+    "core-js": "<4",
+    "lodash": "<5"
   },
   "devDependencies": {
     "@jest/globals": "^29.3.1",
