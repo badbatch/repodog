@@ -55,5 +55,16 @@
       "console": "integratedTerminal",
       "internalConsoleOptions": "neverOpen"
     },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "syncpack",
+      "program": "${workspaceFolder}/node_modules/syncpack/dist/bin.js",
+      "args": [
+        "list-mismatches"
+      ],
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen"
+    },
   ]
 }
