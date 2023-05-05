@@ -56,7 +56,7 @@ describe('cut', () => {
       it('should call addCommitPushRelease', async () => {
         const { handler } = await import('./handler.ts');
         handler({ type: 'dry-run' });
-        expect(addCommitPushRelease).toHaveBeenCalled();
+        expect(addCommitPushRelease).toHaveBeenCalledWith('1.0.0');
       });
 
       it('should exit with the correct code', async () => {
@@ -463,7 +463,7 @@ describe('cut', () => {
     it('should call addCommitPushRelease', async () => {
       const { handler } = await import('./handler.ts');
       handler({ preid: '12345', tag: 'alpha', type: 'preminor' });
-      expect(addCommitPushRelease).toHaveBeenCalled();
+      expect(addCommitPushRelease).toHaveBeenCalledWith('1.1.0');
     });
 
     it('should exit with the correct code', async () => {
@@ -525,7 +525,7 @@ describe('cut', () => {
     it('should call addCommitPushRelease', async () => {
       const { handler } = await import('./handler.ts');
       handler({ preid: '12345', tag: 'alpha', type: 'preminor' });
-      expect(addCommitPushRelease).toHaveBeenCalled();
+      expect(addCommitPushRelease).toHaveBeenCalledWith('1.1.0');
     });
 
     it('should exit with the correct code', async () => {

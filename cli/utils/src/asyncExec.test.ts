@@ -19,7 +19,7 @@ describe('asyncExec', () => {
 
     it('should resolve the stdout', async () => {
       const { asyncExec } = await import('./asyncExec.ts');
-      expect(await asyncExec('cmd')).toBe('success');
+      await expect(asyncExec('cmd')).resolves.toBe('success');
     });
   });
 
@@ -56,7 +56,7 @@ describe('asyncExec', () => {
 
       it('should resolve the stdout', async () => {
         const { asyncExec } = await import('./asyncExec.ts');
-        expect(await asyncExec('cmd', { silent: true })).toBe('');
+        await expect(asyncExec('cmd', { silent: true })).resolves.toBe('');
       });
     });
   });

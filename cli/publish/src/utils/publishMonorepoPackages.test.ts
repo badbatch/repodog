@@ -32,6 +32,7 @@ describe('publishMonorepoPackages', () => {
     it('should change current working directory correctly', async () => {
       const { publishMonorepoPackages } = await import('./publishMonorepoPackages.ts');
       publishMonorepoPackages(PackageManager.NPM);
+
       expect(mockedProcessChdir.mock.calls).toEqual([['/root/alpha'], ['/root/bravo'], ['/root/charlie'], ['/root']]);
     });
 

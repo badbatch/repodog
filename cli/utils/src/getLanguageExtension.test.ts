@@ -8,10 +8,10 @@ describe('getLanguageExtension', () => {
   });
 
   it('returns "js" for Language.JAVASCRIPT', () => {
-    expect(getLanguageExtension(Language.JAVASCRIPT)).toEqual('js');
+    expect(getLanguageExtension(Language.JAVASCRIPT)).toBe('js');
   });
 
   it('returns "ts" for Language.TYPESCRIPT', () => {
-    expect(getLanguageExtension(Language.TYPESCRIPT)).toEqual('ts');
+    expect(getLanguageExtension(Language.TYPESCRIPT)).toBe('ts');
   });
 });

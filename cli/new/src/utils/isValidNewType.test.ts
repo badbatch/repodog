@@ -1,21 +1,22 @@
 describe('isValidNewType', () => {
-  it('should return true for valid new types', async () => {
-    const { isValidNewType } = await import('./isValidNewType.ts');
-    expect(isValidNewType('pkg')).toBe(true);
-    expect(isValidNewType('repo')).toBe(true);
+  describe('when "pkg" is passed in', () => {
+    it('should return true', async () => {
+      const { isValidNewType } = await import('./isValidNewType.ts');
+      expect(isValidNewType('pkg')).toBe(true);
+    });
   });
 
-  it('should return false for invalid new types', async () => {
-    const { isValidNewType } = await import('./isValidNewType.ts');
-    expect(isValidNewType('foo')).toBe(false);
-    expect(isValidNewType('bar')).toBe(false);
+  describe('when "repo" is passed in', () => {
+    it('should return true', async () => {
+      const { isValidNewType } = await import('./isValidNewType.ts');
+      expect(isValidNewType('repo')).toBe(true);
+    });
   });
 
-  it('should use the correct list of valid new types', async () => {
-    const { VALID_NEW_TYPES } = await import('./isValidNewType.ts');
-    expect(VALID_NEW_TYPES).toContain('pkg');
-    expect(VALID_NEW_TYPES).toContain('repo');
-    expect(VALID_NEW_TYPES).not.toContain('foo');
-    expect(VALID_NEW_TYPES).not.toContain('bar');
+  describe('when invalid type is passed in', () => {
+    it('should return false', async () => {
+      const { isValidNewType } = await import('./isValidNewType.ts');
+      expect(isValidNewType('foo')).toBe(false);
+    });
   });
 });

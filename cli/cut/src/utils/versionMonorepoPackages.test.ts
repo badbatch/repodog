@@ -61,7 +61,12 @@ describe('versionMonorepoPackages', () => {
 
     it('should version packages in which files have changed since last tag', async () => {
       const { versionMonorepoPackages } = await import('./versionMonorepoPackages.ts');
-      versionMonorepoPackages({ force: false, packageManager: PackageManager.NPM, type: 'major' });
+
+      versionMonorepoPackages({
+        force: false,
+        packageManager: PackageManager.NPM,
+        type: 'major',
+      });
 
       expect(versionPackage.mock.calls).toEqual([
         [
@@ -96,7 +101,12 @@ describe('versionMonorepoPackages', () => {
 
     it('should version packages regardless of whether files have changed', async () => {
       const { versionMonorepoPackages } = await import('./versionMonorepoPackages.ts');
-      versionMonorepoPackages({ force: true, packageManager: PackageManager.NPM, type: 'major' });
+
+      versionMonorepoPackages({
+        force: true,
+        packageManager: PackageManager.NPM,
+        type: 'major',
+      });
 
       expect(versionPackage.mock.calls).toEqual([
         [
@@ -146,7 +156,7 @@ describe('versionMonorepoPackages', () => {
       jest.clearAllMocks();
       const { loadPackageJson } = jest.mocked(await import('@repodog/cli-utils'));
 
-      loadPackageJson.mockImplementation((path): SetRequired<PackageJson, 'name' | 'version'> => {
+      loadPackageJson.mockImplementation((path: string): SetRequired<PackageJson, 'name' | 'version'> => {
         const match = /\/([a-z]+)\/package.json$/.exec(path)!;
         const name = match[1]!;
 
@@ -166,7 +176,12 @@ describe('versionMonorepoPackages', () => {
 
     it('should version the package regardless of whether its files have changed', async () => {
       const { versionMonorepoPackages } = await import('./versionMonorepoPackages.ts');
-      versionMonorepoPackages({ force: false, packageManager: PackageManager.NPM, type: 'major' });
+
+      versionMonorepoPackages({
+        force: false,
+        packageManager: PackageManager.NPM,
+        type: 'major',
+      });
 
       expect(versionPackage.mock.calls).toEqual([
         [

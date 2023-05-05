@@ -145,7 +145,7 @@ describe('handler', () => {
     it('should execute handleGlobalConfigSetup', async () => {
       const { handler } = await import('./handler.ts');
       await handler({ type: 'blah' });
-      expect(handleGlobalConfigSetup).toHaveBeenCalled();
+      expect(handleGlobalConfigSetup).toHaveBeenCalledWith();
     });
   });
 

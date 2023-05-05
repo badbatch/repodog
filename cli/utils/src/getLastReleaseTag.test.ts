@@ -18,7 +18,7 @@ describe('getLastReleaseTag', () => {
 
     it('should return the cached last release tag', async () => {
       const { getLastReleaseTag } = await import('./getLastReleaseTag.ts');
-      expect(getLastReleaseTag()).toEqual('v1.1.0');
+      expect(getLastReleaseTag()).toBe('v1.1.0');
     });
 
     it('should not run the git describe command', async () => {
