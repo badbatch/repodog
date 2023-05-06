@@ -183,7 +183,10 @@ export const handler = (argv: CutHandlerArguments) => {
     verboseLog('>>>> PROJECT ROOT END <<<<\n');
     return shelljs.exit(0);
   } catch (error: unknown) {
-    shelljs.echo(`${colors.magenta('Cutoff')} ${colors.dim('=>')} ${colors.red(`Error: ${(error as Error).message}`)}`);
+    shelljs.echo(
+      `${colors.magenta('RepoDog')} ${colors.dim('=>')} ${colors.red(`Error: ${(error as Error).message}`)}`
+    );
+
     verboseLog(`Handler duration: ${String(calculateDuration(startTime))}sec`);
     verboseLog('>>>> PROJECT ROOT END <<<<\n');
     return shelljs.exit(1);

@@ -23,7 +23,7 @@ export const publishMonorepoPackages = (packageManager: PackageManager) => {
       verboseLog('>>>> PACKAGE END <<<<\n');
     } catch (error: unknown) {
       shelljs.echo(
-        `${colors.magenta('Cutoff')} ${colors.dim('=>')} Error publishing ${name}: ${(error as Error).message}`
+        `${colors.magenta('RepoDog')} ${colors.dim('=>')} Error publishing ${name}: ${(error as Error).message}`
       );
 
       verboseLog('>>>> PACKAGE END <<<<\n');

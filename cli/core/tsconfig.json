@@ -1,7 +1,8 @@
 {
   "extends": "../../configs/ts-config/build.json",
   "include": [
-    "src/**/*"
+    "src/**/*",
+    "**/*.json"
   ],
   "references": [
     {
@@ -15,6 +16,9 @@
     },
     {
       "path": "../setup"
+    },
+    {
+      "path": "../test-utils"
     },
     {
       "path": "../write"

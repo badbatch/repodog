@@ -15,7 +15,10 @@ export const handler = async (argv: SetupHandlerArguments = {}) => {
     verboseLog(`Handler duration: ${String(calculateDuration(startTime))}sec`);
     return shelljs.exit(0);
   } catch (error: unknown) {
-    shelljs.echo(`${colors.magenta('Cutoff')} ${colors.dim('=>')} ${colors.red(`Error: ${(error as Error).message}`)}`);
+    shelljs.echo(
+      `${colors.magenta('RepoDog')} ${colors.dim('=>')} ${colors.red(`Error: ${(error as Error).message}`)}`
+    );
+
     verboseLog(`Handler duration: ${String(calculateDuration(startTime))}sec`);
     return shelljs.exit(1);
   }

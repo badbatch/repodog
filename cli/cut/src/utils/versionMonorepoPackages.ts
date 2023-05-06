@@ -93,7 +93,7 @@ export const versionMonorepoPackages = ({
       verboseLog('>>>> PACKAGE END <<<<\n');
     } catch (error: unknown) {
       shelljs.echo(
-        `${colors.magenta('Cutoff')} ${colors.dim('=>')} ${colors.red(`Error: ${(error as Error).message}`)}`
+        `${colors.magenta('RepoDog')} ${colors.dim('=>')} ${colors.red(`Error: ${(error as Error).message}`)}`
       );
 
       verboseLog('>>>> PACKAGE END <<<<\n');

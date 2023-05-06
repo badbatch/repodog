@@ -9,6 +9,6 @@ export const setVerbose = (value: boolean) => {
 
 export const verboseLog = (message: string) => {
   if (verbose) {
-    shelljs.echo(`${colors.magenta('Cutoff')} ${colors.dim('=>')} ${message}`);
+    shelljs.echo(`${colors.magenta('RepoDog')} ${colors.dim('=>')} ${message}`);
   }
 };
