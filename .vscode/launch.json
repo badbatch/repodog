@@ -66,5 +66,29 @@
       "console": "integratedTerminal",
       "internalConsoleOptions": "neverOpen"
     },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "hygen",
+      "program": "${workspaceFolder}/cli/new/node_modules/hygen/dist/bin.js",
+      "args": [
+        "repo",
+        "library",
+        "--name", "name",
+        "--desc", "desc",
+        "--author", "Dylan Aubrey",
+        "--homepage", "https://github.com/org/name",
+        "--mainFilename", "main",
+        "--language", "typescript",
+        "--packageManager", "pnpm",
+        "--packageManagerTemporaryCmd", "pnpm dlx",
+      ],
+      "env": {
+        "DEBUG": "true",
+        "HYGEN_TMPLS": "${workspaceFolder}/cli/new/_templates"
+      },
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen"
+    },
   ]
 }
