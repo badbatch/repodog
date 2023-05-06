@@ -20,7 +20,7 @@ jest.unstable_mockModule('node:fs', () => ({
 
 jest.unstable_mockModule('node:path', () => ({
   ...path,
-  resolve: jest.fn().mockImplementation((...paths) => paths.join('/')),
+  resolve: jest.fn().mockImplementation((...paths) => paths.join(path.sep)),
 }));
 
 jest.unstable_mockModule('shelljs', shelljsMock);

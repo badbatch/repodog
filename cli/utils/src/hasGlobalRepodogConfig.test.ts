@@ -1,4 +1,5 @@
 import { jest } from '@jest/globals';
+import { sep } from 'node:path';
 
 jest.unstable_mockModule('node:fs', () => ({
   existsSync: jest.fn(),
@@ -9,7 +10,7 @@ jest.unstable_mockModule('node:os', () => ({
 }));
 
 jest.unstable_mockModule('node:path', () => ({
-  resolve: jest.fn().mockImplementation((...paths) => paths.join('/')),
+  resolve: jest.fn().mockImplementation((...paths) => paths.join(sep)),
 }));
 
 describe('hasGlobalRepodogConfig', () => {

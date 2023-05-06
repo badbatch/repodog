@@ -1,4 +1,5 @@
 import { jest } from '@jest/globals';
+import { sep } from 'node:path';
 import { Language } from './types.ts';
 
 jest.unstable_mockModule('node:fs', () => ({
@@ -7,7 +8,7 @@ jest.unstable_mockModule('node:fs', () => ({
 
 jest.unstable_mockModule('node:path', () => ({
   isAbsolute: jest.fn().mockReturnValue(false),
-  resolve: jest.fn().mockImplementation((...paths) => paths.join('/')),
+  resolve: jest.fn().mockImplementation((...paths) => paths.join(sep)),
 }));
 
 process.cwd = () => '/root';

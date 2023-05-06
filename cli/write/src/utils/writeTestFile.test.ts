@@ -1,5 +1,6 @@
 import { jest } from '@jest/globals';
 import { Language, PackageManager, getLanguageExtension, getPackageManagerTemporaryCmd } from '@repodog/cli-utils';
+import { sep } from 'node:path';
 
 jest.unstable_mockModule('@repodog/cli-utils', () => ({
   asyncExec: jest.fn(),
@@ -12,7 +13,7 @@ jest.unstable_mockModule('node:fs', () => ({
 }));
 
 jest.unstable_mockModule('node:path', () => ({
-  resolve: jest.fn().mockImplementation((...paths) => paths.join('/')),
+  resolve: jest.fn().mockImplementation((...paths) => paths.join(sep)),
 }));
 
 jest.unstable_mockModule('./injectFileExtension.ts', () => ({
@@ -25,7 +26,7 @@ jest.unstable_mockModule('./removeComments.ts', () => ({
 
 const directory = '/root/packages/alpha/src';
 const name = 'fileToTest';
-const testFilePath = [directory, `${name}.test.ts`].join('/');
+const testFilePath = [directory, `${name}.test.ts`].join(sep);
 const code = 'console.log("Hello, world!");';
 
 const options = {

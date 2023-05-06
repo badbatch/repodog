@@ -1,8 +1,9 @@
 import { type PromptOption, type QuestionOverride, type QuestionOverrides, verboseLog } from '@repodog/cli-utils';
 import get from 'lodash/get.js';
+import { sep } from 'node:path';
 
 export const loadQuestions = async (typePath: string[], questionOverrides?: Record<string, QuestionOverrides>) => {
-  const { default: baseQuestions } = (await import(`../questions/${typePath.join('/')}.json`, {
+  const { default: baseQuestions } = (await import(`../questions/${typePath.join(sep)}.json`, {
     assert: { type: 'json' },
   })) as {
     default: PromptOption[];
