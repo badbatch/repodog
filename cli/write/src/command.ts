@@ -17,7 +17,7 @@ export const builder = (argv: Argv) =>
       type: 'boolean',
     })
     .option('verbose', {
-      desc: 'Whether to output verbose logs.',
+      desc: 'Whether to output verbose logs',
       type: 'boolean',
     });
 

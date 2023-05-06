@@ -2,7 +2,7 @@ import type { Argv } from 'yargs';
 
 export const builder = (argv: Argv) =>
   argv.option('verbose', {
-    desc: 'Whether to output verbose logs.',
+    desc: 'Whether to output verbose logs',
     type: 'boolean',
   });
 
