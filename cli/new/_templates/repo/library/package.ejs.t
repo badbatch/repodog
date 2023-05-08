@@ -49,6 +49,7 @@ sh: "<%= packageManager %> install && <%= packageManager %> add @repodog/babel-c
     "@jest/globals": "^29.3.1",
     "@types/node": "^18.11.18",
     "del-cli": "^3.0.0",
+    "husky": "^8.0.3",
     "typescript": "^5.0.3"
   }
 }
