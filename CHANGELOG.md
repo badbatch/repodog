@@ -1,3 +1,9 @@
+#### 1.1.2-alpha.0 (2023-05-08)
+
+##### Bug Fixes
+
+*  remove peer auto install (fd55a855)
+
 #### 1.1.1-alpha.0 (2023-05-08)
 
 ##### Bug Fixes
