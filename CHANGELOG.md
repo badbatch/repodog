@@ -1,3 +1,24 @@
+#### 1.0.15-alpha.0 (2023-05-08)
+
+##### New Features
+
+*  add check for node version at start of cli (d4c2faf8)
+*  enable jest eslint rules and fix issues (3145df7e)
+*  add syncpack config (67585fa7)
+
+##### Bug Fixes
+
+*  change way type paths are handled to fix hygen limitation (a3832fa0)
+*  remove full stop in desc (bda0a333)
+*  change to os separator (4e84a386)
+*  remove org reference from repo template (338d660e)
+*  add engine node to cli package json, add quotes to sh commands (eb626ac7)
+
+##### Refactors
+
+*  move templates and questions out of new folder (1a3b1d30)
+*  add auto install peers and repodog installs (14239a82)
+
 #### 1.0.14-alpha.0 (2023-04-26)
 
 ##### Bug Fixes
