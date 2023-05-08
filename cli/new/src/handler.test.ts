@@ -92,6 +92,10 @@ jest.unstable_mockModule('node:path', () => ({
   sep: jest.fn().mockReturnValue('/'),
 }));
 
+jest.unstable_mockModule('./utils/conditionallyChangeCwd.ts', () => ({
+  conditionallyChangeCwd: jest.fn(),
+}));
+
 jest.unstable_mockModule('./utils/executeHygen.ts', () => ({
   executeHygen: jest.fn(),
 }));

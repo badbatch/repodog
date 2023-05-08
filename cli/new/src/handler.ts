@@ -23,6 +23,7 @@ import { fileURLToPath } from 'node:url';
 import shelljs from 'shelljs';
 import { type NewHandlerArguments, NewType } from './types.ts';
 import { buildTypePaths } from './utils/buildTypePaths.ts';
+import { conditionallyChangeCwd } from './utils/conditionallyChangeCwd.ts';
 import { executeHygen } from './utils/executeHygen.ts';
 import { VALID_NEW_SUBTYPES, isValidNewSubtype } from './utils/isValidNewSubtype.ts';
 import { VALID_NEW_TYPES, isValidNewType } from './utils/isValidNewType.ts';
@@ -116,6 +117,10 @@ export const handler = async (argv: NewHandlerArguments) => {
       packageManager,
       packageManagerTemporaryCmd: getPackageManagerTemporaryCmd(packageManager),
     };
+
+    if (type === NewType.REPO) {
+      conditionallyChangeCwd(cliOptions.name as string);
+    }
 
     verboseLog(`Hygen cli options:\n${JSON.stringify(cliOptions, undefined, 2)}\n`);
     await executeHygen(templatesPath, hygenPath, internalTypePath, cliOptions);
