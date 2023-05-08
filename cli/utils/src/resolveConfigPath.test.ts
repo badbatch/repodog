@@ -1,17 +1,13 @@
 import { jest } from '@jest/globals';
-import { sep } from 'node:path';
 import { Language } from './types.ts';
 
 jest.unstable_mockModule('node:fs', () => ({
   readFileSync: jest.fn(),
 }));
 
-jest.unstable_mockModule('node:path', () => ({
-  isAbsolute: jest.fn().mockReturnValue(false),
-  resolve: jest.fn().mockImplementation((...paths) => paths.join(sep)),
+jest.unstable_mockModule('./resolveAbsolutePath.ts', () => ({
+  resolveAbsolutePath: (path: string) => `/root/${path}`,
 }));
-
-process.cwd = () => '/root';
 
 const baseConfig = {
   language: Language.TYPESCRIPT,

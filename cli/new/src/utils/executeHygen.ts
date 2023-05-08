@@ -1,4 +1,5 @@
-import { asyncExec, stringifyCliOptions, verboseLog } from '@repodog/cli-utils';
+import { asyncExec, resolveAbsolutePath, stringifyCliOptions, verboseLog } from '@repodog/cli-utils';
+import { sep } from 'node:path';
 
 export const executeHygen = (
   templatesPath: string,
@@ -6,9 +7,15 @@ export const executeHygen = (
   typePath: string[],
   cliOptions: Record<string, boolean | number | string>
 ) => {
-  verboseLog(`Executing hygen ${typePath.join(' ')} with the following options: ${stringifyCliOptions(cliOptions)}`);
+  const hygenTypePath = typePath.length > 2 ? typePath.slice(-2) : typePath;
+  const additionalTemplatePaths = typePath.length > 2 ? typePath.slice(0, -2) : [];
+  const hygenTemplatesPath = resolveAbsolutePath([templatesPath, ...additionalTemplatePaths].join(sep));
+
+  verboseLog(`Executing hygen with the following positional arguments: ${hygenTypePath.join(' ')}`);
+  verboseLog(`Executing hygen with the following options: ${stringifyCliOptions(cliOptions)}`);
+  verboseLog(`Executing hygen with the following templates path: ${hygenTemplatesPath}`);
 
   return asyncExec(
-    `HYGEN_TMPLS=${templatesPath} ${hygenPath} ${typePath.join(' ')} ${stringifyCliOptions(cliOptions)}`
+    `HYGEN_TMPLS=${hygenTemplatesPath} ${hygenPath} ${hygenTypePath.join(' ')} ${stringifyCliOptions(cliOptions)}`
   );
 };

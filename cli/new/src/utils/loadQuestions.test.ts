@@ -1,20 +1,22 @@
 import { jest } from '@jest/globals';
 import type { QuestionOverrides } from '@repodog/cli-utils';
 
-jest.unstable_mockModule('../questions/new/pkg.json', () => ({
+jest.unstable_mockModule('../questions/pkg.json', () => ({
   default: [{ name: 'question1' }, { name: 'question2' }],
 }));
 
 describe('loadQuestions', () => {
   it('should load questions when no question overrides are provided', async () => {
-    const typePath = ['new', 'pkg'];
+    const internalTypePath = ['pkg'];
+    const configTypePath = ['new', 'pkg'];
     const { loadQuestions } = await import('./loadQuestions.ts');
-    const result = await loadQuestions(typePath);
+    const result = await loadQuestions(internalTypePath, configTypePath);
     expect(result).toEqual([{ name: 'question1' }, { name: 'question2' }]);
   });
 
   it('should apply remove question overrides', async () => {
-    const typePath = ['new', 'pkg'];
+    const internalTypePath = ['pkg'];
+    const configTypePath = ['new', 'pkg'];
 
     const questionOverrides: Record<string, QuestionOverrides> = {
       new: {
@@ -27,12 +29,13 @@ describe('loadQuestions', () => {
     };
 
     const { loadQuestions } = await import('./loadQuestions.ts');
-    const result = await loadQuestions(typePath, questionOverrides);
+    const result = await loadQuestions(internalTypePath, configTypePath, questionOverrides);
     expect(result).toEqual([{ name: 'question1' }]);
   });
 
   it('should apply add question overrides', async () => {
-    const typePath = ['new', 'pkg'];
+    const internalTypePath = ['pkg'];
+    const configTypePath = ['new', 'pkg'];
 
     const questionOverrides: Record<string, QuestionOverrides> = {
       new: {
@@ -51,7 +54,7 @@ describe('loadQuestions', () => {
     };
 
     const { loadQuestions } = await import('./loadQuestions.ts');
-    const result = await loadQuestions(typePath, questionOverrides);
+    const result = await loadQuestions(internalTypePath, configTypePath, questionOverrides);
 
     expect(result).toEqual([
       { name: 'question1' },
@@ -61,7 +64,8 @@ describe('loadQuestions', () => {
   });
 
   it('should apply replace question overrides', async () => {
-    const typePath = ['new', 'pkg'];
+    const internalTypePath = ['pkg'];
+    const configTypePath = ['new', 'pkg'];
 
     const questionOverrides: Record<string, QuestionOverrides> = {
       new: {
@@ -80,7 +84,7 @@ describe('loadQuestions', () => {
     };
 
     const { loadQuestions } = await import('./loadQuestions.ts');
-    const result = await loadQuestions(typePath, questionOverrides);
+    const result = await loadQuestions(internalTypePath, configTypePath, questionOverrides);
 
     expect(result).toEqual([
       {

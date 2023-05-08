@@ -17,7 +17,7 @@ The RepoDog cli package.
 
 ```sh
 # terminal
-npm install @repodog/cli @babel/runtime core-js --save-dev
+npm install @repodog/cli --save-dev
 ```
 
 ## Configuration
@@ -82,7 +82,7 @@ Options:
   --preid          The pre release ID                                   [string]
   --skip-posthook  To skip post version lifecycle hook                 [boolean]
   --skip-prehook   To skip pre version lifecycle hook                  [boolean]
-  --verbose        Whether to output verbose logs.                     [boolean]
+  --verbose        Whether to output verbose logs                      [boolean]
 ```
 
 > If you run `repodog cut` with the `--dry-run` flag, you can subsequently cut the dry-run release by re-running `repodog cut` with `dry-run` as the release type.
@@ -146,23 +146,26 @@ Options:
   --version           Show version number                              [boolean]
   --help              Show help                                        [boolean]
   --custom-type-path  The additional types to apply to the scaffold. Multiple
-                      types should be separated by a "." character      [string]
-  --verbose           Whether to output verbose logs.                  [boolean]
+                      types should be separated by a "." character. These types
+                      are applied after the subtype                     [string]
+  --verbose           Whether to output verbose logs                   [boolean]
 ```
 
 #### `new` config
 
 Below are the config properties used in the `repodog new` script. The `.repodogrc` config file must be located at the
-root of your project, regardless of whether the repo has a standard or monorepo structure.
+root of your project or globally. If you want the config to be global, use the [setup command](#setup) to create/update a global config.
 
 ##### `additionalTemplatesPath`
 
-Include additional templates as part of the set of templates used to generate a folder structure. You can use the `type` and `customTypePath` options to target specific template sets based on the folder structure within your additional templates path. The additional templates path is relative to the current working directory.
+Include additional templates as part of the set of templates used to generate a folder structure. You can use the `type`, `subtype` and `custom-type-path` options to target specific template sets based on the folder structure within your additional templates path.
+
+The additional templates path is relative to the current working directory if declared in a project config or absolute if declared in a global config.
 
 The templating functionality is powered by [`hygen`](https://www.hygen.io/) so all templates must to adhere to its
 rules.
 
-The example below uses the additional `command.ejs.t` template file when `repodog new` is called with `pkg --customTypePath cli`.
+The example below uses the additional `command.ejs.t` template file when `repodog new` is called with `pkg --custom-type-path cli`.
 
 ```txt
 // filesystem
@@ -174,7 +177,7 @@ _templates/
 ```
 
 ```json
-// .repodogrc
+// <projectRoot>/.repodogrc
 {
   "additionalTemplatesPath": "./_templates"
 }
@@ -182,9 +185,11 @@ _templates/
 
 ##### `questionOverrides`
 
-Add, remove, and/or replace the [base set of questions](../new/src/questions) for a given `type`. You can use the `type`, `subtype` and `customTypePath` options to target the overrides to create bespoke question sets.
+Add, remove, and/or replace the [base set of questions](../new/src/questions) for a given `type`. You can use the `type`, `subtype` and `custom-type-path` options to target the overrides to create bespoke question sets.
 
-The example below adds two questions, removes one, and updates one when `repodog new` is called with `pkg --customTypePath cli`.
+`questionOverrides` can only be declared in a project config. To set `questionOverrides` globally, see the [`questionOverridesPath` property](#questionoverridespath).
+
+The example below adds two questions, removes one, and updates one when `repodog new` is called with `pkg --custom-type-path cli`.
 
 ```json
 // .repodogrc
@@ -223,11 +228,19 @@ The example below adds two questions, removes one, and updates one when `repodog
 }
 ```
 
+##### `questionOverridesPath`
+
+Path to the JSON file containing your question overrides. The file adheres to the same structure as in the example above, except the content is not nested within a `questionOverrides` property.
+
+The path is relative to the current working directory if declared in a project config or absolute if declared in a global config.
+
 ##### `templateVariables`
 
-Values to populate your templates with. You can use the `type`, `subtype` and `customTypePath` options to target the variables to specific template sets. The config allows for variables to be applied to all templates or a branch of templates through the `*` character.
+Values to populate your templates with. You can use the `type`, `subtype` and `custom-type-path` options to target the variables to specific template sets. The config allows for variables to be applied to all templates or a branch of templates through the `*` character.
 
 Template variables are flattened and merged and the output is passed into the templates. If any of the keys match the name a question, then the key's value is used as the question's initial answer.
+
+`templateVariables` can only be declared in a project config. To set `templateVariables` globally, see the [`templateVariablesPath` property](#templatevariablespath).
 
 ```json
 // .repodogrc
@@ -249,6 +262,12 @@ Template variables are flattened and merged and the output is passed into the te
 }
 ```
 
+##### `templateVariablesPath`
+
+Path to the JSON file containing your template variable overrides. The file adheres to the same structure as in the example above, except the content is not nested within a `templateVariables` property.
+
+The path is relative to the current working directory if declared in a project config or absolute if declared in a global config.
+
 ---
 
 ### publish
@@ -261,7 +280,7 @@ Publish packages to registry
 Options:
   --version  Show version number                                       [boolean]
   --help     Show help                                                 [boolean]
-  --verbose  Whether to output verbose logs.                           [boolean]
+  --verbose  Whether to output verbose logs                            [boolean]
 ```
 
 ---
@@ -276,7 +295,7 @@ Set up global config
 Options:
   --version  Show version number                                       [boolean]
   --help     Show help                                                 [boolean]
-  --verbose  Whether to output verbose logs.                           [boolean]
+  --verbose  Whether to output verbose logs                            [boolean]
 ```
 
 ---
@@ -298,7 +317,7 @@ Options:
   --help        Show help                                              [boolean]
   --skip-format  Whether to skip formatting of the content of the new file
                                                                        [boolean]
-  --verbose     Whether to output verbose logs.                        [boolean]
+  --verbose     Whether to output verbose logs                         [boolean]
 ```
 
 #### Environment variables
@@ -314,11 +333,13 @@ root of your project, regardless of whether the repo has a standard or monorepo 
 
 ##### `language`
 
-The programming language, either `'javascript'` or `'typescript'`. The default is `'javascript'`.
+The programming language, either `'javascript'` or `'typescript'`. The default is `'javascript'`. This can be set at either a project or global level.
 
 ##### `environmentVariablesPath`
 
-The path to the file where your environment variables are stored. The path is relative to the current working directory. The default is `'.env'`.
+The path to the file where your environment variables are stored. The path is relative to the current working directory. The default is `'.env'`. This can be set at either a project or global level.
+
+The path is relative to the current working directory if declared in a project config or absolute if declared in a global config.
 
 ---
 

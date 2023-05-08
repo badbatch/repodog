@@ -28,6 +28,7 @@ export * from './isValidReleaseType.ts';
 export * from './loadPackageJson.ts';
 export * from './removeEmptyAnswers.ts';
 export * from './repodogConfig.ts';
+export * from './resolveAbsolutePath.ts';
 export * from './stringifyCliOptions.ts';
 export * from './types.ts';
 export * from './verboseLog.ts';

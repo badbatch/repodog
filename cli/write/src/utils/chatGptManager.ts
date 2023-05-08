@@ -1,13 +1,12 @@
-import { verboseLog } from '@repodog/cli-utils';
+import { resolveAbsolutePath, verboseLog } from '@repodog/cli-utils';
 import dotenv from 'dotenv';
-import { resolve } from 'node:path';
 import { type ChatCompletionRequestMessage, Configuration, OpenAIApi } from 'openai';
 
 export const createChatCompletion = async (
   messages: ChatCompletionRequestMessage[],
   environmentVariablesPath: string
 ) => {
-  const path = resolve(process.cwd(), environmentVariablesPath);
+  const path = resolveAbsolutePath(environmentVariablesPath);
   verboseLog(`Loading environment variables from: ${path}`);
   dotenv.config({ path });
 

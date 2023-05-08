@@ -10,17 +10,19 @@ import {
   isRunWithinProject,
   loadRepodogConfig,
   removeEmptyAnswers,
+  resolveAbsolutePath,
   setVerbose,
   verboseLog,
 } from '@repodog/cli-utils';
 import colors from 'ansi-colors';
 import enquirer from 'enquirer';
 import { existsSync } from 'node:fs';
-import { dirname, resolve as resolvePath } from 'node:path';
+import { dirname, resolve as resolvePath, sep } from 'node:path';
 import { performance } from 'node:perf_hooks';
 import { fileURLToPath } from 'node:url';
 import shelljs from 'shelljs';
 import { type NewHandlerArguments, NewType } from './types.ts';
+import { buildTypePaths } from './utils/buildTypePaths.ts';
 import { executeHygen } from './utils/executeHygen.ts';
 import { VALID_NEW_SUBTYPES, isValidNewSubtype } from './utils/isValidNewSubtype.ts';
 import { VALID_NEW_TYPES, isValidNewType } from './utils/isValidNewType.ts';
@@ -93,17 +95,18 @@ export const handler = async (argv: NewHandlerArguments) => {
 
     verboseLog('>>>> CONFIG VALUES ENDS <<<<');
 
-    const baseTypePath = subtype ? ['new', type, subtype] : ['new', type];
-    const typePath = [...baseTypePath, ...(customTypePath?.split('.') ?? [])];
-    verboseLog(`typePath: ${typePath.join('.')}`);
+    const { configTypePath, externalTypePath, internalTypePath } = buildTypePaths(type, subtype, customTypePath);
+    verboseLog(`internalTypePath: ${internalTypePath.join('.')}`);
+    verboseLog(`configTypePath: ${configTypePath.join('.')}`);
+    verboseLog(`externalTypePath: ${externalTypePath.join('.')}`);
     let flattenedTemplateVariables: Record<string, string | number | boolean> = {};
 
     if (templateVariables) {
-      flattenedTemplateVariables = flattenTemplateVariables(templateVariables, typePath);
+      flattenedTemplateVariables = flattenTemplateVariables(templateVariables, configTypePath);
       verboseLog(`Flattened template variables:\n${JSON.stringify(flattenedTemplateVariables, undefined, 2)}\n`);
     }
 
-    const questions = await loadQuestions(typePath, questionOverrides);
+    const questions = await loadQuestions(internalTypePath, configTypePath, questionOverrides);
     verboseLog(`Questions:\n${JSON.stringify(questions, undefined, 2)}\n`);
 
     const cliOptions: Record<string, boolean | number | string> = {
@@ -115,14 +118,14 @@ export const handler = async (argv: NewHandlerArguments) => {
     };
 
     verboseLog(`Hygen cli options:\n${JSON.stringify(cliOptions, undefined, 2)}\n`);
-    await executeHygen(templatesPath, hygenPath, baseTypePath, cliOptions);
+    await executeHygen(templatesPath, hygenPath, internalTypePath, cliOptions);
 
     if (
       additionalTemplatesPath &&
-      existsSync(resolvePath(process.cwd(), [additionalTemplatesPath, ...typePath].join('/')))
+      existsSync(resolveAbsolutePath([additionalTemplatesPath, ...externalTypePath].join(sep)))
     ) {
       verboseLog('Template overrides path exists, re-running hygen with new path');
-      await executeHygen(resolvePath(process.cwd(), additionalTemplatesPath), hygenPath, typePath, cliOptions);
+      await executeHygen(additionalTemplatesPath, hygenPath, externalTypePath, cliOptions);
     }
 
     verboseLog(`Handler duration: ${String(calculateDuration(startTime))}sec`);

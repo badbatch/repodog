@@ -2,8 +2,12 @@ import { type PromptOption, type QuestionOverride, type QuestionOverrides, verbo
 import get from 'lodash/get.js';
 import { sep } from 'node:path';
 
-export const loadQuestions = async (typePath: string[], questionOverrides?: Record<string, QuestionOverrides>) => {
-  const { default: baseQuestions } = (await import(`../questions/${typePath.join(sep)}.json`, {
+export const loadQuestions = async (
+  internalTypePath: string[],
+  configTypePath: string[],
+  questionOverrides?: Record<string, QuestionOverrides>
+) => {
+  const { default: baseQuestions } = (await import(`../questions/${internalTypePath.join(sep)}.json`, {
     assert: { type: 'json' },
   })) as {
     default: PromptOption[];
@@ -17,10 +21,13 @@ export const loadQuestions = async (typePath: string[], questionOverrides?: Reco
   }
 
   let finalQuestions = [...baseQuestions];
-  const override = get(questionOverrides, `${typePath.join('.')}.override`) as unknown as QuestionOverride | undefined;
+
+  const override = get(questionOverrides, `${configTypePath.join('.')}.override`) as unknown as
+    | QuestionOverride
+    | undefined;
 
   if (!override) {
-    verboseLog(`No question override found for path "${typePath.join('.')}", returning base questions`);
+    verboseLog(`No question override found for path "${configTypePath.join('.')}", returning base questions`);
     return baseQuestions;
   }
 

@@ -13,11 +13,11 @@ export const builder = (argv: Argv) =>
       type: 'string',
     })
     .option('custom-type-path', {
-      desc: 'The additional types to apply to the scaffold. Multiple types should be separated by a "." character',
+      desc: 'The additional types to apply to the scaffold. Multiple types should be separated by a "." character. These types are applied after the subtype',
       type: 'string',
     })
     .option('verbose', {
-      desc: 'Whether to output verbose logs.',
+      desc: 'Whether to output verbose logs',
       type: 'boolean',
     });
 

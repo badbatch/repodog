@@ -60,6 +60,7 @@ jest.unstable_mockModule('@repodog/cli-utils', () => ({
   isRunWithinProject: jest.fn().mockReturnValue(true),
   loadRepodogConfig: jest.fn().mockReturnValue(repodogConfig),
   removeEmptyAnswers: jest.fn().mockImplementation(value => value),
+  resolveAbsolutePath: jest.fn().mockImplementation(value => `/root/${String(value)}`),
   setVerbose: jest.fn(),
   verboseLog: jest.fn(),
 }));
@@ -88,6 +89,7 @@ jest.unstable_mockModule('node:path', () => ({
   resolve: jest
     .fn<typeof import('node:path')['resolve']>()
     .mockImplementation((...paths) => `${paths[0]!}/${paths[1]!.replace(new RegExp('\\.\\.\\/', 'g'), '')}`),
+  sep: jest.fn().mockReturnValue('/'),
 }));
 
 jest.unstable_mockModule('./utils/executeHygen.ts', () => ({
@@ -107,7 +109,7 @@ jest.unstable_mockModule('./utils/isValidNewSubtype.ts', () => ({
 jest.unstable_mockModule('./utils/loadQuestions.ts', () => ({
   loadQuestions: jest
     .fn<typeof import('./utils/loadQuestions.ts')['loadQuestions']>()
-    .mockImplementation((_typePath, questionOverrides) =>
+    .mockImplementation((_internalTypePath, _configTypePath, questionOverrides) =>
       Promise.resolve([
         {
           message: 'What is question 1',
@@ -124,12 +126,10 @@ jest.unstable_mockModule('./utils/loadQuestions.ts', () => ({
           name: 'question3',
           type: 'input',
         },
-        ...((questionOverrides?.new?.pkg as QuestionOverrides).cli as QuestionOverride).add!,
+        ...((questionOverrides!.new?.pkg as QuestionOverrides).cli as QuestionOverride).add!,
       ])
     ),
 }));
-
-process.cwd = () => '/root';
 
 describe('handler', () => {
   describe('when isRunWithinProject is false and hasGlobalRepodogConfig is false', () => {
@@ -165,14 +165,14 @@ describe('handler', () => {
       it('should load the questions for the specified new type and customTypePath', async () => {
         const { handler } = await import('./handler.ts');
         await handler({ 'custom-type-path': 'cli', type: 'pkg' });
-        expect(loadQuestions).toHaveBeenCalledWith(['new', 'pkg', 'cli'], repodogConfig.questionOverrides);
+        expect(loadQuestions).toHaveBeenCalledWith(['pkg'], ['new', 'pkg', 'cli'], repodogConfig.questionOverrides);
       });
 
       it('should execute hygen with the specified options and base type path', async () => {
         const { handler } = await import('./handler.ts');
         await handler({ 'custom-type-path': 'cli', type: 'pkg' });
 
-        expect(executeHygen).toHaveBeenCalledWith('/root/_templates', '/root/node_modules/.bin/hygen', ['new', 'pkg'], {
+        expect(executeHygen).toHaveBeenCalledWith('/root/_templates', '/root/node_modules/.bin/hygen', ['pkg'], {
           author: 'Dylan Aubrey',
           homepage: 'https://github.com/badbatch/repodog',
           language: 'javascript',
@@ -203,7 +203,7 @@ describe('handler', () => {
           await handler({ 'custom-type-path': 'cli', type: 'pkg' });
 
           expect(executeHygen.mock.calls[1]).toEqual([
-            '/root/overrides/_templates',
+            '../overrides/_templates',
             '/root/node_modules/.bin/hygen',
             ['new', 'pkg', 'cli'],
             {
