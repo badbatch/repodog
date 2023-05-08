@@ -1,3 +1,9 @@
+#### 1.1.1-alpha.0 (2023-05-08)
+
+##### Bug Fixes
+
+*  add husky into dev deps of template (58806365)
+
 #### 1.1.0-alpha.0 (2023-05-08)
 
 ##### Refactors
