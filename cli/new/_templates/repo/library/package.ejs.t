@@ -1,6 +1,6 @@
 ---
 to: package.json
-sh: "<%= packageManager %> install && <%= packageManager %> add @repodog/babel-config @repodog/commitlint-config @repodog/eslint-config @repodog/jest-config @repodog/markdownlint-config @repodog/prettier-config @repodog/rollup-config @repodog/syncpack-config @repodog/ts-config"
+sh: "<%= packageManager %> install && <%= packageManager %> add -D @repodog/babel-config @repodog/commitlint-config @repodog/eslint-config @repodog/jest-config @repodog/markdownlint-config @repodog/prettier-config @repodog/rollup-config @repodog/syncpack-config @repodog/ts-config"
 ---
 {
   "name": "<%= name %>",
@@ -33,7 +33,6 @@ sh: "<%= packageManager %> install && <%= packageManager %> add @repodog/babel-c
     "cut:changelog": "changelog",
     "cut:post-version": "pnpm run build",
     "lint": "eslint . --ext .ts,.cjs",
-    "prepare": "husky install",
     "repodog": "repodog",
     "syncpack": "syncpack",
     "test": "node --require=suppress-experimental-warnings --experimental-vm-modules node_modules/jest/bin/jest.js",
@@ -49,7 +48,6 @@ sh: "<%= packageManager %> install && <%= packageManager %> add @repodog/babel-c
     "@jest/globals": "^29.3.1",
     "@types/node": "^18.11.18",
     "del-cli": "^3.0.0",
-    "husky": "^8.0.3",
     "typescript": "^5.0.3"
   }
 }
