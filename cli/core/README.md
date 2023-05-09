@@ -140,7 +140,7 @@ Scaffold new folder structure
 Positionals:
   type     The type of folder to scaffold: repo | pkg        [string] [required]
   subtype  The subtype of folder to scaffold. Only relevant when type is "repo":
-           app | library | server                                       [string]
+           library                                                      [string]
 
 Options:
   --version           Show version number                              [boolean]

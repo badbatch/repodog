@@ -9,7 +9,7 @@ describe('isValidNewSubtype', () => {
 
   describe('when type is REPO', () => {
     it('should return true if subtype is a valid NewRepoSubtype', () => {
-      expect(isValidNewSubtype(NewType.REPO, NewRepoSubtype.APP)).toBe(true);
+      expect(isValidNewSubtype(NewType.REPO, NewRepoSubtype.LIBRARY)).toBe(true);
     });
 
     it('should return false if subtype is not a valid NewRepoSubtype', () => {

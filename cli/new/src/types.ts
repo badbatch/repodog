@@ -6,9 +6,9 @@ export interface NewHandlerArguments {
 }
 
 export enum NewRepoSubtype {
-  APP = 'app',
+  // APP = 'app',
   LIBRARY = 'library',
-  SERVER = 'server',
+  // SERVER = 'server',
 }
 
 export enum NewType {
