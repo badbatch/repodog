@@ -1,0 +1,14 @@
+{
+  "extends": "../../configs/ts-config/build.json",
+  "include": [
+    "src/**/*"
+  ],
+  "references": [
+    {
+      "path": "../test-utils"
+    },
+    {
+      "path": "../utils"
+    }
+  ]
+}

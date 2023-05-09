@@ -1,0 +1,58 @@
+{
+  "name": "@repodog/cli",
+  "description": "The RepoDog cli module.",
+  "version": "1.1.3-alpha.0",
+  "author": "Dylan Aubrey",
+  "license": "MIT",
+  "homepage": "https://github.com/badbatch/repodog",
+  "repository": {
+    "directory": "cli/core",
+    "type": "git",
+    "url": "https://github.com/badbatch/repodog/cli/core"
+  },
+  "bugs": "https://github.com/badbatch/repodog/issues",
+  "type": "module",
+  "engines": {
+    "node": "^18.13.0"
+  },
+  "bin": {
+    "repodog": "./bin/repodog.mjs"
+  },
+  "main": "./dist/main/index.mjs",
+  "types": "./dist/types/index.d.ts",
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "pnpm run clean:dist && pnpm run compile",
+    "clean:deps": "del-cli ./node_modules",
+    "clean:dist": "del-cli ./dist",
+    "compile": "pnpm run /^compile:.*/",
+    "compile:main": "rollup -c ../../rollup.config.cjs",
+    "compile:types": "tsc --project ./tsconfig.build.json"
+  },
+  "dependencies": {
+    "@babel/runtime": "^7.20.13",
+    "@repodog/cli-cut": "workspace:../cut",
+    "@repodog/cli-new": "workspace:../new",
+    "@repodog/cli-publish": "workspace:../publish",
+    "@repodog/cli-setup": "workspace:../setup",
+    "@repodog/cli-write": "workspace:../write",
+    "ansi-colors": "^4.1.3",
+    "core-js": "^3.27.2",
+    "jiti": "^1.18.2",
+    "lodash": "^4.17.21",
+    "semver": "^7.1.3",
+    "shelljs": "^0.8.4",
+    "suppress-experimental-warnings": "^1.1.3",
+    "yargs": "^15.1.0"
+  },
+  "devDependencies": {
+    "@jest/globals": "^29.3.1",
+    "@repodog/cli-test-utils": "workspace:../test-utils",
+    "@types/semver": "^7.1.0",
+    "@types/shelljs": "^0.8.11",
+    "@types/yargs": "^15.0.4",
+    "del-cli": "^3.0.0"
+  }
+}

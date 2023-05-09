@@ -1,6 +1,0 @@
-{
-  "buildReferences": {
-    "global": ["@repodog/types"]
-  },
-  "features": ["monorepo", "typescript"]
-}

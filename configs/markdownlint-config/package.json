@@ -1,0 +1,21 @@
+{
+  "name": "@repodog/markdownlint-config",
+  "description": "The RepoDog MarkdownLint config module.",
+  "version": "1.1.0-alpha.0",
+  "author": "Dylan Aubrey",
+  "license": "MIT",
+  "homepage": "https://github.com/badbatch/repodog",
+  "repository": {
+    "directory": "configs/markdownlint-config",
+    "type": "git",
+    "url": "https://github.com/badbatch/repodog/configs/markdownlint-config"
+  },
+  "bugs": "https://github.com/badbatch/repodog/issues",
+  "main": "index.json",
+  "publishConfig": {
+    "access": "public"
+  },
+  "peerDependencies": {
+    "markdownlint-cli": "<1"
+  }
+}

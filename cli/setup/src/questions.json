@@ -1,0 +1,40 @@
+[
+  {
+    "message": "What is the path to your additional templates?",
+    "name": "additionalTemplatesPath",
+    "required": false,
+    "type": "input"
+  },
+  {
+    "message": "What is the path to your additional templates?",
+    "name": "environmentVariablesPath",
+    "required": false,
+    "type": "input"
+  },
+  {
+    "choices": ["javascript", "typescript"],
+    "message": "What programming language are you using?",
+    "name": "language",
+    "required": false,
+    "type": "select"
+  },
+  {
+    "choices": ["npm", "yarn", "pnpm"],
+    "message": "What package manager are you using?",
+    "name": "packageManager",
+    "required": false,
+    "type": "select"
+  },
+  {
+    "message": "What is the path to your question overrides?",
+    "name": "questionOverridesPath",
+    "required": false,
+    "type": "input"
+  },
+  {
+    "message": "What is the path to your template variables?",
+    "name": "templateVariablesPath",
+    "required": false,
+    "type": "input"
+  }
+]

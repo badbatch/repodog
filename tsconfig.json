@@ -1,11 +1,6 @@
 {
-  "extends": "./tsconfig.settings.json",
-  "exclude": [
-    "**/bin/**",
-    "**/lib/**",
-    "**/node_modules/**"
-  ],
+  "extends": "./configs/ts-config/index.json",
   "include": [
-    "packages"
+    "cli/**/*"
   ]
 }

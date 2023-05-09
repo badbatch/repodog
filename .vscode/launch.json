@@ -1,64 +1,93 @@
 {
-  // Use IntelliSense to learn about possible attributes.
-  // Hover to view descriptions of existing attributes.
-  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
-  "version": "0.2.0",
   "configurations": [
-    {
-      "type": "node",
-      "request": "launch",
-      "name": "Jest - all",
-      "program": "${workspaceFolder}/node_modules/jest/bin/jest",
-      "args": [
-        "--runInBand"
-      ],
-      "console": "integratedTerminal",
-      "internalConsoleOptions": "neverOpen"
-    },
     {
       "type": "node",
       "request": "launch",
       "name": "Jest - current file",
       "program": "${workspaceFolder}/node_modules/jest/bin/jest",
+      "runtimeVersion": "18.13.0",
       "args": [
         "${relativeFile}"
       ],
+      "env": {
+        "DEBUG": "true",
+        "NODE_OPTIONS": "--experimental-vm-modules"
+      },
       "console": "integratedTerminal",
       "internalConsoleOptions": "neverOpen"
     },
     {
       "type": "node",
       "request": "launch",
-      "name": "Build references",
-      "program": "${workspaceFolder}/packages/build-references/bin/build-references.js",
-      "protocol": "inspector",
-      "stopOnEntry": false,
-      "console": "integratedTerminal",
-      "internalConsoleOptions": "neverOpen"
-    },
-    {
-      "type": "node",
-      "request": "launch",
-      "name": "New package",
-      "program": "${workspaceFolder}/packages/new-package/bin/new-package.js",
+      "name": "Repodog - cut",
+      "program": "${workspaceFolder}/cli/core/bin/repodog.mjs",
       "args": [
-        "--type", "config",
-        "--name", "test",
-        "--desc", "This is a test description."
+        "cut",
+        "prepatch",
+        "--tag", "alpha",
+        "--dry-run"
       ],
-      "protocol": "inspector",
-      "stopOnEntry": false,
       "console": "integratedTerminal",
       "internalConsoleOptions": "neverOpen"
     },
     {
       "type": "node",
       "request": "launch",
-      "name": "New monorepo",
-      "program": "${workspaceFolder}/packages/new-monorepo/bin/cli.js",
-      "args": [],
-      "protocol": "inspector",
-      "stopOnEntry": false,
+      "name": "Repodog - publish",
+      "program": "${workspaceFolder}/cli/core/bin/repodog.mjs",
+      "args": [
+        "publish",
+        "--verbose"
+      ],
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Repodog - write",
+      "program": "${workspaceFolder}/cli/core/bin/repodog.mjs",
+      "args": [
+        "write",
+        "test",
+        "./cli/write/src/handler.ts",
+        "--verbose"
+      ],
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "syncpack",
+      "program": "${workspaceFolder}/node_modules/syncpack/dist/bin.js",
+      "args": [
+        "list-mismatches"
+      ],
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "hygen",
+      "program": "${workspaceFolder}/cli/new/node_modules/hygen/dist/bin.js",
+      "args": [
+        "repo",
+        "library",
+        "--name", "name",
+        "--desc", "desc",
+        "--author", "Dylan Aubrey",
+        "--homepage", "https://github.com/org/name",
+        "--mainFilename", "main",
+        "--language", "typescript",
+        "--packageManager", "pnpm",
+        "--packageManagerTemporaryCmd", "pnpm dlx",
+      ],
+      "env": {
+        "DEBUG": "true",
+        "HYGEN_TMPLS": "${workspaceFolder}/cli/new/_templates"
+      },
       "console": "integratedTerminal",
       "internalConsoleOptions": "neverOpen"
     },

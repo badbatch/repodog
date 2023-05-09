@@ -1,0 +1,41 @@
+{
+  "language": "typescript",
+  "packageManager": "pnpm",
+  "additionalTemplatesPath": "./_templates",
+  "questionOverrides": {
+    "new": {
+      "pkg": {
+        "cli": {
+          "add": [
+            {
+              "message": "What is the cli command?",
+              "name": "cliCommand",
+              "required": true,
+              "type": "input"
+            },
+            {
+              "message": "What is the cli description?",
+              "name": "cliDescription",
+              "required": true,
+              "type": "input"
+            }
+          ]
+        }
+      }
+    }
+  },
+  "templateVariables": {
+    "*": {
+      "author": "Dylan Aubrey",
+      "homepage": "https://github.com/badbatch/repodog",
+      "org": "repodog"
+    },
+    "new": {
+      "pkg": {
+        "cli": {
+          "mainFilename": "handler"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "extends": "../../configs/ts-config/build.json",
+  "include": [
+    "src/**/*",
+    "**/*.json"
+  ],
+  "references": [
+    {
+      "path": "../cut"
+    },
+    {
+      "path": "../new"
+    },
+    {
+      "path": "../publish"
+    },
+    {
+      "path": "../setup"
+    },
+    {
+      "path": "../test-utils"
+    },
+    {
+      "path": "../write"
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+name: Build and publish
+
+on:
+  push:
+    branches:
+      - master
+    tags:
+      - v**
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  build-and-publish:
+    uses: ./.github/workflows/master-build-and-publish.yml
+    with:
+      package-manager-version: '7.27.0'
+    secrets:
+      npm_auth_token: ${{ secrets.NPM_AUTH_TOKEN }}

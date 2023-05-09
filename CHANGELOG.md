@@ -1,3 +1,184 @@
+#### 1.1.2-alpha.0 (2023-05-08)
+
+##### Bug Fixes
+
+*  remove peer auto install (fd55a855)
+
+#### 1.1.1-alpha.0 (2023-05-08)
+
+##### Bug Fixes
+
+*  add husky into dev deps of template (58806365)
+
+#### 1.1.0-alpha.0 (2023-05-08)
+
+##### Refactors
+
+*  change way cwd is changed for new repo (1fc33af0)
+
+#### 1.0.15-alpha.0 (2023-05-08)
+
+##### New Features
+
+*  add check for node version at start of cli (d4c2faf8)
+*  enable jest eslint rules and fix issues (3145df7e)
+*  add syncpack config (67585fa7)
+
+##### Bug Fixes
+
+*  change way type paths are handled to fix hygen limitation (a3832fa0)
+*  remove full stop in desc (bda0a333)
+*  change to os separator (4e84a386)
+*  remove org reference from repo template (338d660e)
+*  add engine node to cli package json, add quotes to sh commands (eb626ac7)
+
+##### Refactors
+
+*  move templates and questions out of new folder (1a3b1d30)
+*  add auto install peers and repodog installs (14239a82)
+
+#### 1.0.14-alpha.0 (2023-04-26)
+
+##### Bug Fixes
+
+*  add back in json import type assert (9b7d4114)
+
+#### 1.0.13-alpha.0 (2023-04-26)
+
+##### Bug Fixes
+
+*  custom type path should not default to empty string (dc9c4ce9)
+
+#### 1.0.12-alpha.0 (2023-04-26)
+
+##### Bug Fixes
+
+*  remove empty string answers (2d71fae8)
+
+#### 1.0.11-alpha.0 (2023-04-26)
+
+##### Bug Fixes
+
+*  create and cd into new lib if not in correct folder (d6ce7557)
+
+#### 1.0.10-alpha.0 (2023-04-26)
+
+##### New Features
+
+*  add setup command (47597746)
+
+##### Bug Fixes
+
+*  add peers as deps, kebabcase arg (0d81e522)
+
+#### 1.0.9-alpha.0 (2023-04-13)
+
+##### Bug Fixes
+
+*  warnings (28c69d4d)
+*  subtype bug and add library questions (7e9826f1)
+
+##### Refactors
+
+*  change way mocks are structured (9e649b4c)
+*  move to .ts extensions with ts 5 (6762dd0e)
+*  upgrade typescript and add repo/lib templates (a9e378b9)
+
+#### 1.0.8-alpha.0 (2023-03-31)
+
+##### Documentation Changes
+
+*  add divider back in (86e9bb4b)
+*  remove dividers (eaaa21a7)
+*  minor wording change on readme (bfdca08a)
+
+##### New Features
+
+*  add validation of subtype in new script (a8276d5a)
+
+##### Bug Fixes
+
+*  move log messages (b03b01ea)
+*  versioning packages with versioned internal deps (28645924)
+
+##### Refactors
+
+*  get language and pass to template engine (c8b36822)
+*  add subtype for new repo command support (6cf2c651)
+*  update to write cmd arg casing (55194273)
+
+#### 1.0.8-alpha.0 (2023-03-20)
+
+##### New Features
+
+*  add write command (ee7605c2)
+*  new package script (402627b7)
+
+##### Refactors
+
+*  update shared files and utils to support write package (a97c7e79)
+*  remove babel lodash plugin (555160a5)
+*  make use of enums (9a876b38)
+
+#### 1.0.7-alpha.0 (2023-02-23)
+
+##### Bug Fixes
+
+*  typo in action workflow script (69d62563)
+
+#### 1.0.6-alpha.0 (2023-02-23)
+
+##### Bug Fixes
+
+*  change way npm auth token is injected in pipeline (da575152)
+
+#### 1.0.5-alpha.0 (2023-02-22)
+
+##### Bug Fixes
+
+*  make sure chdir is passed absolute path (88d504a0)
+
+#### 1.0.4-alpha.0 (2023-02-21)
+
+##### Bug Fixes
+
+*  adding change directory into publish package flow (cb1b692f)
+
+#### 1.0.3-alpha.0 (2023-02-21)
+
+##### Refactors
+
+*  add verbose logging to publish command (4560bb8d)
+
+#### 1.0.2-alpha.0 (2023-02-21)
+
+##### Bug Fixes
+
+*  update how publish script is called in pipeline (d0e8f136)
+
+#### 1.0.1-alpha.0 (2023-02-21)
+
+##### Bug Fixes
+
+*  update package manager version in action (b6d780f7)
+
+#### 1.0.0-alpha.0 (2023-02-21)
+
+##### New Features
+
+*  move cutoff into repodog (8b4e53fb)
+*  add github workflows (d77fc9dd)
+*  add ability to cut dry run (0242505d)
+*  add duration log at end of cut handler (b01988da)
+
+##### Refactors
+
+*  remove all but config packages (42a1c280)
+*  move configs into own folder (a58acbed)
+*  update readmes (060a7d11)
+*  change npm script changelog is linked to (9fbf040a)
+*  allow any release type to generate changelog (ca891a0b)
+
 #### 0.3.53 (2020-03-03)
 
 ##### Chores

@@ -1,0 +1,37 @@
+{
+  "name": "@repodog/eslint-config",
+  "description": "The RepoDog ESLint config module.",
+  "version": "1.1.0-alpha.0",
+  "author": "Dylan Aubrey",
+  "license": "MIT",
+  "homepage": "https://github.com/badbatch/repodog",
+  "repository": {
+    "directory": "configs/eslint-config",
+    "type": "git",
+    "url": "https://github.com/badbatch/repodog/configs/eslint-config"
+  },
+  "bugs": "https://github.com/badbatch/repodog/issues",
+  "main": "index.cjs",
+  "publishConfig": {
+    "access": "public"
+  },
+  "peerDependencies": {
+    "@babel/eslint-parser": "<8",
+    "@typescript-eslint/eslint-plugin": "<6",
+    "@typescript-eslint/parser": "<6",
+    "eslint": "<9",
+    "eslint-config-prettier": "<9",
+    "eslint-import-resolver-typescript": "<4",
+    "eslint-plugin-import": "<3",
+    "eslint-plugin-jest": "<28",
+    "eslint-plugin-jsx-a11y": "<7",
+    "eslint-plugin-prettier": "<5",
+    "eslint-plugin-react": "<8",
+    "eslint-plugin-react-hooks": "<5",
+    "eslint-plugin-sort-class-members": "<2",
+    "eslint-plugin-sort-destructure-keys": "<2",
+    "eslint-plugin-sort-keys-fix": "<2",
+    "eslint-plugin-typescript-sort-keys": "<3",
+    "eslint-plugin-unicorn": "<46"
+  }
+}

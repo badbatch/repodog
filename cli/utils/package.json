@@ -1,0 +1,52 @@
+{
+  "name": "@repodog/cli-utils",
+  "description": "The RepoDog cli utils module.",
+  "version": "1.1.0-alpha.0",
+  "author": "Dylan Aubrey",
+  "license": "MIT",
+  "homepage": "https://github.com/badbatch/repodog",
+  "repository": {
+    "directory": "cli/utils",
+    "type": "git",
+    "url": "https://github.com/badbatch/repodog/cli/utils"
+  },
+  "bugs": "https://github.com/badbatch/repodog/issues",
+  "type": "module",
+  "main": "./dist/main/index.mjs",
+  "types": "./dist/types/index.d.ts",
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "pnpm run clean:dist && pnpm run compile",
+    "clean:deps": "del-cli ./node_modules",
+    "clean:dist": "del-cli ./dist",
+    "compile": "pnpm run /^compile:.*/",
+    "compile:main": "rollup -c ../../rollup.config.cjs",
+    "compile:types": "tsc --project ./tsconfig.build.json"
+  },
+  "dependencies": {
+    "ansi-colors": "^4.1.3",
+    "glob": "^8.1.0",
+    "js-yaml": "^4.1.0",
+    "semver": "^7.1.3",
+    "shelljs": "^0.8.4"
+  },
+  "peerDependencies": {
+    "@babel/runtime": "<8",
+    "core-js": "<4",
+    "lodash": "<5"
+  },
+  "devDependencies": {
+    "@jest/globals": "^29.3.1",
+    "@repodog/cli-test-utils": "workspace:../test-utils",
+    "@types/glob": "^8.0.1",
+    "@types/js-yaml": "^4.0.5",
+    "@types/lodash": "^4.14.191",
+    "@types/semver": "^7.1.0",
+    "@types/shelljs": "^0.8.11",
+    "del-cli": "^3.0.0",
+    "lodash": "^4.17.21",
+    "type-fest": "^3.5.1"
+  }
+}

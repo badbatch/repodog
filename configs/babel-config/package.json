@@ -1,0 +1,33 @@
+{
+  "name": "@repodog/babel-config",
+  "description": "The RepoDog Babel config module.",
+  "version": "1.1.0-alpha.0",
+  "author": "Dylan Aubrey",
+  "license": "MIT",
+  "homepage": "https://github.com/badbatch/repodog",
+  "repository": {
+    "directory": "configs/babel-config",
+    "type": "git",
+    "url": "https://github.com/badbatch/repodog/configs/babel-config"
+  },
+  "bugs": "https://github.com/badbatch/repodog/issues",
+  "main": "index.cjs",
+  "publishConfig": {
+    "access": "public"
+  },
+  "peerDependencies": {
+    "@babel/cli": "<8",
+    "@babel/core": "<8",
+    "@babel/plugin-proposal-class-properties": "<8",
+    "@babel/plugin-proposal-export-namespace-from": "<8",
+    "@babel/plugin-syntax-dynamic-import": "<8",
+    "@babel/plugin-syntax-import-assertions": "<8",
+    "@babel/plugin-transform-runtime": "<8",
+    "@babel/preset-env": "<8",
+    "@babel/preset-react": "<8",
+    "@babel/preset-typescript": "<8",
+    "@babel/runtime": "<8",
+    "babel-plugin-codegen": "<5",
+    "babel-plugin-macros": "<4"
+  }
+}
