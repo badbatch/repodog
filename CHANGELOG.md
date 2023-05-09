@@ -1,3 +1,9 @@
+#### 1.0.1 (2023-05-09)
+
+##### Chores
+
+*  remove reference to tbc new repo types (289ca0e1)
+
 #### 1.0.0 (2023-05-09)
 
 #### 1.1.2-alpha.0 (2023-05-08)
