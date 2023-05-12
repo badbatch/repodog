@@ -1,5 +1,15 @@
 #### 1.1.0 (2023-05-12)
 
+##### Bug Fixes
+
+*  add dependency to template (bdd9eb74)
+
+##### Refactors
+
+*  Rename isValidNewSubtype.test.ts to isValidNewSubType.test.ts (ea464470)
+
+#### 1.1.0 (2023-05-12)
+
 ##### New Features
 
 *  add postinstall script (a3e53ad4)
