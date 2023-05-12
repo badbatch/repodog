@@ -44,6 +44,7 @@ sh: "<%= packageManager %> install && <%= packageManager %> add -D @repodog/cli 
   },
   "devDependencies": {
     "@types/node": "^18.11.18",
-    "del-cli": "^3.0.0"
+    "del-cli": "^3.0.0",
+    "generate-changelog": "^1.8.0"
   }
 }
