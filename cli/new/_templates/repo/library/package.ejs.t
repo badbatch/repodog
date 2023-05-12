@@ -43,9 +43,7 @@ sh: "<%= packageManager %> install && <%= packageManager %> add -D @repodog/cli 
     "core-js": "<4"
   },
   "devDependencies": {
-    "@jest/globals": "^29.3.1",
     "@types/node": "^18.11.18",
-    "del-cli": "^3.0.0",
-    "typescript": "^5.0.3"
+    "del-cli": "^3.0.0"
   }
 }

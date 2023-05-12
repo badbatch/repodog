@@ -17,6 +17,7 @@
   },
   "peerDependencies": {
     "@jest/globals": "<30",
+    "@types/jest": "<26",
     "babel-jest": "<30",
     "identity-obj-proxy": "<4",
     "jest": "<30",
