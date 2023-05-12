@@ -1,11 +1,11 @@
 export interface NewHandlerArguments {
   'custom-type-path'?: string;
-  subtype?: string;
+  subtype: string;
   type: string;
   verbose?: boolean;
 }
 
-export enum NewRepoSubtype {
+export enum NewSubtype {
   // APP = 'app',
   LIBRARY = 'library',
   // SERVER = 'server',

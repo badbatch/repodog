@@ -8,11 +8,12 @@ export const builder = (argv: Argv) =>
       type: 'string',
     })
     .positional('subtype', {
-      demandOption: false,
+      demandOption: true,
       desc: 'The subtype of folder to scaffold. Only relevant when type is "repo": library',
       type: 'string',
     })
-    .option('custom-type-path', {
+    .positional('custom-type-path', {
+      demandOption: false,
       desc: 'The additional types to apply to the scaffold. Multiple types should be separated by a "." character. These types are applied after the subtype',
       type: 'string',
     })
@@ -21,6 +22,6 @@ export const builder = (argv: Argv) =>
       type: 'boolean',
     });
 
-export const command = 'new <type> [subtype]';
+export const command = 'new <type> <subtype> [custom-type-path]';
 export const desc = 'Scaffold new folder structure';
 export { handler } from './handler.ts';

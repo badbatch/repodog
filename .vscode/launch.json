@@ -5,7 +5,7 @@
       "request": "launch",
       "name": "Jest - current file",
       "program": "${workspaceFolder}/node_modules/jest/bin/jest",
-      "runtimeVersion": "18.13.0",
+      // "runtimeVersion": "18.13.0",
       "args": [
         "${relativeFile}"
       ],
@@ -26,6 +26,21 @@
         "prepatch",
         "--tag", "alpha",
         "--dry-run"
+      ],
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Repodog - new",
+      "program": "${workspaceFolder}/cli/core/bin/repodog.mjs",
+      "runtimeVersion": "18.13.0",
+      "args": [
+        "new",
+        "pkg",
+        "--custom-type-path", "cli",
+        "--verbose"
       ],
       "console": "integratedTerminal",
       "internalConsoleOptions": "neverOpen"

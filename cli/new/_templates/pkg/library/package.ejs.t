@@ -4,20 +4,18 @@ sh: "<%= packageManager %> install"
 ---
 {
   "name": "@<%= org %>/<%= name %>",
-  "type": "module",
-  "version": "0.0.1",
   "description": "<%= desc %>",
+  "version": "0.0.1",
+  "author": "<%= author %>",
+  "license": "MIT",
   "homepage": "<%= homepage %>",
-  "bugs": {
-    "url": "<%= homepage %>/issues"
-  },
   "repository": {
     "directory": "<%= path %>",
     "type": "git",
     "url": "<%= homepage %>/<%= path %>"
   },
-  "license": "MIT",
-  "author": "<%= author %>",
+  "bugs": "<%= homepage %>/issues",
+  "type": "module",
   "main": "./dist/main/index.mjs",
   "types": "./dist/types/index.d.ts",
   "publishConfig": {

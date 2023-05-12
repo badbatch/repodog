@@ -21,12 +21,12 @@ import { dirname, resolve as resolvePath, sep } from 'node:path';
 import { performance } from 'node:perf_hooks';
 import { fileURLToPath } from 'node:url';
 import shelljs from 'shelljs';
-import { type NewHandlerArguments, NewType } from './types.ts';
+import { type NewHandlerArguments, NewSubtype, NewType } from './types.ts';
 import { buildTypePaths } from './utils/buildTypePaths.ts';
 import { conditionallyChangeCwd } from './utils/conditionallyChangeCwd.ts';
 import { executeHygen } from './utils/executeHygen.ts';
-import { VALID_NEW_SUBTYPES, isValidNewSubtype } from './utils/isValidNewSubtype.ts';
-import { VALID_NEW_TYPES, isValidNewType } from './utils/isValidNewType.ts';
+import { isValidNewSubType } from './utils/isValidNewSubType.ts';
+import { isValidNewType } from './utils/isValidNewType.ts';
 import { loadQuestions } from './utils/loadQuestions.ts';
 
 export const handler = async (argv: NewHandlerArguments) => {
@@ -41,22 +41,20 @@ export const handler = async (argv: NewHandlerArguments) => {
   setVerbose(verbose);
   verboseLog('>>>> USER CONFIG START <<<<');
   verboseLog(`customTypePath: ${customTypePath ?? 'undefined'}`);
-  verboseLog(`subtype: ${argv.subtype ?? 'undefined'}`);
+  verboseLog(`subtype: ${argv.subtype}`);
   verboseLog(`type: ${argv.type}`);
   verboseLog('>>>> USER CONFIG END <<<<\n');
 
   try {
     if (!isValidNewType(argv.type)) {
-      throw new Error(`Expected type to be a valid new type: ${VALID_NEW_TYPES.join(', ')}`);
+      throw new Error(`Expected type to be a valid new type: ${Object.values(NewType).join(', ')}`);
     }
 
-    if (argv.type === NewType.REPO && !isValidNewSubtype(argv.type, argv.subtype)) {
-      throw new Error(
-        `Expected subtype to be a valid new ${argv.type} subtype: ${VALID_NEW_SUBTYPES[argv.type].join(', ')}`
-      );
+    if (!isValidNewSubType(argv.subtype)) {
+      throw new Error(`Expected subtype to be a valid new subtype: ${Object.values(NewSubtype).join(', ')}`);
     }
 
-    const subtype = argv.subtype ?? '';
+    const subtype = argv.subtype;
     const type = argv.type;
     const packageManager = getPackageManager();
 

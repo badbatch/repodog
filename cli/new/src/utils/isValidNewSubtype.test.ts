@@ -1,29 +1,17 @@
-import { NewRepoSubtype, NewType } from '../types.ts';
+import { NewSubtype } from '../types.ts';
 
-describe('isValidNewSubtype', () => {
-  let isValidNewSubtype: typeof import('./isValidNewSubtype.ts')['isValidNewSubtype'];
+describe('isValidNewSubType', () => {
+  let isValidNewSubType: typeof import('./isValidNewSubType.ts')['isValidNewSubType'];
 
   beforeEach(async () => {
-    ({ isValidNewSubtype } = await import('./isValidNewSubtype.ts'));
+    ({ isValidNewSubType } = await import('./isValidNewSubType.ts'));
   });
 
-  describe('when type is REPO', () => {
-    it('should return true if subtype is a valid NewRepoSubtype', () => {
-      expect(isValidNewSubtype(NewType.REPO, NewRepoSubtype.LIBRARY)).toBe(true);
-    });
-
-    it('should return false if subtype is not a valid NewRepoSubtype', () => {
-      expect(isValidNewSubtype(NewType.REPO, 'invalid')).toBe(false);
-    });
+  it('should return true if subtype is a valid NewSubtype', () => {
+    expect(isValidNewSubType(NewSubtype.LIBRARY)).toBe(true);
   });
 
-  describe('when type is PKG', () => {
-    it('should return false if subtype is an empty string', () => {
-      expect(isValidNewSubtype(NewType.PKG)).toBe(false);
-    });
-
-    it('should return false if subtype is not an empty string', () => {
-      expect(isValidNewSubtype(NewType.PKG, 'invalid')).toBe(false);
-    });
+  it('should return false if subtype is not a valid NewSubtype', () => {
+    expect(isValidNewSubType('invalid')).toBe(false);
   });
 });

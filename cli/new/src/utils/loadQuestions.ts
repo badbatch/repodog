@@ -21,10 +21,7 @@ export const loadQuestions = async (
   }
 
   let finalQuestions = [...baseQuestions];
-
-  const override = get(questionOverrides, `${configTypePath.join('.')}.override`) as unknown as
-    | QuestionOverride
-    | undefined;
+  const override = get(questionOverrides, configTypePath.join('.')) as unknown as QuestionOverride | undefined;
 
   if (!override) {
     verboseLog(`No question override found for path "${configTypePath.join('.')}", returning base questions`);

@@ -8,8 +8,6 @@ import {
   flattenTemplateVariables,
   getPackageManagerTemporaryCmd,
 } from '@repodog/cli-utils';
-import { VALID_NEW_SUBTYPES } from './utils/isValidNewSubtype.ts';
-import { VALID_NEW_TYPES } from './utils/isValidNewType.ts';
 
 jest.unstable_mockModule('shelljs', shelljsMock);
 
@@ -17,14 +15,16 @@ const repodogConfig = {
   questionOverrides: {
     new: {
       pkg: {
-        cli: {
-          add: [
-            {
-              message: 'Is this a good mock?',
-              name: 'mock',
-              type: 'input',
-            },
-          ],
+        library: {
+          cli: {
+            add: [
+              {
+                message: 'Is this a good mock?',
+                name: 'mock',
+                type: 'input',
+              },
+            ],
+          },
         },
       },
     },
@@ -37,8 +37,10 @@ const repodogConfig = {
     },
     new: {
       pkg: {
-        cli: {
-          mainFilename: 'handler',
+        library: {
+          cli: {
+            mainFilename: 'handler',
+          },
         },
       },
     },
@@ -101,13 +103,11 @@ jest.unstable_mockModule('./utils/executeHygen.ts', () => ({
 }));
 
 jest.unstable_mockModule('./utils/isValidNewType.ts', () => ({
-  VALID_NEW_TYPES,
   isValidNewType: jest.fn().mockReturnValue(true),
 }));
 
-jest.unstable_mockModule('./utils/isValidNewSubtype.ts', () => ({
-  VALID_NEW_SUBTYPES,
-  isValidNewSubtype: jest.fn().mockReturnValue(true),
+jest.unstable_mockModule('./utils/isValidNewSubType.ts', () => ({
+  isValidNewSubType: jest.fn().mockReturnValue(true),
 }));
 
 jest.unstable_mockModule('./utils/loadQuestions.ts', () => ({
@@ -130,7 +130,8 @@ jest.unstable_mockModule('./utils/loadQuestions.ts', () => ({
           name: 'question3',
           type: 'input',
         },
-        ...((questionOverrides!.new?.pkg as QuestionOverrides).cli as QuestionOverride).add!,
+        ...(((questionOverrides!.new!.pkg as QuestionOverrides).library as QuestionOverrides).cli as QuestionOverride)
+          .add!,
       ])
     ),
 }));
@@ -148,8 +149,57 @@ describe('handler', () => {
 
     it('should execute handleGlobalConfigSetup', async () => {
       const { handler } = await import('./handler.ts');
-      await handler({ type: 'blah' });
+      await handler({ subtype: 'bravo', type: 'alpha' });
       expect(handleGlobalConfigSetup).toHaveBeenCalledWith();
+    });
+  });
+
+  describe('when given invalid type', () => {
+    let shelljs: jest.Mocked<typeof import('shelljs')>;
+
+    beforeEach(async () => {
+      jest.clearAllMocks();
+      shelljs = jest.mocked(await import('shelljs')).default;
+      const { isValidNewType } = jest.mocked(await import('./utils/isValidNewType.ts'));
+      isValidNewType.mockReturnValueOnce(false);
+    });
+
+    it('should throw an error', async () => {
+      const { handler } = await import('./handler.ts');
+      await handler({ subtype: 'library', type: 'blah' });
+      expect(shelljs.echo).toHaveBeenCalledWith(expect.stringContaining('Expected type to be a valid new type'));
+    });
+
+    it('should exit with a code of 1', async () => {
+      const { handler } = await import('./handler.ts');
+      await handler({ subtype: 'library', type: 'blah' });
+      expect(shelljs.exit).toHaveBeenCalledWith(1);
+    });
+  });
+
+  describe('when given invalid subtype', () => {
+    let shelljs: jest.Mocked<typeof import('shelljs')>;
+
+    beforeEach(async () => {
+      jest.clearAllMocks();
+      shelljs = jest.mocked(await import('shelljs')).default;
+      const { isValidNewSubType } = jest.mocked(await import('./utils/isValidNewSubType.ts'));
+      isValidNewSubType.mockReturnValueOnce(false);
+    });
+
+    it('should throw an error', async () => {
+      const { handler } = await import('./handler.ts');
+      await handler({ subtype: 'blah', type: 'pkg' });
+
+      expect(shelljs.echo).toHaveBeenCalledWith(
+        expect.stringContaining('Error: Expected subtype to be a valid new subtype: library')
+      );
+    });
+
+    it('should exit with a code of 1', async () => {
+      const { handler } = await import('./handler.ts');
+      await handler({ subtype: 'blah', type: 'pkg' });
+      expect(shelljs.exit).toHaveBeenCalledWith(1);
     });
   });
 
@@ -168,27 +218,43 @@ describe('handler', () => {
 
       it('should load the questions for the specified new type and customTypePath', async () => {
         const { handler } = await import('./handler.ts');
-        await handler({ 'custom-type-path': 'cli', type: 'pkg' });
-        expect(loadQuestions).toHaveBeenCalledWith(['pkg'], ['new', 'pkg', 'cli'], repodogConfig.questionOverrides);
+        await handler({ 'custom-type-path': 'cli', subtype: 'library', type: 'pkg' });
+
+        expect(loadQuestions).toHaveBeenCalledWith(
+          ['pkg', 'library'],
+          ['new', 'pkg', 'library', 'cli'],
+          repodogConfig.questionOverrides
+        );
       });
 
       it('should execute hygen with the specified options and base type path', async () => {
         const { handler } = await import('./handler.ts');
-        await handler({ 'custom-type-path': 'cli', type: 'pkg' });
+        await handler({ 'custom-type-path': 'cli', subtype: 'library', type: 'pkg' });
 
-        expect(executeHygen).toHaveBeenCalledWith('/root/_templates', '/root/node_modules/.bin/hygen', ['pkg'], {
-          author: 'Dylan Aubrey',
-          homepage: 'https://github.com/badbatch/repodog',
-          language: 'javascript',
-          mainFilename: 'handler',
-          mock: 'answer to mock',
-          org: 'repodog',
-          packageManager: 'pnpm',
-          packageManagerTemporaryCmd: 'pnpm dlx',
-          question1: 'answer to question1',
-          question2: 'answer to question2',
-          question3: 'answer to question3',
-        });
+        expect(executeHygen).toHaveBeenCalledWith(
+          '/root/_templates',
+          '/root/node_modules/.bin/hygen',
+          ['pkg', 'library'],
+          {
+            author: 'Dylan Aubrey',
+            homepage: 'https://github.com/badbatch/repodog',
+            language: 'javascript',
+            mainFilename: 'handler',
+            mock: 'answer to mock',
+            org: 'repodog',
+            packageManager: 'pnpm',
+            packageManagerTemporaryCmd: 'pnpm dlx',
+            question1: 'answer to question1',
+            question2: 'answer to question2',
+            question3: 'answer to question3',
+          }
+        );
+      });
+
+      it('should exit with a code of 0', async () => {
+        const { handler } = await import('./handler.ts');
+        await handler({ subtype: 'library', type: 'pkg' });
+        expect(shelljs.exit).toHaveBeenCalledWith(0);
       });
 
       describe('when there are template overrides for the specified new type', () => {
@@ -204,12 +270,12 @@ describe('handler', () => {
 
         it('should execute hygen again with the template overrides path and specified options and base type path', async () => {
           const { handler } = await import('./handler.ts');
-          await handler({ 'custom-type-path': 'cli', type: 'pkg' });
+          await handler({ 'custom-type-path': 'cli', subtype: 'library', type: 'pkg' });
 
           expect(executeHygen.mock.calls[1]).toEqual([
             '../overrides/_templates',
             '/root/node_modules/.bin/hygen',
-            ['new', 'pkg', 'cli'],
+            ['new', 'pkg', 'library', 'cli'],
             {
               author: 'Dylan Aubrey',
               homepage: 'https://github.com/badbatch/repodog',
@@ -226,12 +292,6 @@ describe('handler', () => {
           ]);
         });
       });
-
-      it('should exit with a code of 0', async () => {
-        const { handler } = await import('./handler.ts');
-        await handler({ type: 'pkg' });
-        expect(shelljs.exit).toHaveBeenCalledWith(0);
-      });
     });
 
     describe('when the package manager cannot be derived', () => {
@@ -246,7 +306,7 @@ describe('handler', () => {
 
       it('should throw an error', async () => {
         const { handler } = await import('./handler.ts');
-        await handler({ type: 'pkg' });
+        await handler({ subtype: 'library', type: 'pkg' });
 
         expect(shelljs.echo).toHaveBeenCalledWith(
           expect.stringContaining('Error: Could not derive the package manager')
@@ -255,58 +315,9 @@ describe('handler', () => {
 
       it('should exit with a code of 1', async () => {
         const { handler } = await import('./handler.ts');
-        await handler({ type: 'pkg' });
+        await handler({ subtype: 'library', type: 'pkg' });
         expect(shelljs.exit).toHaveBeenCalledWith(1);
       });
-    });
-  });
-
-  describe('when given invalid type', () => {
-    let shelljs: jest.Mocked<typeof import('shelljs')>;
-
-    beforeEach(async () => {
-      jest.clearAllMocks();
-      shelljs = jest.mocked(await import('shelljs')).default;
-      const { isValidNewSubtype } = jest.mocked(await import('./utils/isValidNewSubtype.ts'));
-      isValidNewSubtype.mockReturnValueOnce(false);
-    });
-
-    it('should throw an error', async () => {
-      const { handler } = await import('./handler.ts');
-      await handler({ subtype: 'blah', type: 'repo' });
-      expect(shelljs.echo).toHaveBeenCalledWith(expect.stringContaining('Error: Expected subtype to be a valid new'));
-    });
-
-    it('should exit with a code of 1', async () => {
-      const { handler } = await import('./handler.ts');
-      await handler({ subtype: 'blah', type: 'repo' });
-      expect(shelljs.exit).toHaveBeenCalledWith(1);
-    });
-  });
-
-  describe('when given invalid subtype', () => {
-    let shelljs: jest.Mocked<typeof import('shelljs')>;
-
-    beforeEach(async () => {
-      jest.clearAllMocks();
-      shelljs = jest.mocked(await import('shelljs')).default;
-      const { isValidNewType } = jest.mocked(await import('./utils/isValidNewType.ts'));
-      isValidNewType.mockReturnValueOnce(false);
-    });
-
-    it('should throw an error', async () => {
-      const { handler } = await import('./handler.ts');
-      await handler({ type: 'alpha' });
-
-      expect(shelljs.echo).toHaveBeenCalledWith(
-        expect.stringContaining('Error: Expected type to be a valid new type: pkg, repo')
-      );
-    });
-
-    it('should exit with a code of 1', async () => {
-      const { handler } = await import('./handler.ts');
-      await handler({ type: 'alpha' });
-      expect(shelljs.exit).toHaveBeenCalledWith(1);
     });
   });
 });
