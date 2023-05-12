@@ -25,8 +25,6 @@ export interface PnpmWorkspaceYaml {
   packages: string[];
 }
 
-export type PreReleaseId = string;
-
 export interface PromptOption {
   initial?: boolean | number | string;
   message: string;
@@ -51,7 +49,6 @@ export interface ReleaseMeta {
   force: boolean;
   packageJsonPath: string;
   packageManager: PackageManager;
-  preReleaseId?: PreReleaseId;
   skipPosthook: boolean;
   skipPrehook: boolean;
   tag?: ReleaseTag;

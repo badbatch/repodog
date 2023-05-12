@@ -35,7 +35,6 @@ export const handler = (argv: CutHandlerArguments) => {
   const startTime = performance.now();
   const dryRun = argv['dry-run'] ?? false;
   const force = argv.force ?? false;
-  const preReleaseId = argv.preid;
   const skipPosthook = argv['skip-posthook'] ?? false;
   const skipPrehook = argv['skip-prehook'] ?? false;
   const verbose = argv.verbose ?? false;
@@ -44,7 +43,6 @@ export const handler = (argv: CutHandlerArguments) => {
   verboseLog('>>>> USER CONFIG START <<<<');
   verboseLog(`dryRun: ${String(dryRun)}`);
   verboseLog(`force: ${String(force)}`);
-  verboseLog(`preReleaseId: ${preReleaseId ?? 'undefined'}`);
   verboseLog(`skipPosthook: ${String(skipPosthook)}`);
   verboseLog(`skipPrehook: ${String(skipPrehook)}`);
   verboseLog(`tag: ${argv.tag ?? 'undefined'}`);
@@ -121,7 +119,7 @@ export const handler = (argv: CutHandlerArguments) => {
 
     if (isProjectMonorepo(packageManager)) {
       verboseLog('Project is monorepo');
-      versionMonorepoPackages({ force, packageManager, preReleaseId, tag, type });
+      versionMonorepoPackages({ force, packageManager, tag, type });
       verboseLog('>>>> PROJECT ROOT STARTS <<<<\n');
     } else {
       verboseLog('Project is standard repo structure');
@@ -130,7 +128,6 @@ export const handler = (argv: CutHandlerArguments) => {
 
       versionPackage(packageJson, {
         packageJsonPath,
-        preReleaseId,
         tag,
         type,
       });
@@ -151,7 +148,7 @@ export const handler = (argv: CutHandlerArguments) => {
       shelljs.exec(`${packageManager} run cut:changelog -- --${type}`);
     }
 
-    const newVersion = getNewVersion(version, type, tag, preReleaseId);
+    const newVersion = getNewVersion(version, type, tag);
 
     if (!newVersion) {
       throw new Error(`The new project verison for a ${type} increment on ${version} is invalid`);

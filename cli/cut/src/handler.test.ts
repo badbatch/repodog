@@ -439,13 +439,13 @@ describe('cut', () => {
 
     it('should call getChangedFiles with the correct argument', async () => {
       const { handler } = await import('./handler.ts');
-      handler({ preid: '12345', tag: 'alpha', type: 'preminor' });
+      handler({ tag: 'alpha', type: 'preminor' });
       expect(getChangedFiles).toHaveBeenCalledWith('v1.0.0');
     });
 
     it('should call versionPackage with the correct arguments', async () => {
       const { handler } = await import('./handler.ts');
-      handler({ preid: '12345', tag: 'alpha', type: 'preminor' });
+      handler({ tag: 'alpha', type: 'preminor' });
 
       expect(versionPackage).toHaveBeenCalledWith(
         {
@@ -453,7 +453,6 @@ describe('cut', () => {
         },
         {
           packageJsonPath: '/root/package.json',
-          preReleaseId: '12345',
           tag: 'alpha',
           type: 'preminor',
         }
@@ -462,13 +461,13 @@ describe('cut', () => {
 
     it('should call addCommitPushRelease', async () => {
       const { handler } = await import('./handler.ts');
-      handler({ preid: '12345', tag: 'alpha', type: 'preminor' });
+      handler({ tag: 'alpha', type: 'preminor' });
       expect(addCommitPushRelease).toHaveBeenCalledWith('1.1.0');
     });
 
     it('should exit with the correct code', async () => {
       const { handler } = await import('./handler.ts');
-      handler({ preid: '12345', tag: 'alpha', type: 'preminor' });
+      handler({ tag: 'alpha', type: 'preminor' });
       expect(shelljs.exit).toHaveBeenCalledWith(0);
     });
   });
@@ -495,12 +494,11 @@ describe('cut', () => {
 
     it('should call versionMonorepoPackages with the correct argument', async () => {
       const { handler } = await import('./handler.ts');
-      handler({ preid: '12345', tag: 'alpha', type: 'preminor' });
+      handler({ tag: 'alpha', type: 'preminor' });
 
       expect(versionMonorepoPackages).toHaveBeenCalledWith({
         force: false,
         packageManager: 'pnpm',
-        preReleaseId: '12345',
         tag: 'alpha',
         type: 'preminor',
       });
@@ -508,7 +506,7 @@ describe('cut', () => {
 
     it('should call writeFileSync with the correct arguments', async () => {
       const { handler } = await import('./handler.ts');
-      handler({ preid: '12345', tag: 'alpha', type: 'preminor' });
+      handler({ tag: 'alpha', type: 'preminor' });
 
       expect(writeFileSync).toHaveBeenCalledWith(
         '/root/package.json',
@@ -524,13 +522,13 @@ describe('cut', () => {
 
     it('should call addCommitPushRelease', async () => {
       const { handler } = await import('./handler.ts');
-      handler({ preid: '12345', tag: 'alpha', type: 'preminor' });
+      handler({ tag: 'alpha', type: 'preminor' });
       expect(addCommitPushRelease).toHaveBeenCalledWith('1.1.0');
     });
 
     it('should exit with the correct code', async () => {
       const { handler } = await import('./handler.ts');
-      handler({ preid: '12345', tag: 'alpha', type: 'preminor' });
+      handler({ tag: 'alpha', type: 'preminor' });
       expect(shelljs.exit).toHaveBeenCalledWith(0);
     });
   });

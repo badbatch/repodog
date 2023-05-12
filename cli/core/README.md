@@ -79,7 +79,6 @@ Options:
   --tag            The release tag: alpha | beta | unstable             [string]
   --dry-run        The release tag: alpha | beta | unstable            [boolean]
   --force          Increment version regardless of files changed       [boolean]
-  --preid          The pre release ID                                   [string]
   --skip-posthook  To skip post version lifecycle hook                 [boolean]
   --skip-prehook   To skip pre version lifecycle hook                  [boolean]
   --verbose        Whether to output verbose logs                      [boolean]

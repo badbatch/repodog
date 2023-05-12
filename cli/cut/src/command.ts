@@ -19,10 +19,6 @@ export const builder = (argv: Argv) =>
       desc: 'Increment version regardless of files changed',
       type: 'boolean',
     })
-    .option('preid', {
-      desc: 'The pre release ID',
-      type: 'string',
-    })
     .option('skip-posthook', {
       desc: 'To skip post version lifecycle hook',
       type: 'boolean',

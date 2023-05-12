@@ -16,10 +16,9 @@ import { versionPackage } from './versionPackage.ts';
 export const versionMonorepoPackages = ({
   force,
   packageManager,
-  preReleaseId,
   tag,
   type,
-}: Pick<ReleaseMeta, 'force' | 'packageManager' | 'preReleaseId' | 'tag' | 'type'>) => {
+}: Pick<ReleaseMeta, 'force' | 'packageManager' | 'tag' | 'type'>) => {
   const packageMetaRecord = getMonorepoPackageMeta(packageManager);
   const lastReleaseTag = getLastReleaseTag();
   const changedFiles = getChangedFiles(lastReleaseTag);
@@ -84,7 +83,6 @@ export const versionMonorepoPackages = ({
 
       versionPackage(packageJson, {
         packageJsonPath: packageMeta.path,
-        preReleaseId,
         tag,
         type,
       });

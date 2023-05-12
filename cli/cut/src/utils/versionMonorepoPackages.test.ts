@@ -73,7 +73,6 @@ describe('versionMonorepoPackages', () => {
           { name: 'delta', publishConfig: { access: 'public' }, version: '1.0.0' },
           {
             packageJsonPath: '/root/configs/delta/package.json',
-            preReleaseId: undefined,
             tag: undefined,
             type: 'major',
           },
@@ -82,7 +81,6 @@ describe('versionMonorepoPackages', () => {
           { name: 'alpha', publishConfig: { access: 'public' }, version: '1.0.0' },
           {
             packageJsonPath: '/root/apps/client/alpha/package.json',
-            preReleaseId: undefined,
             tag: undefined,
             type: 'major',
           },
@@ -113,7 +111,6 @@ describe('versionMonorepoPackages', () => {
           { name: 'echo', publishConfig: { access: 'public' }, version: '1.0.0' },
           {
             packageJsonPath: '/root/configs/echo/package.json',
-            preReleaseId: undefined,
             tag: undefined,
             type: 'major',
           },
@@ -122,7 +119,6 @@ describe('versionMonorepoPackages', () => {
           { name: 'delta', publishConfig: { access: 'public' }, version: '1.0.0' },
           {
             packageJsonPath: '/root/configs/delta/package.json',
-            preReleaseId: undefined,
             tag: undefined,
             type: 'major',
           },
@@ -131,7 +127,6 @@ describe('versionMonorepoPackages', () => {
           { name: 'bravo', publishConfig: { access: 'public' }, version: '1.0.0' },
           {
             packageJsonPath: '/root/apps/server/bravo/package.json',
-            preReleaseId: undefined,
             tag: undefined,
             type: 'major',
           },
@@ -140,7 +135,6 @@ describe('versionMonorepoPackages', () => {
           { name: 'alpha', publishConfig: { access: 'public' }, version: '1.0.0' },
           {
             packageJsonPath: '/root/apps/client/alpha/package.json',
-            preReleaseId: undefined,
             tag: undefined,
             type: 'major',
           },
@@ -188,7 +182,6 @@ describe('versionMonorepoPackages', () => {
           { name: 'delta', version: '1.0.0' },
           {
             packageJsonPath: '/root/configs/delta/package.json',
-            preReleaseId: undefined,
             tag: undefined,
             type: 'major',
           },
@@ -197,7 +190,6 @@ describe('versionMonorepoPackages', () => {
           { name: 'bravo', peerDependencies: { delta: '< 2' }, version: '1.0.0' },
           {
             packageJsonPath: '/root/apps/server/bravo/package.json',
-            preReleaseId: undefined,
             tag: undefined,
             type: 'major',
           },
@@ -206,7 +198,6 @@ describe('versionMonorepoPackages', () => {
           { name: 'alpha', version: '1.0.0' },
           {
             packageJsonPath: '/root/apps/client/alpha/package.json',
-            preReleaseId: undefined,
             tag: undefined,
             type: 'major',
           },
@@ -215,7 +206,6 @@ describe('versionMonorepoPackages', () => {
           { name: 'echo', peerDependencies: { alpha: '< 2' }, version: '1.0.0' },
           {
             packageJsonPath: '/root/configs/echo/package.json',
-            preReleaseId: undefined,
             tag: undefined,
             type: 'major',
           },

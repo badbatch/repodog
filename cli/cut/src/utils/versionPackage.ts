@@ -5,11 +5,11 @@ import type { PackageJson, SetRequired } from 'type-fest';
 
 export const versionPackage = (
   packageJson: SetRequired<PackageJson, 'name' | 'version'>,
-  { packageJsonPath, preReleaseId, tag, type }: Pick<ReleaseMeta, 'packageJsonPath' | 'preReleaseId' | 'tag' | 'type'>
+  { packageJsonPath, tag, type }: Pick<ReleaseMeta, 'packageJsonPath' | 'tag' | 'type'>
 ) => {
   const { name, version } = packageJson;
   verboseLog(`Current version: ${version}`);
-  const newVersion = getNewVersion(version, type, tag, preReleaseId);
+  const newVersion = getNewVersion(version, type, tag);
 
   if (!newVersion) {
     throw new Error(`The new package verison for a ${type} increment on ${version} is invalid`);
