@@ -6,28 +6,54 @@ jest.unstable_mockModule('node:fs', () => ({
 
 describe('loadPackageJson', () => {
   const packageJsonPath = '/root/alpha/package.json';
+  const packagePath = '/root/alpha';
   const packageJson = { name: 'alpha', version: '1.0.0' };
 
   describe('when there is a cached package.json', () => {
-    let readFileSync: jest.Mocked<typeof import('node:fs')['readFileSync']>;
+    describe('when the path is file path to package.json', () => {
+      let readFileSync: jest.Mocked<typeof import('node:fs')['readFileSync']>;
 
-    beforeEach(async () => {
-      jest.clearAllMocks();
-      const { addPackageJsonToCache, clearPackageJsonCache } = await import('./loadPackageJson.ts');
-      clearPackageJsonCache();
-      addPackageJsonToCache(packageJsonPath, packageJson);
-      ({ readFileSync } = jest.mocked(await import('node:fs')));
+      beforeEach(async () => {
+        jest.clearAllMocks();
+        const { addPackageJsonToCache, clearPackageJsonCache } = await import('./loadPackageJson.ts');
+        clearPackageJsonCache();
+        addPackageJsonToCache(packageJsonPath, packageJson);
+        ({ readFileSync } = jest.mocked(await import('node:fs')));
+      });
+
+      it('should return the cached package.json', async () => {
+        const { loadPackageJson } = await import('./loadPackageJson.ts');
+        expect(loadPackageJson(packageJsonPath)).toEqual(packageJson);
+      });
+
+      it('should not load the package.json', async () => {
+        const { loadPackageJson } = await import('./loadPackageJson.ts');
+        loadPackageJson(packageJsonPath);
+        expect(readFileSync).not.toHaveBeenCalled();
+      });
     });
 
-    it('should return the cached package.json', async () => {
-      const { loadPackageJson } = await import('./loadPackageJson.ts');
-      expect(loadPackageJson(packageJsonPath)).toEqual(packageJson);
-    });
+    describe('when the path is directory path to package', () => {
+      let readFileSync: jest.Mocked<typeof import('node:fs')['readFileSync']>;
 
-    it('should not load the package.json', async () => {
-      const { loadPackageJson } = await import('./loadPackageJson.ts');
-      loadPackageJson(packageJsonPath);
-      expect(readFileSync).not.toHaveBeenCalled();
+      beforeEach(async () => {
+        jest.clearAllMocks();
+        const { addPackageJsonToCache, clearPackageJsonCache } = await import('./loadPackageJson.ts');
+        clearPackageJsonCache();
+        addPackageJsonToCache(packageJsonPath, packageJson);
+        ({ readFileSync } = jest.mocked(await import('node:fs')));
+      });
+
+      it('should return the cached package.json', async () => {
+        const { loadPackageJson } = await import('./loadPackageJson.ts');
+        expect(loadPackageJson(packagePath)).toEqual(packageJson);
+      });
+
+      it('should not load the package.json', async () => {
+        const { loadPackageJson } = await import('./loadPackageJson.ts');
+        loadPackageJson(packagePath);
+        expect(readFileSync).not.toHaveBeenCalled();
+      });
     });
   });
 

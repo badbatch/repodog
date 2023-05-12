@@ -112,6 +112,8 @@ export const handler = async (argv: NewHandlerArguments) => {
       ...flattenedTemplateVariables,
       ...removeEmptyAnswers(await enquirer.prompt(enrichQuestions(questions, flattenedTemplateVariables))),
       language,
+      newSubType: subtype,
+      newType: type,
       packageManager,
       packageManagerTemporaryCmd: getPackageManagerTemporaryCmd(packageManager),
     };

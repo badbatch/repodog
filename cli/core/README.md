@@ -138,16 +138,17 @@ repodog new <type> [subtype]
 Scaffold new folder structure
 
 Positionals:
-  type     The type of folder to scaffold: repo | pkg        [string] [required]
-  subtype  The subtype of folder to scaffold. Only relevant when type is "repo":
-           library                                                      [string]
+  type              The type of folder to scaffold: repo | pkg
+                                                             [string] [required]
+  subtype           The subtype of folder to scaffold: library
+                                                             [string] [required]
+  custom-type-path  The additional types to apply to the scaffold. Multiple
+                    types should be separated by a "." character. These types
+                    are applied after the subtype                       [string]
 
 Options:
   --version           Show version number                              [boolean]
   --help              Show help                                        [boolean]
-  --custom-type-path  The additional types to apply to the scaffold. Multiple
-                      types should be separated by a "." character. These types
-                      are applied after the subtype                     [string]
   --verbose           Whether to output verbose logs                   [boolean]
 ```
 
@@ -165,15 +166,16 @@ The additional templates path is relative to the current working directory if de
 The templating functionality is powered by [`hygen`](https://www.hygen.io/) so all templates must to adhere to its
 rules.
 
-The example below uses the additional `command.ejs.t` template file when `repodog new` is called with `pkg --custom-type-path cli`.
+The example below uses the additional `command.ejs.t` template file when `repodog new` is called with `pkg library cli`.
 
 ```txt
 // filesystem
 _templates/
 - new/
   - pkg/
-    - cli/
-      - command.ejs.t
+    - library/
+      - cli/
+        - command.ejs.t
 ```
 
 ```json
@@ -185,11 +187,11 @@ _templates/
 
 ##### `questionOverrides`
 
-Add, remove, and/or replace the [base set of questions](../new/src/questions) for a given `type`. You can use the `type`, `subtype` and `custom-type-path` options to target the overrides to create bespoke question sets.
+Add, remove, and/or replace the [base set of questions](../new/src/questions) for a given `type` and `subtype`. You can use the `type`, `subtype` and `custom-type-path` options to target the overrides to create bespoke question sets.
 
 `questionOverrides` can only be declared in a project config. To set `questionOverrides` globally, see the [`questionOverridesPath` property](#questionoverridespath).
 
-The example below adds two questions, removes one, and updates one when `repodog new` is called with `pkg --custom-type-path cli`.
+The example below adds two questions, removes one, and updates one when `repodog new` is called with `pkg library cli`.
 
 ```json
 // .repodogrc
@@ -197,30 +199,32 @@ The example below adds two questions, removes one, and updates one when `repodog
   "questionOverrides": {
     "new": {
       "pkg": {
-        "cli": {
-          "add": [
-            {
-              "message": "What is the cli command?",
-              "name": "cliCommand",
-              "required": true,
-              "type": "input"
-            },
-            {
-              "message": "What is the cli description?",
-              "name": "cliDescription",
-              "required": true,
-              "type": "input"
-            }
-          ],
-          "remove": ["mainFilename"],
-          "replace": [
-            {
-              "message": "What is the homepage for the package's repository?",
-              "name": "homepage",
-              "required": true,
-              "type": "input"
-            }
-          ]
+        "library": {
+          "cli": {
+            "add": [
+              {
+                "message": "What is the cli command?",
+                "name": "cliCommand",
+                "required": true,
+                "type": "input"
+              },
+              {
+                "message": "What is the cli description?",
+                "name": "cliDescription",
+                "required": true,
+                "type": "input"
+              }
+            ],
+            "remove": ["mainFilename"],
+            "replace": [
+              {
+                "message": "What is the homepage for the package's repository?",
+                "name": "homepage",
+                "required": true,
+                "type": "input"
+              }
+            ]
+          }
         }
       }
     }
@@ -253,8 +257,10 @@ Template variables are flattened and merged and the output is passed into the te
     },
     "new": {
       "pkg": {
-        "cli": {
-          "mainFilename": "handler"
+        "library": {
+          "cli": {
+            "mainFilename": "handler"
+          }
         }
       }
     }

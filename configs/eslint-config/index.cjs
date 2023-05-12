@@ -305,6 +305,12 @@ module.exports = {
         },
       },
     ],
+    'unicorn/prevent-abbreviations': [
+      2,
+      {
+        ignore: [/.*dev.*/i],
+      },
+    ],
   },
   settings: {
     react: {

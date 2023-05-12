@@ -1,4 +1,5 @@
 import { readFileSync } from 'node:fs';
+import { resolve } from 'node:path';
 import type { PackageJson, SetRequired } from 'type-fest';
 import { verboseLog } from './verboseLog.ts';
 
@@ -15,7 +16,13 @@ export const clearPackageJsonCache = () => {
 export const getCachedPackageJsons = () => packageJsonCache;
 
 export const loadPackageJson = (packageJsonPath: string) => {
-  const cachedPackageJson = packageJsonCache[packageJsonPath];
+  let sanitizedPackageJsonPath = packageJsonPath;
+
+  if (!packageJsonPath.endsWith('package.json')) {
+    sanitizedPackageJsonPath = resolve(packageJsonPath, 'package.json');
+  }
+
+  const cachedPackageJson = packageJsonCache[sanitizedPackageJsonPath];
 
   if (cachedPackageJson) {
     return cachedPackageJson;
@@ -24,23 +31,23 @@ export const loadPackageJson = (packageJsonPath: string) => {
   let packageJson: PackageJson;
 
   try {
-    packageJson = JSON.parse(readFileSync(packageJsonPath, { encoding: 'utf8' })) as PackageJson;
+    packageJson = JSON.parse(readFileSync(sanitizedPackageJsonPath, { encoding: 'utf8' })) as PackageJson;
   } catch (error: unknown) {
     verboseLog(`Package.json read error: ${(error as Error).name}, ${(error as Error).message}`);
-    throw new Error(`Could not resolve the package.json at: ${packageJsonPath}`);
+    throw new Error(`Could not resolve the package.json at: ${sanitizedPackageJsonPath}`);
   }
 
   const { name, version } = packageJson;
 
   if (!name) {
-    throw new Error(`Expected the package.json at "${packageJsonPath}" to have a name`);
+    throw new Error(`Expected the package.json at "${sanitizedPackageJsonPath}" to have a name`);
   }
 
   if (!version) {
-    throw new Error(`Expected the package.json at "${packageJsonPath}" to have a version`);
+    throw new Error(`Expected the package.json at "${sanitizedPackageJsonPath}" to have a version`);
   }
 
   const validatedPackageJson = packageJson as SetRequired<PackageJson, 'name' | 'version'>;
-  packageJsonCache[packageJsonPath] = validatedPackageJson;
+  packageJsonCache[sanitizedPackageJsonPath] = validatedPackageJson;
   return validatedPackageJson;
 };

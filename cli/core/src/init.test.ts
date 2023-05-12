@@ -31,7 +31,7 @@ describe('init', () => {
     it('should call yargs.command', async () => {
       const { init } = await import('./init.ts');
       init();
-      expect(command).toHaveBeenCalledTimes(5);
+      expect(command).toHaveBeenCalledTimes(6);
     });
   });
 

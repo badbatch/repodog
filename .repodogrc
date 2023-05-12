@@ -5,21 +5,23 @@
   "questionOverrides": {
     "new": {
       "pkg": {
-        "cli": {
-          "add": [
-            {
-              "message": "What is the cli command?",
-              "name": "cliCommand",
-              "required": true,
-              "type": "input"
-            },
-            {
-              "message": "What is the cli description?",
-              "name": "cliDescription",
-              "required": true,
-              "type": "input"
-            }
-          ]
+        "library": {
+          "cli": {
+            "add": [
+              {
+                "message": "What is the cli command?",
+                "name": "cliCommand",
+                "required": true,
+                "type": "input"
+              },
+              {
+                "message": "What is the cli description?",
+                "name": "cliDescription",
+                "required": true,
+                "type": "input"
+              }
+            ]
+          }
         }
       }
     }
@@ -32,8 +34,10 @@
     },
     "new": {
       "pkg": {
-        "cli": {
-          "mainFilename": "handler"
+        "library": {
+          "cli": {
+            "mainFilename": "handler"
+          }
         }
       }
     }

@@ -9,7 +9,7 @@ export const builder = (argv: Argv) =>
     })
     .positional('subtype', {
       demandOption: true,
-      desc: 'The subtype of folder to scaffold. Only relevant when type is "repo": library',
+      desc: 'The subtype of folder to scaffold: library',
       type: 'string',
     })
     .positional('custom-type-path', {

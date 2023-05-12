@@ -1,0 +1,14 @@
+{
+  "extends": "@repodog/ts-config/build.json",
+  "include": [
+    "src/**/*"
+  ],
+  "references": [
+    {
+      "path": "../test-utils"
+    },
+    {
+      "path": "../utils"
+    }
+  ]
+}
