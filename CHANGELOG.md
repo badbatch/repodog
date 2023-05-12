@@ -1,3 +1,18 @@
+#### 1.1.0 (2023-05-12)
+
+##### New Features
+
+*  add postinstall script (a3e53ad4)
+
+##### Bug Fixes
+
+*  remove preid option as redundant (257dc469)
+*  add types as peer and update template (01c28ad7)
+
+##### Refactors
+
+*  make library required subttytpe for new type (d7cbd0a5)
+
 #### 1.0.1 (2023-05-09)
 
 ##### Chores
