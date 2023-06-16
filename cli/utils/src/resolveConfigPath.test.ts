@@ -16,10 +16,13 @@ const baseConfig = {
 };
 
 describe('resolveConfigPath', () => {
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
+
   describe('when config path exists', () => {
     describe('when the config already has a value for the provided key', () => {
       beforeEach(async () => {
-        jest.clearAllMocks();
         const { readFileSync } = jest.mocked(await import('node:fs'));
 
         readFileSync.mockReturnValueOnce(
@@ -71,7 +74,6 @@ describe('resolveConfigPath', () => {
 
     describe('when the config does not have a value for the provided key', () => {
       beforeEach(async () => {
-        jest.clearAllMocks();
         const { readFileSync } = jest.mocked(await import('node:fs'));
 
         readFileSync.mockReturnValueOnce(
@@ -110,7 +112,6 @@ describe('resolveConfigPath', () => {
 
   describe('when config path does not exist', () => {
     beforeEach(async () => {
-      jest.clearAllMocks();
       const { readFileSync } = jest.mocked(await import('node:fs'));
 
       readFileSync.mockImplementationOnce(() => {

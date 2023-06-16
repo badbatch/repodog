@@ -5,6 +5,10 @@ import type { ChildProcess } from 'node:child_process';
 jest.unstable_mockModule('shelljs', shelljsMock);
 
 describe('getChangedFiles', () => {
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
+
   describe('when there are cached changed files', () => {
     let shelljs: jest.Mocked<typeof import('shelljs')>;
 
@@ -26,7 +30,6 @@ describe('getChangedFiles', () => {
     ];
 
     beforeEach(async () => {
-      jest.clearAllMocks();
       shelljs = jest.mocked(await import('shelljs')).default;
       const { addChangedFilesToCache, clearChangedFilesCache } = await import('./getChangedFiles.ts');
       clearChangedFilesCache();
@@ -50,7 +53,6 @@ describe('getChangedFiles', () => {
     const cachedChangedFiles = ['.editorconfig', '.gitignore', 'package.json', 'pnpm-lock.yaml'];
 
     beforeEach(async () => {
-      jest.clearAllMocks();
       shelljs = jest.mocked(await import('shelljs')).default;
 
       shelljs.exec.mockReturnValue({

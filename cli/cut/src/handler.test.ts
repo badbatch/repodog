@@ -7,6 +7,7 @@ jest.unstable_mockModule('shelljs', shelljsMock);
 jest.unstable_mockModule('@repodog/cli-utils', () => ({
   ...cliUtils,
   addCommitPushRelease: jest.fn(),
+  asyncExec: jest.fn(),
   calculateDuration: jest.fn().mockReturnValue('1'),
   clearDryRunFlag: jest.fn(),
   formatListLogMessage: jest.fn().mockImplementation(message => message),
@@ -40,13 +41,16 @@ jest.unstable_mockModule('node:fs', () => ({
 process.cwd = jest.fn().mockReturnValue('/root') as jest.Mocked<() => string>;
 
 describe('cut', () => {
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
+
   describe('when dry-run flag is present in .repodogrc', () => {
     describe('when release type is "dry-run"', () => {
       let shelljs: jest.Mocked<typeof import('shelljs')>;
       let addCommitPushRelease: jest.Mocked<typeof import('@repodog/cli-utils')['addCommitPushRelease']>;
 
       beforeEach(async () => {
-        jest.clearAllMocks();
         shelljs = jest.mocked(await import('shelljs')).default;
         let hasDryRunFlag: jest.Mocked<typeof import('@repodog/cli-utils')['hasDryRunFlag']>;
         ({ addCommitPushRelease, hasDryRunFlag } = jest.mocked(await import('@repodog/cli-utils')));
@@ -55,13 +59,13 @@ describe('cut', () => {
 
       it('should call addCommitPushRelease', async () => {
         const { handler } = await import('./handler.ts');
-        handler({ type: 'dry-run' });
+        void handler({ type: 'dry-run' });
         expect(addCommitPushRelease).toHaveBeenCalledWith('1.0.0');
       });
 
       it('should exit with the correct code', async () => {
         const { handler } = await import('./handler.ts');
-        handler({ type: 'dry-run' });
+        void handler({ type: 'dry-run' });
         expect(shelljs.exit).toHaveBeenCalledWith(0);
       });
     });
@@ -71,7 +75,6 @@ describe('cut', () => {
       let addCommitPushRelease: jest.Mocked<typeof import('@repodog/cli-utils')['addCommitPushRelease']>;
 
       beforeEach(async () => {
-        jest.clearAllMocks();
         shelljs = jest.mocked(await import('shelljs')).default;
         let hasDryRunFlag: jest.Mocked<typeof import('@repodog/cli-utils')['hasDryRunFlag']>;
         ({ addCommitPushRelease, hasDryRunFlag } = jest.mocked(await import('@repodog/cli-utils')));
@@ -80,13 +83,13 @@ describe('cut', () => {
 
       it('should not call addCommitPushRelease', async () => {
         const { handler } = await import('./handler.ts');
-        handler({ type: 'major' });
+        void handler({ type: 'major' });
         expect(addCommitPushRelease).not.toHaveBeenCalled();
       });
 
       it('should log the correct error message', async () => {
         const { handler } = await import('./handler.ts');
-        handler({ type: 'major' });
+        void handler({ type: 'major' });
 
         expect(shelljs.echo).toHaveBeenCalledWith(
           expect.stringContaining('Error: Expected type to be dry-run as __activeDryRun is set to true in .repodogrc')
@@ -95,7 +98,7 @@ describe('cut', () => {
 
       it('should exit with the correct code', async () => {
         const { handler } = await import('./handler.ts');
-        handler({ type: 'major' });
+        void handler({ type: 'major' });
         expect(shelljs.exit).toHaveBeenCalledWith(1);
       });
     });
@@ -105,13 +108,12 @@ describe('cut', () => {
     let shelljs: jest.Mocked<typeof import('shelljs')>;
 
     beforeEach(async () => {
-      jest.clearAllMocks();
       shelljs = jest.mocked(await import('shelljs')).default;
     });
 
     it('should log the correct error message', async () => {
       const { handler } = await import('./handler.ts');
-      handler({ type: 'blah' });
+      void handler({ type: 'blah' });
 
       expect(shelljs.echo).toHaveBeenCalledWith(
         expect.stringContaining(
@@ -122,7 +124,7 @@ describe('cut', () => {
 
     it('should exit with the correct code', async () => {
       const { handler } = await import('./handler.ts');
-      handler({ type: 'blah' });
+      void handler({ type: 'blah' });
       expect(shelljs.exit).toHaveBeenCalledWith(1);
     });
   });
@@ -131,13 +133,12 @@ describe('cut', () => {
     let shelljs: jest.Mocked<typeof import('shelljs')>;
 
     beforeEach(async () => {
-      jest.clearAllMocks();
       shelljs = jest.mocked(await import('shelljs')).default;
     });
 
     it('should log the correct error message', async () => {
       const { handler } = await import('./handler.ts');
-      handler({ tag: 'blah', type: 'preminor' });
+      void handler({ tag: 'blah', type: 'preminor' });
 
       expect(shelljs.echo).toHaveBeenCalledWith(
         expect.stringContaining('Error: Expected tag to be a valid release tag: alpha, beta, unstable')
@@ -146,7 +147,7 @@ describe('cut', () => {
 
     it('should exit with the correct code', async () => {
       const { handler } = await import('./handler.ts');
-      handler({ tag: 'blah', type: 'preminor' });
+      void handler({ tag: 'blah', type: 'preminor' });
       expect(shelljs.exit).toHaveBeenCalledWith(1);
     });
   });
@@ -155,13 +156,12 @@ describe('cut', () => {
     let shelljs: jest.Mocked<typeof import('shelljs')>;
 
     beforeEach(async () => {
-      jest.clearAllMocks();
       shelljs = jest.mocked(await import('shelljs')).default;
     });
 
     it('should log the correct error message', async () => {
       const { handler } = await import('./handler.ts');
-      handler({ tag: 'alpha', type: 'major' });
+      void handler({ tag: 'alpha', type: 'major' });
 
       expect(shelljs.echo).toHaveBeenCalledWith(
         expect.stringContaining('Error: Expected type to be pre release type: premajor, preminor, prepatch, prerelease')
@@ -170,7 +170,7 @@ describe('cut', () => {
 
     it('should exit with the correct code', async () => {
       const { handler } = await import('./handler.ts');
-      handler({ tag: 'alpha', type: 'major' });
+      void handler({ tag: 'alpha', type: 'major' });
       expect(shelljs.exit).toHaveBeenCalledWith(1);
     });
   });
@@ -179,7 +179,6 @@ describe('cut', () => {
     let shelljs: jest.Mocked<typeof import('shelljs')>;
 
     beforeEach(async () => {
-      jest.clearAllMocks();
       shelljs = jest.mocked(await import('shelljs')).default;
       const { getPackageManager } = jest.mocked(await import('@repodog/cli-utils'));
       getPackageManager.mockReturnValueOnce(undefined); // eslint-disable-line unicorn/no-useless-undefined
@@ -187,7 +186,7 @@ describe('cut', () => {
 
     it('should log the correct error message', async () => {
       const { handler } = await import('./handler.ts');
-      handler({ type: 'preminor' });
+      void handler({ type: 'preminor' });
 
       expect(shelljs.echo).toHaveBeenCalledWith(
         expect.stringContaining(
@@ -198,16 +197,15 @@ describe('cut', () => {
 
     it('should exit with the correct code', async () => {
       const { handler } = await import('./handler.ts');
-      handler({ type: 'preminor' });
+      void handler({ type: 'preminor' });
       expect(shelljs.exit).toHaveBeenCalledWith(1);
     });
   });
 
-  describe('when force is false and no files have changed', () => {
+  describe('when there is a lastReleaseTag, force is false and no files have changed', () => {
     let shelljs: jest.Mocked<typeof import('shelljs')>;
 
     beforeEach(async () => {
-      jest.clearAllMocks();
       shelljs = jest.mocked(await import('shelljs')).default;
       const { haveFilesChanged } = jest.mocked(await import('@repodog/cli-utils'));
       haveFilesChanged.mockReturnValueOnce(false);
@@ -215,7 +213,7 @@ describe('cut', () => {
 
     it('should log the correct error message', async () => {
       const { handler } = await import('./handler.ts');
-      handler({ type: 'preminor' });
+      void handler({ type: 'preminor' });
 
       expect(shelljs.echo).toHaveBeenCalledWith(
         expect.stringContaining('Error: No files have changed since the last release tag: v1.0.0')
@@ -224,7 +222,7 @@ describe('cut', () => {
 
     it('should exit with the correct code', async () => {
       const { handler } = await import('./handler.ts');
-      handler({ type: 'preminor' });
+      void handler({ type: 'preminor' });
       expect(shelljs.exit).toHaveBeenCalledWith(1);
     });
   });
@@ -233,7 +231,6 @@ describe('cut', () => {
     let shelljs: jest.Mocked<typeof import('shelljs')>;
 
     beforeEach(async () => {
-      jest.clearAllMocks();
       shelljs = jest.mocked(await import('shelljs')).default;
       const { getNewVersion } = jest.mocked(await import('@repodog/cli-utils'));
       getNewVersion.mockReturnValueOnce(null); // eslint-disable-line unicorn/no-null
@@ -241,7 +238,7 @@ describe('cut', () => {
 
     it('should log the correct error message', async () => {
       const { handler } = await import('./handler.ts');
-      handler({ type: 'preminor' });
+      void handler({ type: 'preminor' });
 
       expect(shelljs.echo).toHaveBeenCalledWith(
         expect.stringContaining('Error: The new project verison for a preminor increment on 1.0.0 is invalid')
@@ -250,19 +247,18 @@ describe('cut', () => {
 
     it('should exit with the correct code', async () => {
       const { handler } = await import('./handler.ts');
-      handler({ type: 'preminor' });
+      void handler({ type: 'preminor' });
       expect(shelljs.exit).toHaveBeenCalledWith(1);
     });
   });
 
   describe('cut:pre-version script', () => {
     describe('when the script is provided and skipPrehook is false', () => {
-      let shelljs: jest.Mocked<typeof import('shelljs')>;
+      let asyncExec: jest.Mocked<typeof import('@repodog/cli-utils')['asyncExec']>;
 
       beforeEach(async () => {
-        jest.clearAllMocks();
-        shelljs = jest.mocked(await import('shelljs')).default;
-        const { loadPackageJson } = jest.mocked(await import('@repodog/cli-utils'));
+        let loadPackageJson: jest.Mocked<typeof import('@repodog/cli-utils')['loadPackageJson']>;
+        ({ asyncExec, loadPackageJson } = jest.mocked(await import('@repodog/cli-utils')));
 
         loadPackageJson.mockReturnValueOnce({
           name: 'alpha',
@@ -275,18 +271,17 @@ describe('cut', () => {
 
       it('should execute the script', async () => {
         const { handler } = await import('./handler.ts');
-        handler({ type: 'preminor' });
-        expect(shelljs.exec).toHaveBeenNthCalledWith(1, 'pnpm run cut:pre-version');
+        void handler({ type: 'preminor' });
+        expect(asyncExec).toHaveBeenNthCalledWith(1, 'pnpm run cut:pre-version');
       });
     });
 
     describe('when the script is provided and skipPrehook is true', () => {
-      let shelljs: jest.Mocked<typeof import('shelljs')>;
+      let asyncExec: jest.Mocked<typeof import('@repodog/cli-utils')['asyncExec']>;
 
       beforeEach(async () => {
-        jest.clearAllMocks();
-        shelljs = jest.mocked(await import('shelljs')).default;
-        const { loadPackageJson } = jest.mocked(await import('@repodog/cli-utils'));
+        let loadPackageJson: jest.Mocked<typeof import('@repodog/cli-utils')['loadPackageJson']>;
+        ({ asyncExec, loadPackageJson } = jest.mocked(await import('@repodog/cli-utils')));
 
         loadPackageJson.mockReturnValueOnce({
           name: 'alpha',
@@ -299,35 +294,33 @@ describe('cut', () => {
 
       it('should not execute the script', async () => {
         const { handler } = await import('./handler.ts');
-        handler({ 'skip-prehook': true, type: 'preminor' });
-        expect(shelljs.exec).not.toHaveBeenNthCalledWith(1, 'pnpm run cut:pre-version');
+        void handler({ 'skip-prehook': true, type: 'preminor' });
+        expect(asyncExec).not.toHaveBeenNthCalledWith(1, 'pnpm run cut:pre-version');
       });
     });
 
     describe('when the script is not provided', () => {
-      let shelljs: jest.Mocked<typeof import('shelljs')>;
+      let asyncExec: jest.Mocked<typeof import('@repodog/cli-utils')['asyncExec']>;
 
       beforeEach(async () => {
-        jest.clearAllMocks();
-        shelljs = jest.mocked(await import('shelljs')).default;
+        ({ asyncExec } = jest.mocked(await import('@repodog/cli-utils')));
       });
 
       it('should not execute the script', async () => {
         const { handler } = await import('./handler.ts');
-        handler({ type: 'preminor' });
-        expect(shelljs.exec).not.toHaveBeenNthCalledWith(1, 'pnpm run cut:pre-version');
+        void handler({ type: 'preminor' });
+        expect(asyncExec).not.toHaveBeenNthCalledWith(1, 'pnpm run cut:pre-version');
       });
     });
   });
 
   describe('cut:post-version script', () => {
     describe('when the script is provided and skipPosthook is false', () => {
-      let shelljs: jest.Mocked<typeof import('shelljs')>;
+      let asyncExec: jest.Mocked<typeof import('@repodog/cli-utils')['asyncExec']>;
 
       beforeEach(async () => {
-        jest.clearAllMocks();
-        shelljs = jest.mocked(await import('shelljs')).default;
-        const { loadPackageJson } = jest.mocked(await import('@repodog/cli-utils'));
+        let loadPackageJson: jest.Mocked<typeof import('@repodog/cli-utils')['loadPackageJson']>;
+        ({ asyncExec, loadPackageJson } = jest.mocked(await import('@repodog/cli-utils')));
 
         loadPackageJson.mockReturnValueOnce({
           name: 'alpha',
@@ -340,18 +333,17 @@ describe('cut', () => {
 
       it('should execute the script', async () => {
         const { handler } = await import('./handler.ts');
-        handler({ type: 'preminor' });
-        expect(shelljs.exec).toHaveBeenNthCalledWith(1, 'pnpm run cut:post-version');
+        void handler({ type: 'preminor' });
+        expect(asyncExec).toHaveBeenNthCalledWith(1, 'pnpm run cut:post-version');
       });
     });
 
     describe('when the script is provided and skipPosthook is true', () => {
-      let shelljs: jest.Mocked<typeof import('shelljs')>;
+      let asyncExec: jest.Mocked<typeof import('@repodog/cli-utils')['asyncExec']>;
 
       beforeEach(async () => {
-        jest.clearAllMocks();
-        shelljs = jest.mocked(await import('shelljs')).default;
-        const { loadPackageJson } = jest.mocked(await import('@repodog/cli-utils'));
+        let loadPackageJson: jest.Mocked<typeof import('@repodog/cli-utils')['loadPackageJson']>;
+        ({ asyncExec, loadPackageJson } = jest.mocked(await import('@repodog/cli-utils')));
 
         loadPackageJson.mockReturnValueOnce({
           name: 'alpha',
@@ -364,34 +356,32 @@ describe('cut', () => {
 
       it('should not execute the script', async () => {
         const { handler } = await import('./handler.ts');
-        handler({ 'skip-posthook': true, type: 'preminor' });
-        expect(shelljs.exec).not.toHaveBeenNthCalledWith(1, 'pnpm run cut:post-version');
+        void handler({ 'skip-posthook': true, type: 'preminor' });
+        expect(asyncExec).not.toHaveBeenNthCalledWith(1, 'pnpm run cut:post-version');
       });
     });
 
     describe('when the script is not provided', () => {
-      let shelljs: jest.Mocked<typeof import('shelljs')>;
+      let asyncExec: jest.Mocked<typeof import('@repodog/cli-utils')['asyncExec']>;
 
       beforeEach(async () => {
-        jest.clearAllMocks();
-        shelljs = jest.mocked(await import('shelljs')).default;
+        ({ asyncExec } = jest.mocked(await import('@repodog/cli-utils')));
       });
 
       it('should not execute the script', async () => {
         const { handler } = await import('./handler.ts');
-        handler({ type: 'preminor' });
-        expect(shelljs.exec).not.toHaveBeenNthCalledWith(1, 'pnpm run cut:post-version');
+        void handler({ type: 'preminor' });
+        expect(asyncExec).not.toHaveBeenNthCalledWith(1, 'pnpm run cut:post-version');
       });
     });
   });
 
   describe('when the cut:changelog script is provided', () => {
-    let shelljs: jest.Mocked<typeof import('shelljs')>;
+    let asyncExec: jest.Mocked<typeof import('@repodog/cli-utils')['asyncExec']>;
 
     beforeEach(async () => {
-      jest.clearAllMocks();
-      shelljs = jest.mocked(await import('shelljs')).default;
-      const { loadPackageJson } = jest.mocked(await import('@repodog/cli-utils'));
+      let loadPackageJson: jest.Mocked<typeof import('@repodog/cli-utils')['loadPackageJson']>;
+      ({ asyncExec, loadPackageJson } = jest.mocked(await import('@repodog/cli-utils')));
 
       loadPackageJson.mockReturnValueOnce({
         name: 'alpha',
@@ -404,23 +394,22 @@ describe('cut', () => {
 
     it.each([['patch'], ['minor'], ['major']])('%p release should run changelog', async type => {
       const { handler } = await import('./handler.ts');
-      handler({ type });
-      expect(shelljs.exec).toHaveBeenCalledWith(`pnpm run cut:changelog -- --${type}`);
+      void handler({ type });
+      expect(asyncExec).toHaveBeenCalledWith(`pnpm run cut:changelog -- --${type}`);
     });
   });
 
   describe('when the cut:changelog script is not provided', () => {
-    let shelljs: jest.Mocked<typeof import('shelljs')>;
+    let asyncExec: jest.Mocked<typeof import('@repodog/cli-utils')['asyncExec']>;
 
     beforeEach(async () => {
-      jest.clearAllMocks();
-      shelljs = jest.mocked(await import('shelljs')).default;
+      ({ asyncExec } = jest.mocked(await import('@repodog/cli-utils')));
     });
 
     it.each([['patch'], ['minor'], ['major']])('%p release should not run changelog', async type => {
       const { handler } = await import('./handler.ts');
-      handler({ type });
-      expect(shelljs.exec).not.toHaveBeenCalledWith(`pnpm run cut:changelog -- --${type}`);
+      void handler({ type });
+      expect(asyncExec).not.toHaveBeenCalledWith(`pnpm run cut:changelog -- --${type}`);
     });
   });
 
@@ -431,7 +420,6 @@ describe('cut', () => {
     let addCommitPushRelease: jest.Mocked<typeof import('@repodog/cli-utils')['addCommitPushRelease']>;
 
     beforeEach(async () => {
-      jest.clearAllMocks();
       shelljs = jest.mocked(await import('shelljs')).default;
       ({ addCommitPushRelease, getChangedFiles } = jest.mocked(await import('@repodog/cli-utils')));
       ({ versionPackage } = jest.mocked(await import('./utils/versionPackage.ts')));
@@ -439,13 +427,13 @@ describe('cut', () => {
 
     it('should call getChangedFiles with the correct argument', async () => {
       const { handler } = await import('./handler.ts');
-      handler({ tag: 'alpha', type: 'preminor' });
+      void handler({ tag: 'alpha', type: 'preminor' });
       expect(getChangedFiles).toHaveBeenCalledWith('v1.0.0');
     });
 
     it('should call versionPackage with the correct arguments', async () => {
       const { handler } = await import('./handler.ts');
-      handler({ tag: 'alpha', type: 'preminor' });
+      void handler({ tag: 'alpha', type: 'preminor' });
 
       expect(versionPackage).toHaveBeenCalledWith(
         {
@@ -461,13 +449,13 @@ describe('cut', () => {
 
     it('should call addCommitPushRelease', async () => {
       const { handler } = await import('./handler.ts');
-      handler({ tag: 'alpha', type: 'preminor' });
+      void handler({ tag: 'alpha', type: 'preminor' });
       expect(addCommitPushRelease).toHaveBeenCalledWith('1.1.0');
     });
 
     it('should exit with the correct code', async () => {
       const { handler } = await import('./handler.ts');
-      handler({ tag: 'alpha', type: 'preminor' });
+      void handler({ tag: 'alpha', type: 'preminor' });
       expect(shelljs.exit).toHaveBeenCalledWith(0);
     });
   });
@@ -483,7 +471,6 @@ describe('cut', () => {
     let addCommitPushRelease: jest.Mocked<typeof import('@repodog/cli-utils')['addCommitPushRelease']>;
 
     beforeEach(async () => {
-      jest.clearAllMocks();
       shelljs = jest.mocked(await import('shelljs')).default;
       let isProjectMonorepo;
       ({ addCommitPushRelease, isProjectMonorepo } = jest.mocked(await import('@repodog/cli-utils')));
@@ -494,7 +481,7 @@ describe('cut', () => {
 
     it('should call versionMonorepoPackages with the correct argument', async () => {
       const { handler } = await import('./handler.ts');
-      handler({ tag: 'alpha', type: 'preminor' });
+      void handler({ tag: 'alpha', type: 'preminor' });
 
       expect(versionMonorepoPackages).toHaveBeenCalledWith({
         force: false,
@@ -506,7 +493,7 @@ describe('cut', () => {
 
     it('should call writeFileSync with the correct arguments', async () => {
       const { handler } = await import('./handler.ts');
-      handler({ tag: 'alpha', type: 'preminor' });
+      void handler({ tag: 'alpha', type: 'preminor' });
 
       expect(writeFileSync).toHaveBeenCalledWith(
         '/root/package.json',
@@ -522,13 +509,13 @@ describe('cut', () => {
 
     it('should call addCommitPushRelease', async () => {
       const { handler } = await import('./handler.ts');
-      handler({ tag: 'alpha', type: 'preminor' });
+      void handler({ tag: 'alpha', type: 'preminor' });
       expect(addCommitPushRelease).toHaveBeenCalledWith('1.1.0');
     });
 
     it('should exit with the correct code', async () => {
       const { handler } = await import('./handler.ts');
-      handler({ tag: 'alpha', type: 'preminor' });
+      void handler({ tag: 'alpha', type: 'preminor' });
       expect(shelljs.exit).toHaveBeenCalledWith(0);
     });
   });
@@ -538,20 +525,19 @@ describe('cut', () => {
     let addCommitPushRelease: jest.Mocked<typeof import('@repodog/cli-utils')['addCommitPushRelease']>;
 
     beforeEach(async () => {
-      jest.clearAllMocks();
       shelljs = jest.mocked(await import('shelljs')).default;
       ({ addCommitPushRelease } = jest.mocked(await import('@repodog/cli-utils')));
     });
 
     it('should not call addCommitPushRelease', async () => {
       const { handler } = await import('./handler.ts');
-      handler({ 'dry-run': true, type: 'preminor' });
+      void handler({ 'dry-run': true, type: 'preminor' });
       expect(addCommitPushRelease).not.toHaveBeenCalled();
     });
 
     it('should exit with the correct code', async () => {
       const { handler } = await import('./handler.ts');
-      handler({ 'dry-run': true, type: 'preminor' });
+      void handler({ 'dry-run': true, type: 'preminor' });
       expect(shelljs.exit).toHaveBeenCalledWith(0);
     });
   });

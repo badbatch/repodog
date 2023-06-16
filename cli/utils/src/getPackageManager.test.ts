@@ -14,9 +14,12 @@ jest.unstable_mockModule('./repodogConfig.ts', () => ({
 process.cwd = jest.fn().mockReturnValue('/root') as jest.Mocked<() => string>;
 
 describe('getPackageManager', () => {
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
+
   describe('when repo has npm lock file', () => {
     beforeEach(async () => {
-      jest.clearAllMocks();
       const { existsSync } = jest.mocked(await import('node:fs'));
       existsSync.mockImplementation(path => path === '/root/package-lock.json');
     });
@@ -29,7 +32,6 @@ describe('getPackageManager', () => {
 
   describe('when repo has pnpm lock file', () => {
     beforeEach(async () => {
-      jest.clearAllMocks();
       const { existsSync } = jest.mocked(await import('node:fs'));
       existsSync.mockImplementation(path => path === '/root/pnpm-lock.yaml');
     });
@@ -42,7 +44,6 @@ describe('getPackageManager', () => {
 
   describe('when repo has yarn lock file', () => {
     beforeEach(async () => {
-      jest.clearAllMocks();
       const { existsSync } = jest.mocked(await import('node:fs'));
       existsSync.mockImplementation(path => path === '/root/yarn.lock');
     });
@@ -55,7 +56,6 @@ describe('getPackageManager', () => {
 
   describe('when no lock file is found', () => {
     beforeEach(async () => {
-      jest.clearAllMocks();
       const { existsSync } = jest.mocked(await import('node:fs'));
       existsSync.mockReturnValue(false);
     });

@@ -21,11 +21,14 @@ process.cwd = () => '/root';
 const mockedProcessChdir = (process.chdir = jest.fn());
 
 describe('publishMonorepoPackages', () => {
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
+
   describe('when packages are published successfully', () => {
     let publishPackage: jest.Mocked<typeof import('./publishPackage.ts')['publishPackage']>;
 
     beforeEach(async () => {
-      jest.clearAllMocks();
       ({ publishPackage } = jest.mocked(await import('./publishPackage.ts')));
     });
 
@@ -53,7 +56,6 @@ describe('publishMonorepoPackages', () => {
     let publishPackage: jest.Mocked<typeof import('./publishPackage.ts')['publishPackage']>;
 
     beforeEach(async () => {
-      jest.clearAllMocks();
       shelljs = jest.mocked(await import('shelljs')).default;
       ({ publishPackage } = jest.mocked(await import('./publishPackage.ts')));
 

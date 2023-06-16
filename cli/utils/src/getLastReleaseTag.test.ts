@@ -5,11 +5,14 @@ import type { ChildProcess } from 'node:child_process';
 jest.unstable_mockModule('shelljs', shelljsMock);
 
 describe('getLastReleaseTag', () => {
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
+
   describe('when there are cached changed files', () => {
     let shelljs: jest.Mocked<typeof import('shelljs')>;
 
     beforeEach(async () => {
-      jest.clearAllMocks();
       shelljs = jest.mocked(await import('shelljs')).default;
       const { addLastReleaseTagToCache, clearLastReleaseTagCache } = await import('./getLastReleaseTag.ts');
       clearLastReleaseTagCache();
@@ -32,7 +35,6 @@ describe('getLastReleaseTag', () => {
     let shelljs: jest.Mocked<typeof import('shelljs')>;
 
     beforeEach(async () => {
-      jest.clearAllMocks();
       shelljs = jest.mocked(await import('shelljs')).default;
 
       shelljs.exec.mockReturnValue({

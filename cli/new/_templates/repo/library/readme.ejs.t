@@ -5,5 +5,5 @@ to: README.md
 
 <%= desc %>
 
-[![npm version](https://badge.fury.io/js/%40<%= name %>.svg)](https://badge.fury.io/js/%40<%= name %>)
+[![npm version](https://badge.fury.io/js/<%= name %>.svg)](https://badge.fury.io/js/<%= name %>)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)

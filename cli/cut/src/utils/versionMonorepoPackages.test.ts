@@ -51,11 +51,14 @@ jest.unstable_mockModule('./versionPackage.ts', () => ({
 process.cwd = jest.fn().mockReturnValue('/root') as jest.Mocked<() => string>;
 
 describe('versionMonorepoPackages', () => {
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
+
   describe('when force is false', () => {
     let versionPackage: jest.Mocked<typeof import('./versionPackage.ts')['versionPackage']>;
 
     beforeEach(async () => {
-      jest.clearAllMocks();
       ({ versionPackage } = jest.mocked(await import('./versionPackage.ts')));
     });
 
@@ -93,7 +96,6 @@ describe('versionMonorepoPackages', () => {
     let versionPackage: jest.Mocked<typeof import('./versionPackage.ts')['versionPackage']>;
 
     beforeEach(async () => {
-      jest.clearAllMocks();
       ({ versionPackage } = jest.mocked(await import('./versionPackage.ts')));
     });
 
@@ -147,7 +149,6 @@ describe('versionMonorepoPackages', () => {
     let versionPackage: jest.Mocked<typeof import('./versionPackage.ts')['versionPackage']>;
 
     beforeEach(async () => {
-      jest.clearAllMocks();
       const { loadPackageJson } = jest.mocked(await import('@repodog/cli-utils'));
 
       loadPackageJson.mockImplementation((path: string): SetRequired<PackageJson, 'name' | 'version'> => {

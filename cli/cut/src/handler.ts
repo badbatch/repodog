@@ -4,6 +4,7 @@ import {
   VALID_RELEASE_TAGS,
   VALID_RELEASE_TYPES,
   addCommitPushRelease,
+  asyncExec,
   calculateDuration,
   clearDryRunFlag,
   formatListLogMessage,
@@ -31,7 +32,7 @@ import type { CutHandlerArguments } from './types.ts';
 import { versionMonorepoPackages } from './utils/versionMonorepoPackages.ts';
 import { versionPackage } from './utils/versionPackage.ts';
 
-export const handler = (argv: CutHandlerArguments) => {
+export const handler = async (argv: CutHandlerArguments) => {
   const startTime = performance.now();
   const dryRun = argv['dry-run'] ?? false;
   const force = argv.force ?? false;
@@ -98,7 +99,7 @@ export const handler = (argv: CutHandlerArguments) => {
     verboseLog(`Last release tag: ${lastReleaseTag}`);
     const filesChanged = haveFilesChanged(lastReleaseTag);
 
-    if (!force && !filesChanged) {
+    if (lastReleaseTag && !force && !filesChanged) {
       throw new Error(`No files have changed since the last release tag: ${lastReleaseTag}`);
     }
 
@@ -109,7 +110,7 @@ export const handler = (argv: CutHandlerArguments) => {
 
     if (!skipPrehook && scripts['cut:pre-version']) {
       verboseLog(`Running cut:pre-version script: ${scripts['cut:pre-version']}\n`);
-      shelljs.exec(`${packageManager} run cut:pre-version`);
+      await asyncExec(`${packageManager} run cut:pre-version`);
       shelljs.echo('\n');
     } else if (skipPrehook && scripts['cut:pre-version']) {
       verboseLog(`cut:pre-version script skipped, skipPrehook set to true`);
@@ -135,7 +136,7 @@ export const handler = (argv: CutHandlerArguments) => {
 
     if (!skipPosthook && scripts['cut:post-version']) {
       verboseLog(`Running cut:post-version script: ${scripts['cut:post-version']}\n`);
-      shelljs.exec(`${packageManager} run cut:post-version`);
+      await asyncExec(`${packageManager} run cut:post-version`);
       shelljs.echo('\n');
     } else if (skipPosthook && scripts['cut:post-version']) {
       verboseLog(`cut:post-version skipped, skipPosthook set to true`);
@@ -145,7 +146,7 @@ export const handler = (argv: CutHandlerArguments) => {
 
     if (scripts['cut:changelog']) {
       verboseLog(`Generating changelog for ${type} release`);
-      shelljs.exec(`${packageManager} run cut:changelog -- --${type}`);
+      await asyncExec(`${packageManager} run cut:changelog -- --${type}`);
     }
 
     const newVersion = getNewVersion(version, type, tag);

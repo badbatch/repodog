@@ -1,3 +1,6 @@
+---
+to: .github/workflow/build-and-publish.yml
+---
 name: Build and publish
 
 on:
@@ -12,7 +15,7 @@ on:
 
 jobs:
   build-and-publish:
-    uses: ./.github/workflows/master-build-and-publish.yml
+    uses: badbatch/repodog/.github/workflows/master-build-and-publish.yml@main
     with:
       package-manager-version: '7.27.0'
     secrets:

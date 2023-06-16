@@ -22,11 +22,14 @@ jest.unstable_mockModule('./utils/runCommonPostInstallTasks.ts', () => ({
 }));
 
 describe('handler', () => {
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
+
   describe('when invalid type is passed in', () => {
     let shelljs: jest.Mocked<typeof import('shelljs')>;
 
     beforeEach(async () => {
-      jest.clearAllMocks();
       // eslint-disable-next-line unicorn/no-await-expression-member
       shelljs = jest.mocked((await import('shelljs')).default);
       const { isValidPostInstallType } = jest.mocked(await import('./utils/isValidPostInstallType.ts'));
@@ -53,7 +56,6 @@ describe('handler', () => {
     let shelljs: jest.Mocked<typeof import('shelljs')>;
 
     beforeEach(async () => {
-      jest.clearAllMocks();
       // eslint-disable-next-line unicorn/no-await-expression-member
       shelljs = jest.mocked((await import('shelljs')).default);
       const { isValidPostInstallSubType } = jest.mocked(await import('./utils/isValidPostInstallSubType.ts'));
@@ -80,7 +82,6 @@ describe('handler', () => {
     let shelljs: jest.Mocked<typeof import('shelljs')>;
 
     beforeEach(async () => {
-      jest.clearAllMocks();
       // eslint-disable-next-line unicorn/no-await-expression-member
       shelljs = jest.mocked((await import('shelljs')).default);
       const { getPackageManager } = jest.mocked(await import('@repodog/cli-utils'));
@@ -108,7 +109,6 @@ describe('handler', () => {
     >;
 
     beforeEach(async () => {
-      jest.clearAllMocks();
       // eslint-disable-next-line unicorn/no-await-expression-member
       shelljs = jest.mocked((await import('shelljs')).default);
       ({ runCommonPostInstallTasks } = jest.mocked(await import('./utils/runCommonPostInstallTasks.ts')));

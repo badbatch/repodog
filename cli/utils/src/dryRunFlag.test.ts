@@ -9,11 +9,14 @@ jest.unstable_mockModule('./repodogConfig.ts', () => ({
 process.cwd = () => '/root';
 
 describe('dryRunFlag', () => {
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
+
   describe('clearDryRunFlag', () => {
     let writeRepodogConfig: jest.Mocked<typeof import('./repodogConfig.ts')['writeRepodogConfig']>;
 
     beforeEach(async () => {
-      jest.clearAllMocks();
       let loadRepodogConfig: jest.Mocked<typeof import('./repodogConfig.ts')['loadRepodogConfig']>;
       ({ loadRepodogConfig, writeRepodogConfig } = jest.mocked(await import('./repodogConfig.ts')));
       loadRepodogConfig.mockReturnValueOnce({ __activeDryRun: true });
@@ -29,7 +32,6 @@ describe('dryRunFlag', () => {
   describe('hasDryRunFlag', () => {
     describe('when the config does not include __activeDryRun flag', () => {
       beforeEach(async () => {
-        jest.clearAllMocks();
         const { loadRepodogConfig } = jest.mocked(await import('./repodogConfig.ts'));
         loadRepodogConfig.mockReturnValueOnce({});
       });
@@ -42,7 +44,6 @@ describe('dryRunFlag', () => {
 
     describe('when the config does include __activeDryRun flag', () => {
       beforeEach(async () => {
-        jest.clearAllMocks();
         const { loadRepodogConfig } = jest.mocked(await import('./repodogConfig.ts'));
         loadRepodogConfig.mockReturnValueOnce({ __activeDryRun: true });
       });
@@ -58,7 +59,6 @@ describe('dryRunFlag', () => {
     let writeRepodogConfig: jest.Mocked<typeof import('./repodogConfig.ts')['writeRepodogConfig']>;
 
     beforeEach(async () => {
-      jest.clearAllMocks();
       let loadRepodogConfig: jest.Mocked<typeof import('./repodogConfig.ts')['loadRepodogConfig']>;
       ({ loadRepodogConfig, writeRepodogConfig } = jest.mocked(await import('./repodogConfig.ts')));
       loadRepodogConfig.mockReturnValueOnce({ alpha: 'bravo', language: Language.TYPESCRIPT } as RepodogConfig);

@@ -7,7 +7,6 @@ jest.unstable_mockModule('./installRepoDogPeerDependencies.ts', () => ({
 
 describe('runCommonPostInstallTasks', () => {
   it('should call installRepoDogPeerDependencies', async () => {
-    jest.clearAllMocks();
     const { installRepoDogPeerDependencies } = jest.mocked(await import('./installRepoDogPeerDependencies.ts'));
     const { runCommonPostInstallTasks } = await import('./runCommonPostInstallTasks.ts');
     await runCommonPostInstallTasks(PostInstallType.PKG, PostInstallSubType.LIBRARY);

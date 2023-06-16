@@ -9,12 +9,15 @@ describe('loadPackageJson', () => {
   const packagePath = '/root/alpha';
   const packageJson = { name: 'alpha', version: '1.0.0' };
 
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
+
   describe('when there is a cached package.json', () => {
     describe('when the path is file path to package.json', () => {
       let readFileSync: jest.Mocked<typeof import('node:fs')['readFileSync']>;
 
       beforeEach(async () => {
-        jest.clearAllMocks();
         const { addPackageJsonToCache, clearPackageJsonCache } = await import('./loadPackageJson.ts');
         clearPackageJsonCache();
         addPackageJsonToCache(packageJsonPath, packageJson);
@@ -37,7 +40,6 @@ describe('loadPackageJson', () => {
       let readFileSync: jest.Mocked<typeof import('node:fs')['readFileSync']>;
 
       beforeEach(async () => {
-        jest.clearAllMocks();
         const { addPackageJsonToCache, clearPackageJsonCache } = await import('./loadPackageJson.ts');
         clearPackageJsonCache();
         addPackageJsonToCache(packageJsonPath, packageJson);
@@ -61,7 +63,6 @@ describe('loadPackageJson', () => {
     let readFileSync: jest.Mocked<typeof import('node:fs')['readFileSync']>;
 
     beforeEach(async () => {
-      jest.clearAllMocks();
       const { clearPackageJsonCache } = await import('./loadPackageJson.ts');
       clearPackageJsonCache();
       ({ readFileSync } = jest.mocked(await import('node:fs')));
@@ -84,7 +85,6 @@ describe('loadPackageJson', () => {
     let readFileSync: jest.Mocked<typeof import('node:fs')['readFileSync']>;
 
     beforeEach(async () => {
-      jest.clearAllMocks();
       const { clearPackageJsonCache } = await import('./loadPackageJson.ts');
       clearPackageJsonCache();
       ({ readFileSync } = jest.mocked(await import('node:fs')));
@@ -104,7 +104,6 @@ describe('loadPackageJson', () => {
     let readFileSync: jest.Mocked<typeof import('node:fs')['readFileSync']>;
 
     beforeEach(async () => {
-      jest.clearAllMocks();
       const { clearPackageJsonCache } = await import('./loadPackageJson.ts');
       clearPackageJsonCache();
       ({ readFileSync } = jest.mocked(await import('node:fs')));
@@ -122,7 +121,6 @@ describe('loadPackageJson', () => {
 
   describe('when the package.json name and version are present', () => {
     beforeEach(async () => {
-      jest.clearAllMocks();
       const { clearPackageJsonCache } = await import('./loadPackageJson.ts');
       clearPackageJsonCache();
     });

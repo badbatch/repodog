@@ -17,10 +17,12 @@ jest.unstable_mockModule('yargs', () => ({
 }));
 
 describe('init', () => {
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
+
   describe('when node version does satisfy package requirement', () => {
     beforeEach(() => {
-      jest.clearAllMocks();
-
       Object.defineProperty(process.versions, 'node', {
         configurable: true,
         value: '18.13.0',
@@ -39,7 +41,6 @@ describe('init', () => {
     let shelljs: jest.Mocked<typeof import('shelljs')>;
 
     beforeEach(async () => {
-      jest.clearAllMocks();
       shelljs = jest.mocked(await import('shelljs')).default;
 
       Object.defineProperty(process.versions, 'node', {

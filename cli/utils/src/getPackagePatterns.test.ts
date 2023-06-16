@@ -17,10 +17,13 @@ jest.unstable_mockModule('./loadPackageJson.ts', () => ({
 process.cwd = jest.fn().mockReturnValue('/root') as jest.Mocked<() => string>;
 
 describe('getPackagePatterns', () => {
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
+
   describe('when the package manager is npm', () => {
     describe('when there are no workspaces declared', () => {
       beforeEach(async () => {
-        jest.clearAllMocks();
         const { loadPackageJson } = jest.mocked(await import('./loadPackageJson.ts'));
         loadPackageJson.mockReturnValue({ name: 'alpha', version: '1.0.0' });
       });
@@ -33,7 +36,6 @@ describe('getPackagePatterns', () => {
 
     describe('when workspaces is an array', () => {
       beforeEach(async () => {
-        jest.clearAllMocks();
         const { loadPackageJson } = jest.mocked(await import('./loadPackageJson.ts'));
 
         loadPackageJson.mockReturnValue({
@@ -51,7 +53,6 @@ describe('getPackagePatterns', () => {
 
     describe('when workspaces is not an array', () => {
       beforeEach(async () => {
-        jest.clearAllMocks();
         const { loadPackageJson } = jest.mocked(await import('./loadPackageJson.ts'));
 
         loadPackageJson.mockReturnValue({
@@ -71,7 +72,6 @@ describe('getPackagePatterns', () => {
   describe('when the package manager is yarn', () => {
     describe('when there are no workspaces declared', () => {
       beforeEach(async () => {
-        jest.clearAllMocks();
         const { loadPackageJson } = jest.mocked(await import('./loadPackageJson.ts'));
         loadPackageJson.mockReturnValue({ name: 'alpha', version: '1.0.0' });
       });
@@ -84,7 +84,6 @@ describe('getPackagePatterns', () => {
 
     describe('when workspaces is an array', () => {
       beforeEach(async () => {
-        jest.clearAllMocks();
         const { loadPackageJson } = jest.mocked(await import('./loadPackageJson.ts'));
 
         loadPackageJson.mockReturnValue({
@@ -102,7 +101,6 @@ describe('getPackagePatterns', () => {
 
     describe('when workspaces is not an array', () => {
       beforeEach(async () => {
-        jest.clearAllMocks();
         const { loadPackageJson } = jest.mocked(await import('./loadPackageJson.ts'));
 
         loadPackageJson.mockReturnValue({
@@ -121,7 +119,6 @@ describe('getPackagePatterns', () => {
 
   describe('when the package manager is pnpm', () => {
     beforeEach(async () => {
-      jest.clearAllMocks();
       const { readFileSync } = jest.mocked(await import('node:fs'));
       readFileSync.mockReturnValue('{ "packages": ["apps/**", "configs/*", "graphql/*"] }');
     });
@@ -134,7 +131,6 @@ describe('getPackagePatterns', () => {
 
   describe('when an exception is thrown retreiving patterns', () => {
     beforeEach(async () => {
-      jest.clearAllMocks();
       const { readFileSync } = jest.mocked(await import('node:fs'));
 
       readFileSync.mockImplementation(() => {

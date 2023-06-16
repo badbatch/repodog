@@ -28,9 +28,12 @@ jest.unstable_mockModule(
 );
 
 describe('getPeerDependenciesToInstall', () => {
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
+
   describe('when a package.json cannot be found', () => {
     it('should return an empty tuples array', async () => {
-      jest.clearAllMocks();
       const { getPeerDependenciesToInstall } = await import('./getPeerDependenciesToInstall.ts');
       await expect(getPeerDependenciesToInstall('@repodog/charlie')).resolves.toEqual([]);
     });
@@ -39,7 +42,6 @@ describe('getPeerDependenciesToInstall', () => {
   describe('when a package.json has no peerDependencies', () => {
     // eslint-disable-next-line jest/no-disabled-tests
     it.skip('should return an empty tuples array', async () => {
-      jest.clearAllMocks();
       const { getPeerDependenciesToInstall } = await import('./getPeerDependenciesToInstall.ts');
       await expect(getPeerDependenciesToInstall('@repodog/bravo')).resolves.toEqual([]);
     });
@@ -48,7 +50,6 @@ describe('getPeerDependenciesToInstall', () => {
   describe('when a package.json has peerDependencies', () => {
     // eslint-disable-next-line jest/no-disabled-tests
     it.skip('should return a populated tuples array', async () => {
-      jest.clearAllMocks();
       const { getPeerDependenciesToInstall } = await import('./getPeerDependenciesToInstall.ts');
 
       await expect(getPeerDependenciesToInstall('@repodog/alpha')).resolves.toEqual([

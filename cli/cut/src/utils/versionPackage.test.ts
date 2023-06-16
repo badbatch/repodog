@@ -14,9 +14,12 @@ describe('versionPackage', () => {
   const packageJsonPath = '/root/alpha/package.json';
   const packageJson = { name: 'alpha', version: '1.0.0' };
 
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
+
   describe('when the new version is invalid', () => {
     beforeEach(async () => {
-      jest.clearAllMocks();
       const { getNewVersion } = jest.mocked(await import('@repodog/cli-utils'));
       getNewVersion.mockReturnValueOnce(null); // eslint-disable-line unicorn/no-null
     });
@@ -32,7 +35,6 @@ describe('versionPackage', () => {
 
   describe('when the new version is equal to the latest version on npm', () => {
     beforeEach(async () => {
-      jest.clearAllMocks();
       const { getLatestPackageVersionOnNpm } = jest.mocked(await import('@repodog/cli-utils'));
       getLatestPackageVersionOnNpm.mockReturnValueOnce('1.1.0');
     });
@@ -48,7 +50,6 @@ describe('versionPackage', () => {
 
   describe('when the new version is less than the latest version on npm', () => {
     beforeEach(async () => {
-      jest.clearAllMocks();
       const { getLatestPackageVersionOnNpm } = jest.mocked(await import('@repodog/cli-utils'));
       getLatestPackageVersionOnNpm.mockReturnValueOnce('2.0.0');
     });
@@ -66,7 +67,6 @@ describe('versionPackage', () => {
     let writeFileSync: jest.Mocked<typeof import('node:fs')['writeFileSync']>;
 
     beforeEach(async () => {
-      jest.clearAllMocks();
       const { getLatestPackageVersionOnNpm } = jest.mocked(await import('@repodog/cli-utils'));
       getLatestPackageVersionOnNpm.mockReturnValueOnce('');
       ({ writeFileSync } = jest.mocked(await import('node:fs')));
@@ -87,7 +87,6 @@ describe('versionPackage', () => {
     let writeFileSync: jest.Mocked<typeof import('node:fs')['writeFileSync']>;
 
     beforeEach(async () => {
-      jest.clearAllMocks();
       ({ writeFileSync } = jest.mocked(await import('node:fs')));
     });
 
@@ -104,7 +103,6 @@ describe('versionPackage', () => {
 
   describe('when there is an exception throw writing the package.json', () => {
     beforeEach(async () => {
-      jest.clearAllMocks();
       const { writeFileSync } = jest.mocked(await import('node:fs'));
 
       writeFileSync.mockImplementationOnce(() => {

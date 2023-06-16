@@ -111,10 +111,7 @@ module.exports = {
           2,
           { args: 'all', argsIgnorePattern: '^_', ignoreRestSiblings: true, vars: 'all' },
         ],
-        '@typescript-eslint/no-use-before-define': [
-          2,
-          { enums: true, functions: false, ignoreTypeReferences: true, typedefs: false },
-        ],
+        '@typescript-eslint/no-use-before-define': 0,
         'import/no-named-as-default': 0,
         'import/no-named-as-default-member': 0,
         'no-use-before-define': 0,
@@ -308,7 +305,7 @@ module.exports = {
     'unicorn/prevent-abbreviations': [
       2,
       {
-        ignore: [/.*dev.*/i],
+        ignore: [/.*dev.*/i, /.*params.*/i, /.*props.*/i],
       },
     ],
   },

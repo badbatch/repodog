@@ -4,11 +4,14 @@ import { shelljsMock } from '@repodog/cli-test-utils';
 jest.unstable_mockModule('shelljs', shelljsMock);
 
 describe('verboseLog', () => {
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
+
   describe('when verbose is true', () => {
     let shelljs: jest.Mocked<typeof import('shelljs')>;
 
     beforeEach(async () => {
-      jest.clearAllMocks();
       shelljs = jest.mocked(await import('shelljs')).default;
       const { setVerbose } = await import('./verboseLog.ts');
       setVerbose(true);
@@ -25,7 +28,6 @@ describe('verboseLog', () => {
     let shelljs: jest.Mocked<typeof import('shelljs')>;
 
     beforeEach(async () => {
-      jest.clearAllMocks();
       shelljs = jest.mocked(await import('shelljs')).default;
       const { setVerbose } = await import('./verboseLog.ts');
       setVerbose(false);

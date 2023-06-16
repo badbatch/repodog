@@ -19,6 +19,10 @@ jest.unstable_mockModule('./resolveConfigPath.ts', () => ({
 process.cwd = () => '/root';
 
 describe('repodogConfig', () => {
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
+
   describe('loadRepodogConfig', () => {
     const config = { __activeDryRun: true, language: Language.TYPESCRIPT };
 
@@ -26,7 +30,6 @@ describe('repodogConfig', () => {
       let readFileSync: jest.Mocked<typeof import('node:fs')['readFileSync']>;
 
       beforeEach(async () => {
-        jest.clearAllMocks();
         const { addRepodogConfigToCache, clearRepodogConfigCache } = await import('./repodogConfig.ts');
         clearRepodogConfigCache();
         addRepodogConfigToCache(config);
@@ -50,7 +53,6 @@ describe('repodogConfig', () => {
         let readFileSync: jest.Mocked<typeof import('node:fs')['readFileSync']>;
 
         beforeEach(async () => {
-          jest.clearAllMocks();
           const { clearRepodogConfigCache } = await import('./repodogConfig.ts');
           clearRepodogConfigCache();
           ({ readFileSync } = jest.mocked(await import('node:fs')));
@@ -75,7 +77,6 @@ describe('repodogConfig', () => {
 
       describe('when the .repodogrc is loaded from the file system', () => {
         beforeEach(async () => {
-          jest.clearAllMocks();
           const { clearRepodogConfigCache } = await import('./repodogConfig.ts');
           clearRepodogConfigCache();
         });
@@ -96,7 +97,6 @@ describe('repodogConfig', () => {
     describe('when the config is not required', () => {
       describe('when there is an existing config', () => {
         beforeEach(async () => {
-          jest.clearAllMocks();
           const { clearRepodogConfigCache } = await import('./repodogConfig.ts');
           clearRepodogConfigCache();
         });
@@ -115,7 +115,6 @@ describe('repodogConfig', () => {
 
       describe('when there is not an existing config', () => {
         beforeEach(async () => {
-          jest.clearAllMocks();
           const { clearRepodogConfigCache } = await import('./repodogConfig.ts');
           clearRepodogConfigCache();
           const { readFileSync } = jest.mocked(await import('node:fs'));
@@ -152,7 +151,6 @@ describe('repodogConfig', () => {
       };
 
       beforeEach(async () => {
-        jest.clearAllMocks();
         const { clearRepodogConfigCache } = await import('./repodogConfig.ts');
         clearRepodogConfigCache();
         const { readFileSync } = jest.mocked(await import('node:fs'));
@@ -177,7 +175,6 @@ describe('repodogConfig', () => {
       };
 
       beforeEach(async () => {
-        jest.clearAllMocks();
         const { clearRepodogConfigCache } = await import('./repodogConfig.ts');
         clearRepodogConfigCache();
         const { readFileSync } = jest.mocked(await import('node:fs'));
@@ -197,7 +194,6 @@ describe('repodogConfig', () => {
     let writeFileSync: jest.Mocked<typeof import('node:fs')['writeFileSync']>;
 
     beforeEach(async () => {
-      jest.clearAllMocks();
       const { clearRepodogConfigCache } = await import('./repodogConfig.ts');
       clearRepodogConfigCache();
       ({ writeFileSync } = jest.mocked(await import('node:fs')));

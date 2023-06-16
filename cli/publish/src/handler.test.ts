@@ -21,12 +21,15 @@ jest.unstable_mockModule('./utils/publishPackage.ts', () => ({
 
 process.cwd = jest.fn().mockReturnValue('/root') as jest.Mocked<() => string>;
 
-describe('publish', () => {
+describe('handler', () => {
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
+
   describe('when package manager is not found', () => {
     let shelljs: jest.Mocked<typeof import('shelljs')>;
 
     beforeEach(async () => {
-      jest.clearAllMocks();
       shelljs = jest.mocked(await import('shelljs')).default;
       const { getPackageManager } = jest.mocked(await import('@repodog/cli-utils'));
       getPackageManager.mockReturnValueOnce(undefined); // eslint-disable-line unicorn/no-useless-undefined
@@ -55,7 +58,6 @@ describe('publish', () => {
     let publishPackage: jest.Mocked<typeof import('./utils/publishPackage.ts')['publishPackage']>;
 
     beforeEach(async () => {
-      jest.clearAllMocks();
       shelljs = jest.mocked(await import('shelljs')).default;
       ({ publishPackage } = jest.mocked(await import('./utils/publishPackage.ts')));
     });
@@ -84,7 +86,6 @@ describe('publish', () => {
     >;
 
     beforeEach(async () => {
-      jest.clearAllMocks();
       shelljs = jest.mocked(await import('shelljs')).default;
       const { isProjectMonorepo } = jest.mocked(await import('@repodog/cli-utils'));
       isProjectMonorepo.mockReturnValue(true);

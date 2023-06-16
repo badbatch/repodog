@@ -9,11 +9,14 @@ jest.unstable_mockModule('@repodog/cli-utils', () => ({
 }));
 
 describe('executeHygen', () => {
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
+
   describe('when the type path has a length greater than 2', () => {
     let asyncExec: jest.Mocked<typeof import('@repodog/cli-utils')['asyncExec']>;
 
     beforeEach(async () => {
-      jest.resetAllMocks();
       ({ asyncExec } = jest.mocked(await import('@repodog/cli-utils')));
     });
 
@@ -39,7 +42,6 @@ describe('executeHygen', () => {
     let asyncExec: jest.Mocked<typeof import('@repodog/cli-utils')['asyncExec']>;
 
     beforeEach(async () => {
-      jest.resetAllMocks();
       ({ asyncExec } = jest.mocked(await import('@repodog/cli-utils')));
     });
 

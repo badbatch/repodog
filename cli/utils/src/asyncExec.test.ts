@@ -5,12 +5,13 @@ import type { ExecCallback, ExecFunction } from 'shelljs';
 jest.unstable_mockModule('shelljs', shelljsMock);
 
 describe('asyncExec', () => {
-  describe('when the execution is successful', () => {
-    let shelljs: jest.Mocked<typeof import('shelljs')>;
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
 
+  describe('when the execution is successful', () => {
     beforeEach(async () => {
-      jest.clearAllMocks();
-      shelljs = jest.mocked(await import('shelljs')).default;
+      const shelljs = jest.mocked(await import('shelljs')).default;
 
       shelljs.exec.mockImplementationOnce(function (_cmd: string, callback: ExecCallback) {
         callback(0, 'success', '');
@@ -25,11 +26,8 @@ describe('asyncExec', () => {
 
   describe('when the execution fails', () => {
     describe('when options.silent is not true', () => {
-      let shelljs: jest.Mocked<typeof import('shelljs')>;
-
       beforeEach(async () => {
-        jest.clearAllMocks();
-        shelljs = jest.mocked(await import('shelljs')).default;
+        const shelljs = jest.mocked(await import('shelljs')).default;
 
         shelljs.exec.mockImplementationOnce(function (_cmd: string, callback: ExecCallback) {
           callback(0, '', 'failure');
@@ -43,11 +41,8 @@ describe('asyncExec', () => {
     });
 
     describe('when options.silent is true', () => {
-      let shelljs: jest.Mocked<typeof import('shelljs')>;
-
       beforeEach(async () => {
-        jest.clearAllMocks();
-        shelljs = jest.mocked(await import('shelljs')).default;
+        const shelljs = jest.mocked(await import('shelljs')).default;
 
         shelljs.exec.mockImplementationOnce(function (_cmd: string, callback: ExecCallback) {
           callback(0, '', 'failure');

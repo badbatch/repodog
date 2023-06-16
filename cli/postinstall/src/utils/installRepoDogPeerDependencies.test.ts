@@ -29,9 +29,12 @@ jest.unstable_mockModule('./getPeerDependenciesToInstall.ts', () => ({
 }));
 
 describe('installRepoDogPeerDependencies', () => {
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
+
   describe('when there are no repodog devDependency names', () => {
     it('asyncExec should not be called', async () => {
-      jest.clearAllMocks();
       const { asyncExec } = jest.mocked(await import('@repodog/cli-utils'));
       const { getRepoDogDevDependencyNames } = jest.mocked(await import('./getRepoDogDevDependencyNames.ts'));
       getRepoDogDevDependencyNames.mockReturnValueOnce([]);
@@ -43,7 +46,6 @@ describe('installRepoDogPeerDependencies', () => {
 
   describe('when there are repodog devDependency names', () => {
     it('should call asyncExec with the correct arguments', async () => {
-      jest.clearAllMocks();
       const { asyncExec } = jest.mocked(await import('@repodog/cli-utils'));
       const { installRepoDogPeerDependencies } = await import('./installRepoDogPeerDependencies.ts');
       await installRepoDogPeerDependencies();

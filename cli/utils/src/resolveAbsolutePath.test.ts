@@ -9,11 +9,14 @@ jest.unstable_mockModule('node:path', () => ({
 process.cwd = () => '/root';
 
 describe('resolveAbsolutePath', () => {
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
+
   describe('when path is not absolute', () => {
     let resolve: jest.Mocked<typeof import('node:path')['resolve']>;
 
     beforeEach(async () => {
-      jest.clearAllMocks();
       ({ resolve } = jest.mocked(await import('node:path')));
     });
 
@@ -34,7 +37,6 @@ describe('resolveAbsolutePath', () => {
     let resolve: jest.Mocked<typeof import('node:path')['resolve']>;
 
     beforeEach(async () => {
-      jest.clearAllMocks();
       let isAbsolute: jest.Mocked<typeof import('node:path')['isAbsolute']>;
       ({ isAbsolute, resolve } = jest.mocked(await import('node:path')));
       isAbsolute.mockReturnValueOnce(true);

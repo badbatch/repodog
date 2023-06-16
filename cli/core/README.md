@@ -42,16 +42,16 @@ name: Build and publish
 on:
   push:
     branches:
-      - master
+      - main
     tags:
       - v**
   pull_request:
     branches:
-      - master
+      - main
 
 jobs:
   build-and-publish:
-    uses: badbatch/repodog/.github/workflows/master-build-and-publish.yml
+    uses: badbatch/repodog/.github/workflows/master-build-and-publish.yml@main
     with:
       node-version: '18.13.0'
       package-manager: 'pnpm'

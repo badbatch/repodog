@@ -13,9 +13,12 @@ const mockProcessCwd = jest.mocked((process.cwd = jest.fn<() => string>()));
 const mockProcessChdir = jest.mocked((process.chdir = jest.fn()));
 
 describe('conditionallyChangeCwd', () => {
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
+
   describe('when the current working directory ends in the name', () => {
     beforeEach(() => {
-      jest.clearAllMocks();
       mockProcessCwd.mockReturnValueOnce('/root/alpha');
     });
 
@@ -28,7 +31,6 @@ describe('conditionallyChangeCwd', () => {
 
   describe('when the current working directory does not ends in the name', () => {
     beforeEach(() => {
-      jest.clearAllMocks();
       mockProcessCwd.mockReturnValueOnce('/root');
     });
 
@@ -43,7 +45,6 @@ describe('conditionallyChangeCwd', () => {
     let mkdirSync: jest.Mocked<typeof import('node:fs')['mkdirSync']>;
 
     beforeEach(async () => {
-      jest.clearAllMocks();
       mockProcessCwd.mockReturnValueOnce('/root');
       let existsSync: jest.Mocked<typeof import('node:fs')['existsSync']>;
       ({ existsSync, mkdirSync } = jest.mocked(await import('node:fs')));
