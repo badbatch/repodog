@@ -57,7 +57,7 @@ importers:
       eslint-plugin-sort-destructure-keys: ^1.4.0
       eslint-plugin-sort-keys-fix: ^1.1.2
       eslint-plugin-typescript-sort-keys: ^2.3.0
-      eslint-plugin-unicorn: ^45.0.2
+      eslint-plugin-unicorn: ^46.0.1
       generate-changelog: ^1.8.0
       husky: ^8.0.3
       identity-obj-proxy: ^3.0.0
@@ -125,7 +125,7 @@ importers:
       eslint-plugin-sort-destructure-keys: 1.4.0_eslint@8.29.0
       eslint-plugin-sort-keys-fix: 1.1.2
       eslint-plugin-typescript-sort-keys: 2.3.0_r7kguu3kgy53ikcs2gsoq2xtz4
-      eslint-plugin-unicorn: 45.0.2_eslint@8.29.0
+      eslint-plugin-unicorn: 46.0.1_eslint@8.29.0
       generate-changelog: 1.8.0
       husky: 8.0.3
       identity-obj-proxy: 3.0.0
@@ -4145,8 +4145,8 @@ packages:
       - supports-color
     dev: true
 
-  /eslint-plugin-unicorn/45.0.2_eslint@8.29.0:
-    resolution: {integrity: sha512-Y0WUDXRyGDMcKLiwgL3zSMpHrXI00xmdyixEGIg90gHnj0PcHY4moNv3Ppje/kDivdAy5vUeUr7z211ImPv2gw==}
+  /eslint-plugin-unicorn/46.0.1_eslint@8.29.0:
+    resolution: {integrity: sha512-setGhMTiLAddg1asdwjZ3hekIN5zLznNa5zll7pBPwFOka6greCKDQydfqy4fqyUhndi74wpDzClSQMEcmOaew==}
     engines: {node: '>=14.18'}
     peerDependencies:
       eslint: '>=8.28.0'
