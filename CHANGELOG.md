@@ -1,3 +1,14 @@
+#### 1.1.1 (2023-06-16)
+
+##### Bug Fixes
+
+*  downgrade unicorn eslint plugin (f06ddf61)
+*  add launch.json into templates (57afa9bc)
+
+##### Refactors
+
+*  update tests and fix minor bugs (53ae0005)
+
 #### 1.1.0 (2023-05-12)
 
 ##### Bug Fixes
