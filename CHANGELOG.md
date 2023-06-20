@@ -1,3 +1,9 @@
+#### 1.1.2 (2023-06-20)
+
+##### Bug Fixes
+
+*  enhance logging for async exec and update licence template (2d5ec6f3)
+
 #### 1.1.1 (2023-06-16)
 
 ##### Bug Fixes
