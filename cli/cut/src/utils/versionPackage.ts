@@ -30,7 +30,7 @@ export const versionPackage = (
 
   try {
     verboseLog(`Outputting package.json with new version: ${newVersion}`);
-    writeFileSync(packageJsonPath, `${JSON.stringify({ ...packageJson, version: newVersion }, undefined, 2)}\n`);
+    writeFileSync(packageJsonPath, `${JSON.stringify({ ...packageJson, version: newVersion }, undefined, 2)}\n\n`);
   } catch (error: unknown) {
     verboseLog(`Package.json output error: ${(error as Error).name}, ${(error as Error).message}`);
     throw new Error(`Could not write the package.json to: ${packageJsonPath}`);
