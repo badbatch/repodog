@@ -1,3 +1,10 @@
+#### 1.1.3 (2023-06-23)
+
+##### Bug Fixes
+
+*  align package json formatting (86aa155c)
+*  async error handling (1672de3d)
+
 #### 1.1.2 (2023-06-20)
 
 ##### Bug Fixes
