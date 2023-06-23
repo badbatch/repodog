@@ -30,7 +30,7 @@ describe('asyncExec', () => {
         const shelljs = jest.mocked(await import('shelljs')).default;
 
         shelljs.exec.mockImplementationOnce(function (_cmd: string, callback: ExecCallback) {
-          callback(0, '', 'failure');
+          callback(1, '', 'failure');
         } as ExecFunction);
       });
 
@@ -45,7 +45,7 @@ describe('asyncExec', () => {
         const shelljs = jest.mocked(await import('shelljs')).default;
 
         shelljs.exec.mockImplementationOnce(function (_cmd: string, callback: ExecCallback) {
-          callback(0, '', 'failure');
+          callback(1, '', 'failure');
         } as ExecFunction);
       });
 

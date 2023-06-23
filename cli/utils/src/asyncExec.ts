@@ -8,10 +8,7 @@ export interface AsyncExecOptions {
 export const asyncExec = (cmd: string, options: AsyncExecOptions = {}) =>
   new Promise<string>((resolve, reject) => {
     shelljs.exec(cmd, (code, stdout, stderr) => {
-      verboseLog(`Async exec stdout: ${stdout}`);
-      verboseLog(`Async exec stderr: ${stderr}`);
-
-      if (stderr && !options.silent) {
+      if (code === 1 && !options.silent) {
         verboseLog(`Async exec failed to execute "${cmd}", exited with code ${code}`);
         reject(new Error(stderr));
       } else {
