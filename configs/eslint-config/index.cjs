@@ -115,7 +115,7 @@ module.exports = {
         'import/no-named-as-default': 0,
         'import/no-named-as-default-member': 0,
         'no-use-before-define': 0,
-        'typescript-sort-keys/interface': 2,
+        'typescript-sort-keys/interface': [2, 'asc', { caseSensitive: true, natural: true, requiredFirst: false }],
         'typescript-sort-keys/string-enum': 2,
       },
       settings: {
@@ -305,7 +305,7 @@ module.exports = {
     'unicorn/prevent-abbreviations': [
       2,
       {
-        ignore: [/.*dev.*/i, /.*params.*/i, /.*props.*/i],
+        ignore: [/.*acc.*/i, /.*arg.*/i, /.*args.*/i, /.*dev.*/i, /.*params.*/i, /.*obj.*/i, /.*prop.*/i, /.*props.*/i],
       },
     ],
   },

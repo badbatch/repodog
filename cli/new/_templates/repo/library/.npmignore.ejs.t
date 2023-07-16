@@ -6,9 +6,7 @@ to: .npmignore
 .vscode/
 bundle/
 coverage/
-dist/
 docs/
-lib/
 
 # private files
 .*

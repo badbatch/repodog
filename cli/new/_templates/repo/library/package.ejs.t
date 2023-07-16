@@ -27,7 +27,7 @@ sh: "<%= packageManager %> install && <%= packageManager %> add -D @repodog/cli 
     "commit": "commit",
     "compile": "pnpm run /^compile:.*/",
     "compile:main": "rollup -c ./rollup.config.cjs",
-    "compile:types": "tsc --project ./tsconfig.json",
+    "compile:types": "tsc --project ./tsconfig.build.json",
     "cut:changelog": "changelog",
     "cut:post-version": "pnpm run build",
     "lint": "eslint . --ext .ts,.cjs",
