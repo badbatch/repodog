@@ -78,7 +78,7 @@ describe('versionPackage', () => {
 
       expect(writeFileSync).toHaveBeenCalledWith(
         packageJsonPath,
-        `${JSON.stringify({ ...packageJson, version: '1.1.0' }, undefined, 2)}\n\n`
+        `${JSON.stringify({ ...packageJson, version: '1.1.0' }, undefined, 2)}\n`
       );
     });
   });
@@ -96,7 +96,7 @@ describe('versionPackage', () => {
 
       expect(writeFileSync).toHaveBeenCalledWith(
         packageJsonPath,
-        `${JSON.stringify({ ...packageJson, version: '1.1.0' }, undefined, 2)}\n\n`
+        `${JSON.stringify({ ...packageJson, version: '1.1.0' }, undefined, 2)}\n`
       );
     });
   });
