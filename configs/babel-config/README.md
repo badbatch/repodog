@@ -44,7 +44,7 @@ Changes `targets` to latest version of chrome / current version of nodejs. Also 
 
 Changes `targets` to browser based or nodejs based. Default `'node'`.
 
-`NODE_ENV` = `''prod' || 'production' || 'dev' || 'development'`
+`NODE_ENV` = `'prod' || 'production' || 'dev' || 'development'`
 
 Sets `@babel/preset-react` development field. Default `'dev' || 'development'`.
 

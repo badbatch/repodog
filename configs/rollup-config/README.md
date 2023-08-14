@@ -43,8 +43,8 @@ module.exports = {
 
 ### Environment variables
 
-`NODE_ENV` = `''prod' || 'production' || 'dev' || 'development'`
+`NODE_ENV` = `'prod' || 'production' || 'dev' || 'development'`
 
-When set to `''prod'` or `'production'`, terser mangles and compresses, the bundle analyser runs, and source maps are omitted.
+When set to `'prod'` or `'production'`, terser mangles and compresses, the bundle analyser runs, and source maps are omitted.
 
 **You cam also use the environment variables outlined in [`@repodog/babel-config`](../babel-config/README.md#environment-variables) to control what is output.**
