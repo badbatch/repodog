@@ -1,3 +1,14 @@
+#### 1.1.4 (2023-08-14)
+
+##### Chores
+
+*  save work in progress (b5d8d203)
+
+##### Bug Fixes
+
+*  broken unit test (f63ce9a1)
+*  remove extra space from package jsons (9fe89f4d)
+
 #### 1.1.3 (2023-06-23)
 
 ##### Bug Fixes
