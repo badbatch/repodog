@@ -1,3 +1,14 @@
+#### 1.1.5 (2023-08-31)
+
+##### Bug Fixes
+
+*  add licences to all packages (c03d4b5d)
+*  typo in readmes (475f4562)
+
+##### Refactors
+
+*  turn off @typescript-eslint/consistent-type-definitions (5cbd5776)
+
 #### 1.1.4 (2023-08-14)
 
 ##### Chores
