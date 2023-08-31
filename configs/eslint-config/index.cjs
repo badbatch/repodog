@@ -67,6 +67,7 @@ module.exports = {
       },
       plugins: ['@typescript-eslint', 'typescript-sort-keys'],
       rules: {
+        '@typescript-eslint/consistent-type-definitions': 0,
         '@typescript-eslint/consistent-type-imports': [
           2,
           {
