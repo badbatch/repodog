@@ -306,7 +306,17 @@ module.exports = {
     'unicorn/prevent-abbreviations': [
       2,
       {
-        ignore: [/.*acc.*/i, /.*arg.*/i, /.*args.*/i, /.*dev.*/i, /.*params.*/i, /.*obj.*/i, /.*prop.*/i, /.*props.*/i],
+        ignore: [
+          /.*acc.*/i,
+          /.*arg.*/i,
+          /.*args.*/i,
+          /.*db.*/i,
+          /.*dev.*/i,
+          /.*params.*/i,
+          /.*obj.*/i,
+          /.*prop.*/i,
+          /.*props.*/i,
+        ],
       },
     ],
   },
