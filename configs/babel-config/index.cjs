@@ -67,7 +67,7 @@ module.exports = api => {
       {
         allowDeclareFields: true,
         allowNamespaces: true,
-        onlyRemoveTypeImports: true,
+        onlyRemoveTypeImports: false,
         optimizeConstEnums: true,
       },
     ],
