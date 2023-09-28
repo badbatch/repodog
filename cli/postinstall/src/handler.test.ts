@@ -31,7 +31,7 @@ describe('handler', () => {
 
     beforeEach(async () => {
       // eslint-disable-next-line unicorn/no-await-expression-member
-      shelljs = jest.mocked(await import('shelljs'));
+      shelljs = jest.mocked((await import('shelljs')).default);
       const { isValidPostInstallType } = jest.mocked(await import('./utils/isValidPostInstallType.ts'));
       isValidPostInstallType.mockReturnValueOnce(false);
     });
@@ -57,7 +57,7 @@ describe('handler', () => {
 
     beforeEach(async () => {
       // eslint-disable-next-line unicorn/no-await-expression-member
-      shelljs = jest.mocked(await import('shelljs'));
+      shelljs = jest.mocked((await import('shelljs')).default);
       const { isValidPostInstallSubType } = jest.mocked(await import('./utils/isValidPostInstallSubType.ts'));
       isValidPostInstallSubType.mockReturnValueOnce(false);
     });
@@ -83,7 +83,7 @@ describe('handler', () => {
 
     beforeEach(async () => {
       // eslint-disable-next-line unicorn/no-await-expression-member
-      shelljs = jest.mocked(await import('shelljs'));
+      shelljs = jest.mocked((await import('shelljs')).default);
       const { getPackageManager } = jest.mocked(await import('@repodog/cli-utils'));
       getPackageManager.mockReturnValueOnce(undefined); // eslint-disable-line unicorn/no-useless-undefined
     });
@@ -110,7 +110,7 @@ describe('handler', () => {
 
     beforeEach(async () => {
       // eslint-disable-next-line unicorn/no-await-expression-member
-      shelljs = jest.mocked(await import('shelljs'));
+      shelljs = jest.mocked((await import('shelljs')).default);
       ({ runCommonPostInstallTasks } = jest.mocked(await import('./utils/runCommonPostInstallTasks.ts')));
     });
 

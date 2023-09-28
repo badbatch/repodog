@@ -1,12 +1,6 @@
 import { jest } from '@jest/globals';
 import { shelljsMock } from '@repodog/cli-test-utils';
 
-jest.unstable_mockModule('@repodog/cli-utils', () => ({
-  calculateDuration: jest.fn(),
-  setVerbose: jest.fn(),
-  verboseLog: jest.fn(),
-}));
-
 jest.unstable_mockModule('shelljs', shelljsMock);
 
 jest.unstable_mockModule('./utils/handleGlobalConfigSetup.ts', () => ({
@@ -18,7 +12,7 @@ describe('handler', () => {
 
   beforeEach(async () => {
     jest.clearAllMocks();
-    shelljs = jest.mocked(await import('shelljs'));
+    shelljs = jest.mocked(await import('shelljs')).default;
   });
 
   describe('when handleGlobalConfigSetup executes successfully', () => {

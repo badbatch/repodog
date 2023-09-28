@@ -10,7 +10,7 @@ import colors from 'ansi-colors';
 import { readFileSync } from 'node:fs';
 import { parse, resolve } from 'node:path';
 import { performance } from 'node:perf_hooks';
-import * as shelljs from 'shelljs';
+import shelljs from 'shelljs';
 import type { WriteHandlerArguments } from './types.ts';
 import { createChatCompletion } from './utils/chatGptManager.ts';
 import { extractCode } from './utils/extractCode.ts';

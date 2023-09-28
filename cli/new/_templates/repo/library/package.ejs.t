@@ -38,14 +38,14 @@ sh: "<%= packageManager %> install && <%= packageManager %> add -D @repodog/cli 
     "validate": "syncpack format && syncpack lint-semver-ranges && pnpm run build && pnpm run lint && pnpm run type-check && pnpm run test"
   },
   "dependencies": {
-    "lodash-es": "^4.17.21"
+    "lodash": "^4.17.21"
   },
   "peerDependencies": {
     "@babel/runtime": "<8",
     "core-js": "<4"
   },
   "devDependencies": {
-    "@types/lodash-es": "^4.14.191",
+    "@types/lodash": "^4.14.191",
     "@types/node": "^18.11.18",
     "core-js": "^3.27.2",
     "del-cli": "^3.0.0",

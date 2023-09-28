@@ -161,7 +161,7 @@ describe('handler', () => {
     let shelljs: jest.Mocked<typeof import('shelljs')>;
 
     beforeEach(async () => {
-      shelljs = jest.mocked(await import('shelljs'));
+      shelljs = jest.mocked(await import('shelljs')).default;
       const { isValidNewType } = jest.mocked(await import('./utils/isValidNewType.ts'));
       isValidNewType.mockReturnValueOnce(false);
     });
@@ -183,7 +183,7 @@ describe('handler', () => {
     let shelljs: jest.Mocked<typeof import('shelljs')>;
 
     beforeEach(async () => {
-      shelljs = jest.mocked(await import('shelljs'));
+      shelljs = jest.mocked(await import('shelljs')).default;
       const { isValidNewSubType } = jest.mocked(await import('./utils/isValidNewSubType.ts'));
       isValidNewSubType.mockReturnValueOnce(false);
     });
@@ -211,7 +211,7 @@ describe('handler', () => {
       let executeHygen: jest.Mocked<typeof import('./utils/executeHygen.ts')['executeHygen']>;
 
       beforeEach(async () => {
-        shelljs = jest.mocked(await import('shelljs'));
+        shelljs = jest.mocked(await import('shelljs')).default;
         ({ loadQuestions } = jest.mocked(await import('./utils/loadQuestions.ts')));
         ({ executeHygen } = jest.mocked(await import('./utils/executeHygen.ts')));
       });
@@ -301,7 +301,7 @@ describe('handler', () => {
       let shelljs: jest.Mocked<typeof import('shelljs')>;
 
       beforeEach(async () => {
-        shelljs = jest.mocked(await import('shelljs'));
+        shelljs = jest.mocked(await import('shelljs')).default;
         const { getPackageManager } = jest.mocked(await import('@repodog/cli-utils'));
         getPackageManager.mockReturnValueOnce(undefined); // eslint-disable-line unicorn/no-useless-undefined
       });

@@ -9,7 +9,7 @@ describe('getLatestPackageVersionOnNpm', () => {
 
   beforeEach(async () => {
     jest.clearAllMocks();
-    shelljs = jest.mocked(await import('shelljs'));
+    shelljs = jest.mocked(await import('shelljs')).default;
 
     shelljs.exec.mockReturnValue({
       stdout: '1.0.0',

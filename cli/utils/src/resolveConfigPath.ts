@@ -1,4 +1,4 @@
-import { merge } from 'lodash-es';
+import merge from 'lodash/merge.js';
 import { readFileSync } from 'node:fs';
 import type { JsonArray, JsonObject } from 'type-fest';
 import { resolveAbsolutePath } from './resolveAbsolutePath.ts';

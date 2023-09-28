@@ -1,4 +1,4 @@
-import * as shelljs from 'shelljs';
+import shelljs from 'shelljs';
 
 let lastReleaseTag: string | undefined;
 

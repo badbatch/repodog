@@ -1,5 +1,5 @@
 import colors from 'ansi-colors';
-import * as shelljs from 'shelljs';
+import shelljs from 'shelljs';
 
 let verbose = false;
 
