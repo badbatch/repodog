@@ -1,3 +1,9 @@
+#### 1.1.7 (2023-09-28)
+
+##### Documentation Changes
+
+*  update eslint docs (e5f99d5b)
+
 #### 1.1.6 (2023-09-28)
 
 ##### Bug Fixes
