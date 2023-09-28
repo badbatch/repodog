@@ -1,3 +1,16 @@
+#### 1.1.6 (2023-09-28)
+
+##### Bug Fixes
+
+*  add jsdom jest package into peers (012e98ee)
+
+##### Refactors
+
+*  pull out jest eslint config into separate config (3e39fd94)
+*  add jest env node package (609cba82)
+*  allow typescript to remove any unused imports (4996ee25)
+*  add db to allowed abbrev (7ea6f683)
+
 #### 1.1.5 (2023-08-31)
 
 ##### Bug Fixes
