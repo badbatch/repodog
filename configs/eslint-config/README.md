@@ -31,3 +31,22 @@ module.exports = {
   root: true,
 };
 ```
+
+### With Jest
+
+```javascript
+// .eslintrc.cjs
+module.exports = {
+  extends: ['@repodog/eslint-config'],
+  overrides: [
+    {
+      extends: ['@repodog/eslint-config/jest.cjs'],
+      files: ['**/*.{spec,test}.*'],
+    },
+  ],
+  parserOptions: {
+    tsconfigRootDir: __dirname,
+  },
+  root: true,
+};
+```
