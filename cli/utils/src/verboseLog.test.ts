@@ -12,7 +12,7 @@ describe('verboseLog', () => {
     let shelljs: jest.Mocked<typeof import('shelljs')>;
 
     beforeEach(async () => {
-      shelljs = jest.mocked(await import('shelljs')).default;
+      shelljs = jest.mocked(await import('shelljs'));
       const { setVerbose } = await import('./verboseLog.ts');
       setVerbose(true);
     });
@@ -28,7 +28,7 @@ describe('verboseLog', () => {
     let shelljs: jest.Mocked<typeof import('shelljs')>;
 
     beforeEach(async () => {
-      shelljs = jest.mocked(await import('shelljs')).default;
+      shelljs = jest.mocked(await import('shelljs'));
       const { setVerbose } = await import('./verboseLog.ts');
       setVerbose(false);
     });

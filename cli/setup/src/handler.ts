@@ -1,7 +1,7 @@
 import { calculateDuration, setVerbose, verboseLog } from '@repodog/cli-utils';
 import colors from 'ansi-colors';
 import { performance } from 'node:perf_hooks';
-import shelljs from 'shelljs';
+import * as shelljs from 'shelljs';
 import type { SetupHandlerArguments } from './types.ts';
 import { handleGlobalConfigSetup } from './utils/handleGlobalConfigSetup.ts';
 

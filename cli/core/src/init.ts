@@ -6,7 +6,7 @@ import { command as setupCommand } from '@repodog/cli-setup';
 import { command as writeCommand } from '@repodog/cli-write';
 import colors from 'ansi-colors';
 import semver from 'semver';
-import shelljs from 'shelljs';
+import * as shelljs from 'shelljs';
 import yargs from 'yargs';
 import packageJson from '../package.json';
 

@@ -6,7 +6,7 @@ import {
   verboseLog,
 } from '@repodog/cli-utils';
 import semver from 'semver';
-import shelljs from 'shelljs';
+import * as shelljs from 'shelljs';
 import { getPublishCmd } from './getPublishCmd.ts';
 
 export const publishPackage = (packageJsonPath: string, { packageManager }: Pick<ReleaseMeta, 'packageManager'>) => {
