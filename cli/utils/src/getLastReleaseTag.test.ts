@@ -13,7 +13,7 @@ describe('getLastReleaseTag', () => {
     let shelljs: jest.Mocked<typeof import('shelljs')>;
 
     beforeEach(async () => {
-      shelljs = jest.mocked(await import('shelljs'));
+      shelljs = jest.mocked(await import('shelljs')).default;
       const { addLastReleaseTagToCache, clearLastReleaseTagCache } = await import('./getLastReleaseTag.ts');
       clearLastReleaseTagCache();
       addLastReleaseTagToCache('v1.1.0');
@@ -35,7 +35,7 @@ describe('getLastReleaseTag', () => {
     let shelljs: jest.Mocked<typeof import('shelljs')>;
 
     beforeEach(async () => {
-      shelljs = jest.mocked(await import('shelljs'));
+      shelljs = jest.mocked(await import('shelljs')).default;
 
       shelljs.exec.mockReturnValue({
         stdout: 'v1.2.0',

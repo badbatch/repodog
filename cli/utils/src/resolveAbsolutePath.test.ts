@@ -17,7 +17,6 @@ describe('resolveAbsolutePath', () => {
     let resolve: jest.Mocked<typeof import('node:path')['resolve']>;
 
     beforeEach(async () => {
-      // eslint-disable-next-line @typescript-eslint/unbound-method
       ({ resolve } = jest.mocked(await import('node:path')));
     });
 
@@ -39,7 +38,6 @@ describe('resolveAbsolutePath', () => {
 
     beforeEach(async () => {
       let isAbsolute: jest.Mocked<typeof import('node:path')['isAbsolute']>;
-      // eslint-disable-next-line @typescript-eslint/unbound-method
       ({ isAbsolute, resolve } = jest.mocked(await import('node:path')));
       isAbsolute.mockReturnValueOnce(true);
     });

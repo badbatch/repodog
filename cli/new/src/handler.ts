@@ -20,7 +20,7 @@ import { existsSync } from 'node:fs';
 import { dirname, resolve as resolvePath, sep } from 'node:path';
 import { performance } from 'node:perf_hooks';
 import { fileURLToPath } from 'node:url';
-import * as shelljs from 'shelljs';
+import shelljs from 'shelljs';
 import { type NewHandlerArguments, NewSubtype, NewType } from './types.ts';
 import { buildTypePaths } from './utils/buildTypePaths.ts';
 import { conditionallyChangeCwd } from './utils/conditionallyChangeCwd.ts';

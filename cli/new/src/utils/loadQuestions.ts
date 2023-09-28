@@ -1,5 +1,5 @@
 import { type PromptOption, type QuestionOverride, type QuestionOverrides, verboseLog } from '@repodog/cli-utils';
-import { get } from 'lodash-es';
+import get from 'lodash/get.js';
 import { sep } from 'node:path';
 
 export const loadQuestions = async (

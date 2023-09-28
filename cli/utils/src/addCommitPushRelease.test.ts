@@ -8,7 +8,7 @@ describe('addCommitPushRelease', () => {
 
   beforeEach(async () => {
     jest.clearAllMocks();
-    shelljs = jest.mocked(await import('shelljs'));
+    shelljs = jest.mocked(await import('shelljs')).default;
   });
 
   it('should run the correct git commands', async () => {

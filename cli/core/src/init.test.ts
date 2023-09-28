@@ -41,7 +41,7 @@ describe('init', () => {
     let shelljs: jest.Mocked<typeof import('shelljs')>;
 
     beforeEach(async () => {
-      shelljs = jest.mocked(await import('shelljs'));
+      shelljs = jest.mocked(await import('shelljs')).default;
 
       Object.defineProperty(process.versions, 'node', {
         configurable: true,

@@ -6,7 +6,7 @@ import {
   verboseLog,
   writeRepodogConfig,
 } from '@repodog/cli-utils';
-import * as enquirer from 'enquirer';
+import enquirer from 'enquirer';
 import { homedir } from 'node:os';
 import questions from '../questions.json';
 

@@ -55,7 +55,7 @@ describe('handler', () => {
     let shelljs: jest.Mocked<typeof import('shelljs')>;
 
     beforeEach(async () => {
-      shelljs = jest.mocked(await import('shelljs'));
+      shelljs = jest.mocked(await import('shelljs')).default;
     });
 
     it('should throw the correct error', async () => {
@@ -78,7 +78,7 @@ describe('handler', () => {
     let shelljs: jest.Mocked<typeof import('shelljs')>;
 
     beforeEach(async () => {
-      shelljs = jest.mocked(await import('shelljs'));
+      shelljs = jest.mocked(await import('shelljs')).default;
       const { extractCode } = jest.mocked(await import('./utils/extractCode.ts'));
       extractCode.mockReturnValueOnce(undefined); // eslint-disable-line unicorn/no-useless-undefined
     });
@@ -104,7 +104,7 @@ describe('handler', () => {
     let writeTestFile: jest.MockedFunction<typeof import('./utils/writeTestFile.ts')['writeTestFile']>;
 
     beforeEach(async () => {
-      shelljs = jest.mocked(await import('shelljs'));
+      shelljs = jest.mocked(await import('shelljs')).default;
       ({ writeTestFile } = jest.mocked(await import('./utils/writeTestFile.ts')));
     });
 

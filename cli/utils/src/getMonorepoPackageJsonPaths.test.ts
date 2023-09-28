@@ -13,7 +13,7 @@ describe('getMonorepoPackageJsonPaths', () => {
 
   beforeEach(async () => {
     jest.clearAllMocks();
-    glob = jest.mocked(await import('glob'));
+    glob = jest.mocked(await import('glob')).default;
 
     glob.sync.mockImplementation(pattern => {
       switch (pattern) {

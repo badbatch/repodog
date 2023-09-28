@@ -56,7 +56,7 @@ describe('publishMonorepoPackages', () => {
     let publishPackage: jest.Mocked<typeof import('./publishPackage.ts')['publishPackage']>;
 
     beforeEach(async () => {
-      shelljs = jest.mocked(await import('shelljs'));
+      shelljs = jest.mocked(await import('shelljs')).default;
       ({ publishPackage } = jest.mocked(await import('./publishPackage.ts')));
 
       publishPackage.mockImplementation(path => {

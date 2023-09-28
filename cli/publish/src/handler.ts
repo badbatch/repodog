@@ -2,7 +2,7 @@ import { calculateDuration, getPackageManager, isProjectMonorepo, setVerbose, ve
 import colors from 'ansi-colors';
 import { resolve } from 'node:path';
 import { performance } from 'node:perf_hooks';
-import * as shelljs from 'shelljs';
+import shelljs from 'shelljs';
 import type { PublishHandlerArguments } from './types.ts';
 import { publishMonorepoPackages } from './utils/publishMonorepoPackages.ts';
 import { publishPackage } from './utils/publishPackage.ts';

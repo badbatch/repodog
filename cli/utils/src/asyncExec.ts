@@ -1,4 +1,4 @@
-import * as shelljs from 'shelljs';
+import shelljs from 'shelljs';
 import { verboseLog } from './verboseLog.ts';
 
 export interface AsyncExecOptions {

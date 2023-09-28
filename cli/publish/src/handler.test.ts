@@ -30,7 +30,7 @@ describe('handler', () => {
     let shelljs: jest.Mocked<typeof import('shelljs')>;
 
     beforeEach(async () => {
-      shelljs = jest.mocked(await import('shelljs'));
+      shelljs = jest.mocked(await import('shelljs')).default;
       const { getPackageManager } = jest.mocked(await import('@repodog/cli-utils'));
       getPackageManager.mockReturnValueOnce(undefined); // eslint-disable-line unicorn/no-useless-undefined
     });
@@ -58,7 +58,7 @@ describe('handler', () => {
     let publishPackage: jest.Mocked<typeof import('./utils/publishPackage.ts')['publishPackage']>;
 
     beforeEach(async () => {
-      shelljs = jest.mocked(await import('shelljs'));
+      shelljs = jest.mocked(await import('shelljs')).default;
       ({ publishPackage } = jest.mocked(await import('./utils/publishPackage.ts')));
     });
 
@@ -86,7 +86,7 @@ describe('handler', () => {
     >;
 
     beforeEach(async () => {
-      shelljs = jest.mocked(await import('shelljs'));
+      shelljs = jest.mocked(await import('shelljs')).default;
       const { isProjectMonorepo } = jest.mocked(await import('@repodog/cli-utils'));
       isProjectMonorepo.mockReturnValue(true);
       ({ publishMonorepoPackages } = jest.mocked(await import('./utils/publishMonorepoPackages.ts')));
