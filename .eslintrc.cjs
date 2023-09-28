@@ -1,5 +1,11 @@
 module.exports = {
   extends: ['@repodog/eslint-config'],
+  overrides: [
+    {
+      extends: ['@repodog/eslint-config/jest.cjs'],
+      files: ['**/*.{spec,test}.*'],
+    },
+  ],
   parserOptions: {
     project: ['./tsconfig.json', './cli/*/tsconfig.json'],
     tsconfigRootDir: __dirname,
