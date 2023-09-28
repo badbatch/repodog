@@ -50,6 +50,7 @@ importers:
       eslint-plugin-import: ^2.27.5
       eslint-plugin-jest: ^27.2.1
       eslint-plugin-jsx-a11y: ^6.6.1
+      eslint-plugin-playwright: ^0.16.0
       eslint-plugin-prettier: ^4.2.1
       eslint-plugin-react: ^7.31.11
       eslint-plugin-react-hooks: ^4.6.0
@@ -120,6 +121,7 @@ importers:
       eslint-plugin-import: 2.27.5_hmezkefo75s2prddlqllgjxqc4
       eslint-plugin-jest: 27.2.1_idnmrqhca3dwqsbtd4btvbmo4m
       eslint-plugin-jsx-a11y: 6.6.1_eslint@8.29.0
+      eslint-plugin-playwright: 0.16.0_5bcuwkgpj6ywej2nexkwwkmale
       eslint-plugin-prettier: 4.2.1_5dgjrgoi64tgrv3zzn3walur3u
       eslint-plugin-react: 7.31.11_eslint@8.29.0
       eslint-plugin-react-hooks: 4.6.0_eslint@8.29.0
@@ -4193,6 +4195,19 @@ packages:
       language-tags: 1.0.6
       minimatch: 3.1.2
       semver: 6.3.0
+    dev: true
+
+  /eslint-plugin-playwright/0.16.0_5bcuwkgpj6ywej2nexkwwkmale:
+    resolution: {integrity: sha512-DcHpF0SLbNeh9MT4pMzUGuUSnJ7q5MWbP8sSEFIMS6j7Ggnduq8ghNlfhURgty4c1YFny7Ge9xYTO1FSAoV2Vw==}
+    peerDependencies:
+      eslint: '>=7'
+      eslint-plugin-jest: '>=25'
+    peerDependenciesMeta:
+      eslint-plugin-jest:
+        optional: true
+    dependencies:
+      eslint: 8.29.0
+      eslint-plugin-jest: 27.2.1_idnmrqhca3dwqsbtd4btvbmo4m
     dev: true
 
   /eslint-plugin-prettier/4.2.1_5dgjrgoi64tgrv3zzn3walur3u:
