@@ -30,7 +30,7 @@ describe('getChangedFiles', () => {
     ];
 
     beforeEach(async () => {
-      shelljs = jest.mocked(await import('shelljs')).default;
+      shelljs = jest.mocked(await import('shelljs'));
       const { addChangedFilesToCache, clearChangedFilesCache } = await import('./getChangedFiles.ts');
       clearChangedFilesCache();
       addChangedFilesToCache(cachedChangedFiles);
@@ -53,7 +53,7 @@ describe('getChangedFiles', () => {
     const cachedChangedFiles = ['.editorconfig', '.gitignore', 'package.json', 'pnpm-lock.yaml'];
 
     beforeEach(async () => {
-      shelljs = jest.mocked(await import('shelljs')).default;
+      shelljs = jest.mocked(await import('shelljs'));
 
       shelljs.exec.mockReturnValue({
         stdout: '.editorconfig\n.gitignore\npackage.json\npnpm-lock.yaml\n',

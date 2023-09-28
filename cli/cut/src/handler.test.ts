@@ -51,7 +51,7 @@ describe('cut', () => {
       let addCommitPushRelease: jest.Mocked<typeof import('@repodog/cli-utils')['addCommitPushRelease']>;
 
       beforeEach(async () => {
-        shelljs = jest.mocked(await import('shelljs')).default;
+        shelljs = jest.mocked(await import('shelljs'));
         let hasDryRunFlag: jest.Mocked<typeof import('@repodog/cli-utils')['hasDryRunFlag']>;
         ({ addCommitPushRelease, hasDryRunFlag } = jest.mocked(await import('@repodog/cli-utils')));
         hasDryRunFlag.mockReturnValueOnce(true);
@@ -75,7 +75,7 @@ describe('cut', () => {
       let addCommitPushRelease: jest.Mocked<typeof import('@repodog/cli-utils')['addCommitPushRelease']>;
 
       beforeEach(async () => {
-        shelljs = jest.mocked(await import('shelljs')).default;
+        shelljs = jest.mocked(await import('shelljs'));
         let hasDryRunFlag: jest.Mocked<typeof import('@repodog/cli-utils')['hasDryRunFlag']>;
         ({ addCommitPushRelease, hasDryRunFlag } = jest.mocked(await import('@repodog/cli-utils')));
         hasDryRunFlag.mockReturnValueOnce(true);
@@ -108,7 +108,7 @@ describe('cut', () => {
     let shelljs: jest.Mocked<typeof import('shelljs')>;
 
     beforeEach(async () => {
-      shelljs = jest.mocked(await import('shelljs')).default;
+      shelljs = jest.mocked(await import('shelljs'));
     });
 
     it('should log the correct error message', async () => {
@@ -133,7 +133,7 @@ describe('cut', () => {
     let shelljs: jest.Mocked<typeof import('shelljs')>;
 
     beforeEach(async () => {
-      shelljs = jest.mocked(await import('shelljs')).default;
+      shelljs = jest.mocked(await import('shelljs'));
     });
 
     it('should log the correct error message', async () => {
@@ -156,7 +156,7 @@ describe('cut', () => {
     let shelljs: jest.Mocked<typeof import('shelljs')>;
 
     beforeEach(async () => {
-      shelljs = jest.mocked(await import('shelljs')).default;
+      shelljs = jest.mocked(await import('shelljs'));
     });
 
     it('should log the correct error message', async () => {
@@ -179,7 +179,7 @@ describe('cut', () => {
     let shelljs: jest.Mocked<typeof import('shelljs')>;
 
     beforeEach(async () => {
-      shelljs = jest.mocked(await import('shelljs')).default;
+      shelljs = jest.mocked(await import('shelljs'));
       const { getPackageManager } = jest.mocked(await import('@repodog/cli-utils'));
       getPackageManager.mockReturnValueOnce(undefined); // eslint-disable-line unicorn/no-useless-undefined
     });
@@ -206,7 +206,7 @@ describe('cut', () => {
     let shelljs: jest.Mocked<typeof import('shelljs')>;
 
     beforeEach(async () => {
-      shelljs = jest.mocked(await import('shelljs')).default;
+      shelljs = jest.mocked(await import('shelljs'));
       const { haveFilesChanged } = jest.mocked(await import('@repodog/cli-utils'));
       haveFilesChanged.mockReturnValueOnce(false);
     });
@@ -231,7 +231,7 @@ describe('cut', () => {
     let shelljs: jest.Mocked<typeof import('shelljs')>;
 
     beforeEach(async () => {
-      shelljs = jest.mocked(await import('shelljs')).default;
+      shelljs = jest.mocked(await import('shelljs'));
       const { getNewVersion } = jest.mocked(await import('@repodog/cli-utils'));
       getNewVersion.mockReturnValueOnce(null); // eslint-disable-line unicorn/no-null
     });
@@ -420,7 +420,7 @@ describe('cut', () => {
     let addCommitPushRelease: jest.Mocked<typeof import('@repodog/cli-utils')['addCommitPushRelease']>;
 
     beforeEach(async () => {
-      shelljs = jest.mocked(await import('shelljs')).default;
+      shelljs = jest.mocked(await import('shelljs'));
       ({ addCommitPushRelease, getChangedFiles } = jest.mocked(await import('@repodog/cli-utils')));
       ({ versionPackage } = jest.mocked(await import('./utils/versionPackage.ts')));
     });
@@ -471,7 +471,7 @@ describe('cut', () => {
     let addCommitPushRelease: jest.Mocked<typeof import('@repodog/cli-utils')['addCommitPushRelease']>;
 
     beforeEach(async () => {
-      shelljs = jest.mocked(await import('shelljs')).default;
+      shelljs = jest.mocked(await import('shelljs'));
       let isProjectMonorepo;
       ({ addCommitPushRelease, isProjectMonorepo } = jest.mocked(await import('@repodog/cli-utils')));
       isProjectMonorepo.mockReturnValue(true);
@@ -525,7 +525,7 @@ describe('cut', () => {
     let addCommitPushRelease: jest.Mocked<typeof import('@repodog/cli-utils')['addCommitPushRelease']>;
 
     beforeEach(async () => {
-      shelljs = jest.mocked(await import('shelljs')).default;
+      shelljs = jest.mocked(await import('shelljs'));
       ({ addCommitPushRelease } = jest.mocked(await import('@repodog/cli-utils')));
     });
 

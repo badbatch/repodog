@@ -1,7 +1,7 @@
 import { type PackageManager, getMonorepoPackageMeta, verboseLog } from '@repodog/cli-utils';
 import colors from 'ansi-colors';
 import { parse, resolve } from 'node:path';
-import shelljs from 'shelljs';
+import * as shelljs from 'shelljs';
 import { publishPackage } from './publishPackage.ts';
 
 export const publishMonorepoPackages = (packageManager: PackageManager) => {

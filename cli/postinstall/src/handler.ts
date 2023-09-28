@@ -1,6 +1,6 @@
 import { calculateDuration, getPackageManager, setVerbose, verboseLog } from '@repodog/cli-utils';
 import colors from 'ansi-colors';
-import shelljs from 'shelljs';
+import * as shelljs from 'shelljs';
 import { type PostInstallHandlerArguments, PostInstallSubType, PostInstallType } from './types.ts';
 import { isValidPostInstallSubType } from './utils/isValidPostInstallSubType.ts';
 import { isValidPostInstallType } from './utils/isValidPostInstallType.ts';

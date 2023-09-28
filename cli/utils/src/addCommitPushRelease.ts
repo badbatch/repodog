@@ -1,4 +1,4 @@
-import shelljs from 'shelljs';
+import * as shelljs from 'shelljs';
 
 export const addCommitPushRelease = (version: string) => {
   shelljs.exec('git add --all');

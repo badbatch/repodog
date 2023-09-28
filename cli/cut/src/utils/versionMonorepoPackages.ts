@@ -10,7 +10,7 @@ import {
 } from '@repodog/cli-utils';
 import colors from 'ansi-colors';
 import { parse, sep } from 'node:path';
-import shelljs from 'shelljs';
+import * as shelljs from 'shelljs';
 import { versionPackage } from './versionPackage.ts';
 
 export const versionMonorepoPackages = ({

@@ -23,9 +23,7 @@ const answers = {
 };
 
 jest.unstable_mockModule('enquirer', () => ({
-  default: {
-    prompt: jest.fn().mockImplementation(() => Promise.resolve(answers)),
-  },
+  prompt: jest.fn().mockImplementation(() => Promise.resolve(answers)),
 }));
 
 jest.unstable_mockModule('node:os', () => ({
@@ -42,7 +40,7 @@ describe('handleGlobalConfigSetup', () => {
 
   beforeEach(async () => {
     jest.clearAllMocks();
-    ({ prompt } = jest.mocked((await import('enquirer')).default)); // eslint-disable-line unicorn/no-await-expression-member
+    ({ prompt } = jest.mocked(await import('enquirer')));
     ({ writeRepodogConfig } = jest.mocked(await import('@repodog/cli-utils')));
   });
 

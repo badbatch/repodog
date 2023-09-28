@@ -27,7 +27,7 @@ import colors from 'ansi-colors';
 import { writeFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { performance } from 'node:perf_hooks';
-import shelljs from 'shelljs';
+import * as shelljs from 'shelljs';
 import type { CutHandlerArguments } from './types.ts';
 import { versionMonorepoPackages } from './utils/versionMonorepoPackages.ts';
 import { versionPackage } from './utils/versionPackage.ts';
