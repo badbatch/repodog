@@ -1,3 +1,9 @@
+#### 1.1.8 (2023-09-28)
+
+##### New Features
+
+*  add playwright eslint config (e113c92c)
+
 #### 1.1.7 (2023-09-28)
 
 ##### Documentation Changes
