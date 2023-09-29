@@ -1,3 +1,20 @@
+#### 1.1.9 (2023-09-29)
+
+##### Chores
+
+*  update package json linting (bd78b972)
+
+##### Other Changes
+
+*  remove synthetic default imports""" (7d2cf332)
+*  remove synthetic default imports"" (602a89c8)
+*  remove synthetic default imports" (1951e044)
+
+##### Refactors
+
+*  move to lodash-es (5d916b61)
+*  remove synthetic default imports (4a8d985e)
+
 #### 1.1.8 (2023-09-28)
 
 ##### New Features
