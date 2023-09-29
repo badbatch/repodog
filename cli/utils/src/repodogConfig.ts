@@ -1,4 +1,4 @@
-import merge from 'lodash/merge.js';
+import { merge } from 'lodash-es';
 import { existsSync, readFileSync, writeFileSync } from 'node:fs';
 import { homedir } from 'node:os';
 import { resolve } from 'node:path';
