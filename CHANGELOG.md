@@ -1,3 +1,9 @@
+#### 1.1.10 (2023-10-11)
+
+##### Refactors
+
+*  break out eslint configs and add jasmine and webpack (781fac64)
+
 #### 1.1.9 (2023-09-29)
 
 ##### Chores
