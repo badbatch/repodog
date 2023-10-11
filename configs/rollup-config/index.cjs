@@ -11,8 +11,8 @@ const copy = require('rollup-plugin-copy');
 const sourcemaps = require('rollup-plugin-sourcemaps');
 
 const { NODE_ENV } = process.env;
-const isProductionEnvironment = NODE_ENV === 'production' || NODE_ENV === 'prod';
-const packageDirectory = process.cwd();
+const isProdEnv = NODE_ENV === 'production' || NODE_ENV === 'prod';
+const packageDir = process.cwd();
 const external = id => !id.startsWith('.') && !id.startsWith('/');
 
 const sourcemapPathTransform = sourcePath => {
@@ -20,7 +20,7 @@ const sourcemapPathTransform = sourcePath => {
     return sourcePath;
   }
 
-  return sourcePath.replace('../../src', `../${basename(packageDirectory)}/src/`);
+  return sourcePath.replace('../../src', `../${basename(packageDir)}/src/`);
 };
 
 module.exports = (config = {}) => {
@@ -44,35 +44,35 @@ module.exports = (config = {}) => {
     plugins.push(copy(config.copy));
   }
 
-  if (isProductionEnvironment) {
+  if (isProdEnv) {
     plugins.push(
       terser(),
       analyzer({
         writeTo: analysis => {
-          if (!existsSync(`${packageDirectory}/dist`)) {
-            mkdirSync(`${packageDirectory}/dist`);
+          if (!existsSync(`${packageDir}/dist`)) {
+            mkdirSync(`${packageDir}/dist`);
           }
 
-          writeFileSync(`${packageDirectory}/dist/production.analysis.txt`, analysis);
+          writeFileSync(`${packageDir}/dist/production.analysis.txt`, analysis);
         },
       })
     );
   }
 
-  if (!isProductionEnvironment) {
+  if (!isProdEnv) {
     plugins.push(sourcemaps());
   }
 
   return {
     external,
-    input: `${packageDirectory}/src/index`,
+    input: `${packageDir}/src/index`,
     onwarn: ({ code, message }) => {
       if (code !== 'THIS_IS_UNDEFIEND') {
         console.error(message); // eslint-disable-line no-console
       }
     },
     output: {
-      file: `${packageDirectory}/dist/main/index.mjs`,
+      file: `${packageDir}/dist/main/index.mjs`,
       format: 'esm',
       sourcemap: true,
       sourcemapPathTransform,

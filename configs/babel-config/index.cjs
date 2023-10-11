@@ -8,18 +8,18 @@ module.exports = api => {
   }
 
   const isDebug = DEBUG === 'true';
-  const isJsEnvironmentWeb = JS_ENV === 'web';
-  const isProductionEnvironment = NODE_ENV === 'prod' || NODE_ENV === 'production';
-  const isTestEnvironment = TEST_ENV === 'true';
+  const isJsEnvWeb = JS_ENV === 'web';
+  const isProdEnv = NODE_ENV === 'prod' || NODE_ENV === 'production';
+  const isTestEnv = TEST_ENV === 'true';
   const ignore = ['node_modules/**', '**/node_modules/**'];
 
-  if (!isTestEnvironment) {
+  if (!isTestEnv) {
     ignore.push('**/*.spec.*', '**/*.test.*', '**/__testUtils__/**', '**/__tests__/**', '**/__mocks__/**');
   }
 
   let targets;
 
-  if (isJsEnvironmentWeb) {
+  if (isJsEnvWeb) {
     targets = isDebug ? 'last 1 Chrome version' : 'defaults';
   } else {
     targets = isDebug ? 'current node' : 'maintained node versions';
@@ -56,7 +56,7 @@ module.exports = api => {
     [
       '@babel/preset-react',
       {
-        development: !isProductionEnvironment,
+        development: !isProdEnv,
         runtime: 'automatic',
         useBuiltIns: true,
         useSpread: true,

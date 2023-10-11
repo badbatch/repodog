@@ -1,15 +1,15 @@
-const packageDirectory = process.cwd();
+const packageDir = process.cwd();
 let packageName;
 
 try {
-  packageName = require(`${packageDirectory}/package.json`).name;
+  packageName = require(`${packageDir}/package.json`).name;
 } catch {
   // no catch
 }
 
 const { DEBUG, JS_ENV } = process.env;
 const isDebug = DEBUG === 'true';
-const isJsEnvironmentWeb = JS_ENV === 'web';
+const isJsEnvWeb = JS_ENV === 'web';
 process.env.TEST_ENV = 'true';
 
 const moduleNameMapper = {};
@@ -18,7 +18,7 @@ const transform = {
   '^.+\\.(mjs|cjs|js|jsx|ts|tsx)$': `${__dirname}/babelTransformer.cjs`,
 };
 
-if (isJsEnvironmentWeb) {
+if (isJsEnvWeb) {
   moduleNameMapper['^.+\\.css$'] = 'identity-obj-proxy';
   transform['^.+\\.css$'] = `${__dirname}/cssTransformer.cjs`;
   transform['^(?!.*\\.(css|mjs|cjs|js|jsx|json|ts|tsx)$)'] = `${__dirname}/fileTransformer.cjs`;
@@ -57,8 +57,8 @@ module.exports = {
   extensionsToTreatAsEsm: ['.jsx', '.ts', '.tsx'],
   moduleFileExtensions: ['mjs', 'cjs', 'js', 'jsx', 'json', 'ts', 'tsx'],
   moduleNameMapper,
-  rootDir: packageDirectory,
-  testEnvironment: isJsEnvironmentWeb ? 'jsdom' : 'node',
+  rootDir: packageDir,
+  testEnvironment: isJsEnvWeb ? 'jsdom' : 'node',
   testMatch,
   testPathIgnorePatterns: [
     '/build/',

@@ -3,14 +3,7 @@ module.exports = {
     browser: true,
     node: true,
   },
-  extends: [
-    'eslint:recommended',
-    'plugin:import/recommended',
-    'plugin:jsx-a11y/recommended',
-    'plugin:react/recommended',
-    'plugin:unicorn/recommended',
-    'prettier',
-  ],
+  extends: ['eslint:recommended', 'plugin:import/recommended', 'plugin:unicorn/recommended', 'prettier'],
   overrides: [
     {
       extends: [
@@ -94,22 +87,7 @@ module.exports = {
     },
   ],
   parser: '@babel/eslint-parser',
-  parserOptions: {
-    ecmaFeatures: {
-      jsx: true,
-    },
-  },
-  plugins: [
-    'import',
-    'jsx-a11y',
-    'react',
-    'react-hooks',
-    'sort-class-members',
-    'sort-destructure-keys',
-    'sort-keys-fix',
-    'unicorn',
-    'prettier',
-  ],
+  plugins: ['import', 'sort-class-members', 'sort-destructure-keys', 'sort-keys-fix', 'unicorn', 'prettier'],
   rules: {
     'import/extensions': [2, 'ignorePackages'],
     'import/namespace': 0,
@@ -181,32 +159,6 @@ module.exports = {
       { blankLine: 'always', next: '*', prev: 'break' },
     ],
     'prettier/prettier': 2,
-    'react/jsx-filename-extension': [2, { extensions: ['.jsx', '.tsx'] }],
-    'react/jsx-sort-props': [
-      2,
-      {
-        callbacksLast: false,
-        ignoreCase: false,
-        noSortAlphabetically: false,
-        reservedFirst: false,
-        shorthandFirst: false,
-        shorthandLast: false,
-      },
-    ],
-    'react/jsx-wrap-multilines': [
-      2,
-      {
-        arrow: 'parens-new-line',
-        assignment: 'parens-new-line',
-        condition: 'parens-new-line',
-        declaration: 'parens-new-line',
-        logical: 'parens-new-line',
-        prop: 'ignore',
-        return: 'parens-new-line',
-      },
-    ],
-    'react-hooks/exhaustive-deps': 2,
-    'react-hooks/rules-of-hooks': 2,
     'sort-class-members/sort-class-members': [
       2,
       {
@@ -272,6 +224,8 @@ module.exports = {
           /.*args.*/i,
           /.*db.*/i,
           /.*dev.*/i,
+          /.*dir.*/i,
+          /.*env.*/i,
           /.*params.*/i,
           /.*obj.*/i,
           /.*prop.*/i,
@@ -279,10 +233,5 @@ module.exports = {
         ],
       },
     ],
-  },
-  settings: {
-    react: {
-      version: '18',
-    },
   },
 };
