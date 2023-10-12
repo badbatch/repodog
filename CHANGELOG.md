@@ -1,3 +1,9 @@
+#### 1.1.12 (2023-10-12)
+
+##### New Features
+
+*  add to abbrev whitelist (9a952ca1)
+
 #### 1.1.11 (2023-10-12)
 
 ##### Bug Fixes
