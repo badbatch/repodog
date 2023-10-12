@@ -7,6 +7,6 @@ module.exports = ({ testsPath = 'tests/browser' } = {}) => ({
   entry: glob.sync(`./${testsPath}/*.test.ts`).map(path => `./${path}`),
   output: {
     filename: 'index.js',
-    path: path.resolve(__dirname, `${testsPath}/dist`),
+    path: path.resolve(process.cwd(), `${testsPath}/dist`),
   },
 });
