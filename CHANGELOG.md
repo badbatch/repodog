@@ -1,3 +1,9 @@
+#### 1.1.11 (2023-10-12)
+
+##### Bug Fixes
+
+*  path in webpack output (bb7c430a)
+
 #### 1.1.10 (2023-10-11)
 
 ##### Refactors
