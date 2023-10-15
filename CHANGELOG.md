@@ -1,3 +1,9 @@
+#### 1.1.13 (2023-10-15)
+
+##### New Features
+
+*  add fetch polyfil to jest setup (88b3c287)
+
 #### 1.1.12 (2023-10-12)
 
 ##### New Features
