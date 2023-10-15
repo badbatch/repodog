@@ -1,3 +1,9 @@
+#### 1.1.14 (2023-10-15)
+
+##### Chores
+
+*  add logging for postinstall script (a3c17ccf)
+
 #### 1.1.13 (2023-10-15)
 
 ##### New Features
