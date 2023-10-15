@@ -1,5 +1,5 @@
 ---
-to: .github/workflow/build-and-publish.yml
+to: .github/workflows/build-and-publish.yml
 ---
 name: Build and publish
 

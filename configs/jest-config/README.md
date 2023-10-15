@@ -40,8 +40,8 @@ module.exports = {
 ```
 
 ```javascript
-// jest.setup.cjs
-require('@repodog/jest-config/setup.cjs');
+// jest.setup.mjs
+import '@repodog/jest-config/setup.mjs';
 ```
 
 ```json
@@ -71,7 +71,7 @@ require('@repodog/jest-config/setup.cjs');
 
 `DEBUG` = `'true' || 'false'`
 
-Changes `testMatch` to cover all test files and disables the Jest timeout (if you are requiring the `@repodog/jest-config/setup.cjs` within your setup file). These are useful to set when debugging a file in IDE. Default `'false'`.
+Changes `testMatch` to cover all test files and disables the Jest timeout (if you are requiring the `@repodog/jest-config/setup.mjs` within your setup file). These are useful to set when debugging a file in IDE. Default `'false'`.
 
 `JS_ENV` = `'web' || 'node'`
 

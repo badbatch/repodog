@@ -1,6 +1,6 @@
 ---
 to: package.json
-sh: "<%= packageManager %> install && <%= packageManager %> add -D @repodog/cli @repodog/babel-config @repodog/commitlint-config @repodog/eslint-config @repodog/jest-config @repodog/markdownlint-config @repodog/prettier-config @repodog/rollup-config @repodog/syncpack-config @repodog/ts-config @repodog/cli && <%= packageManager %> run repodog -- postinstall <%= newType %> <%= newSubType %>"
+sh: "<%= packageManager %> install && <%= packageManager %> add -D @repodog/cli @repodog/babel-config @repodog/commitlint-config @repodog/eslint-config @repodog/eslint-config-jest @repodog/jest-config @repodog/markdownlint-config @repodog/prettier-config @repodog/rollup-config @repodog/syncpack-config @repodog/ts-config @repodog/cli && <%= packageManager %> run repodog -- postinstall <%= newType %> <%= newSubType %>"
 ---
 {
   "name": "<%= name %>",
@@ -37,18 +37,18 @@ sh: "<%= packageManager %> install && <%= packageManager %> add -D @repodog/cli 
     "type-check": "tsc --noEmit",
     "validate": "syncpack format && syncpack lint-semver-ranges && pnpm run build && pnpm run lint && pnpm run type-check && pnpm run test"
   },
-  "dependencies": {
-    "lodash-es": "^4.17.21"
-  },
+  "dependencies": {},
   "peerDependencies": {
     "@babel/runtime": "<8",
-    "core-js": "<4"
+    "core-js": "<4",
+    "lodash-es": "<5"
   },
   "devDependencies": {
     "@types/lodash-es": "^4.14.191",
     "@types/node": "^18.11.18",
     "core-js": "^3.27.2",
     "del-cli": "^3.0.0",
-    "generate-changelog": "^1.8.0"
+    "generate-changelog": "^1.8.0",
+    "lodash-es": "^4.17.21"
   }
 }
