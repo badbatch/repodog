@@ -1,3 +1,9 @@
+#### 1.1.15 (2023-10-15)
+
+##### New Features
+
+*  use library to load package json from npm reg (ba2aab8a)
+
 #### 1.1.14 (2023-10-15)
 
 ##### Chores
