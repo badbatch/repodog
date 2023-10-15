@@ -1,6 +1,6 @@
 ---
 to: package.json
-sh: "<%= packageManager %> install && <%= packageManager %> add -D @repodog/cli @repodog/babel-config @repodog/commitlint-config @repodog/eslint-config @repodog/eslint-config-jest @repodog/jest-config @repodog/markdownlint-config @repodog/prettier-config @repodog/rollup-config @repodog/syncpack-config @repodog/ts-config @repodog/cli && <%= packageManager %> run repodog -- postinstall <%= newType %> <%= newSubType %>"
+sh: "<%= packageManager %> install && <%= packageManager %> add -D @repodog/cli @repodog/babel-config @repodog/commitlint-config @repodog/eslint-config @repodog/eslint-config-jest @repodog/jest-config @repodog/markdownlint-config @repodog/prettier-config @repodog/rollup-config @repodog/syncpack-config @repodog/ts-config && <%= packageManager %> run repodog -- postinstall <%= newType %> <%= newSubType %>"
 ---
 {
   "name": "<%= name %>",

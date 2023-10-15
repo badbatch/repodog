@@ -3,6 +3,7 @@ import { jest } from '@jest/globals';
 jest.unstable_mockModule('@repodog/cli-utils', () => ({
   asyncExec: jest.fn(),
   getPackageManager: jest.fn().mockReturnValue('pnpm'),
+  verboseLog: jest.fn(),
 }));
 
 jest.unstable_mockModule('./getRepoDogDevDependencyNames.ts', () => ({
