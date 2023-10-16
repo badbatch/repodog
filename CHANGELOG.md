@@ -1,3 +1,9 @@
+#### 1.1.17 (2023-10-16)
+
+##### Bug Fixes
+
+*  set carat versions when adding peer deps (b0787295)
+
 #### 1.1.16 (2023-10-16)
 
 ##### Bug Fixes
