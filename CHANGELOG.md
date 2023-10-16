@@ -1,3 +1,9 @@
+#### 1.1.16 (2023-10-16)
+
+##### Bug Fixes
+
+*  postinstall peer dependency defensive coding (49a536fd)
+
 #### 1.1.15 (2023-10-15)
 
 ##### New Features
