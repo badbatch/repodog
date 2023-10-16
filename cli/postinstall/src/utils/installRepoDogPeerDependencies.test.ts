@@ -51,11 +51,9 @@ describe('installRepoDogPeerDependencies', () => {
       const { installRepoDogPeerDependencies } = await import('./installRepoDogPeerDependencies.ts');
       await installRepoDogPeerDependencies();
 
-      expect(asyncExec.mock.calls).toEqual([
-        ['pnpm add -D alpha-0@"<5" alpha-1@"<10" alpha-2@"<3"'],
-        ['pnpm add -D bravo-0@"<1" bravo-1@"<4"'],
-        ['pnpm add -D charlie-0@"<7"'],
-      ]);
+      expect(asyncExec).toHaveBeenCalledWith(
+        'pnpm add -D alpha-0@"<5" alpha-1@"<10" alpha-2@"<3" bravo-0@"<1" bravo-1@"<4" charlie-0@"<7"'
+      );
     });
   });
 });

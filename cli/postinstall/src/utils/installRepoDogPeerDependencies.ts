@@ -7,19 +7,23 @@ export const installRepoDogPeerDependencies = async () => {
   verboseLog('Getting @repodog devDependency names');
   const names = getRepoDogDevDependencyNames();
   verboseLog(`@repodog devDependency names: ${names.length > 0 ? names.join(', ') : 'none'}`);
-  const runners: ReturnType<typeof import('@repodog/cli-utils')['asyncExec']>[] = [];
+  const toInstall: string[] = [];
 
   for (const name of names) {
     verboseLog(`Getting peerDependencies to install for ${name}`);
     const peerDependenciesToIntall = await getPeerDependenciesToInstall(name);
 
-    const cmd = `${packageManager} add -D ${peerDependenciesToIntall
-      .map(([name, semver]) => `${name}@"${semver}"`)
-      .join(' ')}`;
-
-    verboseLog(`Executing cmd: "${cmd}`);
-    runners.push(asyncExec(cmd));
+    if (peerDependenciesToIntall.length > 0) {
+      const peerDependencies = peerDependenciesToIntall.map(([name, semver]) => `${name}@"${semver}"`);
+      toInstall.push(...peerDependencies);
+    }
   }
 
-  return Promise.allSettled(runners);
+  if (toInstall.length === 0) {
+    return;
+  }
+
+  const cmd = `${packageManager} add -D ${toInstall.join(' ')}`;
+  verboseLog(`Executing cmd: "${cmd}`);
+  return asyncExec(cmd);
 };

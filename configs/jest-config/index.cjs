@@ -70,5 +70,6 @@ module.exports = {
     '/reports/',
     '/__snapshots__/',
   ],
+  testTimeout: isDebug ? 999_999 : 5000,
   transform,
 };

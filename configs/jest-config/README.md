@@ -71,7 +71,7 @@ import '@repodog/jest-config/setup.mjs';
 
 `DEBUG` = `'true' || 'false'`
 
-Changes `testMatch` to cover all test files and disables the Jest timeout (if you are requiring the `@repodog/jest-config/setup.mjs` within your setup file). These are useful to set when debugging a file in IDE. Default `'false'`.
+Changes `testMatch` to cover all test files and disables the Jest timeout. These are useful to set when debugging a file in IDE. Default `'false'`.
 
 `JS_ENV` = `'web' || 'node'`
 
