@@ -1,13 +1,19 @@
 import { verboseLog } from '@repodog/cli-utils';
 import getPackageJsonFromNpmRegistry from 'package-json';
 import { type PackageJson } from 'type-fest';
+import { getLatestCompatibleVersion } from './getLatestCompatibleVersion.ts';
 
 export const getPeerDependenciesToInstall = async (name: string) => {
   const nameAndVersion: [string, string][] = [];
 
   try {
     verboseLog(`Getting ${name} packageJson from npm registry`);
-    const packageJson = (await getPackageJsonFromNpmRegistry(name)) as PackageJson;
+    const packageJson = (await getPackageJsonFromNpmRegistry(name)) as PackageJson | undefined;
+
+    if (!packageJson) {
+      return nameAndVersion;
+    }
+
     verboseLog(`${name} packageJson:\n${JSON.stringify(packageJson, undefined, 2)}`);
 
     if (!packageJson.peerDependencies) {
@@ -16,10 +22,14 @@ export const getPeerDependenciesToInstall = async (name: string) => {
     }
 
     for (const peer in packageJson.peerDependencies) {
-      const version = packageJson.peerDependencies[peer];
+      const semver = packageJson.peerDependencies[peer];
 
-      if (version) {
-        nameAndVersion.push([peer, version]);
+      if (semver) {
+        const compatibleVersion = await getLatestCompatibleVersion(peer, semver);
+
+        if (compatibleVersion) {
+          nameAndVersion.push([peer, compatibleVersion]);
+        }
       }
     }
 

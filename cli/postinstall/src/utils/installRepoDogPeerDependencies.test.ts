@@ -45,6 +45,10 @@ describe('installRepoDogPeerDependencies', () => {
     });
   });
 
+  describe('when repodog devDependencies do not have peerDependencies', () => {
+    it.todo('asyncExec should not be called');
+  });
+
   describe('when there are repodog devDependency names', () => {
     it('should call asyncExec with the correct arguments', async () => {
       const { asyncExec } = jest.mocked(await import('@repodog/cli-utils'));
