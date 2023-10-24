@@ -223,6 +223,7 @@ module.exports = {
           /.*arg.*/i,
           /.*args.*/i,
           /.*db.*/i,
+          /.*def.*/i,
           /.*dev.*/i,
           /.*dir.*/i,
           /.*env.*/i,
