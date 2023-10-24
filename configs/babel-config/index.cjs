@@ -36,8 +36,8 @@ module.exports = api => {
         regenerator: true,
       },
     ],
-    '@babel/plugin-proposal-class-properties',
-    '@babel/plugin-proposal-export-namespace-from',
+    '@babel/plugin-transform-class-properties',
+    '@babel/plugin-transform-export-namespace-from',
     'babel-plugin-codegen',
     'babel-plugin-macros',
   ];
