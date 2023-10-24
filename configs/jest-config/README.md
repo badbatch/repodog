@@ -39,11 +39,6 @@ module.exports = {
 };
 ```
 
-```javascript
-// jest.setup.mjs
-import '@repodog/jest-config/setup.mjs';
-```
-
 ```json
 // .vscode/launch.json
 {

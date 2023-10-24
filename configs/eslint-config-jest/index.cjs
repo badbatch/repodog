@@ -25,7 +25,7 @@ module.exports = {
       },
     ],
     'jest/no-conditional-in-test': 2,
-    'jest/no-duplicate-hooks': 2,
+    'jest/no-duplicate-hooks': 0,
     'jest/no-test-return-statement': 2,
     'jest/prefer-called-with': 2,
     'jest/prefer-comparison-matcher': 2,

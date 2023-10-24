@@ -23,10 +23,6 @@
     "jest": "<30",
     "jest-environment-jsdom": "<30",
     "jest-environment-node": "<30",
-    "node-fetch": "<4",
     "suppress-experimental-warnings": "<2"
-  },
-  "devDependencies": {
-    "node-fetch": "^3.3.2"
   }
 }
