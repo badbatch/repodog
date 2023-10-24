@@ -1,3 +1,14 @@
+#### 1.1.18 (2023-10-24)
+
+##### New Features
+
+*  add to abbrev list (1328243b)
+
+##### Refactors
+
+*  swap babel proposal plugins for shipped ones (f601b357)
+*  remove setup from jest config (9592af8c)
+
 #### 1.1.17 (2023-10-16)
 
 ##### Bug Fixes
