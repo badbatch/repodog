@@ -1,3 +1,9 @@
+#### 1.1.19 (2023-10-25)
+
+##### New Features
+
+*  add prefer arrow func rule (202cf259)
+
 #### 1.1.18 (2023-10-24)
 
 ##### New Features
