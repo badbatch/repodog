@@ -170,7 +170,7 @@ module.exports = {
       2,
       {
         allowStandaloneDeclarations: false,
-        classPropertiesAllowed: true,
+        classPropertiesAllowed: false,
         disallowPrototype: true,
         singleReturnOnly: false,
       },
