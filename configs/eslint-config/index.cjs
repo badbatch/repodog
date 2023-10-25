@@ -87,7 +87,15 @@ module.exports = {
     },
   ],
   parser: '@babel/eslint-parser',
-  plugins: ['import', 'sort-class-members', 'sort-destructure-keys', 'sort-keys-fix', 'unicorn', 'prettier'],
+  plugins: [
+    'import',
+    'prefer-arrow',
+    'sort-class-members',
+    'sort-destructure-keys',
+    'sort-keys-fix',
+    'unicorn',
+    'prettier',
+  ],
   rules: {
     'import/extensions': [2, 'ignorePackages'],
     'import/namespace': 0,
@@ -157,6 +165,15 @@ module.exports = {
       { blankLine: 'always', next: 'case', prev: '*' },
       { blankLine: 'always', next: 'default', prev: '*' },
       { blankLine: 'always', next: '*', prev: 'break' },
+    ],
+    'prefer-arrow/prefer-arrow-functions': [
+      2,
+      {
+        allowStandaloneDeclarations: false,
+        classPropertiesAllowed: true,
+        disallowPrototype: true,
+        singleReturnOnly: false,
+      },
     ],
     'prettier/prettier': 2,
     'sort-class-members/sort-class-members': [

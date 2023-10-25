@@ -1,8 +1,8 @@
 module.exports = {
-  getCacheKey() {
+  getCacheKey: () => {
     return 'cssTransformer';
   },
-  process() {
+  process: () => {
     return 'module.exports = {};';
   },
 };

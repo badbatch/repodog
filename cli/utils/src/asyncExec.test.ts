@@ -13,9 +13,9 @@ describe('asyncExec', () => {
     beforeEach(async () => {
       const shelljs = jest.mocked(await import('shelljs')).default;
 
-      shelljs.exec.mockImplementationOnce(function (_cmd: string, callback: ExecCallback) {
+      shelljs.exec.mockImplementationOnce(((_cmd: string, callback: ExecCallback) => {
         callback(0, 'success', '');
-      } as ExecFunction);
+      }) as ExecFunction);
     });
 
     it('should resolve the stdout', async () => {
@@ -29,9 +29,9 @@ describe('asyncExec', () => {
       beforeEach(async () => {
         const shelljs = jest.mocked(await import('shelljs')).default;
 
-        shelljs.exec.mockImplementationOnce(function (_cmd: string, callback: ExecCallback) {
+        shelljs.exec.mockImplementationOnce(((_cmd: string, callback: ExecCallback) => {
           callback(1, '', 'failure');
-        } as ExecFunction);
+        }) as ExecFunction);
       });
 
       it('should reject with an error with stderr', async () => {
@@ -44,9 +44,9 @@ describe('asyncExec', () => {
       beforeEach(async () => {
         const shelljs = jest.mocked(await import('shelljs')).default;
 
-        shelljs.exec.mockImplementationOnce(function (_cmd: string, callback: ExecCallback) {
+        shelljs.exec.mockImplementationOnce(((_cmd: string, callback: ExecCallback) => {
           callback(1, '', 'failure');
-        } as ExecFunction);
+        }) as ExecFunction);
       });
 
       it('should resolve the stdout', async () => {

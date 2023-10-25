@@ -50,6 +50,7 @@ importers:
       eslint-import-resolver-typescript: ^3.5.2
       eslint-plugin-import: ^2.27.5
       eslint-plugin-jest: ^27.2.1
+      eslint-plugin-prefer-arrow: ^1.2.3
       eslint-plugin-prettier: ^4.2.1
       eslint-plugin-sort-class-members: ^1.16.0
       eslint-plugin-sort-destructure-keys: ^1.4.0
@@ -118,6 +119,7 @@ importers:
       eslint-import-resolver-typescript: 3.5.2_vxas42t2ljmgdq66uut5smywfu
       eslint-plugin-import: 2.27.5_hmezkefo75s2prddlqllgjxqc4
       eslint-plugin-jest: 27.2.1_idnmrqhca3dwqsbtd4btvbmo4m
+      eslint-plugin-prefer-arrow: 1.2.3_eslint@8.29.0
       eslint-plugin-prettier: 4.2.1_5dgjrgoi64tgrv3zzn3walur3u
       eslint-plugin-sort-class-members: 1.16.0_eslint@8.29.0
       eslint-plugin-sort-destructure-keys: 1.4.0_eslint@8.29.0
@@ -4588,6 +4590,14 @@ packages:
     transitivePeerDependencies:
       - supports-color
       - typescript
+    dev: true
+
+  /eslint-plugin-prefer-arrow/1.2.3_eslint@8.29.0:
+    resolution: {integrity: sha512-J9I5PKCOJretVuiZRGvPQxCbllxGAV/viI20JO3LYblAodofBxyMnZAJ+WGeClHgANnSJberTNoFWWjrWKBuXQ==}
+    peerDependencies:
+      eslint: '>=2.0.0'
+    dependencies:
+      eslint: 8.29.0
     dev: true
 
   /eslint-plugin-prettier/4.2.1_5dgjrgoi64tgrv3zzn3walur3u:
