@@ -1,3 +1,9 @@
+#### 1.1.20 (2023-10-25)
+
+##### Bug Fixes
+
+*  update prefer arrow rule to omit class props (2303b992)
+
 #### 1.1.19 (2023-10-25)
 
 ##### New Features
