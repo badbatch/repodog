@@ -1,3 +1,9 @@
+#### 1.1.21 (2023-10-26)
+
+##### Bug Fixes
+
+*  allow leading underscore in variable names (75e23500)
+
 #### 1.1.20 (2023-10-25)
 
 ##### Bug Fixes
