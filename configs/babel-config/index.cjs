@@ -26,6 +26,7 @@ module.exports = api => {
   }
 
   const plugins = [
+    ['@babel/plugin-proposal-decorators', { legacy: true }],
     '@babel/plugin-syntax-dynamic-import',
     '@babel/plugin-syntax-import-assertions',
     [
