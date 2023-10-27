@@ -1,3 +1,9 @@
+#### 1.1.22 (2023-10-27)
+
+##### Bug Fixes
+
+*  add plugin-proposal-decorators (a7540648)
+
 #### 1.1.21 (2023-10-26)
 
 ##### Bug Fixes
