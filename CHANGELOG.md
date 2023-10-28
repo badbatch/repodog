@@ -1,3 +1,9 @@
+#### 1.1.23 (2023-10-28)
+
+##### New Features
+
+*  add ctx to abbrev whitelist (286c81f3)
+
 #### 1.1.22 (2023-10-27)
 
 ##### Bug Fixes
