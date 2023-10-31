@@ -224,6 +224,7 @@ module.exports = {
     'sort-keys': 0,
     'sort-keys-fix/sort-keys-fix': [2, 'asc', { caseSensitive: true, natural: true }],
     'sort-vars': [2, { ignoreCase: false }],
+    'unicorn/consistent-function-scoping': [2, { checkArrowFunctions: false }],
     'unicorn/filename-case': [
       2,
       {
@@ -233,6 +234,7 @@ module.exports = {
         },
       },
     ],
+    'unicorn/no-array-reduce': 0,
     'unicorn/prevent-abbreviations': [
       2,
       {
