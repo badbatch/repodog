@@ -1,3 +1,13 @@
+#### 1.1.24 (2023-10-31)
+
+##### New Features
+
+*  disable no reduce rule and update func scope rule (ef0a9062)
+
+##### Bug Fixes
+
+*  add promise lib to typescript (e196e662)
+
 #### 1.1.23 (2023-10-28)
 
 ##### New Features
