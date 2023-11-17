@@ -16,7 +16,7 @@ npm install @repodog/babel-config --save-dev
 
 ```shell
 # terminal
-npm install @babel/cli @babel/core @babel/plugin-proposal-class-properties @babel/plugin-proposal-export-namespace-from @babel/plugin-syntax-import-assertions @babel/plugin-syntax-dynamic-import @babel/plugin-transform-runtime @babel/preset-env @babel/preset-react @babel/preset-typescript @babel/runtime babel-plugin-codegen babel-plugin-macros --save-dev
+npm install @babel/cli @babel/core @babel/plugin-proposal-decorators @babel/plugin-syntax-import-assertions @babel/plugin-transform-class-properties @babel/plugin-transform-export-namespace-from @babel/plugin-transform-modules-commonjs @babel/plugin-transform-runtime @babel/preset-env @babel/preset-react @babel/preset-typescript @babel/runtime babel-plugin-codegen babel-plugin-macros --save-dev
 ```
 
 ## Use package
@@ -43,6 +43,10 @@ Changes `targets` to latest version of chrome / current version of nodejs. Also 
 `JS_ENV` = `'web' || 'node'`
 
 Changes `targets` to browser based or nodejs based. Default `'node'`.
+
+`MODULE_SYSTEM` = `'esm' || 'cjs'`
+
+Adds `'@babel/plugin-transform-modules-commonjs'` plugin and sets `modules` to `'commonjs'`. Default `'esm'`.
 
 `NODE_ENV` = `'prod' || 'production' || 'dev' || 'development'`
 

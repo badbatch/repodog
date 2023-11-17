@@ -1,5 +1,5 @@
 module.exports = api => {
-  const { BABEL_DISABLE_CACHE, DEBUG, JS_ENV, NODE_ENV, TEST_ENV } = process.env;
+  const { BABEL_DISABLE_CACHE, DEBUG, JS_ENV, MODULE_SYSTEM, NODE_ENV, TEST_ENV } = process.env;
 
   if (BABEL_DISABLE_CACHE === 'true') {
     api.cache.never();
@@ -8,6 +8,7 @@ module.exports = api => {
   }
 
   const isDebug = DEBUG === 'true';
+  const isCjs = MODULE_SYSTEM === 'cjs';
   const isJsEnvWeb = JS_ENV === 'web';
   const isProdEnv = NODE_ENV === 'prod' || NODE_ENV === 'production';
   const isTestEnv = TEST_ENV === 'true';
@@ -27,7 +28,6 @@ module.exports = api => {
 
   const plugins = [
     ['@babel/plugin-proposal-decorators', { legacy: true }],
-    '@babel/plugin-syntax-dynamic-import',
     '@babel/plugin-syntax-import-assertions',
     [
       '@babel/plugin-transform-runtime',
@@ -43,13 +43,23 @@ module.exports = api => {
     'babel-plugin-macros',
   ];
 
+  if (isCjs) {
+    plugins.splice(1, 0, [
+      '@babel/plugin-transform-modules-commonjs',
+      {
+        importInterop: 'babel',
+        lazy: true,
+      },
+    ]);
+  }
+
   const presets = [
     [
       '@babel/preset-env',
       {
         corejs: '3.27',
         debug: isDebug,
-        modules: false,
+        modules: isCjs ? 'commonjs' : false,
         targets,
         useBuiltIns: 'usage',
       },
