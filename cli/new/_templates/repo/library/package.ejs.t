@@ -15,7 +15,7 @@ sh: "<%= packageManager %> install && <%= packageManager %> add -D @repodog/cli 
   },
   "bugs": "<%= homepage %>/issues",
   "type": "module",
-  "main": "./dist/main/index.mjs",
+  "main": "./dist/esm/index.mjs",
   "types": "./dist/types/index.d.ts",
   "publishConfig": {
     "access": "public"

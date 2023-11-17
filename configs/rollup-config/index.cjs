@@ -10,10 +10,11 @@ const { plugin: analyzer } = require('rollup-plugin-analyzer');
 const copy = require('rollup-plugin-copy');
 const sourcemaps = require('rollup-plugin-sourcemaps');
 
-const { NODE_ENV } = process.env;
+const { MODULE_SYSTEM = 'esm', NODE_ENV } = process.env;
 const isProdEnv = NODE_ENV === 'production' || NODE_ENV === 'prod';
 const packageDir = process.cwd();
 const external = id => !id.startsWith('.') && !id.startsWith('/');
+const outputExtension = MODULE_SYSTEM === 'esm' ? 'mjs' : 'cjs';
 
 const sourcemapPathTransform = sourcePath => {
   if (/node_modules/.test(sourcePath)) {
@@ -72,8 +73,8 @@ module.exports = (config = {}) => {
       }
     },
     output: {
-      file: `${packageDir}/dist/main/index.mjs`,
-      format: 'esm',
+      file: `${packageDir}/dist/${MODULE_SYSTEM}/index.${outputExtension}`,
+      format: MODULE_SYSTEM,
       sourcemap: true,
       sourcemapPathTransform,
     },

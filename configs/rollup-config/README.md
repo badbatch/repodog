@@ -43,6 +43,10 @@ module.exports = {
 
 ### Environment variables
 
+`MODULE_SYSTEM` = `'esm' || 'cjs'`
+
+Sets `output.format`, directory name within `./dist` output, and the extension of the bundled output file. Default `'esm'`.
+
 `NODE_ENV` = `'prod' || 'production' || 'dev' || 'development'`
 
 When set to `'prod'` or `'production'`, terser mangles and compresses, the bundle analyser runs, and source maps are omitted.

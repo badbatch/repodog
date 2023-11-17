@@ -18,7 +18,7 @@
   "bin": {
     "repodog": "./bin/repodog.mjs"
   },
-  "main": "./dist/main/index.mjs",
+  "main": "./dist/esm/index.mjs",
   "types": "./dist/types/index.d.ts",
   "publishConfig": {
     "access": "public"
