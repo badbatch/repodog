@@ -1,3 +1,9 @@
+#### 1.1.26 (2023-11-17)
+
+##### Bug Fixes
+
+*  update package lock (5fb9726f)
+
 #### 1.1.25 (2023-11-17)
 
 ##### New Features
