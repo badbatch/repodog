@@ -1,3 +1,9 @@
+#### 1.1.25 (2023-11-17)
+
+##### New Features
+
+*  add commonjs support into babel plugin (25124452)
+
 #### 1.1.24 (2023-10-31)
 
 ##### New Features
