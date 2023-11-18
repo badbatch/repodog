@@ -1,3 +1,13 @@
+#### 1.1.27 (2023-11-17)
+
+##### New Features
+
+*  add support for cjs builds with rollup (8dad12be)
+
+##### Bug Fixes
+
+*  change path to dist output (125f9af3)
+
 #### 1.1.26 (2023-11-17)
 
 ##### Bug Fixes
