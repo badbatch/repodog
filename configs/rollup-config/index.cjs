@@ -1,5 +1,6 @@
 /* eslint-disable import/no-extraneous-dependencies */
 const { babel } = require('@rollup/plugin-babel');
+const commonjs = require('@rollup/plugin-commonjs');
 const image = require('@rollup/plugin-image');
 const json = require('@rollup/plugin-json');
 const { nodeResolve } = require('@rollup/plugin-node-resolve');
@@ -33,6 +34,7 @@ module.exports = (config = {}) => {
       extensions,
       preferBuiltins: true,
     }),
+    commonjs(),
     babel({
       babelHelpers: 'runtime',
       extensions,

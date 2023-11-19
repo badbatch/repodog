@@ -17,6 +17,7 @@
   },
   "peerDependencies": {
     "@rollup/plugin-babel": "<7",
+    "@rollup/plugin-commonjs": "<26",
     "@rollup/plugin-image": "<4",
     "@rollup/plugin-json": "<7",
     "@rollup/plugin-node-resolve": "<16",

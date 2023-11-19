@@ -36,6 +36,10 @@ module.exports = api => ({
 
 Disables the Babel cache. Default `'false'`.
 
+`BABEL_MODULE_SYSTEM` = `'esm' || 'cjs'`
+
+Adds `'@babel/plugin-transform-modules-commonjs'` plugin and sets `modules` to `'commonjs'`. Default `'esm'`.
+
 `DEBUG` = `'true' || 'false'`
 
 Changes `targets` to latest version of chrome / current version of nodejs. Also sets `@babel/preset-env` debug field. Default `'false'`.
@@ -43,10 +47,6 @@ Changes `targets` to latest version of chrome / current version of nodejs. Also 
 `JS_ENV` = `'web' || 'node'`
 
 Changes `targets` to browser based or nodejs based. Default `'node'`.
-
-`MODULE_SYSTEM` = `'esm' || 'cjs'`
-
-Adds `'@babel/plugin-transform-modules-commonjs'` plugin and sets `modules` to `'commonjs'`. Default `'esm'`.
 
 `NODE_ENV` = `'prod' || 'production' || 'dev' || 'development'`
 
