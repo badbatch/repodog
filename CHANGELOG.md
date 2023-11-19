@@ -1,3 +1,13 @@
+#### 1.1.28 (2023-11-19)
+
+##### Bug Fixes
+
+*  package json whitespace (1638c6cc)
+
+##### Refactors
+
+*  add commonjs output to rollup and change babel env var (984793c1)
+
 #### 1.1.27 (2023-11-17)
 
 ##### New Features
