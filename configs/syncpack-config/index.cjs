@@ -33,11 +33,12 @@ module.exports = {
   ],
   versionGroups: [
     {
-      policy: 'sameRange',
+      dependencies: ['$LOCAL'],
+      dependencyTypes: ['prod', 'dev'],
+      pinVersion: 'workspace:*',
     },
     {
-      dependencies: ['$LOCAL'],
-      pinVersion: 'workspace:*',
+      policy: 'sameRange',
     },
   ],
 };

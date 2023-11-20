@@ -39,8 +39,7 @@
   },
   "devDependencies": {
     "@jest/globals": "^29.3.1",
-    "@repodog/cli-test-utils": "workspace:../test-utils",
-    "@types/glob": "^8.0.1",
+    "@repodog/cli-test-utils": "workspace:*",
     "@types/js-yaml": "^4.0.5",
     "@types/lodash-es": "^4.14.191",
     "@types/semver": "^7.1.0",
