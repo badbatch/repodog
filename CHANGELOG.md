@@ -1,3 +1,9 @@
+#### 1.2.3 (2023-11-22)
+
+##### New Features
+
+*  reimplement syncpack upgrade (1c6adcde)
+
 #### 1.2.2 (2023-11-22)
 
 ##### Bug Fixes
