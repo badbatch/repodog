@@ -26,6 +26,7 @@ module.exports = {
     'type',
     'engines',
     'bin',
+    'exports',
     'main',
     'types',
     'publishConfig',
