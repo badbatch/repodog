@@ -28,7 +28,7 @@
     "compile:types": "tsc --project ./tsconfig.build.json"
   },
   "dependencies": {
-    "@repodog/cli-utils": "workspace:../utils",
+    "@repodog/cli-utils": "workspace:*",
     "ansi-colors": "^4.1.3",
     "enquirer": "^2.3.6",
     "shelljs": "^0.8.4",
@@ -40,7 +40,7 @@
   },
   "devDependencies": {
     "@jest/globals": "^29.3.1",
-    "@repodog/cli-test-utils": "workspace:../test-utils",
+    "@repodog/cli-test-utils": "workspace:*",
     "@types/shelljs": "^0.8.11",
     "@types/yargs": "^15.0.4",
     "del-cli": "^3.0.0"

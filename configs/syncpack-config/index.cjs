@@ -1,15 +1,11 @@
 module.exports = {
   semverGroups: [
     {
-      dependencies: ['**'],
-      dependencyTypes: ['dev', 'overrides', 'pnpmOverrides', 'prod', 'resolutions', 'workspace'],
-      packages: ['**'],
+      dependencyTypes: ['!peer'],
       range: '^',
     },
     {
-      dependencies: ['**'],
       dependencyTypes: ['peer'],
-      packages: ['**'],
       range: '<',
     },
   ],
@@ -34,5 +30,15 @@ module.exports = {
     'dependencies',
     'peerDependencies',
     'devDependencies',
+  ],
+  versionGroups: [
+    {
+      dependencies: ['$LOCAL'],
+      dependencyTypes: ['prod', 'dev'],
+      pinVersion: 'workspace:*',
+    },
+    {
+      policy: 'sameRange',
+    },
   ],
 };
