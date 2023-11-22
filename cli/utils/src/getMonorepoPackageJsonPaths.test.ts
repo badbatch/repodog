@@ -9,13 +9,12 @@ jest.unstable_mockModule('./getPackagePatterns.ts', () => ({
 }));
 
 describe('getMonorepoPackageJsonPaths', () => {
-  let glob: jest.Mocked<typeof import('glob')['glob']>;
+  let glob: jest.Mocked<typeof import('glob')>;
 
   beforeEach(async () => {
     jest.clearAllMocks();
-    ({ glob } = jest.mocked(await import('glob')));
+    glob = jest.mocked(await import('glob')).default;
 
-    // @ts-expect-error incompatible with one of signature overloads
     glob.sync.mockImplementation(pattern => {
       switch (pattern) {
         case 'apps/**/package.json': {

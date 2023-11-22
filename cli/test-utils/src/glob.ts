@@ -1,7 +1,7 @@
 import { jest } from '@jest/globals';
 
 export const globMock = () => ({
-  glob: {
+  default: {
     sync: jest.fn(),
   },
 });

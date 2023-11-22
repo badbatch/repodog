@@ -1,4 +1,4 @@
-import { glob } from 'glob';
+import glob from 'glob';
 import { formatListLogMessage } from './formatListLogMessage.ts';
 import { getPackagePatterns } from './getPackagePatterns.ts';
 import type { PackageManager } from './types.ts';
