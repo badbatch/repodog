@@ -17,6 +17,6 @@
     "access": "public"
   },
   "peerDependencies": {
-    "syncpack": "<13"
+    "syncpack": "<10"
   }
 }
