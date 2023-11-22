@@ -15,8 +15,11 @@ sh: "<%= packageManager %> install && <%= packageManager %> add -D @repodog/cli 
   },
   "bugs": "<%= homepage %>/issues",
   "type": "module",
-  "main": "./dist/esm/index.mjs",
-  "types": "./dist/types/index.d.ts",
+  "exports": {
+    "types": "./dist/types/index.d.ts",
+    "import": "./dist/esm/index.mjs",
+    "require": "./dist/cjs/index.cjs"
+  },
   "publishConfig": {
     "access": "public"
   },
@@ -26,7 +29,8 @@ sh: "<%= packageManager %> install && <%= packageManager %> add -D @repodog/cli 
     "clean:dist": "del-cli ./dist",
     "commit": "commit",
     "compile": "pnpm run /^compile:.*/",
-    "compile:main": "rollup -c ./rollup.config.cjs",
+    "compile:cjs": "MODULE_SYSTEM=cjs rollup -c ./rollup.config.cjs",
+    "compile:esm": "rollup -c ./rollup.config.cjs",
     "compile:types": "tsc --project ./tsconfig.build.json",
     "cut:changelog": "changelog",
     "cut:post-version": "pnpm run build",
