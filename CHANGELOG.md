@@ -1,3 +1,9 @@
+#### 1.2.1 (2023-11-22)
+
+##### New Features
+
+*  move to exports for cli packages (e6de9a39)
+
 #### 1.2.0 (2023-11-22)
 
 ##### New Features
