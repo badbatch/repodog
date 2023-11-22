@@ -18,8 +18,10 @@
   "bin": {
     "repodog": "./bin/repodog.mjs"
   },
-  "main": "./dist/esm/index.mjs",
-  "types": "./dist/types/index.d.ts",
+  "exports": {
+    "types": "./dist/types/index.d.ts",
+    "import": "./dist/esm/index.mjs"
+  },
   "publishConfig": {
     "access": "public"
   },
