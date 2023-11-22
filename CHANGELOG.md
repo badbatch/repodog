@@ -1,13 +1,3 @@
-#### 1.1.29 (2023-11-20)
-
-##### Chores
-
-*  save work in progress (91ad4819)
-
-##### Refactors
-
-*  change workspace references and add syncpack validation (fc7d949f)
-
 #### 1.1.28 (2023-11-19)
 
 ##### Bug Fixes
