@@ -1,3 +1,9 @@
+#### 1.2.0 (2023-11-22)
+
+##### New Features
+
+*  add exports to syncpack sort and fix glob version mismatch (92559090)
+
 #### 1.1.29 (2023-11-22)
 
 ##### Bug Fixes
