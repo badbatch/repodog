@@ -1,3 +1,14 @@
+#### 1.1.29 (2023-11-22)
+
+##### Bug Fixes
+
+*  package json whitespace (d1e8f17e)
+
+##### Other Changes
+
+*  revert save work in progress (4f48c0d4)
+*  revert change workspace references and add syncpack validation (0e8a616a)
+
 #### 1.1.28 (2023-11-19)
 
 ##### Bug Fixes
