@@ -36,10 +36,10 @@ sh: "<%= packageManager %> install && <%= packageManager %> add -D @repodog/cli 
     "cut:post-version": "pnpm run build",
     "lint": "eslint . --ext .ts,.cjs",
     "repodog": "repodog",
-    "syncpack": "syncpack",
+    "syncpack": "syncpack format && syncpack list-mismatches && syncpack lint-semver-ranges",
     "test": "node --require=suppress-experimental-warnings --experimental-vm-modules node_modules/jest/bin/jest.js",
     "type-check": "tsc --noEmit",
-    "validate": "syncpack format && syncpack lint-semver-ranges && pnpm run build && pnpm run lint && pnpm run type-check && pnpm run test"
+    "validate": "npm run syncpack && pnpm run build && pnpm run lint && pnpm run type-check && pnpm run test"
   },
   "dependencies": {},
   "peerDependencies": {
