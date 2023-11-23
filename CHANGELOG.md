@@ -1,3 +1,9 @@
+#### 1.2.4 (2023-11-23)
+
+##### Bug Fixes
+
+*  update template to use new syncpack commands (b5383948)
+
 #### 1.2.3 (2023-11-22)
 
 ##### New Features
