@@ -14,6 +14,10 @@ npm install @repodog/ts-config typescript --save-dev
 
 ## Use package
 
+### Configure
+
+#### esmodule
+
 ```json
 // tsconfig.json
 {
@@ -43,6 +47,40 @@ npm install @repodog/ts-config typescript --save-dev
   ]
 }
 ```
+
+#### commonjs
+
+```json
+// tsconfig.json
+{
+  "extends": "@repodog/ts-config/cjs.json",
+  "compilerOptions": {
+    "rootDir": "src"
+  },
+  "include": [
+    "src/**/*"
+  ]
+}
+```
+
+```json
+// tsconfig.build.json
+{
+  "extends": "@repodog/ts-config/buildCjs.json",
+  "compilerOptions": {
+    "rootDir": "src",
+    "outDir": "dist/types"
+  },
+  "include": [
+    "src/**/*"
+  ],
+  "exclude": [
+    "**/*.test.*"
+  ]
+}
+```
+
+### Execute
 
 ```json
 // package.json
