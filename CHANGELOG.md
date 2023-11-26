@@ -1,3 +1,13 @@
+#### 1.2.5 (2023-11-26)
+
+##### New Features
+
+*  support cjs in ts config (e20032fc)
+
+##### Bug Fixes
+
+*  typo in package json (8b134834)
+
 #### 1.2.4 (2023-11-23)
 
 ##### Bug Fixes
