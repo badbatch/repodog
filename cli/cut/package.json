@@ -30,7 +30,7 @@
   "dependencies": {
     "@repodog/cli-utils": "workspace:*",
     "ansi-colors": "^4.1.3",
-    "semver": "^7.1.3",
+    "semver": "^7.5.2",
     "shelljs": "^0.8.4",
     "yargs": "^15.1.0"
   },
