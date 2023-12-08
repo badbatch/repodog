@@ -53,7 +53,7 @@ jobs:
   build-and-publish:
     uses: badbatch/repodog/.github/workflows/master-build-and-publish.yml@main
     with:
-      node-version: '18.13.0'
+      node-version: '20.10.0'
       package-manager: 'pnpm'
       package-manager-version: '7.25.1'
     secrets:
