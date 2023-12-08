@@ -1,11 +1,10 @@
 module.exports = {
-  extends: ['plugin:jsx-a11y/recommended', 'plugin:react/recommended'],
-  parserOptions: {
-    ecmaFeatures: {
-      jsx: true,
-    },
-  },
-  plugins: ['jsx-a11y', 'react', 'react-hooks'],
+  extends: [
+    'plugin:jsx-a11y/recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:react-hooks/recommended',
+  ],
   rules: {
     'react/jsx-filename-extension': [2, { extensions: ['.jsx', '.tsx'] }],
     'react/jsx-sort-props': [
@@ -31,8 +30,6 @@ module.exports = {
         return: 'parens-new-line',
       },
     ],
-    'react-hooks/exhaustive-deps': 2,
-    'react-hooks/rules-of-hooks': 2,
   },
   settings: {
     react: {
