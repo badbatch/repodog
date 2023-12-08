@@ -1,3 +1,9 @@
+#### 1.2.6 (2023-12-08)
+
+##### Refactors
+
+*  update react eslint config (1d5beae2)
+
 #### 1.2.5 (2023-11-26)
 
 ##### New Features
