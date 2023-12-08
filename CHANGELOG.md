@@ -1,3 +1,9 @@
+#### 1.2.7 (2023-12-08)
+
+##### New Features
+
+*  upgrade node and pnpm (445c07f1)
+
 #### 1.2.6 (2023-12-08)
 
 ##### Refactors
