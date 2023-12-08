@@ -1,3 +1,9 @@
+#### 1.3.0 (2023-12-08)
+
+##### Bug Fixes
+
+*  post install script not executing (0b01b674)
+
 #### 1.2.7 (2023-12-08)
 
 ##### New Features
