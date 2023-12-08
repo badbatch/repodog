@@ -1,3 +1,15 @@
+#### 1.3.1 (2023-12-08)
+
+##### Chores
+
+* **deps:**
+  *  bump semver from 7.3.8 to 7.5.2 (c5f365b9)
+  *  bump word-wrap from 1.2.3 to 1.2.5 (d4911662)
+
+##### New Features
+
+*  allow namesapce to be passed in to setVerbose (89a11736)
+
 #### 1.3.0 (2023-12-08)
 
 ##### Bug Fixes
