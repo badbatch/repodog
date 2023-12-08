@@ -16,6 +16,9 @@ sh: "<%= packageManager %> install"
   },
   "bugs": "<%= homepage %>/issues",
   "type": "module",
+  "main": "./dist/cjs/index.cjs",
+  "module": "./dist/esm/index.mjs",
+  "types": "./dist/types/index.d.ts",
   "exports": {
     "types": "./dist/types/index.d.ts",
     "import": "./dist/esm/index.mjs",
