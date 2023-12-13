@@ -40,7 +40,7 @@ export const versionMonorepoPackages = ({
       verboseLog(`Checking package: ${name}`);
       const internalDependencies = getInternalDependencies(packageJson, packageMetaRecord);
 
-      if (internalDependencies.some(name => !packageMetaRecord[name]?.checked)) {
+      if (internalDependencies.some(dep => !packageMetaRecord[dep]?.checked)) {
         verboseLog('Not all internal dependencies have been checked, pushing to back of queue\n');
         packageMetaKeys.unshift(name);
         index += 1;
@@ -48,7 +48,7 @@ export const versionMonorepoPackages = ({
       }
 
       packageMeta.checked = true;
-      packageMeta.force = internalDependencies.some(name => !!packageMetaRecord[name]?.versioned);
+      packageMeta.force = internalDependencies.some(dep => !!packageMetaRecord[dep]?.versioned);
       const { dir } = parse(packageMeta.path);
       let relativeDirectory = dir.replace(cwd, '');
 

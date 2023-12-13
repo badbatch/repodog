@@ -1,9 +1,18 @@
 import { jest } from '@jest/globals';
+import { type AbbreviatedMetadata, type Options } from 'package-json';
 
 jest.unstable_mockModule('@repodog/cli-utils', () => ({
   asyncExec: jest.fn(),
   getPackageManager: jest.fn().mockReturnValue('pnpm'),
   verboseLog: jest.fn(),
+}));
+
+jest.unstable_mockModule('package-json', () => ({
+  default: jest
+    .fn<(name: string, options: Options) => Promise<AbbreviatedMetadata>>()
+    .mockImplementation((name, { version }) =>
+      Promise.resolve({ name, version: `${version!.slice(0, 1)}.0.0` } as unknown as AbbreviatedMetadata)
+    ),
 }));
 
 jest.unstable_mockModule('./getRepoDogDevDependencyNames.ts', () => ({
@@ -45,10 +54,6 @@ describe('installRepoDogPeerDependencies', () => {
     });
   });
 
-  describe('when repodog devDependencies do not have peerDependencies', () => {
-    it.todo('asyncExec should not be called');
-  });
-
   describe('when there are repodog devDependency names', () => {
     it('should call asyncExec with the correct arguments', async () => {
       const { asyncExec } = jest.mocked(await import('@repodog/cli-utils'));
@@ -56,7 +61,7 @@ describe('installRepoDogPeerDependencies', () => {
       await installRepoDogPeerDependencies();
 
       expect(asyncExec).toHaveBeenCalledWith(
-        'pnpm add -D alpha-0@"<5" alpha-1@"<10" alpha-2@"<3" bravo-0@"<1" bravo-1@"<4" charlie-0@"<7"'
+        'pnpm add -D alpha-0@^4.0.0 alpha-1@^9.0.0 alpha-2@^2.0.0 bravo-0@^0.0.0 bravo-1@^3.0.0 charlie-0@^6.0.0'
       );
     });
   });

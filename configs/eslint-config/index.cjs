@@ -62,6 +62,7 @@ module.exports = {
           },
         ],
         '@typescript-eslint/no-non-null-assertion': 0,
+        '@typescript-eslint/no-shadow': 2,
         '@typescript-eslint/no-unused-vars': [
           2,
           { args: 'all', argsIgnorePattern: '^_', ignoreRestSiblings: true, vars: 'all' },
@@ -84,7 +85,9 @@ module.exports = {
     },
     {
       files: ['**/*.{mjs,cjs,js,jsx}'],
-      rules: {},
+      rules: {
+        'no-shadow': 2,
+      },
     },
   ],
   parser: '@babel/eslint-parser',
@@ -235,28 +238,6 @@ module.exports = {
       },
     ],
     'unicorn/no-array-reduce': 0,
-    'unicorn/prevent-abbreviations': [
-      2,
-      {
-        ignore: [
-          /.*acc.*/i,
-          /.*arg.*/i,
-          /.*args.*/i,
-          /.*ctx.*/i,
-          /.*db.*/i,
-          /.*def.*/i,
-          /.*dev.*/i,
-          /.*dir.*/i,
-          /.*env.*/i,
-          /.*func.*/i,
-          /.*params.*/i,
-          /.*obj.*/i,
-          /.*prop.*/i,
-          /.*props.*/i,
-          /.*req.*/i,
-          /.*res.*/i,
-        ],
-      },
-    ],
+    'unicorn/prevent-abbreviations': 0,
   },
 };

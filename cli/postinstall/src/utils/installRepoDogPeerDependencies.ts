@@ -1,4 +1,6 @@
 import { asyncExec, getPackageManager, verboseLog } from '@repodog/cli-utils';
+import { isString } from 'lodash-es';
+import getPackageJsonFromNpmRegistry from 'package-json';
 import { getPeerDependenciesToInstall } from './getPeerDependenciesToInstall.ts';
 import { getRepoDogDevDependencyNames } from './getRepoDogDevDependencyNames.ts';
 
@@ -14,7 +16,20 @@ export const installRepoDogPeerDependencies = async () => {
     const peerDependenciesToIntall = await getPeerDependenciesToInstall(name);
 
     if (peerDependenciesToIntall.length > 0) {
-      const peerDependencies = peerDependenciesToIntall.map(([name, semver]) => `${name}@"${semver}"`);
+      const peerDependencies: string[] = [];
+
+      for (const [peerName, peerSemver] of peerDependenciesToIntall) {
+        const packageJson = await getPackageJsonFromNpmRegistry(peerName, {
+          version: `${Number(peerSemver.slice(1)) - 1}.x.x`,
+        });
+
+        if (isString(packageJson.version)) {
+          peerDependencies.push(`${peerName}@^${packageJson.version}`);
+        } else {
+          verboseLog(`Peer dependency ${peerName} does not have a valid version`);
+        }
+      }
+
       toInstall.push(...peerDependencies);
     }
   }
