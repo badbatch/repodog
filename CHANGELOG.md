@@ -1,3 +1,13 @@
+#### 1.3.2 (2023-12-13)
+
+##### New Features
+
+*  add log util (fdf7084e)
+
+##### Bug Fixes
+
+*  postinstall version bug and no shadow eslint (e90c3acf)
+
 #### 1.3.1 (2023-12-08)
 
 ##### Chores

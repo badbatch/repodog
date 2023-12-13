@@ -1,7 +1,7 @@
 {
   "name": "@repodog/webpack-config",
   "description": "The RepoDog webpack config module.",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "author": "Dylan Aubrey",
   "license": "MIT",
   "homepage": "https://github.com/badbatch/repodog",
