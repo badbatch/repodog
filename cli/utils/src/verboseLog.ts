@@ -12,6 +12,10 @@ export const setVerbose = (value: boolean, name?: string) => {
   }
 };
 
+export const log = (message: string) => {
+  shelljs.echo(`${colors.magenta(namespace)} ${colors.dim('=>')} ${message}`);
+};
+
 export const verboseLog = (message: string) => {
   if (verbose) {
     shelljs.echo(`${colors.magenta(namespace)} ${colors.dim('=>')} ${message}`);
