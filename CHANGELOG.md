@@ -1,3 +1,9 @@
+#### 1.3.5 (2023-12-18)
+
+##### Bug Fixes
+
+*  add browser main field back into webpack config (c19a92f2)
+
 #### 1.3.4 (2023-12-18)
 
 ##### Bug Fixes
