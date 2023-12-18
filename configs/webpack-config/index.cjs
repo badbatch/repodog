@@ -39,7 +39,7 @@ module.exports = {
   ],
   resolve: {
     extensions: ['.ts', '.tsx', '.mjs', '.js', '.jsx', '.json'],
-    mainFields: ['module', 'main'],
+    mainFields: ['browser', 'module', 'main'],
     symlinks: true,
   },
 };
