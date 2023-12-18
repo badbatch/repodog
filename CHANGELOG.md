@@ -1,3 +1,9 @@
+#### 1.3.4 (2023-12-18)
+
+##### Bug Fixes
+
+*  webpack build for pnpm monorepos (f9975301)
+
 #### 1.3.3 (2023-12-18)
 
 ##### Bug Fixes
