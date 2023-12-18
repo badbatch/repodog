@@ -1,3 +1,9 @@
+#### 1.3.3 (2023-12-18)
+
+##### Bug Fixes
+
+*  glob error in webpack config (49182cb8)
+
 #### 1.3.2 (2023-12-13)
 
 ##### New Features
