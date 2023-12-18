@@ -11,7 +11,7 @@ module.exports = {
       {
         test: /\.tsx?$/,
         use: {
-          loader: 'babel-loader',
+          loader: require.resolve('babel-loader'),
         },
       },
       ...(isProdEnv
@@ -21,7 +21,7 @@ module.exports = {
               enforce: 'pre',
               test: /\.(tsx?|jsx?)$/,
               use: {
-                loader: 'source-map-loader',
+                loader: require.resolve('source-map-loader'),
               },
             },
           ]),
@@ -39,7 +39,7 @@ module.exports = {
   ],
   resolve: {
     extensions: ['.ts', '.tsx', '.mjs', '.js', '.jsx', '.json'],
-    mainFields: ['browser', 'module', 'main'],
-    symlinks: false,
+    mainFields: ['module', 'main'],
+    symlinks: true,
   },
 };
