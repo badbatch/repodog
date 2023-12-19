@@ -1,3 +1,9 @@
+#### 1.3.6 (2023-12-19)
+
+##### Bug Fixes
+
+*  remove srFiles from jasmine config (1f28b00a)
+
 #### 1.3.5 (2023-12-18)
 
 ##### Bug Fixes
