@@ -6,5 +6,5 @@ module.exports = {
   specDir: 'tests/browser/dist',
   specFiles: ['index.js'],
   srcDir: 'src',
-  srcFiles: ['**/*.{ts,tsx}'],
+  srcFiles: [],
 };
