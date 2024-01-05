@@ -25,7 +25,7 @@ npm install @repodog/webpack-config @types/jasmine jasmine-browser-runner jasmin
 // package.json
 {
   "scripts": {
-    "test:browser": "pnpm run test:browser:build && pnpm run test:browser:run && npm run test:browser:remove",
+    "test:browser": "pnpm run test:browser:remove && pnpm run test:browser:build && pnpm run test:browser:run",
     "test:browser:build": "webpack --config ./webpack.config.cjs",
     "test:browser:debug": "jasmine-browser-runner serve --config=jasmineBrowser.config.cjs --browser chrome",
     "test:browser:remove": "del-cli ./tests/browser/dist",
