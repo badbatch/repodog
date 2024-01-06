@@ -1,3 +1,14 @@
+#### 1.3.7 (2024-01-06)
+
+##### Chores
+
+* **deps:**  bump @babel/traverse from 7.20.5 to 7.23.6 (daced629)
+
+##### Refactors
+
+*  remove cjs configs as they are redundant and not correct (af72ca67)
+*  rearrange npm script (5ec061f1)
+
 #### 1.3.6 (2023-12-19)
 
 ##### Bug Fixes
