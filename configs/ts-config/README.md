@@ -16,15 +16,14 @@ npm install @repodog/ts-config typescript --save-dev
 
 ### Configure
 
-#### esmodule
+#### Project root
+
+If you are building the project from the root.
 
 ```json
 // tsconfig.json
 {
   "extends": "@repodog/ts-config/index.json",
-  "compilerOptions": {
-    "rootDir": "src"
-  },
   "include": [
     "src/**/*"
   ]
@@ -34,14 +33,50 @@ npm install @repodog/ts-config typescript --save-dev
 ```json
 // tsconfig.build.json
 {
-  "extends": "@repodog/ts-config/build.json",
+  "extends": ["./tsconfig.json", "@repodog/ts-config/build.json"],
   "compilerOptions": {
-    "rootDir": "src",
-    "outDir": "dist/types"
+    "outDir": "dist/types",
+    "rootDir": "src"
   },
+  "exclude": [
+    "**/*.test.*"
+  ]
+}
+```
+
+#### Workspace root
+
+If you are building the project from each workspace root.
+
+```json
+// tsconfig.json
+{
+  "extends": "@repodog/ts-config/index.json",
+  "include": [
+    "packages/**/*"
+  ]
+}
+```
+
+```json
+// <workspace>/tsconfig.json
+{
+  "extends": ["@repodog/ts-config/index.json", "@repodog/ts-config/build.json"],
   "include": [
     "src/**/*"
   ],
+  "references": []
+}
+```
+
+```json
+// <workspace>/tsconfig.build.json
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "outDir": "dist/types",
+    "rootDir": "src"
+  },
   "exclude": [
     "**/*.test.*"
   ]

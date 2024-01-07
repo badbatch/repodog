@@ -13,8 +13,10 @@
   "bugs": "https://github.com/badbatch/repodog/issues",
   "type": "module",
   "exports": {
-    "types": "./dist/types/index.d.ts",
-    "import": "./dist/esm/index.mjs"
+    ".": {
+      "types": "./dist/types/index.d.ts",
+      "import": "./dist/esm/index.mjs"
+    }
   },
   "publishConfig": {
     "access": "public"

@@ -4,8 +4,8 @@ to: <%= path %>/tsconfig.build.json
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
-    "rootDir": "src",
-    "outDir": "dist/types"
+    "outDir": "dist/types",
+    "rootDir": "src"
   },
   "exclude": [
     "**/*.test.*"

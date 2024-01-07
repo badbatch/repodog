@@ -1,8 +1,8 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
-    "rootDir": ".",
-    "outDir": "dist/types"
+    "outDir": "dist/types",
+    "rootDir": "."
   },
   "exclude": [
     "**/*.test.*"

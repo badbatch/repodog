@@ -2,14 +2,11 @@
 to: tsconfig.build.json
 ---
 {
-  "extends": "@repodog/ts-config/build.json",
+  "extends": ["./tsconfig.json", "@repodog/ts-config/build.json"],
   "compilerOptions": {
-    "rootDir": "src",
-    "outDir": "dist/types"
+    "outDir": "dist/types",
+    "rootDir": "src"
   },
-  "include": [
-    "src/**/*"
-  ],
   "exclude": [
     "**/*.test.*"
   ]
