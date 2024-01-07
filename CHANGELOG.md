@@ -1,3 +1,9 @@
+#### 1.4.0 (2024-01-07)
+
+##### Refactors
+
+*  ts-config extends and all package exports map (e0a53fd9)
+
 #### 1.3.7 (2024-01-06)
 
 ##### Chores
