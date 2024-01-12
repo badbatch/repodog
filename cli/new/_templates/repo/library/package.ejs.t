@@ -54,9 +54,9 @@ sh: "<%= packageManager %> install && <%= packageManager %> add -D @repodog/cli 
   },
   "devDependencies": {
     "@types/lodash-es": "^4.14.191",
-    "@types/node": "^18.11.18",
+    "@types/node": "^20.11.0",
     "core-js": "^3.27.2",
-    "del-cli": "^3.0.0",
+    "del-cli": "^5.1.0",
     "generate-changelog": "^1.8.0",
     "lodash-es": "^4.17.21"
   }

@@ -45,6 +45,6 @@ sh: "<%= packageManager %> install"
   },
   "devDependencies": {
     "@jest/globals": "^29.3.1",
-    "del-cli": "^3.0.0"
+    "del-cli": "^5.1.0"
   }
 }
