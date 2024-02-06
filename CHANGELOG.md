@@ -1,3 +1,9 @@
+#### 1.5.1 (2024-02-06)
+
+##### New Features
+
+*  update markdown lint and eslint configs (2fe65149)
+
 #### 1.5.0 (2024-01-12)
 
 ##### Chores
