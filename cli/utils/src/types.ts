@@ -1,4 +1,4 @@
-import type { ReleaseType } from 'semver';
+import { type ReleaseType } from 'semver';
 
 export enum Language {
   JAVASCRIPT = 'javascript',

@@ -1,5 +1,5 @@
 import { jest } from '@jest/globals';
-import type { AbbreviatedMetadata } from 'package-json';
+import { type AbbreviatedMetadata } from 'package-json';
 
 jest.unstable_mockModule(
   '@repodog/alpha/package.json',

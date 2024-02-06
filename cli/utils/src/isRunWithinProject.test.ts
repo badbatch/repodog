@@ -1,5 +1,5 @@
 import { jest } from '@jest/globals';
-import type { PackageJson, SetRequired } from 'type-fest';
+import { type PackageJson, type SetRequired } from 'type-fest';
 
 jest.unstable_mockModule('./loadPackageJson.ts', () => ({
   loadPackageJson: jest.fn(),

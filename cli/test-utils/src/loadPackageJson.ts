@@ -1,5 +1,5 @@
 import { jest } from '@jest/globals';
-import type { PackageJson } from 'type-fest';
+import { type PackageJson } from 'type-fest';
 
 export const loadPackageJsonMock = () => ({
   loadPackageJson: jest.fn<(value: string) => PackageJson>().mockImplementation((path: string) => {

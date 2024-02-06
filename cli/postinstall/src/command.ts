@@ -1,4 +1,4 @@
-import type { Argv } from 'yargs';
+import { type Argv } from 'yargs';
 
 export const builder = (argv: Argv) =>
   argv

@@ -1,6 +1,6 @@
 import { readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
-import type { PackageJson, SetRequired } from 'type-fest';
+import { type PackageJson, type SetRequired } from 'type-fest';
 import { verboseLog } from './verboseLog.ts';
 
 let packageJsonCache: Record<string, SetRequired<PackageJson, 'name' | 'version'>> = {};

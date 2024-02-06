@@ -68,6 +68,7 @@ module.exports = {
           { args: 'all', argsIgnorePattern: '^_', ignoreRestSiblings: true, vars: 'all' },
         ],
         '@typescript-eslint/no-use-before-define': 0,
+        'import/consistent-type-specifier-style': [2, 'prefer-inline'],
         'import/no-named-as-default': 0,
         'import/no-named-as-default-member': 0,
         'no-use-before-define': 0,

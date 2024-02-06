@@ -1,5 +1,5 @@
 import { jest } from '@jest/globals';
-import type { QuestionOverrides } from '@repodog/cli-utils';
+import { type QuestionOverrides } from '@repodog/cli-utils';
 
 jest.unstable_mockModule('../questions/pkg/library.json', () => ({
   default: [{ name: 'question1' }, { name: 'question2' }],

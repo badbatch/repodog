@@ -1,6 +1,6 @@
 import { jest } from '@jest/globals';
 import { shelljsMock } from '@repodog/cli-test-utils';
-import type { ExecCallback, ExecFunction } from 'shelljs';
+import { type ExecCallback, type ExecFunction } from 'shelljs';
 
 jest.unstable_mockModule('shelljs', shelljsMock);
 

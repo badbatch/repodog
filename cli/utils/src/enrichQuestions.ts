@@ -1,4 +1,4 @@
-import type { PromptOption } from './types.ts';
+import { type PromptOption } from './types.ts';
 
 export const enrichQuestions = (questions: PromptOption[], answers: Record<string, string | number | boolean>) => {
   for (const question of questions) {

@@ -1,4 +1,4 @@
-import type { Language, PackageManager } from '@repodog/cli-utils';
+import { type Language, type PackageManager } from '@repodog/cli-utils';
 
 export interface WriteHandlerArguments {
   'file-path': string;

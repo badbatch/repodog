@@ -1,6 +1,6 @@
 import { jest } from '@jest/globals';
 import { shelljsMock } from '@repodog/cli-test-utils';
-import type { ChildProcess } from 'node:child_process';
+import { type ChildProcess } from 'node:child_process';
 
 jest.unstable_mockModule('shelljs', shelljsMock);
 

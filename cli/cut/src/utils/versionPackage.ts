@@ -1,7 +1,7 @@
 import { type ReleaseMeta, getLatestPackageVersionOnNpm, getNewVersion, verboseLog } from '@repodog/cli-utils';
 import { writeFileSync } from 'node:fs';
 import semver from 'semver';
-import type { PackageJson, SetRequired } from 'type-fest';
+import { type PackageJson, type SetRequired } from 'type-fest';
 
 export const versionPackage = (
   packageJson: SetRequired<PackageJson, 'name' | 'version'>,

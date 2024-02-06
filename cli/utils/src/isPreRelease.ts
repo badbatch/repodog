@@ -1,4 +1,4 @@
-import type { ReleaseType } from 'semver';
+import { type ReleaseType } from 'semver';
 
 export const PRE_RELEASE_TYPES = ['premajor', 'preminor', 'prepatch', 'prerelease'];
 

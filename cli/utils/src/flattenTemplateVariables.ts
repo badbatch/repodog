@@ -1,4 +1,4 @@
-import type { TemplateVariables, TemplateVariablesLeaf } from './types.ts';
+import { type TemplateVariables, type TemplateVariablesLeaf } from './types.ts';
 
 const isTemplateVariablesLeaf = (
   slice: string | number | boolean | TemplateVariables | undefined

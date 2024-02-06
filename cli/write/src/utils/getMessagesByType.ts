@@ -1,4 +1,4 @@
-import type { Language } from '@repodog/cli-utils';
+import { type Language } from '@repodog/cli-utils';
 import { ChatCompletionRequestMessageRoleEnum } from 'openai';
 import { WriteType } from '../types.ts';
 

@@ -1,7 +1,7 @@
 import { jest } from '@jest/globals';
 import { loadPackageJsonMock } from '@repodog/cli-test-utils';
 import { PackageManager, getInternalDependencies } from '@repodog/cli-utils';
-import type { PackageJson, SetRequired } from 'type-fest';
+import { type PackageJson, type SetRequired } from 'type-fest';
 
 jest.unstable_mockModule('@repodog/cli-utils', () => ({
   formatListLogMessage: jest.fn().mockImplementation(message => message),

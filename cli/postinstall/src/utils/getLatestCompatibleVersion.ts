@@ -1,5 +1,5 @@
 import { asyncExec } from '@repodog/cli-utils';
-import type { PackageJson } from 'type-fest';
+import { type PackageJson } from 'type-fest';
 
 export const getLatestCompatibleVersion = async (name: string, semver: string) => {
   try {
