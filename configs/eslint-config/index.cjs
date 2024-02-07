@@ -3,7 +3,13 @@ module.exports = {
     browser: true,
     node: true,
   },
-  extends: ['eslint:recommended', 'plugin:import/recommended', 'plugin:unicorn/recommended', 'prettier'],
+  extends: [
+    'eslint:recommended',
+    'plugin:eslint-comments/recommended',
+    'plugin:import/recommended',
+    'plugin:unicorn/recommended',
+    'prettier',
+  ],
   overrides: [
     {
       extends: [
@@ -20,6 +26,7 @@ module.exports = {
       },
       plugins: ['@typescript-eslint', 'typescript-sort-keys'],
       rules: {
+        '@typescript-eslint/consistent-type-assertions': [2, { assertionStyle: 'never' }],
         '@typescript-eslint/consistent-type-definitions': 0,
         '@typescript-eslint/consistent-type-imports': [
           2,
@@ -61,7 +68,7 @@ module.exports = {
             selector: 'typeLike',
           },
         ],
-        '@typescript-eslint/no-non-null-assertion': 0,
+        '@typescript-eslint/no-non-null-assertion': 2,
         '@typescript-eslint/no-shadow': 2,
         '@typescript-eslint/no-unused-vars': [
           2,
@@ -85,6 +92,16 @@ module.exports = {
       },
     },
     {
+      files: ['**/*.{spec,test}.*'],
+      rules: {
+        '@typescript-eslint/consistent-type-assertions': [
+          2,
+          { assertionStyle: 'as', objectLiteralTypeAssertions: 'allow' },
+        ],
+        '@typescript-eslint/no-non-null-assertion': 0,
+      },
+    },
+    {
       files: ['**/*.{mjs,cjs,js,jsx}'],
       rules: {
         'no-shadow': 2,
@@ -102,6 +119,7 @@ module.exports = {
     'prettier',
   ],
   rules: {
+    'eslint-comments/require-description': 2,
     'import/extensions': [2, 'ignorePackages'],
     'import/namespace': 0,
     'import/no-default-export': 2,
@@ -135,7 +153,7 @@ module.exports = {
       2,
       {
         code: 120,
-        comments: 100,
+        comments: 120,
         ignoreRegExpLiterals: true,
         ignoreStrings: true,
         ignoreTemplateLiterals: true,

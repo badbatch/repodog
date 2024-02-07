@@ -22,6 +22,7 @@
     "eslint": "<9",
     "eslint-config-prettier": "<9",
     "eslint-import-resolver-typescript": "<4",
+    "eslint-plugin-eslint-comments": "<4",
     "eslint-plugin-import": "<3",
     "eslint-plugin-prefer-arrow": "<2",
     "eslint-plugin-prettier": "<5",
