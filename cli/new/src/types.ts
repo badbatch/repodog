@@ -8,6 +8,7 @@ export interface NewHandlerArguments {
 export enum NewSubtype {
   // APP = 'app',
   LIBRARY = 'library',
+  MONOREPO = 'monorepo',
   // SERVER = 'server',
 }
 

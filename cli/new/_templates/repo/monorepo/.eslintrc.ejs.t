@@ -2,7 +2,7 @@
 to: .eslintrc.cjs
 ---
 module.exports = {
-  extends: ['@repodog/eslint-config'],
+  extends: ['@repodog/eslint-config', '@repodog/eslint-config-react'],
   overrides: [
     {
       extends: ['@repodog/eslint-config-jest'],
@@ -10,6 +10,7 @@ module.exports = {
     },
   ],
   parserOptions: {
+    project: ['./tsconfig.json', './<%= packagesDirName %>/*/tsconfig.json'],
     tsconfigRootDir: __dirname,
   },
   root: true,

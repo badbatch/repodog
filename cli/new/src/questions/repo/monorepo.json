@@ -1,0 +1,33 @@
+[
+  {
+    "message": "What is the name of your monorepo?",
+    "name": "name",
+    "required": true,
+    "type": "input"
+  },
+  {
+    "message": "What is the description of your monorepo?",
+    "name": "desc",
+    "required": true,
+    "type": "input"
+  },
+  {
+    "message": "What is the name of the monorepo author?",
+    "name": "author",
+    "required": true,
+    "type": "input"
+  },
+  {
+    "message": "What is the url for the monorepo's repository?",
+    "name": "homepage",
+    "required": true,
+    "type": "input"
+  },
+  {
+    "initial": "packages",
+    "message": "What is the name of the packages directory?",
+    "name": "packagesDirName",
+    "required": true,
+    "type": "input"
+  }
+]

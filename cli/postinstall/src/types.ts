@@ -7,6 +7,7 @@ export interface PostInstallHandlerArguments {
 export enum PostInstallSubType {
   // APP = 'app',
   LIBRARY = 'library',
+  MONOREPO = 'monorepo',
   // SERVER = 'server',
 }
 

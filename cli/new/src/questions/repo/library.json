@@ -1,31 +1,31 @@
 [
   {
-    "message": "What is the name of your package?",
+    "message": "What is the name of your library?",
     "name": "name",
     "required": true,
     "type": "input"
   },
   {
-    "message": "What is the description of your package?",
+    "message": "What is the description of your library?",
     "name": "desc",
     "required": true,
     "type": "input"
   },
   {
-    "message": "What is the name of the package author?",
+    "message": "What is the name of the library author?",
     "name": "author",
     "required": true,
     "type": "input"
   },
   {
-    "message": "What is the url for the package's repository?",
+    "message": "What is the url for the library's repository?",
     "name": "homepage",
     "required": true,
     "type": "input"
   },
   {
     "initial": "main",
-    "message": "What is the name of the main file for the package?",
+    "message": "What is the name of the main file for the library?",
     "name": "mainFilename",
     "required": true,
     "type": "input"

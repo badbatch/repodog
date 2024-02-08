@@ -9,7 +9,7 @@ export const builder = (argv: Argv) =>
     })
     .positional('subtype', {
       demandOption: true,
-      desc: 'The subtype of post install: library',
+      desc: 'The subtype of post install: library | monorepo',
       type: 'string',
     })
     .option('verbose', {

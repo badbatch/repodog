@@ -3,6 +3,7 @@ import { jest } from '@jest/globals';
 jest.unstable_mockModule('@repodog/cli-utils', () => ({
   asyncExec: jest.fn(),
   getPackageManager: jest.fn().mockReturnValue('pnpm'),
+  isProjectMonorepo: jest.fn().mockReturnValue(false),
   verboseLog: jest.fn(),
 }));
 
@@ -54,6 +55,19 @@ describe('installRepoDogPeerDependencies', () => {
       expect(asyncExec).toHaveBeenCalledWith(
         'pnpm add -D alpha-0@^4.0.0 alpha-1@^9.0.0 alpha-2@^2.0.0 bravo-0@^0.0.1 bravo-1@^3.0.0 charlie-0@^6.0.0'
       );
+    });
+
+    describe('when the project is a monorepo', () => {
+      it('should call asyncExec with the correct arguments', async () => {
+        const { asyncExec, isProjectMonorepo } = jest.mocked(await import('@repodog/cli-utils'));
+        const { installRepoDogPeerDependencies } = await import('./installRepoDogPeerDependencies.ts');
+        isProjectMonorepo.mockReturnValueOnce(true);
+        await installRepoDogPeerDependencies();
+
+        expect(asyncExec).toHaveBeenCalledWith(
+          'pnpm add -w -D alpha-0@^4.0.0 alpha-1@^9.0.0 alpha-2@^2.0.0 bravo-0@^0.0.1 bravo-1@^3.0.0 charlie-0@^6.0.0'
+        );
+      });
     });
   });
 });

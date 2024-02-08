@@ -1,4 +1,4 @@
-import { asyncExec, getPackageManager, verboseLog } from '@repodog/cli-utils';
+import { asyncExec, getPackageManager, isProjectMonorepo, verboseLog } from '@repodog/cli-utils';
 import { getPeerDependenciesToInstall } from './getPeerDependenciesToInstall.ts';
 import { getRepoDogDevDependencyNames } from './getRepoDogDevDependencyNames.ts';
 
@@ -28,7 +28,7 @@ export const installRepoDogPeerDependencies = async () => {
     return;
   }
 
-  const cmd = `${packageManager} add -D ${toInstall.join(' ')}`;
+  const cmd = `${packageManager} add ${isProjectMonorepo(packageManager) ? '-w ' : ''}-D ${toInstall.join(' ')}`;
   verboseLog(`Executing cmd: "${cmd}`);
   return asyncExec(cmd);
 };
