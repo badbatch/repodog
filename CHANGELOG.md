@@ -1,3 +1,9 @@
+#### 1.5.4 (2024-02-08)
+
+##### Bug Fixes
+
+*  rollup config path in package template package json (4534d144)
+
 #### 1.5.3 (2024-02-08)
 
 ##### Bug Fixes
