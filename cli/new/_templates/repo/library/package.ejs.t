@@ -17,10 +17,13 @@ sh: "<%= packageManager %> install && <%= packageManager %> add -D @repodog/cli 
   "type": "module",
   "main": "./dist/cjs/index.cjs",
   "module": "./dist/esm/index.mjs",
-  "types": "./dist/types/index.d.ts",
+  "types": "./dist/types/cjs/index.d.cts",
   "exports": {
     ".": {
-      "types": "./dist/types/index.d.ts",
+      "types": {
+        "import": "./dist/types/esm/index.d.ts",
+        "require": "./dist/types/cjs/index.d.cts"
+      },
       "import": "./dist/esm/index.mjs",
       "require": "./dist/cjs/index.cjs"
     }
@@ -36,7 +39,7 @@ sh: "<%= packageManager %> install && <%= packageManager %> add -D @repodog/cli 
     "compile": "<%= packageManager %> run /^compile:.*/",
     "compile:cjs": "MODULE_SYSTEM=cjs rollup -c ./rollup.config.cjs",
     "compile:esm": "rollup -c ./rollup.config.cjs",
-    "compile:types": "tsc --project ./tsconfig.build.json",
+    "compile:types": "tsc --project ./tsconfig.build.json && cts-types build dist/types/esm dist/types/cjs",
     "cut:changelog": "changelog",
     "cut:post-version": "<%= packageManager %> run build",
     "lint": "eslint . --ext .ts,.cjs",
@@ -56,6 +59,7 @@ sh: "<%= packageManager %> install && <%= packageManager %> add -D @repodog/cli 
     "@types/lodash-es": "^4.14.191",
     "@types/node": "^20.11.0",
     "core-js": "^3.27.2",
+    "cts-types": "^0.0.6",
     "del-cli": "^5.1.0",
     "generate-changelog": "^1.8.0",
     "lodash-es": "^4.17.21"
