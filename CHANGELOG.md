@@ -1,3 +1,9 @@
+#### 1.5.6 (2024-02-08)
+
+##### Bug Fixes
+
+*  only run postinstall when type is repo (3c6859fc)
+
 #### 1.5.5 (2024-02-08)
 
 ##### Bug Fixes
