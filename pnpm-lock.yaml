@@ -337,6 +337,9 @@ importers:
       '@babel/runtime':
         specifier: <8
         version: 7.20.13
+      '@repodog/cli-postinstall':
+        specifier: workspace:*
+        version: link:../postinstall
       '@repodog/cli-setup':
         specifier: workspace:*
         version: link:../setup

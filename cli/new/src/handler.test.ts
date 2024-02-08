@@ -47,6 +47,10 @@ const repodogConfig = {
   },
 };
 
+jest.unstable_mockModule('@repodog/cli-postinstall', () => ({
+  handler: jest.fn(),
+}));
+
 jest.unstable_mockModule('@repodog/cli-setup', () => ({
   handleGlobalConfigSetup: jest.fn(),
 }));
@@ -209,11 +213,13 @@ describe('handler', () => {
       let shelljs: jest.Mocked<typeof import('shelljs')>;
       let loadQuestions: jest.Mocked<typeof import('./utils/loadQuestions.ts')['loadQuestions']>;
       let executeHygen: jest.Mocked<typeof import('./utils/executeHygen.ts')['executeHygen']>;
+      let postinstallHandler: jest.Mocked<typeof import('@repodog/cli-postinstall')['handler']>;
 
       beforeEach(async () => {
         shelljs = jest.mocked(await import('shelljs')).default;
         ({ loadQuestions } = jest.mocked(await import('./utils/loadQuestions.ts')));
         ({ executeHygen } = jest.mocked(await import('./utils/executeHygen.ts')));
+        ({ handler: postinstallHandler } = jest.mocked(await import('@repodog/cli-postinstall')));
       });
 
       it('should load the questions for the specified new type and customTypePath', async () => {
@@ -251,6 +257,12 @@ describe('handler', () => {
             question3: 'answer to question3',
           }
         );
+      });
+
+      it('should execute postinstall handler with the correct arguments', async () => {
+        const { handler } = await import('./handler.ts');
+        await handler({ 'custom-type-path': 'cli', subtype: 'library', type: 'pkg' });
+        expect(postinstallHandler).toHaveBeenCalledWith({ subtype: 'library', type: 'pkg', verbose: false });
       });
 
       it('should exit with a code of 0', async () => {

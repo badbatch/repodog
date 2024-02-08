@@ -1,10 +1,18 @@
 import { asyncExec } from '@repodog/cli-utils';
-import { type PackageJson } from 'type-fest';
+import { isString } from 'lodash-es';
+
+const getRange = (semver: string) => {
+  const max = Number(semver.slice(1));
+  return max === 1 ? `<${max}` : `${max - 1}.x.x`;
+};
 
 export const getLatestCompatibleVersion = async (name: string, semver: string) => {
   try {
-    const output = JSON.parse(await asyncExec(`npm view ${name}@"${semver}" --json`)) as PackageJson[];
-    return output.slice(-1)[0]?.version;
+    const output = JSON.parse(await asyncExec(`npm view ${name}@"${getRange(semver)}" version --json`)) as
+      | string[]
+      | string;
+
+    return isString(output) ? output : output.at(-1);
   } catch {
     return;
   }

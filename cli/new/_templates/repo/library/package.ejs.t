@@ -1,6 +1,6 @@
 ---
 to: package.json
-sh: "<%= packageManager %> install && <%= packageManager %> add -D @repodog/cli @repodog/babel-config @repodog/commitlint-config @repodog/eslint-config @repodog/eslint-config-jest @repodog/jest-config @repodog/markdownlint-config @repodog/prettier-config @repodog/rollup-config @repodog/syncpack-config @repodog/ts-config && <%= packageManager %> run repodog postinstall <%= newType %> <%= newSubType %>"
+sh: "<%= packageManager %> install && <%= packageManager %> add -D @repodog/cli @repodog/babel-config @repodog/commitlint-config @repodog/eslint-config @repodog/eslint-config-jest @repodog/jest-config @repodog/markdownlint-config @repodog/prettier-config @repodog/rollup-config @repodog/syncpack-config @repodog/ts-config"
 ---
 {
   "name": "<%= name %>",
@@ -29,22 +29,22 @@ sh: "<%= packageManager %> install && <%= packageManager %> add -D @repodog/cli 
     "access": "public"
   },
   "scripts": {
-    "build": "pnpm run clean:dist && pnpm run compile",
+    "build": "<%= packageManager %> run clean:dist && <%= packageManager %> run compile",
     "clean:deps": "del-cli ./node_modules",
     "clean:dist": "del-cli ./dist",
     "commit": "commit",
-    "compile": "pnpm run /^compile:.*/",
+    "compile": "<%= packageManager %> run /^compile:.*/",
     "compile:cjs": "MODULE_SYSTEM=cjs rollup -c ./rollup.config.cjs",
     "compile:esm": "rollup -c ./rollup.config.cjs",
     "compile:types": "tsc --project ./tsconfig.build.json",
     "cut:changelog": "changelog",
-    "cut:post-version": "pnpm run build",
+    "cut:post-version": "<%= packageManager %> run build",
     "lint": "eslint . --ext .ts,.cjs",
     "repodog": "repodog",
     "syncpack": "syncpack format && syncpack list-mismatches && syncpack lint-semver-ranges",
     "test": "node --require=suppress-experimental-warnings --experimental-vm-modules node_modules/jest/bin/jest.js",
     "type-check": "tsc --noEmit",
-    "validate": "npm run syncpack && pnpm run build && pnpm run lint && pnpm run type-check && pnpm run test"
+    "validate": "<%= packageManager %> run syncpack && <%= packageManager %> run build && <%= packageManager %> run lint && <%= packageManager %> run type-check && <%= packageManager %> run test"
   },
   "dependencies": {},
   "peerDependencies": {

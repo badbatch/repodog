@@ -35,11 +35,12 @@
       "request": "launch",
       "name": "Repodog - new",
       "program": "${workspaceFolder}/cli/core/bin/repodog.mjs",
+      "cwd": "/Users/dylan.aubrey/workspaces/personal/test",
       "runtimeVersion": "20.10.0",
       "args": [
         "new",
-        "pkg",
-        "--custom-type-path", "cli",
+        "repo",
+        "library",
         "--verbose"
       ],
       "console": "integratedTerminal",
@@ -67,6 +68,20 @@
         "test",
         "./cli/write/src/handler.ts",
         "--verbose"
+      ],
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Repodog - postinstall",
+      "program": "${workspaceFolder}/cli/core/bin/repodog.mjs",
+      "cwd": "/Users/dylan.aubrey/workspaces/personal/test",
+      "args": [
+        "postinstall",
+        "repo",
+        "library"
       ],
       "console": "integratedTerminal",
       "internalConsoleOptions": "neverOpen"

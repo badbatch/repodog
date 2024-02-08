@@ -1,18 +1,9 @@
 import { jest } from '@jest/globals';
-import { type AbbreviatedMetadata, type Options } from 'package-json';
 
 jest.unstable_mockModule('@repodog/cli-utils', () => ({
   asyncExec: jest.fn(),
   getPackageManager: jest.fn().mockReturnValue('pnpm'),
   verboseLog: jest.fn(),
-}));
-
-jest.unstable_mockModule('package-json', () => ({
-  default: jest
-    .fn<(name: string, options: Options) => Promise<AbbreviatedMetadata>>()
-    .mockImplementation((name, { version }) =>
-      Promise.resolve({ name, version: `${version!.slice(0, 1)}.0.0` } as unknown as AbbreviatedMetadata)
-    ),
 }));
 
 jest.unstable_mockModule('./getRepoDogDevDependencyNames.ts', () => ({
@@ -21,15 +12,15 @@ jest.unstable_mockModule('./getRepoDogDevDependencyNames.ts', () => ({
 
 const peerDependenciesToInstall = {
   '@repodog/alpha': [
-    ['alpha-0', '<5'],
-    ['alpha-1', '<10'],
-    ['alpha-2', '<3'],
+    ['alpha-0', '4.0.0'],
+    ['alpha-1', '9.0.0'],
+    ['alpha-2', '2.0.0'],
   ],
   '@repodog/bravo': [
-    ['bravo-0', '<1'],
-    ['bravo-1', '<4'],
+    ['bravo-0', '0.0.1'],
+    ['bravo-1', '3.0.0'],
   ],
-  '@repodog/charlie': [['charlie-0', '<7']],
+  '@repodog/charlie': [['charlie-0', '6.0.0']],
 };
 
 jest.unstable_mockModule('./getPeerDependenciesToInstall.ts', () => ({
@@ -61,7 +52,7 @@ describe('installRepoDogPeerDependencies', () => {
       await installRepoDogPeerDependencies();
 
       expect(asyncExec).toHaveBeenCalledWith(
-        'pnpm add -D alpha-0@^4.0.0 alpha-1@^9.0.0 alpha-2@^2.0.0 bravo-0@^0.0.0 bravo-1@^3.0.0 charlie-0@^6.0.0'
+        'pnpm add -D alpha-0@^4.0.0 alpha-1@^9.0.0 alpha-2@^2.0.0 bravo-0@^0.0.1 bravo-1@^3.0.0 charlie-0@^6.0.0'
       );
     });
   });

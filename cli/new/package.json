@@ -31,6 +31,7 @@
     "hygen": "hygen"
   },
   "dependencies": {
+    "@repodog/cli-postinstall": "workspace:*",
     "@repodog/cli-setup": "workspace:*",
     "@repodog/cli-utils": "workspace:*",
     "ansi-colors": "^4.1.3",

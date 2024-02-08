@@ -1,3 +1,4 @@
+import { handler as postinstallHandler } from '@repodog/cli-postinstall';
 import { handleGlobalConfigSetup } from '@repodog/cli-setup';
 import {
   Language,
@@ -133,6 +134,7 @@ export const handler = async (argv: NewHandlerArguments) => {
       await executeHygen(additionalTemplatesPath, hygenPath, externalTypePath, cliOptions);
     }
 
+    await postinstallHandler({ subtype: argv.subtype, type: argv.type, verbose });
     verboseLog(`Handler duration: ${String(calculateDuration(startTime))}sec`);
     return shelljs.exit(0);
   } catch (error: unknown) {
