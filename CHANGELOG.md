@@ -1,3 +1,9 @@
+#### 1.5.3 (2024-02-08)
+
+##### Bug Fixes
+
+*  template package json missing cts type code (7dee4aa0)
+
 #### 1.5.2 (2024-02-08)
 
 ##### New Features
