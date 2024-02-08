@@ -261,8 +261,8 @@ describe('handler', () => {
 
       it('should execute postinstall handler with the correct arguments', async () => {
         const { handler } = await import('./handler.ts');
-        await handler({ 'custom-type-path': 'cli', subtype: 'library', type: 'pkg' });
-        expect(postinstallHandler).toHaveBeenCalledWith({ subtype: 'library', type: 'pkg', verbose: false });
+        await handler({ 'custom-type-path': 'cli', subtype: 'library', type: 'repo' });
+        expect(postinstallHandler).toHaveBeenCalledWith({ subtype: 'library', type: 'repo', verbose: false });
       });
 
       it('should exit with a code of 0', async () => {

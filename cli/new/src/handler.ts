@@ -134,7 +134,10 @@ export const handler = async (argv: NewHandlerArguments) => {
       await executeHygen(additionalTemplatesPath, hygenPath, externalTypePath, cliOptions);
     }
 
-    await postinstallHandler({ subtype: argv.subtype, type: argv.type, verbose });
+    if (argv.type === NewType.REPO) {
+      await postinstallHandler({ subtype: argv.subtype, type: argv.type, verbose });
+    }
+
     verboseLog(`Handler duration: ${String(calculateDuration(startTime))}sec`);
     return shelljs.exit(0);
   } catch (error: unknown) {
