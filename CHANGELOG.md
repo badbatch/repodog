@@ -1,3 +1,9 @@
+#### 1.5.5 (2024-02-08)
+
+##### Bug Fixes
+
+*  tsconfig template missing esm in output path (c99f332d)
+
 #### 1.5.4 (2024-02-08)
 
 ##### Bug Fixes
