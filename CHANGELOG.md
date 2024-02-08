@@ -1,3 +1,13 @@
+#### 1.5.2 (2024-02-08)
+
+##### New Features
+
+*  add monorepo template for repo (3a6b2076)
+
+##### Bug Fixes
+
+*  postintall exception and package manager refs in package json (1bb145ba)
+
 #### 1.5.1 (2024-02-06)
 
 ##### New Features
