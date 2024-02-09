@@ -2,7 +2,7 @@
 to: .eslintrc.cjs
 ---
 module.exports = {
-  extends: ['@repodog/eslint-config', '@repodog/eslint-config-react'],
+  extends: ['@repodog/eslint-config'],
   overrides: [
     {
       extends: ['@repodog/eslint-config-jest'],
