@@ -1,3 +1,9 @@
+#### 1.5.7 (2024-02-09)
+
+##### Bug Fixes
+
+*  wrong eslint config referenced in monorepo template (c56c74ef)
+
 #### 1.5.6 (2024-02-08)
 
 ##### Bug Fixes
