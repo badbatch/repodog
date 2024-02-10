@@ -1,3 +1,9 @@
+#### 1.5.8 (2024-02-10)
+
+##### Bug Fixes
+
+*  pkg library index template did not use template var for name (f2181d04)
+
 #### 1.5.7 (2024-02-09)
 
 ##### Bug Fixes
