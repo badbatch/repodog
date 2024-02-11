@@ -1,6 +1,5 @@
 ---
-to: <%= path %>/src/index.ts
-from: "<%= overrideTemplate_index_ejs_t ? `${leafAdditionalTemplatesPath}/index.ejs.t` : null %>"
+to: "<%= overrideTemplate_index_ejs_t ? null : `${path}/src/index.ts`` %>"
 ---
 export * from './<%= mainFilename %>.ts';
 export * from './types.ts';

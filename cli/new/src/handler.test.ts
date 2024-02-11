@@ -310,7 +310,6 @@ describe('handler', () => {
               excludeTypesFile: false,
               homepage: 'https://github.com/badbatch/repodog',
               language: 'javascript',
-              leafAdditionalTemplatesPath: 'leaf/template/path',
               mainFilename: 'handler',
               mock: 'answer to mock',
               newSubType: 'library',

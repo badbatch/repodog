@@ -1,5 +1,4 @@
 ---
-to: "<%= !excludeTypesFile ? `${path}/src/types.ts` : null %>"
-from: "<%= overrideTemplate_types_ejs_t && !excludeTypesFile ? `${leafAdditionalTemplatesPath}/types.ejs.t` : null %>"
+to: "<%= overrideTemplate_types_ejs_t || excludeTypesFile ? null : `${path}/src/types.ts` %>"
 ---
 export type <%= h.capitalize(mainFilename) %>Params = {};
