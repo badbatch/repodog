@@ -1,3 +1,46 @@
+#### 1.5.15-unstable.0 (2024-02-11)
+
+##### Refactors
+
+*  change check of override template flag (16ba4db4)
+
+#### 1.5.14-unstable.0 (2024-02-11)
+
+##### Bug Fixes
+
+*  remove typo in template frontmatter (8c8b44b1)
+
+#### 1.5.13-unstable.0 (2024-02-11)
+
+##### Bug Fixes
+
+*  duplicate mapping key in frontmatter of template (8b4ce792)
+
+#### 1.5.12-unstable.0 (2024-02-11)
+
+##### Refactors
+
+*  change way of excluding default templates (f8557a74)
+
+#### 1.5.11-unstable.0 (2024-02-11)
+
+##### Bug Fixes
+
+*  broken unit test (04f888ab)
+*  allow false to be passed as query param (ce01712b)
+
+#### 1.5.10-unstable.0 (2024-02-11)
+
+##### Bug Fixes
+
+*  generate override template vars for all internal templates (a8f94f4b)
+
+#### 1.5.9 (2024-02-11)
+
+##### Refactors
+
+*  only render templates that do not have overrides (54089682)
+
 #### 1.5.8 (2024-02-10)
 
 ##### Bug Fixes

@@ -1,5 +1,5 @@
 ---
-to: <%= path %>/package.json
+to: "<%= typeof overrideTemplate_package_ejs_t !== 'undefined' ? null : `${path}/package.json` %>"
 sh: "<%= packageManager %> install"
 ---
 {
