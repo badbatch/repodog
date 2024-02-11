@@ -98,12 +98,21 @@ jest.unstable_mockModule('node:path', () => ({
   sep: jest.fn().mockReturnValue('/'),
 }));
 
+jest.unstable_mockModule('./utils/compileAdditionalTemplateOverrides.ts', () => ({
+  compileAdditionalTemplateOverrides: jest.fn(),
+}));
+
 jest.unstable_mockModule('./utils/conditionallyChangeCwd.ts', () => ({
   conditionallyChangeCwd: jest.fn(),
 }));
 
 jest.unstable_mockModule('./utils/executeHygen.ts', () => ({
   executeHygen: jest.fn(),
+}));
+
+jest.unstable_mockModule('./utils/getLeafAdditionalTemplatesPath.ts', () => ({
+  // eslint-disable-next-line unicorn/no-useless-undefined
+  getLeafAdditionalTemplatesPath: jest.fn().mockReturnValue(undefined),
 }));
 
 jest.unstable_mockModule('./utils/isValidNewType.ts', () => ({
@@ -243,6 +252,7 @@ describe('handler', () => {
           ['pkg', 'library'],
           {
             author: 'Dylan Aubrey',
+            excludeTypesFile: false,
             homepage: 'https://github.com/badbatch/repodog',
             language: 'javascript',
             mainFilename: 'handler',
@@ -279,6 +289,12 @@ describe('handler', () => {
             ...repodogConfig,
             additionalTemplatesPath: '../overrides/_templates',
           });
+
+          const { getLeafAdditionalTemplatesPath } = jest.mocked(
+            await import('./utils/getLeafAdditionalTemplatesPath.ts')
+          );
+
+          getLeafAdditionalTemplatesPath.mockReturnValueOnce('leaf/template/path');
         });
 
         it('should execute hygen again with the template overrides path and specified options and base type path', async () => {
@@ -291,8 +307,10 @@ describe('handler', () => {
             ['new', 'pkg', 'library', 'cli'],
             {
               author: 'Dylan Aubrey',
+              excludeTypesFile: false,
               homepage: 'https://github.com/badbatch/repodog',
               language: 'javascript',
+              leafAdditionalTemplatesPath: 'leaf/template/path',
               mainFilename: 'handler',
               mock: 'answer to mock',
               newSubType: 'library',

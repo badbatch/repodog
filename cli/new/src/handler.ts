@@ -17,15 +17,16 @@ import {
 } from '@repodog/cli-utils';
 import colors from 'ansi-colors';
 import enquirer from 'enquirer';
-import { existsSync } from 'node:fs';
 import { dirname, resolve as resolvePath, sep } from 'node:path';
 import { performance } from 'node:perf_hooks';
 import { fileURLToPath } from 'node:url';
 import shelljs from 'shelljs';
-import { type NewHandlerArguments, NewSubtype, NewType } from './types.ts';
+import { type CliOptions, type NewHandlerArguments, NewSubtype, NewType } from './types.ts';
 import { buildTypePaths } from './utils/buildTypePaths.ts';
+import { compileAdditionalTemplateOverrides } from './utils/compileAdditionalTemplateOverrides.ts';
 import { conditionallyChangeCwd } from './utils/conditionallyChangeCwd.ts';
 import { executeHygen } from './utils/executeHygen.ts';
+import { getLeafAdditionalTemplatesPath } from './utils/getLeafAdditionalTemplatesPath.ts';
 import { isValidNewSubType } from './utils/isValidNewSubType.ts';
 import { isValidNewType } from './utils/isValidNewType.ts';
 import { loadQuestions } from './utils/loadQuestions.ts';
@@ -108,10 +109,25 @@ export const handler = async (argv: NewHandlerArguments) => {
 
     const questions = await loadQuestions(internalTypePath, configTypePath, questionOverrides);
     verboseLog(`Questions:\n${JSON.stringify(questions, undefined, 2)}\n`);
+    const leafAdditionalTemplatesPath = getLeafAdditionalTemplatesPath(additionalTemplatesPath, externalTypePath);
 
-    const cliOptions: Record<string, boolean | number | string> = {
+    if (leafAdditionalTemplatesPath) {
+      verboseLog(`Leaf additional templates path: ${leafAdditionalTemplatesPath}`);
+    }
+
+    const cliOptions: CliOptions = {
+      excludeTypesFile: false,
       ...flattenedTemplateVariables,
       ...removeEmptyAnswers(await enquirer.prompt(enrichQuestions(questions, flattenedTemplateVariables))),
+      ...(leafAdditionalTemplatesPath
+        ? {
+            leafAdditionalTemplatesPath,
+            ...compileAdditionalTemplateOverrides(
+              leafAdditionalTemplatesPath,
+              resolveAbsolutePath([templatesPath, ...internalTypePath].join(sep))
+            ),
+          }
+        : {}),
       language,
       newSubType: subtype,
       newType: type,
@@ -126,10 +142,7 @@ export const handler = async (argv: NewHandlerArguments) => {
     verboseLog(`Hygen cli options:\n${JSON.stringify(cliOptions, undefined, 2)}\n`);
     await executeHygen(templatesPath, hygenPath, internalTypePath, cliOptions);
 
-    if (
-      additionalTemplatesPath &&
-      existsSync(resolveAbsolutePath([additionalTemplatesPath, ...externalTypePath].join(sep)))
-    ) {
+    if (additionalTemplatesPath && leafAdditionalTemplatesPath) {
       verboseLog('Template overrides path exists, re-running hygen with new path');
       await executeHygen(additionalTemplatesPath, hygenPath, externalTypePath, cliOptions);
     }

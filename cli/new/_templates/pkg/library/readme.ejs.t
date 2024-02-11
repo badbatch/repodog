@@ -1,5 +1,6 @@
 ---
 to: <%= path %>/README.md
+from: "<%= overrideTemplate_readme_ejs_t ? `${leafAdditionalTemplatesPath}/readme.ejs.t` : null %>"
 ---
 # <%= name %>
 

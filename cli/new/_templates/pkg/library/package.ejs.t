@@ -1,5 +1,6 @@
 ---
 to: <%= path %>/package.json
+from: "<%= overrideTemplate_package_ejs_t ? `${leafAdditionalTemplatesPath}/package.ejs.t` : null %>"
 sh: "<%= packageManager %> install"
 ---
 {
