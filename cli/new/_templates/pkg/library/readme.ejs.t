@@ -1,5 +1,4 @@
 ---
-to: <%= path %>/README.md
 to: "<%= overrideTemplate_readme_ejs_t ? null : `${path}/README.md` %>"
 ---
 # <%= name %>
