@@ -1,3 +1,9 @@
+#### 1.5.12-unstable.0 (2024-02-11)
+
+##### Refactors
+
+*  change way of excluding default templates (f8557a74)
+
 #### 1.5.11-unstable.0 (2024-02-11)
 
 ##### Bug Fixes
