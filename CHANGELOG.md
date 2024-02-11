@@ -1,3 +1,9 @@
+#### 1.5.9 (2024-02-11)
+
+##### Refactors
+
+*  only render templates that do not have overrides (54089682)
+
 #### 1.5.8 (2024-02-10)
 
 ##### Bug Fixes
