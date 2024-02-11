@@ -1,3 +1,9 @@
+#### 1.5.14-unstable.0 (2024-02-11)
+
+##### Bug Fixes
+
+*  remove typo in template frontmatter (8c8b44b1)
+
 #### 1.5.13-unstable.0 (2024-02-11)
 
 ##### Bug Fixes
