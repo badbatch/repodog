@@ -8,6 +8,11 @@ export const stringifyCliOptions = (object: Record<string, boolean | number | st
         break;
       }
 
+      case typeof object[key] == 'boolean' && !object[key]: {
+        options += ` --${key} false`;
+        break;
+      }
+
       case typeof object[key] == 'string' || typeof object[key] == 'number': {
         options += ` --${key} "${String(object[key])}"`;
         break;
