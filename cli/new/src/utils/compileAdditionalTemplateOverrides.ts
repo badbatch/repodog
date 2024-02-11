@@ -8,11 +8,8 @@ export const compileAdditionalTemplateOverrides = (
   const additionalfiles = readdirSync(leafAdditionalTemplatesPath);
   const internalFiles = readdirSync(internalTempatesPath);
 
-  const overrides = additionalfiles.reduce<Record<string, boolean>>((acc, fileName) => {
-    if (internalFiles.includes(fileName)) {
-      acc[`overrideTemplate_${fileName.replace(/\./g, '_')}`] = true;
-    }
-
+  const overrides = internalFiles.reduce<Record<string, boolean>>((acc, fileName) => {
+    acc[`overrideTemplate_${fileName.replace(/\./g, '_')}`] = additionalfiles.includes(fileName);
     return acc;
   }, {});
 
