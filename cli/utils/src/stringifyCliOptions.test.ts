@@ -11,6 +11,6 @@ describe('stringifyCliOptions', () => {
         foxtrot: 'golf',
         hotel: true,
       })
-    ).toBe('--alpha "foxtrot" --charlie "23" --delta --echo false --foxtrot "golf" --hotel');
+    ).toBe('--alpha "foxtrot" --charlie "23" --delta --foxtrot "golf" --hotel');
   });
 });

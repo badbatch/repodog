@@ -1,5 +1,5 @@
 ---
-to: "<%= overrideTemplate_tsconfig_build_ejs_t ? null : `${path}/tsconfig.build.json` %>"
+to: "<%= typeof overrideTemplate_tsconfig_build_ejs_t !== 'undefined' ? null : `${path}/tsconfig.build.json` %>"
 ---
 {
   "extends": "./tsconfig.json",

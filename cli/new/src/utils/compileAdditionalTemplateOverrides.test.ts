@@ -29,10 +29,7 @@ describe('compileAdditionalTemplateOverrides', () => {
       overrideTemplate_index_ejs_t: true,
       overrideTemplate_main_ejs_t: true,
       overrideTemplate_package_ejs_t: true,
-      overrideTemplate_readme_ejs_t: false,
-      overrideTemplate_tsconfig_build_ejs_t: false,
       overrideTemplate_tsconfig_ejs_t: true,
-      overrideTemplate_types_ejs_t: false,
     });
   });
 });

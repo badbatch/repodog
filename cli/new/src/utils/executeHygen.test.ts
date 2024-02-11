@@ -33,7 +33,7 @@ describe('executeHygen', () => {
       });
 
       expect(asyncExec).toHaveBeenCalledWith(
-        'HYGEN_TMPLS=root/_templates/new root/node_modules/bin/hygen repo library --alpha "foxtrot" --charlie "23" --delta --echo false --foxtrot "golf" --hotel'
+        'HYGEN_TMPLS=root/_templates/new root/node_modules/bin/hygen repo library --alpha "foxtrot" --charlie "23" --delta --foxtrot "golf" --hotel'
       );
     });
   });
@@ -58,7 +58,7 @@ describe('executeHygen', () => {
       });
 
       expect(asyncExec).toHaveBeenCalledWith(
-        'HYGEN_TMPLS=root/_templates root/node_modules/bin/hygen new pkg --alpha "foxtrot" --charlie "23" --delta --echo false --foxtrot "golf" --hotel'
+        'HYGEN_TMPLS=root/_templates root/node_modules/bin/hygen new pkg --alpha "foxtrot" --charlie "23" --delta --foxtrot "golf" --hotel'
       );
     });
   });
