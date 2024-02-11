@@ -1,3 +1,9 @@
+#### 1.5.10-unstable.0 (2024-02-11)
+
+##### Bug Fixes
+
+*  generate override template vars for all internal templates (a8f94f4b)
+
 #### 1.5.9 (2024-02-11)
 
 ##### Refactors
