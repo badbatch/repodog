@@ -1,3 +1,9 @@
+#### 1.5.13-unstable.0 (2024-02-11)
+
+##### Bug Fixes
+
+*  duplicate mapping key in frontmatter of template (8b4ce792)
+
 #### 1.5.12-unstable.0 (2024-02-11)
 
 ##### Refactors
