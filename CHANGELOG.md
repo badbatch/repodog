@@ -1,3 +1,10 @@
+#### 1.5.11-unstable.0 (2024-02-11)
+
+##### Bug Fixes
+
+*  broken unit test (04f888ab)
+*  allow false to be passed as query param (ce01712b)
+
 #### 1.5.10-unstable.0 (2024-02-11)
 
 ##### Bug Fixes
