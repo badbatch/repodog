@@ -32,8 +32,10 @@ An command line module for managing repositories and a set of configs for popula
 * [@repodog/markdownlint-config](./configs/markdownlint-config/README.md)
 * [@repodog/prettier-config](./configs/prettier-config/README.md)
 * [@repodog/rollup-config](./configs/rollup-config/README.md)
+* [@repodog/storybook-config](./configs/storybook-config/README.md)
 * [@repodog/syncpack-config](./configs/syncpack-config/README.md)
 * [@repodog/ts-config](./configs/ts-config/README.md)
+* [@repodog/webpack-config](./configs/webpack-config/README.md)
 
 ## Changelog
 

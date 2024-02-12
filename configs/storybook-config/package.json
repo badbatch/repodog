@@ -1,0 +1,39 @@
+{
+  "name": "@repodog/storybook-config",
+  "description": "The RepoDog Storybook config module.",
+  "version": "0.0.1",
+  "author": "Dylan Aubrey",
+  "license": "MIT",
+  "homepage": "https://github.com/badbatch/repodog",
+  "repository": {
+    "directory": "packages/storybook-config",
+    "type": "git",
+    "url": "https://github.com/badbatch/repodog/configs/storybook-config"
+  },
+  "bugs": "https://github.com/badbatch/repodog/issues",
+  "exports": {
+    ".": {
+      "import": "./index.mjs"
+    },
+    "./preview": {
+      "import": "./preview.mjs"
+    },
+    "./eslint-config": {
+      "require": "./eslint.cjs"
+    }
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "peerDependencies": {
+    "@storybook/addon-essentials": "<8",
+    "@storybook/addon-interactions": "<8",
+    "@storybook/addon-links": "<8",
+    "@storybook/addon-onboarding": "<2",
+    "@storybook/cli": "<8",
+    "@storybook/nextjs": "<8",
+    "@storybook/react": "<8",
+    "@storybook/test": "<8",
+    "eslint-plugin-storybook": "<1"
+  }
+}
