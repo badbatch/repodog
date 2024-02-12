@@ -1,3 +1,13 @@
+#### 1.5.16 (2024-02-12)
+
+##### New Features
+
+*  add storybook config (cad544bc)
+
+##### Bug Fixes
+
+*  packge lock mismatch (3147a3ae)
+
 #### 1.5.16-unstable.0 (2024-02-11)
 
 #### 1.5.15-unstable.0 (2024-02-11)
