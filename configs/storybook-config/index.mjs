@@ -3,6 +3,7 @@ export const config = {
     '@storybook/addon-links',
     '@storybook/addon-essentials',
     '@storybook/addon-onboarding',
+    '@storybook/addon-a11y',
     '@storybook/addon-interactions',
   ],
   docs: {
