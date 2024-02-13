@@ -1,3 +1,13 @@
+#### 1.5.17 (2024-02-13)
+
+##### New Features
+
+*  add accessibility addon for storybook config (78f7f57f)
+
+##### Bug Fixes
+
+*  package lock mismatch (1d663986)
+
 #### 1.5.16 (2024-02-12)
 
 ##### New Features
