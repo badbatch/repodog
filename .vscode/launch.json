@@ -35,12 +35,12 @@
       "request": "launch",
       "name": "Repodog - new",
       "program": "${workspaceFolder}/cli/core/bin/repodog.mjs",
-      "cwd": "/Users/dylan.aubrey/workspaces/personal",
+      // "cwd": "/Users/dylan.aubrey/workspaces/personal",
       "runtimeVersion": "20.10.0",
       "args": [
         "new",
-        "repo",
-        "monorepo",
+        "pkg",
+        "library",
         "--verbose"
       ],
       "console": "integratedTerminal",
