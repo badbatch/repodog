@@ -1,10 +1,12 @@
 import { jest } from '@jest/globals';
 import { shelljsMock } from '@repodog/cli-test-utils';
+import * as cliUtils from '@repodog/cli-utils';
 
 jest.unstable_mockModule('@repodog/cli-cut', () => ({ command: jest.fn() }));
 jest.unstable_mockModule('@repodog/cli-new', () => ({ command: jest.fn() }));
 jest.unstable_mockModule('@repodog/cli-publish', () => ({ command: jest.fn() }));
 jest.unstable_mockModule('@repodog/cli-setup', () => ({ command: jest.fn() }));
+jest.unstable_mockModule('@repodog/cli-utils', () => ({ ...cliUtils, setVerbose: jest.fn(), verboseLog: jest.fn() }));
 jest.unstable_mockModule('@repodog/cli-write', () => ({ command: jest.fn() }));
 jest.unstable_mockModule('shelljs', shelljsMock);
 

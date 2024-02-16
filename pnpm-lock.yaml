@@ -239,6 +239,9 @@ importers:
       '@repodog/cli-setup':
         specifier: workspace:*
         version: link:../setup
+      '@repodog/cli-utils':
+        specifier: workspace:*
+        version: link:../utils
       '@repodog/cli-write':
         specifier: workspace:*
         version: link:../write

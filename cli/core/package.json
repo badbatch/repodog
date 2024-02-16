@@ -42,6 +42,7 @@
     "@repodog/cli-postinstall": "workspace:*",
     "@repodog/cli-publish": "workspace:*",
     "@repodog/cli-setup": "workspace:*",
+    "@repodog/cli-utils": "workspace:*",
     "@repodog/cli-write": "workspace:*",
     "ansi-colors": "^4.1.3",
     "core-js": "^3.27.2",
