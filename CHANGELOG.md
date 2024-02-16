@@ -1,3 +1,9 @@
+#### 1.5.21 (2024-02-16)
+
+##### New Features
+
+*  improve logging of init func (5e02d3ae)
+
 #### 1.5.20 (2024-02-16)
 
 ##### New Features
