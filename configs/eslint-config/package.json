@@ -16,7 +16,6 @@
     "access": "public"
   },
   "peerDependencies": {
-    "@babel/eslint-parser": "<8",
     "@typescript-eslint/eslint-plugin": "<6",
     "@typescript-eslint/parser": "<6",
     "eslint": "<9",
