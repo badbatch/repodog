@@ -1,9 +1,3 @@
-#### 1.5.18 (2024-02-16)
-
-##### New Features
-
-*  upgrade commitlint config and fix husky issue (41872fae)
-
 #### 1.5.17 (2024-02-13)
 
 ##### New Features
