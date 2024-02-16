@@ -1,3 +1,18 @@
+#### 1.5.19 (2024-02-16)
+
+##### Documentation Changes
+
+*  update commitlint docs (db647224)
+
+##### Bug Fixes
+
+*  bug in additional templates logic (384e6c54)
+*  bug in template when types file not excluded (7e246dc4)
+
+##### Other Changes
+
+*  upgrade commitlint config and fix husky issue" (ad05c292)
+
 #### 1.5.18 (2024-02-16)
 
 ##### Documentation Changes
