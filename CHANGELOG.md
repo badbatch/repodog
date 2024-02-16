@@ -1,3 +1,9 @@
+#### 1.5.20 (2024-02-16)
+
+##### New Features
+
+*  add flag to skip node version check (f5632a8b)
+
 #### 1.5.19 (2024-02-16)
 
 ##### Documentation Changes
