@@ -12,6 +12,12 @@
   },
   "bugs": "https://github.com/badbatch/repodog/issues",
   "main": "index.cjs",
+  "exports": {
+    ".": {
+      "default": "./index.cjs"
+    },
+    "./rollup": "./rollup.cjs"
+  },
   "publishConfig": {
     "access": "public"
   },
@@ -28,7 +34,13 @@
     "@babel/preset-react": "<8",
     "@babel/preset-typescript": "<8",
     "@babel/runtime": "<8",
+    "@rollup/plugin-babel": "<7",
     "babel-plugin-codegen": "<5",
     "babel-plugin-macros": "<4"
+  },
+  "peerDependenciesMeta": {
+    "@rollup/plugin-babel": {
+      "optional": true
+    }
   }
 }

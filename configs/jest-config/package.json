@@ -17,6 +17,7 @@
   },
   "peerDependencies": {
     "@jest/globals": "<30",
+    "@swc/jest": "<1",
     "@types/jest": "<26",
     "babel-jest": "<30",
     "identity-obj-proxy": "<4",
@@ -24,5 +25,13 @@
     "jest-environment-jsdom": "<30",
     "jest-environment-node": "<30",
     "suppress-experimental-warnings": "<2"
+  },
+  "peerDependenciesMeta": {
+    "@swc/jest": {
+      "optional": true
+    },
+    "babel-jest": {
+      "optional": true
+    }
   }
 }

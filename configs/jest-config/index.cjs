@@ -7,7 +7,7 @@ try {
   // no catch
 }
 
-const { DEBUG, JS_ENV } = process.env;
+const { COMPILER = 'swc', DEBUG, JS_ENV } = process.env;
 const isDebug = DEBUG === 'true';
 const isJsEnvWeb = JS_ENV === 'web';
 process.env.TEST_ENV = 'true';
@@ -15,7 +15,7 @@ process.env.TEST_ENV = 'true';
 const moduleNameMapper = {};
 
 const transform = {
-  '^.+\\.(mjs|cjs|js|jsx|ts|tsx)$': `${__dirname}/babelTransformer.cjs`,
+  '^.+\\.(mjs|cjs|js|jsx|ts|tsx)$': COMPILER === 'swc' ? '@swc/jest' : `${__dirname}/babelTransformer.cjs`,
 };
 
 if (isJsEnvWeb) {

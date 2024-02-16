@@ -19,6 +19,13 @@ npm install @repodog/babel-config --save-dev
 npm install @babel/cli @babel/core @babel/plugin-proposal-decorators @babel/plugin-syntax-import-assertions @babel/plugin-transform-class-properties @babel/plugin-transform-export-namespace-from @babel/plugin-transform-modules-commonjs @babel/plugin-transform-runtime @babel/preset-env @babel/preset-react @babel/preset-typescript @babel/runtime babel-plugin-codegen babel-plugin-macros --save-dev
 ```
 
+## Install optional dependencies
+
+```shell
+# terminal
+npm install @rollup/plugin-babel --save-dev
+```
+
 ## Use package
 
 ```javascript
@@ -30,6 +37,18 @@ module.exports = api => ({
 });
 ```
 
+### Usage with rollup
+
+```javascript
+const rollupConfig = require('@repodog/rollup-config');
+const babelConfig = require('@repodog/babel-config/rollup');
+const { babel: babelPlugin } = require('@rollup/plugin-babel');
+
+module.exports = {
+  ...rollupConfig({ compiler: babelPlugin(babelConfig) }),
+};
+```
+
 ### Environment variables
 
 `BABEL_DISABLE_CACHE` = `'true' || 'false'`
@@ -38,7 +57,7 @@ Disables the Babel cache. Default `'false'`.
 
 `BABEL_MODULE_SYSTEM` = `'esm' || 'cjs'`
 
-Adds `'@babel/plugin-transform-modules-commonjs'` plugin and sets `modules` to `'commonjs'`. Default `'esm'`.
+When set to `'cjs'`, adds `'@babel/plugin-transform-modules-commonjs'` plugin and sets `modules` to `'commonjs'`. Default `'esm'`.
 
 `DEBUG` = `'true' || 'false'`
 

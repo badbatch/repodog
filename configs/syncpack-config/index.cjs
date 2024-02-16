@@ -30,6 +30,7 @@ module.exports = {
     'scripts',
     'dependencies',
     'peerDependencies',
+    'peerDependenciesMeta',
     'devDependencies',
   ],
   versionGroups: [
