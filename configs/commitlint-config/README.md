@@ -16,7 +16,7 @@ npm install @repodog/commitlint-config --save-dev
 
 ```shell
 # terminal
-npm install husky @commitlint/cli @commitlint/config-conventional @commitlint/prompt-cli --save-dev
+npm install @commitlint/cli @commitlint/config-conventional @commitlint/prompt-cli --save-dev
 ```
 
 ## Initialize husky
@@ -24,7 +24,7 @@ npm install husky @commitlint/cli @commitlint/config-conventional @commitlint/pr
 ```shell
 # terminal
 npx husky install
-npx husky add .husky/commit-msg  'npx --no -- commitlint --edit ${1}'
+echo "npx --no -- commitlint --edit \$1" > .husky/commit-msg
 ```
 
 ## Use package
@@ -44,3 +44,7 @@ module.exports = {
   extends: ['@repodog/commitlint-config'],
 };
 ```
+
+## Make .husky/ executable
+
+If you get the error `The '.husky/commit-msg' hook was ignored because it's not set as executable.` when trying to create a commit, please run the command `chmod ug+x .husky/*` from your project root and then create the commit again.
