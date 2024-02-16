@@ -1,3 +1,13 @@
+#### 1.5.18 (2024-02-16)
+
+##### Documentation Changes
+
+*  update commitlint docs (db647224)
+
+##### Other Changes
+
+*  upgrade commitlint config and fix husky issue" (ad05c292)
+
 #### 1.5.17 (2024-02-13)
 
 ##### New Features
