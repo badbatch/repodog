@@ -16,8 +16,8 @@
     "access": "public"
   },
   "peerDependencies": {
-    "@commitlint/cli": "<19",
-    "@commitlint/config-conventional": "<19",
-    "@commitlint/prompt-cli": "<19"
+    "@commitlint/cli": "<18",
+    "@commitlint/config-conventional": "<18",
+    "@commitlint/prompt-cli": "<18"
   }
 }
