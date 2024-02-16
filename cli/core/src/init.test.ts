@@ -12,6 +12,7 @@ const command = jest.fn().mockImplementation(() => ({ command, help: jest.fn().m
 
 jest.unstable_mockModule('yargs', () => ({
   default: {
+    argv: {},
     command,
   },
 }));
@@ -63,6 +64,19 @@ describe('init', () => {
       const { init } = await import('./init.ts');
       init();
       expect(shelljs.exit).toHaveBeenCalledWith(1);
+    });
+
+    describe('when the skip-node-version-check flag is true', () => {
+      beforeEach(async () => {
+        const yargs = jest.mocked(await import('yargs'));
+        yargs.default.argv['skip-node-version-check'] = true;
+      });
+
+      it('should call yargs.command', async () => {
+        const { init } = await import('./init.ts');
+        init();
+        expect(command).toHaveBeenCalledTimes(6);
+      });
     });
   });
 });

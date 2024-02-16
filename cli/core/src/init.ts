@@ -11,7 +11,9 @@ import yargs from 'yargs';
 import packageJson from '../package.json';
 
 export const init = () => {
-  if (semver.satisfies(process.versions.node, packageJson.engines.node)) {
+  const skipNodeVersionCheck = (yargs.argv['skip-node-version-check'] ?? false) as boolean;
+
+  if (skipNodeVersionCheck || semver.satisfies(process.versions.node, packageJson.engines.node)) {
     yargs
       .command(cutCommand)
       .command(newCommand)

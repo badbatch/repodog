@@ -16,6 +16,10 @@ export const builder = (argv: Argv) =>
       desc: 'Whether to skip formatting of the content of the new file',
       type: 'boolean',
     })
+    .option('skip-node-version-check', {
+      desc: 'To skip the node version check',
+      type: 'boolean',
+    })
     .option('verbose', {
       desc: 'Whether to output verbose logs',
       type: 'boolean',

@@ -27,6 +27,10 @@ export const builder = (argv: Argv) =>
       desc: 'To skip pre version lifecycle hook',
       type: 'boolean',
     })
+    .option('skip-node-version-check', {
+      desc: 'To skip the node version check',
+      type: 'boolean',
+    })
     .option('verbose', {
       desc: 'Whether to output verbose logs',
       type: 'boolean',

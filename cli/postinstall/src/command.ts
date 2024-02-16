@@ -12,6 +12,10 @@ export const builder = (argv: Argv) =>
       desc: 'The subtype of post install: library | monorepo',
       type: 'string',
     })
+    .option('skip-node-version-check', {
+      desc: 'To skip the node version check',
+      type: 'boolean',
+    })
     .option('verbose', {
       desc: 'Whether to output verbose logs',
       type: 'boolean',
