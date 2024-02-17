@@ -1,3 +1,9 @@
+#### 1.6.4-unstable.0 (2024-02-17)
+
+##### Bug Fixes
+
+*  misconfiguration of ts/js in swc config (6f9433c5)
+
 #### 1.6.3 (2024-02-17)
 
 ##### Bug Fixes
