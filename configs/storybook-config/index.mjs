@@ -1,4 +1,4 @@
-export const config = {
+export const config = ({ compiler } = {}) => ({
   addons: [
     '@storybook/addon-links',
     '@storybook/addon-essentials',
@@ -9,6 +9,17 @@ export const config = {
   docs: {
     autodocs: 'tag',
   },
-  framework: '@storybook/nextjs',
+  framework: {
+    name: '@storybook/nextjs',
+    ...(compiler === 'swc'
+      ? {
+          options: {
+            builder: {
+              useSWC: true,
+            },
+          },
+        }
+      : {}),
+  },
   stories: ['../**/*.stories.*'],
-};
+});

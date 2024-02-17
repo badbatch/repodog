@@ -1,3 +1,31 @@
+#### 1.6.0 (2024-02-17)
+
+##### Bug Fixes
+
+*  type of code docs to improve json rendering (f6ccbdfa)
+
+#### 1.6.0-unstable.0 (2024-02-17)
+
+##### New Features
+
+*  add storybook config changes (1cd81f2e)
+
+#### 1.5.22 (2024-02-17)
+
+##### Documentation Changes
+
+*  update swc config readme (33e79c99)
+
+##### New Features
+
+*  add swc config and use in rollup and jest (016d4981)
+
+##### Refactors
+
+*  remove babel use in repo (1d5f0b61)
+*  use swc in repo and add webpack config (4ad6cbde)
+*  remove babel deps (15a9677b)
+
 #### 1.5.21 (2024-02-16)
 
 ##### New Features

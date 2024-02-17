@@ -16,7 +16,16 @@ npm install @repodog/jest-config --save-dev
 
 ```shell
 # terminal
-npm install @jest/globals babel-jest identity-obj-proxy jest suppress-experimental-warnings --save-dev
+npm install @jest/globals identity-obj-proxy jest suppress-experimental-warnings --save-dev
+```
+
+## Install optional dependencies
+
+```shell
+# terminal
+npm install babel-jest --save-dev
+# or
+npm install @swc/jest --save-dev
 ```
 
 ## Use package
@@ -64,10 +73,14 @@ module.exports = {
 
 ### Environment variables
 
+`COMPILER` = `'babel' || 'swc'`
+
+Uses either Babel or SWC to compile code for Jest. Default `'swc'`.
+
 `DEBUG` = `'true' || 'false'`
 
 Changes `testMatch` to cover all test files and disables the Jest timeout. These are useful to set when debugging a file in IDE. Default `'false'`.
 
 `JS_ENV` = `'web' || 'node'`
 
-When set to `'web'`, adds regexes to `moduleNameMapper` and `transform` to cater for `.css` and other file extensions Jest cannot resolve. Defualt `'node'`.
+When set to `'web'`, adds regexes to `moduleNameMapper` and `transform` to cater for `.css` and other file extensions Jest cannot resolve. Default `'node'`.

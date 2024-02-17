@@ -1,7 +1,7 @@
 {
   "name": "@repodog/rollup-config",
   "description": "The RepoDog Rollup config module.",
-  "version": "1.1.9",
+  "version": "1.2.0-unstable.0",
   "author": "Dylan Aubrey",
   "license": "MIT",
   "homepage": "https://github.com/badbatch/repodog",
@@ -16,7 +16,6 @@
     "access": "public"
   },
   "peerDependencies": {
-    "@rollup/plugin-babel": "<7",
     "@rollup/plugin-commonjs": "<26",
     "@rollup/plugin-image": "<4",
     "@rollup/plugin-json": "<7",

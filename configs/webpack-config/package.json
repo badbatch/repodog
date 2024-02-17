@@ -1,7 +1,7 @@
 {
   "name": "@repodog/webpack-config",
   "description": "The RepoDog webpack config module.",
-  "version": "0.0.8",
+  "version": "0.1.0-unstable.0",
   "author": "Dylan Aubrey",
   "license": "MIT",
   "homepage": "https://github.com/badbatch/repodog",
@@ -21,10 +21,16 @@
   "peerDependencies": {
     "babel-loader": "<10",
     "source-map-loader": "<5",
+    "swc-loader": "<1",
     "webpack": "<6",
     "webpack-cli": "<6"
   },
-  "devDependencies": {
-    "webpack": "^5.88.2"
+  "peerDependenciesMeta": {
+    "babel-loader": {
+      "optional": true
+    },
+    "swc-loader": {
+      "optional": true
+    }
   }
 }

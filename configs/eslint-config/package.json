@@ -1,7 +1,7 @@
 {
   "name": "@repodog/eslint-config",
   "description": "The RepoDog ESLint config module.",
-  "version": "1.1.21",
+  "version": "1.2.0-unstable.0",
   "author": "Dylan Aubrey",
   "license": "MIT",
   "homepage": "https://github.com/badbatch/repodog",
@@ -16,7 +16,6 @@
     "access": "public"
   },
   "peerDependencies": {
-    "@babel/eslint-parser": "<8",
     "@typescript-eslint/eslint-plugin": "<6",
     "@typescript-eslint/parser": "<6",
     "eslint": "<9",

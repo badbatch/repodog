@@ -1,7 +1,7 @@
 {
   "name": "@repodog/cli-new",
   "description": "The RepoDog cli new module.",
-  "version": "1.4.18",
+  "version": "1.5.0-unstable.0",
   "author": "Dylan Aubrey",
   "license": "MIT",
   "homepage": "https://github.com/badbatch/repodog",
@@ -41,7 +41,6 @@
     "yargs": "^15.1.0"
   },
   "peerDependencies": {
-    "@babel/runtime": "<8",
     "core-js": "<4",
     "lodash-es": "<5"
   },
@@ -49,6 +48,8 @@
     "@jest/globals": "^29.3.1",
     "@repodog/cli-test-utils": "workspace:*",
     "@repodog/rollup-config": "workspace:*",
+    "@repodog/swc-config": "workspace:*",
+    "@rollup/plugin-swc": "^0.3.0",
     "@types/lodash-es": "^4.14.191",
     "@types/shelljs": "^0.8.11",
     "@types/yargs": "^15.0.4",

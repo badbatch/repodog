@@ -91,7 +91,6 @@ module.exports = {
       },
     },
   ],
-  parser: '@babel/eslint-parser',
   plugins: [
     'import',
     'prefer-arrow',

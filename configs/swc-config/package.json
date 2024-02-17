@@ -1,0 +1,24 @@
+{
+  "name": "@repodog/swc-config",
+  "description": "The RepoDog SWC config module.",
+  "version": "0.1.0-unstable.0",
+  "author": "Dylan Aubrey",
+  "license": "MIT",
+  "homepage": "https://github.com/badbatch/repodog",
+  "repository": {
+    "directory": "configs/swc-config",
+    "type": "git",
+    "url": "https://github.com/badbatch/repodog/configs/swc-config"
+  },
+  "bugs": "https://github.com/badbatch/repodog/issues",
+  "main": "index.cjs",
+  "publishConfig": {
+    "access": "public"
+  },
+  "peerDependencies": {
+    "@rollup/plugin-swc": "<1",
+    "@swc/core": "<2",
+    "@swc/helpers": "<1",
+    "browserslist": "<5"
+  }
+}

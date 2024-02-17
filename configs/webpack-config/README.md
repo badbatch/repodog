@@ -16,17 +16,54 @@ npm install @repodog/webpack-config --save-dev
 
 ```shell
 # terminal
-npm install babel-loader source-map-loader webpack webpack-cli --save-dev
+npm install source-map-loader webpack webpack-cli --save-dev
+```
+
+## Install optional dependencies
+
+```shell
+# terminal
+npm install babel-loader --save-dev
+# or
+npm install swc-loader --save-dev
 ```
 
 ## Use package
 
+```json
+// package.json
+{
+  "scripts": {
+    "build": "webpack --config ./webpack.config.cjs"
+  }
+}
+```
+
+### With Babel
+
 ```javascript
 // webpack.config.cjs
-const repodogConfig = require('@repodog/webpack-config');
+const webpackConfig = require('@repodog/webpack-config');
 
 module.exports = {
-  ...repodogConfig,
+  ...webpackConfig({ compiler: 'babel-loader' }),
+  entry: './src/index.ts',
+  output: {
+    filename: 'index.js',
+    path: path.resolve(__dirname, 'dist'),
+  },
+};
+```
+
+### With SWC
+
+```javascript
+// webpack.config.cjs
+const webpackConfig = require('@repodog/webpack-config');
+const swcConfig = require('@repodog/swc-config');
+
+module.exports = {
+  ...webpackConfig({ compiler: ['swc-loader', swcConfig] }),
   entry: './src/index.ts',
   output: {
     filename: 'index.js',

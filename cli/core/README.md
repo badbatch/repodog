@@ -22,7 +22,7 @@ npm install @repodog/cli --save-dev
 
 ## Configuration
 
-```json
+```jsonc
 // package.json
 {
   "scripts": {
@@ -92,7 +92,7 @@ Options:
 
 Any tasks you want to run prior to package versions getting updated should be run in this script hook.
 
-```json
+```jsonc
 // package.json
 {
   "scripts": {
@@ -105,7 +105,7 @@ Any tasks you want to run prior to package versions getting updated should be ru
 
 Any tasks you want to run after package versions have been updated should be run in this script hook.
 
-```json
+```jsonc
 // package.json
 {
   "scripts": {
@@ -118,7 +118,7 @@ Any tasks you want to run after package versions have been updated should be run
 
 Any tasks you want to run to generate/update the changelog should be run in this script hook.
 
-```json
+```jsonc
 // package.json
 {
   "scripts": {
@@ -177,7 +177,7 @@ _templates/
         - command.ejs.t
 ```
 
-```json
+```jsonc
 // <projectRoot>/.repodogrc
 {
   "additionalTemplatesPath": "./_templates"
@@ -192,7 +192,7 @@ Add, remove, and/or replace the [base set of questions](../new/src/questions) fo
 
 The example below adds two questions, removes one, and updates one when `repodog new` is called with `pkg library cli`.
 
-```json
+```jsonc
 // .repodogrc
 {
   "questionOverrides": {
@@ -245,7 +245,7 @@ Template variables are flattened and merged and the output is passed into the te
 
 `templateVariables` can only be declared in a project config. To set `templateVariables` globally, see the [`templateVariablesPath` property](#templatevariablespath).
 
-```json
+```jsonc
 // .repodogrc
 {
   "templateVariables": {

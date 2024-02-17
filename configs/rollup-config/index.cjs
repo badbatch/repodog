@@ -1,5 +1,4 @@
 /* eslint-disable import/no-extraneous-dependencies */
-const { babel } = require('@rollup/plugin-babel');
 const commonjs = require('@rollup/plugin-commonjs');
 const image = require('@rollup/plugin-image');
 const json = require('@rollup/plugin-json');
@@ -28,6 +27,10 @@ const sourcemapPathTransform = sourcePath => {
 module.exports = (config = {}) => {
   const extensions = ['.mjs', '.cjs', '.js', '.jsx', '.json', '.ts', '.tsx'];
 
+  if (!config.compiler) {
+    throw new Error('config.compiler is a required option. Both babel and swc rollup plugins are supported.');
+  }
+
   const plugins = [
     json(),
     nodeResolve({
@@ -35,11 +38,7 @@ module.exports = (config = {}) => {
       preferBuiltins: true,
     }),
     commonjs(),
-    babel({
-      babelHelpers: 'runtime',
-      extensions,
-      rootMode: 'upward',
-    }),
+    config.compiler,
     image(),
   ];
 

@@ -1,7 +1,7 @@
 {
   "name": "@repodog/cli-postinstall",
   "description": "The RepoDog cli postinstall module.",
-  "version": "0.3.6",
+  "version": "0.4.0-unstable.0",
   "author": "Dylan Aubrey",
   "license": "MIT",
   "homepage": "https://github.com/badbatch/repodog",
@@ -37,7 +37,6 @@
     "yargs": "^15.1.0"
   },
   "peerDependencies": {
-    "@babel/runtime": "<8",
     "core-js": "<4",
     "lodash-es": "<5"
   },
