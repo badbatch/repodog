@@ -1,7 +1,7 @@
 {
   "name": "@repodog/cli-utils",
   "description": "The RepoDog cli utils module.",
-  "version": "1.3.4",
+  "version": "1.4.0-unstable.0",
   "author": "Dylan Aubrey",
   "license": "MIT",
   "homepage": "https://github.com/badbatch/repodog",

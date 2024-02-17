@@ -1,3 +1,19 @@
+#### 1.5.22 (2024-02-17)
+
+##### Documentation Changes
+
+*  update swc config readme (33e79c99)
+
+##### New Features
+
+*  add swc config and use in rollup and jest (016d4981)
+
+##### Refactors
+
+*  remove babel use in repo (1d5f0b61)
+*  use swc in repo and add webpack config (4ad6cbde)
+*  remove babel deps (15a9677b)
+
 #### 1.5.21 (2024-02-16)
 
 ##### New Features
