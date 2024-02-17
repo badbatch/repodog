@@ -1,3 +1,9 @@
+#### 1.6.0 (2024-02-17)
+
+##### Bug Fixes
+
+*  type of code docs to improve json rendering (f6ccbdfa)
+
 #### 1.6.0-unstable.0 (2024-02-17)
 
 ##### New Features
