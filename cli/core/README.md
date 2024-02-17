@@ -35,6 +35,8 @@ npm install @repodog/cli --save-dev
 }
 ```
 
+### With Github Actions
+
 ```yaml
 # .github/workflows/build-and-publish.yaml
 name: Build and publish
@@ -58,6 +60,73 @@ jobs:
       package-manager-version: '7.25.1'
     secrets:
       npm_auth_token: ${{ secrets.NPM_AUTH_TOKEN }}
+```
+
+### With Azure Devops
+
+```yaml
+trigger:
+  branches:
+    include:
+      - main
+  tags:
+    include:
+      - v**
+
+pr:
+  - main
+
+pool:
+  vmImage: "ubuntu-latest"
+
+variables:
+  - name: pnpm_config_cache
+    value: $(Pipeline.Workspace)/.pnpm-store
+  - name: is_tag
+    value: $[startsWith(variables['Build.SourceBranch'],'refs/tags/')]
+
+steps:
+  - checkout: self
+    displayName: "Get full Git history"
+    fetchDepth: 0
+
+  - task: Cache@2
+    inputs:
+      key: 'pnpm | "$(Agent.OS)" | pnpm-lock.yaml'
+      path: $(pnpm_config_cache)
+    displayName: Cache pnpm
+
+  - script: |
+      corepack enable
+      corepack prepare pnpm@latest-8 --activate
+      pnpm config set store-dir $(pnpm_config_cache)
+    displayName: "Setup pnpm"
+
+  - task: npmAuthenticate@0
+    inputs:
+      workingFile: .npmrc
+
+  - script: pnpm install
+    displayName: "pnpm install"
+
+  - script: pnpm run syncpack
+    displayName: "pnpm syncpack"
+
+  - script: pnpm run build
+    displayName: "pnpm build"
+
+  - script: pnpm run lint
+    displayName: "pnpm lint"
+
+  - script: pnpm run type-check
+    displayName: "pnpm type-check"
+
+  - script: pnpm run test
+    displayName: "pnpm test"
+
+  - script: pnpm run repodog publish --verbose --skip-node-version-check
+    condition: eq(variables.is_tag,true)
+    displayName: "Publish package"
 ```
 
 ## Usage

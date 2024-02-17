@@ -8,7 +8,7 @@ An command line module for managing repositories and a set of configs for popula
 ## Summary
 
 * Cut and publish releases, scaffold new folders and write test files with [`@repodog/cli`](./cli/core//README.md)
-* Build code with [`@repodog/rollup-config`](./configs/rollup-config/README.md) and [`@repodog/babel-config`](./configs/babel-config/README.md)
+* Build code with [`@repodog/rollup-config`](./configs/rollup-config/README.md) and [`@repodog/swc-config`](./configs/swc-config/README.md) or [`@repodog/babel-config`](./configs/babel-config/README.md)
 * Lint code with [`@repodog/eslint-config`](./configs/eslint-config/README.md) and [@repodog/prettier-config](./configs/prettier-config/README.md)
 * Test code with [`@repodog/jest-config`](./configs/jest-config/README.md)
 
