@@ -56,7 +56,7 @@ module.exports = [
       ...sharedConfig.jsc,
       parser: {
         syntax: 'typescript',
-        tsx: false,
+        tsx: true,
         ...sharedConfig.jsc.parser,
       },
     },
@@ -67,7 +67,7 @@ module.exports = [
     jsc: {
       ...sharedConfig.jsc,
       parser: {
-        jsx: false,
+        jsx: true,
         syntax: 'ecmascript',
         ...sharedConfig.jsc.parser,
       },
