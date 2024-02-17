@@ -21,10 +21,16 @@
   "peerDependencies": {
     "babel-loader": "<10",
     "source-map-loader": "<5",
+    "swc-loader": "<1",
     "webpack": "<6",
     "webpack-cli": "<6"
   },
-  "devDependencies": {
-    "webpack": "^5.88.2"
+  "peerDependenciesMeta": {
+    "babel-loader": {
+      "optional": true
+    },
+    "swc-loader": {
+      "optional": true
+    }
   }
 }
