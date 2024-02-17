@@ -1,3 +1,9 @@
+#### 1.6.0-unstable.0 (2024-02-17)
+
+##### New Features
+
+*  add storybook config changes (1cd81f2e)
+
 #### 1.5.22 (2024-02-17)
 
 ##### Documentation Changes
