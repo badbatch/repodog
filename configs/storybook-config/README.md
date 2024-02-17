@@ -16,7 +16,7 @@ npm install @repodog/storybook-config --save-dev
 
 ```shell
 # terminal
-npm install @storybook/addon-essentials @storybook/addon-interactions @storybook/addon-links @storybook/addon-onboarding @storybook/cli @storybook/react @storybook/react-webpack5 @storybook/test eslint-plugin-storybook --save-dev
+npm install @storybook/addon-essentials @storybook/addon-interactions @storybook/addon-links @storybook/addon-onboarding @storybook/cli @storybook/nextjs @storybook/react @storybook/test eslint-plugin-storybook --save-dev
 ```
 
 ## Use package
@@ -42,13 +42,29 @@ module.exports = {
 };
 ```
 
+### With SWC
+
 ```typescript
 // .storybook/main.ts
-import { config as repodogConfig } from '@repodog/storybook-config';
+import { config as storybookConfig } from '@repodog/storybook-config';
 import { type StorybookConfig } from '@storybook/your-framework';
 
 const config: StorybookConfig = {
-  ...repodogConfig
+  ...storybookConfig({ compiler: 'swc' })
+};
+
+export default config;
+```
+
+### With Babel
+
+```typescript
+// .storybook/main.ts
+import { config as storybookConfig } from '@repodog/storybook-config';
+import { type StorybookConfig } from '@storybook/your-framework';
+
+const config: StorybookConfig = {
+  ...storybookConfig({ compiler: 'babel' })
 };
 
 export default config;
