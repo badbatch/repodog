@@ -14,9 +14,11 @@ npm install @repodog/swc-config @rollup/plugin-swc @swc/core @swc/helpers browse
 
 ## Use package
 
-This package is designed to be used with `rollup` as it allows the the config to be a javascript file. The SWC command line library only supports a `.swcrc` json file.
+This package is designed to be used with `rollup` or `webpack` as it allows the the config to be a javascript file. The SWC command line library only supports a `.swcrc` json file.
 
 As a javascript file that is passed into rollup, you can override the configuration and it can be dynamically modified based off environment variables.
+
+### With Rollup
 
 ```javascript
 // rollup.config.cjs
@@ -26,6 +28,23 @@ const swcPlugin = require('@rollup/plugin-swc');
 
 module.exports = {
   ...rollupConfig({ compiler: swcPlugin(swcConfig) }),
+};
+```
+
+### With Webpack
+
+```javascript
+// webpack.config.cjs
+const webpackConfig = require('@repodog/webpack-config');
+const swcConfig = require('@repodog/swc-config');
+
+module.exports = {
+  ...webpackConfig({ compiler: ['swc-loader', swcConfig] }),
+  entry: './src/index.ts',
+  output: {
+    filename: 'index.js',
+    path: path.resolve(__dirname, 'dist'),
+  },
 };
 ```
 
