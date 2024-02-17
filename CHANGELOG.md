@@ -1,3 +1,9 @@
+#### 1.6.1 (2024-02-17)
+
+##### Documentation Changes
+
+*  add azure pipeline example config (5f676fba)
+
 #### 1.6.0 (2024-02-17)
 
 ##### Bug Fixes
