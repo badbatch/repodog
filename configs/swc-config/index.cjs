@@ -50,7 +50,7 @@ const sharedConfig = {
 
 module.exports = [
   {
-    test: '.*\\.(mjs|cjs|jsx?)$',
+    test: '.*\\.tsx?$',
     ...sharedConfig,
     jsc: {
       ...sharedConfig.jsc,
@@ -62,7 +62,7 @@ module.exports = [
     },
   },
   {
-    test: '.*\\.tsx?$',
+    test: '.*\\.(mjs|cjs|jsx?)$',
     ...sharedConfig,
     jsc: {
       ...sharedConfig.jsc,
