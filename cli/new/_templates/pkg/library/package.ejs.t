@@ -43,7 +43,6 @@ sh: "<%= packageManager %> install"
   },
   "dependencies": {},
   "peerDependencies": {
-    "@babel/runtime": "<8",
     "core-js": "<4"
   },
   "devDependencies": {
