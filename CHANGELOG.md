@@ -1,3 +1,9 @@
+#### 1.6.2 (2024-02-17)
+
+##### Bug Fixes
+
+*  formatting in readme (4440789a)
+
 #### 1.6.1 (2024-02-17)
 
 ##### Documentation Changes
