@@ -1,3 +1,9 @@
+#### 1.6.3 (2024-02-17)
+
+##### Bug Fixes
+
+*  set jsx/tsx to true in swc config (61568021)
+
 #### 1.6.2 (2024-02-17)
 
 ##### Bug Fixes
