@@ -1,8 +1,9 @@
 ---
 to: jest.config.cjs
 ---
-const config = require('@repodog/jest-config');
+const jestConfig = require('@repodog/jest-config');
+const swcConfig = require('@repodog/swc-config');
 
 module.exports = {
-  ...config,
+  ...jestConfig({ compilerOptions: swcConfig }),
 };

@@ -32,7 +32,7 @@ sh: "<%= packageManager %> install && <%= packageManager %> add -D @repodog/cli 
     "lint": "eslint . --ext .ts,.cjs",
     "repodog": "repodog",
     "syncpack": "syncpack format && syncpack list-mismatches && syncpack lint-semver-ranges",
-    "test": "node --require=suppress-experimental-warnings --experimental-vm-modules node_modules/jest/bin/jest.js",
+    "test": "COMPILER=swc node --require=suppress-experimental-warnings --experimental-vm-modules node_modules/jest/bin/jest.js",
     "type-check": "tsc --noEmit",
     "validate": "<%= packageManager %> run syncpack && <%= packageManager %> run build && <%= packageManager %> run lint && <%= packageManager %> run type-check && <%= packageManager %> run test"
   },
