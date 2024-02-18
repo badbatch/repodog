@@ -1,3 +1,9 @@
+#### 1.7.2 (2024-02-18)
+
+##### Bug Fixes
+
+*  update templates and more docs for swc usage (136db862)
+
 #### 1.7.1 (2024-02-18)
 
 ##### Refactors
