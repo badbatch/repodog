@@ -9,14 +9,23 @@ The RepoDog SWC config.
 
 ```shell
 # terminal
-npm install @repodog/swc-config @rollup/plugin-swc @swc/core @swc/helpers browserslist --save-dev
+npm install @repodog/swc-config @swc/core browserslist --save-dev
+```
+
+## Install optional dependencies
+
+```shell
+# terminal
+npm install @rollup/plugin-swc --save-dev
 ```
 
 ## Use package
 
-This package is designed to be used with `rollup` or `webpack` as it allows the the config to be a javascript file. The SWC command line library only supports a `.swcrc` json file.
+This package is designed to be used with `rollup`, `webpack` and `jest` as it allows the the config to be a javascript file. The SWC command line library only supports a `.swcrc` json file.
 
 As a javascript file that is passed into rollup, you can override the configuration and it can be dynamically modified based off environment variables.
+
+Whether the config transforms javascript or typescript is based on whetehr the config finds a `tsconfig.json` at the root of your project.
 
 ### With Rollup
 
@@ -27,7 +36,7 @@ const swcConfig = require('@repodog/swc-config');
 const swcPlugin = require('@rollup/plugin-swc');
 
 module.exports = {
-  ...rollupConfig({ compiler: swcPlugin(swcConfig) }),
+  ...rollupConfig({ compiler: swcPlugin({ swc: swcConfig }) }),
 };
 ```
 
@@ -48,6 +57,18 @@ module.exports = {
 };
 ```
 
+### With Jest
+
+```javascript
+// jest.config.cjs
+const jestConfig = require('@repodog/jest-config');
+const swcConfig = require('@repodog/swc-config');
+
+module.exports = {
+  ...jestConfig({ compilerOptions: swcConfig }),
+};
+```
+
 ### Environment variables
 
 `SWC_MODULE_SYSTEM` = `'esm' || 'cjs'`
@@ -65,7 +86,3 @@ Changes `targets` to browser based or nodejs based. Default `'node'`.
 `NODE_ENV` = `'prod' || 'production' || 'dev' || 'development'`
 
 Sets `transform.react.development` field. Default `'dev' || 'development'`.
-
-`TEST_ENV` = `'true' || 'false'`
-
-When set to `'false'`, excludes test files. Default `'false'`.

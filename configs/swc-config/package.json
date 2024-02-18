@@ -18,7 +18,11 @@
   "peerDependencies": {
     "@rollup/plugin-swc": "<1",
     "@swc/core": "<2",
-    "@swc/helpers": "<1",
     "browserslist": "<5"
+  },
+  "peerDependenciesMeta": {
+    "@rollup/plugin-swc": {
+      "optional": true
+    }
   }
 }
