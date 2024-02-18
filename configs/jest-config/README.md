@@ -39,12 +39,26 @@ npm install @swc/jest --save-dev
 }
 ```
 
+### With Babel
+
 ```javascript
 // jest.config.cjs
-const repodogConfig = require('@repodog/jest-config');
+const jestConfig = require('@repodog/jest-config');
 
 module.exports = {
-  ...repodogConfig,
+  ...jestConfig(),
+};
+```
+
+### With SWC
+
+```javascript
+// jest.config.cjs
+const jestConfig = require('@repodog/jest-config');
+const swcConfig = require('@repodog/swc-config');
+
+module.exports = {
+  ...jestConfig({ compilerOptions: swcConfig }),
 };
 ```
 
@@ -75,7 +89,7 @@ module.exports = {
 
 `COMPILER` = `'babel' || 'swc'`
 
-Uses either Babel or SWC to compile code for Jest. Default `'swc'`.
+Uses either Babel or SWC to compile code for Jest. Default `'babel'`.
 
 `DEBUG` = `'true' || 'false'`
 

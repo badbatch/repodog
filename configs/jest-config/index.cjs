@@ -7,16 +7,14 @@ try {
   // no catch
 }
 
-const { COMPILER = 'swc', DEBUG, JS_ENV } = process.env;
+const { COMPILER = 'babel', DEBUG, JS_ENV } = process.env;
 const isDebug = DEBUG === 'true';
 const isJsEnvWeb = JS_ENV === 'web';
+const isSwc = COMPILER === 'swc';
 process.env.TEST_ENV = 'true';
 
 const moduleNameMapper = {};
-
-const transform = {
-  '^.+\\.(mjs|cjs|js|jsx|ts|tsx)$': COMPILER === 'swc' ? '@swc/jest' : `${__dirname}/babelTransformer.cjs`,
-};
+const transform = {};
 
 if (isJsEnvWeb) {
   moduleNameMapper['^.+\\.css$'] = 'identity-obj-proxy';
@@ -38,38 +36,44 @@ if (isDebug) {
   );
 }
 
-module.exports = {
-  collectCoverage: true,
-  collectCoverageFrom: [
-    'src/**/*.{mjs,cjs,js,jsx,ts,tsx}',
-    '!**/types.ts',
-    '!**/*.spec.*',
-    '!**/*.test.*',
-    '!**/*.types.ts',
-    '!**/__mocks__/**',
-    '!**/__tests__/**',
-    '!**/__testUtils__/**',
-  ],
-  coverageDirectory: 'coverage',
-  coverageProvider: 'v8',
-  coverageReporters: ['json', 'lcov', 'text-summary'],
-  displayName: packageName,
-  extensionsToTreatAsEsm: ['.jsx', '.ts', '.tsx'],
-  moduleFileExtensions: ['mjs', 'cjs', 'js', 'jsx', 'json', 'ts', 'tsx'],
-  moduleNameMapper,
-  rootDir: packageDir,
-  testEnvironment: isJsEnvWeb ? 'jsdom' : 'node',
-  testMatch,
-  testPathIgnorePatterns: [
-    '/build/',
-    '/config/',
-    '/dist/',
-    '/e2e/',
-    '/lib/',
-    '/public/',
-    '/reports/',
-    '/__snapshots__/',
-  ],
-  testTimeout: isDebug ? 999_999 : 5000,
-  transform,
+module.exports = ({ compilerOptions = {} } = {}) => {
+  transform['^.+\\.(mjs|cjs|js|jsx|ts|tsx)$'] = isSwc
+    ? ['@swc/jest', compilerOptions]
+    : `${__dirname}/babelTransformer.cjs`;
+
+  return {
+    collectCoverage: true,
+    collectCoverageFrom: [
+      'src/**/*.{mjs,cjs,js,jsx,ts,tsx}',
+      '!**/types.ts',
+      '!**/*.spec.*',
+      '!**/*.test.*',
+      '!**/*.types.ts',
+      '!**/__mocks__/**',
+      '!**/__tests__/**',
+      '!**/__testUtils__/**',
+    ],
+    coverageDirectory: 'coverage',
+    coverageProvider: 'v8',
+    coverageReporters: ['json', 'lcov', 'text-summary'],
+    displayName: packageName,
+    extensionsToTreatAsEsm: ['.jsx', '.ts', '.tsx'],
+    moduleFileExtensions: ['mjs', 'cjs', 'js', 'jsx', 'json', 'ts', 'tsx'],
+    moduleNameMapper,
+    rootDir: packageDir,
+    testEnvironment: isJsEnvWeb ? 'jsdom' : 'node',
+    testMatch,
+    testPathIgnorePatterns: [
+      '/build/',
+      '/config/',
+      '/dist/',
+      '/e2e/',
+      '/lib/',
+      '/public/',
+      '/reports/',
+      '/__snapshots__/',
+    ],
+    testTimeout: isDebug ? 999_999 : 5000,
+    transform,
+  };
 };

@@ -50,7 +50,6 @@ module.exports = isTypescript
           tsx: true,
         },
       },
-      test: '.*\\.tsx?',
     }
   : {
       ...sharedConfig,
@@ -61,5 +60,4 @@ module.exports = isTypescript
           syntax: 'ecmascript',
         },
       },
-      test: '.*\\.(mjs|cjs|jsx?)$',
     };

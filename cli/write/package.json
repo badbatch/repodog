@@ -41,7 +41,7 @@
     "core-js": "<4"
   },
   "devDependencies": {
-    "@jest/globals": "^29.3.1",
+    "@jest/globals": "^29.7.0",
     "@repodog/cli-test-utils": "workspace:*",
     "@types/shelljs": "^0.8.11",
     "@types/yargs": "^15.0.4",

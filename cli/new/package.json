@@ -45,7 +45,7 @@
     "lodash-es": "<5"
   },
   "devDependencies": {
-    "@jest/globals": "^29.3.1",
+    "@jest/globals": "^29.7.0",
     "@repodog/cli-test-utils": "workspace:*",
     "@repodog/rollup-config": "workspace:*",
     "@repodog/swc-config": "workspace:*",
