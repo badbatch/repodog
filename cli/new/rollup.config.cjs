@@ -4,7 +4,7 @@ const swcPlugin = require('@rollup/plugin-swc');
 
 module.exports = {
   ...rollupConfig({
-    compiler: swcPlugin(swcConfig),
+    compiler: swcPlugin({ swc: swcConfig.ts }),
     copy: {
       targets: [{ dest: 'dist/questions', src: 'src/questions/*' }],
     },

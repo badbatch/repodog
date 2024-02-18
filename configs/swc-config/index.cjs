@@ -1,11 +1,8 @@
-const { DEBUG, JS_ENV, NODE_ENV, SWC_LANGUAGE, SWC_MODULE_SYSTEM } = process.env;
+const { DEBUG, JS_ENV, NODE_ENV, SWC_MODULE_SYSTEM } = process.env;
 const isDebug = DEBUG === 'true';
 const isCjs = SWC_MODULE_SYSTEM === 'cjs';
 const isJsEnvWeb = JS_ENV === 'web';
 const isProdEnv = NODE_ENV === 'prod' || NODE_ENV === 'production';
-const isTypescript = SWC_LANGUAGE === 'ts';
-const isJavascript = SWC_LANGUAGE === 'js';
-const languageSelected = isTypescript || isJavascript;
 let targets;
 
 if (isJsEnvWeb) {
@@ -64,4 +61,12 @@ const configs = [
   },
 ];
 
-module.exports = languageSelected ? (isTypescript ? configs[0] : configs[1]) : configs;
+Object.defineProperty(configs, 'ts', {
+  get: () => configs[0],
+});
+
+Object.defineProperty(configs, 'js', {
+  get: () => configs[0],
+});
+
+module.exports = configs;
