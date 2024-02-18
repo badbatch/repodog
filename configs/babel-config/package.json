@@ -1,7 +1,7 @@
 {
   "name": "@repodog/babel-config",
   "description": "The RepoDog Babel config module.",
-  "version": "1.2.0-unstable.0",
+  "version": "1.2.0",
   "author": "Dylan Aubrey",
   "license": "MIT",
   "homepage": "https://github.com/badbatch/repodog",

@@ -1,8 +1,14 @@
-#### 1.6.4-unstable.0 (2024-02-17)
+#### 1.7.0 (2024-02-18)
 
 ##### Bug Fixes
 
+*  solve swc jest issue with tests being excluded (10d1b3e2)
+*  update swc config and rollup config to get them to work (45501860)
 *  misconfiguration of ts/js in swc config (6f9433c5)
+
+##### Refactors
+
+*  only bump package if internal package is deps (3be4e337)
 
 #### 1.6.3 (2024-02-17)
 
