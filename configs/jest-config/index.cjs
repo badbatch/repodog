@@ -36,10 +36,22 @@ if (isDebug) {
   );
 }
 
+// See https://github.com/swc-project/jest/issues/115 for explanation
+// of why this handling is necessary.
+const handleSwcConfigArray = options => {
+  const castOptions = Array.isArray(options) ? options : [options];
+
+  for (const { test = '^.+\\.(mjs|cjs|js|jsx|ts|tsx)$', ...rest } of castOptions) {
+    transform[test] = ['@swc/jest', rest];
+  }
+};
+
 module.exports = ({ compilerOptions = {} } = {}) => {
-  transform['^.+\\.(mjs|cjs|js|jsx|ts|tsx)$'] = isSwc
-    ? ['@swc/jest', compilerOptions]
-    : `${__dirname}/babelTransformer.cjs`;
+  if (isSwc) {
+    handleSwcConfigArray(compilerOptions);
+  } else {
+    transform['^.+\\.(mjs|cjs|js|jsx|ts|tsx)$'] = `${__dirname}/babelTransformer.cjs`;
+  }
 
   return {
     collectCoverage: true,

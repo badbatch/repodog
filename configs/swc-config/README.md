@@ -75,6 +75,10 @@ module.exports = {
 
 Sets `module.type` to `'es6'` or `'commonjs'`. Default `'esm'`.
 
+`SWC_LANGUAGE` = `'ts' || 'js'`
+
+Sets the language to be transformed to typescript or javascript. By default an array of configs (one for typescript and one for javascript) is generated, but some build tools only support being supplied a single config.
+
 `DEBUG` = `'true' || 'false'`
 
 Changes `targets` to latest version of chrome / current version of nodejs and sets `env.debug` to `true`.

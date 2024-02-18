@@ -1,12 +1,11 @@
-const { existsSync } = require('node:fs');
-const { resolve } = require('node:path');
-
-const { DEBUG, JS_ENV, NODE_ENV, SWC_MODULE_SYSTEM } = process.env;
+const { DEBUG, JS_ENV, NODE_ENV, SWC_LANGUAGE, SWC_MODULE_SYSTEM } = process.env;
 const isDebug = DEBUG === 'true';
 const isCjs = SWC_MODULE_SYSTEM === 'cjs';
 const isJsEnvWeb = JS_ENV === 'web';
 const isProdEnv = NODE_ENV === 'prod' || NODE_ENV === 'production';
-const isTypescript = existsSync(resolve(process.cwd(), 'tsconfig.json'));
+const isTypescript = SWC_LANGUAGE === 'ts';
+const isJavascript = SWC_LANGUAGE === 'js';
+const languageSelected = isTypescript || isJavascript;
 let targets;
 
 if (isJsEnvWeb) {
@@ -40,24 +39,29 @@ const sharedConfig = {
   swcrc: false,
 };
 
-module.exports = isTypescript
-  ? {
-      ...sharedConfig,
-      jsc: {
-        ...sharedConfig.jsc,
-        parser: {
-          syntax: 'typescript',
-          tsx: true,
-        },
+const configs = [
+  {
+    ...sharedConfig,
+    jsc: {
+      ...sharedConfig.jsc,
+      parser: {
+        syntax: 'typescript',
+        tsx: true,
       },
-    }
-  : {
-      ...sharedConfig,
-      jsc: {
-        ...sharedConfig.jsc,
-        parser: {
-          jsx: true,
-          syntax: 'ecmascript',
-        },
+    },
+    test: '.*\\.tsx?$',
+  },
+  {
+    ...sharedConfig,
+    jsc: {
+      ...sharedConfig.jsc,
+      parser: {
+        jsx: true,
+        syntax: 'ecmascript',
       },
-    };
+    },
+    test: '.*\\.(mjs|cjs|jsx?)$',
+  },
+];
+
+module.exports = languageSelected ? (isTypescript ? configs[0] : configs[1]) : configs;
