@@ -1,3 +1,9 @@
+#### 1.7.1 (2024-02-18)
+
+##### Refactors
+
+*  get config to return ts and js options (41f19065)
+
 #### 1.7.0 (2024-02-18)
 
 ##### New Features
