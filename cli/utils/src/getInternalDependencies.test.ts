@@ -39,6 +39,6 @@ describe('getInternalDependencies', () => {
 
   it('should return the correct package meta', async () => {
     const { getInternalDependencies } = await import('./getInternalDependencies.ts');
-    expect(getInternalDependencies(packageJson, packageMetaRecord)).toEqual(['alpha', 'charlie']);
+    expect(getInternalDependencies(packageJson, packageMetaRecord)).toEqual(['alpha']);
   });
 });

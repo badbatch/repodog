@@ -156,11 +156,11 @@ describe('versionMonorepoPackages', () => {
         const name = match[1]!;
 
         if (name === 'echo') {
-          return { name, peerDependencies: { alpha: '< 2' }, version: '1.0.0' };
+          return { dependencies: { alpha: '< 2' }, name, version: '1.0.0' };
         }
 
         if (name === 'bravo') {
-          return { name, peerDependencies: { delta: '< 2' }, version: '1.0.0' };
+          return { devDependencies: { delta: '< 2' }, name, version: '1.0.0' };
         }
 
         return { name, version: '1.0.0' };
@@ -188,14 +188,6 @@ describe('versionMonorepoPackages', () => {
           },
         ],
         [
-          { name: 'bravo', peerDependencies: { delta: '< 2' }, version: '1.0.0' },
-          {
-            packageJsonPath: '/root/apps/server/bravo/package.json',
-            tag: undefined,
-            type: 'major',
-          },
-        ],
-        [
           { name: 'alpha', version: '1.0.0' },
           {
             packageJsonPath: '/root/apps/client/alpha/package.json',
@@ -204,7 +196,7 @@ describe('versionMonorepoPackages', () => {
           },
         ],
         [
-          { name: 'echo', peerDependencies: { alpha: '< 2' }, version: '1.0.0' },
+          { dependencies: { alpha: '< 2' }, name: 'echo', version: '1.0.0' },
           {
             packageJsonPath: '/root/configs/echo/package.json',
             tag: undefined,
