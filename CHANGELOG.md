@@ -1,5 +1,11 @@
 #### 1.7.0 (2024-02-18)
 
+##### New Features
+
+*  support swc config array (f9f86fa7)
+
+#### 1.7.0 (2024-02-18)
+
 ##### Bug Fixes
 
 *  solve swc jest issue with tests being excluded (10d1b3e2)
