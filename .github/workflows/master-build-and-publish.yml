@@ -69,6 +69,9 @@ jobs:
         if: inputs.package-manager == 'npm'
         run: npm install
 
+      - name: Lint dependencies
+        run: npm run --if-present syncpack
+
       - name: Build packages
         run: npm run --if-present build
 

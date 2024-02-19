@@ -57,7 +57,7 @@ jobs:
     with:
       node-version: '20.10.0'
       package-manager: 'pnpm'
-      package-manager-version: '7.25.1'
+      package-manager-version: '8.11.0'
     secrets:
       npm_auth_token: ${{ secrets.NPM_AUTH_TOKEN }}
 ```
@@ -76,57 +76,19 @@ trigger:
 pr:
   - main
 
-pool:
-  vmImage: "ubuntu-latest"
+resources:
+  repositories:
+  - repository: repodog
+    type: github
+    name: badbatch/repodog
+    ref: main
 
-variables:
-  - name: pnpm_config_cache
-    value: $(Pipeline.Workspace)/.pnpm-store
-  - name: is_tag
-    value: $[startsWith(variables['Build.SourceBranch'],'refs/tags/')]
-
-steps:
-  - checkout: self
-    displayName: "Get full Git history"
-    fetchDepth: 0
-
-  - task: Cache@2
-    inputs:
-      key: 'pnpm | "$(Agent.OS)" | pnpm-lock.yaml'
-      path: $(pnpm_config_cache)
-    displayName: Cache pnpm
-
-  - script: |
-      corepack enable
-      corepack prepare pnpm@latest-8 --activate
-      pnpm config set store-dir $(pnpm_config_cache)
-    displayName: "Setup pnpm"
-
-  - task: npmAuthenticate@0
-    inputs:
-      workingFile: .npmrc
-
-  - script: pnpm install
-    displayName: "pnpm install"
-
-  - script: pnpm run syncpack
-    displayName: "pnpm syncpack"
-
-  - script: pnpm run build
-    displayName: "pnpm build"
-
-  - script: pnpm run lint
-    displayName: "pnpm lint"
-
-  - script: pnpm run type-check
-    displayName: "pnpm type-check"
-
-  - script: pnpm run test
-    displayName: "pnpm test"
-
-  - script: pnpm run repodog publish --verbose --skip-node-version-check
-    condition: eq(variables.is_tag,true)
-    displayName: "Publish package"
+jobs:
+- template: pipelines/azure-pipeline-template.yml@repodog
+  parameters:
+    node-version: '20.10.0'
+    package-manager: 'pnpm'
+    package-manager-version: '8.11.0'
 ```
 
 ## Usage

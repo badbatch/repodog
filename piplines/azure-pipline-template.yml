@@ -1,0 +1,86 @@
+name: RepoDog build and publish
+
+parameters:
+- name: node-version
+  type: string
+  default: '20.10.0'
+- name: package-manager
+  type: string
+  default: 'pnpm'
+- name: package-manager-version
+  type: string
+- name: yarn-version
+  type: number
+  default: 1
+
+jobs:
+- job: build-and-publish
+  pool:
+    vmImage: "ubuntu-latest"
+
+  variables:
+    - name: is_tag
+      value: $[startsWith(variables['Build.SourceBranch'],'refs/tags/')]]
+
+  steps:
+    - checkout: self
+      displayName: "Get full Git history"
+      fetchDepth: 0
+
+    - task: UseNode@1
+      inputs:
+        version: ${{ parameters.node-version }}
+        displayName: "Use Node.js ${{ parameters.node-version }}"
+
+    - script: |
+        curl -o- -L https://yarnpkg.com/install.sh | bash
+        export PATH=$HOME/.yarn/bin:$PATH
+      condition: and(eq(parameters.package-manager,'yarn'),eq(parameters.yarn-version,1))
+      displayName: "Install yarn classic"
+
+    - script: |
+        corepack enable
+        corepack prepare yarn@${{ parameters.package-manager-version }} --activate
+      condition: and(eq(parameters.package-manager,'yarn'),ne(parameters.yarn-version,1))
+      displayName: "Install modern yarn"
+
+    - script: |
+        corepack enable
+        corepack prepare pnpm@${{ parameters.package-manager-version }} --activate
+      condition: eq(parameters.package-manager,'pnpm')
+      displayName: "Install pnpm"
+
+    - task: npmAuthenticate@0
+      inputs:
+        workingFile: .npmrc
+
+    - script: pnpm install
+      condition: eq(parameters.package-manager,'pnpm')
+      displayName: "Install dependencies with pnpm"
+
+    - script: yarn install
+      condition: eq(parameters.package-manager,'yarn')
+      displayName: "Install dependencies with yarn"
+
+    - script: npm install
+      condition: eq(parameters.package-manager,'npm')
+      displayName: "Install dependencies with npm"
+
+    - script: npm run --if-present syncpack
+      displayName: "Lint dependencies"
+
+    - script: npm run --if-present build
+      displayName: "Build packages"
+
+    - script: npm run --if-present lint
+      displayName: "Lint packages"
+
+    - script: npm run --if-present type-check
+      displayName: "Type check packages"
+
+    - script: npm run --if-present test
+      displayName: "Run unit tests"
+
+    - script: npm run --if-present repodog -- publish --verbose
+      condition: eq(variables.is_tag,true)
+      displayName: "Publish packages"
