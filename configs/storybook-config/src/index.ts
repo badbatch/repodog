@@ -17,7 +17,7 @@ export const config = ({ compiler }: ConfigParams = {}) => {
       '@storybook/addon-interactions',
     ],
     docs: {
-      autodocs: 'tag',
+      autodocs: 'tag' as const,
     },
     framework: {
       name: '@storybook/nextjs',

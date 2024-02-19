@@ -12,6 +12,7 @@
   },
   "bugs": "https://github.com/badbatch/repodog/issues",
   "main": "index.cjs",
+  "types": "index.d.cts",
   "publishConfig": {
     "access": "public"
   },
@@ -24,5 +25,8 @@
     "@rollup/plugin-swc": {
       "optional": true
     }
+  },
+  "devDependencies": {
+    "@swc/core": "^1.4.1"
   }
 }
