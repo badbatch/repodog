@@ -34,7 +34,7 @@ npm install @storybook/addon-essentials @storybook/addon-interactions @storybook
 ```javascript
 // .eslintrc.cjs
 module.exports = {
-  extends: ['@repodog/eslint-config', '@repodog/storybook-config/eslint-config'],
+  extends: ['@repodog/eslint-config', '@repodog/storybook-config/eslint-config.cjs'],
   parserOptions: {
     tsconfigRootDir: __dirname,
   },
