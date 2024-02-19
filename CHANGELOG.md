@@ -1,3 +1,9 @@
+#### 1.7.4 (2024-02-19)
+
+##### Bug Fixes
+
+*  update storybook config exports map (55bf6495)
+
 #### 1.7.3 (2024-02-19)
 
 ##### Documentation Changes
