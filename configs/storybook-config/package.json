@@ -11,13 +11,28 @@
     "url": "https://github.com/badbatch/repodog/configs/storybook-config"
   },
   "bugs": "https://github.com/badbatch/repodog/issues",
+  "type": "module",
   "exports": {
-    ".": "./index.mjs",
-    "./preview": "./preview.mjs",
-    "./eslint-config": "./eslint.cjs"
+    ".": {
+      "types": "./dist/types/index.d.ts",
+      "import": "./dist/esm/index.mjs"
+    },
+    "./preview": {
+      "types": "./dist/types/preview.d.ts",
+      "import": "./dist/esm/preview.mjs"
+    },
+    "./eslint-config": "./eslintConfig.cjs"
   },
   "publishConfig": {
     "access": "public"
+  },
+  "scripts": {
+    "build": "pnpm run clean:dist && pnpm run compile",
+    "clean:deps": "del-cli ./node_modules",
+    "clean:dist": "del-cli ./dist",
+    "compile": "pnpm run /^compile:.*/",
+    "compile:esm": "rollup -c ./rollup.config.cjs",
+    "compile:types": "tsc --project ./tsconfig.build.json"
   },
   "peerDependencies": {
     "@storybook/addon-a11y": "<8",
@@ -29,6 +44,15 @@
     "@storybook/nextjs": "<8",
     "@storybook/react": "<8",
     "@storybook/test": "<8",
+    "@swc/core": "<2",
     "eslint-plugin-storybook": "<1"
+  },
+  "peerDependenciesMeta": {
+    "@swc/core": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "@swc/core": "^1.4.1"
   }
 }

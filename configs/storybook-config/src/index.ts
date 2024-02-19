@@ -1,4 +1,10 @@
-export const config = ({ compiler = [] } = {}) => {
+import { type Options as SWCOptions } from '@swc/core';
+
+export type ConfigParams = {
+  compiler?: string | [name: string, options: SWCOptions];
+};
+
+export const config = ({ compiler }: ConfigParams = {}) => {
   const [name, options = {}] = Array.isArray(compiler) ? compiler : [compiler];
   const isCompilerSwc = name === 'swc';
 

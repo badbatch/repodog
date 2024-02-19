@@ -836,6 +836,10 @@ importers:
       eslint-plugin-storybook:
         specifier: <1
         version: 0.6.15(eslint@8.29.0)(typescript@5.0.3)
+    devDependencies:
+      '@swc/core':
+        specifier: ^1.4.1
+        version: 1.4.1
 
   configs/swc-config:
     dependencies:
