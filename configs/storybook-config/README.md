@@ -47,10 +47,13 @@ module.exports = {
 ```typescript
 // .storybook/main.ts
 import { config as storybookConfig } from '@repodog/storybook-config';
+import swcConfig from '@repodog/swc-config';
 import { type StorybookConfig } from '@storybook/your-framework';
 
 const config: StorybookConfig = {
-  ...storybookConfig({ compiler: 'swc' })
+  ...storybookConfig({ compiler: ['swc', swcConfig.ts] })
+  // or
+  ...storybookConfig({ compiler: ['swc', swcConfig.js] })
 };
 
 export default config;
@@ -64,7 +67,7 @@ import { config as storybookConfig } from '@repodog/storybook-config';
 import { type StorybookConfig } from '@storybook/your-framework';
 
 const config: StorybookConfig = {
-  ...storybookConfig({ compiler: 'babel' })
+  ...storybookConfig()
 };
 
 export default config;
