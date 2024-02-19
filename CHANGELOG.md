@@ -1,3 +1,17 @@
+#### 1.7.3 (2024-02-19)
+
+##### Documentation Changes
+
+*  update azure devops example (02585ba1)
+
+##### New Features
+
+*  enable swc config to be passed into storybook (2e331acf)
+
+##### Refactors
+
+*  update azure devops template examples (3a3e95b5)
+
 #### 1.7.2 (2024-02-18)
 
 ##### Bug Fixes
