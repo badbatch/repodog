@@ -12,15 +12,9 @@
   },
   "bugs": "https://github.com/badbatch/repodog/issues",
   "exports": {
-    ".": {
-      "import": "./index.mjs"
-    },
-    "./preview": {
-      "import": "./preview.mjs"
-    },
-    "./eslint-config": {
-      "require": "./eslint.cjs"
-    }
+    ".": "./index.mjs",
+    "./preview": "./preview.mjs",
+    "./eslint-config": "./eslint.cjs"
   },
   "publishConfig": {
     "access": "public"
