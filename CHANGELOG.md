@@ -1,3 +1,9 @@
+#### 1.7.5 (2024-02-19)
+
+##### Bug Fixes
+
+*  add types to storybook config (e9dc4c62)
+
 #### 1.7.4 (2024-02-19)
 
 ##### Bug Fixes
