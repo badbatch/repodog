@@ -20,7 +20,7 @@ export const config = ({ compiler }: ConfigParams = {}) => {
       autodocs: 'tag' as const,
     },
     framework: {
-      name: '@storybook/nextjs',
+      name: '@storybook/nextjs' as const,
       ...(isCompilerSwc
         ? {
             options: {
