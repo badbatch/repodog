@@ -1,3 +1,9 @@
+#### 1.7.7 (2024-02-19)
+
+##### Bug Fixes
+
+*  update types to fix errors in consuming app (58c18d4c)
+
 #### 1.7.6 (2024-02-19)
 
 ##### Refactors
