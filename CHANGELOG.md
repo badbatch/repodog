@@ -1,3 +1,9 @@
+#### 1.7.6 (2024-02-19)
+
+##### Refactors
+
+*  sort exports and types for storybook and swc configs (580ae5dc)
+
 #### 1.7.5 (2024-02-19)
 
 ##### Bug Fixes

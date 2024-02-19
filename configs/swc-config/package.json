@@ -1,7 +1,7 @@
 {
   "name": "@repodog/swc-config",
   "description": "The RepoDog SWC config module.",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "author": "Dylan Aubrey",
   "license": "MIT",
   "homepage": "https://github.com/badbatch/repodog",
