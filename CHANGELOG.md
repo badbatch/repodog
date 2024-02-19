@@ -1,3 +1,10 @@
+#### 1.7.8 (2024-02-19)
+
+##### Refactors
+
+*  remove pointless eslint plugin abstraction (6aa26870)
+*  change way eslint config is exported from package (f8d75b9f)
+
 #### 1.7.7 (2024-02-19)
 
 ##### Bug Fixes
