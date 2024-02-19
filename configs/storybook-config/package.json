@@ -28,8 +28,7 @@
       },
       "import": "./dist/esm/preview.mjs",
       "require": "./dist/cjs/preview.cjs"
-    },
-    "./eslint-config.cjs": "./eslint-config.cjs"
+    }
   },
   "publishConfig": {
     "access": "public"
