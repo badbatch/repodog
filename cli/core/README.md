@@ -37,8 +37,8 @@ npm install @repodog/cli --save-dev
 
 ### With Github Actions
 
-```yaml
-# .github/workflows/build-and-publish.yaml
+```yml
+# .github/workflows/build-and-publish.yml
 name: Build and publish
 
 on:
@@ -64,7 +64,8 @@ jobs:
 
 ### With Azure Devops
 
-```yaml
+```yml
+# pipelines/azure-pipeline.yml
 trigger:
   branches:
     include:
