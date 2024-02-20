@@ -1,3 +1,21 @@
+#### 1.7.11 (2024-02-20)
+
+##### New Features
+
+*  swap out changelog generator (a4c2af6c)
+
+##### Bug Fixes
+
+*  change order of changelog generator to pick up right version (ed901c56)
+
+##### Other Changes
+
+*  swap out changelog generator" (2ec28714)
+
+##### Refactors
+
+*  pass version to changelog generator (c16172b7)
+
 #### 1.7.9 (2024-02-20)
 
 ##### New Features
