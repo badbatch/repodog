@@ -323,6 +323,41 @@ describe('handler', () => {
             },
           ]);
         });
+
+        describe('when exclude-builtin-templates is true', () => {
+          it('should not execute hygen the first time', async () => {
+            const { handler } = await import('./handler.ts');
+
+            await handler({
+              'custom-type-path': 'cli',
+              'exclude-builtin-templates': true,
+              subtype: 'library',
+              type: 'pkg',
+            });
+
+            expect(executeHygen.mock.calls[0]).toEqual([
+              '../overrides/_templates',
+              '/root/node_modules/.bin/hygen',
+              ['new', 'pkg', 'library', 'cli'],
+              {
+                author: 'Dylan Aubrey',
+                excludeTypesFile: false,
+                homepage: 'https://github.com/badbatch/repodog',
+                language: 'javascript',
+                mainFilename: 'handler',
+                mock: 'answer to mock',
+                newSubType: 'library',
+                newType: 'pkg',
+                org: 'repodog',
+                packageManager: 'pnpm',
+                packageManagerTemporaryCmd: 'pnpm dlx',
+                question1: 'answer to question1',
+                question2: 'answer to question2',
+                question3: 'answer to question3',
+              },
+            ]);
+          });
+        });
       });
     });
 

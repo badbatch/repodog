@@ -17,6 +17,10 @@ export const builder = (argv: Argv) =>
       desc: 'The additional types to apply to the scaffold. Multiple types should be separated by a "." character. These types are applied after the subtype',
       type: 'string',
     })
+    .option('exclude-builtin-templates', {
+      desc: 'To skip the node version check',
+      type: 'boolean',
+    })
     .option('skip-node-version-check', {
       desc: 'To skip the node version check',
       type: 'boolean',

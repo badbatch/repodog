@@ -35,6 +35,7 @@ export const handler = async (argv: NewHandlerArguments) => {
   const startTime = performance.now();
   const verbose = argv.verbose ?? false;
   const customTypePath = argv['custom-type-path'] ?? undefined;
+  const excludeBuiltinTemplates = argv['exclude-builtin-templates'] ?? false;
 
   if (!isRunWithinProject() && !hasGlobalRepodogConfig()) {
     await handleGlobalConfigSetup();
@@ -43,6 +44,7 @@ export const handler = async (argv: NewHandlerArguments) => {
   setVerbose(verbose);
   verboseLog('>>>> USER CONFIG START <<<<');
   verboseLog(`customTypePath: ${customTypePath ?? 'undefined'}`);
+  verboseLog(`excludeBuiltinTemplates: ${String(excludeBuiltinTemplates)}`);
   verboseLog(`subtype: ${argv.subtype}`);
   verboseLog(`type: ${argv.type}`);
   verboseLog('>>>> USER CONFIG END <<<<\n');
@@ -139,7 +141,12 @@ export const handler = async (argv: NewHandlerArguments) => {
     }
 
     verboseLog(`Hygen cli options:\n${JSON.stringify(cliOptions, undefined, 2)}\n`);
-    await executeHygen(templatesPath, hygenPath, internalTypePath, cliOptions);
+
+    if (excludeBuiltinTemplates) {
+      verboseLog('Built-in templates have been excluded from scaffolding.');
+    } else {
+      await executeHygen(templatesPath, hygenPath, internalTypePath, cliOptions);
+    }
 
     if (additionalTemplatesPath && leafAdditionalTemplatesPath) {
       verboseLog('Template overrides path exists, re-running hygen with new path');
