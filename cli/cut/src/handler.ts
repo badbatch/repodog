@@ -144,11 +144,6 @@ export const handler = async (argv: CutHandlerArguments) => {
       verboseLog(`cut:post-version script not provided`);
     }
 
-    if (scripts['cut:changelog']) {
-      verboseLog(`Generating changelog for ${type} release`);
-      await asyncExec(`${packageManager} run cut:changelog -- --${type} --version ${version}`);
-    }
-
     const newVersion = getNewVersion(version, type, tag);
 
     if (!newVersion) {
@@ -165,6 +160,11 @@ export const handler = async (argv: CutHandlerArguments) => {
         verboseLog(`Package.json output error: ${(error as Error).name}, ${(error as Error).message}`);
         throw new Error(`Could not write the package.json to: ${packageJsonPath}`);
       }
+    }
+
+    if (scripts['cut:changelog']) {
+      verboseLog(`Generating changelog for ${type} release`);
+      await asyncExec(`${packageManager} run cut:changelog -- --${type} --version ${newVersion}`);
     }
 
     if (dryRun) {
