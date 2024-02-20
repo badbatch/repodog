@@ -40,7 +40,7 @@ sh: "<%= packageManager %> install && <%= packageManager %> add -D @repodog/cli 
     "compile:cjs": "MODULE_SYSTEM=cjs rollup -c ./rollup.config.cjs",
     "compile:esm": "rollup -c ./rollup.config.cjs",
     "compile:types": "tsc --project ./tsconfig.build.json && cts-types build dist/types/esm dist/types/cjs",
-    "cut:changelog": "changelog",
+    "cut:changelog": "conventional-changelog -p conventionalcommits -i CHANGELOG.md -s",
     "cut:post-version": "<%= packageManager %> run build",
     "lint": "eslint . --ext .ts,.cjs",
     "repodog": "repodog",
@@ -60,7 +60,7 @@ sh: "<%= packageManager %> install && <%= packageManager %> add -D @repodog/cli 
     "core-js": "^3.27.2",
     "cts-types": "^0.0.6",
     "del-cli": "^5.1.0",
-    "generate-changelog": "^1.8.0",
+    "conventional-changelog-cli": "^4.1.0",
     "lodash-es": "^4.17.21"
   }
 }
