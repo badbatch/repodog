@@ -27,7 +27,7 @@ sh: "<%= packageManager %> install && <%= packageManager %> add -D @repodog/cli 
     "clean:deps": "<%= packageManager %> run -r clean:deps && del-cli ./node_modules",
     "clean:dist": "<%= packageManager %> run -r clean:dist",
     "commit": "commit",
-    "cut:changelog": "conventional-changelog -p conventionalcommits -i CHANGELOG.md -s",
+    "cut:changelog": "changelog",
     "cut:post-version": "<%= packageManager %> run build",
     "lint": "eslint . --ext .ts,.cjs",
     "repodog": "repodog",
@@ -39,6 +39,6 @@ sh: "<%= packageManager %> install && <%= packageManager %> add -D @repodog/cli 
   "devDependencies": {
     "@types/node": "^20.11.0",
     "del-cli": "^5.1.0",
-    "conventional-changelog-cli": "^4.1.0"
+    "generate-changelog": "^1.8.0"
   }
 }
