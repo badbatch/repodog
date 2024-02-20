@@ -1,3 +1,9 @@
+#### 1.7.9 (2024-02-20)
+
+##### New Features
+
+*  add exclude-builtin-templates flag to new script (cfa21a71)
+
 #### 1.7.8 (2024-02-19)
 
 ##### Refactors
