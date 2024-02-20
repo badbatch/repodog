@@ -146,7 +146,7 @@ export const handler = async (argv: CutHandlerArguments) => {
 
     if (scripts['cut:changelog']) {
       verboseLog(`Generating changelog for ${type} release`);
-      await asyncExec(`${packageManager} run cut:changelog -- --${type}`);
+      await asyncExec(`${packageManager} run cut:changelog -- --${type} --version ${version}`);
     }
 
     const newVersion = getNewVersion(version, type, tag);
