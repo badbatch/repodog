@@ -395,7 +395,7 @@ describe('cut', () => {
     it.each([['patch'], ['minor'], ['major']])('%p release should run changelog', async type => {
       const { handler } = await import('./handler.ts');
       void handler({ type });
-      expect(asyncExec).toHaveBeenCalledWith(`pnpm run cut:changelog -- --${type}`);
+      expect(asyncExec).toHaveBeenCalledWith(`pnpm run cut:changelog -- --${type} --version 1.1.0`);
     });
   });
 
@@ -409,7 +409,7 @@ describe('cut', () => {
     it.each([['patch'], ['minor'], ['major']])('%p release should not run changelog', async type => {
       const { handler } = await import('./handler.ts');
       void handler({ type });
-      expect(asyncExec).not.toHaveBeenCalledWith(`pnpm run cut:changelog -- --${type}`);
+      expect(asyncExec).not.toHaveBeenCalledWith(`pnpm run cut:changelog -- --${type} --version 1.1.0`);
     });
   });
 
