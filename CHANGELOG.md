@@ -1,3 +1,9 @@
+#### 1.7.13 (2024-02-21)
+
+##### Bug Fixes
+
+*  update story target glob to improve performance (6c1546e0)
+
 #### 1.7.12 (2024-02-20)
 
 ##### Bug Fixes
