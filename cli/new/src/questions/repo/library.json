@@ -24,6 +24,13 @@
     "type": "input"
   },
   {
+    "choices": ["githubActions", "azureDevops"],
+    "message": "Are you using Github Actions or Azure Devops?",
+    "name": "platform",
+    "required": true,
+    "type": "select"
+  },
+  {
     "initial": "main",
     "message": "What is the name of the main file for the library?",
     "name": "mainFilename",
