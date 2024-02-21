@@ -1,4 +1,5 @@
 import { type Options as SWCOptions } from '@swc/core';
+import { globbySync } from 'globby';
 
 export type ConfigParams = {
   compiler?: string | [name: string, options: SWCOptions];
@@ -31,7 +32,12 @@ export const config = ({ compiler }: ConfigParams = {}) => {
           }
         : {}),
     },
-    stories: ['../**/*.stories.*'],
+    stories: globbySync(
+      [`../components/**/*.stories.@(js|jsx|ts|tsx)`, '!../**/node_modules/**/*', '!../**/dist/**/*'],
+      {
+        cwd: './.storybook',
+      }
+    ),
     ...(isCompilerSwc ? { swc: () => options } : {}),
   };
 };

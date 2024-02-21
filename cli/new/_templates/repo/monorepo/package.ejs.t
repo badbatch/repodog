@@ -19,9 +19,6 @@ sh: "<%= packageManager %> install && <%= packageManager %> add -D @repodog/cli 
     "node": "^20.10.0",
     "pnpm": "^8.11.0"
   },
-  "publishConfig": {
-    "access": "public"
-  },
   "scripts": {
     "build": "<%= packageManager %> run -r build",
     "clean:deps": "<%= packageManager %> run -r clean:deps && del-cli ./node_modules",

@@ -13,6 +13,7 @@ to: .vscode/launch.json
         "${relativeFile}"
       ],
       "env": {
+        "COMPILER": "swc",
         "DEBUG": "true",
         "NODE_OPTIONS": "--experimental-vm-modules"
       },

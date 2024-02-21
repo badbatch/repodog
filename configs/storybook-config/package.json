@@ -42,6 +42,9 @@
     "compile:esm": "rollup -c ./rollup.config.cjs",
     "compile:types": "tsc --project ./tsconfig.build.json && cts-types build dist/types/esm dist/types/cjs"
   },
+  "dependencies": {
+    "globby": "^14.0.1"
+  },
   "peerDependencies": {
     "@storybook/addon-a11y": "<8",
     "@storybook/addon-essentials": "<8",
