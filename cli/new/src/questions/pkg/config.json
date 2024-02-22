@@ -1,0 +1,39 @@
+[
+  {
+    "message": "What is the name of your org? (usually the name of your component library)",
+    "name": "org",
+    "required": true,
+    "type": "input"
+  },
+  {
+    "message": "What is the package name of your config? (must be kebab case)",
+    "name": "name",
+    "required": true,
+    "type": "input"
+  },
+  {
+    "initial": "A <type> config.",
+    "message": "What is the description of your config?",
+    "name": "desc",
+    "required": true,
+    "type": "input"
+  },
+  {
+    "message": "What is the path to your config package from the project root? i.e. configs/foo",
+    "name": "path",
+    "required": true,
+    "type": "input"
+  },
+  {
+    "message": "What is the name of the config author?",
+    "name": "author",
+    "required": true,
+    "type": "input"
+  },
+  {
+    "message": "What is the url for the config's repository?",
+    "name": "homepage",
+    "required": true,
+    "type": "input"
+  }
+]

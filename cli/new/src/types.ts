@@ -18,6 +18,7 @@ export enum NewRepoSubtype {
 
 export enum NewPkgSubtype {
   COMPONENT_LIBRARY = 'componentLibrary',
+  CONFIG = 'config',
   LIBRARY = 'library',
 }
 
