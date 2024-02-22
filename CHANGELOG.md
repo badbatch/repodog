@@ -1,3 +1,17 @@
+#### 1.7.15 (2024-02-22)
+
+##### Documentation Changes
+
+*  update readme (b8063148)
+
+##### New Features
+
+*  add config package templates (18af183b)
+
+##### Bug Fixes
+
+*  add missing content to config readme template (364e4482)
+
 #### 1.7.14 (2024-02-22)
 
 ##### Chores
