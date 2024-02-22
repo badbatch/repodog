@@ -1,3 +1,9 @@
+#### 1.7.16 (2024-02-22)
+
+##### Bug Fixes
+
+*  subtype enum wrong value (8e7a2e74)
+
 #### 1.7.15 (2024-02-22)
 
 ##### Documentation Changes
