@@ -1,3 +1,9 @@
+#### 1.7.20 (2024-02-22)
+
+##### Bug Fixes
+
+*  don't change directory until pkg version is checked (4432df2c)
+
 #### 1.7.19 (2024-02-22)
 
 ##### Bug Fixes
