@@ -40,7 +40,14 @@ describe('publishMonorepoPackages', () => {
       const { publishMonorepoPackages } = await import('./publishMonorepoPackages.ts');
       publishMonorepoPackages(PackageManager.NPM);
 
-      expect(mockedProcessChdir.mock.calls).toEqual([['/root/alpha'], ['/root/bravo'], ['/root/charlie'], ['/root']]);
+      expect(mockedProcessChdir.mock.calls).toEqual([
+        ['/root/alpha'],
+        ['/root'],
+        ['/root/bravo'],
+        ['/root'],
+        ['/root/charlie'],
+        ['/root'],
+      ]);
     });
 
     it('should call publishPackage with the correct arguments', async () => {
