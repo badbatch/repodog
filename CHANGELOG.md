@@ -1,3 +1,9 @@
+#### 1.7.19 (2024-02-22)
+
+##### Bug Fixes
+
+*  set swc jest sourcemaps to inline (1be3c1f5)
+
 #### 1.7.18 (2024-02-22)
 
 ##### Bug Fixes
