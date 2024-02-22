@@ -1,3 +1,10 @@
+#### 1.7.21 (2024-02-22)
+
+##### Bug Fixes
+
+*  update unit test (e07e9535)
+*  move change dir to root into loop (fc54ffa1)
+
 #### 1.7.20 (2024-02-22)
 
 ##### Bug Fixes
