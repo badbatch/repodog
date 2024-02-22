@@ -15,8 +15,8 @@ const directories = dirents
   .filter(dirent => dirent.isDirectory() && !cwd.endsWith(dirent.name))
   .map(dirent => dirent.name);
 
-const packageJson = JSON.parse(readFileSync(resolve(cwd, './package.json')));
-const tsconfig = JSON.parse(readFileSync(resolve(cwd, './tsconfig.json')));
+const packageJson = JSON.parse(readFileSync(resolve(cwd, './package.json'), { encoding: 'utf8' }));
+const tsconfig = JSON.parse(readFileSync(resolve(cwd, './tsconfig.json'), { encoding: 'utf8' }));
 
 packageJson.dependencies = {};
 
