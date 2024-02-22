@@ -1,3 +1,9 @@
+#### 1.7.18 (2024-02-22)
+
+##### Bug Fixes
+
+*  add encoding into read file in scritps (c5de268f)
+
 #### 1.7.17 (2024-02-22)
 
 ##### Bug Fixes
