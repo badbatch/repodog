@@ -42,7 +42,7 @@ const handleSwcConfigArray = options => {
   const castOptions = Array.isArray(options) ? options : [options];
 
   for (const { test = '^.+\\.(mjs|cjs|js|jsx|ts|tsx)$', ...rest } of castOptions) {
-    transform[test] = ['@swc/jest', rest];
+    transform[test] = ['@swc/jest', { ...rest, sourceMaps: 'inline' }];
   }
 };
 
