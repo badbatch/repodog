@@ -1,3 +1,18 @@
+#### 1.7.14 (2024-02-22)
+
+##### Chores
+
+*  add whitespace (1fe1c3f4)
+
+##### New Features
+
+*  add component library and component templates (ca044279)
+*  add question to choose platform for build yml (964ab61e)
+
+##### Bug Fixes
+
+*  update package lock (94b50b68)
+
 #### 1.7.13 (2024-02-21)
 
 ##### Bug Fixes
