@@ -24,6 +24,8 @@ export const publishMonorepoPackages = (packageManager: PackageManager) => {
       });
 
       verboseLog('>>>> PACKAGE END <<<<\n');
+      verboseLog(`Changing current working directory back to: ${projectRoot}`);
+      process.chdir(projectRoot);
     } catch (error: unknown) {
       shelljs.echo(
         `${colors.magenta('RepoDog')} ${colors.dim('=>')} Error publishing ${name}: ${(error as Error).message}`
@@ -32,7 +34,4 @@ export const publishMonorepoPackages = (packageManager: PackageManager) => {
       verboseLog('>>>> PACKAGE END <<<<\n');
     }
   }
-
-  verboseLog(`Changing current working directory back to: ${projectRoot}`);
-  process.chdir(projectRoot);
 };
