@@ -1,3 +1,9 @@
+#### 1.7.17 (2024-02-22)
+
+##### Bug Fixes
+
+*  license template in wrong directory (c86a5404)
+
 #### 1.7.16 (2024-02-22)
 
 ##### Bug Fixes
