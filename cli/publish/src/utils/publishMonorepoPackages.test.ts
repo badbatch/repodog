@@ -1,6 +1,6 @@
 import { jest } from '@jest/globals';
 import { shelljsMock } from '@repodog/cli-test-utils';
-import { PackageManager } from '@repodog/cli-utils';
+import { PackageManager, type ReleaseMeta } from '@repodog/cli-utils';
 
 jest.unstable_mockModule('shelljs', shelljsMock);
 
@@ -14,7 +14,11 @@ jest.unstable_mockModule('@repodog/cli-utils', () => ({
 }));
 
 jest.unstable_mockModule('./publishPackage.ts', () => ({
-  publishPackage: jest.fn(),
+  publishPackage: jest
+    .fn<(path: string, options: Pick<ReleaseMeta, 'packageManager'>, callback: () => void) => void>()
+    .mockImplementation((_packageJsonPath, _options, callback) => {
+      callback();
+    }),
 }));
 
 process.cwd = () => '/root';
@@ -44,9 +48,9 @@ describe('publishMonorepoPackages', () => {
       publishMonorepoPackages(PackageManager.NPM);
 
       expect(publishPackage.mock.calls).toEqual([
-        ['/root/alpha/package.json', { packageManager: PackageManager.NPM }],
-        ['/root/bravo/package.json', { packageManager: PackageManager.NPM }],
-        ['/root/charlie/package.json', { packageManager: PackageManager.NPM }],
+        ['/root/alpha/package.json', { packageManager: PackageManager.NPM }, expect.any(Function)],
+        ['/root/bravo/package.json', { packageManager: PackageManager.NPM }, expect.any(Function)],
+        ['/root/charlie/package.json', { packageManager: PackageManager.NPM }, expect.any(Function)],
       ]);
     });
   });
@@ -71,9 +75,9 @@ describe('publishMonorepoPackages', () => {
       publishMonorepoPackages(PackageManager.NPM);
 
       expect(publishPackage.mock.calls).toEqual([
-        ['/root/alpha/package.json', { packageManager: PackageManager.NPM }],
-        ['/root/bravo/package.json', { packageManager: PackageManager.NPM }],
-        ['/root/charlie/package.json', { packageManager: PackageManager.NPM }],
+        ['/root/alpha/package.json', { packageManager: PackageManager.NPM }, expect.any(Function)],
+        ['/root/bravo/package.json', { packageManager: PackageManager.NPM }, expect.any(Function)],
+        ['/root/charlie/package.json', { packageManager: PackageManager.NPM }, expect.any(Function)],
       ]);
     });
 

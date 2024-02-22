@@ -17,9 +17,12 @@ export const publishMonorepoPackages = (packageManager: PackageManager) => {
     try {
       const { path } = packageMeta[name]!;
       const { dir } = parse(path);
-      verboseLog(`Changing current working directory to: ${dir}`);
-      process.chdir(resolve(projectRoot, dir));
-      publishPackage(path, { packageManager });
+
+      publishPackage(path, { packageManager }, () => {
+        verboseLog(`Changing current working directory to: ${dir}`);
+        process.chdir(resolve(projectRoot, dir));
+      });
+
       verboseLog('>>>> PACKAGE END <<<<\n');
     } catch (error: unknown) {
       shelljs.echo(

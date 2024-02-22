@@ -9,7 +9,11 @@ import semver from 'semver';
 import shelljs from 'shelljs';
 import { getPublishCmd } from './getPublishCmd.ts';
 
-export const publishPackage = (packageJsonPath: string, { packageManager }: Pick<ReleaseMeta, 'packageManager'>) => {
+export const publishPackage = (
+  packageJsonPath: string,
+  { packageManager }: Pick<ReleaseMeta, 'packageManager'>,
+  changeWorkingDirCallback?: () => void
+) => {
   const { name, publishConfig, version } = loadPackageJson(packageJsonPath);
 
   if (publishConfig?.access !== 'public') {
@@ -27,6 +31,7 @@ export const publishPackage = (packageJsonPath: string, { packageManager }: Pick
     );
   }
 
+  changeWorkingDirCallback?.();
   const tag = getTag(version);
   verboseLog(`Tag: ${tag ?? 'None'}`);
   shelljs.exec(getPublishCmd(packageManager, version, tag));
