@@ -1,4 +1,9 @@
-import { NewSubtype } from '../types.ts';
+import { NewPkgSubtype, NewRepoSubtype, NewType } from '../types.ts';
 
-export const isValidNewSubType = (subtype: string): subtype is NewSubtype =>
-  Object.values(NewSubtype).includes(subtype as NewSubtype);
+export const typeToSubTypeMap = {
+  [NewType.PKG]: NewPkgSubtype,
+  [NewType.REPO]: NewRepoSubtype,
+};
+
+export const isValidNewSubType = (type: NewType, subtype: string) =>
+  Object.values(typeToSubTypeMap[type]).includes(subtype);

@@ -1,0 +1,39 @@
+[
+  {
+    "message": "What is the name of your org? (usually the name of your component library)",
+    "name": "org",
+    "required": true,
+    "type": "input"
+  },
+  {
+    "message": "What is the package name of your component? (must be kebab case)",
+    "name": "name",
+    "required": true,
+    "type": "input"
+  },
+  {
+    "initial": "A <type> React component.",
+    "message": "What is the description of your component?",
+    "name": "desc",
+    "required": true,
+    "type": "input"
+  },
+  {
+    "message": "What is the path to your component package from the project root? i.e. components/foo",
+    "name": "path",
+    "required": true,
+    "type": "input"
+  },
+  {
+    "message": "What is the name of the component author?",
+    "name": "author",
+    "required": true,
+    "type": "input"
+  },
+  {
+    "message": "What is the url for the component's repository?",
+    "name": "homepage",
+    "required": true,
+    "type": "input"
+  }
+]

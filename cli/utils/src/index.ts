@@ -16,6 +16,7 @@ export * from './getMonorepoPackageMeta.ts';
 export * from './getNewVersion.ts';
 export * from './getPackageManager.ts';
 export * from './getPackageManagerTemporaryCmd.ts';
+export * from './getPackageManagerFilterCmd.ts';
 export * from './getPackagePatterns.ts';
 export * from './getTag.ts';
 export * from './hasGlobalRepodogConfig.ts';

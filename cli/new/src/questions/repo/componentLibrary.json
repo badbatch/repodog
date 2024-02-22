@@ -1,0 +1,40 @@
+[
+  {
+    "message": "What is the name of your component library?",
+    "name": "name",
+    "required": true,
+    "type": "input"
+  },
+  {
+    "message": "What is the description of your component library?",
+    "name": "desc",
+    "required": true,
+    "type": "input"
+  },
+  {
+    "message": "What is the name of the component library author?",
+    "name": "author",
+    "required": true,
+    "type": "input"
+  },
+  {
+    "message": "What is the url for the component library's repository?",
+    "name": "homepage",
+    "required": true,
+    "type": "input"
+  },
+  {
+    "choices": ["githubActions", "azureDevops"],
+    "message": "Are you using Github Actions or Azure Devops?",
+    "name": "platform",
+    "required": true,
+    "type": "select"
+  },
+  {
+    "initial": "components",
+    "message": "What is the name of the components directory?",
+    "name": "packagesDirName",
+    "required": true,
+    "type": "input"
+  }
+]

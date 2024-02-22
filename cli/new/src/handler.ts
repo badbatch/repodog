@@ -6,6 +6,7 @@ import {
   enrichQuestions,
   flattenTemplateVariables,
   getPackageManager,
+  getPackageManagerFilterCmd,
   getPackageManagerTemporaryCmd,
   hasGlobalRepodogConfig,
   isRunWithinProject,
@@ -21,13 +22,13 @@ import { dirname, resolve as resolvePath, sep } from 'node:path';
 import { performance } from 'node:perf_hooks';
 import { fileURLToPath } from 'node:url';
 import shelljs from 'shelljs';
-import { type CliOptions, type NewHandlerArguments, NewSubtype, NewType } from './types.ts';
+import { type CliOptions, type NewHandlerArguments, NewType } from './types.ts';
 import { buildTypePaths } from './utils/buildTypePaths.ts';
 import { compileAdditionalTemplateOverrides } from './utils/compileAdditionalTemplateOverrides.ts';
 import { conditionallyChangeCwd } from './utils/conditionallyChangeCwd.ts';
 import { executeHygen } from './utils/executeHygen.ts';
 import { getLeafAdditionalTemplatesPath } from './utils/getLeafAdditionalTemplatesPath.ts';
-import { isValidNewSubType } from './utils/isValidNewSubType.ts';
+import { isValidNewSubType, typeToSubTypeMap } from './utils/isValidNewSubType.ts';
 import { isValidNewType } from './utils/isValidNewType.ts';
 import { loadQuestions } from './utils/loadQuestions.ts';
 
@@ -54,8 +55,10 @@ export const handler = async (argv: NewHandlerArguments) => {
       throw new Error(`Expected type to be a valid new type: ${Object.values(NewType).join(', ')}`);
     }
 
-    if (!isValidNewSubType(argv.subtype)) {
-      throw new Error(`Expected subtype to be a valid new subtype: ${Object.values(NewSubtype).join(', ')}`);
+    if (!isValidNewSubType(argv.type, argv.subtype)) {
+      throw new Error(
+        `Expected subtype to be a valid new subtype: ${Object.values(typeToSubTypeMap[argv.type]).join(', ')}`
+      );
     }
 
     const subtype = argv.subtype;
@@ -133,6 +136,7 @@ export const handler = async (argv: NewHandlerArguments) => {
       newSubType: subtype,
       newType: type,
       packageManager,
+      packageManagerFilterCmd: getPackageManagerFilterCmd(packageManager),
       packageManagerTemporaryCmd: getPackageManagerTemporaryCmd(packageManager),
     };
 

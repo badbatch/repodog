@@ -1,4 +1,4 @@
-import { NewSubtype } from '../types.ts';
+import { NewRepoSubtype, NewType } from '../types.ts';
 
 describe('isValidNewSubType', () => {
   let isValidNewSubType: typeof import('./isValidNewSubType.ts')['isValidNewSubType'];
@@ -8,10 +8,10 @@ describe('isValidNewSubType', () => {
   });
 
   it('should return true if subtype is a valid NewSubtype', () => {
-    expect(isValidNewSubType(NewSubtype.LIBRARY)).toBe(true);
+    expect(isValidNewSubType(NewType.REPO, NewRepoSubtype.LIBRARY)).toBe(true);
   });
 
   it('should return false if subtype is not a valid NewSubtype', () => {
-    expect(isValidNewSubType('invalid')).toBe(false);
+    expect(isValidNewSubType(NewType.REPO, 'invalid')).toBe(false);
   });
 });

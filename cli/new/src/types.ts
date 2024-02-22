@@ -8,11 +8,17 @@ export interface NewHandlerArguments {
   verbose?: boolean;
 }
 
-export enum NewSubtype {
+export enum NewRepoSubtype {
+  COMPONENT_LIBRARY = 'componentLibrary',
   // APP = 'app',
   LIBRARY = 'library',
   MONOREPO = 'monorepo',
   // SERVER = 'server',
+}
+
+export enum NewPkgSubtype {
+  COMPONENT_LIBRARY = 'componentLibrary',
+  LIBRARY = 'library',
 }
 
 export enum NewType {

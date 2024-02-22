@@ -6,8 +6,10 @@ import {
   type QuestionOverride,
   type QuestionOverrides,
   flattenTemplateVariables,
+  getPackageManagerFilterCmd,
   getPackageManagerTemporaryCmd,
 } from '@repodog/cli-utils';
+import { typeToSubTypeMap } from './utils/isValidNewSubType.ts';
 
 jest.unstable_mockModule('shelljs', shelljsMock);
 
@@ -61,6 +63,7 @@ jest.unstable_mockModule('@repodog/cli-utils', () => ({
   enrichQuestions: jest.fn().mockImplementation(value => value),
   flattenTemplateVariables,
   getPackageManager: jest.fn().mockReturnValue('pnpm'),
+  getPackageManagerFilterCmd,
   getPackageManagerTemporaryCmd,
   hasGlobalRepodogConfig: jest.fn().mockReturnValue(false),
   isRunWithinProject: jest.fn().mockReturnValue(true),
@@ -121,6 +124,7 @@ jest.unstable_mockModule('./utils/isValidNewType.ts', () => ({
 
 jest.unstable_mockModule('./utils/isValidNewSubType.ts', () => ({
   isValidNewSubType: jest.fn().mockReturnValue(true),
+  typeToSubTypeMap,
 }));
 
 jest.unstable_mockModule('./utils/loadQuestions.ts', () => ({
@@ -206,7 +210,7 @@ describe('handler', () => {
       await handler({ subtype: 'blah', type: 'pkg' });
 
       expect(shelljs.echo).toHaveBeenCalledWith(
-        expect.stringContaining('Error: Expected subtype to be a valid new subtype: library')
+        expect.stringContaining('Error: Expected subtype to be a valid new subtype: componentLibrary, library')
       );
     });
 
@@ -261,6 +265,7 @@ describe('handler', () => {
             newType: 'pkg',
             org: 'repodog',
             packageManager: 'pnpm',
+            packageManagerFilterCmd: '--filter',
             packageManagerTemporaryCmd: 'pnpm dlx',
             question1: 'answer to question1',
             question2: 'answer to question2',
@@ -316,6 +321,7 @@ describe('handler', () => {
               newType: 'pkg',
               org: 'repodog',
               packageManager: 'pnpm',
+              packageManagerFilterCmd: '--filter',
               packageManagerTemporaryCmd: 'pnpm dlx',
               question1: 'answer to question1',
               question2: 'answer to question2',
@@ -350,6 +356,7 @@ describe('handler', () => {
                 newType: 'pkg',
                 org: 'repodog',
                 packageManager: 'pnpm',
+                packageManagerFilterCmd: '--filter',
                 packageManagerTemporaryCmd: 'pnpm dlx',
                 question1: 'answer to question1',
                 question2: 'answer to question2',

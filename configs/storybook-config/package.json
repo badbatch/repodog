@@ -51,12 +51,12 @@
     "@storybook/addon-interactions": "<8",
     "@storybook/addon-links": "<8",
     "@storybook/addon-onboarding": "<2",
-    "@storybook/cli": "<8",
     "@storybook/nextjs": "<8",
     "@storybook/react": "<8",
     "@storybook/test": "<8",
     "@swc/core": "<2",
-    "eslint-plugin-storybook": "<1"
+    "eslint-plugin-storybook": "<1",
+    "storybook": "<8"
   },
   "peerDependenciesMeta": {
     "@swc/core": {
