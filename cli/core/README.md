@@ -171,16 +171,19 @@ Scaffold new folder structure
 Positionals:
   type              The type of folder to scaffold: repo | pkg
                                                              [string] [required]
-  subtype           The subtype of folder to scaffold: library
+  subtype           The subtype of folder to scaffold; repo: componentLibrary |
+                    library | monorepo; pkg: component | config | library
                                                              [string] [required]
   custom-type-path  The additional types to apply to the scaffold. Multiple
                     types should be separated by a "." character. These types
                     are applied after the subtype                       [string]
 
 Options:
-  --version           Show version number                              [boolean]
-  --help              Show help                                        [boolean]
-  --verbose           Whether to output verbose logs                   [boolean]
+  --version                    Show version number                     [boolean]
+  --help                       Show help                               [boolean]
+  --exclude-builtin-templates  To skip the node version check          [boolean]
+  --skip-node-version-check    To skip the node version check          [boolean]
+  --verbose                    Whether to output verbose logs          [boolean]
 ```
 
 #### `new` config
