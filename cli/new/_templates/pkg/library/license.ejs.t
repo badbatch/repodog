@@ -1,5 +1,5 @@
 ---
-to: "<%= typeof overrideTemplate_license_ejs_t !== 'undefined' ? null : `${path}/src/LICENSE` %>"
+to: "<%= typeof overrideTemplate_license_ejs_t !== 'undefined' ? null : `${path}/LICENSE` %>"
 ---
 MIT License
 
