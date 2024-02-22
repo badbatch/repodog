@@ -210,7 +210,7 @@ describe('handler', () => {
       await handler({ subtype: 'blah', type: 'pkg' });
 
       expect(shelljs.echo).toHaveBeenCalledWith(
-        expect.stringContaining('Error: Expected subtype to be a valid new subtype: componentLibrary, config, library')
+        expect.stringContaining('Error: Expected subtype to be a valid new subtype: component, config, library')
       );
     });
 
