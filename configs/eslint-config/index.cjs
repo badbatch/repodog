@@ -65,7 +65,7 @@ module.exports = {
         '@typescript-eslint/no-shadow': 2,
         '@typescript-eslint/no-unused-vars': [
           2,
-          { args: 'all', argsIgnorePattern: '^_', ignoreRestSiblings: true, vars: 'all' },
+          { args: 'all', argsIgnorePattern: '^_', ignoreRestSiblings: false, vars: 'all' },
         ],
         '@typescript-eslint/no-use-before-define': 0,
         'import/consistent-type-specifier-style': [2, 'prefer-inline'],
@@ -141,7 +141,7 @@ module.exports = {
         ignoreUrls: true,
       },
     ],
-    'no-unused-vars': [2, { args: 'all', argsIgnorePattern: '^_', ignoreRestSiblings: true, vars: 'all' }],
+    'no-unused-vars': [2, { args: 'all', argsIgnorePattern: '^_', ignoreRestSiblings: false, vars: 'all' }],
     'no-use-before-define': [2, { functions: false }],
     'one-var': [2, { initialized: 'never' }],
     'one-var-declaration-per-line': [2, 'initializations'],
