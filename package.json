@@ -47,7 +47,7 @@
     "@swc/core": "^1.4.1",
     "@swc/jest": "^0.2.36",
     "@types/jest": "^29.5.12",
-    "@types/node": "^20.11.0",
+    "@types/node": "^20.11.20",
     "@typescript-eslint/eslint-plugin": "^5.46.0",
     "@typescript-eslint/parser": "^5.46.0",
     "browserslist": "^4.23.0",
