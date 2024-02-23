@@ -2,14 +2,15 @@ import { jest } from '@jest/globals';
 import { shelljsMock } from '@repodog/cli-test-utils';
 import {
   Language,
+  NewType,
   type PromptOption,
   type QuestionOverride,
   type QuestionOverrides,
   flattenTemplateVariables,
   getPackageManagerFilterCmd,
   getPackageManagerTemporaryCmd,
+  typeToSubTypeMap,
 } from '@repodog/cli-utils';
-import { typeToSubTypeMap } from './utils/isValidNewSubType.ts';
 
 jest.unstable_mockModule('shelljs', shelljsMock);
 
@@ -59,6 +60,7 @@ jest.unstable_mockModule('@repodog/cli-setup', () => ({
 
 jest.unstable_mockModule('@repodog/cli-utils', () => ({
   Language,
+  NewType,
   calculateDuration: jest.fn().mockReturnValue('1'),
   enrichQuestions: jest.fn().mockImplementation(value => value),
   flattenTemplateVariables,
@@ -67,10 +69,13 @@ jest.unstable_mockModule('@repodog/cli-utils', () => ({
   getPackageManagerTemporaryCmd,
   hasGlobalRepodogConfig: jest.fn().mockReturnValue(false),
   isRunWithinProject: jest.fn().mockReturnValue(true),
+  isValidNewSubType: jest.fn().mockReturnValue(true),
+  isValidNewType: jest.fn().mockReturnValue(true),
   loadRepodogConfig: jest.fn().mockReturnValue(repodogConfig),
   removeEmptyAnswers: jest.fn().mockImplementation(value => value),
   resolveAbsolutePath: jest.fn().mockImplementation(value => `/root/${String(value)}`),
   setVerbose: jest.fn(),
+  typeToSubTypeMap,
   verboseLog: jest.fn(),
 }));
 
@@ -116,15 +121,6 @@ jest.unstable_mockModule('./utils/executeHygen.ts', () => ({
 jest.unstable_mockModule('./utils/getLeafAdditionalTemplatesPath.ts', () => ({
   // eslint-disable-next-line unicorn/no-useless-undefined
   getLeafAdditionalTemplatesPath: jest.fn().mockReturnValue(undefined),
-}));
-
-jest.unstable_mockModule('./utils/isValidNewType.ts', () => ({
-  isValidNewType: jest.fn().mockReturnValue(true),
-}));
-
-jest.unstable_mockModule('./utils/isValidNewSubType.ts', () => ({
-  isValidNewSubType: jest.fn().mockReturnValue(true),
-  typeToSubTypeMap,
 }));
 
 jest.unstable_mockModule('./utils/loadQuestions.ts', () => ({
@@ -179,7 +175,7 @@ describe('handler', () => {
 
     beforeEach(async () => {
       shelljs = jest.mocked(await import('shelljs')).default;
-      const { isValidNewType } = jest.mocked(await import('./utils/isValidNewType.ts'));
+      const { isValidNewType } = jest.mocked(await import('@repodog/cli-utils'));
       isValidNewType.mockReturnValueOnce(false);
     });
 
@@ -201,7 +197,7 @@ describe('handler', () => {
 
     beforeEach(async () => {
       shelljs = jest.mocked(await import('shelljs')).default;
-      const { isValidNewSubType } = jest.mocked(await import('./utils/isValidNewSubType.ts'));
+      const { isValidNewSubType } = jest.mocked(await import('@repodog/cli-utils'));
       isValidNewSubType.mockReturnValueOnce(false);
     });
 

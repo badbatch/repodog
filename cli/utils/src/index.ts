@@ -24,6 +24,8 @@ export * from './haveFilesChanged.ts';
 export * from './isPreRelease.ts';
 export * from './isProjectMonorepo.ts';
 export * from './isRunWithinProject.ts';
+export * from './isValidNewSubType.ts';
+export * from './isValidNewType.ts';
 export * from './isValidReleaseTag.ts';
 export * from './isValidReleaseType.ts';
 export * from './loadPackageJson.ts';

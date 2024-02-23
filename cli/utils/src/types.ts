@@ -5,6 +5,25 @@ export enum Language {
   TYPESCRIPT = 'typescript',
 }
 
+export enum NewPkgSubtype {
+  COMPONENT = 'component',
+  CONFIG = 'config',
+  LIBRARY = 'library',
+}
+
+export enum NewRepoSubtype {
+  COMPONENT_LIBRARY = 'componentLibrary',
+  // APP = 'app',
+  LIBRARY = 'library',
+  MONOREPO = 'monorepo',
+  // SERVER = 'server',
+}
+
+export enum NewType {
+  PKG = 'pkg',
+  REPO = 'repo',
+}
+
 export enum PackageManager {
   NPM = 'npm',
   PNPM = 'pnpm',

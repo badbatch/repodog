@@ -1,4 +1,4 @@
-import { NewPkgSubtype, NewRepoSubtype, NewType } from '../types.ts';
+import { NewPkgSubtype, NewRepoSubtype, NewType } from './types.ts';
 
 export const typeToSubTypeMap = {
   [NewType.PKG]: NewPkgSubtype,

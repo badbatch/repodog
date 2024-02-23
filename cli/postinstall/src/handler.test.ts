@@ -5,17 +5,11 @@ import * as cliUtils from '@repodog/cli-utils';
 jest.unstable_mockModule('@repodog/cli-utils', () => ({
   ...cliUtils,
   getPackageManager: jest.fn().mockReturnValue('pnpm'),
+  isValidNewSubType: jest.fn().mockReturnValue(true),
+  isValidNewType: jest.fn().mockReturnValue(true),
 }));
 
 jest.unstable_mockModule('shelljs', shelljsMock);
-
-jest.unstable_mockModule('./utils/isValidPostInstallSubType.ts', () => ({
-  isValidPostInstallSubType: jest.fn().mockReturnValue(true),
-}));
-
-jest.unstable_mockModule('./utils/isValidPostInstallType.ts', () => ({
-  isValidPostInstallType: jest.fn().mockReturnValue(true),
-}));
 
 jest.unstable_mockModule('./utils/runCommonPostInstallTasks.ts', () => ({
   runCommonPostInstallTasks: jest.fn(),
@@ -32,8 +26,8 @@ describe('handler', () => {
     beforeEach(async () => {
       // eslint-disable-next-line unicorn/no-await-expression-member
       shelljs = jest.mocked((await import('shelljs')).default);
-      const { isValidPostInstallType } = jest.mocked(await import('./utils/isValidPostInstallType.ts'));
-      isValidPostInstallType.mockReturnValueOnce(false);
+      const { isValidNewType } = jest.mocked(await import('@repodog/cli-utils'));
+      isValidNewType.mockReturnValueOnce(false);
     });
 
     it('should throw the correct error', async () => {
@@ -41,7 +35,7 @@ describe('handler', () => {
       await handler({ subtype: 'library', type: 'alpha' });
 
       expect(shelljs.echo).toHaveBeenCalledWith(
-        expect.stringContaining('Error: Expected type to be a valid postinstall type: pkg, repo')
+        expect.stringContaining('Error: Expected type to be a valid new type: pkg, repo')
       );
     });
 
@@ -58,8 +52,8 @@ describe('handler', () => {
     beforeEach(async () => {
       // eslint-disable-next-line unicorn/no-await-expression-member
       shelljs = jest.mocked((await import('shelljs')).default);
-      const { isValidPostInstallSubType } = jest.mocked(await import('./utils/isValidPostInstallSubType.ts'));
-      isValidPostInstallSubType.mockReturnValueOnce(false);
+      const { isValidNewSubType } = jest.mocked(await import('@repodog/cli-utils'));
+      isValidNewSubType.mockReturnValueOnce(false);
     });
 
     it('should throw the correct error', async () => {
@@ -67,7 +61,7 @@ describe('handler', () => {
       await handler({ subtype: 'bravo', type: 'pkg' });
 
       expect(shelljs.echo).toHaveBeenCalledWith(
-        expect.stringContaining('Error: Expected subtype to be a valid postinstall subtype: library')
+        expect.stringContaining('Error: Expected subtype to be a valid new subtype: component, config, library')
       );
     });
 

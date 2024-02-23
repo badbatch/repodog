@@ -1,5 +1,5 @@
-import { type PostInstallSubType, type PostInstallType } from '../types.ts';
+import { type NewRepoSubtype, type NewType } from '@repodog/cli-utils';
 import { installRepoDogPeerDependencies } from './installRepoDogPeerDependencies.ts';
 
-export const runCommonPostInstallTasks = async (_type: PostInstallType, _subtype: PostInstallSubType) =>
+export const runCommonPostInstallTasks = async (_type: NewType, _subtype: NewRepoSubtype) =>
   Promise.all([installRepoDogPeerDependencies()]);

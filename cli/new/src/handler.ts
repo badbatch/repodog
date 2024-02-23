@@ -2,6 +2,7 @@ import { handler as postinstallHandler } from '@repodog/cli-postinstall';
 import { handleGlobalConfigSetup } from '@repodog/cli-setup';
 import {
   Language,
+  NewType,
   calculateDuration,
   enrichQuestions,
   flattenTemplateVariables,
@@ -10,10 +11,13 @@ import {
   getPackageManagerTemporaryCmd,
   hasGlobalRepodogConfig,
   isRunWithinProject,
+  isValidNewSubType,
+  isValidNewType,
   loadRepodogConfig,
   removeEmptyAnswers,
   resolveAbsolutePath,
   setVerbose,
+  typeToSubTypeMap,
   verboseLog,
 } from '@repodog/cli-utils';
 import colors from 'ansi-colors';
@@ -22,14 +26,12 @@ import { dirname, resolve as resolvePath, sep } from 'node:path';
 import { performance } from 'node:perf_hooks';
 import { fileURLToPath } from 'node:url';
 import shelljs from 'shelljs';
-import { type CliOptions, type NewHandlerArguments, NewType } from './types.ts';
+import { type CliOptions, type NewHandlerArguments } from './types.ts';
 import { buildTypePaths } from './utils/buildTypePaths.ts';
 import { compileAdditionalTemplateOverrides } from './utils/compileAdditionalTemplateOverrides.ts';
 import { conditionallyChangeCwd } from './utils/conditionallyChangeCwd.ts';
 import { executeHygen } from './utils/executeHygen.ts';
 import { getLeafAdditionalTemplatesPath } from './utils/getLeafAdditionalTemplatesPath.ts';
-import { isValidNewSubType, typeToSubTypeMap } from './utils/isValidNewSubType.ts';
-import { isValidNewType } from './utils/isValidNewType.ts';
 import { loadQuestions } from './utils/loadQuestions.ts';
 
 export const handler = async (argv: NewHandlerArguments) => {

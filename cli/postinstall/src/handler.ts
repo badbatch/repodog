@@ -1,9 +1,17 @@
-import { calculateDuration, getPackageManager, setVerbose, verboseLog } from '@repodog/cli-utils';
+import {
+  type NewRepoSubtype,
+  NewType,
+  calculateDuration,
+  getPackageManager,
+  isValidNewSubType,
+  isValidNewType,
+  setVerbose,
+  typeToSubTypeMap,
+  verboseLog,
+} from '@repodog/cli-utils';
 import colors from 'ansi-colors';
 import shelljs from 'shelljs';
-import { type PostInstallHandlerArguments, PostInstallSubType, PostInstallType } from './types.ts';
-import { isValidPostInstallSubType } from './utils/isValidPostInstallSubType.ts';
-import { isValidPostInstallType } from './utils/isValidPostInstallType.ts';
+import { type PostInstallHandlerArguments } from './types.ts';
 import { runCommonPostInstallTasks } from './utils/runCommonPostInstallTasks.ts';
 
 export const handler = async (argv: PostInstallHandlerArguments) => {
@@ -17,17 +25,17 @@ export const handler = async (argv: PostInstallHandlerArguments) => {
   verboseLog('>>>> USER CONFIG END <<<<\n');
 
   try {
-    if (!isValidPostInstallType(argv.type)) {
-      throw new Error(`Expected type to be a valid postinstall type: ${Object.values(PostInstallType).join(', ')}`);
+    if (!isValidNewType(argv.type)) {
+      throw new Error(`Expected type to be a valid new type: ${Object.values(NewType).join(', ')}`);
     }
 
-    if (!isValidPostInstallSubType(argv.subtype)) {
+    if (!isValidNewSubType(argv.type, argv.subtype)) {
       throw new Error(
-        `Expected subtype to be a valid postinstall subtype: ${Object.values(PostInstallSubType).join(', ')}`
+        `Expected subtype to be a valid new subtype: ${Object.values(typeToSubTypeMap[argv.type]).join(', ')}`
       );
     }
 
-    const subtype = argv.subtype;
+    const subtype = argv.subtype as NewRepoSubtype;
     const type = argv.type;
     const packageManager = getPackageManager();
 

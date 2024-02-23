@@ -1,4 +1,4 @@
-import { NewRepoSubtype, NewType } from '../types.ts';
+import { NewRepoSubtype, NewType } from './types.ts';
 
 describe('isValidNewSubType', () => {
   let isValidNewSubType: typeof import('./isValidNewSubType.ts')['isValidNewSubType'];
