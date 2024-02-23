@@ -52,22 +52,29 @@ describe('publishPackage', () => {
       const { publishPackage } = await import('./publishPackage.ts');
 
       expect(() => publishPackage(packageJsonPath, { packageManager: PackageManager.NPM })).toThrow(
-        new Error('The new alpha package verison 1.0.0 is less than or equal to the lastest version on npm: 2.0.0')
+        new Error('The new alpha package verison 1.0.0 is less than the lastest version on npm: 2.0.0')
       );
     });
   });
 
   describe('when package version is equal to the latest version on npm', () => {
+    let verboseLog: jest.Mocked<typeof import('@repodog/cli-utils')['verboseLog']>;
+
     beforeEach(async () => {
-      const { getLatestPackageVersionOnNpm } = jest.mocked(await import('@repodog/cli-utils'));
+      let getLatestPackageVersionOnNpm: jest.Mocked<
+        typeof import('@repodog/cli-utils')['getLatestPackageVersionOnNpm']
+      >;
+
+      ({ getLatestPackageVersionOnNpm, verboseLog } = jest.mocked(await import('@repodog/cli-utils')));
       getLatestPackageVersionOnNpm.mockReturnValueOnce('1.0.0');
     });
 
     it('should throw the correct error', async () => {
       const { publishPackage } = await import('./publishPackage.ts');
+      publishPackage(packageJsonPath, { packageManager: PackageManager.NPM });
 
-      expect(() => publishPackage(packageJsonPath, { packageManager: PackageManager.NPM })).toThrow(
-        new Error('The new alpha package verison 1.0.0 is less than or equal to the lastest version on npm: 1.0.0')
+      expect(verboseLog).toHaveBeenCalledWith(
+        'The new alpha package verison 1.0.0 is equal to the lastest version on npm: 1.0.0. Skipping publish.'
       );
     });
   });

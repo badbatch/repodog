@@ -25,9 +25,17 @@ export const publishPackage = (
   verboseLog(`New version: ${version}`);
   verboseLog(`Latest version on npm: ${latestNpmPackageVersion || 'None'}`);
 
-  if (latestNpmPackageVersion && (version === latestNpmPackageVersion || semver.lt(version, latestNpmPackageVersion))) {
+  if (latestNpmPackageVersion && version === latestNpmPackageVersion) {
+    verboseLog(
+      `The new ${name} package verison ${version} is equal to the lastest version on npm: ${latestNpmPackageVersion}. Skipping publish.`
+    );
+
+    return;
+  }
+
+  if (latestNpmPackageVersion && semver.lt(version, latestNpmPackageVersion)) {
     throw new Error(
-      `The new ${name} package verison ${version} is less than or equal to the lastest version on npm: ${latestNpmPackageVersion}`
+      `The new ${name} package verison ${version} is less than the lastest version on npm: ${latestNpmPackageVersion}`
     );
   }
 
