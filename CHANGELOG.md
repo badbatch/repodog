@@ -1,3 +1,9 @@
+#### 1.7.24 (2024-02-23)
+
+##### Refactors
+
+* **new,postinstall,utils:**  move valid repo type code to utils (ded01dad)
+
 #### 1.7.23 (2024-02-23)
 
 ##### Chores
