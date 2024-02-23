@@ -50,7 +50,6 @@
     "@storybook/addon-essentials": "<8",
     "@storybook/addon-interactions": "<8",
     "@storybook/addon-links": "<8",
-    "@storybook/addon-onboarding": "<2",
     "@storybook/nextjs": "<8",
     "@storybook/react": "<8",
     "@storybook/test": "<8",
