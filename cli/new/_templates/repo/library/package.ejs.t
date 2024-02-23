@@ -43,6 +43,7 @@ sh: "<%= packageManager %> install && <%= packageManager %> add -D @repodog/cli 
     "cut:changelog": "changelog",
     "cut:post-version": "<%= packageManager %> run build",
     "lint": "eslint . --ext .ts,.cjs",
+    "prepare": "husky",
     "repodog": "repodog",
     "syncpack": "syncpack format && syncpack list-mismatches && syncpack lint-semver-ranges",
     "test": "COMPILER=swc node --require=suppress-experimental-warnings --experimental-vm-modules node_modules/jest/bin/jest.js",
@@ -61,6 +62,7 @@ sh: "<%= packageManager %> install && <%= packageManager %> add -D @repodog/cli 
     "cts-types": "^0.0.6",
     "del-cli": "^5.1.0",
     "generate-changelog": "^1.8.0",
+    "husky": "^9.0.11",
     "lodash-es": "^4.17.21"
   }
 }

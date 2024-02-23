@@ -16,6 +16,7 @@
     "cut:changelog": "changelog",
     "cut:post-version": "pnpm run build",
     "lint": "eslint . --ext .ts,.cjs",
+    "prepare": "husky",
     "repodog": "repodog",
     "syncpack": "syncpack format && syncpack list-mismatches && syncpack lint-semver-ranges",
     "test": "COMPILER=swc node --require=suppress-experimental-warnings --experimental-vm-modules node_modules/jest/bin/jest.js",
