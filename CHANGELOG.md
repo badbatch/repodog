@@ -1,3 +1,9 @@
+#### 1.7.25 (2024-02-23)
+
+##### Bug Fixes
+
+* **new:**  update templates for component library (f5e6d91d)
+
 #### 1.7.24 (2024-02-23)
 
 ##### Refactors
