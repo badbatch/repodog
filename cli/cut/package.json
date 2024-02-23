@@ -46,6 +46,6 @@
     "@types/shelljs": "^0.8.11",
     "@types/yargs": "^15.0.4",
     "del-cli": "^5.1.0",
-    "type-fest": "^3.5.1"
+    "type-fest": "^4.10.3"
   }
 }
