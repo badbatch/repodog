@@ -23,7 +23,7 @@ npm install @commitlint/cli @commitlint/config-conventional @commitlint/prompt-c
 
 ```shell
 # terminal
-npx husky install
+npx husky init
 echo "npx --no -- commitlint --edit \$1" > .husky/commit-msg
 ```
 
