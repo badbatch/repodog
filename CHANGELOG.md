@@ -1,3 +1,9 @@
+#### 1.7.22 (2024-02-23)
+
+##### Refactors
+
+*  stop throwing error when versions match in publish (5b4691d5)
+
 #### 1.7.21 (2024-02-22)
 
 ##### Bug Fixes
