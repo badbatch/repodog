@@ -1,3 +1,31 @@
+#### 1.7.23 (2024-02-23)
+
+##### Chores
+
+* **deps-dev:**
+  *  bump husky from 8.0.3 to 9.0.11 (068e761c)
+  *  bump type-fest from 3.5.1 to 4.10.3 (829c8c78)
+  *  bump eslint-plugin-jest from 27.2.1 to 27.9.0 (398470b7)
+  *  bump @types/node from 20.11.0 to 20.11.20 (44a314c9)
+* **deps:**
+  *  bump semver and @types/semver (d2408ace)
+  *  bump package-json from 8.1.1 to 9.0.0 (db24c69e)
+
+##### New Features
+
+* **new:**  add new commitlint config to templates (e052ecf6)
+* **commitlint-config:**  dynamically generate and enforce scopes (19cc1327)
+
+##### Bug Fixes
+
+*  update lock file (b48bcc06)
+*  package lock (add86307)
+*  minor tweaks (24c65831)
+
+##### Refactors
+
+*  add other changes to support husky upgrade (0941c9fe)
+
 #### 1.7.22 (2024-02-23)
 
 ##### Refactors
