@@ -54,19 +54,16 @@ writeFileSync(resolve(cwd, './package.json'), JSON.stringify(packageJson, undefi
   encoding: 'utf8',
 });
 
-const dedupedCssContent = cssContent.reduce(
-  (acc, content) => {
-    const selectors = content.match(/.+{[^}]+}/gm);
+const dedupedCssContent = cssContent.reduce((acc, content) => {
+  const selectors = content.match(/.+{[^}]+}/gm);
 
-    if (!selectors) {
-      return acc;
-    }
+  if (!selectors) {
+    return acc;
+  }
 
-    const uniqueSelectors = selectors.filter(selector => !acc.includes(selector));
-    return [...acc, ...uniqueSelectors];
-  },
-  []
-);
+  const uniqueSelectors = selectors.filter(selector => !acc.includes(selector));
+  return [...acc, ...uniqueSelectors];
+}, []);
 
 const stylesPath = resolve(cwd, './dist/styles');
 
