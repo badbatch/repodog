@@ -1,6 +1,6 @@
 {
   "name": "@repodog/eslint-config",
-  "description": "The RepoDog ESLint config module.",
+  "description": "The Repodog ESLint config module.",
   "version": "1.2.1",
   "author": "Dylan Aubrey",
   "license": "MIT",

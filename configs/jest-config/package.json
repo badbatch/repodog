@@ -1,6 +1,6 @@
 {
   "name": "@repodog/jest-config",
-  "description": "The RepoDog Jest config module.",
+  "description": "The Repodog Jest config module.",
   "version": "1.2.2",
   "author": "Dylan Aubrey",
   "license": "MIT",

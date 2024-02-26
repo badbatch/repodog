@@ -30,7 +30,7 @@ export const init = () => {
       .help().argv;
   } else {
     shelljs.echo(
-      `${colors.magenta('RepoDog')} ${colors.dim('=>')} ${colors.red(
+      `${colors.magenta('Repodog')} ${colors.dim('=>')} ${colors.red(
         `Error: node version ${process.versions.node} does not satisfy package requirement of ${packageJson.engines.node}`
       )}`
     );

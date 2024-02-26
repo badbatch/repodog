@@ -1,4 +1,4 @@
-name: RepoDog build and publish
+name: Repodog build and publish
 
 on:
   workflow_call:

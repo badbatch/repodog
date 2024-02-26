@@ -1,7 +1,7 @@
 import colors from 'ansi-colors';
 import shelljs from 'shelljs';
 
-let namespace = 'RepoDog';
+let namespace = 'Repodog';
 let verbose = false;
 
 export const setVerbose = (value: boolean, name?: string) => {

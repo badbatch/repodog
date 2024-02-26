@@ -1,6 +1,6 @@
 # @repodog/cli-test-utils
 
-The RepoDog cli test utils package.
+The Repodog cli test utils package.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 

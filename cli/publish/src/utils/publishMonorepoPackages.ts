@@ -28,7 +28,7 @@ export const publishMonorepoPackages = (packageManager: PackageManager) => {
       process.chdir(projectRoot);
     } catch (error: unknown) {
       shelljs.echo(
-        `${colors.magenta('RepoDog')} ${colors.dim('=>')} Error publishing ${name}: ${(error as Error).message}`
+        `${colors.magenta('Repodog')} ${colors.dim('=>')} Error publishing ${name}: ${(error as Error).message}`
       );
 
       verboseLog('>>>> PACKAGE END <<<<\n');

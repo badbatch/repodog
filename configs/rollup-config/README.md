@@ -1,6 +1,6 @@
 # @repodog/rollup-config
 
-The RepoDog Rollup config.
+The Repodog Rollup config.
 
 [![npm version](https://badge.fury.io/js/%40repodog%2Frollup-config.svg)](https://badge.fury.io/js/%40repodog%2Frollup-config)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)

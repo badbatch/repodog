@@ -1,6 +1,6 @@
 # @repodog/swc-config
 
-The RepoDog SWC config.
+The Repodog SWC config.
 
 [![npm version](https://badge.fury.io/js/%40repodog%2Fswc-config.svg)](https://badge.fury.io/js/%40repodog%2Fswc-config)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)

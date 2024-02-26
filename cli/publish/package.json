@@ -1,6 +1,6 @@
 {
   "name": "@repodog/cli-publish",
-  "description": "The RepoDog cli publish module.",
+  "description": "The Repodog cli publish module.",
   "version": "1.4.6",
   "author": "Dylan Aubrey",
   "license": "MIT",

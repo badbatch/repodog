@@ -1,6 +1,6 @@
 # @repodog/jest-config
 
-The RepoDog Jest config.
+The Repodog Jest config.
 
 [![npm version](https://badge.fury.io/js/%40repodog%2Fjest-config.svg)](https://badge.fury.io/js/%40repodog%2Fjest-config)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)

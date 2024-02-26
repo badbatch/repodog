@@ -1,6 +1,6 @@
 {
   "name": "@repodog/storybook-config",
-  "description": "The RepoDog Storybook config module.",
+  "description": "The Repodog Storybook config module.",
   "version": "0.1.9",
   "author": "Dylan Aubrey",
   "license": "MIT",

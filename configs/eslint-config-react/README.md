@@ -1,6 +1,6 @@
 # @repodog/eslint-config-react
 
-The RepoDog React ESLint config module.
+The Repodog React ESLint config module.
 
 [![npm version](https://badge.fury.io/js/%40repodog%2Feslint-config-react.svg)](https://badge.fury.io/js/%40repodog%2Feslint-config-react)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)

@@ -1,6 +1,6 @@
 {
   "name": "@repodog/cli-test-utils",
-  "description": "The RepoDog cli test utils module.",
+  "description": "The Repodog cli test utils module.",
   "version": "1.4.1",
   "author": "Dylan Aubrey",
   "license": "MIT",

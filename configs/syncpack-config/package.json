@@ -1,6 +1,6 @@
 {
   "name": "@repodog/syncpack-config",
-  "description": "The RepoDog Syncpack config module.",
+  "description": "The Repodog Syncpack config module.",
   "version": "1.3.0",
   "author": "Dylan Aubrey",
   "license": "MIT",

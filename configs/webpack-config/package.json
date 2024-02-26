@@ -1,6 +1,6 @@
 {
   "name": "@repodog/webpack-config",
-  "description": "The RepoDog webpack config module.",
+  "description": "The Repodog webpack config module.",
   "version": "0.1.1",
   "author": "Dylan Aubrey",
   "license": "MIT",

@@ -77,7 +77,7 @@ export const handler = async (argv: WriteHandlerArguments) => {
     return shelljs.exit(0);
   } catch (error: unknown) {
     shelljs.echo(
-      `${colors.magenta('RepoDog')} ${colors.dim('=>')} ${colors.red(`Error: ${(error as Error).message}`)}`
+      `${colors.magenta('Repodog')} ${colors.dim('=>')} ${colors.red(`Error: ${(error as Error).message}`)}`
     );
 
     verboseLog(`Handler duration: ${String(calculateDuration(startTime))}sec`);

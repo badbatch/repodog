@@ -1,4 +1,7 @@
-# RepoDog
+<div align="center">
+  <img src="./assets/repodog-blue.png">
+  <h1>Repodog</h1>
+</div>
 
 An command line module for managing repositories and a set of configs for popular tooling.
 
@@ -44,4 +47,4 @@ Check out the [features, fixes and more](CHANGELOG.md) that go into each major, 
 
 ## License
 
-RepoDog is [MIT Licensed](LICENSE).
+Repodog is [MIT Licensed](LICENSE).

@@ -1,6 +1,6 @@
 # @repodog/cli-new
 
-The RepoDog cli new package.
+The Repodog cli new package.
 
 [![npm version](https://badge.fury.io/js/%40repodog%2Fcli-new.svg)](https://badge.fury.io/js/%40repodog%2Fcli-new)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)

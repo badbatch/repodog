@@ -1,6 +1,6 @@
 {
   "name": "@repodog/ts-config",
-  "description": "The RepoDog Typescript config module.",
+  "description": "The Repodog Typescript config module.",
   "version": "1.4.0",
   "author": "Dylan Aubrey",
   "license": "MIT",

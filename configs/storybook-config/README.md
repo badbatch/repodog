@@ -1,6 +1,6 @@
 # @repodog/storybook-config
 
-The RepoDog Storybook config.
+The Repodog Storybook config.
 
 [![npm version](https://badge.fury.io/js/%40repodog%2Fstorybook-config.svg)](https://badge.fury.io/js/%40repodog%2Fstorybook-config)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)

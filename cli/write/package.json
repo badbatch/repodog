@@ -1,6 +1,6 @@
 {
   "name": "@repodog/cli-write",
-  "description": "The RepoDog cli write module.",
+  "description": "The Repodog cli write module.",
   "version": "1.4.3",
   "author": "Dylan Aubrey",
   "license": "MIT",

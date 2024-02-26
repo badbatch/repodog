@@ -1,6 +1,6 @@
 # @repodog/jasmine-browser-config
 
-The RepoDog jasmine-browser config.
+The Repodog jasmine-browser config.
 
 [![npm version](https://badge.fury.io/js/%40repodog%2Fjasmine-browser-config.svg)](https://badge.fury.io/js/%40repodog%2Fjasmine-browser-config)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)

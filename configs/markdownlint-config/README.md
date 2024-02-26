@@ -1,6 +1,6 @@
 # @repodog/markdownlint-config
 
-The RepoDog MarkdownLint config.
+The Repodog MarkdownLint config.
 
 [![npm version](https://badge.fury.io/js/%40repodog%2Fmarkdownlint-config.svg)](https://badge.fury.io/js/%40repodog%2Fmarkdownlint-config)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)

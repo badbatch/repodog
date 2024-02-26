@@ -1,6 +1,6 @@
 {
   "name": "@repodog/markdownlint-config",
-  "description": "The RepoDog MarkdownLint config module.",
+  "description": "The Repodog MarkdownLint config module.",
   "version": "1.2.0",
   "author": "Dylan Aubrey",
   "license": "MIT",
