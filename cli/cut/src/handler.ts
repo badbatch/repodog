@@ -110,7 +110,7 @@ export const handler = async (argv: CutHandlerArguments) => {
     verboseLog(`Have files changed: ${String(filesChanged)}`);
     verboseLog('>>>> DERIVED VALUES END <<<<\n');
     verboseLog('>>>> PROJECT ROOT START <<<<');
-    const { dependencies = {}, scripts = {}, version } = packageJson;
+    const { devDependencies = {}, scripts = {}, version } = packageJson;
 
     if (!skipPrehook && scripts['cut:pre-version']) {
       verboseLog(`Running cut:pre-version script: ${scripts['cut:pre-version']}\n`);
@@ -169,7 +169,7 @@ export const handler = async (argv: CutHandlerArguments) => {
     if (scripts['cut:changelog']) {
       verboseLog(`Generating changelog for ${type} release`);
       await asyncExec(`${packageManager} run cut:changelog -- --${type} --version ${newVersion}`);
-      await normaliseChangelog(dependencies);
+      await normaliseChangelog(devDependencies);
     }
 
     if (dryRun) {
