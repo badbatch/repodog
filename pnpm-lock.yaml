@@ -120,8 +120,8 @@ importers:
         specifier: ^4.2.1
         version: 4.2.1(eslint-config-prettier@8.5.0)(eslint@8.29.0)(prettier@2.8.1)
       eslint-plugin-sort-class-members:
-        specifier: ^1.16.0
-        version: 1.16.0(eslint@8.29.0)
+        specifier: ^1.20.0
+        version: 1.20.0(eslint@8.29.0)
       eslint-plugin-sort-destructure-keys:
         specifier: ^1.4.0
         version: 1.4.0(eslint@8.29.0)
@@ -10429,6 +10429,16 @@ packages:
       eslint: '>=0.8.0'
     dependencies:
       eslint: 8.29.0
+    dev: false
+
+  /eslint-plugin-sort-class-members@1.20.0(eslint@8.29.0):
+    resolution: {integrity: sha512-xNaik4GQ/pRwd1soIVI28HEXZbrWoLR5krau2+E8YcHj7N09UviPg5mYhf/rELG29bIFJdXDOFJazN90+luMOw==}
+    engines: {node: '>=4.0.0'}
+    peerDependencies:
+      eslint: '>=0.8.0'
+    dependencies:
+      eslint: 8.29.0
+    dev: true
 
   /eslint-plugin-sort-destructure-keys@1.4.0(eslint@8.29.0):
     resolution: {integrity: sha512-txU9l22mblz7YpyjJNYFy4wb5PVXiRMbc9lqFPPhvY4wKyBBYQvb31TIcduf7iRb4Bv01aiXcJiuCkOOrVY48Q==}
