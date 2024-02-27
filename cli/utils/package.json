@@ -46,7 +46,7 @@
     "@types/js-yaml": "^4.0.5",
     "@types/lodash-es": "^4.14.191",
     "@types/semver": "^7.5.7",
-    "@types/shelljs": "^0.8.11",
+    "@types/shelljs": "^0.8.15",
     "del-cli": "^5.1.0",
     "lodash-es": "^4.17.21",
     "type-fest": "^4.10.3"

@@ -43,7 +43,7 @@
   "devDependencies": {
     "@jest/globals": "^29.7.0",
     "@repodog/cli-test-utils": "workspace:*",
-    "@types/shelljs": "^0.8.11",
+    "@types/shelljs": "^0.8.15",
     "@types/yargs": "^15.0.4",
     "del-cli": "^5.1.0"
   }
