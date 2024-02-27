@@ -54,7 +54,7 @@
     "browserslist": "^4.23.0",
     "core-js": "^3.36.0",
     "del-cli": "^5.1.0",
-    "eslint": "^8.29.0",
+    "eslint": "^8.57.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-import-resolver-typescript": "^3.5.2",
     "eslint-plugin-import": "^2.27.5",
