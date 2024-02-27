@@ -12,7 +12,7 @@ export const normaliseChangelog = async (devDependencies: Partial<Record<string,
     changelog = changelog
       .replace(/#### /g, '## ')
       .replace(/##### /g, '### ')
-      .replace(/# Changelog\n\n/g, '## ');
+      .replace(/# Changelog\n\n/g, '');
 
     changelog = `# Changelog\n\n${changelog}`;
     writeFileSync(resolve(cwd, 'CHANGELOG.md'), changelog, { encoding: 'utf8' });
