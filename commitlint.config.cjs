@@ -12,6 +12,6 @@ module.exports = {
   extends: ['@repodog/commitlint-config'],
   rules: {
     'scope-empty': [2, 'never'],
-    'scope-enum': [2, 'always', directories],
+    'scope-enum': [2, 'always', ['repodog', ...directories]],
   },
 };
