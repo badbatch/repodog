@@ -16,6 +16,6 @@
     "access": "public"
   },
   "peerDependencies": {
-    "markdownlint-cli": "<1"
+    "markdownlint-cli2": "<1"
   }
 }

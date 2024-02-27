@@ -29,6 +29,7 @@ import { resolve } from 'node:path';
 import { performance } from 'node:perf_hooks';
 import shelljs from 'shelljs';
 import { type CutHandlerArguments } from './types.ts';
+import { normaliseChangelog } from './utils/normaliseChangelog.ts';
 import { versionMonorepoPackages } from './utils/versionMonorepoPackages.ts';
 import { versionPackage } from './utils/versionPackage.ts';
 
@@ -50,8 +51,11 @@ export const handler = async (argv: CutHandlerArguments) => {
   verboseLog(`type: ${argv.type}`);
   verboseLog('>>>> USER CONFIG END <<<<\n');
 
+  const cwd = process.cwd();
+  verboseLog(`cwd: ${cwd}`);
+
   try {
-    const packageJsonPath = resolve(process.cwd(), 'package.json');
+    const packageJsonPath = resolve(cwd, 'package.json');
     const packageJson = loadPackageJson(packageJsonPath);
 
     if (hasDryRunFlag()) {
@@ -106,7 +110,7 @@ export const handler = async (argv: CutHandlerArguments) => {
     verboseLog(`Have files changed: ${String(filesChanged)}`);
     verboseLog('>>>> DERIVED VALUES END <<<<\n');
     verboseLog('>>>> PROJECT ROOT START <<<<');
-    const { scripts = {}, version } = packageJson;
+    const { dependencies = {}, scripts = {}, version } = packageJson;
 
     if (!skipPrehook && scripts['cut:pre-version']) {
       verboseLog(`Running cut:pre-version script: ${scripts['cut:pre-version']}\n`);
@@ -165,6 +169,7 @@ export const handler = async (argv: CutHandlerArguments) => {
     if (scripts['cut:changelog']) {
       verboseLog(`Generating changelog for ${type} release`);
       await asyncExec(`${packageManager} run cut:changelog -- --${type} --version ${newVersion}`);
+      await normaliseChangelog(dependencies);
     }
 
     if (dryRun) {

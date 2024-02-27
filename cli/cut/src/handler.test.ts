@@ -26,6 +26,10 @@ jest.unstable_mockModule('@repodog/cli-utils', () => ({
   verboseLog: jest.fn(),
 }));
 
+jest.unstable_mockModule('./utils/normaliseChangelog.ts', () => ({
+  normaliseChangelog: jest.fn(),
+}));
+
 jest.unstable_mockModule('./utils/versionMonorepoPackages.ts', () => ({
   versionMonorepoPackages: jest.fn(),
 }));
