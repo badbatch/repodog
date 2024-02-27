@@ -1,5 +1,18 @@
 # Changelog
 
+## 1.7.27 (2024-02-27)
+
+### Bug Fixes
+
+* **cut:**
+  * changelog formatter (83634d33)
+  * update changelog formatting regexes (a52b33de)
+* **repodog:**  changelog typo (b3c6fa97)
+
+### Other Changes
+
+* **cut:**  update changelog formatting regexes" (6cba0d8b)
+
 ## 1.7.26 (2024-02-27)
 
 ### Chores
