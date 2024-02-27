@@ -22,7 +22,7 @@
     "shelljs": "^0.8.4"
   },
   "devDependencies": {
-    "@types/shelljs": "^0.8.11",
+    "@types/shelljs": "^0.8.15",
     "type-fest": "^4.10.3"
   }
 }
