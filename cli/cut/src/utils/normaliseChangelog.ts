@@ -10,9 +10,9 @@ export const normaliseChangelog = async (devDependencies: Partial<Record<string,
     let changelog = readFileSync(resolve(cwd, 'CHANGELOG.md'), { encoding: 'utf8' });
 
     changelog = changelog
-      .replace(/#### /g, '## ')
-      .replace(/##### /g, '### ')
-      .replace(/# Changelog\n\n/g, '## ');
+      .replace(/^#{4} /gm, '## ')
+      .replace(/^#{5} /g, '### ')
+      .replace(/^# Changelog\n\n/, '');
 
     changelog = `# Changelog\n\n${changelog}`;
     writeFileSync(resolve(cwd, 'CHANGELOG.md'), changelog, { encoding: 'utf8' });
