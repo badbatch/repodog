@@ -1,6 +1,31 @@
 # Changelog
 
-## 1.7.25 (2024-02-23)
+## 1.7.26 (2024-02-27)
+
+### Chores
+
+* **deps-dev:**  bump @typescript-eslint/parser from 5.46.0 to 5.62.0 (e975f410)
+* **deps:**  bump @types/shelljs from 0.8.11 to 0.8.15 (0ca76cb4)
+
+### New Features
+
+* **cut:**
+  * add logging to changelog normalisation code (b1e6658f)
+  * format changelog (c8130539)
+* **repodog:**  add root name to commitlint scopes (d2fad937)
+
+### Bug Fixes
+
+* **cut:**
+  * move markdown linting to last step (eeb6c63c)
+  * use dev dependencies rather than dependencies (ed3d56df)
+* **repodog:**  package lock mismatch (d967345b)
+
+### Refactors
+
+* **repodog:**  add logo and update name everywhere (38d1022f)
+
+## ## 1.7.25 (2024-02-23)
 
 ### Bug Fixes
 
@@ -17,13 +42,13 @@
 ### Chores
 
 * **deps-dev:**
-  *  bump husky from 8.0.3 to 9.0.11 (068e761c)
-  *  bump type-fest from 3.5.1 to 4.10.3 (829c8c78)
-  *  bump eslint-plugin-jest from 27.2.1 to 27.9.0 (398470b7)
-  *  bump @types/node from 20.11.0 to 20.11.20 (44a314c9)
+  * bump husky from 8.0.3 to 9.0.11 (068e761c)
+  * bump type-fest from 3.5.1 to 4.10.3 (829c8c78)
+  * bump eslint-plugin-jest from 27.2.1 to 27.9.0 (398470b7)
+  * bump @types/node from 20.11.0 to 20.11.20 (44a314c9)
 * **deps:**
-  *  bump semver and @types/semver (d2408ace)
-  *  bump package-json from 8.1.1 to 9.0.0 (db24c69e)
+  * bump semver and @types/semver (d2408ace)
+  * bump package-json from 8.1.1 to 9.0.0 (db24c69e)
 
 ### New Features
 
@@ -32,299 +57,299 @@
 
 ### Bug Fixes
 
-*  update lock file (b48bcc06)
-*  package lock (add86307)
-*  minor tweaks (24c65831)
+* update lock file (b48bcc06)
+* package lock (add86307)
+* minor tweaks (24c65831)
 
 ### Refactors
 
-*  add other changes to support husky upgrade (0941c9fe)
+* add other changes to support husky upgrade (0941c9fe)
 
 ## 1.7.22 (2024-02-23)
 
 ### Refactors
 
-*  stop throwing error when versions match in publish (5b4691d5)
+* stop throwing error when versions match in publish (5b4691d5)
 
 ## 1.7.21 (2024-02-22)
 
 ### Bug Fixes
 
-*  update unit test (e07e9535)
-*  move change dir to root into loop (fc54ffa1)
+* update unit test (e07e9535)
+* move change dir to root into loop (fc54ffa1)
 
 ## 1.7.20 (2024-02-22)
 
 ### Bug Fixes
 
-*  don't change directory until pkg version is checked (4432df2c)
+* don't change directory until pkg version is checked (4432df2c)
 
 ## 1.7.19 (2024-02-22)
 
 ### Bug Fixes
 
-*  set swc jest sourcemaps to inline (1be3c1f5)
+* set swc jest sourcemaps to inline (1be3c1f5)
 
 ## 1.7.18 (2024-02-22)
 
 ### Bug Fixes
 
-*  add encoding into read file in scritps (c5de268f)
+* add encoding into read file in scritps (c5de268f)
 
 ## 1.7.17 (2024-02-22)
 
 ### Bug Fixes
 
-*  license template in wrong directory (c86a5404)
+* license template in wrong directory (c86a5404)
 
 ## 1.7.16 (2024-02-22)
 
 ### Bug Fixes
 
-*  subtype enum wrong value (8e7a2e74)
+* subtype enum wrong value (8e7a2e74)
 
 ## 1.7.15 (2024-02-22)
 
 ### Documentation Changes
 
-*  update readme (b8063148)
+* update readme (b8063148)
 
 ### New Features
 
-*  add config package templates (18af183b)
+* add config package templates (18af183b)
 
 ### Bug Fixes
 
-*  add missing content to config readme template (364e4482)
+* add missing content to config readme template (364e4482)
 
 ## 1.7.14 (2024-02-22)
 
 ### Chores
 
-*  add whitespace (1fe1c3f4)
+* add whitespace (1fe1c3f4)
 
 ### New Features
 
-*  add component library and component templates (ca044279)
-*  add question to choose platform for build yml (964ab61e)
+* add component library and component templates (ca044279)
+* add question to choose platform for build yml (964ab61e)
 
 ### Bug Fixes
 
-*  update package lock (94b50b68)
+* update package lock (94b50b68)
 
 ## 1.7.13 (2024-02-21)
 
 ### Bug Fixes
 
-*  update story target glob to improve performance (6c1546e0)
+* update story target glob to improve performance (6c1546e0)
 
 ## 1.7.12 (2024-02-20)
 
 ### Bug Fixes
 
-*  broken tests (38ad95f8)
+* broken tests (38ad95f8)
 
 ## 1.7.11 (2024-02-20)
 
 ### New Features
 
-*  swap out changelog generator (a4c2af6c)
+* swap out changelog generator (a4c2af6c)
 
 ### Bug Fixes
 
-*  change order of changelog generator to pick up right version (ed901c56)
+* change order of changelog generator to pick up right version (ed901c56)
 
 ### Other Changes
 
-*  swap out changelog generator" (2ec28714)
+* swap out changelog generator" (2ec28714)
 
 ### Refactors
 
-*  pass version to changelog generator (c16172b7)
+* pass version to changelog generator (c16172b7)
 
 ## 1.7.9 (2024-02-20)
 
 ### New Features
 
-*  add exclude-builtin-templates flag to new script (cfa21a71)
+* add exclude-builtin-templates flag to new script (cfa21a71)
 
 ## 1.7.8 (2024-02-19)
 
 ### Refactors
 
-*  remove pointless eslint plugin abstraction (6aa26870)
-*  change way eslint config is exported from package (f8d75b9f)
+* remove pointless eslint plugin abstraction (6aa26870)
+* change way eslint config is exported from package (f8d75b9f)
 
 ## 1.7.7 (2024-02-19)
 
 ### Bug Fixes
 
-*  update types to fix errors in consuming app (58c18d4c)
+* update types to fix errors in consuming app (58c18d4c)
 
 ## 1.7.6 (2024-02-19)
 
 ### Refactors
 
-*  sort exports and types for storybook and swc configs (580ae5dc)
+* sort exports and types for storybook and swc configs (580ae5dc)
 
 ## 1.7.5 (2024-02-19)
 
 ### Bug Fixes
 
-*  add types to storybook config (e9dc4c62)
+* add types to storybook config (e9dc4c62)
 
 ## 1.7.4 (2024-02-19)
 
 ### Bug Fixes
 
-*  update storybook config exports map (55bf6495)
+* update storybook config exports map (55bf6495)
 
 ## 1.7.3 (2024-02-19)
 
 ### Documentation Changes
 
-*  update azure devops example (02585ba1)
+* update azure devops example (02585ba1)
 
 ### New Features
 
-*  enable swc config to be passed into storybook (2e331acf)
+* enable swc config to be passed into storybook (2e331acf)
 
 ### Refactors
 
-*  update azure devops template examples (3a3e95b5)
+* update azure devops template examples (3a3e95b5)
 
 ## 1.7.2 (2024-02-18)
 
 ### Bug Fixes
 
-*  update templates and more docs for swc usage (136db862)
+* update templates and more docs for swc usage (136db862)
 
 ## 1.7.1 (2024-02-18)
 
 ### Refactors
 
-*  get config to return ts and js options (41f19065)
+* get config to return ts and js options (41f19065)
 
 ## 1.7.0 (2024-02-18)
 
 ### New Features
 
-*  support swc config array (f9f86fa7)
+* support swc config array (f9f86fa7)
 
 ## 1.7.0 (2024-02-18)
 
 ### Bug Fixes
 
-*  solve swc jest issue with tests being excluded (10d1b3e2)
-*  update swc config and rollup config to get them to work (45501860)
-*  misconfiguration of ts/js in swc config (6f9433c5)
+* solve swc jest issue with tests being excluded (10d1b3e2)
+* update swc config and rollup config to get them to work (45501860)
+* misconfiguration of ts/js in swc config (6f9433c5)
 
 ### Refactors
 
-*  only bump package if internal package is deps (3be4e337)
+* only bump package if internal package is deps (3be4e337)
 
 ## 1.6.3 (2024-02-17)
 
 ### Bug Fixes
 
-*  set jsx/tsx to true in swc config (61568021)
+* set jsx/tsx to true in swc config (61568021)
 
 ## 1.6.2 (2024-02-17)
 
 ### Bug Fixes
 
-*  formatting in readme (4440789a)
+* formatting in readme (4440789a)
 
 ## 1.6.1 (2024-02-17)
 
 ### Documentation Changes
 
-*  add azure pipeline example config (5f676fba)
+* add azure pipeline example config (5f676fba)
 
 ## 1.6.0 (2024-02-17)
 
 ### Bug Fixes
 
-*  type of code docs to improve json rendering (f6ccbdfa)
+* type of code docs to improve json rendering (f6ccbdfa)
 
 ## 1.6.0-unstable.0 (2024-02-17)
 
 ### New Features
 
-*  add storybook config changes (1cd81f2e)
+* add storybook config changes (1cd81f2e)
 
 ## 1.5.22 (2024-02-17)
 
 ### Documentation Changes
 
-*  update swc config readme (33e79c99)
+* update swc config readme (33e79c99)
 
 ### New Features
 
-*  add swc config and use in rollup and jest (016d4981)
+* add swc config and use in rollup and jest (016d4981)
 
 ### Refactors
 
-*  remove babel use in repo (1d5f0b61)
-*  use swc in repo and add webpack config (4ad6cbde)
-*  remove babel deps (15a9677b)
+* remove babel use in repo (1d5f0b61)
+* use swc in repo and add webpack config (4ad6cbde)
+* remove babel deps (15a9677b)
 
 ## 1.5.21 (2024-02-16)
 
 ### New Features
 
-*  improve logging of init func (5e02d3ae)
+* improve logging of init func (5e02d3ae)
 
 ## 1.5.20 (2024-02-16)
 
 ### New Features
 
-*  add flag to skip node version check (f5632a8b)
+* add flag to skip node version check (f5632a8b)
 
 ## 1.5.19 (2024-02-16)
 
 ### Documentation Changes
 
-*  update commitlint docs (db647224)
+* update commitlint docs (db647224)
 
 ### Bug Fixes
 
-*  bug in additional templates logic (384e6c54)
-*  bug in template when types file not excluded (7e246dc4)
+* bug in additional templates logic (384e6c54)
+* bug in template when types file not excluded (7e246dc4)
 
 ### Other Changes
 
-*  upgrade commitlint config and fix husky issue" (ad05c292)
+* upgrade commitlint config and fix husky issue" (ad05c292)
 
 ## 1.5.18 (2024-02-16)
 
 ### Documentation Changes
 
-*  update commitlint docs (db647224)
+* update commitlint docs (db647224)
 
 ### Other Changes
 
-*  upgrade commitlint config and fix husky issue" (ad05c292)
+* upgrade commitlint config and fix husky issue" (ad05c292)
 
 ## 1.5.17 (2024-02-13)
 
 ### New Features
 
-*  add accessibility addon for storybook config (78f7f57f)
+* add accessibility addon for storybook config (78f7f57f)
 
 ### Bug Fixes
 
-*  package lock mismatch (1d663986)
+* package lock mismatch (1d663986)
 
 ## 1.5.16 (2024-02-12)
 
 ### New Features
 
-*  add storybook config (cad544bc)
+* add storybook config (cad544bc)
 
 ### Bug Fixes
 
-*  packge lock mismatch (3147a3ae)
+* packge lock mismatch (3147a3ae)
 
 ## 1.5.16-unstable.0 (2024-02-11)
 
@@ -332,108 +357,108 @@
 
 ### Refactors
 
-*  change check of override template flag (16ba4db4)
+* change check of override template flag (16ba4db4)
 
 ## 1.5.14-unstable.0 (2024-02-11)
 
 ### Bug Fixes
 
-*  remove typo in template frontmatter (8c8b44b1)
+* remove typo in template frontmatter (8c8b44b1)
 
 ## 1.5.13-unstable.0 (2024-02-11)
 
 ### Bug Fixes
 
-*  duplicate mapping key in frontmatter of template (8b4ce792)
+* duplicate mapping key in frontmatter of template (8b4ce792)
 
 ## 1.5.12-unstable.0 (2024-02-11)
 
 ### Refactors
 
-*  change way of excluding default templates (f8557a74)
+* change way of excluding default templates (f8557a74)
 
 ## 1.5.11-unstable.0 (2024-02-11)
 
 ### Bug Fixes
 
-*  broken unit test (04f888ab)
-*  allow false to be passed as query param (ce01712b)
+* broken unit test (04f888ab)
+* allow false to be passed as query param (ce01712b)
 
 ## 1.5.10-unstable.0 (2024-02-11)
 
 ### Bug Fixes
 
-*  generate override template vars for all internal templates (a8f94f4b)
+* generate override template vars for all internal templates (a8f94f4b)
 
 ## 1.5.9 (2024-02-11)
 
 ### Refactors
 
-*  only render templates that do not have overrides (54089682)
+* only render templates that do not have overrides (54089682)
 
 ## 1.5.8 (2024-02-10)
 
 ### Bug Fixes
 
-*  pkg library index template did not use template var for name (f2181d04)
+* pkg library index template did not use template var for name (f2181d04)
 
 ## 1.5.7 (2024-02-09)
 
 ### Bug Fixes
 
-*  wrong eslint config referenced in monorepo template (c56c74ef)
+* wrong eslint config referenced in monorepo template (c56c74ef)
 
 ## 1.5.6 (2024-02-08)
 
 ### Bug Fixes
 
-*  only run postinstall when type is repo (3c6859fc)
+* only run postinstall when type is repo (3c6859fc)
 
 ## 1.5.5 (2024-02-08)
 
 ### Bug Fixes
 
-*  tsconfig template missing esm in output path (c99f332d)
+* tsconfig template missing esm in output path (c99f332d)
 
 ## 1.5.4 (2024-02-08)
 
 ### Bug Fixes
 
-*  rollup config path in package template package json (4534d144)
+* rollup config path in package template package json (4534d144)
 
 ## 1.5.3 (2024-02-08)
 
 ### Bug Fixes
 
-*  template package json missing cts type code (7dee4aa0)
+* template package json missing cts type code (7dee4aa0)
 
 ## 1.5.2 (2024-02-08)
 
 ### New Features
 
-*  add monorepo template for repo (3a6b2076)
+* add monorepo template for repo (3a6b2076)
 
 ### Bug Fixes
 
-*  postintall exception and package manager refs in package json (1bb145ba)
+* postintall exception and package manager refs in package json (1bb145ba)
 
 ## 1.5.1 (2024-02-06)
 
 ### New Features
 
-*  update markdown lint and eslint configs (2fe65149)
+* update markdown lint and eslint configs (2fe65149)
 
 ## 1.5.0 (2024-01-12)
 
 ### Chores
 
-*  update deps (29f05849)
+* update deps (29f05849)
 
 ## 1.4.0 (2024-01-07)
 
 ### Refactors
 
-*  ts-config extends and all package exports map (e0a53fd9)
+* ts-config extends and all package exports map (e0a53fd9)
 
 ## 1.3.7 (2024-01-06)
 
@@ -443,373 +468,373 @@
 
 ### Refactors
 
-*  remove cjs configs as they are redundant and not correct (af72ca67)
-*  rearrange npm script (5ec061f1)
+* remove cjs configs as they are redundant and not correct (af72ca67)
+* rearrange npm script (5ec061f1)
 
 ## 1.3.6 (2023-12-19)
 
 ### Bug Fixes
 
-*  remove srFiles from jasmine config (1f28b00a)
+* remove srFiles from jasmine config (1f28b00a)
 
 ## 1.3.5 (2023-12-18)
 
 ### Bug Fixes
 
-*  add browser main field back into webpack config (c19a92f2)
+* add browser main field back into webpack config (c19a92f2)
 
 ## 1.3.4 (2023-12-18)
 
 ### Bug Fixes
 
-*  webpack build for pnpm monorepos (f9975301)
+* webpack build for pnpm monorepos (f9975301)
 
 ## 1.3.3 (2023-12-18)
 
 ### Bug Fixes
 
-*  glob error in webpack config (49182cb8)
+* glob error in webpack config (49182cb8)
 
 ## 1.3.2 (2023-12-13)
 
 ### New Features
 
-*  add log util (fdf7084e)
+* add log util (fdf7084e)
 
 ### Bug Fixes
 
-*  postinstall version bug and no shadow eslint (e90c3acf)
+* postinstall version bug and no shadow eslint (e90c3acf)
 
 ## 1.3.1 (2023-12-08)
 
 ### Chores
 
 * **deps:**
-  *  bump semver from 7.3.8 to 7.5.2 (c5f365b9)
-  *  bump word-wrap from 1.2.3 to 1.2.5 (d4911662)
+  * bump semver from 7.3.8 to 7.5.2 (c5f365b9)
+  * bump word-wrap from 1.2.3 to 1.2.5 (d4911662)
 
 ### New Features
 
-*  allow namesapce to be passed in to setVerbose (89a11736)
+* allow namesapce to be passed in to setVerbose (89a11736)
 
 ## 1.3.0 (2023-12-08)
 
 ### Bug Fixes
 
-*  post install script not executing (0b01b674)
+* post install script not executing (0b01b674)
 
 ## 1.2.7 (2023-12-08)
 
 ### New Features
 
-*  upgrade node and pnpm (445c07f1)
+* upgrade node and pnpm (445c07f1)
 
 ## 1.2.6 (2023-12-08)
 
 ### Refactors
 
-*  update react eslint config (1d5beae2)
+* update react eslint config (1d5beae2)
 
 ## 1.2.5 (2023-11-26)
 
 ### New Features
 
-*  support cjs in ts config (e20032fc)
+* support cjs in ts config (e20032fc)
 
 ### Bug Fixes
 
-*  typo in package json (8b134834)
+* typo in package json (8b134834)
 
 ## 1.2.4 (2023-11-23)
 
 ### Bug Fixes
 
-*  update template to use new syncpack commands (b5383948)
+* update template to use new syncpack commands (b5383948)
 
 ## 1.2.3 (2023-11-22)
 
 ### New Features
 
-*  reimplement syncpack upgrade (1c6adcde)
+* reimplement syncpack upgrade (1c6adcde)
 
 ## 1.2.2 (2023-11-22)
 
 ### Bug Fixes
 
-*  update script name and templates (52b5fff9)
+* update script name and templates (52b5fff9)
 
 ## 1.2.1 (2023-11-22)
 
 ### New Features
 
-*  move to exports for cli packages (e6de9a39)
+* move to exports for cli packages (e6de9a39)
 
 ## 1.2.0 (2023-11-22)
 
 ### New Features
 
-*  add exports to syncpack sort and fix glob version mismatch (92559090)
+* add exports to syncpack sort and fix glob version mismatch (92559090)
 
 ## 1.1.29 (2023-11-22)
 
 ### Bug Fixes
 
-*  package json whitespace (d1e8f17e)
+* package json whitespace (d1e8f17e)
 
 ### Other Changes
 
-*  revert save work in progress (4f48c0d4)
-*  revert change workspace references and add syncpack validation (0e8a616a)
+* revert save work in progress (4f48c0d4)
+* revert change workspace references and add syncpack validation (0e8a616a)
 
 ## 1.1.28 (2023-11-19)
 
 ### Bug Fixes
 
-*  package json whitespace (1638c6cc)
+* package json whitespace (1638c6cc)
 
 ### Refactors
 
-*  add commonjs output to rollup and change babel env var (984793c1)
+* add commonjs output to rollup and change babel env var (984793c1)
 
 ## 1.1.27 (2023-11-17)
 
 ### New Features
 
-*  add support for cjs builds with rollup (8dad12be)
+* add support for cjs builds with rollup (8dad12be)
 
 ### Bug Fixes
 
-*  change path to dist output (125f9af3)
+* change path to dist output (125f9af3)
 
 ## 1.1.26 (2023-11-17)
 
 ### Bug Fixes
 
-*  update package lock (5fb9726f)
+* update package lock (5fb9726f)
 
 ## 1.1.25 (2023-11-17)
 
 ### New Features
 
-*  add commonjs support into babel plugin (25124452)
+* add commonjs support into babel plugin (25124452)
 
 ## 1.1.24 (2023-10-31)
 
 ### New Features
 
-*  disable no reduce rule and update func scope rule (ef0a9062)
+* disable no reduce rule and update func scope rule (ef0a9062)
 
 ### Bug Fixes
 
-*  add promise lib to typescript (e196e662)
+* add promise lib to typescript (e196e662)
 
 ## 1.1.23 (2023-10-28)
 
 ### New Features
 
-*  add ctx to abbrev whitelist (286c81f3)
+* add ctx to abbrev whitelist (286c81f3)
 
 ## 1.1.22 (2023-10-27)
 
 ### Bug Fixes
 
-*  add plugin-proposal-decorators (a7540648)
+* add plugin-proposal-decorators (a7540648)
 
 ## 1.1.21 (2023-10-26)
 
 ### Bug Fixes
 
-*  allow leading underscore in variable names (75e23500)
+* allow leading underscore in variable names (75e23500)
 
 ## 1.1.20 (2023-10-25)
 
 ### Bug Fixes
 
-*  update prefer arrow rule to omit class props (2303b992)
+* update prefer arrow rule to omit class props (2303b992)
 
 ## 1.1.19 (2023-10-25)
 
 ### New Features
 
-*  add prefer arrow func rule (202cf259)
+* add prefer arrow func rule (202cf259)
 
 ## 1.1.18 (2023-10-24)
 
 ### New Features
 
-*  add to abbrev list (1328243b)
+* add to abbrev list (1328243b)
 
 ### Refactors
 
-*  swap babel proposal plugins for shipped ones (f601b357)
-*  remove setup from jest config (9592af8c)
+* swap babel proposal plugins for shipped ones (f601b357)
+* remove setup from jest config (9592af8c)
 
 ## 1.1.17 (2023-10-16)
 
 ### Bug Fixes
 
-*  set carat versions when adding peer deps (b0787295)
+* set carat versions when adding peer deps (b0787295)
 
 ## 1.1.16 (2023-10-16)
 
 ### Bug Fixes
 
-*  postinstall peer dependency defensive coding (49a536fd)
+* postinstall peer dependency defensive coding (49a536fd)
 
 ## 1.1.15 (2023-10-15)
 
 ### New Features
 
-*  use library to load package json from npm reg (ba2aab8a)
+* use library to load package json from npm reg (ba2aab8a)
 
 ## 1.1.14 (2023-10-15)
 
 ### Chores
 
-*  add logging for postinstall script (a3c17ccf)
+* add logging for postinstall script (a3c17ccf)
 
 ## 1.1.13 (2023-10-15)
 
 ### New Features
 
-*  add fetch polyfil to jest setup (88b3c287)
+* add fetch polyfil to jest setup (88b3c287)
 
 ## 1.1.12 (2023-10-12)
 
 ### New Features
 
-*  add to abbrev whitelist (9a952ca1)
+* add to abbrev whitelist (9a952ca1)
 
 ## 1.1.11 (2023-10-12)
 
 ### Bug Fixes
 
-*  path in webpack output (bb7c430a)
+* path in webpack output (bb7c430a)
 
 ## 1.1.10 (2023-10-11)
 
 ### Refactors
 
-*  break out eslint configs and add jasmine and webpack (781fac64)
+* break out eslint configs and add jasmine and webpack (781fac64)
 
 ## 1.1.9 (2023-09-29)
 
 ### Chores
 
-*  update package json linting (bd78b972)
+* update package json linting (bd78b972)
 
 ### Other Changes
 
-*  remove synthetic default imports""" (7d2cf332)
-*  remove synthetic default imports"" (602a89c8)
-*  remove synthetic default imports" (1951e044)
+* remove synthetic default imports""" (7d2cf332)
+* remove synthetic default imports"" (602a89c8)
+* remove synthetic default imports" (1951e044)
 
 ### Refactors
 
-*  move to lodash-es (5d916b61)
-*  remove synthetic default imports (4a8d985e)
+* move to lodash-es (5d916b61)
+* remove synthetic default imports (4a8d985e)
 
 ## 1.1.8 (2023-09-28)
 
 ### New Features
 
-*  add playwright eslint config (e113c92c)
+* add playwright eslint config (e113c92c)
 
 ## 1.1.7 (2023-09-28)
 
 ### Documentation Changes
 
-*  update eslint docs (e5f99d5b)
+* update eslint docs (e5f99d5b)
 
 ## 1.1.6 (2023-09-28)
 
 ### Bug Fixes
 
-*  add jsdom jest package into peers (012e98ee)
+* add jsdom jest package into peers (012e98ee)
 
 ### Refactors
 
-*  pull out jest eslint config into separate config (3e39fd94)
-*  add jest env node package (609cba82)
-*  allow typescript to remove any unused imports (4996ee25)
-*  add db to allowed abbrev (7ea6f683)
+* pull out jest eslint config into separate config (3e39fd94)
+* add jest env node package (609cba82)
+* allow typescript to remove any unused imports (4996ee25)
+* add db to allowed abbrev (7ea6f683)
 
 ## 1.1.5 (2023-08-31)
 
 ### Bug Fixes
 
-*  add licences to all packages (c03d4b5d)
-*  typo in readmes (475f4562)
+* add licences to all packages (c03d4b5d)
+* typo in readmes (475f4562)
 
 ### Refactors
 
-*  turn off @typescript-eslint/consistent-type-definitions (5cbd5776)
+* turn off @typescript-eslint/consistent-type-definitions (5cbd5776)
 
 ## 1.1.4 (2023-08-14)
 
 ### Chores
 
-*  save work in progress (b5d8d203)
+* save work in progress (b5d8d203)
 
 ### Bug Fixes
 
-*  broken unit test (f63ce9a1)
-*  remove extra space from package jsons (9fe89f4d)
+* broken unit test (f63ce9a1)
+* remove extra space from package jsons (9fe89f4d)
 
 ## 1.1.3 (2023-06-23)
 
 ### Bug Fixes
 
-*  align package json formatting (86aa155c)
-*  async error handling (1672de3d)
+* align package json formatting (86aa155c)
+* async error handling (1672de3d)
 
 ## 1.1.2 (2023-06-20)
 
 ### Bug Fixes
 
-*  enhance logging for async exec and update licence template (2d5ec6f3)
+* enhance logging for async exec and update licence template (2d5ec6f3)
 
 ## 1.1.1 (2023-06-16)
 
 ### Bug Fixes
 
-*  downgrade unicorn eslint plugin (f06ddf61)
-*  add launch.json into templates (57afa9bc)
+* downgrade unicorn eslint plugin (f06ddf61)
+* add launch.json into templates (57afa9bc)
 
 ### Refactors
 
-*  update tests and fix minor bugs (53ae0005)
+* update tests and fix minor bugs (53ae0005)
 
 ## 1.1.0 (2023-05-12)
 
 ### Bug Fixes
 
-*  add dependency to template (bdd9eb74)
+* add dependency to template (bdd9eb74)
 
 ### Refactors
 
-*  Rename isValidNewSubtype.test.ts to isValidNewSubType.test.ts (ea464470)
+* Rename isValidNewSubtype.test.ts to isValidNewSubType.test.ts (ea464470)
 
 ## 1.1.0 (2023-05-12)
 
 ### New Features
 
-*  add postinstall script (a3e53ad4)
+* add postinstall script (a3e53ad4)
 
 ### Bug Fixes
 
-*  remove preid option as redundant (257dc469)
-*  add types as peer and update template (01c28ad7)
+* remove preid option as redundant (257dc469)
+* add types as peer and update template (01c28ad7)
 
 ### Refactors
 
-*  make library required subttytpe for new type (d7cbd0a5)
+* make library required subttytpe for new type (d7cbd0a5)
 
 ## 1.0.1 (2023-05-09)
 
 ### Chores
 
-*  remove reference to tbc new repo types (289ca0e1)
+* remove reference to tbc new repo types (289ca0e1)
 
 ## 1.0.0 (2023-05-09)
 
@@ -817,189 +842,189 @@
 
 ### Bug Fixes
 
-*  remove peer auto install (fd55a855)
+* remove peer auto install (fd55a855)
 
 ## 1.1.1-alpha.0 (2023-05-08)
 
 ### Bug Fixes
 
-*  add husky into dev deps of template (58806365)
+* add husky into dev deps of template (58806365)
 
 ## 1.1.0-alpha.0 (2023-05-08)
 
 ### Refactors
 
-*  change way cwd is changed for new repo (1fc33af0)
+* change way cwd is changed for new repo (1fc33af0)
 
 ## 1.0.15-alpha.0 (2023-05-08)
 
 ### New Features
 
-*  add check for node version at start of cli (d4c2faf8)
-*  enable jest eslint rules and fix issues (3145df7e)
-*  add syncpack config (67585fa7)
+* add check for node version at start of cli (d4c2faf8)
+* enable jest eslint rules and fix issues (3145df7e)
+* add syncpack config (67585fa7)
 
 ### Bug Fixes
 
-*  change way type paths are handled to fix hygen limitation (a3832fa0)
-*  remove full stop in desc (bda0a333)
-*  change to os separator (4e84a386)
-*  remove org reference from repo template (338d660e)
-*  add engine node to cli package json, add quotes to sh commands (eb626ac7)
+* change way type paths are handled to fix hygen limitation (a3832fa0)
+* remove full stop in desc (bda0a333)
+* change to os separator (4e84a386)
+* remove org reference from repo template (338d660e)
+* add engine node to cli package json, add quotes to sh commands (eb626ac7)
 
 ### Refactors
 
-*  move templates and questions out of new folder (1a3b1d30)
-*  add auto install peers and repodog installs (14239a82)
+* move templates and questions out of new folder (1a3b1d30)
+* add auto install peers and repodog installs (14239a82)
 
 ## 1.0.14-alpha.0 (2023-04-26)
 
 ### Bug Fixes
 
-*  add back in json import type assert (9b7d4114)
+* add back in json import type assert (9b7d4114)
 
 ## 1.0.13-alpha.0 (2023-04-26)
 
 ### Bug Fixes
 
-*  custom type path should not default to empty string (dc9c4ce9)
+* custom type path should not default to empty string (dc9c4ce9)
 
 ## 1.0.12-alpha.0 (2023-04-26)
 
 ### Bug Fixes
 
-*  remove empty string answers (2d71fae8)
+* remove empty string answers (2d71fae8)
 
 ## 1.0.11-alpha.0 (2023-04-26)
 
 ### Bug Fixes
 
-*  create and cd into new lib if not in correct folder (d6ce7557)
+* create and cd into new lib if not in correct folder (d6ce7557)
 
 ## 1.0.10-alpha.0 (2023-04-26)
 
 ### New Features
 
-*  add setup command (47597746)
+* add setup command (47597746)
 
 ### Bug Fixes
 
-*  add peers as deps, kebabcase arg (0d81e522)
+* add peers as deps, kebabcase arg (0d81e522)
 
 ## 1.0.9-alpha.0 (2023-04-13)
 
 ### Bug Fixes
 
-*  warnings (28c69d4d)
-*  subtype bug and add library questions (7e9826f1)
+* warnings (28c69d4d)
+* subtype bug and add library questions (7e9826f1)
 
 ### Refactors
 
-*  change way mocks are structured (9e649b4c)
-*  move to .ts extensions with ts 5 (6762dd0e)
-*  upgrade typescript and add repo/lib templates (a9e378b9)
+* change way mocks are structured (9e649b4c)
+* move to .ts extensions with ts 5 (6762dd0e)
+* upgrade typescript and add repo/lib templates (a9e378b9)
 
 ## 1.0.8-alpha.0 (2023-03-31)
 
 ### Documentation Changes
 
-*  add divider back in (86e9bb4b)
-*  remove dividers (eaaa21a7)
-*  minor wording change on readme (bfdca08a)
+* add divider back in (86e9bb4b)
+* remove dividers (eaaa21a7)
+* minor wording change on readme (bfdca08a)
 
 ### New Features
 
-*  add validation of subtype in new script (a8276d5a)
+* add validation of subtype in new script (a8276d5a)
 
 ### Bug Fixes
 
-*  move log messages (b03b01ea)
-*  versioning packages with versioned internal deps (28645924)
+* move log messages (b03b01ea)
+* versioning packages with versioned internal deps (28645924)
 
 ### Refactors
 
-*  get language and pass to template engine (c8b36822)
-*  add subtype for new repo command support (6cf2c651)
-*  update to write cmd arg casing (55194273)
+* get language and pass to template engine (c8b36822)
+* add subtype for new repo command support (6cf2c651)
+* update to write cmd arg casing (55194273)
 
 ## 1.0.8-alpha.0 (2023-03-20)
 
 ### New Features
 
-*  add write command (ee7605c2)
-*  new package script (402627b7)
+* add write command (ee7605c2)
+* new package script (402627b7)
 
 ### Refactors
 
-*  update shared files and utils to support write package (a97c7e79)
-*  remove babel lodash plugin (555160a5)
-*  make use of enums (9a876b38)
+* update shared files and utils to support write package (a97c7e79)
+* remove babel lodash plugin (555160a5)
+* make use of enums (9a876b38)
 
 ## 1.0.7-alpha.0 (2023-02-23)
 
 ### Bug Fixes
 
-*  typo in action workflow script (69d62563)
+* typo in action workflow script (69d62563)
 
 ## 1.0.6-alpha.0 (2023-02-23)
 
 ### Bug Fixes
 
-*  change way npm auth token is injected in pipeline (da575152)
+* change way npm auth token is injected in pipeline (da575152)
 
 ## 1.0.5-alpha.0 (2023-02-22)
 
 ### Bug Fixes
 
-*  make sure chdir is passed absolute path (88d504a0)
+* make sure chdir is passed absolute path (88d504a0)
 
 ## 1.0.4-alpha.0 (2023-02-21)
 
 ### Bug Fixes
 
-*  adding change directory into publish package flow (cb1b692f)
+* adding change directory into publish package flow (cb1b692f)
 
 ## 1.0.3-alpha.0 (2023-02-21)
 
 ### Refactors
 
-*  add verbose logging to publish command (4560bb8d)
+* add verbose logging to publish command (4560bb8d)
 
 ## 1.0.2-alpha.0 (2023-02-21)
 
 ### Bug Fixes
 
-*  update how publish script is called in pipeline (d0e8f136)
+* update how publish script is called in pipeline (d0e8f136)
 
 ## 1.0.1-alpha.0 (2023-02-21)
 
 ### Bug Fixes
 
-*  update package manager version in action (b6d780f7)
+* update package manager version in action (b6d780f7)
 
 ## 1.0.0-alpha.0 (2023-02-21)
 
 ### New Features
 
-*  move cutoff into repodog (8b4e53fb)
-*  add github workflows (d77fc9dd)
-*  add ability to cut dry run (0242505d)
-*  add duration log at end of cut handler (b01988da)
+* move cutoff into repodog (8b4e53fb)
+* add github workflows (d77fc9dd)
+* add ability to cut dry run (0242505d)
+* add duration log at end of cut handler (b01988da)
 
 ### Refactors
 
-*  remove all but config packages (42a1c280)
-*  move configs into own folder (a58acbed)
-*  update readmes (060a7d11)
-*  change npm script changelog is linked to (9fbf040a)
-*  allow any release type to generate changelog (ca891a0b)
+* remove all but config packages (42a1c280)
+* move configs into own folder (a58acbed)
+* update readmes (060a7d11)
+* change npm script changelog is linked to (9fbf040a)
+* allow any release type to generate changelog (ca891a0b)
 
 ## 0.3.53 (2020-03-03)
 
 ### Chores
 
-*  update cutoff ([22f6b928](https://github.com/badbatch/repodog/commit/22f6b928f8230086216d096c24dec38769435dba))
-*  update urls after moving repo ([82a3cd30](https://github.com/badbatch/repodog/commit/82a3cd30027c4e4924569a51b28c8656f7c15dd1))
+* update cutoff ([22f6b928](https://github.com/badbatch/repodog/commit/22f6b928f8230086216d096c24dec38769435dba))
+* update urls after moving repo ([82a3cd30](https://github.com/badbatch/repodog/commit/82a3cd30027c4e4924569a51b28c8656f7c15dd1))
 
 ### Bug Fixes
 
@@ -1010,7 +1035,7 @@
 ### Bug Fixes
 
 * **new-repo:**  remove boostrap cmd from package json ([30d5d3f9](https://github.com/dylanaubrey/repodog/commit/30d5d3f9411f28d9a99db76e49440ced4d4ab37a))
-*  add codecov cmd to new repo/monorepo travis files ([f2645bda](https://github.com/dylanaubrey/repodog/commit/f2645bda30a6437a7d973d79c86572aed1b16a4d))
+* add codecov cmd to new repo/monorepo travis files ([f2645bda](https://github.com/dylanaubrey/repodog/commit/f2645bda30a6437a7d973d79c86572aed1b16a4d))
 
 ## 0.3.51 (2020-03-03)
 
@@ -1022,20 +1047,20 @@
 
 ### Chores
 
-*  upgrade dependencies ([ee1cd2bc](https://github.com/dylanaubrey/repodog/commit/ee1cd2bce5c59f52a235b2fe6fd0fa0110167ac2))
+* upgrade dependencies ([ee1cd2bc](https://github.com/dylanaubrey/repodog/commit/ee1cd2bce5c59f52a235b2fe6fd0fa0110167ac2))
 
 ## 0.3.49 (2020-03-02)
 
 ### Bug Fixes
 
-*  change missed peer dependency version ([dda5c3cb](https://github.com/dylanaubrey/repodog/commit/dda5c3cb56517a713912655cb0798811c235525d))
-*  peer dependency versioning ([47c874a7](https://github.com/dylanaubrey/repodog/commit/47c874a792e2a7f178676bc2a0d248f4babc0c4b))
+* change missed peer dependency version ([dda5c3cb](https://github.com/dylanaubrey/repodog/commit/dda5c3cb56517a713912655cb0798811c235525d))
+* peer dependency versioning ([47c874a7](https://github.com/dylanaubrey/repodog/commit/47c874a792e2a7f178676bc2a0d248f4babc0c4b))
 
 ## 0.3.48 (2020-02-19)
 
 ### Bug Fixes
 
-*  add new tslint rule and exclude lib from jest ([aaed031b](https://github.com/dylanaubrey/repodog/commit/aaed031b4311087b7cd8fc6bd033ed7a07a907cb))
+* add new tslint rule and exclude lib from jest ([aaed031b](https://github.com/dylanaubrey/repodog/commit/aaed031b4311087b7cd8fc6bd033ed7a07a907cb))
 
 ## 0.3.47 (2020-01-21)
 
@@ -1045,7 +1070,7 @@
 
 ### Bug Fixes
 
-*  add new rollup config to repo ([f13aaac8](https://github.com/dylanaubrey/repodog/commit/f13aaac8c5362529af63915a1afd4e7809343d47))
+* add new rollup config to repo ([f13aaac8](https://github.com/dylanaubrey/repodog/commit/f13aaac8c5362529af63915a1afd4e7809343d47))
 
 ## 0.3.46 (2020-01-21)
 
@@ -1073,39 +1098,39 @@
 
 ### Bug Fixes
 
-*  add enzyme to jest install if react feature is there ([25debfd6](https://github.com/dylanaubrey/repodog/commit/25debfd6e271ebf899fb092bfe4d178d4786b3c4))
+* add enzyme to jest install if react feature is there ([25debfd6](https://github.com/dylanaubrey/repodog/commit/25debfd6e271ebf899fb092bfe4d178d4786b3c4))
 
 ## 0.3.42 (2019-12-23)
 
 ### Bug Fixes
 
-*  update ignore patterns again ([185b628e](https://github.com/dylanaubrey/repodog/commit/185b628ee84d4094e57e05f4611e8192e2456f31))
+* update ignore patterns again ([185b628e](https://github.com/dylanaubrey/repodog/commit/185b628ee84d4094e57e05f4611e8192e2456f31))
 
 ## 0.3.41 (2019-12-20)
 
 ### Bug Fixes
 
-*  updating folders in various ignore files ([757359b2](https://github.com/dylanaubrey/repodog/commit/757359b2a83e08c3c2ab7a06b77ed14bebf1cb44))
+* updating folders in various ignore files ([757359b2](https://github.com/dylanaubrey/repodog/commit/757359b2a83e08c3c2ab7a06b77ed14bebf1cb44))
 
 ## 0.3.40 (2019-12-20)
 
 ### Bug Fixes
 
-*  add test and mock folders to various configs ([f867c1b9](https://github.com/dylanaubrey/repodog/commit/f867c1b9411bc6776b663336488b508f9e57ac67))
+* add test and mock folders to various configs ([f867c1b9](https://github.com/dylanaubrey/repodog/commit/f867c1b9411bc6776b663336488b508f9e57ac67))
 
 ## 0.3.39 (2019-12-02)
 
 ### Bug Fixes
 
 * **stylelint-config:**  add support for new babel plugins ([3c8817cb](https://github.com/dylanaubrey/repodog/commit/3c8817cb12733d684cf3a30b2bd782ac50474ca8))
-*  add js and ts lints into linting npm script ([cabac679](https://github.com/dylanaubrey/repodog/commit/cabac679e17b66484cd90739fe0171e4a8475102))
+* add js and ts lints into linting npm script ([cabac679](https://github.com/dylanaubrey/repodog/commit/cabac679e17b66484cd90739fe0171e4a8475102))
 * **eslint-config:**  correctly split airbnb base and react rulesets ([1b744c51](https://github.com/dylanaubrey/repodog/commit/1b744c51630f00d90df1bb2f198f11be7ead722f))
 
 ## 0.3.38 (2019-11-12)
 
 ### Chores
 
-*  update dependencies and fix issues ([ca58d25a](https://github.com/dylanaubrey/repodog/commit/ca58d25a8ceb7a351c496846330686ec21e0f37c))
+* update dependencies and fix issues ([ca58d25a](https://github.com/dylanaubrey/repodog/commit/ca58d25a8ceb7a351c496846330686ec21e0f37c))
 
 ## 0.3.37 (2019-11-05)
 
@@ -1117,39 +1142,39 @@
 
 ### Documentation Changes
 
-*  add missing packages to main readme ([01d9506b](https://github.com/dylanaubrey/repodog/commit/01d9506b72cd4353fb63a51b21add5edaac3edcc))
-*  update new repo/monorepo readme files ([a5e74136](https://github.com/dylanaubrey/repodog/commit/a5e74136454b90190043af6af9cbef14de5eefd1))
+* add missing packages to main readme ([01d9506b](https://github.com/dylanaubrey/repodog/commit/01d9506b72cd4353fb63a51b21add5edaac3edcc))
+* update new repo/monorepo readme files ([a5e74136](https://github.com/dylanaubrey/repodog/commit/a5e74136454b90190043af6af9cbef14de5eefd1))
 
 ### Bug Fixes
 
 * **rollup-config:**  path to babel config broken for single repo ([9f143aeb](https://github.com/dylanaubrey/repodog/commit/9f143aeb356939ba9f781dfade206c278818af16))
-*  update new repo/monorepo repo feature types ([af6eb1c7](https://github.com/dylanaubrey/repodog/commit/af6eb1c74a06674aa5b46a6dfff6c6b54a79fd62))
+* update new repo/monorepo repo feature types ([af6eb1c7](https://github.com/dylanaubrey/repodog/commit/af6eb1c74a06674aa5b46a6dfff6c6b54a79fd62))
 
 ## 0.3.35 (2019-10-31)
 
 ### Bug Fixes
 
 * **new-monorepo:**
-  *  remove unused variables ([b246e2dc](https://github.com/dylanaubrey/repodog/commit/b246e2dc0f38bbc9fac641a3a68e13fab827b60b))
-  *  add lerna version and remove build references ([b6931919](https://github.com/dylanaubrey/repodog/commit/b6931919682a7df88d0f99afd0b53901634307c2))
+  * remove unused variables ([b246e2dc](https://github.com/dylanaubrey/repodog/commit/b246e2dc0f38bbc9fac641a3a68e13fab827b60b))
+  * add lerna version and remove build references ([b6931919](https://github.com/dylanaubrey/repodog/commit/b6931919682a7df88d0f99afd0b53901634307c2))
 
 ## 0.3.34 (2019-10-28)
 
 ### New Features
 
-*  add npm packages to install logic ([b814e0d5](https://github.com/dylanaubrey/repodog/commit/b814e0d5dfc0fd03a670da45ec1aa037c3c449f1))
+* add npm packages to install logic ([b814e0d5](https://github.com/dylanaubrey/repodog/commit/b814e0d5dfc0fd03a670da45ec1aa037c3c449f1))
 
 ## 0.3.33 (2019-10-24)
 
 ### Bug Fixes
 
-*  wrong dependency version ([2d335bb5](https://github.com/dylanaubrey/repodog/commit/2d335bb50792165b0d379a8680cde2cab702311b))
+* wrong dependency version ([2d335bb5](https://github.com/dylanaubrey/repodog/commit/2d335bb50792165b0d379a8680cde2cab702311b))
 
 ## 0.3.32 (2019-10-24)
 
 ### Bug Fixes
 
-*  add config helpers to initial package dev dependencies ([58357496](https://github.com/dylanaubrey/repodog/commit/583574966fb29acd56a67902a477da410c43e8c8))
+* add config helpers to initial package dev dependencies ([58357496](https://github.com/dylanaubrey/repodog/commit/583574966fb29acd56a67902a477da410c43e8c8))
 
 ## 0.3.31 (2019-10-23)
 
@@ -1160,47 +1185,47 @@
 ### Bug Fixes
 
 * **constants:**  type error ([6eb6b4de](https://github.com/dylanaubrey/repodog/commit/6eb6b4decbc95ff7e08f0771d0697d7b161552a6))
-*  add missing tsconfig to files list ([2be17510](https://github.com/dylanaubrey/repodog/commit/2be1751029f48142c910ed23bae810cfe941b05d))
+* add missing tsconfig to files list ([2be17510](https://github.com/dylanaubrey/repodog/commit/2be1751029f48142c910ed23bae810cfe941b05d))
 
 ## 0.3.30 (2019-10-23)
 
 ### Bug Fixes
 
-*  update npmignore ([45c36a2a](https://github.com/dylanaubrey/repodog/commit/45c36a2aefb807a78f81d4781eb0a32764122a08))
-*  change engine node version ([59f4fe21](https://github.com/dylanaubrey/repodog/commit/59f4fe2111ba7b83547bbdc069b262f6ad57596a))
-*  revert node engine change ([1934cd2e](https://github.com/dylanaubrey/repodog/commit/1934cd2e45dbae01fb39a4389c85661d2e7831b5))
+* update npmignore ([45c36a2a](https://github.com/dylanaubrey/repodog/commit/45c36a2aefb807a78f81d4781eb0a32764122a08))
+* change engine node version ([59f4fe21](https://github.com/dylanaubrey/repodog/commit/59f4fe2111ba7b83547bbdc069b262f6ad57596a))
+* revert node engine change ([1934cd2e](https://github.com/dylanaubrey/repodog/commit/1934cd2e45dbae01fb39a4389c85661d2e7831b5))
 
 ## 0.3.29 (2019-10-23)
 
 ### Bug Fixes
 
-*  change repodog config to json file ([4256e187](https://github.com/dylanaubrey/repodog/commit/4256e1874dce8258f8eaed63c798564fd9ccc170))
-*  change npmignore to be dynamically added ([6bb9010d](https://github.com/dylanaubrey/repodog/commit/6bb9010d63bfb096e64d27eebfd236a214f31802))
-*  update repodog config ([fc32b77e](https://github.com/dylanaubrey/repodog/commit/fc32b77ed2acd9ff56cf41ef4b27d53d1ed6d69e))
+* change repodog config to json file ([4256e187](https://github.com/dylanaubrey/repodog/commit/4256e1874dce8258f8eaed63c798564fd9ccc170))
+* change npmignore to be dynamically added ([6bb9010d](https://github.com/dylanaubrey/repodog/commit/6bb9010d63bfb096e64d27eebfd236a214f31802))
+* update repodog config ([fc32b77e](https://github.com/dylanaubrey/repodog/commit/fc32b77ed2acd9ff56cf41ef4b27d53d1ed6d69e))
 
 ## 0.3.28 (2019-10-22)
 
 ### Chores
 
-*  upgrade node version and dependencies ([17bf5832](https://github.com/dylanaubrey/repodog/commit/17bf5832d5894a3698aed1b99fbd32973332bde7))
-*  upgrade dependencies and introduce optional chaining ([10edd889](https://github.com/dylanaubrey/repodog/commit/10edd8898a8f6bbcf4635681553297a15c987b71))
+* upgrade node version and dependencies ([17bf5832](https://github.com/dylanaubrey/repodog/commit/17bf5832d5894a3698aed1b99fbd32973332bde7))
+* upgrade dependencies and introduce optional chaining ([10edd889](https://github.com/dylanaubrey/repodog/commit/10edd8898a8f6bbcf4635681553297a15c987b71))
 
 ### New Features
 
-*  enable dependantOn within dependencies configs ([02a4e9c3](https://github.com/dylanaubrey/repodog/commit/02a4e9c3d658b8c80007047e11f0521dae6f8469))
-*  adding dynamic dependencies to tslint config ([866b3e1c](https://github.com/dylanaubrey/repodog/commit/866b3e1cad54110643584287ae8926ee7f4a2f6c))
-*  add dynamic dependencies to stylelint config ([b91e8d2e](https://github.com/dylanaubrey/repodog/commit/b91e8d2e483413a2610986e3c47257f0948a9ba9))
-*  update rollup config to fix bugs and add dependencies ([25eee86b](https://github.com/dylanaubrey/repodog/commit/25eee86bf48abc6ee77531cecb6c5190879377db))
-*  add writing of features to repo config ([377f23ad](https://github.com/dylanaubrey/repodog/commit/377f23ad465709f44331f4ed4dd80ea3b6d1e71d))
+* enable dependantOn within dependencies configs ([02a4e9c3](https://github.com/dylanaubrey/repodog/commit/02a4e9c3d658b8c80007047e11f0521dae6f8469))
+* adding dynamic dependencies to tslint config ([866b3e1c](https://github.com/dylanaubrey/repodog/commit/866b3e1cad54110643584287ae8926ee7f4a2f6c))
+* add dynamic dependencies to stylelint config ([b91e8d2e](https://github.com/dylanaubrey/repodog/commit/b91e8d2e483413a2610986e3c47257f0948a9ba9))
+* update rollup config to fix bugs and add dependencies ([25eee86b](https://github.com/dylanaubrey/repodog/commit/25eee86bf48abc6ee77531cecb6c5190879377db))
+* add writing of features to repo config ([377f23ad](https://github.com/dylanaubrey/repodog/commit/377f23ad465709f44331f4ed4dd80ea3b6d1e71d))
 * **babel-config:**  only load plugins that match features ([98755eb3](https://github.com/dylanaubrey/repodog/commit/98755eb3f7aa42c95dd01ecf7af4e2f18fd4558f))
 
 ### Bug Fixes
 
-*  split included packages between single and multo package ([f9c4eeb3](https://github.com/dylanaubrey/repodog/commit/f9c4eeb3cc1dc068c0c182e5603f14edd42cd229))
+* split included packages between single and multo package ([f9c4eeb3](https://github.com/dylanaubrey/repodog/commit/f9c4eeb3cc1dc068c0c182e5603f14edd42cd229))
 
 ### Refactors
 
-*  update babel, eslint, jest to support dynamic ([70077984](https://github.com/dylanaubrey/repodog/commit/70077984acf9a19bb9f79a33959e786115d88309))
+* update babel, eslint, jest to support dynamic ([70077984](https://github.com/dylanaubrey/repodog/commit/70077984acf9a19bb9f79a33959e786115d88309))
 
 ## 0.3.27 (2019-09-25)
 
@@ -1537,8 +1562,8 @@
 ### Bug Fixes
 
 * **rollup-config:**
-  *  removing types from js file ([e17624c9](https://github.com/dylanaubrey/repodog/commit/e17624c991a7a881f7fe2d29dda0c19190b24a2f))
-  *  return object rather than array ([b7c3ad9e](https://github.com/dylanaubrey/repodog/commit/b7c3ad9e401f4ea1c9b1396bb5943f3eaac51e59))
+  * removing types from js file ([e17624c9](https://github.com/dylanaubrey/repodog/commit/e17624c991a7a881f7fe2d29dda0c19190b24a2f))
+  * return object rather than array ([b7c3ad9e](https://github.com/dylanaubrey/repodog/commit/b7c3ad9e401f4ea1c9b1396bb5943f3eaac51e59))
 
 ## 0.2.9 (2019-08-16)
 
@@ -1645,4 +1670,3 @@
 ### New Features
 
 * **new-package:**  Create the new package script. ([2f4a39e7](https://github.com/dylanaubrey/repodog/commit/2f4a39e7e7f6874123ca3e7609ff63d4a498933e))
-
