@@ -25,7 +25,7 @@
 
 * **repodog:**  add logo and update name everywhere (38d1022f)
 
-## ## 1.7.25 (2024-02-23)
+## 1.7.25 (2024-02-23)
 
 ### Bug Fixes
 
