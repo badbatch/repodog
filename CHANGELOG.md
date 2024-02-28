@@ -1,5 +1,18 @@
 # Changelog
 
+## 1.7.28 (2024-02-28)
+
+### Chores
+
+* **repodog:**  update package lock (ba5bd0a7)
+* **deps-dev:**
+  * bump eslint from 8.29.0 to 8.57.0 (ee2c19ef)
+  * bump eslint-plugin-sort-class-members (35634644)
+
+### New Features
+
+* **cut:**  enable preid to be passed in (6d945792)
+
 ## 1.7.27 (2024-02-27)
 
 ### Bug Fixes
