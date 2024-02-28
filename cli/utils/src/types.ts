@@ -68,6 +68,7 @@ export interface ReleaseMeta {
   force: boolean;
   packageJsonPath: string;
   packageManager: PackageManager;
+  preid?: string;
   skipPosthook: boolean;
   skipPrehook: boolean;
   tag?: ReleaseTag;
@@ -77,6 +78,7 @@ export interface ReleaseMeta {
 export enum ReleaseTag {
   ALPHA = 'alpha',
   BETA = 'beta',
+  PULL_REQUEST = 'pr',
   UNSTABLE = 'unstable',
 }
 

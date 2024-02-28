@@ -11,6 +11,10 @@ export const builder = (argv: Argv) =>
       desc: 'The release tag: alpha | beta | unstable',
       type: 'string',
     })
+    .option('preid', {
+      desc: 'A unique identifier for the pre-release',
+      type: 'string',
+    })
     .option('dry-run', {
       desc: 'The release tag: alpha | beta | unstable',
       type: 'boolean',

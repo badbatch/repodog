@@ -109,10 +109,12 @@ Options:
   --version        Show version number                                 [boolean]
   --help           Show help                                           [boolean]
   --tag            The release tag: alpha | beta | unstable             [string]
+  --preid          A unique identifier for the pre-release              [string]
   --dry-run        The release tag: alpha | beta | unstable            [boolean]
   --force          Increment version regardless of files changed       [boolean]
   --skip-posthook  To skip post version lifecycle hook                 [boolean]
   --skip-prehook   To skip pre version lifecycle hook                  [boolean]
+  --preid          A unique identifier for the pre-release              [string]
   --verbose        Whether to output verbose logs                      [boolean]
 ```
 

@@ -207,8 +207,8 @@ importers:
         specifier: ^4.14.191
         version: 4.17.9
       '@types/semver':
-        specifier: ^7.5.7
-        version: 7.5.7
+        specifier: ^7.5.8
+        version: 7.5.8
       '@types/shelljs':
         specifier: ^0.8.15
         version: 0.8.15
@@ -281,8 +281,8 @@ importers:
         specifier: workspace:*
         version: link:../test-utils
       '@types/semver':
-        specifier: ^7.5.7
-        version: 7.5.7
+        specifier: ^7.5.8
+        version: 7.5.8
       '@types/shelljs':
         specifier: ^0.8.15
         version: 0.8.15
@@ -431,8 +431,8 @@ importers:
         specifier: workspace:*
         version: link:../test-utils
       '@types/semver':
-        specifier: ^7.5.7
-        version: 7.5.7
+        specifier: ^7.5.8
+        version: 7.5.8
       '@types/shelljs':
         specifier: ^0.8.15
         version: 0.8.15
@@ -533,8 +533,8 @@ importers:
         specifier: ^4.14.191
         version: 4.17.9
       '@types/semver':
-        specifier: ^7.5.7
-        version: 7.5.7
+        specifier: ^7.5.8
+        version: 7.5.8
       '@types/shelljs':
         specifier: ^0.8.15
         version: 0.8.15
@@ -7106,6 +7106,9 @@ packages:
 
   /@types/semver@7.5.7:
     resolution: {integrity: sha512-/wdoPq1QqkSj9/QOeKkFquEuPzQbHTWAMPH/PaUMB+JuR31lXhlWXRZ52IpfDYVlDOUBvX09uBrPwxGT1hjNBg==}
+
+  /@types/semver@7.5.8:
+    resolution: {integrity: sha512-I8EUhyrgfLrcTkzV3TSsGyl1tSuPrEDzr0yd5m90UgNxQkyDXULk3b6MlQqTCpZpNtWe1K0hzclnZkTcLBe2UQ==}
 
   /@types/send@0.17.4:
     resolution: {integrity: sha512-x2EM6TJOybec7c52BX0ZspPodMsQUd5L6PRwOunVyVUhXiBSKf3AezDL8Dgvgt5o0UfKNfuA0eMLr2wLT4AiBA==}
