@@ -24,8 +24,7 @@
       "program": "${workspaceFolder}/cli/core/bin/repodog.mjs",
       "args": [
         "cut",
-        "prepatch",
-        "--tag", "alpha",
+        "patch",
         "--dry-run"
       ],
       "console": "integratedTerminal",
