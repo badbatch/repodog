@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="./assets/repodog-blue.png">
+  <img alt="Repodog logo" src="./assets/repodog-blue.png">
   <h1>Repodog</h1>
 </div>
 
