@@ -8,7 +8,7 @@ export const builder = (argv: Argv) =>
       type: 'string',
     })
     .option('tag', {
-      desc: 'The release tag: alpha | beta | unstable',
+      desc: 'The release tag: alpha | beta | pr | unstable',
       type: 'string',
     })
     .option('preid', {
@@ -16,7 +16,7 @@ export const builder = (argv: Argv) =>
       type: 'string',
     })
     .option('dry-run', {
-      desc: 'The release tag: alpha | beta | unstable',
+      desc: 'Stop job before versioning changes are committed',
       type: 'boolean',
     })
     .option('force', {

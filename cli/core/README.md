@@ -13,7 +13,7 @@ The Repodog cli package.
 * Works with npm, yarn and pnpm
 * Works with standard repo and monorepo structures
 
-## Install package and dependencies
+## Install package
 
 ```sh
 # terminal
@@ -25,13 +25,13 @@ npm install @repodog/cli --save-dev
 ```jsonc
 // package.json
 {
+  ...
   "scripts": {
-    "repodog:cut": "repodog cut",
-    "repodog:new": "repodog new",
-    "repodog:publish": "repodog publish",
-    "repodog:setup": "repodog setup",
-    "repodog:write": "repodog write"
-  }
+    ...
+    "repodog": "repodog",
+    ...
+  },
+  ...
 }
 ```
 
@@ -108,9 +108,9 @@ Positionals:
 Options:
   --version        Show version number                                 [boolean]
   --help           Show help                                           [boolean]
-  --tag            The release tag: alpha | beta | unstable             [string]
+  --tag            The release tag: alpha | beta | pr | unstable        [string]
   --preid          A unique identifier for the pre-release              [string]
-  --dry-run        The release tag: alpha | beta | unstable            [boolean]
+  --dry-run        Stop job before versioning changes are committed    [boolean]
   --force          Increment version regardless of files changed       [boolean]
   --skip-posthook  To skip post version lifecycle hook                 [boolean]
   --skip-prehook   To skip pre version lifecycle hook                  [boolean]

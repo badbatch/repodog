@@ -145,7 +145,7 @@ describe('cut', () => {
       void handler({ tag: 'blah', type: 'preminor' });
 
       expect(shelljs.echo).toHaveBeenCalledWith(
-        expect.stringContaining('Error: Expected tag to be a valid release tag: alpha, beta, unstable')
+        expect.stringContaining('Error: Expected tag to be a valid release tag: alpha, beta, pr, unstable')
       );
     });
 
