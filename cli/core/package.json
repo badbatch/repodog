@@ -46,7 +46,7 @@
     "@types/lodash-es": "^4.14.191",
     "@types/semver": "^7.5.8",
     "@types/shelljs": "^0.8.15",
-    "@types/yargs": "^15.0.4",
+    "@types/yargs": "^17.0.32",
     "ansi-colors": "^4.1.3",
     "core-js": "^3.36.0",
     "jiti": "^1.18.2",
@@ -54,7 +54,7 @@
     "semver": "^7.6.0",
     "shelljs": "^0.8.4",
     "suppress-experimental-warnings": "^2.0.0",
-    "yargs": "^15.1.0"
+    "yargs": "^17.7.2"
   },
   "devDependencies": {
     "@jest/globals": "^29.7.0",

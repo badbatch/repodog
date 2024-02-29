@@ -34,7 +34,7 @@
     "ansi-colors": "^4.1.3",
     "semver": "^7.6.0",
     "shelljs": "^0.8.4",
-    "yargs": "^15.1.0"
+    "yargs": "^17.7.2"
   },
   "peerDependencies": {
     "core-js": "<4"
@@ -44,7 +44,7 @@
     "@repodog/cli-test-utils": "workspace:*",
     "@types/semver": "^7.5.8",
     "@types/shelljs": "^0.8.15",
-    "@types/yargs": "^15.0.4",
+    "@types/yargs": "^17.0.32",
     "del-cli": "^5.1.0"
   }
 }
