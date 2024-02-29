@@ -89,6 +89,7 @@ export const handler = async (argv: CutHandlerArguments) => {
       }
     }
 
+    const preid = argv.preid;
     const tag = argv.tag as ReleaseTag | undefined;
     const type = argv.type;
     const packageManager = getPackageManager();
@@ -124,7 +125,7 @@ export const handler = async (argv: CutHandlerArguments) => {
 
     if (isProjectMonorepo(packageManager)) {
       verboseLog('Project is monorepo');
-      versionMonorepoPackages({ force, packageManager, tag, type });
+      versionMonorepoPackages({ force, packageManager, preid, tag, type });
       verboseLog('>>>> PROJECT ROOT STARTS <<<<\n');
     } else {
       verboseLog('Project is standard repo structure');
@@ -133,6 +134,7 @@ export const handler = async (argv: CutHandlerArguments) => {
 
       versionPackage(packageJson, {
         packageJsonPath,
+        preid,
         tag,
         type,
       });
@@ -148,7 +150,7 @@ export const handler = async (argv: CutHandlerArguments) => {
       verboseLog(`cut:post-version script not provided`);
     }
 
-    const newVersion = getNewVersion(version, type, tag);
+    const newVersion = getNewVersion(version, type, tag, preid);
 
     if (!newVersion) {
       throw new Error(`The new project verison for a ${type} increment on ${version} is invalid`);
