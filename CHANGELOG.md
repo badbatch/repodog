@@ -1,5 +1,19 @@
 # Changelog
 
+## 1.7.29 (2024-02-29)
+
+### Chores
+
+* **deps:**  bump @types/semver from 7.5.7 to 7.5.8 (78779315)
+
+### New Features
+
+* **new,repodog:**  add markdownlint into validate script (3d76296b)
+
+### Bug Fixes
+
+* **cut,core,utils:**  allow pr tag and update docs (6f12f4d0)
+
 ## 1.7.28 (2024-02-28)
 
 ### Chores
