@@ -387,7 +387,7 @@ The path is relative to the current working directory if declared in a project c
 
 ## Changelog
 
-Check out the [features, fixes and more](CHANGELOG.md) that go into each major, minor and patch version.
+Check out the [features, fixes and more](../../CHANGELOG.md) that go into each major, minor and patch version.
 
 ## License
 
