@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.7.30 (2024-03-04)
+
+### Bug Fixes
+
+* **core:**  changelog link path (c1c002a4)
+
 ## 1.7.29 (2024-02-29)
 
 ### Chores
