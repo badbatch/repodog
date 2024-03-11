@@ -73,7 +73,7 @@ jobs:
         run: npm run --if-present syncpack
 
       - name: Build packages
-        run: npm run --if-present build
+        run: NODE_ENV=production npm run --if-present build
 
       - name: Lint packages
         run: npm run --if-present lint
