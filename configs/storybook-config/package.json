@@ -46,6 +46,7 @@
     "globby": "^14.0.1"
   },
   "peerDependencies": {
+    "@chanzuckerberg/axe-storybook-testing": "<9",
     "@storybook/addon-a11y": "<8",
     "@storybook/addon-essentials": "<8",
     "@storybook/addon-interactions": "<8",
@@ -54,6 +55,7 @@
     "@storybook/react": "<8",
     "@storybook/test": "<8",
     "@swc/core": "<2",
+    "chromatic": "<12",
     "eslint-plugin-storybook": "<1",
     "storybook": "<8"
   },

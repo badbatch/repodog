@@ -24,6 +24,7 @@ sh: "<%= packageManager %> install && <%= packageManager %> add -D @repodog/cli 
     "build-storybook": "storybook build",
     "build:core": "<%= packageManager %> <%= packageManagerFilterCmd %> \"./<%= packagesDirName %>/core\" run build",
     "build:rest": "<%= packageManager %> <%= packageManagerFilterCmd %> \"./components/!(core)/**\" run build",
+    "build:rest:prod": "NODE_ENV=production <%= packageManager %> run build:rest",
     "clean:deps": "pnpm run -r clean:deps && del-cli ./node_modules",
     "clean:deps": "<%= packageManager %> run -r clean:deps && del-cli ./node_modules",
     "clean:dist": "<%= packageManager %> run -r clean:dist",
@@ -38,8 +39,9 @@ sh: "<%= packageManager %> install && <%= packageManager %> add -D @repodog/cli 
     "storybook": "storybook dev -p 6006",
     "syncpack": "syncpack format && syncpack list-mismatches && syncpack lint-semver-ranges",
     "test": "COMPILER=swc node --require=suppress-experimental-warnings --experimental-vm-modules node_modules/jest/bin/jest.js",
+    "test:axe": "<%= packageManager %> run build-storybook && axe-storybook",
     "type-check": "tsc --noEmit",
-    "validate": "<%= packageManager %> run syncpack && <%= packageManager %> run build && <%= packageManager %> run lint && <%= packageManager %> run type-check && <%= packageManager %> run test && <%= packageManager %> run build-storybook"
+    "validate": "<%= packageManager %> run syncpack && <%= packageManager %> run build:rest:prod && <%= packageManager %> run build:core && <%= packageManager %> run lint && <%= packageManager %> run type-check && <%= packageManager %> run test && <%= packageManager %> run build-storybook && axe-storybook"
   },
   "devDependencies": {
     "@types/node": "^20.11.0",

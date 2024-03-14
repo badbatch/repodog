@@ -16,7 +16,7 @@ npm install @repodog/storybook-config --save-dev
 
 ```shell
 # terminal
-npm install @storybook/addon-a11y @storybook/addon-essentials @storybook/addon-interactions @storybook/addon-links @storybook/nextjs @storybook/react @storybook/test eslint-plugin-storybook storybook --save-dev
+npm install @chanzuckerberg/axe-storybook-testing @storybook/addon-a11y @storybook/addon-essentials @storybook/addon-interactions @storybook/addon-links @storybook/nextjs @storybook/react @storybook/test chromatic eslint-plugin-storybook storybook --save-dev
 ```
 
 ## Install optional dependencies
@@ -32,8 +32,9 @@ npm install @swc/core --save-dev
 // package.json
 {
   "scripts": {
+    "build-storybook": "storybook build",
     "storybook": "storybook dev -p <PORT>",
-    "build-storybook": "storybook build"
+    "test:axe": "npm run build-storybook && axe-storybook"
   }
 }
 ```
