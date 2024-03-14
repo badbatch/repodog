@@ -1,5 +1,19 @@
 # Changelog
 
+## 1.7.31 (2024-03-14)
+
+### Chores
+
+* **repodog:**  whitespace (f618e24b)
+
+### New Features
+
+* **storybook-config:**  add axe and chromatic deps (807b5c94)
+
+### Bug Fixes
+
+* **repodog:**  build for prod in pipeline (2f42b4f9)
+
 ## 1.7.30 (2024-03-04)
 
 ### Bug Fixes
