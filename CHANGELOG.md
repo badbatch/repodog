@@ -1,5 +1,15 @@
 # Changelog
 
+## 1.7.32 (2024-03-18)
+
+### Documentation Changes
+
+* **webpack-config:**  correct code examples (7216dfef)
+
+### Bug Fixes
+
+* **webpack-config:**  typo in method name (aa81f411)
+
 ## 1.7.31 (2024-03-14)
 
 ### Chores
