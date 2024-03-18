@@ -19,7 +19,7 @@ const handleSwcConfigArray = (name, options) => {
 };
 
 module.exports = ({ compiler } = {}) => {
-  const [name, options = {}] = Array.is(compiler) ? compiler : [compiler];
+  const [name, options = {}] = Array.isArray(compiler) ? compiler : [compiler];
   const isCompilerSwc = name === 'swc-loader';
 
   return {
