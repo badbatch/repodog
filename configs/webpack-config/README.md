@@ -59,8 +59,8 @@ module.exports = {
 
 ```javascript
 // webpack.config.cjs
-const webpackConfig = require('@repodog/webpack-config');
 const swcConfig = require('@repodog/swc-config');
+const webpackConfig = require('@repodog/webpack-config');
 
 module.exports = {
   ...webpackConfig({ compiler: ['swc-loader', swcConfig] }),
@@ -76,10 +76,13 @@ module.exports = {
 
 ```javascript
 // webpack.config.cjs
-const repodogConfig = require('@repodog/webpack-config/test.cjs');
+const swcConfig = require('@repodog/swc-config');
+const webpackConfig = require('@repodog/webpack-config/test.cjs');
 
 module.exports = {
-  ...repodogConfig()
+  ...webpackConfig({ compiler: 'babel-loader' })
+  // or
+  ...webpackConfig({ compiler: ['swc-loader', swcConfig] }),
 };
 ```
 
@@ -89,4 +92,4 @@ module.exports = {
 
 When set to `'prod'` or `'production'`, source maps are omitted.
 
-**You cam also use the environment variables outlined in [`@repodog/babel-config`](../babel-config/README.md#environment-variables) to control what is output.**
+**You cam also use the environment variables outlined in [`@repodog/babel-config`](../babel-config/README.md#environment-variables) or [`@repodog/swc-config`](../swc-config/README.md#environment-variables) to control what is output.**
