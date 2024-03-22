@@ -47,6 +47,7 @@ sh: "<%= packageManager %> install && <%= packageManager %> add -D @repodog/cli 
     "@types/node": "^20.11.0",
     "autoprefixer": "^10.4.17",
     "core-js": "^3.36.0",
+    "css": "^3.0.0",
     "del-cli": "^5.1.0",
     "generate-changelog": "^1.8.0",
     "husky": "^9.0.11",

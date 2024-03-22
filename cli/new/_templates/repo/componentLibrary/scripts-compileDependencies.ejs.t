@@ -1,6 +1,8 @@
 ---
 to: scripts/compileDependencies.mjs
 ---
+import css from 'css';
+import { isEqual } from 'lodash-es';
 import { existsSync, mkdirSync, readFileSync, readdirSync, writeFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 
@@ -54,16 +56,20 @@ writeFileSync(resolve(cwd, './package.json'), JSON.stringify(packageJson, undefi
   encoding: 'utf8',
 });
 
-const dedupedCssContent = cssContent.reduce((acc, content) => {
-  const selectors = content.match(/.+{[^}]+}/gm);
+const [firstCssContent, ...otherCssContent] = cssContent;
+const parsed = css.parse(firstCssContent);
 
-  if (!selectors) {
-    return acc;
+parsed.stylesheet.rules = otherCssContent.reduce((uniqueRules, entry) => {
+  const { rules = [] } = css.parse(entry).stylesheet ?? {};
+
+  for (const rule of rules) {
+    if (!uniqueRules.some(uniqueRule => isEqual(uniqueRule.selectors, rule.selectors))) {
+      uniqueRules = [...uniqueRules, rule];
+    }
   }
 
-  const uniqueSelectors = selectors.filter(selector => !acc.includes(selector));
-  return [...acc, ...uniqueSelectors];
-}, []);
+  return uniqueRules;
+}, parsed.stylesheet.rules);
 
 const stylesPath = resolve(cwd, './dist/styles');
 
@@ -71,6 +77,6 @@ if (!existsSync(stylesPath)) {
   mkdirSync(stylesPath, { recursive: true });
 }
 
-writeFileSync(resolve(stylesPath, './index.css'), dedupedCssContent.join('\n\n') + '\n', {
+writeFileSync(resolve(stylesPath, './index.css'), css.stringify(parsed) + '\n', {
   encoding: 'utf8',
 });
