@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.7.33 (2024-03-25)
+
+### Bug Fixes
+
+* **new:**  update component library template (d2bd6bd6)
+
 ## 1.7.32 (2024-03-18)
 
 ### Documentation Changes
