@@ -35,7 +35,7 @@
     "dotenv": "^16.0.3",
     "openai": "^3.2.1",
     "shelljs": "^0.8.4",
-    "yargs": "^15.1.0"
+    "yargs": "^17.7.2"
   },
   "peerDependencies": {
     "core-js": "<4"
@@ -44,7 +44,7 @@
     "@jest/globals": "^29.7.0",
     "@repodog/cli-test-utils": "workspace:*",
     "@types/shelljs": "^0.8.15",
-    "@types/yargs": "^15.0.4",
+    "@types/yargs": "^17.0.32",
     "del-cli": "^5.1.0"
   }
 }
