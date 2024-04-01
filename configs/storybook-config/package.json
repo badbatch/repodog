@@ -60,7 +60,16 @@
     "storybook": "<8"
   },
   "peerDependenciesMeta": {
+    "@chanzuckerberg/axe-storybook-testing": {
+      "optional": true
+    },
     "@swc/core": {
+      "optional": true
+    },
+    "chromatic": {
+      "optional": true
+    },
+    "eslint-plugin-storybook": {
       "optional": true
     }
   },
