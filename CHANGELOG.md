@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.7.34 (2024-04-05)
+
+### Refactors
+
+* **storybook-config:**  make some peer deps optional (e79a465f)
+
 ## 1.7.33 (2024-03-25)
 
 ### Bug Fixes
