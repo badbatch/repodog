@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.7.35 (2024-04-08)
+
+### New Features
+
+* **syncpack-config:**  add overrides range (ec20005e)
+* **new:**  add readme generator to component library template (c6236748)
+
 ## 1.7.34 (2024-04-05)
 
 ### Refactors
