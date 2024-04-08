@@ -51,9 +51,13 @@ sh: "<%= packageManager %> install && <%= packageManager %> add -D @repodog/cli 
     "del-cli": "^5.1.0",
     "generate-changelog": "^1.8.0",
     "husky": "^9.0.11",
+    "lodash-es": "^4.17.21",
     "postcss": "^8.4.35",
     "react": "^18.2.0",
+    "react-docgen-typescript": "^2.2.2",
+    "react-docgen-typescript-markdown-render": "^0.2.5",
     "react-dom": "^18.2.0",
+    "shelljs": "^0.8.5",
     "tailwindcss": "^3.4.1"
   }
 }

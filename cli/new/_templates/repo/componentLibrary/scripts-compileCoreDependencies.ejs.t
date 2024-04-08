@@ -1,5 +1,5 @@
 ---
-to: scripts/compileDependencies.mjs
+to: scripts/compileCoreDependencies.mjs
 ---
 import css from 'css';
 import { isEqual } from 'lodash-es';

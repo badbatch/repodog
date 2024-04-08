@@ -31,14 +31,14 @@ to: <%= packagesDirName %>/core/package.json
     "access": "public"
   },
   "scripts": {
-    "build": "pnpm run clean:dist && pnpm run compileDependencies && pnpm install && pnpm run compile",
+    "build": "pnpm run clean:dist && pnpm run compileCoreDependencies && pnpm install && pnpm run compile",
     "clean:deps": "del-cli ./node_modules",
     "clean:dist": "del-cli ./dist",
     "compile": "pnpm run /^compile:.*/",
     "compile:cjs": "MODULE_SYSTEM=cjs rollup -c ../../rollup.config.cjs",
     "compile:esm": "rollup -c ../../rollup.config.cjs",
     "compile:types": "tsc --project ./tsconfig.build.json && cts-types build dist/types/esm dist/types/cjs",
-    "compileDependencies": "node ../../scripts/compileDependencies.mjs"
+    "compileCoreDependencies": "node ../../scripts/compileCoreDependencies.mjs"
   },
   "dependencies": {},
   "peerDependencies": {

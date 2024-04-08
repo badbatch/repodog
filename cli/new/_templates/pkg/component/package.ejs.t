@@ -39,6 +39,7 @@ sh: "<%= packageManager %> install"
     "clean:dist": "del-cli ./dist",
     "compile": "<%= packageManager %> run /^compile:.*/",
     "compile:cjs": "MODULE_SYSTEM=cjs rollup -c ../../rollup.config.cjs",
+    "compile:docs": "node ../../scripts/generateReadme.mjs",
     "compile:esm": "rollup -c ../../rollup.config.cjs",
     "compile:styles": "tailwindcss -o ./dist/styles/index.css -c ../../tailwind.config.components.cjs && node ../../scripts/stripBaseTailwindCss.mjs",
     "compile:types": "tsc --project ./tsconfig.build.json && cts-types build dist/types/esm dist/types/cjs"
