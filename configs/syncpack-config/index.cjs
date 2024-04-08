@@ -1,12 +1,16 @@
 module.exports = {
   semverGroups: [
     {
-      dependencyTypes: ['!peer'],
+      dependencyTypes: ['!peer', '!pnpmOverrides'],
       range: '^',
     },
     {
       dependencyTypes: ['peer'],
       range: '<',
+    },
+    {
+      dependencyTypes: ['pnpmOverrides'],
+      range: '',
     },
   ],
   sortFirst: [
