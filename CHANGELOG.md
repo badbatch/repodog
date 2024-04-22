@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.7.36 (2024-04-22)
+
+### Bug Fixes
+
+* **utils:**  bug in prerelease digit incrementing (17fb72f5)
+
 ## 1.7.35 (2024-04-08)
 
 ### New Features
