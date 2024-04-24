@@ -1,5 +1,5 @@
 module.exports = api => {
-  const { BABEL_DISABLE_CACHE, BABEL_MODULE_SYSTEM, DEBUG, JS_ENV, NODE_ENV, TEST_ENV } = process.env;
+  const { BABEL_DISABLE_CACHE, BABEL_MODULE_SYSTEM, DEBUG, JS_ENV, NODE_ENV } = process.env;
 
   if (BABEL_DISABLE_CACHE === 'true') {
     api.cache.never();
@@ -11,7 +11,7 @@ module.exports = api => {
   const isCjs = BABEL_MODULE_SYSTEM === 'cjs';
   const isJsEnvWeb = JS_ENV === 'web';
   const isProdEnv = NODE_ENV === 'prod' || NODE_ENV === 'production';
-  const isTestEnv = TEST_ENV === 'true';
+  const isTestEnv = NODE_ENV === 'test';
   const ignore = ['node_modules/**', '**/node_modules/**'];
 
   if (!isTestEnv) {

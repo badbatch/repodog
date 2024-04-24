@@ -11,8 +11,6 @@ const { COMPILER = 'babel', DEBUG, JS_ENV } = process.env;
 const isDebug = DEBUG === 'true';
 const isJsEnvWeb = JS_ENV === 'web';
 const isSwc = COMPILER === 'swc';
-process.env.TEST_ENV = 'true';
-
 const moduleNameMapper = {};
 const transform = {};
 
