@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.7.37 (2024-04-24)
+
+### Refactors
+
+* **babel-config,jest-config:**  remove TEST_ENV flag as redundant (214a563d)
+
 ## 1.7.36 (2024-04-22)
 
 ### Bug Fixes
