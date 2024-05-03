@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.7.38 (2024-05-03)
+
+### Bug Fixes
+
+* **jest-config:**  change ext order to cater for files in same dir (674548aa)
+
 ## 1.7.37 (2024-04-24)
 
 ### Refactors
