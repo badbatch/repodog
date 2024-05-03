@@ -68,7 +68,7 @@ module.exports = ({ compilerOptions = {} } = {}) => {
     coverageReporters: ['json', 'lcov', 'text-summary'],
     displayName: packageName,
     extensionsToTreatAsEsm: ['.jsx', '.ts', '.tsx'],
-    moduleFileExtensions: ['mjs', 'cjs', 'js', 'jsx', 'json', 'ts', 'tsx'],
+    moduleFileExtensions: ['ts', 'tsx', 'js', 'mjs', 'cjs', 'jsx', 'json'],
     moduleNameMapper,
     rootDir: packageDir,
     testEnvironment: isJsEnvWeb ? 'jsdom' : 'node',
