@@ -5,7 +5,6 @@ import {
   loadPackageJson,
   verboseLog,
 } from '@repodog/cli-utils';
-import semver from 'semver';
 import shelljs from 'shelljs';
 import { getPublishCmd } from './getPublishCmd.ts';
 
@@ -27,16 +26,10 @@ export const publishPackage = (
 
   if (latestNpmPackageVersion && version === latestNpmPackageVersion) {
     verboseLog(
-      `The new ${name} package verison ${version} is equal to the lastest version on npm: ${latestNpmPackageVersion}. Skipping publish.`
+      `The new ${name} package verison ${version} is equal to a version on npm: ${latestNpmPackageVersion}. Skipping publish.`
     );
 
     return;
-  }
-
-  if (latestNpmPackageVersion && semver.lt(version, latestNpmPackageVersion)) {
-    throw new Error(
-      `The new ${name} package verison ${version} is less than the lastest version on npm: ${latestNpmPackageVersion}`
-    );
   }
 
   changeWorkingDirCallback?.();
