@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.7.39 (2024-05-23)
+
+### Bug Fixes
+
+* **publish:**  stop preventing older version of package being published (0da62cc8)
+
 ## 1.7.38 (2024-05-03)
 
 ### Bug Fixes
