@@ -33,7 +33,7 @@
     "@repodog/cli-utils": "workspace:*",
     "ansi-colors": "^4.1.3",
     "dotenv": "^16.0.3",
-    "openai": "^3.2.1",
+    "openai": "^4.28.4",
     "shelljs": "^0.8.4",
     "yargs": "^15.1.0"
   },
