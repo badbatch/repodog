@@ -235,6 +235,7 @@ module.exports = {
           camelCase: true,
           pascalCase: true,
         },
+        ignore: ['^module-defs.d.ts$', '^next-env.d.ts$'],
       },
     ],
     'unicorn/no-array-reduce': 0,
