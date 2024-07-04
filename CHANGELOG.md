@@ -1,5 +1,15 @@
 # Changelog
 
+## 1.7.40 (2024-07-04)
+
+### New Features
+
+* **eslint-config:**  exclude type def files from naming conv (35b15ced)
+
+### Bug Fixes
+
+* **cut:**  remove check if version is less than latest in npm (3de32505)
+
 ## 1.7.39 (2024-05-23)
 
 ### Bug Fixes
