@@ -1,6 +1,5 @@
 import { type ReleaseMeta, getLatestPackageVersionOnNpm, getNewVersion, verboseLog } from '@repodog/cli-utils';
 import { writeFileSync } from 'node:fs';
-import semver from 'semver';
 import { type PackageJson, type SetRequired } from 'type-fest';
 
 export const versionPackage = (
@@ -19,12 +18,9 @@ export const versionPackage = (
   verboseLog(`New version: ${newVersion}`);
   verboseLog(`Latest version on npm: ${latestNpmPackageVersion || 'None'}`);
 
-  if (
-    latestNpmPackageVersion &&
-    (newVersion === latestNpmPackageVersion || semver.lt(newVersion, latestNpmPackageVersion))
-  ) {
+  if (latestNpmPackageVersion && newVersion === latestNpmPackageVersion) {
     throw new Error(
-      `The new package verison ${newVersion} is less than or equal to the lastest version ${latestNpmPackageVersion} on npm`
+      `The new ${name} package verison ${newVersion} is equal to a version on npm: ${latestNpmPackageVersion}.`
     );
   }
 

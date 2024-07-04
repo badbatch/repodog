@@ -43,22 +43,7 @@ describe('versionPackage', () => {
       const { versionPackage } = await import('./versionPackage.ts');
 
       expect(() => versionPackage(packageJson, { packageJsonPath, type: 'minor' })).toThrow(
-        new Error('The new package verison 1.1.0 is less than or equal to the lastest version 1.1.0 on npm')
-      );
-    });
-  });
-
-  describe('when the new version is less than the latest version on npm', () => {
-    beforeEach(async () => {
-      const { getLatestPackageVersionOnNpm } = jest.mocked(await import('@repodog/cli-utils'));
-      getLatestPackageVersionOnNpm.mockReturnValueOnce('2.0.0');
-    });
-
-    it('should throw the correct error', async () => {
-      const { versionPackage } = await import('./versionPackage.ts');
-
-      expect(() => versionPackage(packageJson, { packageJsonPath, type: 'minor' })).toThrow(
-        new Error('The new package verison 1.1.0 is less than or equal to the lastest version 2.0.0 on npm')
+        new Error('The new alpha package verison 1.1.0 is equal to a version on npm: 1.1.0.')
       );
     });
   });
@@ -69,6 +54,26 @@ describe('versionPackage', () => {
     beforeEach(async () => {
       const { getLatestPackageVersionOnNpm } = jest.mocked(await import('@repodog/cli-utils'));
       getLatestPackageVersionOnNpm.mockReturnValueOnce('');
+      ({ writeFileSync } = jest.mocked(await import('node:fs')));
+    });
+
+    it('should writeFileSync with the correct arguments', async () => {
+      const { versionPackage } = await import('./versionPackage.ts');
+      versionPackage(packageJson, { packageJsonPath, type: 'minor' });
+
+      expect(writeFileSync).toHaveBeenCalledWith(
+        packageJsonPath,
+        `${JSON.stringify({ ...packageJson, version: '1.1.0' }, undefined, 2)}\n`
+      );
+    });
+  });
+
+  describe('when the new version is less than the latest version on npm', () => {
+    let writeFileSync: jest.Mocked<typeof import('node:fs')['writeFileSync']>;
+
+    beforeEach(async () => {
+      const { getLatestPackageVersionOnNpm } = jest.mocked(await import('@repodog/cli-utils'));
+      getLatestPackageVersionOnNpm.mockReturnValueOnce('2.0.0');
       ({ writeFileSync } = jest.mocked(await import('node:fs')));
     });
 
