@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.7.41 (2024-08-09)
+
+### Bug Fixes
+
+* **cut,publish,utils:**  stop shell commands from failing silently (384856ec)
+
 ## 1.7.40 (2024-07-04)
 
 ### New Features
