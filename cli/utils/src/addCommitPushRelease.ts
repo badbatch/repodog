@@ -1,9 +1,9 @@
-import shelljs from 'shelljs';
+import { asyncExec } from './asyncExec.ts';
 
-export const addCommitPushRelease = (version: string) => {
-  shelljs.exec('git add --all');
-  shelljs.exec(`git commit --no-verify -m "Release version ${version}."`);
-  shelljs.exec('git push --no-verify');
-  shelljs.exec(`git tag -a v${version} -m "Release version ${version}."`);
-  shelljs.exec(`git push origin v${version} --no-verify`);
+export const addCommitPushRelease = async (version: string) => {
+  await asyncExec('git add --all');
+  await asyncExec(`git commit --no-verify -m "Release version ${version}."`);
+  await asyncExec('git push --no-verify');
+  await asyncExec(`git tag -a v${version} -m "Release version ${version}."`);
+  await asyncExec(`git push origin v${version} --no-verify`);
 };

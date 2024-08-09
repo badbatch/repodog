@@ -69,7 +69,7 @@ describe('cut', () => {
 
       it('should exit with the correct code', async () => {
         const { handler } = await import('./handler.ts');
-        void handler({ type: 'dry-run' });
+        await handler({ type: 'dry-run' });
         expect(shelljs.exit).toHaveBeenCalledWith(0);
       });
     });
@@ -459,7 +459,7 @@ describe('cut', () => {
 
     it('should exit with the correct code', async () => {
       const { handler } = await import('./handler.ts');
-      void handler({ tag: 'alpha', type: 'preminor' });
+      await handler({ tag: 'alpha', type: 'preminor' });
       expect(shelljs.exit).toHaveBeenCalledWith(0);
     });
   });
@@ -519,7 +519,7 @@ describe('cut', () => {
 
     it('should exit with the correct code', async () => {
       const { handler } = await import('./handler.ts');
-      void handler({ tag: 'alpha', type: 'preminor' });
+      await handler({ tag: 'alpha', type: 'preminor' });
       expect(shelljs.exit).toHaveBeenCalledWith(0);
     });
   });

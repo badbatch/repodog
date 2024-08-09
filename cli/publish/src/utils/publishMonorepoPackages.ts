@@ -4,7 +4,7 @@ import { parse, resolve } from 'node:path';
 import shelljs from 'shelljs';
 import { publishPackage } from './publishPackage.ts';
 
-export const publishMonorepoPackages = (packageManager: PackageManager) => {
+export const publishMonorepoPackages = async (packageManager: PackageManager) => {
   verboseLog('Publishing monorepo packages');
   verboseLog('>>>> PROJECT ROOT END <<<<\n');
   const packageMeta = getMonorepoPackageMeta(packageManager);
@@ -18,7 +18,7 @@ export const publishMonorepoPackages = (packageManager: PackageManager) => {
       const { path } = packageMeta[name]!;
       const { dir } = parse(path);
 
-      publishPackage(path, { packageManager }, () => {
+      await publishPackage(path, { packageManager }, () => {
         verboseLog(`Changing current working directory to: ${dir}`);
         process.chdir(resolve(projectRoot, dir));
       });
@@ -32,6 +32,7 @@ export const publishMonorepoPackages = (packageManager: PackageManager) => {
       );
 
       verboseLog('>>>> PACKAGE END <<<<\n');
+      throw error;
     }
   }
 };

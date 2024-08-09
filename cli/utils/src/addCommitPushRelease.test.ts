@@ -1,21 +1,22 @@
 import { jest } from '@jest/globals';
-import { shelljsMock } from '@repodog/cli-test-utils';
 
-jest.unstable_mockModule('shelljs', shelljsMock);
+jest.unstable_mockModule('./asyncExec.ts', () => ({
+  asyncExec: jest.fn(),
+}));
 
 describe('addCommitPushRelease', () => {
-  let shelljs: jest.Mocked<typeof import('shelljs')>;
+  let asyncExec: jest.Mocked<typeof import('./asyncExec.ts')['asyncExec']>;
 
   beforeEach(async () => {
     jest.clearAllMocks();
-    shelljs = jest.mocked(await import('shelljs')).default;
+    ({ asyncExec } = jest.mocked(await import('./asyncExec.ts')));
   });
 
   it('should run the correct git commands', async () => {
     const { addCommitPushRelease } = await import('./addCommitPushRelease.ts');
-    addCommitPushRelease('1.1.0');
+    await addCommitPushRelease('1.1.0');
 
-    expect(shelljs.exec.mock.calls).toEqual([
+    expect(asyncExec.mock.calls).toEqual([
       ['git add --all'],
       ['git commit --no-verify -m "Release version 1.1.0."'],
       ['git push --no-verify'],

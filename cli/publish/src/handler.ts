@@ -7,7 +7,7 @@ import { type PublishHandlerArguments } from './types.ts';
 import { publishMonorepoPackages } from './utils/publishMonorepoPackages.ts';
 import { publishPackage } from './utils/publishPackage.ts';
 
-export const handler = (argv: PublishHandlerArguments = {}) => {
+export const handler = async (argv: PublishHandlerArguments = {}) => {
   const startTime = performance.now();
   const verbose = argv.verbose ?? false;
 
@@ -27,12 +27,12 @@ export const handler = (argv: PublishHandlerArguments = {}) => {
 
     if (isProjectMonorepo(packageManager)) {
       verboseLog('Project is monorepo');
-      publishMonorepoPackages(packageManager);
+      await publishMonorepoPackages(packageManager);
       verboseLog('>>>> PROJECT ROOT STARTS <<<<\n');
     } else {
       verboseLog('Project is standard repo structure');
       const packageJsonPath = resolve(process.cwd(), 'package.json');
-      publishPackage(packageJsonPath, { packageManager });
+      await publishPackage(packageJsonPath, { packageManager });
     }
 
     verboseLog(`Handler duration: ${String(calculateDuration(startTime))}sec`);

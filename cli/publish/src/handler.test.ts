@@ -37,7 +37,7 @@ describe('handler', () => {
 
     it('should log the correct error message', async () => {
       const { handler } = await import('./handler.ts');
-      handler();
+      await handler();
 
       expect(shelljs.echo).toHaveBeenCalledWith(
         expect.stringContaining(
@@ -48,7 +48,7 @@ describe('handler', () => {
 
     it('should exit with the correct code', async () => {
       const { handler } = await import('./handler.ts');
-      handler();
+      await handler();
       expect(shelljs.exit).toHaveBeenCalledWith(1);
     });
   });
@@ -64,7 +64,7 @@ describe('handler', () => {
 
     it('should call publishPackage with the correct arguments', async () => {
       const { handler } = await import('./handler.ts');
-      handler();
+      await handler();
 
       expect(publishPackage).toHaveBeenCalledWith('/root/package.json', {
         packageManager: 'pnpm',
@@ -73,7 +73,7 @@ describe('handler', () => {
 
     it('should exit with the correct code', async () => {
       const { handler } = await import('./handler.ts');
-      handler();
+      await handler();
       expect(shelljs.exit).toHaveBeenCalledWith(0);
     });
   });
@@ -94,13 +94,13 @@ describe('handler', () => {
 
     it('should call publishMonorepoPackages with the correct argument', async () => {
       const { handler } = await import('./handler.ts');
-      handler();
+      await handler();
       expect(publishMonorepoPackages).toHaveBeenCalledWith('pnpm');
     });
 
     it('should exit with the correct code', async () => {
       const { handler } = await import('./handler.ts');
-      handler();
+      await handler();
       expect(shelljs.exit).toHaveBeenCalledWith(0);
     });
   });

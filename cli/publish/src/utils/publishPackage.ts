@@ -1,14 +1,14 @@
 import {
   type ReleaseMeta,
+  asyncExec,
   getLatestPackageVersionOnNpm,
   getTag,
   loadPackageJson,
   verboseLog,
 } from '@repodog/cli-utils';
-import shelljs from 'shelljs';
 import { getPublishCmd } from './getPublishCmd.ts';
 
-export const publishPackage = (
+export const publishPackage = async (
   packageJsonPath: string,
   { packageManager }: Pick<ReleaseMeta, 'packageManager'>,
   changeWorkingDirCallback?: () => void
@@ -35,5 +35,5 @@ export const publishPackage = (
   changeWorkingDirCallback?.();
   const tag = getTag(version);
   verboseLog(`Tag: ${tag ?? 'None'}`);
-  shelljs.exec(getPublishCmd(packageManager, version, tag));
+  await asyncExec(getPublishCmd(packageManager, version, tag));
 };

@@ -70,7 +70,7 @@ export const handler = async (argv: CutHandlerArguments) => {
 
       verboseLog(`Adding, committing and pushing new version: ${packageJson.version}`);
       clearDryRunFlag();
-      addCommitPushRelease(packageJson.version);
+      await addCommitPushRelease(packageJson.version);
       verboseLog('>>>> PROJECT ROOT END <<<<\n');
       return shelljs.exit(0);
     }
@@ -183,7 +183,7 @@ export const handler = async (argv: CutHandlerArguments) => {
     }
 
     verboseLog(`Adding, committing and pushing new version: ${newVersion}`);
-    addCommitPushRelease(newVersion);
+    await addCommitPushRelease(newVersion);
     verboseLog(`Handler duration: ${String(calculateDuration(startTime))}sec`);
     verboseLog('>>>> PROJECT ROOT END <<<<\n');
     return shelljs.exit(0);
