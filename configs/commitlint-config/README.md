@@ -16,7 +16,7 @@ npm install @repodog/commitlint-config --save-dev
 
 ```shell
 # terminal
-npm install @commitlint/cli @commitlint/config-conventional @commitlint/prompt-cli --save-dev
+npm install @commitlint/cli @commitlint/config-conventional husky --save-dev
 ```
 
 ## Initialize husky
@@ -28,15 +28,6 @@ echo "npx --no -- commitlint --edit \$1" > .husky/commit-msg
 ```
 
 ## Use package
-
-```json
-// package.json
-{
-  "scripts": {
-    "commit": "commit"
-  }
-}
-```
 
 ```javascript
 // commitlint.config.cjs
