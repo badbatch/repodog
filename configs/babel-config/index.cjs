@@ -10,7 +10,7 @@ module.exports = api => {
   const isDebug = DEBUG === 'true';
   const isCjs = BABEL_MODULE_SYSTEM === 'cjs';
   const isJsEnvWeb = JS_ENV === 'web';
-  const isProdEnv = NODE_ENV === 'prod' || NODE_ENV === 'production';
+  const isProdEnv = NODE_ENV === 'production';
   const isTestEnv = NODE_ENV === 'test';
   const ignore = ['node_modules/**', '**/node_modules/**'];
 
@@ -28,40 +28,28 @@ module.exports = api => {
 
   const plugins = [
     ['@babel/plugin-proposal-decorators', { legacy: true }],
-    '@babel/plugin-syntax-import-assertions',
+    ['@babel/plugin-syntax-import-attributes', { deprecatedAssertSyntax: true }],
     [
       '@babel/plugin-transform-runtime',
       {
         corejs: false,
         helpers: true,
         regenerator: true,
+        useESModules: !isCjs,
       },
     ],
-    '@babel/plugin-transform-class-properties',
-    '@babel/plugin-transform-export-namespace-from',
     'babel-plugin-codegen',
     'babel-plugin-macros',
   ];
-
-  if (isCjs) {
-    plugins.splice(1, 0, [
-      '@babel/plugin-transform-modules-commonjs',
-      {
-        importInterop: 'babel',
-        lazy: true,
-      },
-    ]);
-  }
 
   const presets = [
     [
       '@babel/preset-env',
       {
-        corejs: '3.27',
         debug: isDebug,
         modules: isCjs ? 'commonjs' : false,
         targets,
-        useBuiltIns: 'usage',
+        useBuiltIns: false,
       },
     ],
     [

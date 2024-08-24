@@ -16,7 +16,7 @@ npm install @repodog/babel-config --save-dev
 
 ```shell
 # terminal
-npm install @babel/cli @babel/core @babel/plugin-proposal-decorators @babel/plugin-syntax-import-assertions @babel/plugin-transform-class-properties @babel/plugin-transform-export-namespace-from @babel/plugin-transform-modules-commonjs @babel/plugin-transform-runtime @babel/preset-env @babel/preset-react @babel/preset-typescript @babel/runtime babel-plugin-codegen babel-plugin-macros --save-dev
+npm install @babel/cli @babel/core @babel/plugin-proposal-decorators @babel/plugin-syntax-import-attributes @babel/plugin-transform-runtime @babel/preset-env @babel/preset-react @babel/preset-typescript @babel/runtime babel-plugin-codegen babel-plugin-macros --save-dev
 ```
 
 ## Install optional dependencies
@@ -51,22 +51,22 @@ module.exports = {
 
 ### Environment variables
 
-`BABEL_DISABLE_CACHE` = `'true' || 'false'`
+#### `BABEL_DISABLE_CACHE` = `'true' || 'false'`
 
 Disables the Babel cache. Default `'false'`.
 
-`BABEL_MODULE_SYSTEM` = `'esm' || 'cjs'`
+#### `BABEL_MODULE_SYSTEM` = `'esm' || 'cjs'`
 
-When set to `'cjs'`, adds `'@babel/plugin-transform-modules-commonjs'` plugin and sets `modules` to `'commonjs'`. Default `'esm'`.
+When set to `'cjs'`, sets `modules` to `'commonjs'`. Default `'esm'`.
 
-`DEBUG` = `'true' || 'false'`
+#### `DEBUG` = `'true' || 'false'`
 
 Changes `targets` to latest version of chrome / current version of nodejs. Also sets `@babel/preset-env` debug field. Default `'false'`.
 
-`JS_ENV` = `'web' || 'node'`
+#### `JS_ENV` = `'web' || 'node'`
 
 Changes `targets` to browser based or nodejs based. Default `'node'`.
 
-`NODE_ENV` = `'prod' || 'production' || 'dev' || 'development' || 'test`
+#### `NODE_ENV` = `'production' || 'development' || 'test'`
 
-Sets `@babel/preset-react` development field. Default `'dev' || 'development'`.
+Sets `@babel/preset-react` development field. Default `'development'`.

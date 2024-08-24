@@ -25,6 +25,7 @@ const sourcemapPathTransform = sourcePath => {
 };
 
 module.exports = (config = {}) => {
+  console.log(`> Using @repodog/${config.compiler.name}-config`);
   const extensions = ['.mjs', '.cjs', '.js', '.jsx', '.json', '.ts', '.tsx'];
 
   if (!config.compiler) {

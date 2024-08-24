@@ -46,8 +46,10 @@ const handleSwcConfigArray = options => {
 
 module.exports = ({ compilerOptions = {} } = {}) => {
   if (isSwc) {
+    console.log('> Using @repodog/swc-config');
     handleSwcConfigArray(compilerOptions);
   } else {
+    console.log('> Using @repodog/babel-config');
     transform['^.+\\.(mjs|cjs|js|jsx|ts|tsx)$'] = `${__dirname}/babelTransformer.cjs`;
   }
 
