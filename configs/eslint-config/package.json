@@ -11,23 +11,40 @@
     "url": "https://github.com/badbatch/repodog/configs/eslint-config"
   },
   "bugs": "https://github.com/badbatch/repodog/issues",
-  "main": "index.cjs",
+  "type": "module",
+  "main": "./index.mjs",
+  "exports": {
+    ".": {
+      "default": "./index.mjs"
+    }
+  },
   "publishConfig": {
     "access": "public"
   },
+  "dependencies": {
+    "@eslint/compat": "^1.1.1",
+    "@eslint/eslintrc": "^3.1.0",
+    "@eslint/js": "^9.9.1",
+    "@stylistic/eslint-plugin": "^2.6.4",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-import": "^2.29.1",
+    "eslint-plugin-prefer-arrow": "^1.2.3",
+    "eslint-plugin-prettier": "^5.2.1",
+    "eslint-plugin-sort-class-members": "^1.20.0",
+    "eslint-plugin-sort-destructure-keys": "^2.0.0",
+    "eslint-plugin-sort-keys-fix": "^1.1.2",
+    "eslint-plugin-typescript-sort-keys": "^3.2.0",
+    "eslint-plugin-unicorn": "^55.0.0",
+    "globals": "^15.9.0",
+    "typescript-eslint": "^8.2.0"
+  },
   "peerDependencies": {
-    "@typescript-eslint/eslint-plugin": "<6",
-    "@typescript-eslint/parser": "<6",
-    "eslint": "<9",
-    "eslint-config-prettier": "<9",
-    "eslint-import-resolver-typescript": "<4",
-    "eslint-plugin-import": "<3",
-    "eslint-plugin-prefer-arrow": "<2",
-    "eslint-plugin-prettier": "<5",
-    "eslint-plugin-sort-class-members": "<2",
-    "eslint-plugin-sort-destructure-keys": "<2",
-    "eslint-plugin-sort-keys-fix": "<2",
-    "eslint-plugin-typescript-sort-keys": "<3",
-    "eslint-plugin-unicorn": "<47"
+    "eslint": "<10",
+    "typescript": "<6"
+  },
+  "devDependencies": {
+    "@types/eslint__js": "^8.42.3",
+    "eslint": "^9.9.1",
+    "typescript": "^5.5.4"
   }
 }

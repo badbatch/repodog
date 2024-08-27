@@ -12,22 +12,22 @@ The Repodog ESlint config.
 npm install @repodog/eslint-config --save-dev
 ```
 
-## Install dependencies
+## Install peer dependencies
 
 ```shell
 # terminal
-npm install @typescript-eslint/eslint-plugin @typescript-eslint/parser eslint eslint-config-prettier eslint-import-resolver-typescript eslint-plugin-import eslint-plugin-prettier eslint-plugin-sort-class-members eslint-plugin-sort-destructure-keys eslint-plugin-sort-keys-fix eslint-plugin-typescript-sort-keys eslint-plugin-unicorn --save-dev
+npm install eslint typescript --save-dev
 ```
 
 ## Use package
 
 ```javascript
-// .eslintrc.cjs
-module.exports = {
-  extends: ['@repodog/eslint-config'],
-  parserOptions: {
-    tsconfigRootDir: __dirname,
-  },
-  root: true,
-};
+// eslint.config.mjs
+import config from '@repodog/eslint-config';
+
+// eslint convention is to export default
+// eslint-disable-next-line import/no-default-export
+export default [
+  ...config,
+];
 ```
