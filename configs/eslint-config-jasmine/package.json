@@ -11,11 +11,25 @@
     "url": "https://github.com/badbatch/repodog/configs/eslint-config-jasmine"
   },
   "bugs": "https://github.com/badbatch/repodog/issues",
-  "main": "index.cjs",
+  "type": "module",
+  "main": "./index.mjs",
+  "exports": {
+    ".": {
+      "default": "./index.mjs"
+    }
+  },
   "publishConfig": {
     "access": "public"
   },
-  "peerDependencies": {
+  "dependencies": {
+    "@eslint/compat": "^1.1.1",
+    "@eslint/eslintrc": "^3.1.0",
     "eslint-plugin-jasmine": "<5"
+  },
+  "peerDependencies": {
+    "eslint": "<10"
+  },
+  "devDependencies": {
+    "eslint": "^9.9.1"
   }
 }
