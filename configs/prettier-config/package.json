@@ -11,11 +11,17 @@
     "url": "https://github.com/badbatch/repodog/configs/prettier-config"
   },
   "bugs": "https://github.com/badbatch/repodog/issues",
-  "main": "index.cjs",
+  "type": "module",
+  "main": "./index.mjs",
+  "exports": {
+    ".": {
+      "default": "./index.mjs"
+    }
+  },
   "publishConfig": {
     "access": "public"
   },
   "peerDependencies": {
-    "prettier": "<3"
+    "prettier": "<4"
   }
 }

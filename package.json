@@ -75,7 +75,7 @@
     "jest-environment-jsdom": "^29.7.0",
     "jest-environment-node": "^29.7.0",
     "markdownlint-cli2": "^0.12.1",
-    "prettier": "^2.8.1",
+    "prettier": "^3.3.3",
     "rollup": "^3.7.0",
     "rollup-plugin-analyzer": "^4.0.0",
     "rollup-plugin-copy": "^3.4.0",

@@ -16,7 +16,7 @@ npm install @repodog/eslint-config --save-dev
 
 ```shell
 # terminal
-npm install eslint typescript --save-dev
+npm install eslint prettier typescript --save-dev
 ```
 
 ## Use package

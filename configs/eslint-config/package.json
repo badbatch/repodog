@@ -27,6 +27,7 @@
     "@eslint/js": "^9.9.1",
     "@stylistic/eslint-plugin": "^2.6.4",
     "eslint-config-prettier": "^9.1.0",
+    "eslint-import-resolver-typescript": "^3.6.3",
     "eslint-plugin-import": "^2.29.1",
     "eslint-plugin-prefer-arrow": "^1.2.3",
     "eslint-plugin-prettier": "^5.2.1",
@@ -40,6 +41,7 @@
   },
   "peerDependencies": {
     "eslint": "<10",
+    "prettier": "<4",
     "typescript": "<6"
   },
   "devDependencies": {

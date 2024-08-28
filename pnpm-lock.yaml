@@ -150,8 +150,8 @@ importers:
         specifier: ^0.12.1
         version: 0.12.1
       prettier:
-        specifier: ^2.8.1
-        version: 2.8.1
+        specifier: ^3.3.3
+        version: 3.3.3
       rollup:
         specifier: ^3.7.0
         version: 3.7.0
@@ -677,6 +677,9 @@ importers:
       globals:
         specifier: ^15.9.0
         version: 15.9.0
+      prettier:
+        specifier: <4
+        version: 3.3.3
       typescript-eslint:
         specifier: ^8.2.0
         version: 8.2.0(eslint@9.9.1)(typescript@5.5.4)
@@ -775,8 +778,8 @@ importers:
   configs/prettier-config:
     dependencies:
       prettier:
-        specifier: <3
-        version: 2.8.1
+        specifier: <4
+        version: 3.3.3
 
   configs/rollup-config:
     dependencies:
@@ -16957,12 +16960,12 @@ packages:
     resolution: {integrity: sha512-lqGoSJBQNJidqCHE80vqZJHWHRFoNYsSpP9AjFhlhi9ODCJA541svILes/+/1GM3VaL/abZi7cpFzOpdR9UPKg==}
     engines: {node: '>=10.13.0'}
     hasBin: true
+    dev: false
 
   /prettier@3.3.3:
     resolution: {integrity: sha512-i2tDNA0O5IrMO757lfrdQZCc2jPNDVntV0m/+4whiDfWaTKfMNgR7Qz0NAeGz/nRqF4m5/6CLzbP4/liHt12Ew==}
     engines: {node: '>=14'}
     hasBin: true
-    dev: false
 
   /pretty-error@4.0.0:
     resolution: {integrity: sha512-AoJ5YMAcXKYxKhuJGdcvse+Voc6v1RgnsR3nWcYU7q4t6z0Q6T86sv5Zq8VIRbOWWFpvdGE83LtdSMNd+6Y0xw==}
