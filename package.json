@@ -44,6 +44,7 @@
     "@repodog/cli": "workspace:*",
     "@repodog/commitlint-config": "workspace:*",
     "@repodog/eslint-config": "workspace:*",
+    "@repodog/eslint-config-jest": "workspace:*",
     "@repodog/jest-config": "workspace:*",
     "@repodog/markdownlint-config": "workspace:*",
     "@repodog/prettier-config": "workspace:*",
