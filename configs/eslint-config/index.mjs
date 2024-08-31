@@ -1,7 +1,7 @@
-import { fixupConfigRules, fixupPluginRules } from '@eslint/compat';
-import { FlatCompat } from '@eslint/eslintrc';
+import { fixupPluginRules } from '@eslint/compat';
 import eslint from '@eslint/js';
 import stylistic from '@stylistic/eslint-plugin';
+import importX from 'eslint-plugin-import-x';
 import preferArrow from 'eslint-plugin-prefer-arrow';
 import prettierRecommended from 'eslint-plugin-prettier/recommended';
 import sortClassMembers from 'eslint-plugin-sort-class-members';
@@ -11,19 +11,14 @@ import typescriptSortKeys from 'eslint-plugin-typescript-sort-keys';
 import unicorn from 'eslint-plugin-unicorn';
 import globals from 'globals';
 // eslint is randomly not resolving module
-// eslint-disable-next-line import/no-unresolved
+// eslint-disable-next-line import-x/no-unresolved
 import tsEslint from 'typescript-eslint';
 
 const cwd = process.cwd();
-
-const flatCompat = new FlatCompat({
-  baseDirectory: cwd,
-});
-
 const project = './tsconfig.json';
 
 // eslint convention is to export default
-// eslint-disable-next-line import/no-default-export
+// eslint-disable-next-line import-x/no-default-export
 export default tsEslint.config(
   {
     ignores: [
@@ -41,17 +36,18 @@ export default tsEslint.config(
     ],
   },
   {
-    extends: [
-      eslint.configs.recommended,
-      ...fixupConfigRules(flatCompat.extends('plugin:import/recommended')),
-      unicorn.configs['flat/recommended'],
-    ],
+    extends: [eslint.configs.recommended, importX.flatConfigs.recommended, unicorn.configs['flat/recommended']],
     files: ['**/*.{mjs,cjs,js,jsx,ts,tsx}'],
     languageOptions: {
+      ecmaVersion: 'latest',
       globals: {
         ...globals.browser,
         ...globals.node,
       },
+      parserOptions: {
+        ecmaVersion: 'latest',
+      },
+      sourceType: 'module',
     },
     plugins: {
       '@stylistic': stylistic,
@@ -98,10 +94,10 @@ export default tsEslint.config(
         { blankLine: 'always', next: 'default', prev: '*' },
         { blankLine: 'always', next: '*', prev: 'break' },
       ],
-      'import/extensions': [2, 'ignorePackages'],
-      'import/namespace': 0,
-      'import/no-default-export': 2,
-      'import/no-extraneous-dependencies': [
+      'import-x/extensions': [2, 'ignorePackages'],
+      'import-x/namespace': 0,
+      'import-x/no-default-export': 2,
+      'import-x/no-extraneous-dependencies': [
         2,
         {
           devDependencies: [
@@ -118,7 +114,7 @@ export default tsEslint.config(
           peerDependencies: false,
         },
       ],
-      'import/order': [
+      'import-x/order': [
         2,
         {
           alphabetize: { caseInsensitive: false, order: 'asc' },
@@ -196,6 +192,7 @@ export default tsEslint.config(
           ignore: ['^module-defs.d.ts$', '^next-env.d.ts$'],
         },
       ],
+      'unicorn/import-style': 0,
       'unicorn/no-array-reduce': 0,
       'unicorn/prevent-abbreviations': 0,
     },
@@ -205,7 +202,7 @@ export default tsEslint.config(
       ...tsEslint.configs.recommendedTypeChecked,
       ...tsEslint.configs.strictTypeChecked,
       ...tsEslint.configs.stylisticTypeChecked,
-      ...fixupConfigRules(flatCompat.extends('plugin:import/typescript')),
+      importX.flatConfigs.typescript,
     ],
     files: ['**/*.{ts,tsx}'],
     languageOptions: {
@@ -261,21 +258,21 @@ export default tsEslint.config(
       ],
       '@typescript-eslint/no-non-null-assertion': 0,
       '@typescript-eslint/no-shadow': 2,
+      '@typescript-eslint/no-unnecessary-type-parameters': 0,
       '@typescript-eslint/no-unused-vars': [
         2,
         { args: 'all', argsIgnorePattern: '^_', ignoreRestSiblings: false, vars: 'all' },
       ],
       '@typescript-eslint/no-use-before-define': 0,
-      'import/consistent-type-specifier-style': [2, 'prefer-inline'],
-      'import/no-named-as-default': 0,
-      'import/no-named-as-default-member': 0,
+      'import-x/consistent-type-specifier-style': [2, 'prefer-inline'],
+      'import-x/no-named-as-default': 0,
+      'import-x/no-named-as-default-member': 0,
       'no-use-before-define': 0,
       'typescript-sort-keys/interface': [2, 'asc', { caseSensitive: true, natural: true, requiredFirst: false }],
       'typescript-sort-keys/string-enum': 2,
     },
     settings: {
-      'import/external-module-folders': ['node_modules', 'node_modules/@types'],
-      'import/resolver': {
+      'import-x/resolver': {
         typescript: {
           alwaysTryTypes: true,
           project,
