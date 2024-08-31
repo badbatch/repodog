@@ -24,6 +24,7 @@ An command line module for managing repositories and a set of configs for popula
 ### Configs
 
 * [@repodog/babel-config](./configs/babel-config/README.md)
+* [@repodog/babel-preset](./configs/babel-preset/README.md)
 * [@repodog/commitlint-config](./configs/commitlint-config/README.md)
 * [@repodog/eslint-config](./configs/eslint-config/README.md)
 * [@repodog/eslint-config-jasmine](./configs/eslint-config-jasmine/README.md)

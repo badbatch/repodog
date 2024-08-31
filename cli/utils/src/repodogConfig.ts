@@ -52,7 +52,7 @@ export const loadRepodogConfig = ({ required = false }: LoadRepodogConfigArgumen
   ) as RepodogConfig;
 
   if (required && Object.keys(config).length === 0) {
-    throw new Error('Could not path.resolve the .repodogrc either within a project or globally');
+    throw new Error('Could not resolve the .repodogrc either within a project or globally');
   }
 
   if (config.questionOverridesPath) {

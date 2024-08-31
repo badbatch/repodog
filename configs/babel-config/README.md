@@ -5,18 +5,11 @@ The Repodog Babel config.
 [![npm version](https://badge.fury.io/js/%40repodog%2Fbabel-config.svg)](https://badge.fury.io/js/%40repodog%2Fbabel-config)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-## Install package
+## Install package and peer dependencies
 
 ```shell
 # terminal
-npm install @repodog/babel-config --save-dev
-```
-
-## Install dependencies
-
-```shell
-# terminal
-npm install @babel/cli @babel/core @babel/plugin-proposal-decorators @babel/plugin-syntax-import-attributes @babel/plugin-transform-runtime @babel/preset-env @babel/preset-react @babel/preset-typescript @babel/runtime babel-plugin-codegen babel-plugin-macros --save-dev
+npm install @repodog/babel-config @babel/core @babel/runtime --save-dev
 ```
 
 ## Install optional dependencies
@@ -55,18 +48,10 @@ module.exports = {
 
 Disables the Babel cache. Default `'false'`.
 
-#### `BABEL_MODULE_SYSTEM` = `'esm' || 'cjs'`
-
-When set to `'cjs'`, sets `modules` to `'commonjs'`. Default `'esm'`.
-
-#### `DEBUG` = `'true' || 'false'`
-
-Changes `targets` to latest version of chrome / current version of nodejs. Also sets `@babel/preset-env` debug field. Default `'false'`.
-
 #### `JS_ENV` = `'web' || 'node'`
 
-Changes `targets` to browser based or nodejs based. Default `'node'`.
+Used as cache key when Babel cache is enabled.
 
 #### `NODE_ENV` = `'production' || 'development' || 'test'`
 
-Sets `@babel/preset-react` development field. Default `'development'`.
+Ignores test files when `NODE_ENV` is not `'test'`.

@@ -1,0 +1,41 @@
+{
+  "name": "@repodog/babel-preset",
+  "description": "The Repodog Babel preset module.",
+  "version": "1.2.2",
+  "author": "Dylan Aubrey",
+  "license": "MIT",
+  "homepage": "https://github.com/badbatch/repodog",
+  "repository": {
+    "directory": "configs/babel-preset",
+    "type": "git",
+    "url": "https://github.com/badbatch/repodog/configs/babel-preset"
+  },
+  "bugs": "https://github.com/badbatch/repodog/issues",
+  "main": "index.cjs",
+  "exports": {
+    ".": {
+      "default": "./index.cjs"
+    }
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "@babel/core": "^7.25.2",
+    "@babel/plugin-proposal-decorators": "^7.24.7",
+    "@babel/plugin-syntax-import-attributes": "^7.24.7",
+    "@babel/plugin-transform-runtime": "^7.25.4",
+    "@babel/preset-env": "^7.25.4",
+    "@babel/preset-react": "^7.24.7",
+    "@babel/preset-typescript": "^7.24.7",
+    "babel-plugin-codegen": "^4.1.5",
+    "babel-plugin-macros": "^3.1.0"
+  },
+  "peerDependencies": {
+    "@babel/core": "<8",
+    "@babel/runtime": "<8"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.25.2"
+  }
+}
