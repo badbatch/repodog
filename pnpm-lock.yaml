@@ -659,9 +659,6 @@ importers:
       globals:
         specifier: ^15.9.0
         version: 15.9.0
-      prettier:
-        specifier: <4
-        version: 3.3.3
       typescript-eslint:
         specifier: ^8.2.0
         version: 8.2.0(eslint@9.9.1)(typescript@5.5.4)
@@ -672,6 +669,9 @@ importers:
       eslint:
         specifier: ^9.9.1
         version: 9.9.1
+      prettier:
+        specifier: ^3.3.3
+        version: 3.3.3
       typescript:
         specifier: ^5.5.4
         version: 5.5.4

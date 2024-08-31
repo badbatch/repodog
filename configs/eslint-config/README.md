@@ -5,18 +5,11 @@ The Repodog ESlint config.
 [![npm version](https://badge.fury.io/js/%40repodog%2Feslint-config.svg)](https://badge.fury.io/js/%40repodog%2Feslint-config)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-## Install package
+## Install package and peer dependencies
 
 ```shell
 # terminal
-npm install @repodog/eslint-config --save-dev
-```
-
-## Install peer dependencies
-
-```shell
-# terminal
-npm install eslint prettier typescript --save-dev
+npm install @repodog/eslint-config eslint prettier typescript --save-dev
 ```
 
 ## Use package
