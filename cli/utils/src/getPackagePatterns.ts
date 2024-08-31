@@ -26,7 +26,7 @@ export const getPackagePatterns = (packageManager: PackageManager) => {
         const typedLoad = load as (path: string, options?: LoadOptions) => unknown;
 
         const pnpmWorkspaceYaml = typedLoad(
-          readFileSync(pnpmWorkspaceYamlPath, { encoding: 'utf8' })
+          readFileSync(pnpmWorkspaceYamlPath, { encoding: 'utf8' }),
         ) as PnpmWorkspaceYaml;
 
         return pnpmWorkspaceYaml.packages;

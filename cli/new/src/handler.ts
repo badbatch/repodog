@@ -59,7 +59,7 @@ export const handler = async (argv: NewHandlerArguments) => {
 
     if (!isValidNewSubType(argv.type, argv.subtype)) {
       throw new Error(
-        `Expected subtype to be a valid new subtype: ${Object.values(typeToSubTypeMap[argv.type]).join(', ')}`
+        `Expected subtype to be a valid new subtype: ${Object.values(typeToSubTypeMap[argv.type]).join(', ')}`,
       );
     }
 
@@ -92,13 +92,13 @@ export const handler = async (argv: NewHandlerArguments) => {
     verboseLog('>>>> CONFIG VALUES START <<<<');
 
     verboseLog(
-      `Question overrides:${questionOverrides ? `\n${JSON.stringify(questionOverrides, undefined, 2)}\n` : ' None'}`
+      `Question overrides:${questionOverrides ? `\n${JSON.stringify(questionOverrides, undefined, 2)}\n` : ' None'}`,
     );
 
     verboseLog(`Template overrides path: ${additionalTemplatesPath ?? 'None'}`);
 
     verboseLog(
-      `Template variables:${templateVariables ? `\n${JSON.stringify(templateVariables, undefined, 2)}\n` : ' None'}`
+      `Template variables:${templateVariables ? `\n${JSON.stringify(templateVariables, undefined, 2)}\n` : ' None'}`,
     );
 
     verboseLog('>>>> CONFIG VALUES ENDS <<<<');
@@ -130,7 +130,7 @@ export const handler = async (argv: NewHandlerArguments) => {
         ? {
             ...compileAdditionalTemplateOverrides(
               leafAdditionalTemplatesPath,
-              resolveAbsolutePath([templatesPath, ...internalTypePath].join(sep))
+              resolveAbsolutePath([templatesPath, ...internalTypePath].join(sep)),
             ),
           }
         : {}),
@@ -167,7 +167,7 @@ export const handler = async (argv: NewHandlerArguments) => {
     return shelljs.exit(0);
   } catch (error: unknown) {
     shelljs.echo(
-      `${colors.magenta('Repodog')} ${colors.dim('=>')} ${colors.red(`Error: ${(error as Error).message}`)}`
+      `${colors.magenta('Repodog')} ${colors.dim('=>')} ${colors.red(`Error: ${(error as Error).message}`)}`,
     );
 
     verboseLog(`Handler duration: ${String(calculateDuration(startTime))}sec`);

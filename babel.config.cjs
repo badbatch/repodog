@@ -1,5 +1,7 @@
 const repodogConfig = require('@repodog/babel-config');
 
-module.exports = api => ({
+const babelConfig = api => ({
   ...repodogConfig(api),
 });
+
+module.exports = babelConfig;

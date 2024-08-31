@@ -9,7 +9,7 @@ jest.unstable_mockModule('./getPackagePatterns.ts', () => ({
 }));
 
 describe('getMonorepoPackageJsonPaths', () => {
-  let glob: jest.Mocked<typeof import('glob')['glob']>;
+  let glob: jest.Mocked<(typeof import('glob'))['glob']>;
 
   beforeEach(async () => {
     jest.clearAllMocks();

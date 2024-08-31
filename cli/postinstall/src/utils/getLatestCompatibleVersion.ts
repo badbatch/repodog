@@ -3,7 +3,7 @@ import { isString } from 'lodash-es';
 
 const getRange = (semver: string) => {
   const max = Number(semver.slice(1));
-  return max === 1 ? `<${max}` : `${max - 1}.x.x`;
+  return max === 1 ? `<${String(max)}` : `${String(max - 1)}.x.x`;
 };
 
 export const getLatestCompatibleVersion = async (name: string, semver: string) => {

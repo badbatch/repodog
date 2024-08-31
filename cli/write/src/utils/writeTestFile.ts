@@ -9,7 +9,7 @@ export const writeTestFile = async (
   directory: string,
   name: string,
   code: string,
-  { language, packageManager, skipFormat }: WriteMeta
+  { language, packageManager, skipFormat }: WriteMeta,
 ) => {
   const extension = getLanguageExtension(language);
   const testFilePath = resolve(directory, `${name}.test.${extension}`);

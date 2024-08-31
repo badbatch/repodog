@@ -46,7 +46,7 @@ const configs = [
         tsx: true,
       },
     },
-    test: '.*\\.tsx?$',
+    test: String.raw`.*\.tsx?$`,
   },
   {
     ...sharedConfig,
@@ -57,7 +57,7 @@ const configs = [
         syntax: 'ecmascript',
       },
     },
-    test: '.*\\.(mjs|cjs|jsx?)$',
+    test: String.raw`.*\.(mjs|cjs|jsx?)$`,
   },
 ];
 

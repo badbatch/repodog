@@ -35,8 +35,8 @@ const options = {
 };
 
 describe('writeTestFile', () => {
-  let writeFileSync: jest.Mocked<typeof import('node:fs')['writeFileSync']>;
-  let asyncExec: jest.Mocked<typeof import('@repodog/cli-utils')['asyncExec']>;
+  let writeFileSync: jest.Mocked<(typeof import('node:fs'))['writeFileSync']>;
+  let asyncExec: jest.Mocked<(typeof import('@repodog/cli-utils'))['asyncExec']>;
 
   beforeEach(async () => {
     jest.clearAllMocks();

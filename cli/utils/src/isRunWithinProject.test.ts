@@ -6,7 +6,7 @@ jest.unstable_mockModule('./loadPackageJson.ts', () => ({
 }));
 
 describe('isRunWithinProject', () => {
-  let loadPackageJson: jest.Mocked<typeof import('./loadPackageJson.ts')['loadPackageJson']>;
+  let loadPackageJson: jest.Mocked<(typeof import('./loadPackageJson.ts'))['loadPackageJson']>;
 
   beforeEach(async () => {
     jest.clearAllMocks();

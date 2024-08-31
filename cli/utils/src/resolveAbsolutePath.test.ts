@@ -14,7 +14,7 @@ describe('resolveAbsolutePath', () => {
   });
 
   describe('when path is not absolute', () => {
-    let resolve: jest.Mocked<typeof import('node:path')['resolve']>;
+    let resolve: jest.Mocked<(typeof import('node:path'))['resolve']>;
 
     beforeEach(async () => {
       ({ resolve } = jest.mocked(await import('node:path')));
@@ -34,10 +34,10 @@ describe('resolveAbsolutePath', () => {
   });
 
   describe('when path is absolute', () => {
-    let resolve: jest.Mocked<typeof import('node:path')['resolve']>;
+    let resolve: jest.Mocked<(typeof import('node:path'))['resolve']>;
 
     beforeEach(async () => {
-      let isAbsolute: jest.Mocked<typeof import('node:path')['isAbsolute']>;
+      let isAbsolute: jest.Mocked<(typeof import('node:path'))['isAbsolute']>;
       ({ isAbsolute, resolve } = jest.mocked(await import('node:path')));
       isAbsolute.mockReturnValueOnce(true);
     });

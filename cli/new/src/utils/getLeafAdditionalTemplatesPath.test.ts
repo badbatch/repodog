@@ -16,7 +16,7 @@ describe('getLeafAdditionalTemplatesPath', () => {
     const { getLeafAdditionalTemplatesPath } = await import('./getLeafAdditionalTemplatesPath.ts');
 
     expect(getLeafAdditionalTemplatesPath('./additional/templates/path', ['external', 'type', 'path'])).toBe(
-      './additional/templates/path/external/type/path'
+      './additional/templates/path/external/type/path',
     );
   });
 

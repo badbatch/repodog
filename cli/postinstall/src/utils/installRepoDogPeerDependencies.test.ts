@@ -53,7 +53,7 @@ describe('installRepoDogPeerDependencies', () => {
       await installRepoDogPeerDependencies();
 
       expect(asyncExec).toHaveBeenCalledWith(
-        'pnpm add -D alpha-0@^4.0.0 alpha-1@^9.0.0 alpha-2@^2.0.0 bravo-0@^0.0.1 bravo-1@^3.0.0 charlie-0@^6.0.0'
+        'pnpm add -D alpha-0@^4.0.0 alpha-1@^9.0.0 alpha-2@^2.0.0 bravo-0@^0.0.1 bravo-1@^3.0.0 charlie-0@^6.0.0',
       );
     });
 
@@ -65,7 +65,7 @@ describe('installRepoDogPeerDependencies', () => {
         await installRepoDogPeerDependencies();
 
         expect(asyncExec).toHaveBeenCalledWith(
-          'pnpm add -w -D alpha-0@^4.0.0 alpha-1@^9.0.0 alpha-2@^2.0.0 bravo-0@^0.0.1 bravo-1@^3.0.0 charlie-0@^6.0.0'
+          'pnpm add -w -D alpha-0@^4.0.0 alpha-1@^9.0.0 alpha-2@^2.0.0 bravo-0@^0.0.1 bravo-1@^3.0.0 charlie-0@^6.0.0',
         );
       });
     });

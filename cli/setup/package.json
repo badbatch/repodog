@@ -36,9 +36,6 @@
     "shelljs": "^0.8.4",
     "yargs": "^15.1.0"
   },
-  "peerDependencies": {
-    "core-js": "<4"
-  },
   "devDependencies": {
     "@jest/globals": "^29.7.0",
     "@repodog/cli-test-utils": "workspace:*",

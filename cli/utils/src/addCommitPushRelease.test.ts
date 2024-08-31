@@ -5,7 +5,7 @@ jest.unstable_mockModule('./asyncExec.ts', () => ({
 }));
 
 describe('addCommitPushRelease', () => {
-  let asyncExec: jest.Mocked<typeof import('./asyncExec.ts')['asyncExec']>;
+  let asyncExec: jest.Mocked<(typeof import('./asyncExec.ts'))['asyncExec']>;
 
   beforeEach(async () => {
     jest.clearAllMocks();

@@ -11,7 +11,7 @@ import { getPublishCmd } from './getPublishCmd.ts';
 export const publishPackage = async (
   packageJsonPath: string,
   { packageManager }: Pick<ReleaseMeta, 'packageManager'>,
-  changeWorkingDirCallback?: () => void
+  changeWorkingDirCallback?: () => void,
 ) => {
   const { name, publishConfig, version } = loadPackageJson(packageJsonPath);
 
@@ -26,7 +26,7 @@ export const publishPackage = async (
 
   if (latestNpmPackageVersion && version === latestNpmPackageVersion) {
     verboseLog(
-      `The new ${name} package verison ${version} is equal to a version on npm: ${latestNpmPackageVersion}. Skipping publish.`
+      `The new ${name} package verison ${version} is equal to a version on npm: ${latestNpmPackageVersion}. Skipping publish.`,
     );
 
     return;

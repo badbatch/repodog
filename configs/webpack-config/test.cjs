@@ -2,7 +2,7 @@ const glob = require('glob');
 const path = require('node:path');
 const config = require('./index.cjs');
 
-module.exports = ({ compiler, testsPath = 'tests/browser' } = {}) => ({
+const testConfig = ({ compiler, testsPath = 'tests/browser' } = {}) => ({
   ...config({ compiler }),
   entry: glob.sync(`./${testsPath}/**/*.test.ts`).map(file => `./${file}`),
   output: {
@@ -10,3 +10,5 @@ module.exports = ({ compiler, testsPath = 'tests/browser' } = {}) => ({
     path: path.resolve(process.cwd(), `${testsPath}/dist`),
   },
 });
+
+module.exports = testConfig;

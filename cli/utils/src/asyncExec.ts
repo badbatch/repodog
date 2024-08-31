@@ -9,10 +9,10 @@ export const asyncExec = (cmd: string, options: AsyncExecOptions = {}) =>
   new Promise<string>((resolve, reject) => {
     shelljs.exec(cmd, (code, stdout, stderr) => {
       if (code === 1 && !options.silent) {
-        verboseLog(`Async exec failed to execute "${cmd}", exited with code ${code}`);
+        verboseLog(`Async exec failed to execute "${cmd}", exited with code ${String(code)}`);
         reject(new Error(stderr));
       } else {
-        verboseLog(`Async exec ran "${cmd}" successfully, exited with code ${code}`);
+        verboseLog(`Async exec ran "${cmd}" successfully, exited with code ${String(code)}`);
         resolve(stdout);
       }
     });

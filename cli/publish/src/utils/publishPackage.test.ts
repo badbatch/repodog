@@ -22,10 +22,12 @@ describe('publishPackage', () => {
   });
 
   describe('when package publishConfig.access is not public', () => {
-    let getLatestPackageVersionOnNpm: jest.Mocked<typeof import('@repodog/cli-utils')['getLatestPackageVersionOnNpm']>;
+    let getLatestPackageVersionOnNpm: jest.Mocked<
+      (typeof import('@repodog/cli-utils'))['getLatestPackageVersionOnNpm']
+    >;
 
     beforeEach(async () => {
-      let loadPackageJson: jest.Mocked<typeof import('@repodog/cli-utils')['loadPackageJson']>;
+      let loadPackageJson: jest.Mocked<(typeof import('@repodog/cli-utils'))['loadPackageJson']>;
       ({ getLatestPackageVersionOnNpm, loadPackageJson } = jest.mocked(await import('@repodog/cli-utils')));
 
       loadPackageJson.mockReturnValueOnce({
@@ -42,11 +44,11 @@ describe('publishPackage', () => {
   });
 
   describe('when package version is equal to a version on npm', () => {
-    let verboseLog: jest.Mocked<typeof import('@repodog/cli-utils')['verboseLog']>;
+    let verboseLog: jest.Mocked<(typeof import('@repodog/cli-utils'))['verboseLog']>;
 
     beforeEach(async () => {
       let getLatestPackageVersionOnNpm: jest.Mocked<
-        typeof import('@repodog/cli-utils')['getLatestPackageVersionOnNpm']
+        (typeof import('@repodog/cli-utils'))['getLatestPackageVersionOnNpm']
       >;
 
       ({ getLatestPackageVersionOnNpm, verboseLog } = jest.mocked(await import('@repodog/cli-utils')));
@@ -58,13 +60,13 @@ describe('publishPackage', () => {
       await publishPackage(packageJsonPath, { packageManager: PackageManager.NPM });
 
       expect(verboseLog).toHaveBeenCalledWith(
-        'The new alpha package verison 1.0.0 is equal to a version on npm: 1.0.0. Skipping publish.'
+        'The new alpha package verison 1.0.0 is equal to a version on npm: 1.0.0. Skipping publish.',
       );
     });
   });
 
   describe('when there is no latest version on npm', () => {
-    let getPublishCmd: jest.Mocked<typeof import('./getPublishCmd.ts')['getPublishCmd']>;
+    let getPublishCmd: jest.Mocked<(typeof import('./getPublishCmd.ts'))['getPublishCmd']>;
 
     beforeEach(async () => {
       const { getLatestPackageVersionOnNpm } = jest.mocked(await import('@repodog/cli-utils'));
@@ -80,7 +82,7 @@ describe('publishPackage', () => {
   });
 
   describe('when package version is less than the latest version on npm', () => {
-    let getPublishCmd: jest.Mocked<typeof import('./getPublishCmd.ts')['getPublishCmd']>;
+    let getPublishCmd: jest.Mocked<(typeof import('./getPublishCmd.ts'))['getPublishCmd']>;
 
     beforeEach(async () => {
       const { getLatestPackageVersionOnNpm } = jest.mocked(await import('@repodog/cli-utils'));
@@ -96,7 +98,7 @@ describe('publishPackage', () => {
   });
 
   describe('when package version is greater than the latest version on npm', () => {
-    let getPublishCmd: jest.Mocked<typeof import('./getPublishCmd.ts')['getPublishCmd']>;
+    let getPublishCmd: jest.Mocked<(typeof import('./getPublishCmd.ts'))['getPublishCmd']>;
 
     beforeEach(async () => {
       const { getLatestPackageVersionOnNpm } = jest.mocked(await import('@repodog/cli-utils'));

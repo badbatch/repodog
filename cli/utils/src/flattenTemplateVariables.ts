@@ -1,14 +1,14 @@
 import { type TemplateVariables, type TemplateVariablesLeaf } from './types.ts';
 
 const isTemplateVariablesLeaf = (
-  slice: string | number | boolean | TemplateVariables | undefined
+  slice: string | number | boolean | TemplateVariables | undefined,
 ): slice is TemplateVariablesLeaf => {
   if (!slice) {
     return false;
   }
 
   return Object.values(slice).every(
-    value => typeof value === 'boolean' || typeof value === 'string' || typeof value === 'number'
+    value => typeof value === 'boolean' || typeof value === 'string' || typeof value === 'number',
   );
 };
 
@@ -17,7 +17,7 @@ export const flattenTemplateVariables = (object: Record<string, TemplateVariable
   let slice: Record<string, TemplateVariables> = object;
 
   if (isTemplateVariablesLeaf(object['*'])) {
-    options = { ...options, ...object['*']! };
+    options = { ...options, ...object['*'] };
   }
 
   for (const path of typePath) {

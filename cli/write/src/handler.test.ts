@@ -63,7 +63,7 @@ describe('handler', () => {
       await handler({ 'file-path': filePath, type: 'blah' });
 
       expect(shelljs.echo).toHaveBeenCalledWith(
-        expect.stringContaining('Error: Expected type to be a valid write type: test')
+        expect.stringContaining('Error: Expected type to be a valid write type: test'),
       );
     });
 
@@ -88,7 +88,7 @@ describe('handler', () => {
       await handler({ 'file-path': filePath, type });
 
       expect(shelljs.echo).toHaveBeenCalledWith(
-        expect.stringContaining('Error: Code could not be extracted from raw answer.')
+        expect.stringContaining('Error: Code could not be extracted from raw answer.'),
       );
     });
 
@@ -101,7 +101,7 @@ describe('handler', () => {
 
   describe('when code is extracted correctly', () => {
     let shelljs: jest.Mocked<typeof import('shelljs')>;
-    let writeTestFile: jest.MockedFunction<typeof import('./utils/writeTestFile.ts')['writeTestFile']>;
+    let writeTestFile: jest.MockedFunction<(typeof import('./utils/writeTestFile.ts'))['writeTestFile']>;
 
     beforeEach(async () => {
       shelljs = jest.mocked(await import('shelljs')).default;

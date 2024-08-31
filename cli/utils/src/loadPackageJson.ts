@@ -5,8 +5,8 @@ import { verboseLog } from './verboseLog.ts';
 
 let packageJsonCache: Record<string, SetRequired<PackageJson, 'name' | 'version'>> = {};
 
-export const addPackageJsonToCache = (path: string, packageJson: SetRequired<PackageJson, 'name' | 'version'>) => {
-  packageJsonCache[path] = packageJson;
+export const addPackageJsonToCache = (key: string, packageJson: SetRequired<PackageJson, 'name' | 'version'>) => {
+  packageJsonCache[key] = packageJson;
 };
 
 export const clearPackageJsonCache = () => {

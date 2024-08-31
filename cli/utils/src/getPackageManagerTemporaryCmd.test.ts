@@ -1,7 +1,7 @@
 import { PackageManager } from './types.ts';
 
 describe('getPackageManagerTemporaryCmd', () => {
-  let getPackageManagerTemporaryCmd: typeof import('./getPackageManagerTemporaryCmd.ts')['getPackageManagerTemporaryCmd'];
+  let getPackageManagerTemporaryCmd: (typeof import('./getPackageManagerTemporaryCmd.ts'))['getPackageManagerTemporaryCmd'];
 
   beforeEach(async () => {
     ({ getPackageManagerTemporaryCmd } = await import('./getPackageManagerTemporaryCmd.ts'));

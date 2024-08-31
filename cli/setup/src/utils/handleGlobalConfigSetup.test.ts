@@ -37,8 +37,8 @@ jest.unstable_mockModule('../questions.json', () => ({
 }));
 
 describe('handleGlobalConfigSetup', () => {
-  let prompt: jest.Mocked<typeof import('enquirer')['prompt']>;
-  let writeRepodogConfig: jest.Mocked<typeof import('@repodog/cli-utils')['writeRepodogConfig']>;
+  let prompt: jest.Mocked<(typeof import('enquirer'))['prompt']>;
+  let writeRepodogConfig: jest.Mocked<(typeof import('@repodog/cli-utils'))['writeRepodogConfig']>;
 
   beforeEach(async () => {
     jest.clearAllMocks();
@@ -47,10 +47,10 @@ describe('handleGlobalConfigSetup', () => {
   });
 
   describe('when there is an existing global config', () => {
-    let enrichQuestions: jest.Mocked<typeof import('@repodog/cli-utils')['enrichQuestions']>;
+    let enrichQuestions: jest.Mocked<(typeof import('@repodog/cli-utils'))['enrichQuestions']>;
 
     beforeEach(async () => {
-      let readRepodogConfig: jest.Mocked<typeof import('@repodog/cli-utils')['readRepodogConfig']>;
+      let readRepodogConfig: jest.Mocked<(typeof import('@repodog/cli-utils'))['readRepodogConfig']>;
       ({ enrichQuestions, readRepodogConfig } = jest.mocked(await import('@repodog/cli-utils')));
       readRepodogConfig.mockReturnValueOnce({ packageManager: 'npm' });
     });

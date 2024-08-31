@@ -14,8 +14,8 @@ jest.unstable_mockModule('node:path', () => ({
 }));
 
 describe('hasGlobalRepodogConfig', () => {
-  let hasGlobalRepodogConfig: typeof import('./hasGlobalRepodogConfig.ts')['hasGlobalRepodogConfig'];
-  let existsSync: jest.Mocked<typeof import('node:fs')['existsSync']>;
+  let hasGlobalRepodogConfig: (typeof import('./hasGlobalRepodogConfig.ts'))['hasGlobalRepodogConfig'];
+  let existsSync: jest.Mocked<(typeof import('node:fs'))['existsSync']>;
 
   beforeEach(async () => {
     jest.clearAllMocks();

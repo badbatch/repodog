@@ -1,4 +1,4 @@
-/* eslint-disable import/no-extraneous-dependencies */
+/* eslint-disable import-x/no-extraneous-dependencies */
 const webpack = require('webpack');
 
 const { NODE_ENV } = process.env;
@@ -9,7 +9,7 @@ const isProdEnv = NODE_ENV === 'production' || NODE_ENV === 'prod';
 const handleSwcConfigArray = (name, options) => {
   const castOptions = Array.isArray(options) ? options : [options];
 
-  return castOptions.map(({ test = '\\.(mjs|cjs|jsx?|tsx?)$', ...rest }) => ({
+  return castOptions.map(({ test = String.raw`\.(mjs|cjs|jsx?|tsx?)$`, ...rest }) => ({
     test: new RegExp(test),
     use: {
       loader: require.resolve(name),
@@ -18,7 +18,7 @@ const handleSwcConfigArray = (name, options) => {
   }));
 };
 
-module.exports = ({ compiler } = {}) => {
+const config = ({ compiler } = {}) => {
   const [name, options = {}] = Array.isArray(compiler) ? compiler : [compiler];
   const isCompilerSwc = name === 'swc-loader';
 
@@ -68,3 +68,5 @@ module.exports = ({ compiler } = {}) => {
     },
   };
 };
+
+module.exports = config;

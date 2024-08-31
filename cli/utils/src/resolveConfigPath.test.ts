@@ -34,7 +34,7 @@ describe('resolveConfigPath', () => {
                 },
               },
             },
-          })
+          }),
         );
       });
 
@@ -85,7 +85,7 @@ describe('resolveConfigPath', () => {
                 },
               },
             },
-          })
+          }),
         );
       });
 

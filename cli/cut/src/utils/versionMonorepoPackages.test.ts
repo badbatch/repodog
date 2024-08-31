@@ -56,7 +56,7 @@ describe('versionMonorepoPackages', () => {
   });
 
   describe('when force is false', () => {
-    let versionPackage: jest.Mocked<typeof import('./versionPackage.ts')['versionPackage']>;
+    let versionPackage: jest.Mocked<(typeof import('./versionPackage.ts'))['versionPackage']>;
 
     beforeEach(async () => {
       ({ versionPackage } = jest.mocked(await import('./versionPackage.ts')));
@@ -93,7 +93,7 @@ describe('versionMonorepoPackages', () => {
   });
 
   describe('when force is true', () => {
-    let versionPackage: jest.Mocked<typeof import('./versionPackage.ts')['versionPackage']>;
+    let versionPackage: jest.Mocked<(typeof import('./versionPackage.ts'))['versionPackage']>;
 
     beforeEach(async () => {
       ({ versionPackage } = jest.mocked(await import('./versionPackage.ts')));
@@ -146,7 +146,7 @@ describe('versionMonorepoPackages', () => {
   });
 
   describe('when package has versioned internal dependencies', () => {
-    let versionPackage: jest.Mocked<typeof import('./versionPackage.ts')['versionPackage']>;
+    let versionPackage: jest.Mocked<(typeof import('./versionPackage.ts'))['versionPackage']>;
 
     beforeEach(async () => {
       const { loadPackageJson } = jest.mocked(await import('@repodog/cli-utils'));

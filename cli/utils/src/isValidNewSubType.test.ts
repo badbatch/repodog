@@ -1,7 +1,7 @@
 import { NewRepoSubtype, NewType } from './types.ts';
 
 describe('isValidNewSubType', () => {
-  let isValidNewSubType: typeof import('./isValidNewSubType.ts')['isValidNewSubType'];
+  let isValidNewSubType: (typeof import('./isValidNewSubType.ts'))['isValidNewSubType'];
 
   beforeEach(async () => {
     ({ isValidNewSubType } = await import('./isValidNewSubType.ts'));

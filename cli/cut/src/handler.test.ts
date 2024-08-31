@@ -52,11 +52,11 @@ describe('cut', () => {
   describe('when dry-run flag is present in .repodogrc', () => {
     describe('when release type is "dry-run"', () => {
       let shelljs: jest.Mocked<typeof import('shelljs')>;
-      let addCommitPushRelease: jest.Mocked<typeof import('@repodog/cli-utils')['addCommitPushRelease']>;
+      let addCommitPushRelease: jest.Mocked<(typeof import('@repodog/cli-utils'))['addCommitPushRelease']>;
 
       beforeEach(async () => {
         shelljs = jest.mocked(await import('shelljs')).default;
-        let hasDryRunFlag: jest.Mocked<typeof import('@repodog/cli-utils')['hasDryRunFlag']>;
+        let hasDryRunFlag: jest.Mocked<(typeof import('@repodog/cli-utils'))['hasDryRunFlag']>;
         ({ addCommitPushRelease, hasDryRunFlag } = jest.mocked(await import('@repodog/cli-utils')));
         hasDryRunFlag.mockReturnValueOnce(true);
       });
@@ -76,11 +76,11 @@ describe('cut', () => {
 
     describe('when release type is not "dry-run"', () => {
       let shelljs: jest.Mocked<typeof import('shelljs')>;
-      let addCommitPushRelease: jest.Mocked<typeof import('@repodog/cli-utils')['addCommitPushRelease']>;
+      let addCommitPushRelease: jest.Mocked<(typeof import('@repodog/cli-utils'))['addCommitPushRelease']>;
 
       beforeEach(async () => {
         shelljs = jest.mocked(await import('shelljs')).default;
-        let hasDryRunFlag: jest.Mocked<typeof import('@repodog/cli-utils')['hasDryRunFlag']>;
+        let hasDryRunFlag: jest.Mocked<(typeof import('@repodog/cli-utils'))['hasDryRunFlag']>;
         ({ addCommitPushRelease, hasDryRunFlag } = jest.mocked(await import('@repodog/cli-utils')));
         hasDryRunFlag.mockReturnValueOnce(true);
       });
@@ -96,7 +96,7 @@ describe('cut', () => {
         void handler({ type: 'major' });
 
         expect(shelljs.echo).toHaveBeenCalledWith(
-          expect.stringContaining('Error: Expected type to be dry-run as __activeDryRun is set to true in .repodogrc')
+          expect.stringContaining('Error: Expected type to be dry-run as __activeDryRun is set to true in .repodogrc'),
         );
       });
 
@@ -121,8 +121,8 @@ describe('cut', () => {
 
       expect(shelljs.echo).toHaveBeenCalledWith(
         expect.stringContaining(
-          'Error: Expected type to be a valid release type: major, premajor, minor, preminor, patch, prepatch, prerelease'
-        )
+          'Error: Expected type to be a valid release type: major, premajor, minor, preminor, patch, prepatch, prerelease',
+        ),
       );
     });
 
@@ -145,7 +145,7 @@ describe('cut', () => {
       void handler({ tag: 'blah', type: 'preminor' });
 
       expect(shelljs.echo).toHaveBeenCalledWith(
-        expect.stringContaining('Error: Expected tag to be a valid release tag: alpha, beta, pr, unstable')
+        expect.stringContaining('Error: Expected tag to be a valid release tag: alpha, beta, pr, unstable'),
       );
     });
 
@@ -168,7 +168,9 @@ describe('cut', () => {
       void handler({ tag: 'alpha', type: 'major' });
 
       expect(shelljs.echo).toHaveBeenCalledWith(
-        expect.stringContaining('Error: Expected type to be pre release type: premajor, preminor, prepatch, prerelease')
+        expect.stringContaining(
+          'Error: Expected type to be pre release type: premajor, preminor, prepatch, prerelease',
+        ),
       );
     });
 
@@ -194,8 +196,8 @@ describe('cut', () => {
 
       expect(shelljs.echo).toHaveBeenCalledWith(
         expect.stringContaining(
-          'Error: Could not derive the package manager from the lock file in the current working directory'
-        )
+          'Error: Could not derive the package manager from the lock file in the current working directory',
+        ),
       );
     });
 
@@ -220,7 +222,7 @@ describe('cut', () => {
       void handler({ type: 'preminor' });
 
       expect(shelljs.echo).toHaveBeenCalledWith(
-        expect.stringContaining('Error: No files have changed since the last release tag: v1.0.0')
+        expect.stringContaining('Error: No files have changed since the last release tag: v1.0.0'),
       );
     });
 
@@ -245,7 +247,7 @@ describe('cut', () => {
       void handler({ type: 'preminor' });
 
       expect(shelljs.echo).toHaveBeenCalledWith(
-        expect.stringContaining('Error: The new project verison for a preminor increment on 1.0.0 is invalid')
+        expect.stringContaining('Error: The new project verison for a preminor increment on 1.0.0 is invalid'),
       );
     });
 
@@ -258,10 +260,10 @@ describe('cut', () => {
 
   describe('cut:pre-version script', () => {
     describe('when the script is provided and skipPrehook is false', () => {
-      let asyncExec: jest.Mocked<typeof import('@repodog/cli-utils')['asyncExec']>;
+      let asyncExec: jest.Mocked<(typeof import('@repodog/cli-utils'))['asyncExec']>;
 
       beforeEach(async () => {
-        let loadPackageJson: jest.Mocked<typeof import('@repodog/cli-utils')['loadPackageJson']>;
+        let loadPackageJson: jest.Mocked<(typeof import('@repodog/cli-utils'))['loadPackageJson']>;
         ({ asyncExec, loadPackageJson } = jest.mocked(await import('@repodog/cli-utils')));
 
         loadPackageJson.mockReturnValueOnce({
@@ -281,10 +283,10 @@ describe('cut', () => {
     });
 
     describe('when the script is provided and skipPrehook is true', () => {
-      let asyncExec: jest.Mocked<typeof import('@repodog/cli-utils')['asyncExec']>;
+      let asyncExec: jest.Mocked<(typeof import('@repodog/cli-utils'))['asyncExec']>;
 
       beforeEach(async () => {
-        let loadPackageJson: jest.Mocked<typeof import('@repodog/cli-utils')['loadPackageJson']>;
+        let loadPackageJson: jest.Mocked<(typeof import('@repodog/cli-utils'))['loadPackageJson']>;
         ({ asyncExec, loadPackageJson } = jest.mocked(await import('@repodog/cli-utils')));
 
         loadPackageJson.mockReturnValueOnce({
@@ -304,7 +306,7 @@ describe('cut', () => {
     });
 
     describe('when the script is not provided', () => {
-      let asyncExec: jest.Mocked<typeof import('@repodog/cli-utils')['asyncExec']>;
+      let asyncExec: jest.Mocked<(typeof import('@repodog/cli-utils'))['asyncExec']>;
 
       beforeEach(async () => {
         ({ asyncExec } = jest.mocked(await import('@repodog/cli-utils')));
@@ -320,10 +322,10 @@ describe('cut', () => {
 
   describe('cut:post-version script', () => {
     describe('when the script is provided and skipPosthook is false', () => {
-      let asyncExec: jest.Mocked<typeof import('@repodog/cli-utils')['asyncExec']>;
+      let asyncExec: jest.Mocked<(typeof import('@repodog/cli-utils'))['asyncExec']>;
 
       beforeEach(async () => {
-        let loadPackageJson: jest.Mocked<typeof import('@repodog/cli-utils')['loadPackageJson']>;
+        let loadPackageJson: jest.Mocked<(typeof import('@repodog/cli-utils'))['loadPackageJson']>;
         ({ asyncExec, loadPackageJson } = jest.mocked(await import('@repodog/cli-utils')));
 
         loadPackageJson.mockReturnValueOnce({
@@ -343,10 +345,10 @@ describe('cut', () => {
     });
 
     describe('when the script is provided and skipPosthook is true', () => {
-      let asyncExec: jest.Mocked<typeof import('@repodog/cli-utils')['asyncExec']>;
+      let asyncExec: jest.Mocked<(typeof import('@repodog/cli-utils'))['asyncExec']>;
 
       beforeEach(async () => {
-        let loadPackageJson: jest.Mocked<typeof import('@repodog/cli-utils')['loadPackageJson']>;
+        let loadPackageJson: jest.Mocked<(typeof import('@repodog/cli-utils'))['loadPackageJson']>;
         ({ asyncExec, loadPackageJson } = jest.mocked(await import('@repodog/cli-utils')));
 
         loadPackageJson.mockReturnValueOnce({
@@ -366,7 +368,7 @@ describe('cut', () => {
     });
 
     describe('when the script is not provided', () => {
-      let asyncExec: jest.Mocked<typeof import('@repodog/cli-utils')['asyncExec']>;
+      let asyncExec: jest.Mocked<(typeof import('@repodog/cli-utils'))['asyncExec']>;
 
       beforeEach(async () => {
         ({ asyncExec } = jest.mocked(await import('@repodog/cli-utils')));
@@ -381,10 +383,10 @@ describe('cut', () => {
   });
 
   describe('when the cut:changelog script is provided', () => {
-    let asyncExec: jest.Mocked<typeof import('@repodog/cli-utils')['asyncExec']>;
+    let asyncExec: jest.Mocked<(typeof import('@repodog/cli-utils'))['asyncExec']>;
 
     beforeEach(async () => {
-      let loadPackageJson: jest.Mocked<typeof import('@repodog/cli-utils')['loadPackageJson']>;
+      let loadPackageJson: jest.Mocked<(typeof import('@repodog/cli-utils'))['loadPackageJson']>;
       ({ asyncExec, loadPackageJson } = jest.mocked(await import('@repodog/cli-utils')));
 
       loadPackageJson.mockReturnValueOnce({
@@ -404,7 +406,7 @@ describe('cut', () => {
   });
 
   describe('when the cut:changelog script is not provided', () => {
-    let asyncExec: jest.Mocked<typeof import('@repodog/cli-utils')['asyncExec']>;
+    let asyncExec: jest.Mocked<(typeof import('@repodog/cli-utils'))['asyncExec']>;
 
     beforeEach(async () => {
       ({ asyncExec } = jest.mocked(await import('@repodog/cli-utils')));
@@ -419,9 +421,9 @@ describe('cut', () => {
 
   describe('when project has a standard repo structure', () => {
     let shelljs: jest.Mocked<typeof import('shelljs')>;
-    let getChangedFiles: jest.Mocked<typeof import('@repodog/cli-utils')['getChangedFiles']>;
-    let versionPackage: jest.Mocked<typeof import('./utils/versionPackage.ts')['versionPackage']>;
-    let addCommitPushRelease: jest.Mocked<typeof import('@repodog/cli-utils')['addCommitPushRelease']>;
+    let getChangedFiles: jest.Mocked<(typeof import('@repodog/cli-utils'))['getChangedFiles']>;
+    let versionPackage: jest.Mocked<(typeof import('./utils/versionPackage.ts'))['versionPackage']>;
+    let addCommitPushRelease: jest.Mocked<(typeof import('@repodog/cli-utils'))['addCommitPushRelease']>;
 
     beforeEach(async () => {
       shelljs = jest.mocked(await import('shelljs')).default;
@@ -447,7 +449,7 @@ describe('cut', () => {
           packageJsonPath: '/root/package.json',
           tag: 'alpha',
           type: 'preminor',
-        }
+        },
       );
     });
 
@@ -468,11 +470,11 @@ describe('cut', () => {
     let shelljs: jest.Mocked<typeof import('shelljs')>;
 
     let versionMonorepoPackages: jest.Mocked<
-      typeof import('./utils/versionMonorepoPackages.ts')['versionMonorepoPackages']
+      (typeof import('./utils/versionMonorepoPackages.ts'))['versionMonorepoPackages']
     >;
 
-    let writeFileSync: jest.Mocked<typeof import('node:fs')['writeFileSync']>;
-    let addCommitPushRelease: jest.Mocked<typeof import('@repodog/cli-utils')['addCommitPushRelease']>;
+    let writeFileSync: jest.Mocked<(typeof import('node:fs'))['writeFileSync']>;
+    let addCommitPushRelease: jest.Mocked<(typeof import('@repodog/cli-utils'))['addCommitPushRelease']>;
 
     beforeEach(async () => {
       shelljs = jest.mocked(await import('shelljs')).default;
@@ -506,8 +508,8 @@ describe('cut', () => {
             version: '1.1.0',
           },
           undefined,
-          2
-        )
+          2,
+        ),
       );
     });
 
@@ -526,7 +528,7 @@ describe('cut', () => {
 
   describe('when dry-run is set to true', () => {
     let shelljs: jest.Mocked<typeof import('shelljs')>;
-    let addCommitPushRelease: jest.Mocked<typeof import('@repodog/cli-utils')['addCommitPushRelease']>;
+    let addCommitPushRelease: jest.Mocked<(typeof import('@repodog/cli-utils'))['addCommitPushRelease']>;
 
     beforeEach(async () => {
       shelljs = jest.mocked(await import('shelljs')).default;

@@ -6,7 +6,9 @@ jest.unstable_mockModule('node:fs', () => ({
 }));
 
 jest.unstable_mockModule('node:path', () => ({
-  resolve: jest.fn<typeof import('node:path')['resolve']>().mockImplementation((...paths: string[]) => paths.join('/')),
+  resolve: jest
+    .fn<(typeof import('node:path'))['resolve']>()
+    .mockImplementation((...paths: string[]) => paths.join('/')),
 }));
 
 const mockProcessCwd = jest.mocked((process.cwd = jest.fn<() => string>()));
@@ -42,11 +44,11 @@ describe('conditionallyChangeCwd', () => {
   });
 
   describe('when the target directory does not exist', () => {
-    let mkdirSync: jest.Mocked<typeof import('node:fs')['mkdirSync']>;
+    let mkdirSync: jest.Mocked<(typeof import('node:fs'))['mkdirSync']>;
 
     beforeEach(async () => {
       mockProcessCwd.mockReturnValueOnce('/root');
-      let existsSync: jest.Mocked<typeof import('node:fs')['existsSync']>;
+      let existsSync: jest.Mocked<(typeof import('node:fs'))['existsSync']>;
       ({ existsSync, mkdirSync } = jest.mocked(await import('node:fs')));
       existsSync.mockReturnValueOnce(false);
     });

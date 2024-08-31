@@ -35,7 +35,7 @@ export const config = ({ compiler }: ConfigParams = {}) => {
       [`../components/**/*.stories.@(js|jsx|ts|tsx)`, '!../**/node_modules/**/*', '!../**/dist/**/*'],
       {
         cwd: './.storybook',
-      }
+      },
     ),
     ...(isCompilerSwc ? { swc: () => options } : {}),
   };

@@ -4,7 +4,7 @@ import { type ChatCompletionRequestMessage, Configuration, OpenAIApi } from 'ope
 
 export const createChatCompletion = async (
   messages: ChatCompletionRequestMessage[],
-  environmentVariablesPath: string
+  environmentVariablesPath: string,
 ) => {
   const path = resolveAbsolutePath(environmentVariablesPath);
   verboseLog(`Loading environment variables from: ${path}`);
@@ -26,7 +26,9 @@ export const createChatCompletion = async (
   verboseLog('Chat completion received');
 
   if (response.status !== 200) {
-    throw new Error(`Create chat completion request failed with a ${response.status} status: ${response.statusText}`);
+    throw new Error(
+      `Create chat completion request failed with a ${String(response.status)} status: ${response.statusText}`,
+    );
   }
 
   if (!response.data.choices[0]?.message?.content) {

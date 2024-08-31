@@ -5,7 +5,7 @@ import { sep } from 'node:path';
 export const loadQuestions = async (
   internalTypePath: string[],
   configTypePath: string[],
-  questionOverrides?: Record<string, QuestionOverrides>
+  questionOverrides?: Record<string, QuestionOverrides>,
 ) => {
   const { default: baseQuestions } = (await import(`../questions/${internalTypePath.join(sep)}.json`, {
     assert: { type: 'json' },

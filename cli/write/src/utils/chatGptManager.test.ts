@@ -20,7 +20,7 @@ const messages = [
 const environmentVariablesPath = '.env';
 
 describe('createChatCompletion', () => {
-  let createChatCompletion: typeof import('./chatGptManager.ts')['createChatCompletion'];
+  let createChatCompletion: (typeof import('./chatGptManager.ts'))['createChatCompletion'];
 
   beforeEach(async () => {
     jest.clearAllMocks();
@@ -43,7 +43,7 @@ describe('createChatCompletion', () => {
     };
 
     mockCreateChatCompletion.mockResolvedValueOnce(
-      mockResponse as unknown as Awaited<ReturnType<InstanceType<typeof OpenAIApi>['createChatCompletion']>>
+      mockResponse as unknown as Awaited<ReturnType<InstanceType<typeof OpenAIApi>['createChatCompletion']>>,
     );
 
     await createChatCompletion(messages, environmentVariablesPath);
@@ -71,7 +71,7 @@ describe('createChatCompletion', () => {
     };
 
     mockCreateChatCompletion.mockResolvedValueOnce(
-      mockResponse as unknown as Awaited<ReturnType<InstanceType<typeof OpenAIApi>['createChatCompletion']>>
+      mockResponse as unknown as Awaited<ReturnType<InstanceType<typeof OpenAIApi>['createChatCompletion']>>,
     );
 
     const result = await createChatCompletion(messages, environmentVariablesPath);
@@ -82,11 +82,11 @@ describe('createChatCompletion', () => {
     const mockResponse = { status: 400, statusText: 'Bad Request' };
 
     mockCreateChatCompletion.mockResolvedValueOnce(
-      mockResponse as unknown as Awaited<ReturnType<InstanceType<typeof OpenAIApi>['createChatCompletion']>>
+      mockResponse as unknown as Awaited<ReturnType<InstanceType<typeof OpenAIApi>['createChatCompletion']>>,
     );
 
     await expect(createChatCompletion(messages, environmentVariablesPath)).rejects.toThrow(
-      `Create chat completion request failed with a ${mockResponse.status} status: ${mockResponse.statusText}`
+      `Create chat completion request failed with a ${String(mockResponse.status)} status: ${mockResponse.statusText}`,
     );
   });
 
@@ -94,11 +94,11 @@ describe('createChatCompletion', () => {
     const mockResponse = { data: { choices: [{ message: {} }] }, status: 200 };
 
     mockCreateChatCompletion.mockResolvedValueOnce(
-      mockResponse as unknown as Awaited<ReturnType<InstanceType<typeof OpenAIApi>['createChatCompletion']>>
+      mockResponse as unknown as Awaited<ReturnType<InstanceType<typeof OpenAIApi>['createChatCompletion']>>,
     );
 
     await expect(createChatCompletion(messages, environmentVariablesPath)).rejects.toThrow(
-      'Create chat completion request did not return any content'
+      'Create chat completion request did not return any content',
     );
   });
 });

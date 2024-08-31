@@ -33,12 +33,9 @@
     "ansi-colors": "^4.1.3",
     "glob": "^10.3.10",
     "js-yaml": "^4.1.0",
+    "lodash-es": "^4.17.21",
     "semver": "^7.6.0",
     "shelljs": "^0.8.4"
-  },
-  "peerDependencies": {
-    "core-js": "<4",
-    "lodash-es": "<5"
   },
   "devDependencies": {
     "@jest/globals": "^29.7.0",
@@ -48,7 +45,6 @@
     "@types/semver": "^7.5.8",
     "@types/shelljs": "^0.8.15",
     "del-cli": "^5.1.0",
-    "lodash-es": "^4.17.21",
     "type-fest": "^4.10.3"
   }
 }

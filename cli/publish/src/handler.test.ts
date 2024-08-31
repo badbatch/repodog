@@ -41,8 +41,8 @@ describe('handler', () => {
 
       expect(shelljs.echo).toHaveBeenCalledWith(
         expect.stringContaining(
-          'Error: Could not derive the package manager from the lock file in the current working directory'
-        )
+          'Error: Could not derive the package manager from the lock file in the current working directory',
+        ),
       );
     });
 
@@ -55,7 +55,7 @@ describe('handler', () => {
 
   describe('when project has a standard repo structure', () => {
     let shelljs: jest.Mocked<typeof import('shelljs')>;
-    let publishPackage: jest.Mocked<typeof import('./utils/publishPackage.ts')['publishPackage']>;
+    let publishPackage: jest.Mocked<(typeof import('./utils/publishPackage.ts'))['publishPackage']>;
 
     beforeEach(async () => {
       shelljs = jest.mocked(await import('shelljs')).default;
@@ -82,7 +82,7 @@ describe('handler', () => {
     let shelljs: jest.Mocked<typeof import('shelljs')>;
 
     let publishMonorepoPackages: jest.Mocked<
-      typeof import('./utils/publishMonorepoPackages.ts')['publishMonorepoPackages']
+      (typeof import('./utils/publishMonorepoPackages.ts'))['publishMonorepoPackages']
     >;
 
     beforeEach(async () => {

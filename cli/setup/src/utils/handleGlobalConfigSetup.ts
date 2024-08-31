@@ -20,7 +20,7 @@ export const handleGlobalConfigSetup = async () => {
   verboseLog(`Global config questions:\n${JSON.stringify(questions, undefined, 2)}\n`);
 
   const answers = removeEmptyAnswers(
-    await enquirer.prompt(enrichQuestions(questions, (config ?? {}) as Record<string, string>))
+    await enquirer.prompt(enrichQuestions(questions, (config ?? {}) as Record<string, string>)),
   );
 
   verboseLog(`Global config answers:\n${JSON.stringify(answers, undefined, 2)}\n`);

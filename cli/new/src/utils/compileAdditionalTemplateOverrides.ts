@@ -3,14 +3,14 @@ import { readdirSync } from 'node:fs';
 
 export const compileAdditionalTemplateOverrides = (
   leafAdditionalTemplatesPath: string,
-  internalTempatesPath: string
+  internalTempatesPath: string,
 ) => {
   const additionalfiles = readdirSync(leafAdditionalTemplatesPath);
   const internalFiles = readdirSync(internalTempatesPath);
 
   const overrides = additionalfiles.reduce<Record<string, boolean>>((acc, fileName) => {
     if (internalFiles.includes(fileName)) {
-      acc[`overrideTemplate_${fileName.replace(/\./g, '_')}`] = true;
+      acc[`overrideTemplate_${fileName.replaceAll('.', '_')}`] = true;
     }
 
     return acc;

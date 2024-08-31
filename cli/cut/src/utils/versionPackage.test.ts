@@ -27,9 +27,9 @@ describe('versionPackage', () => {
     it('should throw the correct error', async () => {
       const { versionPackage } = await import('./versionPackage.ts');
 
-      expect(() => versionPackage(packageJson, { packageJsonPath, type: 'minor' })).toThrow(
-        new Error('The new package verison for a minor increment on 1.0.0 is invalid')
-      );
+      expect(() => {
+        versionPackage(packageJson, { packageJsonPath, type: 'minor' });
+      }).toThrow(new Error('The new package verison for a minor increment on 1.0.0 is invalid'));
     });
   });
 
@@ -42,14 +42,14 @@ describe('versionPackage', () => {
     it('should throw the correct error', async () => {
       const { versionPackage } = await import('./versionPackage.ts');
 
-      expect(() => versionPackage(packageJson, { packageJsonPath, type: 'minor' })).toThrow(
-        new Error('The new alpha package verison 1.1.0 is equal to a version on npm: 1.1.0.')
-      );
+      expect(() => {
+        versionPackage(packageJson, { packageJsonPath, type: 'minor' });
+      }).toThrow(new Error('The new alpha package verison 1.1.0 is equal to a version on npm: 1.1.0.'));
     });
   });
 
   describe('when there is no latest version on npm', () => {
-    let writeFileSync: jest.Mocked<typeof import('node:fs')['writeFileSync']>;
+    let writeFileSync: jest.Mocked<(typeof import('node:fs'))['writeFileSync']>;
 
     beforeEach(async () => {
       const { getLatestPackageVersionOnNpm } = jest.mocked(await import('@repodog/cli-utils'));
@@ -63,13 +63,13 @@ describe('versionPackage', () => {
 
       expect(writeFileSync).toHaveBeenCalledWith(
         packageJsonPath,
-        `${JSON.stringify({ ...packageJson, version: '1.1.0' }, undefined, 2)}\n`
+        `${JSON.stringify({ ...packageJson, version: '1.1.0' }, undefined, 2)}\n`,
       );
     });
   });
 
   describe('when the new version is less than the latest version on npm', () => {
-    let writeFileSync: jest.Mocked<typeof import('node:fs')['writeFileSync']>;
+    let writeFileSync: jest.Mocked<(typeof import('node:fs'))['writeFileSync']>;
 
     beforeEach(async () => {
       const { getLatestPackageVersionOnNpm } = jest.mocked(await import('@repodog/cli-utils'));
@@ -83,13 +83,13 @@ describe('versionPackage', () => {
 
       expect(writeFileSync).toHaveBeenCalledWith(
         packageJsonPath,
-        `${JSON.stringify({ ...packageJson, version: '1.1.0' }, undefined, 2)}\n`
+        `${JSON.stringify({ ...packageJson, version: '1.1.0' }, undefined, 2)}\n`,
       );
     });
   });
 
   describe('when the new version is greater than the latest version on npm', () => {
-    let writeFileSync: jest.Mocked<typeof import('node:fs')['writeFileSync']>;
+    let writeFileSync: jest.Mocked<(typeof import('node:fs'))['writeFileSync']>;
 
     beforeEach(async () => {
       ({ writeFileSync } = jest.mocked(await import('node:fs')));
@@ -101,7 +101,7 @@ describe('versionPackage', () => {
 
       expect(writeFileSync).toHaveBeenCalledWith(
         packageJsonPath,
-        `${JSON.stringify({ ...packageJson, version: '1.1.0' }, undefined, 2)}\n`
+        `${JSON.stringify({ ...packageJson, version: '1.1.0' }, undefined, 2)}\n`,
       );
     });
   });
@@ -118,9 +118,9 @@ describe('versionPackage', () => {
     it('should throw the correct error', async () => {
       const { versionPackage } = await import('./versionPackage.ts');
 
-      expect(() => versionPackage(packageJson, { packageJsonPath, type: 'minor' })).toThrow(
-        new Error('Could not write the package.json to: /root/alpha/package.json')
-      );
+      expect(() => {
+        versionPackage(packageJson, { packageJsonPath, type: 'minor' });
+      }).toThrow(new Error('Could not write the package.json to: /root/alpha/package.json'));
     });
   });
 });

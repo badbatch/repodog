@@ -14,7 +14,7 @@ describe('executeHygen', () => {
   });
 
   describe('when the type path has a length greater than 2', () => {
-    let asyncExec: jest.Mocked<typeof import('@repodog/cli-utils')['asyncExec']>;
+    let asyncExec: jest.Mocked<(typeof import('@repodog/cli-utils'))['asyncExec']>;
 
     beforeEach(async () => {
       ({ asyncExec } = jest.mocked(await import('@repodog/cli-utils')));
@@ -33,13 +33,13 @@ describe('executeHygen', () => {
       });
 
       expect(asyncExec).toHaveBeenCalledWith(
-        'HYGEN_TMPLS=root/_templates/new root/node_modules/bin/hygen repo library --alpha "foxtrot" --charlie "23" --delta --foxtrot "golf" --hotel'
+        'HYGEN_TMPLS=root/_templates/new root/node_modules/bin/hygen repo library --alpha "foxtrot" --charlie "23" --delta --foxtrot "golf" --hotel',
       );
     });
   });
 
   describe('when the type path has a length equal to or leess than 2', () => {
-    let asyncExec: jest.Mocked<typeof import('@repodog/cli-utils')['asyncExec']>;
+    let asyncExec: jest.Mocked<(typeof import('@repodog/cli-utils'))['asyncExec']>;
 
     beforeEach(async () => {
       ({ asyncExec } = jest.mocked(await import('@repodog/cli-utils')));
@@ -58,7 +58,7 @@ describe('executeHygen', () => {
       });
 
       expect(asyncExec).toHaveBeenCalledWith(
-        'HYGEN_TMPLS=root/_templates root/node_modules/bin/hygen new pkg --alpha "foxtrot" --charlie "23" --delta --foxtrot "golf" --hotel'
+        'HYGEN_TMPLS=root/_templates root/node_modules/bin/hygen new pkg --alpha "foxtrot" --charlie "23" --delta --foxtrot "golf" --hotel',
       );
     });
   });

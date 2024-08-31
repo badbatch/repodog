@@ -82,7 +82,7 @@ jest.unstable_mockModule('@repodog/cli-utils', () => ({
 jest.unstable_mockModule('enquirer', () => ({
   default: {
     // @ts-expect-error PromptOption[] is valid argument, but is being flagged as invalid
-    prompt: jest.fn<typeof import('enquirer')['prompt']>().mockImplementation((questions: PromptOption[]) => {
+    prompt: jest.fn<(typeof import('enquirer'))['prompt']>().mockImplementation((questions: PromptOption[]) => {
       const answers: Record<string, string | number | boolean> = {};
 
       for (const question of questions) {
@@ -101,8 +101,8 @@ jest.unstable_mockModule('node:fs', () => ({
 jest.unstable_mockModule('node:path', () => ({
   dirname: jest.fn().mockReturnValue('/root'),
   resolve: jest
-    .fn<typeof import('node:path')['resolve']>()
-    .mockImplementation((...paths) => `${paths[0]!}/${paths[1]!.replace(new RegExp('\\.\\.\\/', 'g'), '')}`),
+    .fn<(typeof import('node:path'))['resolve']>()
+    .mockImplementation((...paths) => `${paths[0]!}/${paths[1]!.replaceAll(new RegExp(String.raw`\.\.\/`, 'g'), '')}`),
   sep: jest.fn().mockReturnValue('/'),
 }));
 
@@ -125,7 +125,7 @@ jest.unstable_mockModule('./utils/getLeafAdditionalTemplatesPath.ts', () => ({
 
 jest.unstable_mockModule('./utils/loadQuestions.ts', () => ({
   loadQuestions: jest
-    .fn<typeof import('./utils/loadQuestions.ts')['loadQuestions']>()
+    .fn<(typeof import('./utils/loadQuestions.ts'))['loadQuestions']>()
     .mockImplementation((_internalTypePath, _configTypePath, questionOverrides) =>
       Promise.resolve([
         {
@@ -145,7 +145,7 @@ jest.unstable_mockModule('./utils/loadQuestions.ts', () => ({
         },
         ...(((questionOverrides!.new!.pkg as QuestionOverrides).library as QuestionOverrides).cli as QuestionOverride)
           .add!,
-      ])
+      ]),
     ),
 }));
 
@@ -155,7 +155,7 @@ describe('handler', () => {
   });
 
   describe('when isRunWithinProject is false and hasGlobalRepodogConfig is false', () => {
-    let handleGlobalConfigSetup: jest.Mocked<typeof import('@repodog/cli-setup')['handleGlobalConfigSetup']>;
+    let handleGlobalConfigSetup: jest.Mocked<(typeof import('@repodog/cli-setup'))['handleGlobalConfigSetup']>;
 
     beforeEach(async () => {
       ({ handleGlobalConfigSetup } = jest.mocked(await import('@repodog/cli-setup')));
@@ -206,7 +206,7 @@ describe('handler', () => {
       await handler({ subtype: 'blah', type: 'pkg' });
 
       expect(shelljs.echo).toHaveBeenCalledWith(
-        expect.stringContaining('Error: Expected subtype to be a valid new subtype: component, config, library')
+        expect.stringContaining('Error: Expected subtype to be a valid new subtype: component, config, library'),
       );
     });
 
@@ -220,9 +220,9 @@ describe('handler', () => {
   describe('when given valid arguments', () => {
     describe('when the package manager can be derived', () => {
       let shelljs: jest.Mocked<typeof import('shelljs')>;
-      let loadQuestions: jest.Mocked<typeof import('./utils/loadQuestions.ts')['loadQuestions']>;
-      let executeHygen: jest.Mocked<typeof import('./utils/executeHygen.ts')['executeHygen']>;
-      let postinstallHandler: jest.Mocked<typeof import('@repodog/cli-postinstall')['handler']>;
+      let loadQuestions: jest.Mocked<(typeof import('./utils/loadQuestions.ts'))['loadQuestions']>;
+      let executeHygen: jest.Mocked<(typeof import('./utils/executeHygen.ts'))['executeHygen']>;
+      let postinstallHandler: jest.Mocked<(typeof import('@repodog/cli-postinstall'))['handler']>;
 
       beforeEach(async () => {
         shelljs = jest.mocked(await import('shelljs')).default;
@@ -238,7 +238,7 @@ describe('handler', () => {
         expect(loadQuestions).toHaveBeenCalledWith(
           ['pkg', 'library'],
           ['new', 'pkg', 'library', 'cli'],
-          repodogConfig.questionOverrides
+          repodogConfig.questionOverrides,
         );
       });
 
@@ -266,7 +266,7 @@ describe('handler', () => {
             question1: 'answer to question1',
             question2: 'answer to question2',
             question3: 'answer to question3',
-          }
+          },
         );
       });
 
@@ -292,7 +292,7 @@ describe('handler', () => {
           });
 
           const { getLeafAdditionalTemplatesPath } = jest.mocked(
-            await import('./utils/getLeafAdditionalTemplatesPath.ts')
+            await import('./utils/getLeafAdditionalTemplatesPath.ts'),
           );
 
           getLeafAdditionalTemplatesPath.mockReturnValueOnce('leaf/template/path');
@@ -378,7 +378,7 @@ describe('handler', () => {
         await handler({ subtype: 'library', type: 'pkg' });
 
         expect(shelljs.echo).toHaveBeenCalledWith(
-          expect.stringContaining('Error: Could not derive the package manager')
+          expect.stringContaining('Error: Could not derive the package manager'),
         );
       });
 

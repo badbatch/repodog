@@ -1,4 +1,4 @@
-/* eslint-disable import/no-extraneous-dependencies */
+/* eslint-disable import-x/no-extraneous-dependencies */
 const commonjs = require('@rollup/plugin-commonjs');
 const image = require('@rollup/plugin-image');
 const json = require('@rollup/plugin-json');
@@ -24,11 +24,11 @@ const sourcemapPathTransform = sourcePath => {
   return sourcePath.replace('../../src', `../${basename(packageDir)}/src/`);
 };
 
-module.exports = (config = {}) => {
-  console.log(`> Using @repodog/${config.compiler.name}-config`);
+const config = (options = {}) => {
+  console.log(`> Using @repodog/${options.compiler.name}-config`);
   const extensions = ['.mjs', '.cjs', '.js', '.jsx', '.json', '.ts', '.tsx'];
 
-  if (!config.compiler) {
+  if (!options.compiler) {
     throw new Error('config.compiler is a required option. Both babel and swc rollup plugins are supported.');
   }
 
@@ -39,12 +39,12 @@ module.exports = (config = {}) => {
       preferBuiltins: true,
     }),
     commonjs(),
-    config.compiler,
+    options.compiler,
     image(),
   ];
 
-  if (config.copy) {
-    plugins.push(copy(config.copy));
+  if (options.copy) {
+    plugins.push(copy(options.copy));
   }
 
   if (isProdEnv) {
@@ -58,7 +58,7 @@ module.exports = (config = {}) => {
 
           writeFileSync(`${packageDir}/dist/production.analysis.txt`, analysis);
         },
-      })
+      }),
     );
   }
 
@@ -71,7 +71,7 @@ module.exports = (config = {}) => {
     input: `${packageDir}/src/index`,
     onwarn: ({ code, message }) => {
       if (code !== 'THIS_IS_UNDEFIEND') {
-        console.error(message); // eslint-disable-line no-console
+        console.error(message);
       }
     },
     output: {
@@ -83,3 +83,5 @@ module.exports = (config = {}) => {
     plugins,
   };
 };
+
+module.exports = config;

@@ -31,7 +31,7 @@ describe('publishMonorepoPackages', () => {
   });
 
   describe('when packages are published successfully', () => {
-    let publishPackage: jest.Mocked<typeof import('./publishPackage.ts')['publishPackage']>;
+    let publishPackage: jest.Mocked<(typeof import('./publishPackage.ts'))['publishPackage']>;
 
     beforeEach(async () => {
       ({ publishPackage } = jest.mocked(await import('./publishPackage.ts')));
@@ -65,7 +65,7 @@ describe('publishMonorepoPackages', () => {
 
   describe('when there is an error publishing a package', () => {
     let shelljs: jest.Mocked<typeof import('shelljs')>;
-    let publishPackage: jest.Mocked<typeof import('./publishPackage.ts')['publishPackage']>;
+    let publishPackage: jest.Mocked<(typeof import('./publishPackage.ts'))['publishPackage']>;
 
     beforeEach(async () => {
       shelljs = jest.mocked(await import('shelljs')).default;

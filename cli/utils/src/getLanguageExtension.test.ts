@@ -1,7 +1,7 @@
 import { Language } from './types.ts';
 
 describe('getLanguageExtension', () => {
-  let getLanguageExtension: typeof import('./getLanguageExtension.ts')['getLanguageExtension'];
+  let getLanguageExtension: (typeof import('./getLanguageExtension.ts'))['getLanguageExtension'];
 
   beforeEach(async () => {
     ({ getLanguageExtension } = await import('./getLanguageExtension.ts'));

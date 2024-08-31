@@ -9,7 +9,7 @@ export const getTag = (version: string): string | undefined => {
     return ReleaseTag.BETA;
   }
 
-  const matches = version.match(new RegExp('(unstable(.*))\\.\\d+'));
+  const matches = new RegExp(String.raw`(unstable(.*))\.\d+`).exec(version);
 
   if (matches) {
     return matches[1];

@@ -14,10 +14,10 @@ describe('dryRunFlag', () => {
   });
 
   describe('clearDryRunFlag', () => {
-    let writeRepodogConfig: jest.Mocked<typeof import('./repodogConfig.ts')['writeRepodogConfig']>;
+    let writeRepodogConfig: jest.Mocked<(typeof import('./repodogConfig.ts'))['writeRepodogConfig']>;
 
     beforeEach(async () => {
-      let loadRepodogConfig: jest.Mocked<typeof import('./repodogConfig.ts')['loadRepodogConfig']>;
+      let loadRepodogConfig: jest.Mocked<(typeof import('./repodogConfig.ts'))['loadRepodogConfig']>;
       ({ loadRepodogConfig, writeRepodogConfig } = jest.mocked(await import('./repodogConfig.ts')));
       loadRepodogConfig.mockReturnValueOnce({ __activeDryRun: true });
     });
@@ -56,10 +56,10 @@ describe('dryRunFlag', () => {
   });
 
   describe('setDryRunFlag', () => {
-    let writeRepodogConfig: jest.Mocked<typeof import('./repodogConfig.ts')['writeRepodogConfig']>;
+    let writeRepodogConfig: jest.Mocked<(typeof import('./repodogConfig.ts'))['writeRepodogConfig']>;
 
     beforeEach(async () => {
-      let loadRepodogConfig: jest.Mocked<typeof import('./repodogConfig.ts')['loadRepodogConfig']>;
+      let loadRepodogConfig: jest.Mocked<(typeof import('./repodogConfig.ts'))['loadRepodogConfig']>;
       ({ loadRepodogConfig, writeRepodogConfig } = jest.mocked(await import('./repodogConfig.ts')));
       loadRepodogConfig.mockReturnValueOnce({ alpha: 'bravo', language: Language.TYPESCRIPT } as RepodogConfig);
     });

@@ -8,7 +8,7 @@ const flatCompat = new FlatCompat({
 });
 
 // eslint convention is to export default
-// eslint-disable-next-line import/no-default-export
+// eslint-disable-next-line import-x/no-default-export
 export default [
   ...fixupConfigRules(flatCompat.extends('plugin:jasmine/recommended')),
   {

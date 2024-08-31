@@ -14,7 +14,7 @@ jest.unstable_mockModule(
       version: '0.0.1',
     },
   }),
-  { virtual: true }
+  { virtual: true },
 );
 
 jest.unstable_mockModule(
@@ -25,7 +25,7 @@ jest.unstable_mockModule(
       version: '0.0.1',
     },
   }),
-  { virtual: true }
+  { virtual: true },
 );
 
 jest.unstable_mockModule('package-json', () => ({
@@ -36,7 +36,7 @@ jest.unstable_mockModule('package-json', () => ({
 jest.unstable_mockModule('./getLatestCompatibleVersion.ts', () => ({
   getLatestCompatibleVersion: jest
     .fn<(name: string, semver: string) => string | undefined>()
-    .mockImplementation((_peer, semver) => `^${Number(semver.slice(1)) - 1}.0.0`),
+    .mockImplementation((_peer, semver) => `^${String(Number(semver.slice(1)) - 1)}.0.0`),
 }));
 
 describe('getPeerDependenciesToInstall', () => {

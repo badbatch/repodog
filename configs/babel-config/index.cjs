@@ -1,4 +1,4 @@
-module.exports = api => {
+const config = api => {
   const { BABEL_DISABLE_CACHE, BABEL_MODULE_SYSTEM, DEBUG, JS_ENV, NODE_ENV } = process.env;
 
   if (BABEL_DISABLE_CACHE === 'true') {
@@ -79,3 +79,5 @@ module.exports = api => {
     presets,
   };
 };
+
+module.exports = config;

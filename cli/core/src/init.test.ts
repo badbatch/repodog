@@ -58,7 +58,7 @@ describe('init', () => {
       init();
 
       expect(shelljs.echo).toHaveBeenCalledWith(
-        expect.stringContaining('Error: node version 16.19.0 does not satisfy package requirement of ^20.10.0')
+        expect.stringContaining('Error: node version 16.19.0 does not satisfy package requirement of ^20.10.0'),
       );
     });
 

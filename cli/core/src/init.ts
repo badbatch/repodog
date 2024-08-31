@@ -27,12 +27,12 @@ export const init = () => {
       .command(publishCommand)
       .command(setupCommand)
       .command(writeCommand)
-      .help().argv;
+      .help();
   } else {
     shelljs.echo(
       `${colors.magenta('Repodog')} ${colors.dim('=>')} ${colors.red(
-        `Error: node version ${process.versions.node} does not satisfy package requirement of ${packageJson.engines.node}`
-      )}`
+        `Error: node version ${process.versions.node} does not satisfy package requirement of ${packageJson.engines.node}`,
+      )}`,
     );
 
     shelljs.exit(1);

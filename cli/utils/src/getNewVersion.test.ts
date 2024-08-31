@@ -19,7 +19,7 @@ describe('getNewVersion', () => {
         const { getNewVersion } = await import('./getNewVersion.ts');
 
         expect(getNewVersion('2.0.1-pr-12345.0', 'prerelease', ReleaseTag.PULL_REQUEST, '12345')).toBe(
-          '2.0.1-pr-12345.1'
+          '2.0.1-pr-12345.1',
         );
       });
     });

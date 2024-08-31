@@ -10,7 +10,7 @@ describe('stringifyCliOptions', () => {
         echo: false,
         foxtrot: 'golf',
         hotel: true,
-      })
+      }),
     ).toBe('--alpha "foxtrot" --charlie "23" --delta --foxtrot "golf" --hotel');
   });
 });

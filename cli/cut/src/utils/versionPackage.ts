@@ -4,7 +4,7 @@ import { type PackageJson, type SetRequired } from 'type-fest';
 
 export const versionPackage = (
   packageJson: SetRequired<PackageJson, 'name' | 'version'>,
-  { packageJsonPath, preid, tag, type }: Pick<ReleaseMeta, 'packageJsonPath' | 'preid' | 'tag' | 'type'>
+  { packageJsonPath, preid, tag, type }: Pick<ReleaseMeta, 'packageJsonPath' | 'preid' | 'tag' | 'type'>,
 ) => {
   const { name, version } = packageJson;
   verboseLog(`Current version: ${version}`);
@@ -20,7 +20,7 @@ export const versionPackage = (
 
   if (latestNpmPackageVersion && newVersion === latestNpmPackageVersion) {
     throw new Error(
-      `The new ${name} package verison ${newVersion} is equal to a version on npm: ${latestNpmPackageVersion}.`
+      `The new ${name} package verison ${newVersion} is equal to a version on npm: ${latestNpmPackageVersion}.`,
     );
   }
 

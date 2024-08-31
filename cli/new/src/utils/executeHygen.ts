@@ -12,6 +12,6 @@ export const executeHygen = (templatesPath: string, hygenPath: string, typePath:
   verboseLog(`Executing hygen with the following templates path: ${hygenTemplatesPath}`);
 
   return asyncExec(
-    `HYGEN_TMPLS=${hygenTemplatesPath} ${hygenPath} ${hygenTypePath.join(' ')} ${stringifyCliOptions(cliOptions)}`
+    `HYGEN_TMPLS=${hygenTemplatesPath} ${hygenPath} ${hygenTypePath.join(' ')} ${stringifyCliOptions(cliOptions)}`,
   );
 };

@@ -35,7 +35,7 @@ describe('handler', () => {
       await handler({ subtype: 'library', type: 'alpha' });
 
       expect(shelljs.echo).toHaveBeenCalledWith(
-        expect.stringContaining('Error: Expected type to be a valid new type: pkg, repo')
+        expect.stringContaining('Error: Expected type to be a valid new type: pkg, repo'),
       );
     });
 
@@ -61,7 +61,7 @@ describe('handler', () => {
       await handler({ subtype: 'bravo', type: 'pkg' });
 
       expect(shelljs.echo).toHaveBeenCalledWith(
-        expect.stringContaining('Error: Expected subtype to be a valid new subtype: component, config, library')
+        expect.stringContaining('Error: Expected subtype to be a valid new subtype: component, config, library'),
       );
     });
 
@@ -99,7 +99,7 @@ describe('handler', () => {
     let shelljs: jest.Mocked<typeof import('shelljs')>;
 
     let runCommonPostInstallTasks: jest.Mocked<
-      typeof import('./utils/runCommonPostInstallTasks.ts')['runCommonPostInstallTasks']
+      (typeof import('./utils/runCommonPostInstallTasks.ts'))['runCommonPostInstallTasks']
     >;
 
     beforeEach(async () => {
