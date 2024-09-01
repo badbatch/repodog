@@ -5,18 +5,11 @@ The Repodog jasmine-browser config.
 [![npm version](https://badge.fury.io/js/%40repodog%2Fjasmine-browser-config.svg)](https://badge.fury.io/js/%40repodog%2Fjasmine-browser-config)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-## Install package
+## Install package and peer dependencies
 
 ```shell
 # terminal
-npm install @repodog/jasmine-browser-config --save-dev
-```
-
-## Install dependencies
-
-```shell
-# terminal
-npm install @repodog/webpack-config @types/jasmine jasmine-browser-runner jasmine-core jasmine-expect --save-dev
+npm install @repodog/jasmine-browser-config @repodog/webpack-config @types/jasmine jasmine-browser-runner jasmine-core jasmine-expect --save-dev
 ```
 
 ## Use package
