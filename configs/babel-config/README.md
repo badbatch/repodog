@@ -55,3 +55,5 @@ Used as cache key when Babel cache is enabled.
 #### `NODE_ENV` = `'production' || 'development' || 'test'`
 
 Ignores test files when `NODE_ENV` is not `'test'`.
+
+**You cam also use the environment variables outlined in [`@repodog/babel-preset`](../babel-preset/README.md#environment-variables) to control what is output.**

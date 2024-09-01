@@ -1,4 +1,3 @@
-/* eslint-disable import-x/no-extraneous-dependencies */
 const commonjs = require('@rollup/plugin-commonjs');
 const image = require('@rollup/plugin-image');
 const json = require('@rollup/plugin-json');
@@ -11,7 +10,7 @@ const copy = require('rollup-plugin-copy');
 const sourcemaps = require('rollup-plugin-sourcemaps');
 
 const { MODULE_SYSTEM = 'esm', NODE_ENV } = process.env;
-const isProdEnv = NODE_ENV === 'production' || NODE_ENV === 'prod';
+const isProdEnv = NODE_ENV === 'production';
 const packageDir = process.cwd();
 const external = id => !id.startsWith('.') && !id.startsWith('/');
 const outputExtension = MODULE_SYSTEM === 'esm' ? 'mjs' : 'cjs';
@@ -36,7 +35,6 @@ const config = (options = {}) => {
     json(),
     nodeResolve({
       extensions,
-      preferBuiltins: true,
     }),
     commonjs(),
     options.compiler,

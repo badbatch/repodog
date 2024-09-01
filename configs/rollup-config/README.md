@@ -5,21 +5,14 @@ The Repodog Rollup config.
 [![npm version](https://badge.fury.io/js/%40repodog%2Frollup-config.svg)](https://badge.fury.io/js/%40repodog%2Frollup-config)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-## Install package
+## Install package and peer dependency
 
 ```shell
 # terminal
-npm install @repodog/rollup-config --save-dev
+npm install @repodog/rollup-config rollup  --save-dev
 ```
 
-## Install dependencies
-
-```shell
-# terminal
-npm install @rollup/plugin-image @rollup/plugin-json @rollup/plugin-node-resolve @rollup/plugin-terser rollup rollup-plugin-analyzer rollup-plugin-copy rollup-plugin-sourcemaps --save-dev
-```
-
-**Rollup uses Babel or SWC for code compilation so you will also need to install [`@repodog/babel-config`](../babel-config/README.md) or [`@repodog/swc-config`](../swc-config/README.md) and the relevant dependencies.**
+**Rollup uses Babel or SWC for code compilation so you will also need to install [`@repodog/babel-config`](../babel-config/README.md) or [`@repodog/swc-config`](../swc-config/README.md) and the relevant peer dependencies.**
 
 ## Use package
 
@@ -66,8 +59,8 @@ module.exports = {
 
 Sets `output.format`, directory name within `./dist` output, and the extension of the bundled output file. Default `'esm'`.
 
-`NODE_ENV` = `'prod' || 'production' || 'dev' || 'development'`
+`NODE_ENV` = `'production' || 'development' || 'test'`
 
-When set to `'prod'` or `'production'`, terser mangles and compresses, the bundle analyser runs, and source maps are omitted.
+When set to `'production'`, terser mangles and compresses, the bundle analyser runs, and source maps are omitted.
 
 **You cam also use the environment variables outlined in [`@repodog/babel-config`](../babel-config/README.md#environment-variables) or [`@repodog/swc-config`](../swc-config/README.md#environment-variables) to control what is output.**
