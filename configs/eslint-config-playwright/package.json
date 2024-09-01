@@ -11,11 +11,23 @@
     "url": "https://github.com/badbatch/repodog/configs/eslint-config-playwright"
   },
   "bugs": "https://github.com/badbatch/repodog/issues",
-  "main": "index.cjs",
+  "type": "module",
+  "main": "./index.mjs",
+  "exports": {
+    ".": {
+      "default": "./index.mjs"
+    }
+  },
   "publishConfig": {
     "access": "public"
   },
+  "dependencies": {
+    "eslint-plugin-playwright": "^1.6.2"
+  },
   "peerDependencies": {
-    "eslint-plugin-playwright": "<1"
+    "eslint": "<10"
+  },
+  "devDependencies": {
+    "eslint": "^9.9.1"
   }
 }

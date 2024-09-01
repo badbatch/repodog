@@ -9,24 +9,19 @@ The Repodog Playwright ESLint config module.
 
 ```shell
 # terminal
-npm install @repodog/eslint-config-playwright eslint-plugin-playwright --save-dev
+npm install @repodog/eslint-config-playwright eslint --save-dev
 ```
 
 ## Use package
 
 ```javascript
-// .eslintrc.cjs
-module.exports = {
-  extends: ['@repodog/eslint-config'],
-  overrides: [
-    {
-      extends: ['@repodog/eslint-config-playwright'],
-      files: ['**/*.{spec,test}.*'],
-    },
-  ],
-  parserOptions: {
-    tsconfigRootDir: __dirname,
-  },
-  root: true,
-};
+// eslint.config.mjs
+import config from '@repodog/eslint-config-playwright';
+
+export default [
+  ...config.map(entry => ({
+    ...entry,
+    files: ['**/*.{spec,test}.*'],
+  })),
+];
 ```
