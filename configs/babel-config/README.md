@@ -12,7 +12,7 @@ The Repodog Babel config.
 npm install @repodog/babel-config @babel/core @babel/runtime --save-dev
 ```
 
-## Install optional dependencies
+## Install optional peer dependencies
 
 ```shell
 # terminal

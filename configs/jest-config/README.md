@@ -5,21 +5,14 @@ The Repodog Jest config.
 [![npm version](https://badge.fury.io/js/%40repodog%2Fjest-config.svg)](https://badge.fury.io/js/%40repodog%2Fjest-config)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-## Install package
+## Install package and peer dependencies
 
 ```shell
 # terminal
-npm install @repodog/jest-config --save-dev
+npm install @repodog/jest-config @jest/globals identity-obj-proxy jest suppress-experimental-warnings --save-dev
 ```
 
-## Install dependencies
-
-```shell
-# terminal
-npm install @jest/globals identity-obj-proxy jest suppress-experimental-warnings --save-dev
-```
-
-## Install optional dependencies
+## Install optional peer dependencies
 
 ```shell
 # terminal
@@ -30,16 +23,19 @@ npm install @swc/jest --save-dev
 
 ## Use package
 
+### With Babel
+
 ```json
 // package.json
 {
   "scripts": {
-    "test": "node --require=suppress-experimental-warnings --experimental-vm-modules node_modules/jest/bin/jest.js"
+    // esm
+    "test": "node --require=suppress-experimental-warnings --experimental-vm-modules node_modules/jest/bin/jest.js",
+    // or cjs
+    "test": "MODULE_SYSTEM=cjs node node_modules/jest/bin/jest.js"
   }
 }
 ```
-
-### With Babel
 
 ```javascript
 // jest.config.cjs
@@ -50,7 +46,44 @@ module.exports = {
 };
 ```
 
+```json
+// .vscode/launch.json
+{
+  "configurations": [
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Jest - current file",
+      "program": "${workspaceFolder}/node_modules/jest/bin/jest",
+      "args": [
+        "${relativeFile}"
+      ],
+      "env": {
+        "DEBUG": "true",
+        // esm
+        "NODE_OPTIONS": "--experimental-vm-modules",
+        // or cjs
+        "MODULE_SYSTEM": "cjs"
+      },
+      "console": "integratedTerminal"
+    }
+  ]
+}
+```
+
 ### With SWC
+
+```json
+// package.json
+{
+  "scripts": {
+    // esm
+    "test": "COMPILER=swc node --require=suppress-experimental-warnings --experimental-vm-modules node_modules/jest/bin/jest.js",
+    // or cjs
+    "test": "COMPILER=swc MODULE_SYSTEM=cjs node node_modules/jest/bin/jest.js"
+  }
+}
+```
 
 ```javascript
 // jest.config.cjs
@@ -76,10 +109,13 @@ module.exports = {
       ],
       "env": {
         "DEBUG": "true",
-        "NODE_OPTIONS": "--experimental-vm-modules"
+        "COMPILER": "swc",
+        // esm
+        "NODE_OPTIONS": "--experimental-vm-modules",
+        // or cjs
+        "MODULE_SYSTEM": "cjs"
       },
-      "console": "integratedTerminal",
-      "internalConsoleOptions": "neverOpen"
+      "console": "integratedTerminal"
     }
   ]
 }
@@ -87,14 +123,18 @@ module.exports = {
 
 ### Environment variables
 
-`COMPILER` = `'babel' || 'swc'`
+#### `COMPILER` = `'babel' || 'swc'`
 
 Uses either Babel or SWC to compile code for Jest. Default `'babel'`.
 
-`DEBUG` = `'true' || 'false'`
+#### `MODULE_SYSTEM` = `'esm' || 'cjs'`
+
+Sets the module sytem to either ESModules or commonjs. Default `'esm'`.
+
+#### `DEBUG` = `'true' || 'false'`
 
 Changes `testMatch` to cover all test files and disables the Jest timeout. These are useful to set when debugging a file in IDE. Default `'false'`.
 
-`JS_ENV` = `'web' || 'node'`
+#### `JS_ENV` = `'web' || 'node'`
 
 When set to `'web'`, adds regexes to `moduleNameMapper` and `transform` to cater for `.css` and other file extensions Jest cannot resolve. Default `'node'`.

@@ -7,7 +7,17 @@ try {
   // no catch
 }
 
-const { COMPILER = 'babel', DEBUG, JS_ENV } = process.env;
+const { COMPILER = 'babel', DEBUG, JS_ENV, MODULE_SYSTEM = 'esm' } = process.env;
+const isCjs = MODULE_SYSTEM === 'cjs';
+
+if (isCjs) {
+  if (COMPILER === 'babel') {
+    process.env.BABEL_MODULE_SYSTEM = 'cjs';
+  } else {
+    process.env.SWC_MODULE_SYSTEM = 'cjs';
+  }
+}
+
 const isDebug = DEBUG === 'true';
 const isJsEnvWeb = JS_ENV === 'web';
 const isSwc = COMPILER === 'swc';
@@ -69,7 +79,7 @@ const config = ({ compilerOptions = {} } = {}) => {
     coverageProvider: 'v8',
     coverageReporters: ['json', 'lcov', 'text-summary'],
     displayName: packageName,
-    extensionsToTreatAsEsm: ['.jsx', '.ts', '.tsx'],
+    extensionsToTreatAsEsm: isCjs ? [] : ['.jsx', '.ts', '.tsx'],
     moduleFileExtensions: ['ts', 'tsx', 'js', 'mjs', 'cjs', 'jsx', 'json'],
     moduleNameMapper,
     rootDir: packageDir,
