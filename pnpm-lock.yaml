@@ -17,9 +17,6 @@ importers:
       '@commitlint/cli':
         specifier: ^19.4.0
         version: 19.4.0(@types/node@20.11.20)(typescript@5.0.3)
-      '@commitlint/config-conventional':
-        specifier: ^19.2.2
-        version: 19.2.2
       '@jest/globals':
         specifier: ^29.7.0
         version: 29.7.0
@@ -589,7 +586,7 @@ importers:
         specifier: <20
         version: 19.4.0(@types/node@20.11.20)(typescript@5.5.4)
       '@commitlint/config-conventional':
-        specifier: <20
+        specifier: ^19.2.2
         version: 19.2.2
       husky:
         specifier: <10
@@ -2649,6 +2646,7 @@ packages:
     dependencies:
       '@commitlint/types': 19.0.3
       conventional-changelog-conventionalcommits: 7.0.2
+    dev: false
 
   /@commitlint/config-validator@19.0.3:
     resolution: {integrity: sha512-2D3r4PKjoo59zBc2auodrSCaUnCSALCx54yveOFwwP/i2kfEAQrygwOleFWswLqK0UL/F9r07MFi5ev2ohyM4Q==}
@@ -8216,6 +8214,7 @@ packages:
     engines: {node: '>=16'}
     dependencies:
       compare-func: 2.0.0
+    dev: false
 
   /conventional-commits-parser@5.0.0:
     resolution: {integrity: sha512-ZPMl0ZJbw74iS9LuX9YIAiW8pfM5p3yh2o/NbXHbkFuZzY5jvdi5jFycEOkmBW5H5I7nA+D6f3UcsCLP2vvSEA==}

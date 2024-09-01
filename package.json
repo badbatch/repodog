@@ -31,7 +31,6 @@
     "@babel/core": "^7.25.2",
     "@babel/runtime": "^7.25.4",
     "@commitlint/cli": "^19.4.0",
-    "@commitlint/config-conventional": "^19.2.2",
     "@jest/globals": "^29.7.0",
     "@repodog/babel-config": "workspace:*",
     "@repodog/cli": "workspace:*",

@@ -15,9 +15,11 @@
   "publishConfig": {
     "access": "public"
   },
+  "dependencies": {
+    "@commitlint/config-conventional": "^19.2.2"
+  },
   "peerDependencies": {
     "@commitlint/cli": "<20",
-    "@commitlint/config-conventional": "<20",
     "husky": "<10"
   }
 }

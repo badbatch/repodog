@@ -5,18 +5,11 @@ The Repodog Commitlint config.
 [![npm version](https://badge.fury.io/js/%40repodog%2Fcommitlint-config.svg)](https://badge.fury.io/js/%40repodog%2Fcommitlint-config)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-## Install package
+## Install package and peer dependencies
 
 ```shell
 # terminal
-npm install @repodog/commitlint-config --save-dev
-```
-
-## Install dependencies
-
-```shell
-# terminal
-npm install @commitlint/cli @commitlint/config-conventional husky --save-dev
+npm install @repodog/commitlint-config @commitlint/cli husky --save-dev
 ```
 
 ## Initialize husky
