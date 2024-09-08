@@ -11,12 +11,11 @@
     "url": "https://github.com/badbatch/repodog/configs/syncpack-config"
   },
   "bugs": "https://github.com/badbatch/repodog/issues",
-  "type": "module",
   "main": "index.cjs",
   "publishConfig": {
     "access": "public"
   },
   "peerDependencies": {
-    "syncpack": "<13"
+    "syncpack": "<14"
   }
 }

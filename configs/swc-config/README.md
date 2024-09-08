@@ -5,14 +5,14 @@ The Repodog SWC config.
 [![npm version](https://badge.fury.io/js/%40repodog%2Fswc-config.svg)](https://badge.fury.io/js/%40repodog%2Fswc-config)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-## Install package and dependencies
+## Install package and peer dependency
 
 ```shell
 # terminal
 npm install @repodog/swc-config @swc/core --save-dev
 ```
 
-## Install optional dependencies
+## Install optional peer dependency
 
 ```shell
 # terminal
@@ -25,7 +25,7 @@ This package is designed to be used with `rollup`, `webpack` and `jest` as it al
 
 As a javascript file that is passed into rollup, you can override the configuration and it can be dynamically modified based off environment variables.
 
-Whether the config transforms javascript or typescript is based on whetehr the config finds a `tsconfig.json` at the root of your project.
+Whether the config transforms javascript or typescript is based on whether the config finds a `tsconfig.json` at the root of your project.
 
 ### With Rollup
 
