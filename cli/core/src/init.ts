@@ -20,6 +20,8 @@ export const init = () => {
   if (skipNodeVersionCheck || semver.satisfies(process.versions.node, packageJson.engines.node)) {
     verboseLog('Passed node version check, executing command.');
 
+    // This pattern is required by yargs.
+    // eslint-disable-next-line @typescript-eslint/no-unused-expressions
     yargs
       .command(cutCommand)
       .command(newCommand)
@@ -27,7 +29,7 @@ export const init = () => {
       .command(publishCommand)
       .command(setupCommand)
       .command(writeCommand)
-      .help();
+      .help().argv;
   } else {
     shelljs.echo(
       `${colors.magenta('Repodog')} ${colors.dim('=>')} ${colors.red(
