@@ -64,6 +64,6 @@
     "rollup": "^4.21.2",
     "suppress-experimental-warnings": "^2.0.0",
     "syncpack": "^13.0.0",
-    "typescript": "^5.0.3"
+    "typescript": "^5.5.4"
   }
 }
