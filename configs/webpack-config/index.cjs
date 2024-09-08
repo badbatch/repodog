@@ -1,8 +1,7 @@
-/* eslint-disable import-x/no-extraneous-dependencies */
 const webpack = require('webpack');
 
 const { NODE_ENV } = process.env;
-const isProdEnv = NODE_ENV === 'production' || NODE_ENV === 'prod';
+const isProdEnv = NODE_ENV === 'production';
 
 // See https://github.com/swc-project/jest/issues/115 for explanation
 // of why this handling is necessary.
@@ -62,7 +61,7 @@ const config = ({ compiler } = {}) => {
           ]),
     ],
     resolve: {
-      extensions: ['.ts', '.tsx', '.mjs', '.js', '.jsx', '.json'],
+      extensions: ['.ts', '.tsx', '.mjs', '.cjs', '.js', '.jsx', '.json'],
       mainFields: ['browser', 'module', 'main'],
       symlinks: true,
     },

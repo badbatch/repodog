@@ -16,14 +16,13 @@
     "access": "public"
   },
   "dependencies": {
-    "glob": "^10.3.10"
+    "glob": "^10.3.10",
+    "source-map-loader": "^5.0.0"
   },
   "peerDependencies": {
     "babel-loader": "<10",
-    "source-map-loader": "<5",
     "swc-loader": "<1",
-    "webpack": "<6",
-    "webpack-cli": "<6"
+    "webpack": "<6"
   },
   "peerDependenciesMeta": {
     "babel-loader": {
@@ -32,5 +31,8 @@
     "swc-loader": {
       "optional": true
     }
+  },
+  "devDependencies": {
+    "webpack": "^5.94.0"
   }
 }

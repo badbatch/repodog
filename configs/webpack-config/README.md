@@ -5,18 +5,11 @@ The Repodog webpack config.
 [![npm version](https://badge.fury.io/js/%40repodog%2Fwebpack-config.svg)](https://badge.fury.io/js/%40repodog%2Fwebpack-config)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-## Install package
+## Install package and peer dependency
 
 ```shell
 # terminal
-npm install @repodog/webpack-config --save-dev
-```
-
-## Install dependencies
-
-```shell
-# terminal
-npm install source-map-loader webpack webpack-cli --save-dev
+npm install @repodog/webpack-config webpack --save-dev
 ```
 
 ## Install optional dependencies
@@ -88,7 +81,7 @@ module.exports = {
 
 ### Environment variables
 
-`NODE_ENV` = `'prod' || 'production' || 'dev' || 'development'`
+#### `NODE_ENV` = `'production' || 'development' || 'test'`
 
 When set to `'prod'` or `'production'`, source maps are omitted.
 
