@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.7.42-alpha-12345.1 (2024-09-08)
+
+### Refactors
+
+* **jest-config:**  update deps (98abb6a5)
+
 ## 1.7.42-alpha-12345.0 (2024-09-08)
 
 ### Chores
