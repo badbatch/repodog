@@ -1,5 +1,50 @@
 # Changelog
 
+## 1.7.42-alpha-12345.0 (2024-09-08)
+
+### Chores
+
+* **ts-config:**  bump dep (3a4caf24)
+* **repodog:**
+  * save work in progress (90fb49fa)
+  * bump dep (7d0b9ac7)
+
+### Documentation Changes
+
+* **markdownlint-config:**  update readme (6d7b0e86)
+* **jasmine-browser-config:**  update readme (19e8de5b)
+
+### New Features
+
+* **eslint-config-jest:**  update deps (3e019dba)
+* **eslint-config-jasmine:**  update deps (71d759a1)
+* **prettier-config:**  upgrade deps (acb9a6ff)
+* **commitlint-config:**  update deps (a6aba10e)
+* **babel-config:**  upgrade deps and config (433963db)
+
+### Bug Fixes
+
+* **core:**  add back in missing .argv to yargs init (50f6bfbc)
+* **repodog:**  eslint peer error (6dc12e57)
+* **eslint-config:**
+  * add prettier dev dep (dae5fb59)
+  * get all rules working (806fe460)
+
+### Refactors
+
+* **webpack-config:**  update package (3e3f7165)
+* **syncpack-config:**  update package (3ac44499)
+* **swc-config:**  update library (31e439d1)
+* **storybook-config,babel-preset:**  upgrade deps and update (3bf741aa)
+* **rollup-config:**  update deps (821e43ee)
+* **jest-config:**  upgrade deps (efa0a59f)
+* **eslint-config-react:**  move to v9 (d320cfa3)
+* **eslint-config-playwright:**  upgrade to v9 (36d97854)
+* **commitlint-config:**  move dep from peer (0e57d951)
+* **babel-config:**  change way plugins and presets are used (ab34eff1)
+* **repodog:**  eslint fixes (232234eb)
+* **eslint-config:**  upgrade to v9 and refactor config (b43d785d)
+
 ## 1.7.41 (2024-08-09)
 
 ### Bug Fixes
