@@ -9,7 +9,7 @@ The Repodog Jest config.
 
 ```shell
 # terminal
-npm install @repodog/jest-config @jest/globals identity-obj-proxy jest suppress-experimental-warnings --save-dev
+npm install @repodog/jest-config @jest/globals jest suppress-experimental-warnings --save-dev
 ```
 
 ## Install optional peer dependencies

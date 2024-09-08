@@ -15,12 +15,13 @@
   "publishConfig": {
     "access": "public"
   },
+  "dependencies": {
+    "identity-obj-proxy": "^3.0.0"
+  },
   "peerDependencies": {
     "@jest/globals": "<30",
     "@swc/jest": "<1",
-    "@types/jest": "<30",
     "babel-jest": "<30",
-    "identity-obj-proxy": "<4",
     "jest": "<30",
     "jest-environment-jsdom": "<30",
     "jest-environment-node": "<30",
