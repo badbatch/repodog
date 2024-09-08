@@ -17,7 +17,7 @@ export default [
     },
     rules: {
       // disabled devDependencies due to https://github.com/import-js/eslint-plugin-import/issues/2168
-      'import/no-extraneous-dependencies': [
+      'import-x/no-extraneous-dependencies': [
         2,
         {
           devDependencies: true,
