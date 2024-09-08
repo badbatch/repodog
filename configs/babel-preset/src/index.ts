@@ -1,10 +1,14 @@
+import { createRequire } from 'node:module';
+
+const require = createRequire(import.meta.url);
+
 const config = () => {
   const { BABEL_MODULE_SYSTEM, DEBUG, JS_ENV, NODE_ENV } = process.env;
   const isDebug = DEBUG === 'true';
   const isCjs = BABEL_MODULE_SYSTEM === 'cjs';
   const isJsEnvWeb = JS_ENV === 'web';
   const isProdEnv = NODE_ENV === 'production';
-  let targets;
+  let targets: string;
 
   if (isJsEnvWeb) {
     targets = isDebug ? 'last 1 Chrome version' : 'defaults';
@@ -65,4 +69,4 @@ const config = () => {
   };
 };
 
-module.exports = config;
+export default config;

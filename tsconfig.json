@@ -2,6 +2,7 @@
   "extends": "./configs/ts-config/index.json",
   "include": [
     "cli/**/*",
+    "configs/babel-preset/**/*",
     "configs/storybook-config/**/*"
   ]
 }
