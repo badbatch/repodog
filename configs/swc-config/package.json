@@ -16,10 +16,12 @@
   "publishConfig": {
     "access": "public"
   },
+  "dependencies": {
+    "browserslist": "^4.23.0"
+  },
   "peerDependencies": {
-    "@rollup/plugin-swc": "<1",
-    "@swc/core": "<2",
-    "browserslist": "<5"
+    "@rollup/plugin-swc": "<0.4",
+    "@swc/core": "<2"
   },
   "peerDependenciesMeta": {
     "@rollup/plugin-swc": {
@@ -27,6 +29,6 @@
     }
   },
   "devDependencies": {
-    "@swc/core": "^1.4.1"
+    "@swc/core": "^1.7.24"
   }
 }

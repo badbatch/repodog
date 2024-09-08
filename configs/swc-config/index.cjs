@@ -2,7 +2,7 @@ const { DEBUG, JS_ENV, NODE_ENV, SWC_MODULE_SYSTEM } = process.env;
 const isDebug = DEBUG === 'true';
 const isCjs = SWC_MODULE_SYSTEM === 'cjs';
 const isJsEnvWeb = JS_ENV === 'web';
-const isProdEnv = NODE_ENV === 'prod' || NODE_ENV === 'production';
+const isProdEnv = NODE_ENV === 'production';
 let targets;
 
 if (isJsEnvWeb) {
@@ -13,7 +13,7 @@ if (isJsEnvWeb) {
 
 const sharedConfig = {
   env: {
-    coreJs: '3.36.0',
+    coreJs: '3.38.0',
     debug: isDebug,
     mode: 'usage',
     targets,

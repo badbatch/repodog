@@ -9,7 +9,7 @@ The Repodog SWC config.
 
 ```shell
 # terminal
-npm install @repodog/swc-config @swc/core browserslist --save-dev
+npm install @repodog/swc-config @swc/core --save-dev
 ```
 
 ## Install optional dependencies
@@ -73,18 +73,18 @@ module.exports = {
 
 ### Environment variables
 
-`SWC_MODULE_SYSTEM` = `'esm' || 'cjs'`
+#### `SWC_MODULE_SYSTEM` = `'esm' || 'cjs'`
 
 Sets `module.type` to `'es6'` or `'commonjs'`. Default `'esm'`.
 
-`DEBUG` = `'true' || 'false'`
+#### `DEBUG` = `'true' || 'false'`
 
 Changes `targets` to latest version of chrome / current version of nodejs and sets `env.debug` to `true`.
 
-`JS_ENV` = `'web' || 'node'`
+#### `JS_ENV` = `'web' || 'node'`
 
 Changes `targets` to browser based or nodejs based. Default `'node'`.
 
-`NODE_ENV` = `'prod' || 'production' || 'dev' || 'development'`
+#### `NODE_ENV` = `'production' || 'development' || 'test'`
 
-Sets `transform.react.development` field. Default `'dev' || 'development'`.
+Sets `transform.react.development` field. Default `'development'`.
