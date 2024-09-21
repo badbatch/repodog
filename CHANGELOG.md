@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.7.43 (2024-09-21)
+
+### Bug Fixes
+
+* **repodog:**  bump cli packages from alpha (8ee9814d)
+
 ## 1.7.42 (2024-09-21)
 
 ### New Features
