@@ -1,5 +1,15 @@
 # Changelog
 
+## 1.7.42 (2024-09-21)
+
+### New Features
+
+* **repodog:**  update version to match libs they track (8d6b5f0b)
+
+### Bug Fixes
+
+* **repodog:**  lock file (96bfab93)
+
 ## 1.7.42-alpha-12345.1 (2024-09-08)
 
 ### Refactors
