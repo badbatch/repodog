@@ -49,6 +49,9 @@ jest.unstable_mockModule('./versionPackage.ts', () => ({
 }));
 
 process.cwd = jest.fn().mockReturnValue('/root') as jest.Mocked<() => string>;
+const { loadPackageJson } = jest.mocked(await import('@repodog/cli-utils'));
+const { versionPackage } = jest.mocked(await import('./versionPackage.ts'));
+const { versionMonorepoPackages } = await import('./versionMonorepoPackages.ts');
 
 describe('versionMonorepoPackages', () => {
   beforeEach(() => {
@@ -56,15 +59,7 @@ describe('versionMonorepoPackages', () => {
   });
 
   describe('when force is false', () => {
-    let versionPackage: jest.Mocked<(typeof import('./versionPackage.ts'))['versionPackage']>;
-
-    beforeEach(async () => {
-      ({ versionPackage } = jest.mocked(await import('./versionPackage.ts')));
-    });
-
-    it('should version packages in which files have changed since last tag', async () => {
-      const { versionMonorepoPackages } = await import('./versionMonorepoPackages.ts');
-
+    it('should version packages in which files have changed since last tag', () => {
       versionMonorepoPackages({
         force: false,
         packageManager: PackageManager.NPM,
@@ -93,15 +88,7 @@ describe('versionMonorepoPackages', () => {
   });
 
   describe('when force is true', () => {
-    let versionPackage: jest.Mocked<(typeof import('./versionPackage.ts'))['versionPackage']>;
-
-    beforeEach(async () => {
-      ({ versionPackage } = jest.mocked(await import('./versionPackage.ts')));
-    });
-
-    it('should version packages regardless of whether files have changed', async () => {
-      const { versionMonorepoPackages } = await import('./versionMonorepoPackages.ts');
-
+    it('should version packages regardless of whether files have changed', () => {
       versionMonorepoPackages({
         force: true,
         packageManager: PackageManager.NPM,
@@ -146,11 +133,7 @@ describe('versionMonorepoPackages', () => {
   });
 
   describe('when package has versioned internal dependencies', () => {
-    let versionPackage: jest.Mocked<(typeof import('./versionPackage.ts'))['versionPackage']>;
-
-    beforeEach(async () => {
-      const { loadPackageJson } = jest.mocked(await import('@repodog/cli-utils'));
-
+    beforeEach(() => {
       loadPackageJson.mockImplementation((path: string): SetRequired<PackageJson, 'name' | 'version'> => {
         const match = /\/([a-z]+)\/package.json$/.exec(path)!;
         const name = match[1]!;
@@ -165,13 +148,9 @@ describe('versionMonorepoPackages', () => {
 
         return { name, version: '1.0.0' };
       });
-
-      ({ versionPackage } = jest.mocked(await import('./versionPackage.ts')));
     });
 
-    it('should version the package regardless of whether its files have changed', async () => {
-      const { versionMonorepoPackages } = await import('./versionMonorepoPackages.ts');
-
+    it('should version the package regardless of whether its files have changed', () => {
       versionMonorepoPackages({
         force: false,
         packageManager: PackageManager.NPM,

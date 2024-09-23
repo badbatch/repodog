@@ -7,10 +7,6 @@ jest.unstable_mockModule('@repodog/cli-utils', () => ({
   verboseLog: jest.fn(),
 }));
 
-jest.unstable_mockModule('./getRepoDogDevDependencyNames.ts', () => ({
-  getRepoDogDevDependencyNames: jest.fn().mockReturnValue(['@repodog/alpha', '@repodog/bravo', '@repodog/charlie']),
-}));
-
 const peerDependenciesToInstall = {
   '@repodog/alpha': [
     ['alpha-0', '4.0.0'],
@@ -30,6 +26,14 @@ jest.unstable_mockModule('./getPeerDependenciesToInstall.ts', () => ({
     .mockImplementation(name => peerDependenciesToInstall[name as keyof typeof peerDependenciesToInstall]),
 }));
 
+jest.unstable_mockModule('./getRepoDogDevDependencyNames.ts', () => ({
+  getRepoDogDevDependencyNames: jest.fn().mockReturnValue(['@repodog/alpha', '@repodog/bravo', '@repodog/charlie']),
+}));
+
+const { asyncExec, isProjectMonorepo } = jest.mocked(await import('@repodog/cli-utils'));
+const { getRepoDogDevDependencyNames } = jest.mocked(await import('./getRepoDogDevDependencyNames.ts'));
+const { installRepoDogPeerDependencies } = await import('./installRepoDogPeerDependencies.ts');
+
 describe('installRepoDogPeerDependencies', () => {
   beforeEach(() => {
     jest.clearAllMocks();
@@ -37,10 +41,7 @@ describe('installRepoDogPeerDependencies', () => {
 
   describe('when there are no repodog devDependency names', () => {
     it('asyncExec should not be called', async () => {
-      const { asyncExec } = jest.mocked(await import('@repodog/cli-utils'));
-      const { getRepoDogDevDependencyNames } = jest.mocked(await import('./getRepoDogDevDependencyNames.ts'));
       getRepoDogDevDependencyNames.mockReturnValueOnce([]);
-      const { installRepoDogPeerDependencies } = await import('./installRepoDogPeerDependencies.ts');
       await installRepoDogPeerDependencies();
       expect(asyncExec).not.toHaveBeenCalled();
     });
@@ -48,8 +49,6 @@ describe('installRepoDogPeerDependencies', () => {
 
   describe('when there are repodog devDependency names', () => {
     it('should call asyncExec with the correct arguments', async () => {
-      const { asyncExec } = jest.mocked(await import('@repodog/cli-utils'));
-      const { installRepoDogPeerDependencies } = await import('./installRepoDogPeerDependencies.ts');
       await installRepoDogPeerDependencies();
 
       expect(asyncExec).toHaveBeenCalledWith(
@@ -59,8 +58,6 @@ describe('installRepoDogPeerDependencies', () => {
 
     describe('when the project is a monorepo', () => {
       it('should call asyncExec with the correct arguments', async () => {
-        const { asyncExec, isProjectMonorepo } = jest.mocked(await import('@repodog/cli-utils'));
-        const { installRepoDogPeerDependencies } = await import('./installRepoDogPeerDependencies.ts');
         isProjectMonorepo.mockReturnValueOnce(true);
         await installRepoDogPeerDependencies();
 

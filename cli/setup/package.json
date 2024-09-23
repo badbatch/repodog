@@ -32,15 +32,15 @@
   "dependencies": {
     "@repodog/cli-utils": "workspace:*",
     "ansi-colors": "^4.1.3",
-    "enquirer": "^2.3.6",
+    "enquirer": "^2.4.1",
     "shelljs": "^0.8.4",
-    "yargs": "^15.1.0"
+    "yargs": "^17.7.2"
   },
   "devDependencies": {
     "@jest/globals": "^29.7.0",
     "@repodog/cli-test-utils": "workspace:*",
     "@types/shelljs": "^0.8.15",
-    "@types/yargs": "^15.0.4",
+    "@types/yargs": "^17.0.33",
     "del-cli": "^5.1.0"
   }
 }

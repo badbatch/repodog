@@ -1,3 +1,5 @@
+import { getInternalDependencies } from './getInternalDependencies.ts';
+
 describe('getInternalDependencies', () => {
   const packageJson = {
     dependencies: {
@@ -37,8 +39,7 @@ describe('getInternalDependencies', () => {
     },
   };
 
-  it('should return the correct package meta', async () => {
-    const { getInternalDependencies } = await import('./getInternalDependencies.ts');
+  it('should return the correct package meta', () => {
     expect(getInternalDependencies(packageJson, packageMetaRecord)).toEqual(['alpha']);
   });
 });

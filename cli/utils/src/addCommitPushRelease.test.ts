@@ -4,16 +4,15 @@ jest.unstable_mockModule('./asyncExec.ts', () => ({
   asyncExec: jest.fn(),
 }));
 
-describe('addCommitPushRelease', () => {
-  let asyncExec: jest.Mocked<(typeof import('./asyncExec.ts'))['asyncExec']>;
+const { asyncExec } = jest.mocked(await import('./asyncExec.ts'));
+const { addCommitPushRelease } = await import('./addCommitPushRelease.ts');
 
-  beforeEach(async () => {
+describe('addCommitPushRelease', () => {
+  beforeEach(() => {
     jest.clearAllMocks();
-    ({ asyncExec } = jest.mocked(await import('./asyncExec.ts')));
   });
 
   it('should run the correct git commands', async () => {
-    const { addCommitPushRelease } = await import('./addCommitPushRelease.ts');
     await addCommitPushRelease('1.1.0');
 
     expect(asyncExec.mock.calls).toEqual([

@@ -7,6 +7,8 @@ jest.unstable_mockModule('node:path', () => ({
 }));
 
 process.cwd = () => '/root';
+const { isAbsolute, resolve } = jest.mocked(await import('node:path'));
+const { resolveAbsolutePath } = await import('./resolveAbsolutePath.ts');
 
 describe('resolveAbsolutePath', () => {
   beforeEach(() => {
@@ -14,42 +16,28 @@ describe('resolveAbsolutePath', () => {
   });
 
   describe('when path is not absolute', () => {
-    let resolve: jest.Mocked<(typeof import('node:path'))['resolve']>;
-
-    beforeEach(async () => {
-      ({ resolve } = jest.mocked(await import('node:path')));
-    });
-
-    it('should call resolve with the correct arguments', async () => {
-      const { resolveAbsolutePath } = await import('./resolveAbsolutePath.ts');
+    it('should call resolve with the correct arguments', () => {
       resolveAbsolutePath('./path/to/file');
       expect(resolve).toHaveBeenCalledWith('/root', './path/to/file');
     });
 
-    it('should return the correct path', async () => {
-      const { resolveAbsolutePath } = await import('./resolveAbsolutePath.ts');
+    it('should return the correct path', () => {
       resolveAbsolutePath('path/to/file');
       expect(resolveAbsolutePath('path/to/file')).toBe('/root/path/to/file');
     });
   });
 
   describe('when path is absolute', () => {
-    let resolve: jest.Mocked<(typeof import('node:path'))['resolve']>;
-
-    beforeEach(async () => {
-      let isAbsolute: jest.Mocked<(typeof import('node:path'))['isAbsolute']>;
-      ({ isAbsolute, resolve } = jest.mocked(await import('node:path')));
+    beforeEach(() => {
       isAbsolute.mockReturnValueOnce(true);
     });
 
-    it('should not call resolve', async () => {
-      const { resolveAbsolutePath } = await import('./resolveAbsolutePath.ts');
+    it('should not call resolve', () => {
       resolveAbsolutePath('/absolute/path/to/file');
       expect(resolve).not.toHaveBeenCalled();
     });
 
-    it('should return the correct path', async () => {
-      const { resolveAbsolutePath } = await import('./resolveAbsolutePath.ts');
+    it('should return the correct path', () => {
       expect(resolveAbsolutePath('/absolute/path/to/file')).toBe('/absolute/path/to/file');
     });
   });

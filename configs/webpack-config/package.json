@@ -16,7 +16,7 @@
     "access": "public"
   },
   "dependencies": {
-    "glob": "^10.3.10",
+    "glob": "^11.0.0",
     "source-map-loader": "^5.0.0"
   },
   "peerDependencies": {

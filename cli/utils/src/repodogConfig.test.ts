@@ -17,6 +17,16 @@ jest.unstable_mockModule('./resolveConfigPath.ts', () => ({
 }));
 
 process.cwd = () => '/root';
+const { readFileSync, writeFileSync } = jest.mocked(await import('node:fs'));
+const { resolveConfigPath } = jest.mocked(await import('./resolveConfigPath.ts'));
+
+const {
+  addRepodogConfigToCache,
+  clearRepodogConfigCache,
+  getCachedRepodogConfig,
+  loadRepodogConfig,
+  writeRepodogConfig,
+} = await import('./repodogConfig.ts');
 
 describe('repodogConfig', () => {
   beforeEach(() => {
@@ -27,22 +37,16 @@ describe('repodogConfig', () => {
     const config = { __activeDryRun: true, language: Language.TYPESCRIPT };
 
     describe('when there is a cached .repodogrc', () => {
-      let readFileSync: jest.Mocked<(typeof import('node:fs'))['readFileSync']>;
-
-      beforeEach(async () => {
-        const { addRepodogConfigToCache, clearRepodogConfigCache } = await import('./repodogConfig.ts');
+      beforeEach(() => {
         clearRepodogConfigCache();
         addRepodogConfigToCache(config);
-        ({ readFileSync } = jest.mocked(await import('node:fs')));
       });
 
-      it('should return the cached .repodogrc', async () => {
-        const { loadRepodogConfig } = await import('./repodogConfig.ts');
+      it('should return the cached .repodogrc', () => {
         expect(loadRepodogConfig()).toEqual(config);
       });
 
-      it('should not load the .repodogrc', async () => {
-        const { loadRepodogConfig } = await import('./repodogConfig.ts');
+      it('should not load the .repodogrc', () => {
         loadRepodogConfig();
         expect(readFileSync).not.toHaveBeenCalled();
       });
@@ -50,12 +54,8 @@ describe('repodogConfig', () => {
 
     describe('when the config is required', () => {
       describe('when there is an error loading the .repodogrc', () => {
-        let readFileSync: jest.Mocked<(typeof import('node:fs'))['readFileSync']>;
-
-        beforeEach(async () => {
-          const { clearRepodogConfigCache } = await import('./repodogConfig.ts');
+        beforeEach(() => {
           clearRepodogConfigCache();
-          ({ readFileSync } = jest.mocked(await import('node:fs')));
 
           readFileSync
             .mockImplementationOnce(() => {
@@ -66,9 +66,7 @@ describe('repodogConfig', () => {
             });
         });
 
-        it('should throw the correct error', async () => {
-          const { loadRepodogConfig } = await import('./repodogConfig.ts');
-
+        it('should throw the correct error', () => {
           expect(() => loadRepodogConfig({ required: true })).toThrow(
             new Error('Could not resolve the .repodogrc either within a project or globally'),
           );
@@ -76,18 +74,15 @@ describe('repodogConfig', () => {
       });
 
       describe('when the .repodogrc is loaded from the file system', () => {
-        beforeEach(async () => {
-          const { clearRepodogConfigCache } = await import('./repodogConfig.ts');
+        beforeEach(() => {
           clearRepodogConfigCache();
         });
 
-        it('should return the .repodogrc', async () => {
-          const { loadRepodogConfig } = await import('./repodogConfig.ts');
+        it('should return the .repodogrc', () => {
           expect(loadRepodogConfig({ required: true })).toEqual(config);
         });
 
-        it('should cache the .repodogrc', async () => {
-          const { getCachedRepodogConfig, loadRepodogConfig } = await import('./repodogConfig.ts');
+        it('should cache the .repodogrc', () => {
           loadRepodogConfig({ required: true });
           expect(getCachedRepodogConfig()).toEqual(config);
         });
@@ -96,28 +91,23 @@ describe('repodogConfig', () => {
 
     describe('when the config is not required', () => {
       describe('when there is an existing config', () => {
-        beforeEach(async () => {
-          const { clearRepodogConfigCache } = await import('./repodogConfig.ts');
+        beforeEach(() => {
           clearRepodogConfigCache();
         });
 
-        it('should return the .repodogrc', async () => {
-          const { loadRepodogConfig } = await import('./repodogConfig.ts');
+        it('should return the .repodogrc', () => {
           expect(loadRepodogConfig()).toEqual(config);
         });
 
-        it('should cache the .repodogrc', async () => {
-          const { getCachedRepodogConfig, loadRepodogConfig } = await import('./repodogConfig.ts');
+        it('should cache the .repodogrc', () => {
           loadRepodogConfig();
           expect(getCachedRepodogConfig()).toEqual(config);
         });
       });
 
       describe('when there is not an existing config', () => {
-        beforeEach(async () => {
-          const { clearRepodogConfigCache } = await import('./repodogConfig.ts');
+        beforeEach(() => {
           clearRepodogConfigCache();
-          const { readFileSync } = jest.mocked(await import('node:fs'));
 
           readFileSync
             .mockImplementationOnce(() => {
@@ -128,13 +118,11 @@ describe('repodogConfig', () => {
             });
         });
 
-        it('should return a partial config', async () => {
-          const { loadRepodogConfig } = await import('./repodogConfig.ts');
+        it('should return a partial config', () => {
           expect(loadRepodogConfig()).toEqual({ language: Language.TYPESCRIPT });
         });
 
-        it('should cache the partial config', async () => {
-          const { getCachedRepodogConfig, loadRepodogConfig } = await import('./repodogConfig.ts');
+        it('should cache the partial config', () => {
           loadRepodogConfig();
           expect(getCachedRepodogConfig()).toEqual({ language: Language.TYPESCRIPT });
         });
@@ -142,48 +130,36 @@ describe('repodogConfig', () => {
     });
 
     describe('when questionOverridesPath is present in the config', () => {
-      let resolveConfigPath: jest.Mocked<(typeof import('./resolveConfigPath.ts'))['resolveConfigPath']>;
-
       const enrichedConfig = {
         __activeDryRun: true,
         language: Language.TYPESCRIPT,
         questionOverridesPath: './questionOverridesPath',
       };
 
-      beforeEach(async () => {
-        const { clearRepodogConfigCache } = await import('./repodogConfig.ts');
+      beforeEach(() => {
         clearRepodogConfigCache();
-        const { readFileSync } = jest.mocked(await import('node:fs'));
         readFileSync.mockReturnValueOnce(JSON.stringify(enrichedConfig));
-        ({ resolveConfigPath } = jest.mocked(await import('./resolveConfigPath.ts')));
       });
 
-      it('should call resolveConfigPath with the correct arguments', async () => {
-        const { loadRepodogConfig } = await import('./repodogConfig.ts');
+      it('should call resolveConfigPath with the correct arguments', () => {
         loadRepodogConfig();
         expect(resolveConfigPath).toHaveBeenCalledWith(enrichedConfig, 'questionOverrides', './questionOverridesPath');
       });
     });
 
     describe('when templateVariablesPath is present in the config', () => {
-      let resolveConfigPath: jest.Mocked<(typeof import('./resolveConfigPath.ts'))['resolveConfigPath']>;
-
       const enrichedConfig = {
         __activeDryRun: true,
         language: Language.TYPESCRIPT,
         templateVariablesPath: './templateVariablesPath',
       };
 
-      beforeEach(async () => {
-        const { clearRepodogConfigCache } = await import('./repodogConfig.ts');
+      beforeEach(() => {
         clearRepodogConfigCache();
-        const { readFileSync } = jest.mocked(await import('node:fs'));
         readFileSync.mockReturnValueOnce(JSON.stringify(enrichedConfig));
-        ({ resolveConfigPath } = jest.mocked(await import('./resolveConfigPath.ts')));
       });
 
-      it('should call resolveConfigPath with the correct arguments', async () => {
-        const { loadRepodogConfig } = await import('./repodogConfig.ts');
+      it('should call resolveConfigPath with the correct arguments', () => {
         loadRepodogConfig();
         expect(resolveConfigPath).toHaveBeenCalledWith(enrichedConfig, 'templateVariables', './templateVariablesPath');
       });
@@ -191,22 +167,16 @@ describe('repodogConfig', () => {
   });
 
   describe('writeRepodogConfig', () => {
-    let writeFileSync: jest.Mocked<(typeof import('node:fs'))['writeFileSync']>;
-
-    beforeEach(async () => {
-      const { clearRepodogConfigCache } = await import('./repodogConfig.ts');
+    beforeEach(() => {
       clearRepodogConfigCache();
-      ({ writeFileSync } = jest.mocked(await import('node:fs')));
     });
 
     describe('when there is a cached config', () => {
-      beforeEach(async () => {
-        const { addRepodogConfigToCache } = await import('./repodogConfig.ts');
+      beforeEach(() => {
         addRepodogConfigToCache({ packageManager: PackageManager.NPM });
       });
 
-      it('should call writeFileSync with the correct arguments', async () => {
-        const { writeRepodogConfig } = await import('./repodogConfig.ts');
+      it('should call writeFileSync with the correct arguments', () => {
         writeRepodogConfig(process.cwd(), { templateVariables: { new: {} } });
 
         expect(writeFileSync).toHaveBeenCalledWith(

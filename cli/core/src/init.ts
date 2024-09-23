@@ -8,28 +8,34 @@ import { command as writeCommand } from '@repodog/cli-write';
 import colors from 'ansi-colors';
 import semver from 'semver';
 import shelljs from 'shelljs';
-import yargs from 'yargs';
+import yargs, { type Argv } from 'yargs';
+import { hideBin } from 'yargs/helpers';
 import packageJson from '../package.json';
 
 export const init = () => {
-  const skipNodeVersionCheck = (yargs.argv['skip-node-version-check'] ?? false) as boolean;
-  const verbose = (yargs.argv.verbose ?? false) as boolean;
+  const argv = yargs(hideBin(process.argv)) as Argv<{
+    'skip-node-version-check'?: boolean;
+    verbose?: boolean;
+  }>;
+
+  const cliOptions = argv.parseSync();
+  const skipNodeVersionCheck = cliOptions['skip-node-version-check'] ?? false;
+  const verbose = cliOptions.verbose ?? false;
   setVerbose(verbose);
-  verboseLog(`cli options:\n${JSON.stringify(yargs.argv, undefined, 2)}\n`);
+  verboseLog(`cli options:\n${JSON.stringify(cliOptions, undefined, 2)}\n`);
 
   if (skipNodeVersionCheck || semver.satisfies(process.versions.node, packageJson.engines.node)) {
     verboseLog('Passed node version check, executing command.');
 
-    // This pattern is required by yargs.
-    // eslint-disable-next-line @typescript-eslint/no-unused-expressions
-    yargs
+    void argv
       .command(cutCommand)
       .command(newCommand)
       .command(postinstallCommand)
       .command(publishCommand)
       .command(setupCommand)
       .command(writeCommand)
-      .help().argv;
+      .help()
+      .parseAsync();
   } else {
     shelljs.echo(
       `${colors.magenta('Repodog')} ${colors.dim('=>')} ${colors.red(

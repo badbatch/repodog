@@ -18,11 +18,11 @@
   },
   "dependencies": {
     "@jest/globals": "^29.7.0",
-    "glob": "^10.3.10",
+    "glob": "^11.0.0",
     "shelljs": "^0.8.4"
   },
   "devDependencies": {
     "@types/shelljs": "^0.8.15",
-    "type-fest": "^4.10.3"
+    "type-fest": "^4.26.1"
   }
 }

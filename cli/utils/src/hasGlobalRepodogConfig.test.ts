@@ -13,14 +13,12 @@ jest.unstable_mockModule('node:path', () => ({
   resolve: jest.fn().mockImplementation((...paths) => paths.join(sep)),
 }));
 
-describe('hasGlobalRepodogConfig', () => {
-  let hasGlobalRepodogConfig: (typeof import('./hasGlobalRepodogConfig.ts'))['hasGlobalRepodogConfig'];
-  let existsSync: jest.Mocked<(typeof import('node:fs'))['existsSync']>;
+const { hasGlobalRepodogConfig } = await import('./hasGlobalRepodogConfig.ts');
+const { existsSync } = jest.mocked(await import('node:fs'));
 
-  beforeEach(async () => {
+describe('hasGlobalRepodogConfig', () => {
+  beforeEach(() => {
     jest.clearAllMocks();
-    ({ hasGlobalRepodogConfig } = await import('./hasGlobalRepodogConfig.ts'));
-    ({ existsSync } = jest.mocked(await import('node:fs')));
   });
 
   it('should return true if global repodog config exists', () => {

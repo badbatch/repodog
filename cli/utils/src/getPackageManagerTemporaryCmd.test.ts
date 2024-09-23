@@ -1,12 +1,7 @@
+import { getPackageManagerTemporaryCmd } from './getPackageManagerTemporaryCmd.ts';
 import { PackageManager } from './types.ts';
 
 describe('getPackageManagerTemporaryCmd', () => {
-  let getPackageManagerTemporaryCmd: (typeof import('./getPackageManagerTemporaryCmd.ts'))['getPackageManagerTemporaryCmd'];
-
-  beforeEach(async () => {
-    ({ getPackageManagerTemporaryCmd } = await import('./getPackageManagerTemporaryCmd.ts'));
-  });
-
   it('returns "npx" for PackageManager.NPM', () => {
     expect(getPackageManagerTemporaryCmd(PackageManager.NPM)).toBe('npx');
   });

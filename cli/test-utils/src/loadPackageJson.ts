@@ -10,5 +10,5 @@ export const loadPackageJsonMock = () => ({
       publishConfig: { access: 'public' },
       version: '1.0.0',
     };
-  }),
+  }) as jest.Mock<(value: string) => PackageJson>,
 });

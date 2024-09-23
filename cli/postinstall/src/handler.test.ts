@@ -15,23 +15,22 @@ jest.unstable_mockModule('./utils/runCommonPostInstallTasks.ts', () => ({
   runCommonPostInstallTasks: jest.fn(),
 }));
 
+const { getPackageManager, isValidNewSubType, isValidNewType } = jest.mocked(await import('@repodog/cli-utils'));
+const shelljs = jest.mocked(await import('shelljs')).default;
+const { runCommonPostInstallTasks } = jest.mocked(await import('./utils/runCommonPostInstallTasks.ts'));
+const { handler } = await import('./handler.ts');
+
 describe('handler', () => {
   beforeEach(() => {
     jest.clearAllMocks();
   });
 
   describe('when invalid type is passed in', () => {
-    let shelljs: jest.Mocked<typeof import('shelljs')>;
-
-    beforeEach(async () => {
-      // eslint-disable-next-line unicorn/no-await-expression-member
-      shelljs = jest.mocked((await import('shelljs')).default);
-      const { isValidNewType } = jest.mocked(await import('@repodog/cli-utils'));
+    beforeEach(() => {
       isValidNewType.mockReturnValueOnce(false);
     });
 
     it('should throw the correct error', async () => {
-      const { handler } = await import('./handler.ts');
       await handler({ subtype: 'library', type: 'alpha' });
 
       expect(shelljs.echo).toHaveBeenCalledWith(
@@ -40,24 +39,17 @@ describe('handler', () => {
     });
 
     it('should exit with a code of 1', async () => {
-      const { handler } = await import('./handler.ts');
       await handler({ subtype: 'library', type: 'alpha' });
       expect(shelljs.exit).toHaveBeenCalledWith(1);
     });
   });
 
   describe('when invalid subtype is passed in', () => {
-    let shelljs: jest.Mocked<typeof import('shelljs')>;
-
-    beforeEach(async () => {
-      // eslint-disable-next-line unicorn/no-await-expression-member
-      shelljs = jest.mocked((await import('shelljs')).default);
-      const { isValidNewSubType } = jest.mocked(await import('@repodog/cli-utils'));
+    beforeEach(() => {
       isValidNewSubType.mockReturnValueOnce(false);
     });
 
     it('should throw the correct error', async () => {
-      const { handler } = await import('./handler.ts');
       await handler({ subtype: 'bravo', type: 'pkg' });
 
       expect(shelljs.echo).toHaveBeenCalledWith(
@@ -66,56 +58,34 @@ describe('handler', () => {
     });
 
     it('should exit with a code of 1', async () => {
-      const { handler } = await import('./handler.ts');
       await handler({ subtype: 'bravo', type: 'pkg' });
       expect(shelljs.exit).toHaveBeenCalledWith(1);
     });
   });
 
   describe('when a packageManager cannot be derived', () => {
-    let shelljs: jest.Mocked<typeof import('shelljs')>;
-
-    beforeEach(async () => {
-      // eslint-disable-next-line unicorn/no-await-expression-member
-      shelljs = jest.mocked((await import('shelljs')).default);
-      const { getPackageManager } = jest.mocked(await import('@repodog/cli-utils'));
+    beforeEach(() => {
       getPackageManager.mockReturnValueOnce(undefined); // eslint-disable-line unicorn/no-useless-undefined
     });
 
     it('should throw the correct error', async () => {
-      const { handler } = await import('./handler.ts');
       await handler({ subtype: 'library', type: 'pkg' });
       expect(shelljs.echo).toHaveBeenCalledWith(expect.stringContaining('Error: Could not derive the package manager'));
     });
 
     it('should exit with a code of 1', async () => {
-      const { handler } = await import('./handler.ts');
       await handler({ subtype: 'library', type: 'pkg' });
       expect(shelljs.exit).toHaveBeenCalledWith(1);
     });
   });
 
   describe('when types are valid and packageManager is known', () => {
-    let shelljs: jest.Mocked<typeof import('shelljs')>;
-
-    let runCommonPostInstallTasks: jest.Mocked<
-      (typeof import('./utils/runCommonPostInstallTasks.ts'))['runCommonPostInstallTasks']
-    >;
-
-    beforeEach(async () => {
-      // eslint-disable-next-line unicorn/no-await-expression-member
-      shelljs = jest.mocked((await import('shelljs')).default);
-      ({ runCommonPostInstallTasks } = jest.mocked(await import('./utils/runCommonPostInstallTasks.ts')));
-    });
-
     it('should call runCommonPostInstallTasks with the correct arguments', async () => {
-      const { handler } = await import('./handler.ts');
       await handler({ subtype: 'library', type: 'pkg' });
       expect(runCommonPostInstallTasks).toHaveBeenCalledWith('pkg', 'library');
     });
 
     it('should exit with a code of 0', async () => {
-      const { handler } = await import('./handler.ts');
       await handler({ subtype: 'library', type: 'pkg' });
       expect(shelljs.exit).toHaveBeenCalledWith(0);
     });

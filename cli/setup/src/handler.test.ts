@@ -7,17 +7,17 @@ jest.unstable_mockModule('./utils/handleGlobalConfigSetup.ts', () => ({
   handleGlobalConfigSetup: jest.fn(),
 }));
 
-describe('handler', () => {
-  let shelljs: jest.Mocked<typeof import('shelljs')>;
+const shelljs = jest.mocked(await import('shelljs')).default;
+const { handleGlobalConfigSetup } = jest.mocked(await import('./utils/handleGlobalConfigSetup.ts'));
+const { handler } = await import('./handler.ts');
 
-  beforeEach(async () => {
+describe('handler', () => {
+  beforeEach(() => {
     jest.clearAllMocks();
-    shelljs = jest.mocked(await import('shelljs')).default;
   });
 
   describe('when handleGlobalConfigSetup executes successfully', () => {
     it('should exit with a code of 0', async () => {
-      const { handler } = await import('./handler.ts');
       await handler();
       expect(shelljs.exit).toHaveBeenCalledWith(0);
     });
@@ -25,9 +25,7 @@ describe('handler', () => {
 
   describe('when handleGlobalConfigSetup throws an exception', () => {
     it('should exit with a code of 1', async () => {
-      const { handleGlobalConfigSetup } = jest.mocked(await import('./utils/handleGlobalConfigSetup.ts'));
       handleGlobalConfigSetup.mockRejectedValueOnce(new Error('Oops'));
-      const { handler } = await import('./handler.ts');
       await handler();
       expect(shelljs.exit).toHaveBeenCalledWith(1);
     });

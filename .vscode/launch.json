@@ -11,9 +11,9 @@
       ],
       "env": {
         "COMPILER": "swc",
-        "DEBUG": "true",
         "NODE_OPTIONS": "--experimental-vm-modules"
       },
+      "console": "integratedTerminal"
     },
     {
       "type": "node",

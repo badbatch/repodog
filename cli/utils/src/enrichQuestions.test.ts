@@ -44,10 +44,10 @@ const baseQuestions = [
   },
 ];
 
-describe('enrichQuestions', () => {
-  it('should return the correct output', async () => {
-    const { enrichQuestions } = await import('./enrichQuestions.ts');
+const { enrichQuestions } = await import('./enrichQuestions.ts');
 
+describe('enrichQuestions', () => {
+  it('should return the correct output', () => {
     const answers = {
       author: 'Alpha Bravo',
       homepage: 'https://github.com/alphabravo/repodog',

@@ -1,7 +1,7 @@
-describe('removeComments', () => {
-  it('should remove single-line comments', async () => {
-    const { removeComments } = await import('./removeComments.ts');
+import { removeComments } from './removeComments.ts';
 
+describe('removeComments', () => {
+  it('should remove single-line comments', () => {
     const inputCode = `
       const a = 1; // this is a comment
       const b = 2; // this is another comment
@@ -15,9 +15,7 @@ describe('removeComments', () => {
     expect(removeComments(inputCode)).toEqual(expectedCode);
   });
 
-  it('should remove multi-line comments', async () => {
-    const { removeComments } = await import('./removeComments.ts');
-
+  it('should remove multi-line comments', () => {
     const inputCode = `
       const a = 1; /* this is a
       multi-line comment */ const b = 2; /*

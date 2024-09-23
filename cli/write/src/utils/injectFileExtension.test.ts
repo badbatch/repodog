@@ -1,7 +1,7 @@
-describe('injectFileExtension', () => {
-  it('should add .ts extension to relative import paths without extension', async () => {
-    const { injectFileExtension } = await import('./injectFileExtension.ts');
+import { injectFileExtension } from './injectFileExtension.ts';
 
+describe('injectFileExtension', () => {
+  it('should add .ts extension to relative import paths without extension', () => {
     const inputCode = `
       import { someFunction } from './someModule';
       import { anotherFunction } from './anotherModule.ts';
@@ -19,9 +19,7 @@ describe('injectFileExtension', () => {
     expect(injectFileExtension(inputCode)).toEqual(expectedCode);
   });
 
-  it('should not modify import paths that already have extensions', async () => {
-    const { injectFileExtension } = await import('./injectFileExtension.ts');
-
+  it('should not modify import paths that already have extensions', () => {
     const inputCode = `
       import { someFunction } from './someModule.ts';
       import { anotherFunction } from '../dir/anotherModule.ts';

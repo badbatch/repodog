@@ -29,6 +29,6 @@
     }
   },
   "devDependencies": {
-    "@swc/core": "^1.7.24"
+    "@swc/core": "^1.7.26"
   }
 }

@@ -1,100 +1,91 @@
 import { jest } from '@jest/globals';
-import { ChatCompletionRequestMessageRoleEnum, type OpenAIApi } from 'openai';
+import type OpenAIApi from 'openai';
+import { type ChatCompletionMessageParam } from 'openai/resources/index.mjs';
 
-const mockCreateChatCompletion = jest.fn<InstanceType<typeof OpenAIApi>['createChatCompletion']>();
+const mockCreateChatCompletion = jest.fn<InstanceType<typeof OpenAIApi>['chat']['completions']['create']>();
 
 jest.unstable_mockModule('openai', () => ({
-  Configuration: jest.fn(),
-  OpenAIApi: jest.fn().mockReturnValue({
-    createChatCompletion: mockCreateChatCompletion,
-  }),
+  default: jest.fn().mockImplementation(() => ({
+    chat: {
+      completions: {
+        create: mockCreateChatCompletion,
+      },
+    },
+  })),
 }));
 
 process.env.OPENAI_API_KEY = 'test-api-key';
 
-const messages = [
-  { content: 'Hello', role: ChatCompletionRequestMessageRoleEnum.User },
-  { content: 'How are you?', role: ChatCompletionRequestMessageRoleEnum.User },
+const { createChatCompletion } = await import('./chatGptManager.ts');
+
+const messages: ChatCompletionMessageParam[] = [
+  { content: 'Hello', role: 'user' },
+  { content: 'How are you?', role: 'user' },
 ];
 
 const environmentVariablesPath = '.env';
 
 describe('createChatCompletion', () => {
-  let createChatCompletion: (typeof import('./chatGptManager.ts'))['createChatCompletion'];
-
-  beforeEach(async () => {
+  beforeEach(() => {
     jest.clearAllMocks();
-    ({ createChatCompletion } = await import('./chatGptManager.ts'));
   });
 
   it('calls openai.createChatCompletion with the correct arguments', async () => {
     const mockResponse = {
-      data: {
-        choices: [
-          {
-            message: {
-              content: 'I am great!',
-              role: ChatCompletionRequestMessageRoleEnum.Assistant,
-            },
+      choices: [
+        {
+          message: {
+            content: 'I am great!',
+            role: 'assistant',
           },
-        ],
-      },
-      status: 200,
+        },
+      ],
     };
 
     mockCreateChatCompletion.mockResolvedValueOnce(
-      mockResponse as unknown as Awaited<ReturnType<InstanceType<typeof OpenAIApi>['createChatCompletion']>>,
+      mockResponse as unknown as OpenAIApi.Chat.Completions.ChatCompletion,
     );
 
     await createChatCompletion(messages, environmentVariablesPath);
 
     expect(mockCreateChatCompletion).toHaveBeenCalledWith({
       messages,
-      model: 'gpt-3.5-turbo',
+      model: 'gpt-4o-mini',
       temperature: 0.2,
     });
   });
 
   it('returns a string with chat completion', async () => {
     const mockResponse = {
-      data: {
-        choices: [
-          {
-            message: {
-              content: 'I am great!',
-              role: ChatCompletionRequestMessageRoleEnum.Assistant,
-            },
+      choices: [
+        {
+          message: {
+            content: 'I am great!',
+            role: 'assistant',
           },
-        ],
-      },
-      status: 200,
+        },
+      ],
     };
 
     mockCreateChatCompletion.mockResolvedValueOnce(
-      mockResponse as unknown as Awaited<ReturnType<InstanceType<typeof OpenAIApi>['createChatCompletion']>>,
+      mockResponse as unknown as OpenAIApi.Chat.Completions.ChatCompletion,
     );
 
     const result = await createChatCompletion(messages, environmentVariablesPath);
     expect(result).toBe('I am great!');
   });
 
-  it('throws an error if response status is not 200', async () => {
-    const mockResponse = { status: 400, statusText: 'Bad Request' };
-
-    mockCreateChatCompletion.mockResolvedValueOnce(
-      mockResponse as unknown as Awaited<ReturnType<InstanceType<typeof OpenAIApi>['createChatCompletion']>>,
-    );
-
-    await expect(createChatCompletion(messages, environmentVariablesPath)).rejects.toThrow(
-      `Create chat completion request failed with a ${String(mockResponse.status)} status: ${mockResponse.statusText}`,
-    );
-  });
-
   it('throws an error if response data does not contain any content', async () => {
-    const mockResponse = { data: { choices: [{ message: {} }] }, status: 200 };
+    const mockResponse = {
+      choices: [
+        {
+          message: {},
+        },
+      ],
+    };
 
     mockCreateChatCompletion.mockResolvedValueOnce(
-      mockResponse as unknown as Awaited<ReturnType<InstanceType<typeof OpenAIApi>['createChatCompletion']>>,
+      mockResponse as unknown as OpenAIApi.Chat.Completions.ChatCompletion,
     );
 
     await expect(createChatCompletion(messages, environmentVariablesPath)).rejects.toThrow(

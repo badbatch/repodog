@@ -22,12 +22,12 @@
     "access": "public"
   },
   "dependencies": {
-    "eslint-plugin-jest": "^28.8.0"
+    "eslint-plugin-jest": "^28.8.3"
   },
   "peerDependencies": {
     "eslint": "<10"
   },
   "devDependencies": {
-    "eslint": "^9.9.1"
+    "eslint": "^9.11.0"
   }
 }

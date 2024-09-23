@@ -43,14 +43,14 @@
     "compile:types": "tsc --project ./tsconfig.build.json && cts-types build dist/types/esm dist/types/cjs"
   },
   "dependencies": {
-    "@storybook/addon-a11y": "^8.2.9",
+    "@storybook/addon-a11y": "^8.3.2",
     "@storybook/addon-coverage": "^1.0.4",
-    "@storybook/addon-essentials": "^8.2.9",
-    "@storybook/addon-interactions": "^8.2.9",
+    "@storybook/addon-essentials": "^8.3.2",
+    "@storybook/addon-interactions": "^8.3.2",
     "@storybook/addon-webpack5-compiler-babel": "^3.0.3",
     "@storybook/addon-webpack5-compiler-swc": "^1.0.5",
-    "@storybook/react-webpack5": "^8.2.9",
-    "globby": "^14.0.1"
+    "@storybook/react-webpack5": "^8.3.2",
+    "globby": "^14.0.2"
   },
   "peerDependencies": {
     "@chanzuckerberg/axe-storybook-testing": "<9",

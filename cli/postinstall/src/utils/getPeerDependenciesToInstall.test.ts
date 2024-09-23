@@ -39,6 +39,9 @@ jest.unstable_mockModule('./getLatestCompatibleVersion.ts', () => ({
     .mockImplementation((_peer, semver) => `^${String(Number(semver.slice(1)) - 1)}.0.0`),
 }));
 
+const { default: getPackageJsonFromNpmRegistry } = jest.mocked(await import('package-json'));
+const { getPeerDependenciesToInstall } = await import('./getPeerDependenciesToInstall.ts');
+
 describe('getPeerDependenciesToInstall', () => {
   beforeEach(() => {
     jest.clearAllMocks();
@@ -46,24 +49,19 @@ describe('getPeerDependenciesToInstall', () => {
 
   describe('when a package.json cannot be found', () => {
     it('should return an empty tuples array', async () => {
-      const { getPeerDependenciesToInstall } = await import('./getPeerDependenciesToInstall.ts');
       await expect(getPeerDependenciesToInstall('@repodog/charlie')).resolves.toEqual([]);
     });
   });
 
   describe('when a package.json has no peerDependencies', () => {
     it('should return an empty tuples array', async () => {
-      const { default: getPackageJsonFromNpmRegistry } = jest.mocked(await import('package-json'));
       getPackageJsonFromNpmRegistry.mockResolvedValueOnce({} as AbbreviatedMetadata);
-      const { getPeerDependenciesToInstall } = await import('./getPeerDependenciesToInstall.ts');
       await expect(getPeerDependenciesToInstall('@repodog/bravo')).resolves.toEqual([]);
     });
   });
 
   describe('when a package.json has peerDependencies', () => {
     it('should return a populated tuples array', async () => {
-      const { default: getPackageJsonFromNpmRegistry } = jest.mocked(await import('package-json'));
-
       getPackageJsonFromNpmRegistry.mockResolvedValueOnce({
         peerDependencies: {
           'alpha-0': '<5',
@@ -71,8 +69,6 @@ describe('getPeerDependenciesToInstall', () => {
           'alpha-2': '<3',
         },
       } as unknown as AbbreviatedMetadata);
-
-      const { getPeerDependenciesToInstall } = await import('./getPeerDependenciesToInstall.ts');
 
       await expect(getPeerDependenciesToInstall('@repodog/alpha')).resolves.toEqual([
         ['alpha-0', '^4.0.0'],

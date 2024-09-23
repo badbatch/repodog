@@ -9,6 +9,9 @@ jest.unstable_mockModule('./resolveAbsolutePath.ts', () => ({
   resolveAbsolutePath: (path: string) => `/root/${path}`,
 }));
 
+const { readFileSync } = jest.mocked(await import('node:fs'));
+const { resolveConfigPath } = await import('./resolveConfigPath.ts');
+
 const baseConfig = {
   language: Language.TYPESCRIPT,
   questionOverridesPath: './questionOverridesPath',
@@ -22,9 +25,7 @@ describe('resolveConfigPath', () => {
 
   describe('when config path exists', () => {
     describe('when the config already has a value for the provided key', () => {
-      beforeEach(async () => {
-        const { readFileSync } = jest.mocked(await import('node:fs'));
-
+      beforeEach(() => {
         readFileSync.mockReturnValueOnce(
           JSON.stringify({
             new: {
@@ -38,9 +39,7 @@ describe('resolveConfigPath', () => {
         );
       });
 
-      it('should merge the loaded config with the existing key value', async () => {
-        const { resolveConfigPath } = await import('./resolveConfigPath.ts');
-
+      it('should merge the loaded config with the existing key value', () => {
         const config = {
           ...baseConfig,
           templateVariables: {
@@ -73,9 +72,7 @@ describe('resolveConfigPath', () => {
     });
 
     describe('when the config does not have a value for the provided key', () => {
-      beforeEach(async () => {
-        const { readFileSync } = jest.mocked(await import('node:fs'));
-
+      beforeEach(() => {
         readFileSync.mockReturnValueOnce(
           JSON.stringify({
             new: {
@@ -89,8 +86,7 @@ describe('resolveConfigPath', () => {
         );
       });
 
-      it('should set the loaded config as the value', async () => {
-        const { resolveConfigPath } = await import('./resolveConfigPath.ts');
+      it('should set the loaded config as the value', () => {
         const config = { ...baseConfig };
         resolveConfigPath(config, 'templateVariables', baseConfig.templateVariablesPath);
 
@@ -111,16 +107,13 @@ describe('resolveConfigPath', () => {
   });
 
   describe('when config path does not exist', () => {
-    beforeEach(async () => {
-      const { readFileSync } = jest.mocked(await import('node:fs'));
-
+    beforeEach(() => {
       readFileSync.mockImplementationOnce(() => {
         throw new Error('Oops');
       });
     });
 
-    it('should not modify the config', async () => {
-      const { resolveConfigPath } = await import('./resolveConfigPath.ts');
+    it('should not modify the config', () => {
       const config = { ...baseConfig };
       resolveConfigPath(config, 'templateVariables', baseConfig.templateVariablesPath);
       expect(config).toEqual(baseConfig);

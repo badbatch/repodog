@@ -1,12 +1,7 @@
+import { getPackageManagerFilterCmd } from './getPackageManagerFilterCmd.ts';
 import { PackageManager } from './types.ts';
 
 describe('getPackageManagerFilterCmd', () => {
-  let getPackageManagerFilterCmd: (typeof import('./getPackageManagerFilterCmd.ts'))['getPackageManagerFilterCmd'];
-
-  beforeEach(async () => {
-    ({ getPackageManagerFilterCmd } = await import('./getPackageManagerFilterCmd.ts'));
-  });
-
   it('returns "--workspace" for PackageManager.NPM', () => {
     expect(getPackageManagerFilterCmd(PackageManager.NPM)).toBe('--workspace');
   });

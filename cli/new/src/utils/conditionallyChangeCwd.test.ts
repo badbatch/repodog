@@ -13,6 +13,8 @@ jest.unstable_mockModule('node:path', () => ({
 
 const mockProcessCwd = jest.mocked((process.cwd = jest.fn<() => string>()));
 const mockProcessChdir = jest.mocked((process.chdir = jest.fn()));
+const { existsSync, mkdirSync } = jest.mocked(await import('node:fs'));
+const { conditionallyChangeCwd } = await import('./conditionallyChangeCwd.ts');
 
 describe('conditionallyChangeCwd', () => {
   beforeEach(() => {
@@ -24,8 +26,7 @@ describe('conditionallyChangeCwd', () => {
       mockProcessCwd.mockReturnValueOnce('/root/alpha');
     });
 
-    it('should not call process.chdir', async () => {
-      const { conditionallyChangeCwd } = await import('./conditionallyChangeCwd.ts');
+    it('should not call process.chdir', () => {
       conditionallyChangeCwd('alpha');
       expect(mockProcessChdir).not.toHaveBeenCalled();
     });
@@ -36,25 +37,19 @@ describe('conditionallyChangeCwd', () => {
       mockProcessCwd.mockReturnValueOnce('/root');
     });
 
-    it('should call process.chdir with the correct path', async () => {
-      const { conditionallyChangeCwd } = await import('./conditionallyChangeCwd.ts');
+    it('should call process.chdir with the correct path', () => {
       conditionallyChangeCwd('alpha');
       expect(mockProcessChdir).toHaveBeenCalledWith('/root/alpha');
     });
   });
 
   describe('when the target directory does not exist', () => {
-    let mkdirSync: jest.Mocked<(typeof import('node:fs'))['mkdirSync']>;
-
-    beforeEach(async () => {
+    beforeEach(() => {
       mockProcessCwd.mockReturnValueOnce('/root');
-      let existsSync: jest.Mocked<(typeof import('node:fs'))['existsSync']>;
-      ({ existsSync, mkdirSync } = jest.mocked(await import('node:fs')));
       existsSync.mockReturnValueOnce(false);
     });
 
-    it('should call mkdirSync with the correct path', async () => {
-      const { conditionallyChangeCwd } = await import('./conditionallyChangeCwd.ts');
+    it('should call mkdirSync with the correct path', () => {
       conditionallyChangeCwd('alpha');
       expect(mkdirSync).toHaveBeenCalledWith('/root/alpha');
     });

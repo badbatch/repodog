@@ -1,9 +1,9 @@
 import { Language } from '@repodog/cli-utils';
 import { WriteType } from '../types.ts';
+import { getMessagesByType } from './getMessagesByType.ts';
 
 describe('getMessagesByType', () => {
-  it('should return initial messages for test type', async () => {
-    const { getMessagesByType } = await import('./getMessagesByType.ts');
+  it('should return initial messages for test type', () => {
     const fileName = 'example.ts';
     const fileContents = 'console.log("Hello, world!");';
 

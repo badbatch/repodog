@@ -42,7 +42,10 @@ jest.unstable_mockModule('./utils/writeTestFile.ts', () => ({
 }));
 
 process.cwd = () => '/root';
-
+const shelljs = jest.mocked(await import('shelljs')).default;
+const { extractCode } = jest.mocked(await import('./utils/extractCode.ts'));
+const { writeTestFile } = jest.mocked(await import('./utils/writeTestFile.ts'));
+const { handler } = await import('./handler.ts');
 const filePath = 'alpha.test.ts';
 const type = WriteType.TEST;
 
@@ -52,14 +55,7 @@ describe('handler', () => {
   });
 
   describe('when the write type is invalid', () => {
-    let shelljs: jest.Mocked<typeof import('shelljs')>;
-
-    beforeEach(async () => {
-      shelljs = jest.mocked(await import('shelljs')).default;
-    });
-
     it('should throw the correct error', async () => {
-      const { handler } = await import('./handler.ts');
       await handler({ 'file-path': filePath, type: 'blah' });
 
       expect(shelljs.echo).toHaveBeenCalledWith(
@@ -68,23 +64,17 @@ describe('handler', () => {
     });
 
     it('should exit with the correct code', async () => {
-      const { handler } = await import('./handler.ts');
       await handler({ 'file-path': filePath, type: 'blah' });
       expect(shelljs.exit).toHaveBeenCalledWith(1);
     });
   });
 
   describe('when no code is extracted', () => {
-    let shelljs: jest.Mocked<typeof import('shelljs')>;
-
-    beforeEach(async () => {
-      shelljs = jest.mocked(await import('shelljs')).default;
-      const { extractCode } = jest.mocked(await import('./utils/extractCode.ts'));
+    beforeEach(() => {
       extractCode.mockReturnValueOnce(undefined); // eslint-disable-line unicorn/no-useless-undefined
     });
 
     it('should throw the correct error', async () => {
-      const { handler } = await import('./handler.ts');
       await handler({ 'file-path': filePath, type });
 
       expect(shelljs.echo).toHaveBeenCalledWith(
@@ -93,23 +83,13 @@ describe('handler', () => {
     });
 
     it('should exit with the correct code', async () => {
-      const { handler } = await import('./handler.ts');
       await handler({ 'file-path': filePath, type });
       expect(shelljs.exit).toHaveBeenCalledWith(1);
     });
   });
 
   describe('when code is extracted correctly', () => {
-    let shelljs: jest.Mocked<typeof import('shelljs')>;
-    let writeTestFile: jest.MockedFunction<(typeof import('./utils/writeTestFile.ts'))['writeTestFile']>;
-
-    beforeEach(async () => {
-      shelljs = jest.mocked(await import('shelljs')).default;
-      ({ writeTestFile } = jest.mocked(await import('./utils/writeTestFile.ts')));
-    });
-
     it('should calll writeTestFile with the correct arguments', async () => {
-      const { handler } = await import('./handler.ts');
       await handler({ 'file-path': filePath, type });
 
       expect(writeTestFile).toHaveBeenCalledWith('/root', 'alpha.test', DESCRIBE_BLOCK, {
@@ -120,7 +100,6 @@ describe('handler', () => {
     });
 
     it('should exit with the correct code', async () => {
-      const { handler } = await import('./handler.ts');
       await handler({ 'file-path': filePath, type });
       expect(shelljs.exit).toHaveBeenCalledWith(0);
     });

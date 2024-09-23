@@ -8,12 +8,12 @@ jest.unstable_mockModule('./getPackagePatterns.ts', () => ({
   getPackagePatterns: jest.fn().mockReturnValue(['apps/**', 'configs/*', 'graphql/*', '!apps/shared/test-utils']),
 }));
 
-describe('getMonorepoPackageJsonPaths', () => {
-  let glob: jest.Mocked<(typeof import('glob'))['glob']>;
+const { glob } = jest.mocked(await import('glob'));
+const { getMonorepoPackageJsonPaths } = await import('./getMonorepoPackageJsonPaths.ts');
 
-  beforeEach(async () => {
+describe('getMonorepoPackageJsonPaths', () => {
+  beforeEach(() => {
     jest.clearAllMocks();
-    ({ glob } = jest.mocked(await import('glob')));
 
     // @ts-expect-error signature overload mismatch
     glob.sync.mockImplementation(pattern => {
@@ -49,9 +49,7 @@ describe('getMonorepoPackageJsonPaths', () => {
     });
   });
 
-  it('should return the correct package.json paths', async () => {
-    const { getMonorepoPackageJsonPaths } = await import('./getMonorepoPackageJsonPaths.ts');
-
+  it('should return the correct package.json paths', () => {
     expect(getMonorepoPackageJsonPaths(PackageManager.PNPM)).toEqual([
       '/root/apps/client/alpha/package.json',
       '/root/apps/server/bravo/package.json',

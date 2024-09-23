@@ -11,42 +11,38 @@ jest.unstable_mockModule('node:fs', () => ({
   readdirSync: jest.fn().mockReturnValue([{ isFile }, { isFile }, { isFile }]),
 }));
 
-describe('getLeafAdditionalTemplatesPath', () => {
-  it('should return the correct absolute path', async () => {
-    const { getLeafAdditionalTemplatesPath } = await import('./getLeafAdditionalTemplatesPath.ts');
+const { existsSync, readdirSync } = jest.mocked(await import('node:fs'));
+const { getLeafAdditionalTemplatesPath } = await import('./getLeafAdditionalTemplatesPath.ts');
 
+describe('getLeafAdditionalTemplatesPath', () => {
+  it('should return the correct absolute path', () => {
     expect(getLeafAdditionalTemplatesPath('./additional/templates/path', ['external', 'type', 'path'])).toBe(
       './additional/templates/path/external/type/path',
     );
   });
 
   describe('when there is no additionalTemplatesPath', () => {
-    it('should return undefined', async () => {
-      const { getLeafAdditionalTemplatesPath } = await import('./getLeafAdditionalTemplatesPath.ts');
+    it('should return undefined', () => {
       expect(getLeafAdditionalTemplatesPath(undefined, ['external', 'type', 'path'])).toBeUndefined();
     });
   });
 
   describe('when the absolute path does not exist', () => {
-    beforeEach(async () => {
-      const { existsSync } = jest.mocked(await import('node:fs'));
+    beforeEach(() => {
       existsSync.mockReturnValueOnce(false);
     });
 
-    it('should return undefined', async () => {
-      const { getLeafAdditionalTemplatesPath } = await import('./getLeafAdditionalTemplatesPath.ts');
+    it('should return undefined', () => {
       expect(getLeafAdditionalTemplatesPath('additional/templates/path', ['external', 'type', 'path'])).toBeUndefined();
     });
   });
 
   describe('when the path does not contain any files', () => {
-    beforeEach(async () => {
-      const { readdirSync } = jest.mocked(await import('node:fs'));
+    beforeEach(() => {
       readdirSync.mockReturnValueOnce([]);
     });
 
-    it('should return undefined', async () => {
-      const { getLeafAdditionalTemplatesPath } = await import('./getLeafAdditionalTemplatesPath.ts');
+    it('should return undefined', () => {
       expect(getLeafAdditionalTemplatesPath('additional/templates/path', ['external', 'type', 'path'])).toBeUndefined();
     });
   });

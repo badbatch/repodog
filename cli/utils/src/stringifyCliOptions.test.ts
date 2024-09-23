@@ -1,7 +1,7 @@
-describe('stringifyCliOptions', () => {
-  it('should return the stringified cli options', async () => {
-    const { stringifyCliOptions } = await import('./stringifyCliOptions.ts');
+import { stringifyCliOptions } from './stringifyCliOptions.ts';
 
+describe('stringifyCliOptions', () => {
+  it('should return the stringified cli options', () => {
     expect(
       stringifyCliOptions({
         alpha: 'foxtrot',

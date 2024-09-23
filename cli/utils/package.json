@@ -31,20 +31,20 @@
   },
   "dependencies": {
     "ansi-colors": "^4.1.3",
-    "glob": "^10.3.10",
+    "glob": "^11.0.0",
     "js-yaml": "^4.1.0",
     "lodash-es": "^4.17.21",
-    "semver": "^7.6.0",
+    "semver": "^7.6.3",
     "shelljs": "^0.8.4"
   },
   "devDependencies": {
     "@jest/globals": "^29.7.0",
     "@repodog/cli-test-utils": "workspace:*",
-    "@types/js-yaml": "^4.0.5",
-    "@types/lodash-es": "^4.14.191",
+    "@types/js-yaml": "^4.0.9",
+    "@types/lodash-es": "^4.17.12",
     "@types/semver": "^7.5.8",
     "@types/shelljs": "^0.8.15",
     "del-cli": "^5.1.0",
-    "type-fest": "^4.10.3"
+    "type-fest": "^4.26.1"
   }
 }

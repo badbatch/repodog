@@ -13,11 +13,10 @@ jest.unstable_mockModule('./getMonorepoPackageJsonPaths.ts', () => ({
 }));
 
 jest.unstable_mockModule('./loadPackageJson.ts', loadPackageJsonMock);
+const { getMonorepoPackageMeta } = await import('./getMonorepoPackageMeta.ts');
 
 describe('getMonorepoPackageMeta', () => {
-  it('should return the correct package meta', async () => {
-    const { getMonorepoPackageMeta } = await import('./getMonorepoPackageMeta.ts');
-
+  it('should return the correct package meta', () => {
     expect(getMonorepoPackageMeta(PackageManager.PNPM)).toEqual({
       alpha: {
         checked: false,

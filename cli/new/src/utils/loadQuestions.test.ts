@@ -5,11 +5,12 @@ jest.unstable_mockModule('../questions/pkg/library.json', () => ({
   default: [{ name: 'question1' }, { name: 'question2' }],
 }));
 
+const { loadQuestions } = await import('./loadQuestions.ts');
+
 describe('loadQuestions', () => {
   it('should return base questions when no question overrides are provided', async () => {
     const internalTypePath = ['pkg', 'library'];
     const configTypePath = ['new', 'pkg', 'library'];
-    const { loadQuestions } = await import('./loadQuestions.ts');
     const result = await loadQuestions(internalTypePath, configTypePath);
     expect(result).toEqual([{ name: 'question1' }, { name: 'question2' }]);
   });
@@ -17,7 +18,6 @@ describe('loadQuestions', () => {
   it('should return base questions when no applicable question overrides are provided', async () => {
     const internalTypePath = ['pkg', 'library'];
     const configTypePath = ['new', 'pkg', 'library'];
-    const { loadQuestions } = await import('./loadQuestions.ts');
 
     const questionOverrides: Record<string, QuestionOverrides> = {
       new: {
@@ -53,7 +53,6 @@ describe('loadQuestions', () => {
       },
     };
 
-    const { loadQuestions } = await import('./loadQuestions.ts');
     const result = await loadQuestions(internalTypePath, configTypePath, questionOverrides);
     expect(result).toEqual([{ name: 'question1' }]);
   });
@@ -78,7 +77,6 @@ describe('loadQuestions', () => {
       },
     };
 
-    const { loadQuestions } = await import('./loadQuestions.ts');
     const result = await loadQuestions(internalTypePath, configTypePath, questionOverrides);
 
     expect(result).toEqual([
@@ -108,7 +106,6 @@ describe('loadQuestions', () => {
       },
     };
 
-    const { loadQuestions } = await import('./loadQuestions.ts');
     const result = await loadQuestions(internalTypePath, configTypePath, questionOverrides);
 
     expect(result).toEqual([

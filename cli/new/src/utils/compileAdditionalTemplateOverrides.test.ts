@@ -21,10 +21,10 @@ jest.unstable_mockModule('node:fs', () => ({
   readdirSync: jest.fn<(path: keyof typeof files) => string[]>().mockImplementation(path => files[path]),
 }));
 
-describe('compileAdditionalTemplateOverrides', () => {
-  it('should return the correct properties in the overrides object', async () => {
-    const { compileAdditionalTemplateOverrides } = await import('./compileAdditionalTemplateOverrides.ts');
+const { compileAdditionalTemplateOverrides } = await import('./compileAdditionalTemplateOverrides.ts');
 
+describe('compileAdditionalTemplateOverrides', () => {
+  it('should return the correct properties in the overrides object', () => {
     expect(compileAdditionalTemplateOverrides('leafAdditionalTemplatesFiles', 'internalTempatesFiles')).toEqual({
       overrideTemplate_index_ejs_t: true,
       overrideTemplate_main_ejs_t: true,

@@ -1,5 +1,3 @@
-// import { loadPackageJson } from '@repodog/cli-utils';
-// import { resolve } from 'node:path';
 import { jest } from '@jest/globals';
 
 const packageJsonMap = {
@@ -20,11 +18,10 @@ jest.unstable_mockModule('@repodog/cli-utils', () => ({
 }));
 
 process.cwd = () => '/root';
+const { getRepoDogDevDependencyNames } = await import('./getRepoDogDevDependencyNames.ts');
 
 describe('getRepoDogDevDependencyNames', () => {
-  it('should return the names of all repodog devDependencies', async () => {
-    const { getRepoDogDevDependencyNames } = await import('./getRepoDogDevDependencyNames.ts');
-
+  it('should return the names of all repodog devDependencies', () => {
     expect(getRepoDogDevDependencyNames()).toEqual([
       '@repodog/alpha',
       '@repodog/bravo',

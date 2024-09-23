@@ -24,6 +24,9 @@ jest.unstable_mockModule('./removeComments.ts', () => ({
   removeComments: jest.fn().mockImplementation(code => code),
 }));
 
+const { writeFileSync } = jest.mocked(await import('node:fs'));
+const { asyncExec } = jest.mocked(await import('@repodog/cli-utils'));
+const { writeTestFile } = await import('./writeTestFile.ts');
 const directory = '/root/packages/alpha/src';
 const name = 'fileToTest';
 const testFilePath = [directory, `${name}.test.ts`].join(sep);
@@ -35,29 +38,21 @@ const options = {
 };
 
 describe('writeTestFile', () => {
-  let writeFileSync: jest.Mocked<(typeof import('node:fs'))['writeFileSync']>;
-  let asyncExec: jest.Mocked<(typeof import('@repodog/cli-utils'))['asyncExec']>;
-
-  beforeEach(async () => {
+  beforeEach(() => {
     jest.clearAllMocks();
-    ({ writeFileSync } = jest.mocked(await import('node:fs')));
-    ({ asyncExec } = jest.mocked(await import('@repodog/cli-utils')));
   });
 
   it('should write the test file with the correct name and extension', async () => {
-    const { writeTestFile } = await import('./writeTestFile.ts');
     await writeTestFile(directory, name, code, { ...options, skipFormat: false });
     expect(writeFileSync).toHaveBeenCalledWith(testFilePath, code);
   });
 
   it('should skip formatting if skipFormat is true', async () => {
-    const { writeTestFile } = await import('./writeTestFile.ts');
     await writeTestFile(directory, name, code, { ...options, skipFormat: true });
     expect(asyncExec).not.toHaveBeenCalled();
   });
 
   it('should format the test file if skipFormat is false', async () => {
-    const { writeTestFile } = await import('./writeTestFile.ts');
     await writeTestFile(directory, name, code, { ...options, skipFormat: false });
 
     expect(asyncExec).toHaveBeenCalledWith(`pnpm dlx eslint --fix ${testFilePath}`, {

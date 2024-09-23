@@ -1,5 +1,7 @@
-describe('convertObjectToCliOptions', () => {
-  it('should convert the object correctly', async () => {
+import { flattenTemplateVariables } from './flattenTemplateVariables.ts';
+
+describe('flattenTemplateVariables', () => {
+  it('should convert the object correctly', () => {
     const object = {
       '*': {
         alpha: 'bravo',
@@ -19,11 +21,7 @@ describe('convertObjectToCliOptions', () => {
       },
     };
 
-    const { flattenTemplateVariables: flattenAndMergeTemplateVariables } = await import(
-      './flattenTemplateVariables.ts'
-    );
-
-    expect(flattenAndMergeTemplateVariables(object, ['new', 'pkg'])).toEqual({
+    expect(flattenTemplateVariables(object, ['new', 'pkg'])).toEqual({
       alpha: 'foxtrot',
       charlie: 23,
       delta: true,

@@ -1,39 +1,33 @@
 import { resolveAbsolutePath, verboseLog } from '@repodog/cli-utils';
 import dotenv from 'dotenv';
-import { type ChatCompletionRequestMessage, Configuration, OpenAIApi } from 'openai';
+import OpenAIApi from 'openai';
+import { type ChatCompletionMessageParam } from 'openai/resources/index.mjs';
 
 export const createChatCompletion = async (
-  messages: ChatCompletionRequestMessage[],
+  messages: ChatCompletionMessageParam[],
   environmentVariablesPath: string,
 ) => {
   const path = resolveAbsolutePath(environmentVariablesPath);
   verboseLog(`Loading environment variables from: ${path}`);
   dotenv.config({ path });
 
-  const configuration = new Configuration({
+  const openai = new OpenAIApi({
     apiKey: process.env.OPENAI_API_KEY,
   });
 
-  const openai = new OpenAIApi(configuration);
   verboseLog('Chat completion requested');
 
-  const response = await openai.createChatCompletion({
+  const response = await openai.chat.completions.create({
     messages,
-    model: 'gpt-3.5-turbo',
+    model: 'gpt-4o-mini',
     temperature: 0.2,
   });
 
   verboseLog('Chat completion received');
 
-  if (response.status !== 200) {
-    throw new Error(
-      `Create chat completion request failed with a ${String(response.status)} status: ${response.statusText}`,
-    );
-  }
-
-  if (!response.data.choices[0]?.message?.content) {
+  if (!response.choices[0]?.message?.content) {
     throw new Error(`Create chat completion request did not return any content`);
   }
 
-  return response.data.choices[0].message.content;
+  return response.choices[0].message.content;
 };

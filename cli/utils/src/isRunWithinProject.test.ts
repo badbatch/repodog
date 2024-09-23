@@ -5,26 +5,24 @@ jest.unstable_mockModule('./loadPackageJson.ts', () => ({
   loadPackageJson: jest.fn(),
 }));
 
-describe('isRunWithinProject', () => {
-  let loadPackageJson: jest.Mocked<(typeof import('./loadPackageJson.ts'))['loadPackageJson']>;
+const { loadPackageJson } = jest.mocked(await import('./loadPackageJson.ts'));
+const { isRunWithinProject } = await import('./isRunWithinProject.ts');
 
-  beforeEach(async () => {
+describe('isRunWithinProject', () => {
+  beforeEach(() => {
     jest.clearAllMocks();
-    ({ loadPackageJson } = jest.mocked(await import('./loadPackageJson.ts')));
   });
 
-  it('should return true if package.json is found', async () => {
+  it('should return true if package.json is found', () => {
     loadPackageJson.mockReturnValueOnce({} as SetRequired<PackageJson, 'name' | 'version'>);
-    const { isRunWithinProject } = await import('./isRunWithinProject.ts');
     expect(isRunWithinProject()).toBe(true);
   });
 
-  it('should return false if package.json is not found', async () => {
+  it('should return false if package.json is not found', () => {
     loadPackageJson.mockImplementationOnce(() => {
       throw new Error('Oops');
     });
 
-    const { isRunWithinProject } = await import('./isRunWithinProject.ts');
     expect(isRunWithinProject()).toBe(false);
   });
 });
