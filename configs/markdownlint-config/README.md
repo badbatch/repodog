@@ -21,14 +21,14 @@ code --install-extension DavidAnson.vscode-markdownlint
 
 ## Use package
 
-```json
+```jsonc
 // .markdownlint.json
 {
   "extends": "node_modules/@repodog/markdownlint-config/index.json"
 }
 ```
 
-```json
+```jsonc
 // .vscode/settings.json
 {
   "[markdown]": {

@@ -20,7 +20,7 @@ npm install @repodog/ts-config typescript --save-dev
 
 If you are building the project from the root.
 
-```json
+```jsonc
 // tsconfig.json
 {
   "extends": "@repodog/ts-config/index.json",
@@ -30,7 +30,7 @@ If you are building the project from the root.
 }
 ```
 
-```json
+```jsonc
 // tsconfig.build.json
 {
   "extends": ["./tsconfig.json", "@repodog/ts-config/build.json"],
@@ -48,7 +48,7 @@ If you are building the project from the root.
 
 If you are building the project from each workspace root.
 
-```json
+```jsonc
 // tsconfig.json
 {
   "extends": "@repodog/ts-config/index.json",
@@ -58,7 +58,7 @@ If you are building the project from each workspace root.
 }
 ```
 
-```json
+```jsonc
 // <workspace>/tsconfig.json
 {
   "extends": ["@repodog/ts-config/index.json", "@repodog/ts-config/build.json"],
@@ -69,7 +69,7 @@ If you are building the project from each workspace root.
 }
 ```
 
-```json
+```jsonc
 // <workspace>/tsconfig.build.json
 {
   "extends": "./tsconfig.json",
@@ -85,7 +85,7 @@ If you are building the project from each workspace root.
 
 ### Execute
 
-```json
+```jsonc
 // package.json
 {
   "scripts": {

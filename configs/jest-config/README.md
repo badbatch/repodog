@@ -25,7 +25,7 @@ npm install @swc/jest --save-dev
 
 ### With Babel
 
-```json
+```jsonc
 // package.json
 {
   "scripts": {
@@ -46,7 +46,7 @@ module.exports = {
 };
 ```
 
-```json
+```jsonc
 // .vscode/launch.json
 {
   "configurations": [
@@ -73,7 +73,7 @@ module.exports = {
 
 ### With SWC
 
-```json
+```jsonc
 // package.json
 {
   "scripts": {
@@ -95,7 +95,7 @@ module.exports = {
 };
 ```
 
-```json
+```jsonc
 // .vscode/launch.json
 {
   "configurations": [

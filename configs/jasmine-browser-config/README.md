@@ -14,7 +14,7 @@ npm install @repodog/jasmine-browser-config @repodog/webpack-config @types/jasmi
 
 ## Use package
 
-```json
+```jsonc
 // package.json
 {
   "scripts": {

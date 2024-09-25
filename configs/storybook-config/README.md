@@ -81,7 +81,7 @@ export default  {
 
 Below is a script configuration for running unit tests and storybook tests and merging their respective coverage reports. It requires installing additional dev dependencies.
 
-```json
+```jsonc
 // package.json
 {
   "scripts": {

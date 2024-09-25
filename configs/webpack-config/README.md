@@ -23,7 +23,7 @@ npm install swc-loader --save-dev
 
 ## Use package
 
-```json
+```jsonc
 // package.json
 {
   "scripts": {

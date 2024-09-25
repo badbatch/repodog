@@ -16,7 +16,7 @@ npm install @repodog/rollup-config rollup  --save-dev
 
 ## Use package
 
-```json
+```jsonc
 // package.json
 {
   "scripts": {
