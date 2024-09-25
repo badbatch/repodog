@@ -19,6 +19,10 @@ export const builder = (argv: Argv) =>
       desc: 'Stop job before versioning changes are committed',
       type: 'boolean',
     })
+    .option('filter', {
+      desc: 'A glob for filtering the packages the command is run against',
+      type: 'string',
+    })
     .option('force', {
       desc: 'Increment version regardless of files changed',
       type: 'boolean',

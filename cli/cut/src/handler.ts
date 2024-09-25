@@ -36,6 +36,7 @@ import { versionPackage } from './utils/versionPackage.ts';
 export const handler = async (argv: CutHandlerArguments) => {
   const startTime = performance.now();
   const dryRun = argv['dry-run'] ?? false;
+  const filter = argv.filter;
   const force = argv.force ?? false;
   const skipPosthook = argv['skip-posthook'] ?? false;
   const skipPrehook = argv['skip-prehook'] ?? false;
@@ -44,6 +45,7 @@ export const handler = async (argv: CutHandlerArguments) => {
   setVerbose(verbose);
   verboseLog('>>>> USER CONFIG START <<<<');
   verboseLog(`dryRun: ${String(dryRun)}`);
+  verboseLog(`filter: ${filter ?? 'none'}`);
   verboseLog(`force: ${String(force)}`);
   verboseLog(`skipPosthook: ${String(skipPosthook)}`);
   verboseLog(`skipPrehook: ${String(skipPrehook)}`);
@@ -125,7 +127,7 @@ export const handler = async (argv: CutHandlerArguments) => {
 
     if (isProjectMonorepo(packageManager)) {
       verboseLog('Project is monorepo');
-      versionMonorepoPackages({ force, packageManager, preid, tag, type });
+      versionMonorepoPackages({ filter, force, packageManager, preid, tag, type });
       verboseLog('>>>> PROJECT ROOT STARTS <<<<\n');
     } else {
       verboseLog('Project is standard repo structure');

@@ -25,7 +25,7 @@ npm install @repodog/swc-config --save-dev
 
 ## Use package
 
-```json
+```jsonc
 // package.json
 {
   "scripts": {

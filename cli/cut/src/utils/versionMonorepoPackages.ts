@@ -14,13 +14,14 @@ import shelljs from 'shelljs';
 import { versionPackage } from './versionPackage.ts';
 
 export const versionMonorepoPackages = ({
+  filter,
   force,
   packageManager,
   preid,
   tag,
   type,
-}: Pick<ReleaseMeta, 'force' | 'packageManager' | 'preid' | 'tag' | 'type'>) => {
-  const packageMetaRecord = getMonorepoPackageMeta(packageManager);
+}: Pick<ReleaseMeta, 'filter' | 'force' | 'packageManager' | 'preid' | 'tag' | 'type'>) => {
+  const packageMetaRecord = getMonorepoPackageMeta(packageManager, { filter });
   const lastReleaseTag = getLastReleaseTag();
   const changedFiles = getChangedFiles(lastReleaseTag);
   const cwd = process.cwd();

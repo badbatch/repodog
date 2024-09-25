@@ -65,6 +65,7 @@ export interface QuestionOverrides {
 
 export interface ReleaseMeta {
   dryrun: boolean;
+  filter?: string;
   force: boolean;
   packageJsonPath: string;
   packageManager: PackageManager;

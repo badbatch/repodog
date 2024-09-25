@@ -5,7 +5,7 @@ The Repodog tsconfig.
 [![npm version](https://badge.fury.io/js/%40repodog%2Fts-config.svg)](https://badge.fury.io/js/%40repodog%2Fts-config)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-## Install package and dependencies
+## Install package and peer dependency
 
 ```shell
 # terminal

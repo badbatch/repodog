@@ -103,19 +103,24 @@ Cut release to current branch
 
 Positionals:
   type  The release type: major | premajor | minor | preminor | patch | prepatch
-        | prerelease | dry-run                               [string] [required]
+         | prerelease | dry-run                              [string] [required]
 
 Options:
-  --version        Show version number                                 [boolean]
-  --help           Show help                                           [boolean]
-  --tag            The release tag: alpha | beta | pr | unstable        [string]
-  --preid          A unique identifier for the pre-release              [string]
-  --dry-run        Stop job before versioning changes are committed    [boolean]
-  --force          Increment version regardless of files changed       [boolean]
-  --skip-posthook  To skip post version lifecycle hook                 [boolean]
-  --skip-prehook   To skip pre version lifecycle hook                  [boolean]
-  --preid          A unique identifier for the pre-release              [string]
-  --verbose        Whether to output verbose logs                      [boolean]
+  --version                  Show version number                       [boolean]
+  --help                     Show help                                 [boolean]
+  --tag                      The release tag: alpha | beta | pr | unstable
+                                                                        [string]
+  --preid                    A unique identifier for the pre-release    [string]
+  --dry-run                  Stop job before versioning changes are committed
+                                                                       [boolean]
+  --filter                   A glob for filtering the packages the command is ru
+                             n against                                  [string]
+  --force                    Increment version regardless of files changed
+                                                                       [boolean]
+  --skip-posthook            To skip post version lifecycle hook       [boolean]
+  --skip-prehook             To skip pre version lifecycle hook        [boolean]
+  --skip-node-version-check  To skip the node version check            [boolean]
+  --verbose                  Whether to output verbose logs            [boolean]
 ```
 
 > If you run `repodog cut` with the `--dry-run` flag, you can subsequently cut the dry-run release by re-running `repodog cut` with `dry-run` as the release type.
