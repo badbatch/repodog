@@ -1,5 +1,15 @@
 # Changelog
 
+## 1.7.44 (2024-09-25)
+
+### Chores
+
+* **core:**  remove unused deps (05178f7d)
+
+### Refactors
+
+* **repodog:**  update deps and fix issues from that (3a562c4d)
+
 ## 1.7.43 (2024-09-21)
 
 ### Bug Fixes
