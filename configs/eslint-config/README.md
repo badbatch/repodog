@@ -19,7 +19,7 @@ npm install @repodog/eslint-config eslint prettier typescript --save-dev
 import config from '@repodog/eslint-config';
 
 // eslint convention is to export default
-// eslint-disable-next-line import/no-default-export
+// eslint-disable-next-line import-x/no-default-export
 export default [
   ...config,
 ];
