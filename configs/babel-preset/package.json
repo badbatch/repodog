@@ -1,7 +1,7 @@
 {
   "name": "@repodog/babel-preset",
   "description": "The Repodog Babel preset module.",
-  "version": "7.0.2",
+  "version": "7.0.3",
   "author": "Dylan Aubrey",
   "license": "MIT",
   "homepage": "https://github.com/badbatch/repodog",

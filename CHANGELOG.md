@@ -1,5 +1,32 @@
 # Changelog
 
+## 1.7.45 (2024-09-25)
+
+### Chores
+
+* **core:**  remove unused deps (05178f7d)
+
+### Documentation Changes
+
+* **babel-config:**  fix typo (d8ae6b34)
+* **repodog:**  change json to jsonc for code blocks (8b145730)
+
+### New Features
+
+* **cut:**  enable filtering of command with glob (719dc902)
+
+### Bug Fixes
+
+* **repodog:**
+  * remove stale active dry run flag (cd7bc8ca)
+  * add overrides for vulnerabilities (d1fbf9b6)
+
+### Refactors
+
+* **repodog:**
+  * upgrade cli deps (f133f409)
+  * update deps and fix issues from that (3a562c4d)
+
 ## 1.7.44 (2024-09-25)
 
 ### Chores
