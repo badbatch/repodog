@@ -10,7 +10,7 @@ module.exports = {
     },
     {
       dependencyTypes: ['pnpmOverrides'],
-      range: '',
+      range: '>=',
     },
   ],
   sortFirst: [
