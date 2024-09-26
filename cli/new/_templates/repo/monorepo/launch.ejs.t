@@ -8,7 +8,7 @@ to: .vscode/launch.json
       "request": "launch",
       "name": "Jest - current file",
       "program": "${workspaceFolder}/node_modules/jest/bin/jest",
-      // "runtimeVersion": "20.10.0",
+      "runtimeVersion": "20.17.0",
       "args": [
         "${relativeFile}"
       ],

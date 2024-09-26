@@ -3,7 +3,7 @@ name: Repodog build and publish
 parameters:
 - name: node-version
   type: string
-  default: '20.10.0'
+  default: '20.17.0'
 - name: package-manager
   type: string
   default: 'pnpm'

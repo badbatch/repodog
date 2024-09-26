@@ -35,13 +35,11 @@ sh: "<%= packageManager %> install && <%= packageManager %> add -D @repodog/cli 
     "build": "<%= packageManager %> run clean:dist && <%= packageManager %> run compile",
     "clean:deps": "del-cli ./node_modules",
     "clean:dist": "del-cli ./dist",
-    "commit": "commit",
     "compile": "<%= packageManager %> run /^compile:.*/",
     "compile:cjs": "MODULE_SYSTEM=cjs rollup -c ./rollup.config.cjs",
     "compile:esm": "rollup -c ./rollup.config.cjs",
     "compile:types": "tsc --project ./tsconfig.build.json && cts-types build dist/types/esm dist/types/cjs",
     "cut:changelog": "changelog",
-    "cut:post-version": "<%= packageManager %> run build",
     "lint": "pnpm run /^lint:.*/",
     "lint:code": "eslint . --ext .ts,.cjs",
     "lint:docs": "markdownlint-cli2 --config \".markdownlint.json\" \"**/*.md\" \"!**/node_modules/**\"",
@@ -53,18 +51,12 @@ sh: "<%= packageManager %> install && <%= packageManager %> add -D @repodog/cli 
     "validate": "<%= packageManager %> run syncpack && <%= packageManager %> run build && <%= packageManager %> run lint && <%= packageManager %> run type-check && <%= packageManager %> run test"
   },
   "dependencies": {},
-  "peerDependencies": {
-    "core-js": "<4",
-    "lodash-es": "<5"
-  },
+  "peerDependencies": {},
   "devDependencies": {
-    "@types/lodash-es": "^4.14.191",
-    "@types/node": "^20.11.0",
-    "core-js": "^3.27.2",
+    "@types/node": "^22.5.5",
     "cts-types": "^0.0.6",
     "del-cli": "^5.1.0",
     "generate-changelog": "^1.8.0",
-    "husky": "^9.0.11",
-    "lodash-es": "^4.17.21"
+    "husky": "^9.1.6"
   }
 }

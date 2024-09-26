@@ -35,7 +35,7 @@ describe('init', () => {
     beforeEach(() => {
       Object.defineProperty(process.versions, 'node', {
         configurable: true,
-        value: '20.10.0',
+        value: '20.17.0',
         writable: false,
       });
 
@@ -63,7 +63,7 @@ describe('init', () => {
       init();
 
       expect(shelljs.echo).toHaveBeenCalledWith(
-        expect.stringContaining('Error: node version 16.19.0 does not satisfy package requirement of ^20.10.0'),
+        expect.stringContaining('Error: node version 16.19.0 does not satisfy package requirement of >=20'),
       );
     });
 

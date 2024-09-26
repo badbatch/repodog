@@ -16,19 +16,17 @@ sh: "<%= packageManager %> install && <%= packageManager %> add -D @repodog/cli 
   "bugs": "<%= homepage %>/issues",
   "type": "module",
   "engines": {
-    "node": "^20.10.0",
-    "pnpm": "^8.11.0"
+    "node": ">=20",
   },
   "scripts": {
     "build": "<%= packageManager %> run -r build",
     "clean:deps": "<%= packageManager %> run -r clean:deps && del-cli ./node_modules",
     "clean:dist": "<%= packageManager %> run -r clean:dist",
-    "commit": "commit",
     "cut:changelog": "changelog",
-    "cut:post-version": "<%= packageManager %> run build",
-    "lint": "pnpm run /^lint:.*/",
-    "lint:code": "eslint . --ext .ts,.cjs",
+    "lint": "<%= packageManager %> run /^lint:.*/",
+    "lint:code": "eslint .",
     "lint:docs": "markdownlint-cli2 --config \".markdownlint.json\" \"**/*.md\" \"!**/node_modules/**\"",
+    "new:library": "<%= packageManager %> run repodog new pkg library",
     "prepare": "husky",
     "repodog": "repodog",
     "syncpack": "syncpack format && syncpack list-mismatches && syncpack lint-semver-ranges",
@@ -37,9 +35,9 @@ sh: "<%= packageManager %> install && <%= packageManager %> add -D @repodog/cli 
     "validate": "<%= packageManager %> run syncpack && <%= packageManager %> run build && <%= packageManager %> run lint && <%= packageManager %> run type-check && <%= packageManager %> run test"
   },
   "devDependencies": {
-    "@types/node": "^20.11.0",
+    "@types/node": "^22.5.5",
     "del-cli": "^5.1.0",
     "generate-changelog": "^1.8.0",
-    "husky": "^9.0.11"
+    "husky": "^9.1.6"
   }
 }

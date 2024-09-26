@@ -4,7 +4,7 @@ on:
   workflow_call:
     inputs:
       node-version:
-        default: '20.10.0'
+        default: '20.17.0'
         required: false
         type: string
       package-manager:

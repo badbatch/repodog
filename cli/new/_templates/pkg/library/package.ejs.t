@@ -42,11 +42,9 @@ sh: "<%= packageManager %> install"
     "compile:types": "tsc --project ./tsconfig.build.json && cts-types build dist/types/esm dist/types/cjs"
   },
   "dependencies": {},
-  "peerDependencies": {
-    "core-js": "<4"
-  },
+  "peerDependencies": {},
   "devDependencies": {
-    "@jest/globals": "^29.3.1",
+    "@jest/globals": "^29.7.0",
     "cts-types": "^0.0.6",
     "del-cli": "^5.1.0"
   }

@@ -48,17 +48,16 @@ sh: "<%= packageManager %> install"
     "classnames": "^2.5.1"
   },
   "peerDependencies": {
-    "core-js": "<4",
     "react": "<19",
     "react-dom": "<19"
   },
   "devDependencies": {
-    "@jest/globals": "^29.3.1",
-    "@types/react": "^18.2.31",
-    "@types/react-dom": "^18.2.14",
+    "@jest/globals": "^29.7.0",
+    "@types/react": "^18.3.9",
+    "@types/react-dom": "^18.3.0",
     "cts-types": "^0.0.6",
     "del-cli": "^5.1.0",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
   }
 }

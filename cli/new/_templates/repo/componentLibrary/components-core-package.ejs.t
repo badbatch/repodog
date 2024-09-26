@@ -42,16 +42,15 @@ to: <%= packagesDirName %>/core/package.json
   },
   "dependencies": {},
   "peerDependencies": {
-    "core-js": "<4",
     "react": "<19",
     "react-dom": "<19"
   },
   "devDependencies": {
-    "@types/react": "^18.2.31",
-    "@types/react-dom": "^18.2.14",
+    "@types/react": "^18.3.9",
+    "@types/react-dom": "^18.3.0",
     "cts-types": "^0.0.6",
     "del-cli": "^5.1.0",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
   }
 }

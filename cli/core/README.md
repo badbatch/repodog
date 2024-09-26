@@ -55,9 +55,9 @@ jobs:
   build-and-publish:
     uses: badbatch/repodog/.github/workflows/master-build-and-publish.yml@main
     with:
-      node-version: '20.10.0'
+      node-version: '20.17.0'
       package-manager: 'pnpm'
-      package-manager-version: '8.11.0'
+      package-manager-version: '9.11.0'
     secrets:
       npm_auth_token: ${{ secrets.NPM_AUTH_TOKEN }}
 ```
@@ -87,9 +87,9 @@ resources:
 jobs:
 - template: pipelines/azure-pipeline-template.yml@repodog
   parameters:
-    node-version: '20.10.0'
+    node-version: '20.17.0'
     package-manager: 'pnpm'
-    package-manager-version: '8.11.0'
+    package-manager-version: '9.11.0'
 ```
 
 ## Usage
