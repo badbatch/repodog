@@ -1,5 +1,15 @@
 # Changelog
 
+## 1.7.46 (2024-09-26)
+
+### Documentation Changes
+
+* **eslint-config,prettier-config:**  use correct eslint conmment (c9f42117)
+
+### Refactors
+
+* **new:**  update templates (679adfac)
+
 ## 1.7.45 (2024-09-25)
 
 ### Chores

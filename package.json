@@ -1,6 +1,6 @@
 {
   "name": "repodog",
-  "version": "1.7.45",
+  "version": "1.7.46",
   "author": "Dylan Aubrey",
   "private": true,
   "type": "module",
@@ -14,7 +14,6 @@
     "clean:dist": "pnpm run -r clean:dist",
     "commit": "commit",
     "cut:changelog": "changelog",
-    "cut:post-version": "pnpm run build",
     "lint": "pnpm run /^lint:.*/",
     "lint:code": "eslint .",
     "lint:docs": "markdownlint-cli2 --config \".markdownlint.json\" \"**/*.md\" \"!**/node_modules/**\"",
