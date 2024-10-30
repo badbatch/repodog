@@ -5,6 +5,7 @@ to: .gitignore
 .DS_Store
 .env
 .eslintcache
+.idea/
 .vscode/settings.json
 coverage/
 dist/
