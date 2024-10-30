@@ -3,21 +3,10 @@ name: Repodog build and publish
 on:
   workflow_call:
     inputs:
-      node-version:
-        default: '20.17.0'
-        required: false
-        type: string
       package-manager:
         default: 'pnpm'
         required: false
         type: string
-      package-manager-version:
-        required: false
-        type: string
-      yarn-version:
-        default: 1
-        required: false
-        type: number
     secrets:
       npm_auth_token:
         required: true
@@ -34,28 +23,8 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v2
 
-      - name: Use Node.js ${{ inputs.node-version }}
-        uses: actions/setup-node@v1
-        with:
-          node-version: ${{ inputs.node-version }}
-
-      - name: Install yarn classic
-        if: inputs.package-manager == 'yarn' && inputs.yarn-version == 1
-        run: |
-          curl -o- -L https://yarnpkg.com/install.sh | bash
-          export PATH=$HOME/.yarn/bin:$PATH
-
-      - name: Install modern yarn
-        if: inputs.package-manager == 'yarn' && inputs.yarn-version != 1
-        run: |
-          corepack enable
-          corepack prepare yarn@${{ inputs.package-manager-version }} --activate
-
-      - name: Install pnpm
-        if: inputs.package-manager == 'pnpm'
-        run: |
-          corepack enable
-          corepack prepare pnpm@${{ inputs.package-manager-version }} --activate
+      - name: Install mise
+        run: curl https://mise.run | sh
 
       - name: Install dependencies with pnpm
         if: inputs.package-manager == 'pnpm'
