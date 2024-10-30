@@ -124,6 +124,7 @@ export default tsEslint.config(
       ],
       'no-unused-vars': [2, { args: 'all', argsIgnorePattern: '^_', ignoreRestSiblings: false, vars: 'all' }],
       'no-use-before-define': [2, { functions: false }],
+      'object-shorthand': [2, 'always', { avoidQuotes: true }],
       'one-var': [2, { initialized: 'never' }],
       'prefer-arrow/prefer-arrow-functions': [
         2,
