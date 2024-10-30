@@ -24,7 +24,9 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Install mise
-        run: curl https://mise.run | sh
+        run: |
+          curl https://mise.run | sh
+          mise install
 
       - name: Install dependencies with pnpm
         if: inputs.package-manager == 'pnpm'
