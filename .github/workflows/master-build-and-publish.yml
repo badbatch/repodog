@@ -26,8 +26,9 @@ jobs:
       - name: Install mise
         run: |
           curl https://mise.run | sh
+          echo "$HOME/.local/bin" >> $GITHUB_PATH
+          echo "$HOME/.local/share/mise/shims" >> $GITHUB_PATH
           mise install
-          mise reshim
 
       - name: Install dependencies with pnpm
         if: inputs.package-manager == 'pnpm'
