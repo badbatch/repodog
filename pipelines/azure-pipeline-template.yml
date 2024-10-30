@@ -1,17 +1,9 @@
 name: Repodog build and publish
 
 parameters:
-- name: node-version
-  type: string
-  default: '20.17.0'
 - name: package-manager
   type: string
   default: 'pnpm'
-- name: package-manager-version
-  type: string
-- name: yarn-version
-  type: number
-  default: 1
 
 jobs:
 - job: build-and-publish
@@ -27,38 +19,20 @@ jobs:
       displayName: "Get full Git history"
       fetchDepth: 0
 
-    - task: UseNode@1
-      inputs:
-        version: ${{ parameters.node-version }}
-        displayName: "Use Node.js ${{ parameters.node-version }}"
-
     - script: |
-        curl -o- -L https://yarnpkg.com/install.sh | bash
-        export PATH=$HOME/.yarn/bin:$PATH
-      condition: and(eq(parameters.package-manager,'yarn'),eq(parameters.yarn-version,1))
-      displayName: "Install yarn classic"
-
-    - script: |
-        corepack enable
-        corepack prepare yarn@${{ parameters.package-manager-version }} --activate
-      condition: and(eq(parameters.package-manager,'yarn'),ne(parameters.yarn-version,1))
-      displayName: "Install modern yarn"
-
-    - script: |
-        corepack enable
-        corepack prepare pnpm@${{ parameters.package-manager-version }} --activate
-      condition: eq(parameters.package-manager,'pnpm')
-      displayName: "Install pnpm"
+        curl https://mise.run | sh
+        mise install
+      displayName: "Install mise"
 
     - task: npmAuthenticate@0
       inputs:
         workingFile: .npmrc
 
-    - script: pnpm install
+    - script: mise x -- pnpm install
       condition: eq(parameters.package-manager,'pnpm')
       displayName: "Install dependencies with pnpm"
 
-    - script: yarn install
+    - script: mise x -- yarn install
       condition: eq(parameters.package-manager,'yarn')
       displayName: "Install dependencies with yarn"
 

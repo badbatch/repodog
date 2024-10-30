@@ -18,5 +18,3 @@ resources:
 
 jobs:
 - template: pipelines/azure-pipeline-template.yml@repodog
-  parameters:
-    package-manager-version: '9.11.0'
