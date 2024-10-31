@@ -1,5 +1,29 @@
 # Changelog
 
+## 1.7.47 (2024-10-31)
+
+### New Features
+
+* **repodog:**  enforce no casting / non-null asserting (82ed2ec3)
+* **new:**  add support for mise (05e591e8)
+* **syncpack-config:**  move to carat for peers (72e95733)
+* **eslint-config:**  add object shorthand rule (fc07df05)
+
+### Bug Fixes
+
+* **repodog:**
+  * address vulnerabilities (a9229345)
+  * prefix cicd cmds with mise x -- (c29c1e24)
+
+### Refactors
+
+* **repodog:**
+  * change to get mise tools in path again (40f440f3)
+  * change to get mise tools in path (d971cc8d)
+  * update azure pipeline to support mise (c532e806)
+  * update github actions to fix mise integration (e3f5cd99)
+  * update github actions config to work with mise (ae83aad0)
+
 ## 1.7.46 (2024-09-26)
 
 ### Documentation Changes
