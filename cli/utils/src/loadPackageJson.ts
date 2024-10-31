@@ -31,8 +31,13 @@ export const loadPackageJson = (packageJsonPath: string) => {
   let packageJson: PackageJson;
 
   try {
+    // JSON.parse returns an any type.
+    // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
     packageJson = JSON.parse(readFileSync(sanitizedPackageJsonPath, { encoding: 'utf8' })) as PackageJson;
   } catch (error: unknown) {
+    // catch arg has to be of type unknown, but in this context it will
+    // always be of type Error.
+    // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
     verboseLog(`Package.json read error: ${(error as Error).name}, ${(error as Error).message}`);
     throw new Error(`Could not resolve the package.json at: ${sanitizedPackageJsonPath}`);
   }
@@ -47,6 +52,9 @@ export const loadPackageJson = (packageJsonPath: string) => {
     throw new Error(`Expected the package.json at "${sanitizedPackageJsonPath}" to have a version`);
   }
 
+  // typescript struggling to drive name and version are
+  // required after above checks.
+  // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
   const validatedPackageJson = packageJson as SetRequired<PackageJson, 'name' | 'version'>;
   packageJsonCache[sanitizedPackageJsonPath] = validatedPackageJson;
   return validatedPackageJson;

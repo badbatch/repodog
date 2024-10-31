@@ -8,6 +8,8 @@ const getRange = (semver: string) => {
 
 export const getLatestCompatibleVersion = async (name: string, semver: string) => {
   try {
+    // JSON.parse returns an any type.
+    // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
     const output = JSON.parse(await asyncExec(`npm view ${name}@"${getRange(semver)}" version --json`)) as
       | string[]
       | string;

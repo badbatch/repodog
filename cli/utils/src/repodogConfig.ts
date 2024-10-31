@@ -17,6 +17,8 @@ export const addRepodogConfigToCache = (config: Partial<RepodogConfig>) => {
       : Language.JAVASCRIPT;
   }
 
+  // Need to look into why this is cast in more detail.
+  // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
   cachedConfig = newConfig as RepodogConfig;
   return newConfig;
 };
@@ -29,6 +31,8 @@ export const getCachedRepodogConfig = () => cachedConfig;
 
 export const readRepodogConfig = <C>(basePath: string) => {
   try {
+    // JSON.parse returns an any type.
+    // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
     return JSON.parse(readFileSync(resolve(basePath, REPODOG_CONFIG_FILENAME), { encoding: 'utf8' })) as C;
   } catch {
     return;
@@ -47,6 +51,9 @@ export const loadRepodogConfig = ({ required = false }: LoadRepodogConfigArgumen
   const globalConfig = readRepodogConfig<GlobalRepodogConfig>(homedir());
   const projectConfig = readRepodogConfig<RepodogConfig>(process.cwd());
 
+  // Empty object is not equivalent to RepodogConfig even though
+  // all properties are optional.
+  // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
   const config = (
     globalConfig || projectConfig ? merge({}, globalConfig ?? {}, projectConfig ?? {}) : {}
   ) as RepodogConfig;

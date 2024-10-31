@@ -7,6 +7,8 @@ export const loadQuestions = async (
   configTypePath: string[],
   questionOverrides?: Record<string, QuestionOverrides>,
 ) => {
+  // The import is a json file, which is not typed literally.
+  // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
   const { default: baseQuestions } = (await import(`../questions/${internalTypePath.join(sep)}.json`, {
     assert: { type: 'json' },
   })) as {
@@ -21,6 +23,8 @@ export const loadQuestions = async (
   }
 
   let finalQuestions = [...baseQuestions];
+  // Difficult to type in with the get generic arguments.
+  // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
   const override = get(questionOverrides, configTypePath.join('.')) as unknown as QuestionOverride | undefined;
 
   if (!override) {
@@ -30,7 +34,7 @@ export const loadQuestions = async (
 
   if (Array.isArray(override.remove)) {
     verboseLog(`Remove question override: ${override.remove.join(', ')}`);
-    finalQuestions = finalQuestions.filter(question => !override.remove!.includes(question.name));
+    finalQuestions = finalQuestions.filter(question => !override.remove?.includes(question.name));
   }
 
   if (Array.isArray(override.add)) {
@@ -42,7 +46,7 @@ export const loadQuestions = async (
     verboseLog(`Replace question override:\n${JSON.stringify(override.replace, undefined, 2)}\n`);
 
     finalQuestions = finalQuestions.map(question => {
-      const questionToReplace = override.replace!.find(replaceQuestion => replaceQuestion.name === question.name);
+      const questionToReplace = override.replace?.find(replaceQuestion => replaceQuestion.name === question.name);
       return questionToReplace ?? question;
     });
   }

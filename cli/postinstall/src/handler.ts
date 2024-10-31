@@ -35,6 +35,8 @@ export const handler = async (argv: PostInstallHandlerArguments) => {
       );
     }
 
+    // yargs types subtype as a string, but it has to be a NewRepoSubtype.
+    // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
     const subtype = argv.subtype as NewRepoSubtype;
     const type = argv.type;
     const packageManager = getPackageManager();
@@ -48,6 +50,9 @@ export const handler = async (argv: PostInstallHandlerArguments) => {
     return shelljs.exit(0);
   } catch (error: unknown) {
     shelljs.echo(
+      // catch arg has to be of type unknown, but in this context it will
+      // always be of type Error.
+      // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
       `${colors.magenta('Repodog')} ${colors.dim('=>')} ${colors.red(`Error: ${(error as Error).message}`)}`,
     );
 

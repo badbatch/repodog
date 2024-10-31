@@ -8,7 +8,9 @@ export const getPeerDependenciesToInstall = async (name: string) => {
 
   try {
     verboseLog(`Getting ${name} packageJson from npm registry`);
-    const packageJson = (await getPackageJsonFromNpmRegistry(name)) as PackageJson | undefined;
+    // Library does not allow for return value being undefined.
+    // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
+    const packageJson = (await getPackageJsonFromNpmRegistry<PackageJson>(name)) as PackageJson | undefined;
 
     if (!packageJson) {
       return nameAndVersion;

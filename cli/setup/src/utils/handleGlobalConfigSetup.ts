@@ -20,6 +20,8 @@ export const handleGlobalConfigSetup = async () => {
   verboseLog(`Global config questions:\n${JSON.stringify(questions, undefined, 2)}\n`);
 
   const answers = removeEmptyAnswers(
+    // Types don't match, but they are equivalent.
+    // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
     await enquirer.prompt(enrichQuestions(questions, (config ?? {}) as Record<string, string>)),
   );
 

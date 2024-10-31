@@ -28,6 +28,9 @@ export const versionPackage = (
     verboseLog(`Outputting package.json with new version: ${newVersion}`);
     writeFileSync(packageJsonPath, `${JSON.stringify({ ...packageJson, version: newVersion }, undefined, 2)}\n`);
   } catch (error: unknown) {
+    // catch arg has to be of type unknown, but in this context it will
+    // always be of type Error.
+    // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
     verboseLog(`Package.json output error: ${(error as Error).name}, ${(error as Error).message}`);
     throw new Error(`Could not write the package.json to: ${packageJsonPath}`);
   }

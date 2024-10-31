@@ -2,7 +2,11 @@ import { type Language } from '@repodog/cli-utils';
 import { type ChatCompletionMessageParam } from 'openai/resources/index.mjs';
 import { WriteType } from '../types.ts';
 
-const testInitialMessages = (fileName: string, fileContents: string, language: Language) => [
+const testInitialMessages = (
+  fileName: string,
+  fileContents: string,
+  language: Language,
+): ChatCompletionMessageParam[] => [
   {
     content: `Write Jest unit tests for the ${language} file \`./${fileName}\`:\n\`\`\`\n${fileContents}\n\`\`\``,
     role: 'user',
@@ -26,4 +30,4 @@ const initialMessagesTypeMapper = {
 };
 
 export const getMessagesByType = (type: WriteType, fileName: string, fileContents: string, language: Language) =>
-  initialMessagesTypeMapper[type](fileName, fileContents, language) as ChatCompletionMessageParam[];
+  initialMessagesTypeMapper[type](fileName, fileContents, language);

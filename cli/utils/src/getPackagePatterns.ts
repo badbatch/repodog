@@ -1,4 +1,4 @@
-import { type LoadOptions, load } from 'js-yaml';
+import { load } from 'js-yaml';
 import { readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { loadPackageJson } from './loadPackageJson.ts';
@@ -23,12 +23,9 @@ export const getPackagePatterns = (packageManager: PackageManager) => {
 
       case PackageManager.PNPM: {
         const pnpmWorkspaceYamlPath = resolve(process.cwd(), 'pnpm-workspace.yaml');
-        const typedLoad = load as (path: string, options?: LoadOptions) => unknown;
-
-        const pnpmWorkspaceYaml = typedLoad(
-          readFileSync(pnpmWorkspaceYamlPath, { encoding: 'utf8' }),
-        ) as PnpmWorkspaceYaml;
-
+        // load returns an unknown type and does not support generics.
+        // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
+        const pnpmWorkspaceYaml = load(readFileSync(pnpmWorkspaceYamlPath, { encoding: 'utf8' })) as PnpmWorkspaceYaml;
         return pnpmWorkspaceYaml.packages;
       }
     }

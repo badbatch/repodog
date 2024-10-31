@@ -77,6 +77,9 @@ export const handler = async (argv: WriteHandlerArguments) => {
     return shelljs.exit(0);
   } catch (error: unknown) {
     shelljs.echo(
+      // catch arg has to be of type unknown, but in this context it will
+      // always be of type Error.
+      // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
       `${colors.magenta('Repodog')} ${colors.dim('=>')} ${colors.red(`Error: ${(error as Error).message}`)}`,
     );
 

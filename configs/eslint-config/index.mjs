@@ -1,4 +1,5 @@
-import { fixupPluginRules } from '@eslint/compat';
+import { fixupConfigRules, fixupPluginRules } from '@eslint/compat';
+import { FlatCompat } from '@eslint/eslintrc';
 import eslint from '@eslint/js';
 import stylistic from '@stylistic/eslint-plugin';
 import importX from 'eslint-plugin-import-x';
@@ -16,6 +17,10 @@ import tsEslint from 'typescript-eslint';
 
 const cwd = process.cwd();
 const project = './tsconfig.json';
+
+const flatCompat = new FlatCompat({
+  baseDirectory: cwd,
+});
 
 // eslint convention is to export default
 // eslint-disable-next-line import-x/no-default-export
@@ -36,7 +41,12 @@ export default tsEslint.config(
     ],
   },
   {
-    extends: [eslint.configs.recommended, importX.flatConfigs.recommended, unicorn.configs['flat/recommended']],
+    extends: [
+      eslint.configs.recommended,
+      importX.flatConfigs.recommended,
+      unicorn.configs['flat/recommended'],
+      ...fixupConfigRules(flatCompat.extends('plugin:eslint-comments/recommended')),
+    ],
     files: ['**/*.{mjs,cjs,js,jsx,ts,tsx}'],
     languageOptions: {
       ecmaVersion: 'latest',
@@ -94,6 +104,7 @@ export default tsEslint.config(
         { blankLine: 'always', next: 'default', prev: '*' },
         { blankLine: 'always', next: '*', prev: 'break' },
       ],
+      'eslint-comments/disable-enable-pair': 0,
       'import-x/extensions': [2, 'ignorePackages'],
       'import-x/namespace': 0,
       'import-x/no-default-export': 2,
@@ -216,6 +227,7 @@ export default tsEslint.config(
       'typescript-sort-keys': fixupPluginRules(typescriptSortKeys),
     },
     rules: {
+      '@typescript-eslint/consistent-type-assertions': [2, { assertionStyle: 'never' }],
       '@typescript-eslint/consistent-type-definitions': 0,
       '@typescript-eslint/consistent-type-imports': [
         2,
@@ -257,7 +269,7 @@ export default tsEslint.config(
           selector: 'typeLike',
         },
       ],
-      '@typescript-eslint/no-non-null-assertion': 0,
+      '@typescript-eslint/no-non-null-assertion': 2,
       '@typescript-eslint/no-shadow': 2,
       '@typescript-eslint/no-unnecessary-type-parameters': 0,
       '@typescript-eslint/no-unused-vars': [
@@ -290,5 +302,19 @@ export default tsEslint.config(
   {
     extends: [prettierRecommended],
     files: ['**/*.{mjs,cjs,js,jsx,ts,tsx}'],
+  },
+  {
+    extends: [prettierRecommended],
+    files: ['**/*.{mjs,cjs,js,jsx,ts,tsx}'],
+  },
+  {
+    files: ['**/*.{spec,test}.*', '**/__testUtils__/**'],
+    rules: {
+      '@typescript-eslint/consistent-type-assertions': [
+        2,
+        { assertionStyle: 'as', objectLiteralTypeAssertions: 'allow' },
+      ],
+      '@typescript-eslint/no-non-null-assertion': 0,
+    },
   },
 );

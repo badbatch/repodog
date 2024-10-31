@@ -92,6 +92,8 @@ export const handler = async (argv: CutHandlerArguments) => {
     }
 
     const preid = argv.preid;
+    // yargs types tag as a string, but it has to be a ReleaseTag or undefined.
+    // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
     const tag = argv.tag as ReleaseTag | undefined;
     const type = argv.type;
     const packageManager = getPackageManager();
@@ -165,6 +167,9 @@ export const handler = async (argv: CutHandlerArguments) => {
         verboseLog(`Outputting project packageJson with new version: ${newVersion}`);
         writeFileSync(packageJsonPath, JSON.stringify({ ...packageJson, version: newVersion }, undefined, 2));
       } catch (error: unknown) {
+        // catch arg has to be of type unknown, but in this context it will
+        // always be of type Error.
+        // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
         verboseLog(`Package.json output error: ${(error as Error).name}, ${(error as Error).message}`);
         throw new Error(`Could not write the package.json to: ${packageJsonPath}`);
       }
@@ -191,6 +196,9 @@ export const handler = async (argv: CutHandlerArguments) => {
     return shelljs.exit(0);
   } catch (error: unknown) {
     shelljs.echo(
+      // catch arg has to be of type unknown, but in this context it will
+      // always be of type Error.
+      // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
       `${colors.magenta('Repodog')} ${colors.dim('=>')} ${colors.red(`Error: ${(error as Error).message}`)}`,
     );
 

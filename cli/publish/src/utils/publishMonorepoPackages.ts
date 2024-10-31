@@ -15,6 +15,9 @@ export const publishMonorepoPackages = async (packageManager: PackageManager) =>
     verboseLog(`Publishing package: ${name}`);
 
     try {
+      // typescript struggling to derive packageMeta[name]
+      // cannot be undefined.
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
       const { path } = packageMeta[name]!;
       const { dir } = parse(path);
 
@@ -28,6 +31,9 @@ export const publishMonorepoPackages = async (packageManager: PackageManager) =>
       process.chdir(projectRoot);
     } catch (error: unknown) {
       shelljs.echo(
+        // catch arg has to be of type unknown, but in this context it will
+        // always be of type Error.
+        // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
         `${colors.magenta('Repodog')} ${colors.dim('=>')} Error publishing ${name}: ${(error as Error).message}`,
       );
 

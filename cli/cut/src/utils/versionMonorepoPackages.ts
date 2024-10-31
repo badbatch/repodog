@@ -33,7 +33,11 @@ export const versionMonorepoPackages = ({
 
   for (let index = packageMetaKeys.length - 1; index >= 0; index -= 1) {
     verboseLog('>>>> PACKAGE START <<<<');
+    // We know packageMetaKeys[index] cannot be undefined.
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     const packageMetaKey = packageMetaKeys[index]!;
+    // We know packageMetaRecord[packageMetaKey] cannot be undefined.
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     const packageMeta = packageMetaRecord[packageMetaKey]!;
 
     try {
@@ -94,6 +98,9 @@ export const versionMonorepoPackages = ({
       verboseLog('>>>> PACKAGE END <<<<\n');
     } catch (error: unknown) {
       shelljs.echo(
+        // catch arg has to be of type unknown, but in this context it will
+        // always be of type Error.
+        // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
         `${colors.magenta('Repodog')} ${colors.dim('=>')} ${colors.red(`Error: ${(error as Error).message}`)}`,
       );
 
