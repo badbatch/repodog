@@ -10,13 +10,7 @@
     "jsx": "react-jsx",
     "lib": [
       "dom",
-      "dom.iterable",
-      "es2016.array.include",
-      "es2017.object",
-      "es2020.promise",
-      "es2021.string",
-      "es6",
-      "esnext.asynciterable",
+      "esnext",
       "scripthost",
       "webworker"
     ],
