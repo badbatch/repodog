@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.7.48 (2024-11-01)
+
+### Refactors
+
+* **ts-config:**  update libs (60aa31dd)
+
 ## 1.7.47 (2024-10-31)
 
 ### New Features
