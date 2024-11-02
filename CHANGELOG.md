@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.7.50 (2024-11-02)
+
+### Bug Fixes
+
+* **eslint-config:**  sort broken rule config (ae6e9e05)
+
 ## 1.7.49 (2024-11-02)
 
 ### Bug Fixes
