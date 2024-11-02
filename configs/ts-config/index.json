@@ -9,10 +9,11 @@
     "forceConsistentCasingInFileNames": true,
     "jsx": "react-jsx",
     "lib": [
-      "dom",
-      "esnext",
-      "scripthost",
-      "webworker"
+      "DOM",
+      "DOM.Iterable",
+      "ESNext",
+      "ScriptHost",
+      "WebWorker"
     ],
     "module": "NodeNext",
     "moduleResolution": "NodeNext",
