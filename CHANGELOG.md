@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.7.49 (2024-11-02)
+
+### Bug Fixes
+
+* **ts-config:**  add additional lib entry (7313a329)
+
 ## 1.7.48 (2024-11-01)
 
 ### Refactors
