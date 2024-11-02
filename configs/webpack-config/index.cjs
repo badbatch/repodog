@@ -1,3 +1,5 @@
+// Filename too generic to be covered by rule glob.
+// eslint-disable-next-line import-x/no-extraneous-dependencies
 const webpack = require('webpack');
 
 const { NODE_ENV } = process.env;

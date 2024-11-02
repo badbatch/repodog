@@ -122,7 +122,6 @@ export default tsEslint.config(
             '**/__mocks__/**',
             '**/.storybook/**',
           ],
-          peerDependencies: false,
         },
       ],
       'import-x/order': [
@@ -304,11 +303,10 @@ export default tsEslint.config(
     files: ['**/*.{mjs,cjs,js,jsx,ts,tsx}'],
   },
   {
-    extends: [prettierRecommended],
-    files: ['**/*.{mjs,cjs,js,jsx,ts,tsx}'],
-  },
-  {
     files: ['**/*.{spec,test}.*', '**/__testUtils__/**'],
+    plugins: {
+      '@typescript-eslint': tsEslint.plugin,
+    },
     rules: {
       '@typescript-eslint/consistent-type-assertions': [
         2,
