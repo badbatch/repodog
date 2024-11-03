@@ -107,6 +107,8 @@ export default tsEslint.config(
       'eslint-comments/disable-enable-pair': 0,
       'import-x/extensions': [2, 'ignorePackages'],
       'import-x/namespace': 0,
+      // This rule doesn't work on typescript files currently.
+      // https://github.com/un-ts/eslint-plugin-import-x/issues/144
       'import-x/no-default-export': 2,
       'import-x/no-extraneous-dependencies': [
         2,
