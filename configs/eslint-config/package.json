@@ -1,7 +1,7 @@
 {
   "name": "@repodog/eslint-config",
   "description": "The Repodog ESLint config module.",
-  "version": "9.0.6",
+  "version": "9.0.7",
   "author": "Dylan Aubrey",
   "license": "MIT",
   "homepage": "https://github.com/badbatch/repodog",

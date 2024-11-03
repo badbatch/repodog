@@ -1,5 +1,15 @@
 # Changelog
 
+## 1.7.51 (2024-11-03)
+
+### Chores
+
+* **storybook-config:**  bump dep version (23571e6b)
+
+### Documentation Changes
+
+* **eslint-config:**  add comment to rule (2eae9f77)
+
 ## 1.7.50 (2024-11-02)
 
 ### Bug Fixes
