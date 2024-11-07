@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.7.53 (2024-11-07)
+
+### Refactors
+
+* **eslint-config-jasmine:**  update config to get working (5fa4afec)
+
 ## 1.7.52 (2024-11-07)
 
 ### Bug Fixes
