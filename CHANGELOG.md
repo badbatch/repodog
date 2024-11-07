@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.7.52 (2024-11-07)
+
+### Bug Fixes
+
+* **eslint-config-jasmine:**  use new config style (a4bc1919)
+
 ## 1.7.51 (2024-11-03)
 
 ### Chores
