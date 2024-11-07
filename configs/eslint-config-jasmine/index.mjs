@@ -8,7 +8,7 @@ export default [
       jasmine,
     },
     rules: {
-      ...jasmine.configs.recommended,
+      ...jasmine.configs.recommended.rules,
       'jasmine/new-line-before-expect': 0,
       'jasmine/no-spec-dupes': 0,
       'jasmine/no-suite-dupes': 0,
