@@ -38,9 +38,12 @@ module.exports = {
 
 ```javascript
 // webpack.config.cjs
-const repodogConfig = require('@repodog/webpack-config/test.cjs');
+const swcConfig = require('@repodog/swc-config');
+const webpackConfig = require('@repodog/webpack-config/test.cjs');
 
 module.exports = {
-  ...repodogConfig()
+  ...webpackConfig({ compiler: 'babel-loader' }),
+  // or
+  ...webpackConfig({ compiler: ['swc-loader', swcConfig] }),
 };
 ```

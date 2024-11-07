@@ -1,16 +1,9 @@
-import { fixupConfigRules } from '@eslint/compat';
-import { FlatCompat } from '@eslint/eslintrc';
-
-const cwd = process.cwd();
-
-const flatCompat = new FlatCompat({
-  baseDirectory: cwd,
-});
+import jasmine from 'eslint-plugin-jasmine';
 
 // eslint convention is to export default
 // eslint-disable-next-line import-x/no-default-export
 export default [
-  ...fixupConfigRules(flatCompat.extends('plugin:jasmine/recommended')),
+  jasmine.configs.recommended,
   {
     rules: {
       'jasmine/new-line-before-expect': 0,

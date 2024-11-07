@@ -16,6 +16,7 @@
     "access": "public"
   },
   "peerDependencies": {
+    "@repodog/webpack-config": "workspace:*",
     "@types/jasmine": "<6",
     "jasmine-browser-runner": "<3",
     "jasmine-core": "<6",

@@ -1,8 +1,13 @@
 {
   "name": "repodog",
+  "description": "An command line module for managing repositories and a set of configs for popular tooling.",
   "version": "1.7.51",
   "author": "Dylan Aubrey",
+  "license": "MIT",
   "private": true,
+  "homepage": "https://github.com/badbatch/repodog",
+  "repository": "badbatch/repodog",
+  "bugs": "https://github.com/badbatch/repodog/issues",
   "type": "module",
   "engines": {
     "node": "^22",
@@ -12,7 +17,6 @@
     "build": "pnpm run -r build",
     "clean:deps": "pnpm run -r clean:deps && del-cli ./node_modules",
     "clean:dist": "pnpm run -r clean:dist",
-    "commit": "commit",
     "cut:changelog": "changelog",
     "lint": "pnpm run /^lint:.*/",
     "lint:code": "eslint .",
