@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.7.55 (2024-11-08)
+
+### Refactors
+
+* **webpack-config:**  add cli peer dep (ecae0ea0)
+
 ## 1.7.54 (2024-11-07)
 
 ### Bug Fixes
