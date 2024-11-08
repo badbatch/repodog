@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.7.56 (2024-11-08)
+
+### Bug Fixes
+
+* **webpack-config:**  update docs and test config (2556f1cc)
+
 ## 1.7.55 (2024-11-08)
 
 ### Refactors
