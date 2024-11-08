@@ -42,6 +42,7 @@ const configs = [
     jsc: {
       ...sharedConfig.jsc,
       parser: {
+        dynamicImport: true,
         syntax: 'typescript',
         tsx: true,
       },
@@ -53,6 +54,7 @@ const configs = [
     jsc: {
       ...sharedConfig.jsc,
       parser: {
+        dynamicImport: true,
         jsx: true,
         syntax: 'ecmascript',
       },
