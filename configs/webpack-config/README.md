@@ -16,9 +16,9 @@ npm install @repodog/webpack-config webpack --save-dev
 
 ```shell
 # terminal
-npm install babel-loader --save-dev
+npm install babel-loader webpack-cli --save-dev
 # or
-npm install swc-loader --save-dev
+npm install swc-loader webpack-cli --save-dev
 ```
 
 ## Use package
