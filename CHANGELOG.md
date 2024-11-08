@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.7.57 (2024-11-08)
+
+### Bug Fixes
+
+* **swc-config:**  add dynamic import flag (d721eca2)
+
 ## 1.7.56 (2024-11-08)
 
 ### Bug Fixes
