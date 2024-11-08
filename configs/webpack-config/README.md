@@ -27,8 +27,8 @@ npm install swc-loader webpack-cli --save-dev
 // package.json
 {
   "scripts": {
-    "build": "webpack --config ./webpack.config.cjs"
-  }
+    "build": "webpack --config ./webpack.config.cjs",
+  },
 }
 ```
 
@@ -41,6 +41,9 @@ const webpackConfig = require('@repodog/webpack-config');
 module.exports = {
   ...webpackConfig({ compiler: 'babel-loader' }),
   entry: './src/index.ts',
+  // or
+  entry: './src/index.js',
+
   output: {
     filename: 'index.js',
     path: path.resolve(__dirname, 'dist'),
@@ -56,8 +59,12 @@ const swcConfig = require('@repodog/swc-config');
 const webpackConfig = require('@repodog/webpack-config');
 
 module.exports = {
-  ...webpackConfig({ compiler: ['swc-loader', swcConfig] }),
+  ...webpackConfig({ compiler: ['swc-loader', swcConfig.ts] }),
   entry: './src/index.ts',
+  // or
+  ...webpackConfig({ compiler: ['swc-loader', swcConfig.js] }),
+  entry: './src/index.js',
+
   output: {
     filename: 'index.js',
     path: path.resolve(__dirname, 'dist'),
@@ -73,9 +80,11 @@ const swcConfig = require('@repodog/swc-config');
 const webpackConfig = require('@repodog/webpack-config/test.cjs');
 
 module.exports = {
-  ...webpackConfig({ compiler: 'babel-loader' })
+  ...webpackConfig({ compiler: 'babel-loader' }),
   // or
-  ...webpackConfig({ compiler: ['swc-loader', swcConfig] }),
+  ...webpackConfig({ compiler: ['swc-loader', swcConfig.ts] }),
+  // or
+  ...webpackConfig({ compiler: ['swc-loader', swcConfig.js] }),
 };
 ```
 
