@@ -68,7 +68,7 @@ Object.defineProperty(configs, 'ts', {
 });
 
 Object.defineProperty(configs, 'js', {
-  get: () => configs[0],
+  get: () => configs[1],
 });
 
 module.exports = configs;
