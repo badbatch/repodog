@@ -90,6 +90,10 @@ module.exports = {
 
 ### Environment variables
 
+#### `DEBUG` = `'true' || 'false'`
+
+Sets `source-map-loader` and `SourceMapDevToolPlugin`.
+
 #### `NODE_ENV` = `'production' || 'development' || 'test'`
 
 When set to `'prod'` or `'production'`, source maps are omitted.

@@ -1,6 +1,7 @@
 const webpack = require('webpack');
 
-const { NODE_ENV } = process.env;
+const { DEBUG, NODE_ENV } = process.env;
+const isDebug = DEBUG === 'true';
 const isProdEnv = NODE_ENV === 'production';
 
 // See https://github.com/swc-project/jest/issues/115 for explanation
@@ -37,9 +38,8 @@ const config = ({ compiler } = {}) => {
                 },
               },
             ]),
-        ...(isProdEnv
-          ? []
-          : [
+        ...(isDebug
+          ? [
               {
                 enforce: 'pre',
                 test: /\.(mjs|cjs|jsx?|tsx?)$/,
@@ -47,18 +47,19 @@ const config = ({ compiler } = {}) => {
                   loader: require.resolve('source-map-loader'),
                 },
               },
-            ]),
+            ]
+          : []),
       ],
     },
     plugins: [
-      ...(isProdEnv
-        ? []
-        : [
+      ...(isDebug
+        ? [
             new webpack.SourceMapDevToolPlugin({
               moduleFilenameTemplate: 'webpack://[namespace]/[resource-path]?[loaders]',
               test: /\.(mjs|cjs|jsx?|tsx?)$/,
             }),
-          ]),
+          ]
+        : []),
     ],
     resolve: {
       extensions: ['.ts', '.tsx', '.mjs', '.cjs', '.js', '.jsx', '.json'],
