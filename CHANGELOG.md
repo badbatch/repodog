@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.7.58 (2024-11-09)
+
+### Refactors
+
+* **webpack-config:**  put source map loader/plugin behind debug flag (d6f28fc2)
+
 ## 1.7.57 (2024-11-08)
 
 ### Bug Fixes
