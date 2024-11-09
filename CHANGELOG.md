@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.7.59 (2024-11-09)
+
+### Bug Fixes
+
+* **swc-config:**  js getter had wrong index (cee428c5)
+* **repodog:**  remove dependabot version updates (069514c1)
+
 ## 1.7.58 (2024-11-09)
 
 ### Refactors
