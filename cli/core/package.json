@@ -18,6 +18,9 @@
   "bin": {
     "repodog": "./bin/repodog.mjs"
   },
+  "imports": {
+    "#*": "./src/*"
+  },
   "exports": {
     ".": {
       "types": "./dist/types/index.d.ts",

@@ -18,6 +18,9 @@ sh: "<%= packageManager %> install && <%= packageManager %> add -D @repodog/cli 
   "main": "./dist/cjs/index.cjs",
   "module": "./dist/esm/index.mjs",
   "types": "./dist/types/cjs/index.d.cts",
+  "imports": {
+    "#*": "./src/*"
+  },
   "exports": {
     ".": {
       "types": {

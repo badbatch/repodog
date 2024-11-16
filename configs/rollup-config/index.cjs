@@ -34,6 +34,7 @@ const config = (options = {}) => {
   const plugins = [
     json(),
     nodeResolve({
+      exportConditions: ['node'],
       extensions,
     }),
     commonjs(),

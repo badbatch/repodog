@@ -29,6 +29,7 @@ module.exports = {
     'main',
     'module',
     'types',
+    'imports',
     'exports',
     'publishConfig',
     'scripts',
