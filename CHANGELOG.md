@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.7.60 (2024-11-16)
+
+### New Features
+
+* **repodog:**  support esm imports path aliases (679f49d3)
+
 ## 1.7.59 (2024-11-09)
 
 ### Bug Fixes
