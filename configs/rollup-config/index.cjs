@@ -1,10 +1,11 @@
+const alias = require('@rollup/plugin-alias');
 const commonjs = require('@rollup/plugin-commonjs');
 const image = require('@rollup/plugin-image');
 const json = require('@rollup/plugin-json');
 const { nodeResolve } = require('@rollup/plugin-node-resolve');
 const terser = require('@rollup/plugin-terser');
 const { existsSync, mkdirSync, writeFileSync } = require('node:fs');
-const { basename } = require('node:path');
+const { basename, resolve } = require('node:path');
 const { plugin: analyzer } = require('rollup-plugin-analyzer');
 const copy = require('rollup-plugin-copy');
 const sourcemaps = require('rollup-plugin-sourcemaps');
@@ -33,6 +34,14 @@ const config = (options = {}) => {
 
   const plugins = [
     json(),
+    alias({
+      entries: [
+        {
+          find: '#',
+          replacement: resolve(packageDir, 'src/'),
+        },
+      ],
+    }),
     nodeResolve({
       exportConditions: ['node'],
       extensions,
