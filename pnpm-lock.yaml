@@ -750,9 +750,6 @@ importers:
 
   configs/rollup-config:
     dependencies:
-      '@rollup/plugin-alias':
-        specifier: ^5.1.1
-        version: 5.1.1(rollup@4.22.4)
       '@rollup/plugin-commonjs':
         specifier: ^26.0.1
         version: 26.0.1(rollup@4.22.4)
@@ -2240,15 +2237,6 @@ packages:
 
   '@repodog/cli-utils@1.4.13':
     resolution: {integrity: sha512-wqK/linSObZdKLfAJ6reEi2epZETfedBRsLsW99mRM8akapOIGRmuPaafLvE1f4ooOXMGXevfXgWrZDok0TzIw==}
-
-  '@rollup/plugin-alias@5.1.1':
-    resolution: {integrity: sha512-PR9zDb+rOzkRb2VD+EuKB7UC41vU5DIwZ5qqCpk0KJudcWAyi8rvYOhS7+L5aZCspw1stTViLgN5v6FF1p5cgQ==}
-    engines: {node: '>=14.0.0'}
-    peerDependencies:
-      rollup: ^1.20.0||^2.0.0||^3.0.0||^4.0.0
-    peerDependenciesMeta:
-      rollup:
-        optional: true
 
   '@rollup/plugin-babel@6.0.4':
     resolution: {integrity: sha512-YF7Y52kFdFT/xVSuVdjkV5ZdX/3YtmX0QulG+x0taQOtJdHYzVU61aSSkAgVJ7NOv6qPkIYiJSgSWWN/DM5sGw==}
@@ -9860,10 +9848,6 @@ snapshots:
       lodash-es: 4.17.21
       semver: 7.6.3
       shelljs: 0.8.5
-
-  '@rollup/plugin-alias@5.1.1(rollup@4.22.4)':
-    optionalDependencies:
-      rollup: 4.22.4
 
   '@rollup/plugin-babel@6.0.4(@babel/core@7.25.2)(@types/babel__core@7.20.5)(rollup@4.22.4)':
     dependencies:
