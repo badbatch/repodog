@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.7.62 (2024-11-17)
+
+### Bug Fixes
+
+* **repodog:**  lock file (730d718e)
+* **rollup-config:**  sort issue with import aliases not being bundled (c3980c0d)
+
 ## 1.7.61 (2024-11-17)
 
 ### New Features
