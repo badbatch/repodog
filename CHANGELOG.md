@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.7.61 (2024-11-17)
+
+### New Features
+
+* **rollup-config:**  add alias plugin (d0a46762)
+
 ## 1.7.60 (2024-11-16)
 
 ### New Features
