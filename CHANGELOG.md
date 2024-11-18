@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.7.63 (2024-11-18)
+
+### New Features
+
+* **jest-config:**  add support for inline snapshots (e8004409)
+
 ## 1.7.62 (2024-11-17)
 
 ### Bug Fixes
