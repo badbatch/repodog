@@ -1,5 +1,13 @@
-const config = require('@repodog/syncpack-config');
+const { versionGroups, ...rest } = require('@repodog/syncpack-config');
 
 module.exports = {
-  ...config,
+  ...rest,
+  versionGroups: [
+    {
+      dependencies: ['prettier'],
+      isIgnored: true,
+      packages: ['@repodog/jest-config'],
+    },
+    ...versionGroups,
+  ],
 };

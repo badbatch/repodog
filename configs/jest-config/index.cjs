@@ -82,6 +82,7 @@ const config = ({ compilerOptions = {} } = {}) => {
     extensionsToTreatAsEsm: isCjs ? [] : ['.jsx', '.ts', '.tsx'],
     moduleFileExtensions: ['ts', 'tsx', 'js', 'mjs', 'cjs', 'jsx', 'json'],
     moduleNameMapper,
+    prettierPath: require.resolve('prettier'),
     rootDir: packageDir,
     testEnvironment: isJsEnvWeb ? 'jsdom' : 'node',
     testMatch,

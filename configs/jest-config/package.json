@@ -16,7 +16,8 @@
     "access": "public"
   },
   "dependencies": {
-    "identity-obj-proxy": "^3.0.0"
+    "identity-obj-proxy": "^3.0.0",
+    "prettier": "^2.8.8"
   },
   "peerDependencies": {
     "@jest/globals": "<30",
