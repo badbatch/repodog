@@ -31,6 +31,7 @@ sh: "<%= packageManager %> install && <%= packageManager %> add -D @repodog/cli 
     "coverage-generate": "nyc report --reporter=lcov -t coverage --report-dir coverage && open ./coverage/lcov-report/index.html",
     "coverage-merge": "istanbul-merge --out coverage/coverage.json coverage/unit/coverage-final.json coverage/storybook/coverage-storybook.json",
     "cut:changelog": "changelog",
+    "installActivateMise": "sh shellScripts/installActivateMise.sh",
     "lint": "<%= packageManager %> run /^lint:.*/",
     "lint:code": "eslint .",
     "lint:docs": "markdownlint-cli2 --config \".markdownlint.json\" \"**/*.md\" \"!**/node_modules/**\"",

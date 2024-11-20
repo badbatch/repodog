@@ -43,6 +43,7 @@ sh: "<%= packageManager %> install && <%= packageManager %> add -D @repodog/cli 
     "compile:esm": "rollup -c ./rollup.config.cjs",
     "compile:types": "tsc --project ./tsconfig.build.json && cts-types build dist/types/esm dist/types/cjs",
     "cut:changelog": "changelog",
+    "installActivateMise": "sh shellScripts/installActivateMise.sh",
     "lint": "pnpm run /^lint:.*/",
     "lint:code": "eslint . --ext .ts,.cjs",
     "lint:docs": "markdownlint-cli2 --config \".markdownlint.json\" \"**/*.md\" \"!**/node_modules/**\"",

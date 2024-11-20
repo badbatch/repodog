@@ -24,6 +24,7 @@ sh: "<%= packageManager %> install && <%= packageManager %> add -D @repodog/cli 
     "clean:deps": "<%= packageManager %> run -r clean:deps && del-cli ./node_modules",
     "clean:dist": "<%= packageManager %> run -r clean:dist",
     "cut:changelog": "changelog",
+    "installActivateMise": "sh shellScripts/installActivateMise.sh",
     "lint": "<%= packageManager %> run /^lint:.*/",
     "lint:code": "eslint .",
     "lint:docs": "markdownlint-cli2 --config \".markdownlint.json\" \"**/*.md\" \"!**/node_modules/**\"",
