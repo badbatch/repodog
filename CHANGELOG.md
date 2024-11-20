@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.7.64 (2024-11-20)
+
+### Bug Fixes
+
+* **repodog:**  remove mise from postinstall (d27f8645)
+
 ## 1.7.63 (2024-11-18)
 
 ### New Features
