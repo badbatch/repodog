@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.7.65 (2024-12-09)
+
+### Chores
+
+* **eslint-config:**  upgrade deps (35e35c33)
+
 ## 1.7.64 (2024-11-20)
 
 ### Bug Fixes
