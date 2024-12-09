@@ -1,5 +1,3 @@
-// eslint is randomly not resolving module
-// eslint-disable-next-line import-x/no-unresolved
 import playwright from 'eslint-plugin-playwright';
 
 // eslint convention is to export default
