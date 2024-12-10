@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.7.66 (2024-12-10)
+
+### New Features
+
+* **swc-config:**  support decorators (4af1a723)
+
 ## 1.7.65 (2024-12-09)
 
 ### Chores
