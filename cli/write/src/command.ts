@@ -17,6 +17,7 @@ export const builder = (argv: Argv) =>
       type: 'boolean',
     })
     .option('skip-node-version-check', {
+      alias: 'snvc',
       desc: 'To skip the node version check',
       type: 'boolean',
     })

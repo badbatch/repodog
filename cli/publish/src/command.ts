@@ -3,6 +3,7 @@ import { type Argv } from 'yargs';
 export const builder = (argv: Argv) =>
   argv
     .option('skip-node-version-check', {
+      alias: 'snvc',
       desc: 'To skip the node version check',
       type: 'boolean',
     })
