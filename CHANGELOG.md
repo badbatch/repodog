@@ -1,5 +1,15 @@
 # Changelog
 
+## 1.7.67 (2024-12-13)
+
+### Documentation Changes
+
+* **core:**  minor update to readme (5bd50e25)
+
+### New Features
+
+* **core:**  support skip node version check alias (0466f9bd)
+
 ## 1.7.66 (2024-12-10)
 
 ### New Features
