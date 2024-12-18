@@ -119,6 +119,8 @@ export default tsEslint.config(
             '**/*.setup.*',
             '**/*.test.*',
             '**/*.stories.*',
+            '**/test/**',
+            '**/tests/**',
             '**/__testUtils__/**',
             '**/__tests__/**',
             '**/__mocks__/**',
