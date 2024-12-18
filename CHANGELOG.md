@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.7.68 (2024-12-18)
+
+### Bug Fixes
+
+* **eslint-config:**  add test and tests folder to rule (a851c972)
+
 ## 1.7.67 (2024-12-13)
 
 ### Documentation Changes
