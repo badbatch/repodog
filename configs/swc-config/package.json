@@ -21,10 +21,14 @@
   },
   "peerDependencies": {
     "@rollup/plugin-swc": "<0.4",
-    "@swc/core": "<2"
+    "@swc/core": "<2",
+    "core-js": "<4"
   },
   "peerDependenciesMeta": {
     "@rollup/plugin-swc": {
+      "optional": true
+    },
+    "core-js": {
       "optional": true
     }
   },

@@ -9,21 +9,28 @@ The Repodog SWC config.
 
 ```shell
 # terminal
-npm install @repodog/swc-config @swc/core --save-dev
+npm install @repodog/swc-config @swc/core -D
 ```
 
-## Install optional peer dependency
+## Install optional peer dependencies
 
 ```shell
 # terminal
-npm install @rollup/plugin-swc --save-dev
+npm install @rollup/plugin-swc -D
+```
+
+If your compiled code requires polyfills, the build config uses `core-js` for those so you may need to include `core-js` as a dependency.
+
+```shell
+# terminal
+npm install core-js
 ```
 
 ## Use package
 
-This package is designed to be used with `rollup`, `webpack` and `jest` as it allows the the config to be a javascript file. The SWC command line library only supports a `.swcrc` json file.
+This package is designed to be used with `rollup`, `webpack` and `jest` as it allows the config to be a javascript file. The SWC command line library only supports a `.swcrc` json file.
 
-As a javascript file that is passed into rollup, you can override the configuration and it can be dynamically modified based off environment variables.
+As a javascript file that is passed into rollup, you can override the configuration, and it can be dynamically modified based off environment variables.
 
 Whether the config transforms javascript or typescript is based on whether the config finds a `tsconfig.json` at the root of your project.
 

@@ -15,15 +15,6 @@ const config = () => {
   const plugins = [
     [require.resolve('@babel/plugin-proposal-decorators'), { legacy: true }],
     [require.resolve('@babel/plugin-syntax-import-attributes'), { deprecatedAssertSyntax: true }],
-    [
-      require.resolve('@babel/plugin-transform-runtime'),
-      {
-        corejs: false,
-        helpers: true,
-        regenerator: true,
-        useESModules: !isCjs,
-      },
-    ],
     require.resolve('babel-plugin-codegen'),
     require.resolve('babel-plugin-macros'),
   ];
@@ -32,10 +23,11 @@ const config = () => {
     [
       require.resolve('@babel/preset-env'),
       {
+        corejs: '3.38.0',
         debug: isDebug,
         modules: isCjs ? 'commonjs' : false,
         targets,
-        useBuiltIns: false,
+        useBuiltIns: 'usage',
       },
     ],
     [
