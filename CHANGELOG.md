@@ -1,5 +1,15 @@
 # Changelog
 
+## 1.7.69 (2024-12-23)
+
+### Bug Fixes
+
+* **root:**  vulnerabilities (904176cb)
+
+### Refactors
+
+* **babel-config:**  more back to using core-js to match swc` (297b83c9)
+
 ## 1.7.68 (2024-12-18)
 
 ### Bug Fixes
