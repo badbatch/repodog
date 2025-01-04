@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.7.71 (2025-01-04)
+
+### Bug Fixes
+
+* **eslint-config:**  update ignore list (1bae67c4)
+
 ## 1.7.70 (2025-01-04)
 
 ### Chores
