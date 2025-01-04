@@ -1,5 +1,16 @@
 # Changelog
 
+## 1.7.70 (2025-01-04)
+
+### Chores
+
+* **root:**  add asertion to json import (7dffa380)
+
+### Bug Fixes
+
+* **eslint-config:**  exclude next and idea folders (57e53cd7)
+* **setup:**  add import json assert (acc657d0)
+
 ## 1.7.69 (2024-12-23)
 
 ### Bug Fixes
