@@ -30,6 +30,8 @@ export default tsEslint.config(
       '!.*',
       '.github/*',
       '.husky/*',
+      '.idea/*',
+      '.next/*',
       '.vscode/*',
       'coverage/*',
       'dist/*',
