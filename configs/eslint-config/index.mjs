@@ -37,6 +37,8 @@ export default tsEslint.config(
       'dist/*',
       'lib/*',
       'node_modules/*',
+      '**/.idea/*',
+      '**/.next/*',
       '**/dist/*',
       '**/lib/*',
       '**/node_modules/*',
