@@ -58,18 +58,51 @@ writeFileSync(resolve(cwd, './package.json'), JSON.stringify(packageJson, undefi
 
 const [firstCssContent, ...otherCssContent] = cssContent;
 const parsed = css.parse(firstCssContent);
+const mediaRules = {};
 
-parsed.stylesheet.rules = otherCssContent.reduce((uniqueRules, entry) => {
-  const { rules = [] } = css.parse(entry).stylesheet ?? {};
-
-  for (const rule of rules) {
+const setUniqueRules = (uniqueRules, newRules) => {
+  for (const rule of newRules) {
     if (!uniqueRules.some(uniqueRule => isEqual(uniqueRule.selectors, rule.selectors))) {
       uniqueRules = [...uniqueRules, rule];
     }
   }
 
   return uniqueRules;
+};
+
+parsed.stylesheet.rules = otherCssContent.reduce((uniqueRules, entry, _index) => {
+  const { rules: nodes = [] } = css.parse(entry).stylesheet ?? {};
+
+  for (const node of nodes) {
+    switch (node.type) {
+      case 'media': {
+        if (mediaRules[node.media]) {
+          mediaRules[node.media].rules = setUniqueRules(mediaRules[node.media].rules, node.rules);
+        } else {
+          mediaRules[node.media] = node;
+        }
+
+        break;
+      }
+
+      case 'rule': {
+        if (!uniqueRules.some(uniqueRule => isEqual(uniqueRule.selectors, node.selectors))) {
+          uniqueRules = [...uniqueRules, node];
+        }
+
+        break;
+      }
+
+      default: {
+        uniqueRules = [...uniqueRules, node];
+      }
+    }
+  }
+
+  return uniqueRules;
 }, parsed.stylesheet.rules);
+
+parsed.stylesheet.rules = [...parsed.stylesheet.rules, ...Object.values(mediaRules)];
 
 const stylesPath = resolve(cwd, './dist/styles');
 

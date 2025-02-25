@@ -10,7 +10,7 @@ export const loadQuestions = async (
   // The import is a json file, which is not typed literally.
   // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
   const { default: baseQuestions } = (await import(`../questions/${internalTypePath.join(sep)}.json`, {
-    assert: { type: 'json' },
+    with: { type: 'json' },
   })) as {
     default: PromptOption[];
   };
