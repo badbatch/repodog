@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.7.72 (2025-02-25)
+
+### Bug Fixes
+
+* **root:**  vulnerabilities (76b6fb6c)
+* **new:**  replace assert with with (7e4e6ecc)
+
 ## 1.7.71 (2025-01-04)
 
 ### Bug Fixes
