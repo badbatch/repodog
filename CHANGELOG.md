@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.7.73 (2025-03-14)
+
+### Bug Fixes
+
+* **rollup-config:**  use on windows (33a13da4)
+
 ## 1.7.72 (2025-02-25)
 
 ### Bug Fixes
