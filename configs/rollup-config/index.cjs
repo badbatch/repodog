@@ -4,7 +4,7 @@ const json = require('@rollup/plugin-json');
 const { nodeResolve } = require('@rollup/plugin-node-resolve');
 const terser = require('@rollup/plugin-terser');
 const { existsSync, mkdirSync, writeFileSync } = require('node:fs');
-const { basename } = require('node:path');
+const { basename, isAbsolute, resolve } = require('node:path');
 const { plugin: analyzer } = require('rollup-plugin-analyzer');
 const copy = require('rollup-plugin-copy');
 const sourcemaps = require('rollup-plugin-sourcemaps');
@@ -12,7 +12,7 @@ const sourcemaps = require('rollup-plugin-sourcemaps');
 const { MODULE_SYSTEM = 'esm', NODE_ENV } = process.env;
 const isProdEnv = NODE_ENV === 'production';
 const packageDir = process.cwd();
-const external = id => !id.startsWith('.') && !id.startsWith('/') && !id.startsWith('#');
+const external = id => !id.startsWith('.') && !id.startsWith('#') && !isAbsolute(id);
 const outputExtension = MODULE_SYSTEM === 'esm' ? 'mjs' : 'cjs';
 
 const sourcemapPathTransform = sourcePath => {
@@ -66,7 +66,7 @@ const config = (options = {}) => {
 
   return {
     external,
-    input: `${packageDir}/src/index`,
+    input: resolve(packageDir, 'src', 'index'),
     onwarn: ({ code, message }) => {
       if (code !== 'THIS_IS_UNDEFIEND') {
         console.error(message);
