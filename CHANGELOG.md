@@ -1,5 +1,15 @@
 # Changelog
 
+## 1.7.74 (2025-05-23)
+
+### Bug Fixes
+
+* **root:**  vulnerabilities (9d0a9887)
+
+### Refactors
+
+* **rollup-config:**  move to .mjs and add macros plugin (63dfd72d)
+
 ## 1.7.73 (2025-03-14)
 
 ### Bug Fixes

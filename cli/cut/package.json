@@ -1,7 +1,7 @@
 {
   "name": "@repodog/cli-cut",
   "description": "The Repodog cli cut module.",
-  "version": "1.4.19",
+  "version": "1.4.20",
   "author": "Dylan Aubrey",
   "license": "MIT",
   "homepage": "https://github.com/badbatch/repodog",
