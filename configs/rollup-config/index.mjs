@@ -1,13 +1,16 @@
-const commonjs = require('@rollup/plugin-commonjs');
-const image = require('@rollup/plugin-image');
-const json = require('@rollup/plugin-json');
-const { nodeResolve } = require('@rollup/plugin-node-resolve');
-const terser = require('@rollup/plugin-terser');
-const { existsSync, mkdirSync, writeFileSync } = require('node:fs');
-const { basename, isAbsolute, resolve } = require('node:path');
-const { plugin: analyzer } = require('rollup-plugin-analyzer');
-const copy = require('rollup-plugin-copy');
-const sourcemaps = require('rollup-plugin-sourcemaps');
+import commonjs from '@rollup/plugin-commonjs';
+import image from '@rollup/plugin-image';
+import json from '@rollup/plugin-json';
+import { nodeResolve } from '@rollup/plugin-node-resolve';
+import terser from '@rollup/plugin-terser';
+import { existsSync, mkdirSync, writeFileSync } from 'node:fs';
+import { basename, isAbsolute, resolve } from 'node:path';
+import analyzer from 'rollup-plugin-analyzer';
+import copy from 'rollup-plugin-copy';
+import sourcemaps from 'rollup-plugin-sourcemaps';
+// false positive
+// eslint-disable-next-line import-x/no-unresolved
+import macros from 'unplugin-macros/rollup';
 
 const { MODULE_SYSTEM = 'esm', NODE_ENV } = process.env;
 const isProdEnv = NODE_ENV === 'production';
@@ -37,6 +40,7 @@ const config = (options = {}) => {
       extensions,
     }),
     commonjs(),
+    macros(),
     options.compiler,
     image(),
   ];
@@ -68,7 +72,7 @@ const config = (options = {}) => {
     external,
     input: resolve(packageDir, 'src', 'index'),
     onwarn: ({ code, message }) => {
-      if (code !== 'THIS_IS_UNDEFIEND') {
+      if (code !== 'THIS_IS_UNDEFINED') {
         console.error(message);
       }
     },
@@ -82,4 +86,6 @@ const config = (options = {}) => {
   };
 };
 
-module.exports = config;
+// rollup requires config to be default export
+// eslint-disable-next-line import-x/no-default-export
+export default config;

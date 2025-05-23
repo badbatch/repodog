@@ -37,7 +37,7 @@ Whether the config transforms javascript or typescript is based on whether the c
 ### With Rollup
 
 ```javascript
-// rollup.config.cjs
+// rollup.config.mjs
 const rollupConfig = require('@repodog/rollup-config');
 const swcConfig = require('@repodog/swc-config');
 const swcPlugin = require('@rollup/plugin-swc');

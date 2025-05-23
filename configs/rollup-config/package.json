@@ -11,24 +11,26 @@
     "url": "https://github.com/badbatch/repodog/configs/rollup-config"
   },
   "bugs": "https://github.com/badbatch/repodog/issues",
-  "main": "index.cjs",
+  "type": "module",
+  "main": "index.mjs",
   "publishConfig": {
     "access": "public"
   },
   "dependencies": {
-    "@rollup/plugin-commonjs": "^26.0.1",
+    "@rollup/plugin-commonjs": "^28.0.3",
     "@rollup/plugin-image": "^3.0.3",
     "@rollup/plugin-json": "^6.1.0",
-    "@rollup/plugin-node-resolve": "^15.2.3",
+    "@rollup/plugin-node-resolve": "^16.0.1",
     "@rollup/plugin-terser": "^0.4.4",
     "rollup-plugin-analyzer": "^4.0.0",
     "rollup-plugin-copy": "^3.5.0",
-    "rollup-plugin-sourcemaps": "^0.6.3"
+    "rollup-plugin-sourcemaps": "^0.6.3",
+    "unplugin-macros": "^0.17.0"
   },
   "peerDependencies": {
     "rollup": "<5"
   },
   "devDependencies": {
-    "rollup": "^4.22.4"
+    "rollup": "^4.41.0"
   }
 }

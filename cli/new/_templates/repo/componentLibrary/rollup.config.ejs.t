@@ -1,10 +1,10 @@
 ---
-to: rollup.config.cjs
+to: rollup.config.mjs
 ---
-const rollupConfig = require('@repodog/rollup-config');
-const swcConfig = require('@repodog/swc-config');
-const swcPlugin = require('@rollup/plugin-swc');
+import rollupConfig from '@repodog/rollup-config';
+import swcConfig from '@repodog/swc-config';
+import swcPlugin from '@rollup/plugin-swc';
 
-module.exports = {
+export default {
   ...rollupConfig({ compiler: swcPlugin({ swc: swcConfig.ts }) }),
 };

@@ -20,7 +20,7 @@ npm install @repodog/rollup-config rollup  --save-dev
 // package.json
 {
   "scripts": {
-    "build": "rollup -c ./rollup.config.cjs"
+    "build": "rollup -c ./rollup.config.mjs"
   }
 }
 ```
@@ -28,7 +28,7 @@ npm install @repodog/rollup-config rollup  --save-dev
 ### With Babel
 
 ```javascript
-// rollup.config.cjs
+// rollup.config.mjs
 const rollupConfig = require('@repodog/rollup-config');
 const babelConfig = require('@repodog/babel-config/rollup');
 const { babel: babelPlugin } = require('@rollup/plugin-babel');
@@ -41,7 +41,7 @@ module.exports = {
 ### With SWC
 
 ```javascript
-// rollup.config.cjs
+// rollup.config.mjs
 const rollupConfig = require('@repodog/rollup-config');
 const swcConfig = require('@repodog/swc-config');
 const swcPlugin = require('@rollup/plugin-swc');
