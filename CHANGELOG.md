@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.7.77 (2025-05-28)
+
+### Chores
+
+* **root:**  bump deps (bb3c22b0)
+
 ## 1.7.76 (2025-05-28)
 
 ### Refactors
