@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.7.76 (2025-05-28)
+
+### Refactors
+
+* **jasmine-browser-config:**  update deps (8c0619cf)
+
 ## 1.7.75 (2025-05-28)
 
 ### Bug Fixes
