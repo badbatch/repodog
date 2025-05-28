@@ -1,4 +1,6 @@
-module.exports = {
+// jasmine requires default export
+// eslint-disable-next-line import-x/no-default-export
+export default {
   browser: {
     name: 'headlessChrome',
   },

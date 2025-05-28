@@ -98,4 +98,4 @@ Sets `source-map-loader` and `SourceMapDevToolPlugin`.
 
 When set to `'prod'` or `'production'`, source maps are omitted.
 
-**You cam also use the environment variables outlined in [`@repodog/babel-config`](../babel-config/README.md#environment-variables) or [`@repodog/swc-config`](../swc-config/README.md#environment-variables) to control what is output.**
+**You can also use the environment variables outlined in [`@repodog/babel-config`](../babel-config/README.md#environment-variables) or [`@repodog/swc-config`](../swc-config/README.md#environment-variables) to control what is output.**

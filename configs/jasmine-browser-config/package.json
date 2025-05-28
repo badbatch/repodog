@@ -11,14 +11,15 @@
     "url": "https://github.com/badbatch/repodog/configs/jasmine-browser-config"
   },
   "bugs": "https://github.com/badbatch/repodog/issues",
-  "main": "index.cjs",
+  "type": "module",
+  "main": "index.mjs",
   "publishConfig": {
     "access": "public"
   },
   "peerDependencies": {
     "@repodog/webpack-config": "workspace:*",
     "@types/jasmine": "<6",
-    "jasmine-browser-runner": "<3",
+    "jasmine-browser-runner": "<4",
     "jasmine-core": "<6",
     "jasmine-expect": "<6"
   }

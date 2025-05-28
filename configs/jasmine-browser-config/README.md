@@ -20,18 +20,18 @@ npm install @repodog/jasmine-browser-config @repodog/webpack-config @types/jasmi
   "scripts": {
     "test:browser": "pnpm run test:browser:remove && pnpm run test:browser:build && pnpm run test:browser:run",
     "test:browser:build": "webpack --config ./webpack.config.cjs",
-    "test:browser:debug": "jasmine-browser-runner serve --config=jasmineBrowser.config.cjs --browser chrome",
+    "test:browser:debug": "jasmine-browser-runner serve --config=jasmineBrowser.config.mjs --browser chrome",
     "test:browser:remove": "del-cli ./tests/browser/dist",
-    "test:browser:run": "jasmine-browser-runner runSpecs --config=jasmineBrowser.config.cjs",
+    "test:browser:run": "jasmine-browser-runner runSpecs --config=jasmineBrowser.config.mjs",
   }
 }
 ```
 
 ```javascript
-// jasmineBrowser.config.cjs
-const repodogConfig = require('@repodog/jasmine-browser-config');
+// jasmineBrowser.config.mjs
+import repodogConfig from '@repodog/jasmine-browser-config';
 
-module.exports = {
+export default {
   ...repodogConfig,
 };
 ```
