@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.7.75 (2025-05-28)
+
+### Bug Fixes
+
+* **root:**  update various readmes to fix examples to esm (cb2aa5b4)
+
 ## 1.7.74 (2025-05-23)
 
 ### Bug Fixes
