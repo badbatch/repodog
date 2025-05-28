@@ -38,11 +38,11 @@ Whether the config transforms javascript or typescript is based on whether the c
 
 ```javascript
 // rollup.config.mjs
-const rollupConfig = require('@repodog/rollup-config');
-const swcConfig = require('@repodog/swc-config');
-const swcPlugin = require('@rollup/plugin-swc');
+import rollupConfig from '@repodog/rollup-config';
+import swcConfig from '@repodog/swc-config';
+import swcPlugin from '@rollup/plugin-swc';
 
-module.exports = {
+export default {
   ...rollupConfig({ compiler: swcPlugin({ swc: swcConfig.ts }) }),
   // or
   ...rollupConfig({ compiler: swcPlugin({ swc: swcConfig.js }) }),
@@ -86,11 +86,11 @@ Sets `module.type` to `'es6'` or `'commonjs'`. Default `'esm'`.
 
 #### `DEBUG` = `'true' || 'false'`
 
-Changes `targets` to latest version of chrome / current version of nodejs and sets `env.debug` to `true`.
+Changes `targets` to latest version of chrome / current version of node.js and sets `env.debug` to `true`.
 
 #### `JS_ENV` = `'web' || 'node'`
 
-Changes `targets` to browser based or nodejs based. Default `'node'`.
+Changes `targets` to browser based or node.js based. Default `'node'`.
 
 #### `NODE_ENV` = `'production' || 'development' || 'test'`
 

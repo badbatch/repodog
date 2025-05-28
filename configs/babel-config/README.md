@@ -33,11 +33,12 @@ module.exports = api => ({
 ### Usage with rollup
 
 ```javascript
-const rollupConfig = require('@repodog/rollup-config');
-const babelConfig = require('@repodog/babel-config/rollup');
-const { babel: babelPlugin } = require('@rollup/plugin-babel');
+// rollup.config.mjs
+import rollupConfig from '@repodog/rollup-config';
+import babelConfig from '@repodog/babel-config/rollup';
+import { babel as babelPlugin } from '@rollup/plugin-babel';
 
-module.exports = {
+export default {
   ...rollupConfig({ compiler: babelPlugin(babelConfig) }),
 };
 ```

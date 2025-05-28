@@ -29,11 +29,11 @@ npm install @repodog/rollup-config rollup  --save-dev
 
 ```javascript
 // rollup.config.mjs
-const rollupConfig = require('@repodog/rollup-config');
-const babelConfig = require('@repodog/babel-config/rollup');
-const { babel: babelPlugin } = require('@rollup/plugin-babel');
+import rollupConfig from '@repodog/rollup-config';
+import babelConfig from '@repodog/babel-config/rollup';
+import { babel as babelPlugin } from '@rollup/plugin-babel';
 
-module.exports = {
+export default {
   ...rollupConfig({ compiler: babelPlugin(babelConfig) }),
 };
 ```
@@ -42,11 +42,11 @@ module.exports = {
 
 ```javascript
 // rollup.config.mjs
-const rollupConfig = require('@repodog/rollup-config');
-const swcConfig = require('@repodog/swc-config');
-const swcPlugin = require('@rollup/plugin-swc');
+import rollupConfig from '@repodog/rollup-config';
+import swcConfig from '@repodog/swc-config';
+import swcPlugin from '@rollup/plugin-swc';
 
-module.exports = {
+export default {
   ...rollupConfig({ compiler: swcPlugin({ swc: swcConfig.ts }) }),
   // or
   ...rollupConfig({ compiler: swcPlugin({ swc: swcConfig.js }) }),
@@ -63,4 +63,4 @@ Sets `output.format`, directory name within `./dist` output, and the extension o
 
 When set to `'production'`, terser mangles and compresses, the bundle analyser runs, and source maps are omitted.
 
-**You cam also use the environment variables outlined in [`@repodog/babel-config`](../babel-config/README.md#environment-variables) or [`@repodog/swc-config`](../swc-config/README.md#environment-variables) to control what is output.**
+**You can also use the environment variables outlined in [`@repodog/babel-config`](../babel-config/README.md#environment-variables) or [`@repodog/swc-config`](../swc-config/README.md#environment-variables) to control what is output.**
