@@ -114,7 +114,7 @@ export const handler = async (argv: NewHandlerArguments) => {
       verboseLog(`Flattened template variables:\n${JSON.stringify(flattenedTemplateVariables, undefined, 2)}\n`);
     }
 
-    const questions = await loadQuestions(internalTypePath, configTypePath, questionOverrides);
+    const questions = loadQuestions(internalTypePath, configTypePath, questionOverrides);
     verboseLog(`Questions:\n${JSON.stringify(questions, undefined, 2)}\n`);
     const leafAdditionalTemplatesPath = getLeafAdditionalTemplatesPath(additionalTemplatesPath, externalTypePath);
 

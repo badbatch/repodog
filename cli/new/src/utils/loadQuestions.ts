@@ -1,19 +1,21 @@
 import { type PromptOption, type QuestionOverride, type QuestionOverrides, verboseLog } from '@repodog/cli-utils';
 import { get } from 'lodash-es';
-import { sep } from 'node:path';
+import { readFileSync } from 'node:fs';
+import { dirname, resolve, sep } from 'node:path';
+import { fileURLToPath } from 'node:url';
 
-export const loadQuestions = async (
+export const loadQuestions = (
   internalTypePath: string[],
   configTypePath: string[],
   questionOverrides?: Record<string, QuestionOverrides>,
-) => {
+): PromptOption[] => {
+  const directoryPath = dirname(fileURLToPath(import.meta.url));
+
   // The import is a json file, which is not typed literally.
   // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
-  const { default: baseQuestions } = (await import(`../questions/${internalTypePath.join(sep)}.json`, {
-    with: { type: 'json' },
-  })) as {
-    default: PromptOption[];
-  };
+  const baseQuestions = JSON.parse(
+    readFileSync(resolve(directoryPath, `../questions/${internalTypePath.join(sep)}.json`), { encoding: 'utf8' }),
+  ) as PromptOption[];
 
   verboseLog(`Loaded base questions:\n${JSON.stringify(baseQuestions, undefined, 2)}\n`);
 

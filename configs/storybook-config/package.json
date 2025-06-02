@@ -78,7 +78,7 @@
     }
   },
   "devDependencies": {
-    "cts-types": "^0.0.7",
+    "cts-types": "^0.0.9",
     "del-cli": "^5.1.0"
   }
 }

@@ -33,6 +33,6 @@
     }
   },
   "devDependencies": {
-    "@swc/core": "^1.7.26"
+    "@swc/core": "^1.11.29"
   }
 }

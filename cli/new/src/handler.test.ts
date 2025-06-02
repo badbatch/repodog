@@ -126,27 +126,25 @@ jest.unstable_mockModule('./utils/getLeafAdditionalTemplatesPath.ts', () => ({
 jest.unstable_mockModule('./utils/loadQuestions.ts', () => ({
   loadQuestions: jest
     .fn<(typeof import('./utils/loadQuestions.ts'))['loadQuestions']>()
-    .mockImplementation((_internalTypePath, _configTypePath, questionOverrides) =>
-      Promise.resolve([
-        {
-          message: 'What is question 1',
-          name: 'question1',
-          type: 'input',
-        },
-        {
-          message: 'What is question 2',
-          name: 'question2',
-          type: 'input',
-        },
-        {
-          message: 'What is question 3',
-          name: 'question3',
-          type: 'input',
-        },
-        ...(((questionOverrides!.new!.pkg as QuestionOverrides).library as QuestionOverrides).cli as QuestionOverride)
-          .add!,
-      ]),
-    ),
+    .mockImplementation((_internalTypePath, _configTypePath, questionOverrides) => [
+      {
+        message: 'What is question 1',
+        name: 'question1',
+        type: 'input',
+      },
+      {
+        message: 'What is question 2',
+        name: 'question2',
+        type: 'input',
+      },
+      {
+        message: 'What is question 3',
+        name: 'question3',
+        type: 'input',
+      },
+      ...(((questionOverrides!.new!.pkg as QuestionOverrides).library as QuestionOverrides).cli as QuestionOverride)
+        .add!,
+    ]),
 }));
 
 const { handler: postinstallHandler } = jest.mocked(await import('@repodog/cli-postinstall'));

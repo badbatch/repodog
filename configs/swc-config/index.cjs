@@ -20,6 +20,9 @@ const sharedConfig = {
   },
   isModule: !isCjs,
   jsc: {
+    experimental: {
+      keepImportAttributes: true,
+    },
     keepClassNames: true,
     transform: {
       react: {
@@ -44,6 +47,7 @@ const configs = [
       parser: {
         decorators: true,
         dynamicImport: true,
+        importAttributes: true,
         syntax: 'typescript',
         tsx: true,
       },
@@ -57,6 +61,7 @@ const configs = [
       parser: {
         decorators: true,
         dynamicImport: true,
+        importAttributes: true,
         jsx: true,
         syntax: 'ecmascript',
       },
