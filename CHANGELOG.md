@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.0.1 (2025-06-02)
+
+### Bug Fixes
+
+* **new:**  move to reading file from import due to swc compiling issue (bc997488)
+
 ## 2.0.0 (2025-05-28)
 
 ## 1.7.77 (2025-05-28)
