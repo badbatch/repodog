@@ -1,7 +1,7 @@
 {
   "name": "@repodog/jasmine-browser-config",
   "description": "The Repodog jasmine-browser config module.",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "author": "miami-man",
   "license": "MIT",
   "homepage": "https://github.com/badbatch/repodog",

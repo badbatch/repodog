@@ -1,7 +1,7 @@
 {
   "name": "@repodog/eslint-config-react",
   "description": "The Repodog React ESLint config module.",
-  "version": "9.0.4",
+  "version": "9.0.5",
   "author": "miami-man",
   "license": "MIT",
   "homepage": "https://github.com/badbatch/repodog",

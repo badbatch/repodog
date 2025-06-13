@@ -1,7 +1,7 @@
 {
   "name": "@repodog/jest-config",
   "description": "The Repodog Jest config module.",
-  "version": "29.0.4",
+  "version": "29.0.5",
   "author": "miami-man",
   "license": "MIT",
   "homepage": "https://github.com/badbatch/repodog",

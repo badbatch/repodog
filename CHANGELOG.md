@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.0.2 (2025-06-13)
+
+### Chores
+
+* **root:**  minor update (1115725d)
+
 ## 2.0.1 (2025-06-02)
 
 ### Bug Fixes
