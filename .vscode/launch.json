@@ -105,7 +105,7 @@
         "library",
         "--name", "name",
         "--desc", "desc",
-        "--author", "Dylan Aubrey",
+        "--author", "miami-man",
         "--homepage", "https://github.com/org/name",
         "--mainFilename", "main",
         "--language", "typescript",

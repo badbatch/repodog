@@ -288,7 +288,7 @@ Template variables are flattened and merged and the output is passed into the te
 {
   "templateVariables": {
     "*": {
-      "author": "Dylan Aubrey",
+      "author": "miami-man",
       "homepage": "https://github.com/badbatch/repodog",
       "org": "repodog"
     },

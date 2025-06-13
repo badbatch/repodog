@@ -2,7 +2,7 @@
   "name": "@repodog/markdownlint-config",
   "description": "The Repodog MarkdownLint config module.",
   "version": "1.2.4",
-  "author": "Dylan Aubrey",
+  "author": "miami-man",
   "license": "MIT",
   "homepage": "https://github.com/badbatch/repodog",
   "repository": {

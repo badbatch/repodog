@@ -32,7 +32,7 @@ const repodogConfig = {
   },
   templateVariables: {
     '*': {
-      author: 'Dylan Aubrey',
+      author: 'miami-man',
       homepage: 'https://github.com/badbatch/repodog',
       org: 'repodog',
     },
@@ -231,7 +231,7 @@ describe('handler', () => {
           '/root/node_modules/.bin/hygen',
           ['pkg', 'library'],
           {
-            author: 'Dylan Aubrey',
+            author: 'miami-man',
             excludeTypesFile: false,
             homepage: 'https://github.com/badbatch/repodog',
             language: 'javascript',
@@ -278,7 +278,7 @@ describe('handler', () => {
             '/root/node_modules/.bin/hygen',
             ['new', 'pkg', 'library', 'cli'],
             {
-              author: 'Dylan Aubrey',
+              author: 'miami-man',
               excludeTypesFile: false,
               homepage: 'https://github.com/badbatch/repodog',
               language: 'javascript',
@@ -311,7 +311,7 @@ describe('handler', () => {
               '/root/node_modules/.bin/hygen',
               ['new', 'pkg', 'library', 'cli'],
               {
-                author: 'Dylan Aubrey',
+                author: 'miami-man',
                 excludeTypesFile: false,
                 homepage: 'https://github.com/badbatch/repodog',
                 language: 'javascript',

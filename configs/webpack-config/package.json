@@ -2,7 +2,7 @@
   "name": "@repodog/webpack-config",
   "description": "The Repodog webpack config module.",
   "version": "5.0.9",
-  "author": "Dylan Aubrey",
+  "author": "miami-man",
   "license": "MIT",
   "homepage": "https://github.com/badbatch/repodog",
   "repository": {

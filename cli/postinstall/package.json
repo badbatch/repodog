@@ -2,7 +2,7 @@
   "name": "@repodog/cli-postinstall",
   "description": "The Repodog cli postinstall module.",
   "version": "0.4.16",
-  "author": "Dylan Aubrey",
+  "author": "miami-man",
   "license": "MIT",
   "homepage": "https://github.com/badbatch/repodog",
   "repository": {
