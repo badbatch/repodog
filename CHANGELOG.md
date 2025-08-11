@@ -1,5 +1,14 @@
 # Changelog
 
+## 2.0.3 (2025-08-11)
+
+### Chores
+
+* **root:**
+  * upgrade pnpm (02de0d6d)
+  * upgrade deps (76ffe4cd)
+  * force commit (d173900d)
+
 ## 2.0.2 (2025-06-13)
 
 ### Chores

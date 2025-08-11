@@ -1,7 +1,7 @@
 {
   "name": "@repodog/eslint-config-jasmine",
   "description": "The Repodog Jasmine ESLint config module.",
-  "version": "9.0.8",
+  "version": "9.0.9",
   "author": "miami-man",
   "license": "MIT",
   "homepage": "https://github.com/badbatch/repodog",

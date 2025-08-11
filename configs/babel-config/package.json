@@ -1,7 +1,7 @@
 {
   "name": "@repodog/babel-config",
   "description": "The Repodog Babel config module.",
-  "version": "7.0.6",
+  "version": "7.0.7",
   "author": "miami-man",
   "license": "MIT",
   "homepage": "https://github.com/badbatch/repodog",

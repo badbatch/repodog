@@ -1,7 +1,7 @@
 {
   "name": "@repodog/eslint-config-playwright",
   "description": "The Repodog Playwright ESLint config module.",
-  "version": "9.0.5",
+  "version": "9.0.6",
   "author": "miami-man",
   "license": "MIT",
   "homepage": "https://github.com/badbatch/repodog",
