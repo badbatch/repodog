@@ -11,7 +11,7 @@
   "type": "module",
   "engines": {
     "node": "^22",
-    "pnpm": "^9"
+    "pnpm": "^10"
   },
   "scripts": {
     "build": "pnpm run -r build",
