@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.0.4 (2025-08-11)
+
+### Bug Fixes
+
+* **eslint-config:**  change how comments plugin is used (7e30abd4)
+
 ## 2.0.3 (2025-08-11)
 
 ### Chores
