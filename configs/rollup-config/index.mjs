@@ -8,8 +8,6 @@ import { basename, isAbsolute, resolve } from 'node:path';
 import analyzer from 'rollup-plugin-analyzer';
 import copy from 'rollup-plugin-copy';
 import sourcemaps from 'rollup-plugin-sourcemaps';
-// false positive
-// eslint-disable-next-line import-x/no-unresolved
 import macros from 'unplugin-macros/rollup';
 
 const { MODULE_SYSTEM = 'esm', NODE_ENV } = process.env;

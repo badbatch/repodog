@@ -16,11 +16,11 @@
     "access": "public"
   },
   "dependencies": {
-    "glob": "^11.0.0",
+    "glob": "^11.0.3",
     "source-map-loader": "^5.0.0"
   },
   "peerDependencies": {
-    "babel-loader": "<10",
+    "babel-loader": "<11",
     "swc-loader": "<1",
     "webpack": "<6",
     "webpack-cli": "<6"
@@ -37,6 +37,6 @@
     }
   },
   "devDependencies": {
-    "webpack": "^5.94.0"
+    "webpack": "^5.101.0"
   }
 }

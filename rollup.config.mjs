@@ -1,5 +1,3 @@
-// false positive
-// eslint-disable-next-line import-x/no-unresolved
 import babelConfig from '@repodog/babel-config/rollup';
 import rollupConfig from '@repodog/rollup-config';
 import swcConfig from '@repodog/swc-config';

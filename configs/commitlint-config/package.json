@@ -16,7 +16,7 @@
     "access": "public"
   },
   "dependencies": {
-    "@commitlint/config-conventional": "^19.5.0"
+    "@commitlint/config-conventional": "^19.8.1"
   },
   "peerDependencies": {
     "@commitlint/cli": "<20",

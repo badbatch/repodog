@@ -31,9 +31,6 @@ export const config = ({ compiler }: ConfigParams = {}): StorybookConfig => {
         : []),
       ...(isCompilerSwc ? ['@storybook/addon-webpack5-compiler-swc'] : []),
     ],
-    docs: {
-      autodocs: 'tag',
-    },
     framework: {
       name: '@storybook/react-webpack5',
       options: {},

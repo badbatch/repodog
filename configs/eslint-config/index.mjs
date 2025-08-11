@@ -2,7 +2,7 @@ import { fixupConfigRules, fixupPluginRules } from '@eslint/compat';
 import { FlatCompat } from '@eslint/eslintrc';
 import eslint from '@eslint/js';
 import stylistic from '@stylistic/eslint-plugin';
-import importX from 'eslint-plugin-import-x';
+import { importX } from 'eslint-plugin-import-x';
 import preferArrow from 'eslint-plugin-prefer-arrow';
 import prettierRecommended from 'eslint-plugin-prettier/recommended';
 import sortClassMembers from 'eslint-plugin-sort-class-members';
@@ -11,8 +11,6 @@ import sortKeysFix from 'eslint-plugin-sort-keys-fix';
 import typescriptSortKeys from 'eslint-plugin-typescript-sort-keys';
 import unicorn from 'eslint-plugin-unicorn';
 import globals from 'globals';
-// eslint is randomly not resolving module
-// eslint-disable-next-line import-x/no-unresolved
 import tsEslint from 'typescript-eslint';
 
 const cwd = process.cwd();

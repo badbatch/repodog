@@ -11,11 +11,9 @@ let cachedConfig: RepodogConfig | undefined;
 export const addRepodogConfigToCache = (config: Partial<RepodogConfig>) => {
   const newConfig = merge({}, cachedConfig ?? {}, config);
 
-  if (!newConfig.language) {
-    newConfig.language = existsSync(resolve(process.cwd(), 'tsconfig.json'))
-      ? Language.TYPESCRIPT
-      : Language.JAVASCRIPT;
-  }
+  newConfig.language ??= existsSync(resolve(process.cwd(), 'tsconfig.json'))
+    ? Language.TYPESCRIPT
+    : Language.JAVASCRIPT;
 
   // Need to look into why this is cast in more detail.
   // eslint-disable-next-line @typescript-eslint/consistent-type-assertions

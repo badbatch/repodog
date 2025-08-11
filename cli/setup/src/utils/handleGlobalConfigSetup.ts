@@ -8,7 +8,7 @@ import {
 } from '@repodog/cli-utils';
 import enquirer from 'enquirer';
 import { homedir } from 'node:os';
-import questions from '../questions.json' assert { type: 'json' };
+import questions from '../questions.json' with { type: 'json' };
 
 export const handleGlobalConfigSetup = async () => {
   const config = readRepodogConfig<GlobalRepodogConfig>(homedir());

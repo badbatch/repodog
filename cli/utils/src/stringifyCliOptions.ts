@@ -3,7 +3,7 @@ export const stringifyCliOptions = (object: Record<string, boolean | number | st
 
   for (const key in object) {
     switch (true) {
-      case typeof object[key] == 'boolean' && !!object[key]: {
+      case typeof object[key] == 'boolean' && object[key]: {
         options += ` --${key}`;
         break;
       }

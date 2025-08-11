@@ -25,7 +25,7 @@ export const createChatCompletion = async (
 
   verboseLog('Chat completion received');
 
-  if (!response.choices[0]?.message?.content) {
+  if (!response.choices[0]?.message.content) {
     throw new Error(`Create chat completion request did not return any content`);
   }
 

@@ -41,8 +41,8 @@
     "enquirer": "^2.4.1",
     "hygen": "^6.2.11",
     "lodash-es": "^4.17.21",
-    "shelljs": "^0.8.4",
-    "yargs": "^17.7.2"
+    "shelljs": "^0.10.0",
+    "yargs": "^18.0.0"
   },
   "devDependencies": {
     "@jest/globals": "^29.7.0",
@@ -53,8 +53,8 @@
     "@rollup/plugin-babel": "^6.0.4",
     "@rollup/plugin-swc": "^0.3.0",
     "@types/lodash-es": "^4.17.12",
-    "@types/shelljs": "^0.8.15",
+    "@types/shelljs": "^0.8.17",
     "@types/yargs": "^17.0.33",
-    "del-cli": "^5.1.0"
+    "del-cli": "^6.0.0"
   }
 }

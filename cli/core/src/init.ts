@@ -10,7 +10,7 @@ import semver from 'semver';
 import shelljs from 'shelljs';
 import yargs, { type Argv } from 'yargs';
 import { hideBin } from 'yargs/helpers';
-import packageJson from '../package.json' assert { type: 'json' };
+import packageJson from '../package.json' with { type: 'json' };
 
 export const init = () => {
   // yargs does not provide a way to pass generic to type args.
