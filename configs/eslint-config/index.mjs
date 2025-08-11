@@ -1,7 +1,7 @@
-import { fixupConfigRules, fixupPluginRules } from '@eslint/compat';
-import { FlatCompat } from '@eslint/eslintrc';
+import { fixupPluginRules } from '@eslint/compat';
 import eslint from '@eslint/js';
 import stylistic from '@stylistic/eslint-plugin';
+import eslintComments from 'eslint-plugin-eslint-comments';
 import { importX } from 'eslint-plugin-import-x';
 import preferArrow from 'eslint-plugin-prefer-arrow';
 import prettierRecommended from 'eslint-plugin-prettier/recommended';
@@ -15,10 +15,6 @@ import tsEslint from 'typescript-eslint';
 
 const cwd = process.cwd();
 const project = './tsconfig.json';
-
-const flatCompat = new FlatCompat({
-  baseDirectory: cwd,
-});
 
 // eslint convention is to export default
 // eslint-disable-next-line import-x/no-default-export
@@ -43,12 +39,7 @@ export default tsEslint.config(
     ],
   },
   {
-    extends: [
-      eslint.configs.recommended,
-      importX.flatConfigs.recommended,
-      unicorn.configs['flat/recommended'],
-      ...fixupConfigRules(flatCompat.extends('plugin:eslint-comments/recommended')),
-    ],
+    extends: [eslint.configs.recommended, importX.flatConfigs.recommended, unicorn.configs['flat/recommended']],
     files: ['**/*.{mjs,cjs,js,jsx,ts,tsx}'],
     languageOptions: {
       ecmaVersion: 'latest',
@@ -63,6 +54,7 @@ export default tsEslint.config(
     },
     plugins: {
       '@stylistic': stylistic,
+      'eslint-comments': fixupPluginRules(eslintComments),
       'prefer-arrow': fixupPluginRules(preferArrow),
       'sort-class-members': fixupPluginRules(sortClassMembers),
       'sort-destructure-keys': fixupPluginRules(sortDestructureKeys),
@@ -106,7 +98,10 @@ export default tsEslint.config(
         { blankLine: 'always', next: 'default', prev: '*' },
         { blankLine: 'always', next: '*', prev: 'break' },
       ],
-      'eslint-comments/disable-enable-pair': 0,
+      'eslint-comments/no-aggregating-enable': 2,
+      'eslint-comments/no-duplicate-disable': 2,
+      'eslint-comments/no-unlimited-disable': 2,
+      'eslint-comments/no-unused-enable': 2,
       'import-x/extensions': [2, 'ignorePackages'],
       'import-x/namespace': 0,
       // This rule doesn't work on typescript files currently.
