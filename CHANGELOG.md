@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.0.5 (2025-08-12)
+
+### Bug Fixes
+
+* **root:**  vulnerabilities (ff59a85f)
+
 ## 2.0.4 (2025-08-11)
 
 ### Bug Fixes
