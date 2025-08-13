@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.0.6 (2025-08-13)
+
+### Refactors
+
+* **new:**  update templates (d3c935c9)
+
 ## 2.0.5 (2025-08-12)
 
 ### Bug Fixes
