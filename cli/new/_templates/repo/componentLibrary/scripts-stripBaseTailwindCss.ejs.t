@@ -7,7 +7,7 @@ import { readFileSync, writeFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 
 const cwd = process.cwd();
-const cssFile = resolve(cwd, './dist/styles/index.css');
+const cssFile = resolve(cwd, 'dist', 'styles', 'index.css');
 const content = readFileSync(cssFile, { encoding: 'utf8' });
 const parsed = css.parse(content);
 const selectorGroupsToRemove = [['*', '::before', '::after'], ['::backdrop']];

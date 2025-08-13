@@ -17,12 +17,13 @@ sh: "<%= packageManager %> install && <%= packageManager %> add -D @repodog/cli 
   "type": "module",
   "engines": {
     "node": "^22",
-    "pnpm": "^9"
+    "pnpm": "^10"
   },
   "scripts": {
     "build": "pnpm run build:rest && pnpm run build:core",
     "build-storybook": "storybook build",
     "build:core": "<%= packageManager %> <%= packageManagerFilterCmd %> \"./<%= packagesDirName %>/core\" run build",
+    "build:core:prod": "NODE_ENV=production <%= packageManager %> run build:core",
     "build:rest": "<%= packageManager %> <%= packageManagerFilterCmd %> \"./components/!(core)/**\" run build",
     "build:rest:prod": "NODE_ENV=production <%= packageManager %> run build:rest",
     "clean:deps": "pnpm run -r clean:deps && del-cli ./node_modules",
@@ -46,27 +47,27 @@ sh: "<%= packageManager %> install && <%= packageManager %> add -D @repodog/cli 
     "test:storybook": "concurrently --kill-others --success first \"serve ./storybook-static\" \"wait-on tcp:3000 && test-storybook --url http://localhost:3000 --coverage --coverageDirectory coverage/storybook\"",
     "test:unit": "COMPILER=swc node --require=suppress-experimental-warnings --experimental-vm-modules node_modules/jest/bin/jest.js --coverageDirectory coverage/unit",
     "type-check": "tsc --noEmit",
-    "validate": "<%= packageManager %> run syncpack && <%= packageManager %> run build:rest:prod && <%= packageManager %> run build:core && <%= packageManager %> run lint && <%= packageManager %> run type-check && <%= packageManager %> run build-storybook && <%= packageManager %> run test && <%= packageManager %> run test-axe"
+    "validate": "<%= packageManager %> run syncpack && <%= packageManager %> run build:rest:prod && <%= packageManager %> run build:core:prod && <%= packageManager %> run lint && <%= packageManager %> run type-check && <%= packageManager %> run build-storybook && <%= packageManager %> run test && <%= packageManager %> run test-axe"
   },
   "devDependencies": {
-    "@types/node": "^22.5.5",
-    "autoprefixer": "^10.4.20",
-    "concurrently": "^8.2.2",
+    "@types/node": "^24.2.1",
+    "autoprefixer": "^10.4.21",
+    "concurrently": "^9.2.0",
     "css": "^3.0.0",
-    "del-cli": "^5.1.0",
+    "del-cli": "^6.0.0",
     "generate-changelog": "^1.8.0",
-    "husky": "^9.1.6",
+    "husky": "^9.1.7",
     "istanbul-merge": "^2.0.0",
     "lodash-es": "^4.17.21",
-    "nyc": "^15.1.0",
-    "postcss": "^8.4.47",
-    "react": "^18.3.1",
-    "react-docgen-typescript": "^2.2.2",
+    "nyc": "^17.1.0",
+    "postcss": "^8.5.6",
+    "react": "^19.1.0",
+    "react-docgen-typescript": "^2.4.0",
     "react-docgen-typescript-markdown-render": "^0.2.5",
-    "react-dom": "^18.3.1",
-    "serve": "^14.2.2",
-    "shelljs": "^0.8.5",
-    "tailwindcss": "^3.4.13",
-    "wait-on": "^7.2.0"
+    "react-dom": "^19.1.0",
+    "serve": "^14.2.4",
+    "shelljs": "^0.10.0",
+    "tailwindcss": "^4.1.11",
+    "wait-on": "^8.0.4"
   }
 }

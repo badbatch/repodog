@@ -11,14 +11,14 @@ const initialIndexContent = `
 /* eslint-disable import/export */`;
 
 const cwd = process.cwd();
-const dirents = readdirSync(resolve(cwd, '../'), { withFileTypes: true });
+const dirents = readdirSync(resolve(cwd, '..'), { withFileTypes: true });
 
 const directories = dirents
   .filter(dirent => dirent.isDirectory() && !cwd.endsWith(dirent.name))
   .map(dirent => dirent.name);
 
-const packageJson = JSON.parse(readFileSync(resolve(cwd, './package.json'), { encoding: 'utf8' }));
-const tsconfig = JSON.parse(readFileSync(resolve(cwd, './tsconfig.json'), { encoding: 'utf8' }));
+const packageJson = JSON.parse(readFileSync(resolve(cwd, 'package.json'), { encoding: 'utf8' }));
+const tsconfig = JSON.parse(readFileSync(resolve(cwd, 'tsconfig.json'), { encoding: 'utf8' }));
 
 packageJson.dependencies = {};
 
@@ -37,22 +37,22 @@ for (const name of directories) {
   }
 
   exportStatements = [...exportStatements, `export * from '${packageName}';`];
-  const dependencyCssPath = resolve(cwd, `./node_modules/${packageName}/dist/styles/index.css`);
+  const dependencyCssPath = resolve(cwd, 'node_modules', packageName, 'dist', 'styles', 'index.css');
 
   if (existsSync(dependencyCssPath)) {
     cssContent = [...cssContent, readFileSync(dependencyCssPath, { encoding: 'utf8' })];
   }
 }
 
-const indexFilePath = resolve(cwd, './src/index.ts');
+const indexFilePath = resolve(cwd, 'src', 'index.ts');
 const indexFileContent = [initialIndexContent, ...exportStatements].join('\n').trim() + '\n';
 writeFileSync(indexFilePath, indexFileContent, { encoding: 'utf8' });
 
-writeFileSync(resolve(cwd, './tsconfig.json'), JSON.stringify(tsconfig, undefined, 2) + '\n', {
+writeFileSync(resolve(cwd, 'tsconfig.json'), JSON.stringify(tsconfig, undefined, 2) + '\n', {
   encoding: 'utf8',
 });
 
-writeFileSync(resolve(cwd, './package.json'), JSON.stringify(packageJson, undefined, 2) + '\n', {
+writeFileSync(resolve(cwd, 'package.json'), JSON.stringify(packageJson, undefined, 2) + '\n', {
   encoding: 'utf8',
 });
 
@@ -104,12 +104,12 @@ parsed.stylesheet.rules = otherCssContent.reduce((uniqueRules, entry, _index) =>
 
 parsed.stylesheet.rules = [...parsed.stylesheet.rules, ...Object.values(mediaRules)];
 
-const stylesPath = resolve(cwd, './dist/styles');
+const stylesPath = resolve(cwd, 'dist', 'styles');
 
 if (!existsSync(stylesPath)) {
   mkdirSync(stylesPath, { recursive: true });
 }
 
-writeFileSync(resolve(stylesPath, './index.css'), css.stringify(parsed) + '\n', {
+writeFileSync(resolve(stylesPath, 'index.css'), css.stringify(parsed) + '\n', {
   encoding: 'utf8',
 });

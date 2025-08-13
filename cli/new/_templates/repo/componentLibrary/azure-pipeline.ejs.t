@@ -22,4 +22,4 @@ resources:
 jobs:
 - template: pipelines/azure-pipeline-template.yml@repodog
   parameters:
-    package-manager-version: '9.11.0'
+    package-manager-version: '10.9.0'

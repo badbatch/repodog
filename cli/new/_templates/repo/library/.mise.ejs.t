@@ -3,4 +3,4 @@ to: .mise.toml
 ---
 [tools]
 node = "22"
-pnpm = "9"
+pnpm = "10"

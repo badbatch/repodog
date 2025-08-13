@@ -15,7 +15,8 @@ sh: "<%= packageManager %> install"
     "url": "<%= homepage %>/<%= path %>"
   },
   "bugs": "<%= homepage %>/issues",
-  "main": "index.cjs",
+  "type": "module",
+  "main": "index.mjs",
   "publishConfig": {
     "access": "public"
   },

@@ -57,10 +57,10 @@ sh: "<%= packageManager %> install && <%= packageManager %> add -D @repodog/cli 
   "dependencies": {},
   "peerDependencies": {},
   "devDependencies": {
-    "@types/node": "^22.5.5",
-    "cts-types": "^0.0.6",
-    "del-cli": "^5.1.0",
+    "@types/node": "^24.2.1",
+    "cts-types": "^0.0.10",
+    "del-cli": "^6.0.0",
     "generate-changelog": "^1.8.0",
-    "husky": "^9.1.6"
+    "husky": "^9.1.7"
   }
 }

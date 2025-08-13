@@ -17,7 +17,7 @@ sh: "<%= packageManager %> install && <%= packageManager %> add -D @repodog/cli 
   "type": "module",
   "engines": {
     "node": "^22",
-    "pnpm": "^9"
+    "pnpm": "^10"
   },
   "scripts": {
     "build": "<%= packageManager %> run -r build",
@@ -37,9 +37,9 @@ sh: "<%= packageManager %> install && <%= packageManager %> add -D @repodog/cli 
     "validate": "<%= packageManager %> run syncpack && <%= packageManager %> run build && <%= packageManager %> run lint && <%= packageManager %> run type-check && <%= packageManager %> run test"
   },
   "devDependencies": {
-    "@types/node": "^22.5.5",
-    "del-cli": "^5.1.0",
+    "@types/node": "^24.2.1",
+    "del-cli": "^6.0.0",
     "generate-changelog": "^1.8.0",
-    "husky": "^9.1.6"
+    "husky": "^9.1.7"
   }
 }

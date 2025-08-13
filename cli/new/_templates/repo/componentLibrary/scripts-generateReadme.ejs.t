@@ -9,8 +9,8 @@ import { markdownRender } from 'react-docgen-typescript-markdown-render';
 import shelljs from 'shelljs';
 
 const cwd = process.cwd();
-const packageJson = JSON.parse(readFileSync(resolve(cwd, './package.json'), { encoding: 'utf8' }));
-const srcDir = resolve(cwd, './src');
+const packageJson = JSON.parse(readFileSync(resolve(cwd, 'package.json'), { encoding: 'utf8' }));
+const srcDir = resolve(cwd, 'src');
 const dirents = readdirSync(srcDir, { withFileTypes: true });
 
 const files = dirents
@@ -69,16 +69,20 @@ import { ${mainComponentName} } from '@<%= name %>/${name}';
 \`\`\`
 `;
 
-const installation = existsSync(resolve(cwd, './docs/installation.md'))
-  ? readFileSync(resolve(cwd, './docs/installation.md'), { encoding: 'utf8' })
+const installationDocsPath = resolve(cwd, 'docs', 'installation.md');
+
+const installation = existsSync(installationDocsPath)
+  ? readFileSync(installationDocsPath, { encoding: 'utf8' })
   : defaultInstallationContent.trim();
 
 const defaultUsageContent = `
 The usage instructions and props for each component exported by ${packageJson.name} are detailed below.
 `;
 
-const usage = existsSync(resolve(cwd, './docs/usage.md'))
-  ? readFileSync(resolve(cwd, './docs/usage.md'), { encoding: 'utf8' })
+const usageDocsPath = resolve(cwd, 'docs', 'usage.md');
+
+const usage = existsSync(usageDocsPath)
+  ? readFileSync(usageDocsPath, { encoding: 'utf8' })
   : defaultUsageContent.trim();
 
 const readme = `
@@ -101,7 +105,7 @@ ${content.join('\n')}
 Check out the [features, fixes and more](../../CHANGELOG.md) that go into each major, minor and patch version.
 `;
 
-writeFileSync(resolve(cwd, './README.md'), readme.trimStart(), {
+writeFileSync(resolve(cwd, 'README.md'), readme.trimStart(), {
   encoding: 'utf8',
 });
 
