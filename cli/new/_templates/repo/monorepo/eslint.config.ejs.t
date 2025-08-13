@@ -12,16 +12,4 @@ export default [
     ...entry,
     files: ['**/*.{spec,test}.*'],
   })),
-  {
-    rules: {
-      // disabled devDependencies due to https://github.com/import-js/eslint-plugin-import/issues/2168
-      'import-x/no-extraneous-dependencies': [
-        2,
-        {
-          devDependencies: true,
-          peerDependencies: false,
-        },
-      ],
-    },
-  },
 ];
