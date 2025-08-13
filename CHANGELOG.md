@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.0.7 (2025-08-13)
+
+### Bug Fixes
+
+* **new:**  remove invalid eslint config (88d38e56)
+
 ## 2.0.6 (2025-08-13)
 
 ### Refactors
