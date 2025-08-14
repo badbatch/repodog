@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.0.9 (2025-08-14)
+
+### Bug Fixes
+
+* **storybook-config:**  downgrade globby version (a97adae5)
+
 ## 2.0.8 (2025-08-14)
 
 ### Bug Fixes
