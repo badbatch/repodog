@@ -37,7 +37,7 @@ export const config = ({ compiler }: ConfigParams = {}): StorybookConfig => {
     stories: globSync([`../components/**/*.stories.@(js|jsx|ts|tsx)`, '!../**/node_modules/**/*', '!../**/dist/**/*'], {
       cwd: './.storybook',
     }),
-    ...(isCompilerBabel ? { babel: () => options } : {}),
+    ...(isCompilerBabel ? { babel: () => ({ ...options, configFile: false }) } : {}),
     ...(isCompilerSwc ? { swc: () => options } : {}),
   };
 };
