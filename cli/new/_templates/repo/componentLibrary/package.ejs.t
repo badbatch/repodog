@@ -67,7 +67,7 @@ sh: "<%= packageManager %> install && <%= packageManager %> add -D @repodog/cli 
     "react-dom": "^19.1.0",
     "serve": "^14.2.4",
     "shelljs": "^0.10.0",
-    "tailwindcss": "^4.1.11",
+    "tailwindcss": "^3.4.17",
     "wait-on": "^8.0.4"
   }
 }

@@ -13,9 +13,8 @@ export const config = ({ compiler }: ConfigParams = {}): StorybookConfig => {
 
   return {
     addons: [
-      '@storybook/addon-essentials',
+      '@storybook/addon-docs',
       '@storybook/addon-a11y',
-      '@storybook/addon-interactions',
       ...(isCompilerBabel
         ? [
             '@storybook/addon-webpack5-compiler-babel',
