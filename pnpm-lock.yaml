@@ -818,9 +818,9 @@ importers:
       chromatic:
         specifier: <14
         version: 11.2.0
-      globby:
-        specifier: ^14.0.2
-        version: 14.1.0
+      glob:
+        specifier: ^11.0.3
+        version: 11.0.3
     devDependencies:
       cts-types:
         specifier: ^0.0.10

@@ -49,7 +49,7 @@
     "@storybook/addon-webpack5-compiler-babel": "^3.0.6",
     "@storybook/addon-webpack5-compiler-swc": "^3.0.0",
     "@storybook/react-webpack5": "^9.1.1",
-    "globby": "^14.0.2"
+    "glob": "^11.0.3"
   },
   "peerDependencies": {
     "@chanzuckerberg/axe-storybook-testing": "<10",

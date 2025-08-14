@@ -1,5 +1,5 @@
 import { type StorybookConfig } from '@storybook/react-webpack5';
-import { globbySync } from 'globby';
+import { globSync } from 'glob';
 
 export type ConfigParams = {
   compiler?: string | [name: string, options: Record<string, unknown>];
@@ -34,12 +34,9 @@ export const config = ({ compiler }: ConfigParams = {}): StorybookConfig => {
       name: '@storybook/react-webpack5',
       options: {},
     },
-    stories: globbySync(
-      [`../components/**/*.stories.@(js|jsx|ts|tsx)`, '!../**/node_modules/**/*', '!../**/dist/**/*'],
-      {
-        cwd: './.storybook',
-      },
-    ),
+    stories: globSync([`../components/**/*.stories.@(js|jsx|ts|tsx)`, '!../**/node_modules/**/*', '!../**/dist/**/*'], {
+      cwd: './.storybook',
+    }),
     ...(isCompilerBabel ? { babel: () => options } : {}),
     ...(isCompilerSwc ? { swc: () => options } : {}),
   };
