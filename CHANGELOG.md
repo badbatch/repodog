@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.0.12 (2025-08-14)
+
+### New Features
+
+* **storybook-config:**  handle styles (1cbbfeb0)
+
 ## 2.0.11 (2025-08-14)
 
 ### Bug Fixes
