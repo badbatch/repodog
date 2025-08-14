@@ -1,7 +1,7 @@
 {
   "name": "@repodog/cli-new",
   "description": "The Repodog cli new module.",
-  "version": "1.5.37",
+  "version": "1.5.38",
   "author": "miami-man",
   "license": "MIT",
   "homepage": "https://github.com/badbatch/repodog",

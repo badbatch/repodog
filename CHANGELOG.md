@@ -1,5 +1,13 @@
 # Changelog
 
+## 2.0.8 (2025-08-14)
+
+### Bug Fixes
+
+* **storybook-config:**
+  * lock file (267f4cd8)
+  * remove disused deps (5143e208)
+
 ## 2.0.7 (2025-08-13)
 
 ### Bug Fixes
