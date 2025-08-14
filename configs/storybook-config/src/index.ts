@@ -1,5 +1,8 @@
 import { type StorybookConfig } from '@storybook/react-webpack5';
 import { globSync } from 'glob';
+import { createRequire } from 'node:module';
+
+const require = createRequire(import.meta.url);
 
 export type ConfigParams = {
   compiler?: string | [name: string, options: Record<string, unknown>];
@@ -29,6 +32,29 @@ export const config = ({ compiler }: ConfigParams = {}): StorybookConfig => {
           ]
         : []),
       ...(isCompilerSwc ? ['@storybook/addon-webpack5-compiler-swc'] : []),
+      {
+        name: '@storybook/addon-styling-webpack',
+        options: {
+          rules: [
+            {
+              test: /\.css$/,
+              use: [
+                require.resolve('style-loader'),
+                {
+                  loader: require.resolve('css-loader'),
+                  options: { importLoaders: 1 },
+                },
+                {
+                  loader: require.resolve('postcss-loader'),
+                  options: {
+                    implementation: require.resolve('postcss'),
+                  },
+                },
+              ],
+            },
+          ],
+        },
+      },
     ],
     framework: {
       name: '@storybook/react-webpack5',
