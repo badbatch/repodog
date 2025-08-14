@@ -819,7 +819,7 @@ importers:
         specifier: <14
         version: 11.2.0
       globby:
-        specifier: ^14.1.0
+        specifier: ^14.0.2
         version: 14.1.0
     devDependencies:
       cts-types:
