@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.0.11 (2025-08-14)
+
+### Bug Fixes
+
+* **storybook-config:**  add configFile false flag to ignore root babel config (a54da21a)
+
 ## 2.0.10 (2025-08-14)
 
 ### Bug Fixes
