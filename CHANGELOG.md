@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.0.10 (2025-08-14)
+
+### Bug Fixes
+
+* **storybook-config:**  switch out globby for glob (6c4308d3)
+
 ## 2.0.9 (2025-08-14)
 
 ### Bug Fixes
