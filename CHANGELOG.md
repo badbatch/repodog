@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.0.13 (2025-08-28)
+
+### Documentation Changes
+
+* **core:**  update ado pipeline example in readme (e1fc3bcc)
+
 ## 2.0.12 (2025-08-14)
 
 ### New Features
