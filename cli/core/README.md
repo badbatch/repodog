@@ -75,17 +75,13 @@ pr:
 
 resources:
   repositories:
-  - repository: repodog
-    type: github
-    name: badbatch/repodog
-    ref: main
+    - repository: repodog
+      type: github
+      name: badbatch/repodog
+      ref: main
 
 jobs:
-- template: pipelines/azure-pipeline-template.yml@repodog
-  parameters:
-    node-version: '20.17.0'
-    package-manager: 'pnpm'
-    package-manager-version: '9.11.0'
+  - template: pipelines/azure-pipeline-template.yml@repodog
 ```
 
 ## Usage
