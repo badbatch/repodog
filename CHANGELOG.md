@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.0.14 (2025-09-01)
+
+### New Features
+
+* **eslint-config:**  enforce return types (3318615c)
+
 ## 2.0.13 (2025-08-28)
 
 ### Documentation Changes
