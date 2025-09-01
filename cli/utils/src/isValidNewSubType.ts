@@ -5,5 +5,5 @@ export const typeToSubTypeMap = {
   [NewType.REPO]: NewRepoSubtype,
 };
 
-export const isValidNewSubType = (type: NewType, subtype: string) =>
+export const isValidNewSubType = (type: NewType, subtype: string): boolean =>
   Object.values(typeToSubTypeMap[type]).includes(subtype);

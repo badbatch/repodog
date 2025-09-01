@@ -10,7 +10,7 @@ import enquirer from 'enquirer';
 import { homedir } from 'node:os';
 import questions from '../questions.json' with { type: 'json' };
 
-export const handleGlobalConfigSetup = async () => {
+export const handleGlobalConfigSetup = async (): Promise<void> => {
   const config = readRepodogConfig<GlobalRepodogConfig>(homedir());
 
   if (config) {

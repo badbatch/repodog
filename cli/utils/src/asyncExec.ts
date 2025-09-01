@@ -5,7 +5,7 @@ export interface AsyncExecOptions {
   silent?: boolean;
 }
 
-export const asyncExec = (cmd: string, options: AsyncExecOptions = {}) =>
+export const asyncExec = (cmd: string, options: AsyncExecOptions = {}): Promise<string> =>
   new Promise<string>((resolve, reject) => {
     shelljs.exec(cmd, (code, stdout, stderr) => {
       if (code === 1 && !options.silent) {

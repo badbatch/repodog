@@ -2,17 +2,17 @@ import shelljs from 'shelljs';
 
 let cachedChangedFiles: string[] | undefined;
 
-export const addChangedFilesToCache = (files: string[]) => {
+export const addChangedFilesToCache = (files: string[]): void => {
   cachedChangedFiles = [...(cachedChangedFiles ?? []), ...files];
 };
 
-export const clearChangedFilesCache = () => {
+export const clearChangedFilesCache = (): void => {
   cachedChangedFiles = undefined;
 };
 
-export const getCachedChangedFiles = () => cachedChangedFiles;
+export const getCachedChangedFiles = (): string[] | undefined => cachedChangedFiles;
 
-export const getChangedFiles = (releaseTag: string) => {
+export const getChangedFiles = (releaseTag: string): string[] => {
   if (cachedChangedFiles) {
     return cachedChangedFiles;
   }

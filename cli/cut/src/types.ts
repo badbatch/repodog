@@ -7,6 +7,7 @@ export interface CutHandlerArguments {
   filter?: string;
   force?: boolean;
   preid?: string;
+  'skip-node-version-check'?: boolean;
   'skip-posthook'?: boolean;
   'skip-prehook'?: boolean;
   tag?: string;

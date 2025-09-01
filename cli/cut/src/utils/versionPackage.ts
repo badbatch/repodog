@@ -5,7 +5,7 @@ import { type PackageJson, type SetRequired } from 'type-fest';
 export const versionPackage = (
   packageJson: SetRequired<PackageJson, 'name' | 'version'>,
   { packageJsonPath, preid, tag, type }: Pick<ReleaseMeta, 'packageJsonPath' | 'preid' | 'tag' | 'type'>,
-) => {
+): void => {
   const { name, version } = packageJson;
   verboseLog(`Current version: ${version}`);
   const newVersion = getNewVersion(version, type, tag, preid);

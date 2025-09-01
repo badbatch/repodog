@@ -34,7 +34,7 @@ import { executeHygen } from './utils/executeHygen.ts';
 import { getLeafAdditionalTemplatesPath } from './utils/getLeafAdditionalTemplatesPath.ts';
 import { loadQuestions } from './utils/loadQuestions.ts';
 
-export const handler = async (argv: NewHandlerArguments) => {
+export const handler = async (argv: NewHandlerArguments): Promise<void> => {
   const startTime = performance.now();
   const verbose = argv.verbose ?? false;
   const customTypePath = argv['custom-type-path'] ?? undefined;

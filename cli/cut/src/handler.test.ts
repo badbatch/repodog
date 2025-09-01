@@ -200,7 +200,8 @@ describe('cut', () => {
 
   describe('when the new project version is invalid', () => {
     beforeEach(() => {
-      getNewVersion.mockReturnValueOnce(null); // eslint-disable-line unicorn/no-null
+      // eslint-disable-next-line unicorn/no-useless-undefined
+      getNewVersion.mockReturnValueOnce(undefined);
     });
 
     it('should log the correct error message', () => {

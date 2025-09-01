@@ -3,7 +3,7 @@ import getPackageJsonFromNpmRegistry from 'package-json';
 import { type PackageJson } from 'type-fest';
 import { getLatestCompatibleVersion } from './getLatestCompatibleVersion.ts';
 
-export const getPeerDependenciesToInstall = async (name: string) => {
+export const getPeerDependenciesToInstall = async (name: string): Promise<[string, string][]> => {
   const nameAndVersion: [string, string][] = [];
 
   try {

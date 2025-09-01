@@ -237,6 +237,7 @@ export default tsEslint.config(
           prefer: 'type-imports',
         },
       ],
+      '@typescript-eslint/explicit-function-return-type': 2,
       '@typescript-eslint/naming-convention': [
         2,
         {
@@ -313,6 +314,7 @@ export default tsEslint.config(
         2,
         { assertionStyle: 'as', objectLiteralTypeAssertions: 'allow' },
       ],
+      '@typescript-eslint/explicit-function-return-type': 0,
       '@typescript-eslint/no-non-null-assertion': 0,
     },
   },

@@ -3,7 +3,10 @@ import { formatListLogMessage } from './formatListLogMessage.ts';
 import { type PackageMetaRecord } from './types.ts';
 import { verboseLog } from './verboseLog.ts';
 
-export const getInternalDependencies = ({ dependencies = {} }: PackageJson, packageMetaRecord: PackageMetaRecord) => {
+export const getInternalDependencies = (
+  { dependencies = {} }: PackageJson,
+  packageMetaRecord: PackageMetaRecord,
+): string[] => {
   const packageNames = Object.keys(packageMetaRecord);
   const dependencyNames = Object.keys({ ...dependencies });
   const internalDependencies = dependencyNames.filter(name => packageNames.includes(name));

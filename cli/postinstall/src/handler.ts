@@ -14,7 +14,7 @@ import shelljs from 'shelljs';
 import { type PostInstallHandlerArguments } from './types.ts';
 import { runCommonPostInstallTasks } from './utils/runCommonPostInstallTasks.ts';
 
-export const handler = async (argv: PostInstallHandlerArguments) => {
+export const handler = async (argv: PostInstallHandlerArguments): Promise<void> => {
   const startTime = performance.now();
   const verbose = argv.verbose ?? false;
 

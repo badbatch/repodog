@@ -3,19 +3,21 @@ import { resolve } from 'node:path';
 import { type PackageJson, type SetRequired } from 'type-fest';
 import { verboseLog } from './verboseLog.ts';
 
-let packageJsonCache: Record<string, SetRequired<PackageJson, 'name' | 'version'>> = {};
+type PackageJsonWithNameVersionRequired = SetRequired<PackageJson, 'name' | 'version'>;
 
-export const addPackageJsonToCache = (key: string, packageJson: SetRequired<PackageJson, 'name' | 'version'>) => {
+let packageJsonCache: Record<string, PackageJsonWithNameVersionRequired> = {};
+
+export const addPackageJsonToCache = (key: string, packageJson: PackageJsonWithNameVersionRequired): void => {
   packageJsonCache[key] = packageJson;
 };
 
-export const clearPackageJsonCache = () => {
+export const clearPackageJsonCache = (): void => {
   packageJsonCache = {};
 };
 
-export const getCachedPackageJsons = () => packageJsonCache;
+export const getCachedPackageJsons = (): Record<string, PackageJsonWithNameVersionRequired> => packageJsonCache;
 
-export const loadPackageJson = (packageJsonPath: string) => {
+export const loadPackageJson = (packageJsonPath: string): PackageJsonWithNameVersionRequired => {
   let sanitizedPackageJsonPath = packageJsonPath;
 
   if (!packageJsonPath.endsWith('package.json')) {

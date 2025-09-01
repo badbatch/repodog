@@ -5,7 +5,7 @@ import { resolveAbsolutePath } from './resolveAbsolutePath.ts';
 import { type RepodogConfig } from './types.ts';
 import { verboseLog } from './verboseLog.ts';
 
-export const resolveConfigPath = (config: RepodogConfig, key: keyof RepodogConfig, path: string) => {
+export const resolveConfigPath = (config: RepodogConfig, key: keyof RepodogConfig, path: string): void => {
   try {
     // JSON.parse returns an any type.
     // eslint-disable-next-line @typescript-eslint/consistent-type-assertions

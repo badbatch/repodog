@@ -1,6 +1,7 @@
-import { type Argv } from 'yargs';
+import { type CommandBuilder } from 'yargs';
+import { type CutHandlerArguments } from '#types.js';
 
-export const builder = (argv: Argv) =>
+export const builder: CommandBuilder<CutHandlerArguments, CutHandlerArguments> = argv =>
   argv
     .positional('type', {
       demandOption: true,

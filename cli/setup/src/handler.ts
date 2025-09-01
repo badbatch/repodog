@@ -5,7 +5,7 @@ import shelljs from 'shelljs';
 import { type SetupHandlerArguments } from './types.ts';
 import { handleGlobalConfigSetup } from './utils/handleGlobalConfigSetup.ts';
 
-export const handler = async (argv: SetupHandlerArguments = {}) => {
+export const handler = async (argv: SetupHandlerArguments = {}): Promise<void> => {
   const startTime = performance.now();
   const verbose = argv.verbose ?? false;
   setVerbose(verbose);

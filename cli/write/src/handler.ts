@@ -18,7 +18,7 @@ import { getMessagesByType } from './utils/getMessagesByType.ts';
 import { VALID_WRITE_TYPES, isValidWriteType } from './utils/isValidWriteType.ts';
 import { writeTestFile } from './utils/writeTestFile.ts';
 
-export const handler = async (argv: WriteHandlerArguments) => {
+export const handler = async (argv: WriteHandlerArguments): Promise<void> => {
   const startTime = performance.now();
   const skipFormat = argv['skip-format'] ?? false;
   const verbose = argv.verbose ?? false;

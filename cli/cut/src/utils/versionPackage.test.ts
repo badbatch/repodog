@@ -24,7 +24,8 @@ describe('versionPackage', () => {
 
   describe('when the new version is invalid', () => {
     beforeEach(() => {
-      getNewVersion.mockReturnValueOnce(null); // eslint-disable-line unicorn/no-null
+      // eslint-disable-next-line unicorn/no-useless-undefined
+      getNewVersion.mockReturnValueOnce(undefined);
     });
 
     it('should throw the correct error', () => {

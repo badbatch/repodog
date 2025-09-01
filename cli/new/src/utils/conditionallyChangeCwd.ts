@@ -1,7 +1,7 @@
 import { existsSync, mkdirSync } from 'node:fs';
 import { resolve } from 'node:path';
 
-export const conditionallyChangeCwd = (name: string) => {
+export const conditionallyChangeCwd = (name: string): void => {
   const cwd = process.cwd();
 
   if (!cwd.endsWith(name)) {

@@ -4,7 +4,7 @@ import shelljs from 'shelljs';
 let namespace = 'Repodog';
 let verbose = false;
 
-export const setVerbose = (value: boolean, name?: string) => {
+export const setVerbose = (value: boolean, name?: string): void => {
   verbose = value;
 
   if (name) {
@@ -12,11 +12,11 @@ export const setVerbose = (value: boolean, name?: string) => {
   }
 };
 
-export const log = (message: string) => {
+export const log = (message: string): void => {
   shelljs.echo(`${colors.magenta(namespace)} ${colors.dim('=>')} ${message}`);
 };
 
-export const verboseLog = (message: string) => {
+export const verboseLog = (message: string): void => {
   if (verbose) {
     shelljs.echo(`${colors.magenta(namespace)} ${colors.dim('=>')} ${message}`);
   }

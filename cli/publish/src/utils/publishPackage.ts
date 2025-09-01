@@ -12,7 +12,7 @@ export const publishPackage = async (
   packageJsonPath: string,
   { packageManager }: Pick<ReleaseMeta, 'packageManager'>,
   changeWorkingDirCallback?: () => void,
-) => {
+): Promise<void> => {
   const { name, publishConfig, version } = loadPackageJson(packageJsonPath);
 
   if (publishConfig?.access !== 'public') {

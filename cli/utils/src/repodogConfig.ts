@@ -8,7 +8,7 @@ import { type GlobalRepodogConfig, Language, type RepodogConfig } from './types.
 
 let cachedConfig: RepodogConfig | undefined;
 
-export const addRepodogConfigToCache = (config: Partial<RepodogConfig>) => {
+export const addRepodogConfigToCache = (config: Partial<RepodogConfig>): Partial<RepodogConfig> => {
   const newConfig = merge({}, cachedConfig ?? {}, config);
 
   newConfig.language ??= existsSync(resolve(process.cwd(), 'tsconfig.json'))
@@ -21,13 +21,13 @@ export const addRepodogConfigToCache = (config: Partial<RepodogConfig>) => {
   return newConfig;
 };
 
-export const clearRepodogConfigCache = () => {
+export const clearRepodogConfigCache = (): void => {
   cachedConfig = undefined;
 };
 
-export const getCachedRepodogConfig = () => cachedConfig;
+export const getCachedRepodogConfig = (): RepodogConfig | undefined => cachedConfig;
 
-export const readRepodogConfig = <C>(basePath: string) => {
+export const readRepodogConfig = <C>(basePath: string): C | undefined => {
   try {
     // JSON.parse returns an any type.
     // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
@@ -41,7 +41,7 @@ export interface LoadRepodogConfigArguments {
   required?: boolean;
 }
 
-export const loadRepodogConfig = ({ required = false }: LoadRepodogConfigArguments = {}) => {
+export const loadRepodogConfig = ({ required = false }: LoadRepodogConfigArguments = {}): Partial<RepodogConfig> => {
   if (cachedConfig) {
     return cachedConfig;
   }
@@ -71,7 +71,7 @@ export const loadRepodogConfig = ({ required = false }: LoadRepodogConfigArgumen
   return addRepodogConfigToCache(config);
 };
 
-export const writeRepodogConfig = (basePath: string, newConfig: Partial<RepodogConfig>) => {
+export const writeRepodogConfig = (basePath: string, newConfig: Partial<RepodogConfig>): void => {
   const configPath = resolve(basePath, REPODOG_CONFIG_FILENAME);
   writeFileSync(configPath, JSON.stringify(addRepodogConfigToCache(newConfig), undefined, 2));
 };

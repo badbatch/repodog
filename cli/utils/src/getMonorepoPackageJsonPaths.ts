@@ -4,7 +4,10 @@ import { getPackagePatterns } from './getPackagePatterns.ts';
 import { type PackageManager } from './types.ts';
 import { verboseLog } from './verboseLog.ts';
 
-export const getMonorepoPackageJsonPaths = (packageManager: PackageManager, { filter }: { filter?: string } = {}) => {
+export const getMonorepoPackageJsonPaths = (
+  packageManager: PackageManager,
+  { filter }: { filter?: string } = {},
+): string[] => {
   if (filter) {
     verboseLog('Filtering packages');
     const packagePaths = glob.sync(`${filter}/package.json`);

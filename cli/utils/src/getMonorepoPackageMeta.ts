@@ -2,7 +2,10 @@ import { getMonorepoPackageJsonPaths } from './getMonorepoPackageJsonPaths.ts';
 import { loadPackageJson } from './loadPackageJson.ts';
 import { type PackageManager, type PackageMetaRecord } from './types.ts';
 
-export const getMonorepoPackageMeta = (packageManager: PackageManager, { filter }: { filter?: string } = {}) => {
+export const getMonorepoPackageMeta = (
+  packageManager: PackageManager,
+  { filter }: { filter?: string } = {},
+): PackageMetaRecord => {
   const packageJsonPaths = getMonorepoPackageJsonPaths(packageManager, { filter });
   const packageMetaRecord: PackageMetaRecord = {};
 

@@ -4,7 +4,7 @@ import { resolve } from 'node:path';
 import { loadPackageJson } from './loadPackageJson.ts';
 import { PackageManager, type PnpmWorkspaceYaml } from './types.ts';
 
-export const getPackagePatterns = (packageManager: PackageManager) => {
+export const getPackagePatterns = (packageManager: PackageManager): string[] => {
   try {
     switch (packageManager) {
       case PackageManager.NPM:

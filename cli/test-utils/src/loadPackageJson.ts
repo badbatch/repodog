@@ -3,9 +3,11 @@
 import { jest } from '@jest/globals';
 import { type PackageJson } from 'type-fest';
 
-export const loadPackageJsonMock = () => ({
-  // This is a test file so casting is acceptable.
-  // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
+export type LoadPackageJsonMockResult = {
+  loadPackageJson: (value: string) => PackageJson;
+};
+
+export const loadPackageJsonMock = (): LoadPackageJsonMockResult => ({
   loadPackageJson: jest.fn<(value: string) => PackageJson>().mockImplementation((path: string) => {
     const match = /\/([a-z]+)\/package.json$/.exec(path)!;
 
@@ -14,5 +16,5 @@ export const loadPackageJsonMock = () => ({
       publishConfig: { access: 'public' },
       version: '1.0.0',
     };
-  }) as jest.Mock<(value: string) => PackageJson>,
+  }),
 });

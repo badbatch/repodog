@@ -1,12 +1,12 @@
 import { asyncExec } from '@repodog/cli-utils';
 import { isString } from 'lodash-es';
 
-const getRange = (semver: string) => {
+const getRange = (semver: string): string => {
   const max = Number(semver.slice(1));
   return max === 1 ? `<${String(max)}` : `${String(max - 1)}.x.x`;
 };
 
-export const getLatestCompatibleVersion = async (name: string, semver: string) => {
+export const getLatestCompatibleVersion = async (name: string, semver: string): Promise<string | undefined> => {
   try {
     // JSON.parse returns an any type.
     // eslint-disable-next-line @typescript-eslint/consistent-type-assertions

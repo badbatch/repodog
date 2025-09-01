@@ -1,6 +1,6 @@
 import { PackageManager } from '@repodog/cli-utils';
 
-export const getPublishCmd = (packageManager: PackageManager, version: string, tag?: string) => {
+export const getPublishCmd = (packageManager: PackageManager, version: string, tag?: string): string => {
   const tagArgument = tag ? ` --tag ${tag}` : '';
 
   switch (packageManager) {

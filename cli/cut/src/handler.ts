@@ -33,7 +33,7 @@ import { normaliseChangelog } from './utils/normaliseChangelog.ts';
 import { versionMonorepoPackages } from './utils/versionMonorepoPackages.ts';
 import { versionPackage } from './utils/versionPackage.ts';
 
-export const handler = async (argv: CutHandlerArguments) => {
+export const handler = async (argv: CutHandlerArguments): Promise<void> => {
   const startTime = performance.now();
   const dryRun = argv['dry-run'] ?? false;
   const filter = argv.filter;

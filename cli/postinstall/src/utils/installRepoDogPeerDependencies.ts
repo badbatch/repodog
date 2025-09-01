@@ -2,7 +2,7 @@ import { asyncExec, getPackageManager, isProjectMonorepo, verboseLog } from '@re
 import { getPeerDependenciesToInstall } from './getPeerDependenciesToInstall.ts';
 import { getRepoDogDevDependencyNames } from './getRepoDogDevDependencyNames.ts';
 
-export const installRepoDogPeerDependencies = async () => {
+export const installRepoDogPeerDependencies = async (): Promise<string | undefined> => {
   // At this point in the code, getPackageManager will not return undefined.
   // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
   const packageManager = getPackageManager()!;

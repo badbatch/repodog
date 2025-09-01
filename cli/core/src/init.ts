@@ -1,10 +1,10 @@
-import { command as cutCommand } from '@repodog/cli-cut';
-import { command as newCommand } from '@repodog/cli-new';
-import { command as postinstallCommand } from '@repodog/cli-postinstall';
+import { type CutHandlerArguments, command as cutCommand } from '@repodog/cli-cut';
+import { type NewHandlerArguments, command as newCommand } from '@repodog/cli-new';
+import { type PostInstallHandlerArguments, command as postinstallCommand } from '@repodog/cli-postinstall';
 import { command as publishCommand } from '@repodog/cli-publish';
 import { command as setupCommand } from '@repodog/cli-setup';
 import { setVerbose, verboseLog } from '@repodog/cli-utils';
-import { command as writeCommand } from '@repodog/cli-write';
+import { type WriteHandlerArguments, command as writeCommand } from '@repodog/cli-write';
 import colors from 'ansi-colors';
 import semver from 'semver';
 import shelljs from 'shelljs';
@@ -12,13 +12,12 @@ import yargs, { type Argv } from 'yargs';
 import { hideBin } from 'yargs/helpers';
 import packageJson from '../package.json' with { type: 'json' };
 
-export const init = () => {
+export const init = (): void => {
   // yargs does not provide a way to pass generic to type args.
   // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
-  const argv = yargs(hideBin(process.argv)) as Argv<{
-    'skip-node-version-check'?: boolean;
-    verbose?: boolean;
-  }>;
+  const argv = yargs(hideBin(process.argv)) as Argv<
+    CutHandlerArguments & NewHandlerArguments & PostInstallHandlerArguments & WriteHandlerArguments
+  >;
 
   const cliOptions = argv.parseSync();
   const skipNodeVersionCheck = cliOptions['skip-node-version-check'] ?? false;

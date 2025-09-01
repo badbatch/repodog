@@ -1,6 +1,7 @@
-import { type Argv } from 'yargs';
+import { type CommandBuilder } from 'yargs';
+import { type SetupHandlerArguments } from '#types.ts';
 
-export const builder = (argv: Argv) =>
+export const builder: CommandBuilder<SetupHandlerArguments, SetupHandlerArguments> = argv =>
   argv
     .option('skip-node-version-check', {
       alias: 'snvc',

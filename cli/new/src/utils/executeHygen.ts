@@ -2,7 +2,12 @@ import { asyncExec, resolveAbsolutePath, stringifyCliOptions, verboseLog } from 
 import { sep } from 'node:path';
 import { type CliOptions } from '../types.ts';
 
-export const executeHygen = (templatesPath: string, hygenPath: string, typePath: string[], cliOptions: CliOptions) => {
+export const executeHygen = (
+  templatesPath: string,
+  hygenPath: string,
+  typePath: string[],
+  cliOptions: CliOptions,
+): Promise<string> => {
   const hygenTypePath = typePath.length > 2 ? typePath.slice(-2) : typePath;
   const additionalTemplatePaths = typePath.length > 2 ? typePath.slice(0, -2) : [];
   const hygenTemplatesPath = resolveAbsolutePath([templatesPath, ...additionalTemplatePaths].join(sep));

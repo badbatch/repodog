@@ -1,6 +1,6 @@
 import { asyncExec } from './asyncExec.ts';
 
-export const addCommitPushRelease = async (version: string) => {
+export const addCommitPushRelease = async (version: string): Promise<void> => {
   await asyncExec('git add --all');
   await asyncExec(`git commit --no-verify -m "Release version ${version}."`);
   await asyncExec('git push --no-verify');

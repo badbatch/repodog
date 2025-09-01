@@ -2,7 +2,7 @@ import { asyncExec, verboseLog } from '@repodog/cli-utils';
 import { existsSync, readFileSync, writeFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 
-export const normaliseChangelog = async (devDependencies: Partial<Record<string, string>>) => {
+export const normaliseChangelog = async (devDependencies: Partial<Record<string, string>>): Promise<void> => {
   const cwd = process.cwd();
 
   if ('markdownlint-cli2' in devDependencies && existsSync(resolve(cwd, '.markdownlint.json'))) {

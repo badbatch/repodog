@@ -1,6 +1,8 @@
 import { PackageManager } from './types.ts';
 
-export const getPackageManagerFilterCmd = (packageManager: PackageManager) => {
+export const getPackageManagerFilterCmd = (
+  packageManager: PackageManager,
+): '--workspace' | '--filter' | 'workspaces foreach --from' => {
   switch (packageManager) {
     case PackageManager.NPM: {
       return '--workspace';

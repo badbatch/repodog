@@ -20,7 +20,7 @@ export const versionMonorepoPackages = ({
   preid,
   tag,
   type,
-}: Pick<ReleaseMeta, 'filter' | 'force' | 'packageManager' | 'preid' | 'tag' | 'type'>) => {
+}: Pick<ReleaseMeta, 'filter' | 'force' | 'packageManager' | 'preid' | 'tag' | 'type'>): void => {
   const packageMetaRecord = getMonorepoPackageMeta(packageManager, { filter });
   const lastReleaseTag = getLastReleaseTag();
   const changedFiles = getChangedFiles(lastReleaseTag);

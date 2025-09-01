@@ -1,9 +1,13 @@
-// This is a test file so casting is acceptable.
-/* eslint-disable @typescript-eslint/consistent-type-assertions */
 import { jest } from '@jest/globals';
 
-export const globMock = () => ({
+export type GlobMockResult = {
   glob: {
-    sync: jest.fn() as jest.Mock,
+    sync: jest.Mock;
+  };
+};
+
+export const globMock = (): GlobMockResult => ({
+  glob: {
+    sync: jest.fn(),
   },
 });

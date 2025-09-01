@@ -5,7 +5,7 @@ import { sep } from 'node:path';
 export const getLeafAdditionalTemplatesPath = (
   additionalTemplatesPath: string | undefined,
   externalTypePath: string[],
-) => {
+): string | undefined => {
   if (!additionalTemplatesPath) {
     return;
   }

@@ -10,7 +10,7 @@ export const writeTestFile = async (
   name: string,
   code: string,
   { language, packageManager, skipFormat }: WriteMeta,
-) => {
+): Promise<void> => {
   const extension = getLanguageExtension(language);
   const testFilePath = resolve(directory, `${name}.test.${extension}`);
   const updatedCode = removeComments(injectFileExtension(code));

@@ -2,19 +2,19 @@ import shelljs from 'shelljs';
 
 let lastReleaseTag: string | undefined;
 
-export const addLastReleaseTagToCache = (releaseTag: string) => {
+export const addLastReleaseTagToCache = (releaseTag: string): void => {
   lastReleaseTag = releaseTag;
 };
 
-export const clearLastReleaseTagCache = () => {
+export const clearLastReleaseTagCache = (): void => {
   lastReleaseTag = undefined;
 };
 
-export const getCachedLastReleaseTag = () => {
+export const getCachedLastReleaseTag = (): string | undefined => {
   return lastReleaseTag;
 };
 
-export const getLastReleaseTag = () => {
+export const getLastReleaseTag = (): string => {
   if (lastReleaseTag) {
     return lastReleaseTag;
   }

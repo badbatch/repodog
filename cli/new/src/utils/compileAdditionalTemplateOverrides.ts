@@ -4,7 +4,7 @@ import { readdirSync } from 'node:fs';
 export const compileAdditionalTemplateOverrides = (
   leafAdditionalTemplatesPath: string,
   internalTempatesPath: string,
-) => {
+): Record<string, boolean> => {
   const additionalfiles = readdirSync(leafAdditionalTemplatesPath);
   const internalFiles = readdirSync(internalTempatesPath);
 

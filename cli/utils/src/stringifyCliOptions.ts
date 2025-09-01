@@ -1,4 +1,4 @@
-export const stringifyCliOptions = (object: Record<string, boolean | number | string>) => {
+export const stringifyCliOptions = (object: Record<string, boolean | number | string>): string => {
   let options = '';
 
   for (const key in object) {

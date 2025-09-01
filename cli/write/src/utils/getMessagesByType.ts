@@ -29,5 +29,9 @@ const initialMessagesTypeMapper = {
   [WriteType.TEST]: testInitialMessages,
 };
 
-export const getMessagesByType = (type: WriteType, fileName: string, fileContents: string, language: Language) =>
-  initialMessagesTypeMapper[type](fileName, fileContents, language);
+export const getMessagesByType = (
+  type: WriteType,
+  fileName: string,
+  fileContents: string,
+  language: Language,
+): ChatCompletionMessageParam[] => initialMessagesTypeMapper[type](fileName, fileContents, language);

@@ -6,7 +6,7 @@ import { type ChatCompletionMessageParam } from 'openai/resources/index.mjs';
 export const createChatCompletion = async (
   messages: ChatCompletionMessageParam[],
   environmentVariablesPath: string,
-) => {
+): Promise<string> => {
   const path = resolveAbsolutePath(environmentVariablesPath);
   verboseLog(`Loading environment variables from: ${path}`);
   dotenv.config({ path });

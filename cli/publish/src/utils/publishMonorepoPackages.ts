@@ -4,7 +4,7 @@ import { parse, resolve } from 'node:path';
 import shelljs from 'shelljs';
 import { publishPackage } from './publishPackage.ts';
 
-export const publishMonorepoPackages = async (packageManager: PackageManager) => {
+export const publishMonorepoPackages = async (packageManager: PackageManager): Promise<void> => {
   verboseLog('Publishing monorepo packages');
   verboseLog('>>>> PROJECT ROOT END <<<<\n');
   const packageMeta = getMonorepoPackageMeta(packageManager);

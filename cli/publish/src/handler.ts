@@ -7,7 +7,7 @@ import { type PublishHandlerArguments } from './types.ts';
 import { publishMonorepoPackages } from './utils/publishMonorepoPackages.ts';
 import { publishPackage } from './utils/publishPackage.ts';
 
-export const handler = async (argv: PublishHandlerArguments = {}) => {
+export const handler = async (argv: PublishHandlerArguments = {}): Promise<void> => {
   const startTime = performance.now();
   const verbose = argv.verbose ?? false;
 
