@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.0.15 (2025-09-30)
+
+### Bug Fixes
+
+* **root:**  update ext in editorconfig (d3482e60)
+
 ## 2.0.14 (2025-09-01)
 
 ### New Features
