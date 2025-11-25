@@ -8,10 +8,6 @@ module.exports = {
       dependencyTypes: ['peer'],
       range: '<',
     },
-    {
-      dependencyTypes: ['pnpmOverrides'],
-      range: '>=',
-    },
   ],
   sortFirst: [
     'name',
@@ -43,6 +39,10 @@ module.exports = {
       dependencies: ['$LOCAL'],
       dependencyTypes: ['prod', 'dev'],
       pinVersion: 'workspace:*',
+    },
+    {
+      dependencyTypes: ['pnpmOverrides'],
+      isIgnored: true,
     },
     {
       policy: 'sameRange',
