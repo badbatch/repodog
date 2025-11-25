@@ -1,7 +1,7 @@
 {
   "name": "repodog",
   "description": "An command line module for managing repositories and a set of configs for popular tooling.",
-  "version": "2.0.15",
+  "version": "2.0.16",
   "author": "miami-man",
   "license": "MIT",
   "private": true,

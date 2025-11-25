@@ -1,5 +1,23 @@
 # Changelog
 
+## 2.0.16 (2025-11-25)
+
+### New Features
+
+* **root,cut:**  add generate coverage scripts (c7ea9a34)
+
+### Bug Fixes
+
+* **root:**
+  * another vulnerability resolution effort (509aa835)
+  * another attempt to clear all vulnerabilities (e7fce107)
+  * vulnerabilities (15215043)
+  * vulnerabilities (ad3e65e8)
+
+### Refactors
+
+* **root,cut:**  minor updates to generate coverage (95e3e97e)
+
 ## 2.0.15 (2025-09-30)
 
 ### Bug Fixes

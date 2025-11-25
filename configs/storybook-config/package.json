@@ -1,7 +1,7 @@
 {
   "name": "@repodog/storybook-config",
   "description": "The Repodog Storybook config module.",
-  "version": "9.0.6",
+  "version": "9.0.7",
   "author": "miami-man",
   "license": "MIT",
   "homepage": "https://github.com/badbatch/repodog",
