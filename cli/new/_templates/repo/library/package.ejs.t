@@ -42,15 +42,19 @@ sh: "<%= packageManager %> install && <%= packageManager %> add -D @repodog/cli 
     "compile:cjs": "MODULE_SYSTEM=cjs rollup -c ./rollup.config.mjs",
     "compile:esm": "rollup -c ./rollup.config.mjs",
     "compile:types": "tsc --project ./tsconfig.build.json && cts-types build dist/types/esm dist/types/cjs",
+    "coverage-generate": "<%= packageManager %> run coverage-generate-ci && open-cli ./coverage/lcov-report/index.html",
+    "coverage-generate-ci": "nyc report --reporter=lcov -t coverage --report-dir coverage",
     "cut:changelog": "changelog",
     "installActivateMise": "sh shellScripts/installActivateMise.sh",
-    "lint": "pnpm run /^lint:.*/",
+    "jest": "COMPILER=swc node --require=suppress-experimental-warnings --experimental-vm-modules node_modules/jest/bin/jest.js",
+    "lint": "<%= packageManager %> run /^lint:.*/",
     "lint:code": "eslint . --ext .ts,.cjs",
     "lint:docs": "markdownlint-cli2 --config \".markdownlint.json\" \"**/*.md\" \"!**/node_modules/**\"",
     "prepare": "husky",
     "repodog": "repodog",
     "syncpack": "syncpack format && syncpack list-mismatches && syncpack lint-semver-ranges",
-    "test": "COMPILER=swc node --require=suppress-experimental-warnings --experimental-vm-modules node_modules/jest/bin/jest.js",
+    "test": "del-cli ./coverage && <%= packageManager %> run jest && <%= packageManager %> run coverage-generate",
+    "test-ci": "<%= packageManager %> run jest && <%= packageManager %> run coverage-generate-ci",
     "type-check": "tsc --noEmit",
     "validate": "<%= packageManager %> run syncpack && <%= packageManager %> run build && <%= packageManager %> run lint && <%= packageManager %> run type-check && <%= packageManager %> run test"
   },
@@ -61,6 +65,8 @@ sh: "<%= packageManager %> install && <%= packageManager %> add -D @repodog/cli 
     "cts-types": "^0.0.10",
     "del-cli": "^6.0.0",
     "generate-changelog": "^1.8.0",
-    "husky": "^9.1.7"
+    "husky": "^9.1.7",
+    "nyc": "^17.1.0",
+    "open-cli": "^8.0.0"
   }
 }
