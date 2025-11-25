@@ -21,7 +21,7 @@
   },
   "dependencies": {
     "@jest/globals": "^29.7.0",
-    "glob": "^11.0.3",
+    "glob": "^11.1.0",
     "shelljs": "^0.10.0"
   },
   "devDependencies": {
