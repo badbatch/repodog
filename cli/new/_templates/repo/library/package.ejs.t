@@ -42,8 +42,8 @@ sh: "<%= packageManager %> install && <%= packageManager %> add -D @repodog/cli 
     "compile:cjs": "MODULE_SYSTEM=cjs rollup -c ./rollup.config.mjs",
     "compile:esm": "rollup -c ./rollup.config.mjs",
     "compile:types": "tsc --project ./tsconfig.build.json && cts-types build dist/types/esm dist/types/cjs",
-    "coverage-generate": "<%= packageManager %> run coverage-generate-ci && open-cli ./coverage/lcov-report/index.html",
-    "coverage-generate-ci": "nyc report --reporter=lcov -t coverage --report-dir coverage",
+    "coverage-generate": "nyc report --reporter=lcov -t coverage --report-dir coverage",
+    "coverage-open": "open-cli ./coverage/lcov-report/index.html",
     "cut:changelog": "changelog",
     "installActivateMise": "sh shellScripts/installActivateMise.sh",
     "jest": "COMPILER=swc node --require=suppress-experimental-warnings --experimental-vm-modules node_modules/jest/bin/jest.js",
@@ -54,7 +54,6 @@ sh: "<%= packageManager %> install && <%= packageManager %> add -D @repodog/cli 
     "repodog": "repodog",
     "syncpack": "syncpack format && syncpack list-mismatches && syncpack lint-semver-ranges",
     "test": "del-cli ./coverage && <%= packageManager %> run jest && <%= packageManager %> run coverage-generate",
-    "test-ci": "<%= packageManager %> run jest && <%= packageManager %> run coverage-generate-ci",
     "type-check": "tsc --noEmit",
     "validate": "<%= packageManager %> run syncpack && <%= packageManager %> run build && <%= packageManager %> run lint && <%= packageManager %> run type-check && <%= packageManager %> run test"
   },
