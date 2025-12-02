@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.0.17 (2025-12-02)
+
+### Bug Fixes
+
+* **cut,publish:**  support npm version check for prerelease (713141c5)
+
 ## 2.0.16 (2025-11-25)
 
 ### New Features
