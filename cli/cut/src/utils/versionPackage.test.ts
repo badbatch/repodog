@@ -3,6 +3,7 @@ import { jest } from '@jest/globals';
 jest.unstable_mockModule('@repodog/cli-utils', () => ({
   getLatestPackageVersionOnNpm: jest.fn().mockReturnValue('1.0.0'),
   getNewVersion: jest.fn().mockReturnValue('1.1.0'),
+  getPackageVersionsOnNpm: jest.fn().mockReturnValue([]),
   verboseLog: jest.fn(),
 }));
 
@@ -10,7 +11,7 @@ jest.unstable_mockModule('node:fs', () => ({
   writeFileSync: jest.fn(),
 }));
 
-const { getLatestPackageVersionOnNpm, getNewVersion } = jest.mocked(await import('@repodog/cli-utils'));
+const { getNewVersion, getPackageVersionsOnNpm } = jest.mocked(await import('@repodog/cli-utils'));
 const { writeFileSync } = jest.mocked(await import('node:fs'));
 const { versionPackage } = await import('./versionPackage.ts');
 
@@ -35,49 +36,19 @@ describe('versionPackage', () => {
     });
   });
 
-  describe('when the new version is equal to the latest version on npm', () => {
+  describe('when the new version is equal to a version on npm', () => {
     beforeEach(() => {
-      getLatestPackageVersionOnNpm.mockReturnValueOnce('1.1.0');
+      getPackageVersionsOnNpm.mockReturnValueOnce(['1.1.0']);
     });
 
     it('should throw the correct error', () => {
       expect(() => {
         versionPackage(packageJson, { packageJsonPath, type: 'minor' });
-      }).toThrow(new Error('The new alpha package verison 1.1.0 is equal to a version on npm: 1.1.0.'));
+      }).toThrow(new Error('The new alpha package verison 1.1.0 is equal to a version on npm.'));
     });
   });
 
   describe('when there is no latest version on npm', () => {
-    beforeEach(() => {
-      getLatestPackageVersionOnNpm.mockReturnValueOnce('');
-    });
-
-    it('should writeFileSync with the correct arguments', () => {
-      versionPackage(packageJson, { packageJsonPath, type: 'minor' });
-
-      expect(writeFileSync).toHaveBeenCalledWith(
-        packageJsonPath,
-        `${JSON.stringify({ ...packageJson, version: '1.1.0' }, undefined, 2)}\n`,
-      );
-    });
-  });
-
-  describe('when the new version is less than the latest version on npm', () => {
-    beforeEach(() => {
-      getLatestPackageVersionOnNpm.mockReturnValueOnce('2.0.0');
-    });
-
-    it('should writeFileSync with the correct arguments', () => {
-      versionPackage(packageJson, { packageJsonPath, type: 'minor' });
-
-      expect(writeFileSync).toHaveBeenCalledWith(
-        packageJsonPath,
-        `${JSON.stringify({ ...packageJson, version: '1.1.0' }, undefined, 2)}\n`,
-      );
-    });
-  });
-
-  describe('when the new version is greater than the latest version on npm', () => {
     it('should writeFileSync with the correct arguments', () => {
       versionPackage(packageJson, { packageJsonPath, type: 'minor' });
 

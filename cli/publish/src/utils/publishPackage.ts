@@ -2,6 +2,7 @@ import {
   type ReleaseMeta,
   asyncExec,
   getLatestPackageVersionOnNpm,
+  getPackageVersionsOnNpm,
   getTag,
   loadPackageJson,
   verboseLog,
@@ -21,14 +22,12 @@ export const publishPackage = async (
   }
 
   const latestNpmPackageVersion = getLatestPackageVersionOnNpm(name);
+  const packageVersionsOnNpm = getPackageVersionsOnNpm(name);
   verboseLog(`New version: ${version}`);
-  verboseLog(`Latest version on npm: ${latestNpmPackageVersion || 'None'}`);
+  verboseLog(`Latest non-prerelease version on npm: ${latestNpmPackageVersion || 'None'}`);
 
-  if (latestNpmPackageVersion && version === latestNpmPackageVersion) {
-    verboseLog(
-      `The new ${name} package verison ${version} is equal to a version on npm: ${latestNpmPackageVersion}. Skipping publish.`,
-    );
-
+  if (packageVersionsOnNpm.includes(version)) {
+    verboseLog(`The new ${name} package verison ${version} is equal to a version on npm. Skipping publish.`);
     return;
   }
 

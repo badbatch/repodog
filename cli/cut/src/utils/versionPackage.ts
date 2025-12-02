@@ -1,4 +1,10 @@
-import { type ReleaseMeta, getLatestPackageVersionOnNpm, getNewVersion, verboseLog } from '@repodog/cli-utils';
+import {
+  type ReleaseMeta,
+  getLatestPackageVersionOnNpm,
+  getNewVersion,
+  getPackageVersionsOnNpm,
+  verboseLog,
+} from '@repodog/cli-utils';
 import { writeFileSync } from 'node:fs';
 import { type PackageJson, type SetRequired } from 'type-fest';
 
@@ -15,13 +21,12 @@ export const versionPackage = (
   }
 
   const latestNpmPackageVersion = getLatestPackageVersionOnNpm(name);
+  const packageVersionsOnNpm = getPackageVersionsOnNpm(name);
   verboseLog(`New version: ${newVersion}`);
-  verboseLog(`Latest version on npm: ${latestNpmPackageVersion || 'None'}`);
+  verboseLog(`Latest non-prerelease version on npm: ${latestNpmPackageVersion || 'None'}`);
 
-  if (latestNpmPackageVersion && newVersion === latestNpmPackageVersion) {
-    throw new Error(
-      `The new ${name} package verison ${newVersion} is equal to a version on npm: ${latestNpmPackageVersion}.`,
-    );
+  if (packageVersionsOnNpm.includes(newVersion)) {
+    throw new Error(`The new ${name} package verison ${newVersion} is equal to a version on npm.`);
   }
 
   try {
