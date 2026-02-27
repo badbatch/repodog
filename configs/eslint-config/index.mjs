@@ -104,6 +104,8 @@ export default tsEslint.config(
         { blankLine: 'always', next: 'multiline-let', prev: '*' },
         { blankLine: 'never', next: 'cjs-export', prev: 'cjs-export' },
         { blankLine: 'never', next: 'cjs-import', prev: 'cjs-import' },
+        { blankLine: 'always', next: '*', prev: 'multiline-export' },
+        { blankLine: 'always', next: 'multiline-export', prev: '*' },
         { blankLine: 'always', next: 'case', prev: '*' },
         { blankLine: 'always', next: 'default', prev: '*' },
         { blankLine: 'always', next: '*', prev: 'break' },
