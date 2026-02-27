@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.0.22 (2026-02-27)
+
+### Bug Fixes
+
+* **eslint-config:**  try and get spacing working in ts (c5bdf474)
+
 ## 2.0.21 (2026-02-27)
 
 ### Chores
