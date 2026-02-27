@@ -61,6 +61,7 @@ export default tsEslint.config(
       'sort-keys-fix': fixupPluginRules(sortKeysFix),
     },
     rules: {
+      '@stylistic/lines-between-class-members': [2, 'always'],
       '@stylistic/max-len': [
         2,
         {
@@ -82,6 +83,10 @@ export default tsEslint.config(
         { blankLine: 'always', next: 'multiline-expression', prev: '*' },
         { blankLine: 'always', next: '*', prev: 'directive' },
         { blankLine: 'always', next: 'directive', prev: '*' },
+        { blankLine: 'always', next: 'multiline-return', prev: '*' },
+        { blankLine: 'never', next: 'singleline-return', prev: 'singleline-let' },
+        { blankLine: 'never', next: 'singleline-return', prev: 'singleline-const' },
+        { blankLine: 'never', next: 'singleline-const', prev: 'singleline-let' },
         { blankLine: 'never', next: 'singleline-const', prev: 'singleline-const' },
         { blankLine: 'never', next: 'singleline-const', prev: 'singleline-let' },
         { blankLine: 'never', next: 'singleline-let', prev: 'singleline-let' },
