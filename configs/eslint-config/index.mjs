@@ -61,7 +61,7 @@ export default tsEslint.config(
       'sort-keys-fix': fixupPluginRules(sortKeysFix),
     },
     rules: {
-      '@stylistic/lines-between-class-members': [2, ['always'], { exceptAfterSingleLine: true }],
+      '@stylistic/lines-between-class-members': [2, 'always', { exceptAfterSingleLine: true }],
       '@stylistic/max-len': [
         2,
         {
