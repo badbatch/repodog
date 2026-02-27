@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.0.19 (2026-02-27)
+
+### Bug Fixes
+
+* **eslint-config:**  update missing spacing additions (4ef72134)
+
 ## 2.0.18 (2026-02-27)
 
 ### New Features
