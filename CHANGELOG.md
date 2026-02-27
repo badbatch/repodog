@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.0.24 (2026-02-27)
+
+### Bug Fixes
+
+* **eslint-config:**  sort multiline export spacing (32424174)
+
 ## 2.0.23 (2026-02-27)
 
 ### Reverts
