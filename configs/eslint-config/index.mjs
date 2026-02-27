@@ -81,10 +81,6 @@ export default tsEslint.config(
         { blankLine: 'always', next: 'multiline-block-like', prev: '*' },
         { blankLine: 'always', next: '*', prev: 'multiline-expression' },
         { blankLine: 'always', next: 'multiline-expression', prev: '*' },
-        { blankLine: 'always', next: '*', prev: 'type' },
-        { blankLine: 'always', next: 'type', prev: '*' },
-        { blankLine: 'always', next: '*', prev: 'interface' },
-        { blankLine: 'always', next: 'interface', prev: '*' },
         { blankLine: 'always', next: '*', prev: 'directive' },
         { blankLine: 'always', next: 'directive', prev: '*' },
         { blankLine: 'always', next: 'multiline-return', prev: '*' },
@@ -234,9 +230,17 @@ export default tsEslint.config(
       },
     },
     plugins: {
+      '@stylistic': stylistic,
       'typescript-sort-keys': fixupPluginRules(typescriptSortKeys),
     },
     rules: {
+      '@stylistic/padding-line-between-statements': [
+        2,
+        { blankLine: 'always', next: '*', prev: 'type' },
+        { blankLine: 'always', next: 'type', prev: '*' },
+        { blankLine: 'always', next: '*', prev: 'interface' },
+        { blankLine: 'always', next: 'interface', prev: '*' },
+      ],
       '@typescript-eslint/consistent-type-assertions': [2, { assertionStyle: 'never' }],
       '@typescript-eslint/consistent-type-definitions': 0,
       '@typescript-eslint/consistent-type-imports': [
