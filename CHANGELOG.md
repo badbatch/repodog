@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.0.18 (2026-02-27)
+
+### New Features
+
+* **eslint-config:**  update spacing rules (7c615b35)
+
 ## 2.0.17 (2025-12-02)
 
 ### Bug Fixes
