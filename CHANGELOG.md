@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.0.21 (2026-02-27)
+
+### Chores
+
+* **eslint-config:**  fix broken config (35600fea)
+
 ## 2.0.20 (2026-02-27)
 
 ### Bug Fixes
