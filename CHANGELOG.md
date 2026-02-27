@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.0.23 (2026-02-27)
+
+### Reverts
+
+* **eslint-config:**  ts spacing fix attempt (14698fd9)
+
 ## 2.0.22 (2026-02-27)
 
 ### Bug Fixes
