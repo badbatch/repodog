@@ -12,9 +12,46 @@
   },
   "bugs": "https://github.com/badbatch/repodog/issues",
   "type": "module",
-  "main": "index.mjs",
+  "bin": {
+    "jbc-coverage": "./bin/coverage.js"
+  },
+  "exports": {
+    ".": {
+      "types": {
+        "import": "./dist/types/esm/index.d.ts",
+        "require": "./dist/types/cjs/index.d.cts"
+      },
+      "import": "./dist/esm/index.mjs",
+      "require": "./dist/cjs/index.cjs"
+    },
+    "./capturer": {
+      "types": {
+        "import": "./dist/types/esm/capturer.d.ts",
+        "require": "./dist/types/cjs/capturer.d.cts"
+      },
+      "import": "./dist/esm/capturer.mjs",
+      "require": "./dist/cjs/capturer.cjs"
+    },
+    "./reporter": {
+      "types": {
+        "import": "./dist/types/esm/reporter.d.ts",
+        "require": "./dist/types/cjs/reporter.d.cts"
+      },
+      "import": "./dist/esm/reporter.mjs",
+      "require": "./dist/cjs/reporter.cjs"
+    }
+  },
   "publishConfig": {
     "access": "public"
+  },
+  "scripts": {
+    "build": "pnpm run clean:dist && pnpm run compile",
+    "clean:deps": "del-cli ./node_modules",
+    "clean:dist": "del-cli ./dist",
+    "compile": "pnpm run /^compile:.*/",
+    "compile:cjs": "MODULE_SYSTEM=cjs rollup -c ./rollup.config.mjs",
+    "compile:esm": "rollup -c ./rollup.config.mjs",
+    "compile:types": "tsc --project ./tsconfig.build.json && cts-types build dist/types/esm dist/types/cjs"
   },
   "peerDependencies": {
     "@repodog/webpack-config": "workspace:*",
@@ -22,5 +59,10 @@
     "jasmine-browser-runner": "<4",
     "jasmine-core": "<6",
     "jasmine-expect": "<6"
+  },
+  "devDependencies": {
+    "cts-types": "^0.0.10",
+    "del-cli": "^6.0.0",
+    "type-fest": "^4.41.0"
   }
 }

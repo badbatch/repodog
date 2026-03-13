@@ -17,6 +17,7 @@
   },
   "dependencies": {
     "glob": "^11.1.0",
+    "istanbul-instrumenter-loader": "^3.0.1",
     "source-map-loader": "^5.0.0"
   },
   "peerDependencies": {

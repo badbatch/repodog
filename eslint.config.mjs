@@ -12,7 +12,7 @@ export default [
   {
     languageOptions: {
       parserOptions: {
-        project: ['./tsconfig.json', './cli/*/tsconfig.json'],
+        project: ['./tsconfig.json', './configs/*/tsconfig.json', './cli/*/tsconfig.json'],
       },
     },
   },

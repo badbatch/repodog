@@ -20,6 +20,7 @@ npm install @repodog/jasmine-browser-config @repodog/webpack-config @types/jasmi
   "scripts": {
     "test:browser": "pnpm run test:browser:remove && pnpm run test:browser:build && pnpm run test:browser:run",
     "test:browser:build": "webpack --config ./webpack.config.cjs",
+    "test:browser:coverage": "jbc-coverage && pnpm run test:browser:run",
     "test:browser:debug": "jasmine-browser-runner serve --config=jasmineBrowser.config.mjs --browser chrome",
     "test:browser:remove": "del-cli ./tests/browser/dist",
     "test:browser:run": "jasmine-browser-runner runSpecs --config=jasmineBrowser.config.mjs",
@@ -41,9 +42,18 @@ export default {
 const swcConfig = require('@repodog/swc-config');
 const webpackConfig = require('@repodog/webpack-config/test.cjs');
 
-module.exports = {
+const { entry, ...rest } = {
   ...webpackConfig({ compiler: 'babel-loader' }),
   // or
   ...webpackConfig({ compiler: ['swc-loader', swcConfig] }),
+};
+
+module.exports = {
+  entry: [
+    // Add reporter to send code coverage back to server
+    require.resolve('@repodog/jasmine-browser-config/reporter'),
+    ...entry,
+  ],
+  ...rest
 };
 ```
