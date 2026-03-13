@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.0.26-unstable-12345.1 (2026-03-13)
+
+### Chores
+
+* **jasmine-browser-config:**  add logging to server (bc746c4d)
+
 ## 2.0.26-unstable-12345.0 (2026-03-13)
 
 ### Refactors
