@@ -7,7 +7,7 @@ const testConfig = ({ compiler, include = path.resolve(process.cwd(), 'src'), te
   entry: glob.sync(`./${testsPath}/**/*.test.*`).map(file => `./${file}`),
   module: {
     rules: [
-      ...config.module.rules,
+      ...(config.module?.rules ?? []),
       {
         enforce: 'post',
         exclude: /node_modules|\.(spec|test)\.*$/,
