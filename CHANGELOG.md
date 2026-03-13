@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.0.25 (2026-03-13)
+
+### Bug Fixes
+
+* **rollup-config:**  remove source map path transformer (415c2614)
+
 ## 2.0.24 (2026-02-27)
 
 ### Bug Fixes
