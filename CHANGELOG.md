@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.0.26-unstable-12345.0 (2026-03-13)
+
+### Refactors
+
+* **jasmine-browser-config:**  add code coverage (2a39760a)
+
 ## 2.0.25 (2026-03-13)
 
 ### Bug Fixes
