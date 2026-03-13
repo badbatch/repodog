@@ -4,7 +4,7 @@ import json from '@rollup/plugin-json';
 import { nodeResolve } from '@rollup/plugin-node-resolve';
 import terser from '@rollup/plugin-terser';
 import { existsSync, mkdirSync, writeFileSync } from 'node:fs';
-import { basename, isAbsolute, resolve } from 'node:path';
+import { isAbsolute, resolve } from 'node:path';
 import analyzer from 'rollup-plugin-analyzer';
 import copy from 'rollup-plugin-copy';
 import sourcemaps from 'rollup-plugin-sourcemaps';
@@ -15,14 +15,6 @@ const isProdEnv = NODE_ENV === 'production';
 const packageDir = process.cwd();
 const external = id => !id.startsWith('.') && !id.startsWith('#') && !isAbsolute(id);
 const outputExtension = MODULE_SYSTEM === 'esm' ? 'mjs' : 'cjs';
-
-const sourcemapPathTransform = sourcePath => {
-  if (/node_modules/.test(sourcePath)) {
-    return sourcePath;
-  }
-
-  return sourcePath.replace('../../src', `../${basename(packageDir)}/src/`);
-};
 
 const config = (options = {}) => {
   console.log(`> Using @repodog/${options.compiler.name}-config`);
@@ -78,7 +70,6 @@ const config = (options = {}) => {
       file: `${packageDir}/dist/${MODULE_SYSTEM}/index.${outputExtension}`,
       format: MODULE_SYSTEM,
       sourcemap: true,
-      sourcemapPathTransform,
     },
     plugins,
   };
