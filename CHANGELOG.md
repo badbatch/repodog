@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.0.26-unstable-12345.2 (2026-03-13)
+
+### Bug Fixes
+
+* **webpack-config:**  defensively code against undefined (ff976182)
+
 ## 2.0.26-unstable-12345.1 (2026-03-13)
 
 ### Chores
