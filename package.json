@@ -68,7 +68,7 @@
     "nyc": "^17.1.0",
     "open-cli": "^8.0.0",
     "prettier": "^3.6.2",
-    "rollup": "^4.46.2",
+    "rollup": "^4.59.0",
     "suppress-experimental-warnings": "^2.0.0",
     "syncpack": "^13.0.4",
     "typescript": "^5.9.2"
