@@ -71,7 +71,7 @@
     "rollup": "^4.46.2",
     "suppress-experimental-warnings": "^2.0.0",
     "syncpack": "^13.0.4",
-    "typescript": "^5.9.2"
+    "typescript": "^6.0.3"
   },
   "pnpm": {
     "overrides": {
