@@ -16,6 +16,6 @@
     "access": "public"
   },
   "peerDependencies": {
-    "typescript": "<6"
+    "typescript": "<7"
   }
 }
