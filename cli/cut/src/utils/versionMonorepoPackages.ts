@@ -64,7 +64,7 @@ export const versionMonorepoPackages = ({
 
       verboseLog(`Relative dir: ${relativeDirectory}`);
 
-      if (!changedFiles.some(file => file.includes(relativeDirectory))) {
+      if (changedFiles.every(file => !file.includes(relativeDirectory))) {
         verboseLog(`No files have changed since the last release tag: ${lastReleaseTag}`);
 
         if (!force && !packageMeta.force) {

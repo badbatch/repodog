@@ -10,11 +10,12 @@ export const loadQuestions = (
   questionOverrides?: Record<string, QuestionOverrides>,
 ): PromptOption[] => {
   const directoryPath = dirname(fileURLToPath(import.meta.url));
+  const joinedInternalTypePath = internalTypePath.join(sep);
 
-  // The import is a json file, which is not typed literally.
+  // The import is a JSON file, which is not typed literally.
   // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
   const baseQuestions = JSON.parse(
-    readFileSync(resolve(directoryPath, `../questions/${internalTypePath.join(sep)}.json`), { encoding: 'utf8' }),
+    readFileSync(resolve(directoryPath, `../questions/${joinedInternalTypePath}.json`), { encoding: 'utf8' }),
   ) as PromptOption[];
 
   verboseLog(`Loaded base questions:\n${JSON.stringify(baseQuestions, undefined, 2)}\n`);

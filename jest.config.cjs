@@ -13,5 +13,5 @@ const config = jestConfig({ compilerOptions: swcConfig });
 module.exports = {
   ...config,
   collectCoverageFrom: ['cli/**/*.ts', ...config.collectCoverageFrom.slice(1)],
-  ...(isDebug ? {} : { testMatch: ['**/src/**/*.test.ts'] }),
+  ...(!isDebug && { testMatch: ['**/src/**/*.test.ts'] }),
 };

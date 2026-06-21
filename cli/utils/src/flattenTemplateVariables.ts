@@ -35,7 +35,7 @@ export const flattenTemplateVariables = (
       break;
     }
 
-    // typescript struggling to derive correct type of subslice.
+    // TypeScript struggling to derive correct type of subslice.
     // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
     const templateVariablesBranch = subslice as Record<string, TemplateVariables>;
 

@@ -5,7 +5,7 @@ export const enrichQuestions = (
   answers: Record<string, string | number | boolean>,
 ): PromptOption[] => {
   for (const question of questions) {
-    if (question.name in answers) {
+    if (Object.hasOwn(answers, question.name)) {
       question.initial = answers[question.name];
     }
   }

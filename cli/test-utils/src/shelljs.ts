@@ -1,5 +1,4 @@
-// These are test files so casting is acceptable.
-/* eslint-disable @typescript-eslint/consistent-type-assertions */
+ 
 import { jest } from '@jest/globals';
 
 export type ShellMockResult = {
@@ -10,8 +9,8 @@ export type ShellMockResult = {
 
 export const shelljsMock = (): { default: ShellMockResult } => ({
   default: {
-    echo: jest.fn() as jest.Mock,
-    exec: jest.fn() as jest.Mock,
-    exit: jest.fn() as jest.Mock,
+    echo: jest.fn(),
+    exec: jest.fn(),
+    exit: jest.fn(),
   },
 });

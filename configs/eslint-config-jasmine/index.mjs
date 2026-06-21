@@ -1,6 +1,6 @@
 import jasmine from 'eslint-plugin-jasmine';
 
-// eslint convention is to export default
+// ESLint convention is to export default
 // eslint-disable-next-line import-x/no-default-export
 export default [
   {

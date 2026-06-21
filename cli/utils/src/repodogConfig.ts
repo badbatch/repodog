@@ -11,19 +11,19 @@ let cachedConfig: RepodogConfig | undefined;
 export const addRepodogConfigToCache = (config: Partial<RepodogConfig>): Partial<RepodogConfig> => {
   const newConfig = merge({}, cachedConfig ?? {}, config);
 
+  // Think this is being lagged in error based on docs examples
+  // eslint-disable-next-line unicorn/prefer-minimal-ternary
   newConfig.language ??= existsSync(resolve(process.cwd(), 'tsconfig.json'))
     ? language.TYPESCRIPT
     : language.JAVASCRIPT;
 
-  // Am okay with this in the context of the cache being used in a cli command
-  // eslint-disable-next-line @typescript-eslint/consistent-type-assertions,unicorn/no-top-level-assignment-in-function
+  // Am okay with this in the context of the cache being used in a CLI command
+  // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
   cachedConfig = newConfig as RepodogConfig;
   return newConfig;
 };
 
 export const clearRepodogConfigCache = (): void => {
-  // Am okay with this in the context of the cache being used in a cli command
-  // eslint-disable-next-line unicorn/no-top-level-assignment-in-function
   cachedConfig = undefined;
 };
 

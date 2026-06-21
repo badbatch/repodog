@@ -213,6 +213,7 @@ export default tsEslint.config(
             camelCase: true,
             pascalCase: true,
           },
+          checkDirectories: false,
           ignore: ['^module-defs.d.ts$', '^next-env.d.ts$'],
         },
       ],

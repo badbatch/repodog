@@ -126,14 +126,12 @@ export const handler = async (argv: NewHandlerArguments): Promise<void> => {
       excludeTypesFile: false,
       ...flattenedTemplateVariables,
       ...removeEmptyAnswers(await enquirer.prompt(enrichQuestions(questions, flattenedTemplateVariables))),
-      ...(leafAdditionalTemplatesPath
-        ? {
+      ...(leafAdditionalTemplatesPath && {
             ...compileAdditionalTemplateOverrides(
               leafAdditionalTemplatesPath,
               resolveAbsolutePath([templatesPath, ...internalTypePath].join(sep)),
             ),
-          }
-        : {}),
+          }),
       language,
       newSubType: subtype,
       newType: type,

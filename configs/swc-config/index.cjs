@@ -70,12 +70,13 @@ const configs = [
   },
 ];
 
-Object.defineProperty(configs, 'ts', {
-  get: () => configs[0],
-});
-
-Object.defineProperty(configs, 'js', {
-  get: () => configs[1],
+Object.defineProperties(configs, {
+	js: {
+	  get: () => configs[1],
+	},
+	ts: {
+	  get: () => configs[0],
+	},
 });
 
 module.exports = configs;

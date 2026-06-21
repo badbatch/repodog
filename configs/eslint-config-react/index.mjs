@@ -2,7 +2,7 @@ import jsxA11y from 'eslint-plugin-jsx-a11y';
 import react from 'eslint-plugin-react';
 import reactHooks from 'eslint-plugin-react-hooks';
 
-// eslint convention is to export default
+// ESLint convention is to export default
 // eslint-disable-next-line import-x/no-default-export
 export default [
   jsxA11y.flatConfigs.recommended,
