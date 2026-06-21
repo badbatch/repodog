@@ -38,10 +38,10 @@ npm install @swc/jest --save-dev
 ```
 
 ```javascript
-// jest.config.cjs
-const jestConfig = require('@repodog/jest-config');
+// jest.config.mjs
+import jestConfig from '@repodog/jest-config';
 
-module.exports = {
+export default {
   ...jestConfig(),
 };
 ```
@@ -84,11 +84,11 @@ module.exports = {
 ```
 
 ```javascript
-// jest.config.cjs
-const jestConfig = require('@repodog/jest-config');
-const swcConfig = require('@repodog/swc-config');
+// jest.config.mjs
+import jestConfig from '@repodog/jest-config';
+import swcConfig from '@repodog/swc-config';
 
-module.exports = {
+export default {
   ...jestConfig({ compilerOptions: swcConfig }),
 };
 ```
@@ -114,20 +114,6 @@ module.exports = {
       "console": "integratedTerminal",
     },
   ],
-}
-```
-
-### Inline snapshots
-
-The config includes `prettier@^2` as a dependency so you can continue to use Jest inline snapshots without much additional configuration. All that is needed is to add a `.prettierrc` to the root of your project. This file will not conflict with the `prettier.config.mjs` file used by `@repodog/eslint-config` to format the rest of your code.
-
-```jsonc
-// .prettierrc
-{
-  "arrowParens": "avoid",
-  "printWidth": 120,
-  "singleQuote": true,
-  "trailingComa": "all",
 }
 ```
 

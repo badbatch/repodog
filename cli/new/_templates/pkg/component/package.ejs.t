@@ -59,7 +59,7 @@ sh: "<%= packageManager %> install"
     "react-dom": "<20"
   },
   "devDependencies": {
-    "@jest/globals": "^29.7.0",
+    "@jest/globals": "^30.4.1",
     "@types/react": "^19.1.6",
     "@types/react-dom": "^19.1.5",
     "cts-types": "^0.0.10",

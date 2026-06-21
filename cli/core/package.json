@@ -62,7 +62,7 @@
     "yargs": "^18.0.0"
   },
   "devDependencies": {
-    "@jest/globals": "^29.7.0",
+    "@jest/globals": "^30.4.1",
     "@repodog/cli-test-utils": "workspace:*",
     "del-cli": "^6.0.0"
   }

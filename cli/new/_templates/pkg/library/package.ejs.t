@@ -51,7 +51,7 @@ sh: "<%= packageManager %> install"
   "dependencies": {},
   "peerDependencies": {},
   "devDependencies": {
-    "@jest/globals": "^29.7.0",
+    "@jest/globals": "^30.4.1",
     "cts-types": "^0.0.10",
     "del-cli": "^6.0.0"
   }

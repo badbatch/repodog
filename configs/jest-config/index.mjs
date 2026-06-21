@@ -1,3 +1,9 @@
+import { createRequire } from 'node:module';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+
+const require = createRequire(import.meta.url);
+const dirname = path.dirname(fileURLToPath(import.meta.url));
 const packageDir = process.cwd();
 let packageName;
 
@@ -26,8 +32,8 @@ const transform = {};
 
 if (isJsEnvWeb) {
   moduleNameMapper[String.raw`^.+\.css$`] = 'identity-obj-proxy';
-  transform[String.raw`^.+\.css$`] = `${__dirname}/cssTransformer.cjs`;
-  transform[String.raw`^(?!.*\.(css|mjs|cjs|js|jsx|json|ts|tsx)$)`] = `${__dirname}/fileTransformer.cjs`;
+  transform[String.raw`^.+\.css$`] = `${dirname}/cssTransformer.mjs`;
+  transform[String.raw`^(?!.*\.(css|mjs|cjs|js|jsx|json|ts|tsx)$)`] = `${dirname}/fileTransformer.mjs`;
 }
 
 const testMatch = [
@@ -60,7 +66,7 @@ const config = ({ compilerOptions = {} } = {}) => {
     handleSwcConfigArray(compilerOptions);
   } else {
     console.log('> Using @repodog/babel-config');
-    transform[String.raw`^.+\.(mjs|cjs|js|jsx|ts|tsx)$`] = `${__dirname}/babelTransformer.cjs`;
+    transform[String.raw`^.+\.(mjs|cjs|js|jsx|ts|tsx)$`] = `${dirname}/babelTransformer.mjs`;
   }
 
   return {
@@ -101,4 +107,6 @@ const config = ({ compilerOptions = {} } = {}) => {
   };
 };
 
-module.exports = config;
+// Required in this instance
+// eslint-disable-next-line import-x/no-default-export
+export default config;
