@@ -1,9 +1,9 @@
 import { merge } from 'lodash-es';
 import { readFileSync } from 'node:fs';
 import { type JsonArray, type JsonObject } from 'type-fest';
-import { resolveAbsolutePath } from './resolveAbsolutePath.ts';
-import { type RepodogConfig } from './types.ts';
-import { verboseLog } from './verboseLog.ts';
+import { resolveAbsolutePath } from '#resolveAbsolutePath.ts';
+import { type RepodogConfig } from '#types.ts';
+import { verboseLog } from '#verboseLog.ts';
 
 export const resolveConfigPath = (config: RepodogConfig, key: keyof RepodogConfig, path: string): void => {
   try {

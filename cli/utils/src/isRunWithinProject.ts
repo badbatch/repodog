@@ -1,5 +1,5 @@
 import { resolve } from 'node:path';
-import { loadPackageJson } from './loadPackageJson.ts';
+import { loadPackageJson } from '#loadPackageJson.ts';
 
 export const isRunWithinProject = (): boolean => {
   try {

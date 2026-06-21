@@ -1,5 +1,9 @@
-import { NewType } from './types.ts';
+import { newType } from '#constants.ts';
+import { type NewType } from '#types.ts';
 
-// enum and string value are not the same type, even if values match.
-// eslint-disable-next-line @typescript-eslint/consistent-type-assertions
-export const isValidNewType = (type: string): type is NewType => Object.values(NewType).includes(type as NewType);
+export const isValidNewType = (type: string): type is NewType => {
+  // Needs to be list of strings for .includes not to throw type error
+  // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
+  const values = Object.values(newType) as string[];
+  return values.includes(type);
+};

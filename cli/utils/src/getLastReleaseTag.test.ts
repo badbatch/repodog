@@ -5,9 +5,8 @@ import { type ChildProcess } from 'node:child_process';
 jest.unstable_mockModule('shelljs', shelljsMock);
 const shelljs = jest.mocked(await import('shelljs')).default;
 
-const { addLastReleaseTagToCache, clearLastReleaseTagCache, getCachedLastReleaseTag, getLastReleaseTag } = await import(
-  './getLastReleaseTag.ts'
-);
+const { addLastReleaseTagToCache, clearLastReleaseTagCache, getCachedLastReleaseTag, getLastReleaseTag } =
+  await import('#getLastReleaseTag.ts');
 
 describe('getLastReleaseTag', () => {
   beforeEach(() => {

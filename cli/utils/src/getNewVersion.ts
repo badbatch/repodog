@@ -1,5 +1,5 @@
 import semver, { type ReleaseType } from 'semver';
-import { type ReleaseTag } from './types.ts';
+import { type ReleaseTag } from '#types.ts';
 
 export const getNewVersion = (
   version: string,

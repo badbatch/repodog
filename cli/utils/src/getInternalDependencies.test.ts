@@ -1,4 +1,4 @@
-import { getInternalDependencies } from './getInternalDependencies.ts';
+import { getInternalDependencies } from '#getInternalDependencies.ts';
 
 describe('getInternalDependencies', () => {
   const packageJson = {

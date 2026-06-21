@@ -1,15 +1,15 @@
 import { jest } from '@jest/globals';
 import { globMock } from '@repodog/cli-test-utils';
-import { PackageManager } from './types.ts';
+import { PackageManager } from '#types.ts';
 
 jest.unstable_mockModule('glob', globMock);
 
-jest.unstable_mockModule('./getPackagePatterns.ts', () => ({
+jest.unstable_mockModule('#getPackagePatterns.ts', () => ({
   getPackagePatterns: jest.fn().mockReturnValue(['apps/**', 'configs/*', 'graphql/*', '!apps/shared/test-utils']),
 }));
 
 const { glob } = jest.mocked(await import('glob'));
-const { getMonorepoPackageJsonPaths } = await import('./getMonorepoPackageJsonPaths.ts');
+const { getMonorepoPackageJsonPaths } = await import('#getMonorepoPackageJsonPaths.ts');
 
 describe('getMonorepoPackageJsonPaths', () => {
   beforeEach(() => {

@@ -3,7 +3,7 @@ import { shelljsMock } from '@repodog/cli-test-utils';
 
 jest.unstable_mockModule('shelljs', shelljsMock);
 const shelljs = jest.mocked(await import('shelljs')).default;
-const { setVerbose, verboseLog } = await import('./verboseLog.ts');
+const { setVerbose, verboseLog } = await import('#verboseLog.ts');
 
 describe('verboseLog', () => {
   beforeEach(() => {

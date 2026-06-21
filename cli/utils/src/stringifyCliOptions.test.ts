@@ -1,4 +1,4 @@
-import { stringifyCliOptions } from './stringifyCliOptions.ts';
+import { stringifyCliOptions } from '#stringifyCliOptions.ts';
 
 describe('stringifyCliOptions', () => {
   it('should return the stringified cli options', () => {

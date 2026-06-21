@@ -1,21 +1,21 @@
 import { jest } from '@jest/globals';
-import { Language } from './types.ts';
+import { Language } from '#types.ts';
 
 jest.unstable_mockModule('node:fs', () => ({
   readFileSync: jest.fn(),
 }));
 
-jest.unstable_mockModule('./resolveAbsolutePath.ts', () => ({
+jest.unstable_mockModule('#resolveAbsolutePath.ts', () => ({
   resolveAbsolutePath: (path: string) => `/root/${path}`,
 }));
 
 const { readFileSync } = jest.mocked(await import('node:fs'));
-const { resolveConfigPath } = await import('./resolveConfigPath.ts');
+const { resolveConfigPath } = await import('#resolveConfigPath.ts');
 
 const baseConfig = {
   language: Language.TYPESCRIPT,
-  questionOverridesPath: './questionOverridesPath',
-  templateVariablesPath: './templateVariablesPath',
+  questionOverridesPath: '#questionOverridesPath',
+  templateVariablesPath: '#templateVariablesPath',
 };
 
 describe('resolveConfigPath', () => {

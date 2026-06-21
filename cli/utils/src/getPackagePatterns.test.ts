@@ -1,5 +1,5 @@
 import { jest } from '@jest/globals';
-import { PackageManager } from './types.ts';
+import { PackageManager } from '#types.ts';
 
 jest.unstable_mockModule('js-yaml', () => ({
   load: jest.fn<(value: string) => unknown>().mockImplementation((value: string) => JSON.parse(value)),
@@ -10,14 +10,14 @@ jest.unstable_mockModule('node:fs', () => ({
   readFileSync: jest.fn(),
 }));
 
-jest.unstable_mockModule('./loadPackageJson.ts', () => ({
+jest.unstable_mockModule('#loadPackageJson.ts', () => ({
   loadPackageJson: jest.fn(),
 }));
 
 process.cwd = jest.fn().mockReturnValue('/root') as jest.Mocked<() => string>;
 const { readFileSync } = jest.mocked(await import('node:fs'));
-const { loadPackageJson } = jest.mocked(await import('./loadPackageJson.ts'));
-const { getPackagePatterns } = await import('./getPackagePatterns.ts');
+const { loadPackageJson } = jest.mocked(await import('#loadPackageJson.ts'));
+const { getPackagePatterns } = await import('#getPackagePatterns.ts');
 
 describe('getPackagePatterns', () => {
   beforeEach(() => {

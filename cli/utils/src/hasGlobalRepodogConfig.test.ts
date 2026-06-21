@@ -14,7 +14,7 @@ jest.unstable_mockModule('node:path', () => ({
 }));
 
 const { existsSync } = jest.mocked(await import('node:fs'));
-const { hasGlobalRepodogConfig } = await import('./hasGlobalRepodogConfig.ts');
+const { hasGlobalRepodogConfig } = await import('#hasGlobalRepodogConfig.ts');
 
 describe('hasGlobalRepodogConfig', () => {
   beforeEach(() => {

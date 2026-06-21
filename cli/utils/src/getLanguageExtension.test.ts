@@ -1,5 +1,5 @@
-import { getLanguageExtension } from './getLanguageExtension.ts';
-import { Language } from './types.ts';
+import { getLanguageExtension } from '#getLanguageExtension.ts';
+import { Language } from '#types.ts';
 
 describe('getLanguageExtension', () => {
   it('returns "js" for Language.JAVASCRIPT', () => {

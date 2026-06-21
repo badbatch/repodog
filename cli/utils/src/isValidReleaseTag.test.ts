@@ -1,4 +1,4 @@
-import { isValidReleaseTag } from './isValidReleaseTag.ts';
+import { isValidReleaseTag } from '#isValidReleaseTag.ts';
 
 describe('isValidReleaseTag', () => {
   describe('when valid release tag is passed in', () => {

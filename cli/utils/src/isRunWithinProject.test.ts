@@ -1,12 +1,12 @@
 import { jest } from '@jest/globals';
 import { type PackageJson, type SetRequired } from 'type-fest';
 
-jest.unstable_mockModule('./loadPackageJson.ts', () => ({
+jest.unstable_mockModule('#loadPackageJson.ts', () => ({
   loadPackageJson: jest.fn(),
 }));
 
-const { loadPackageJson } = jest.mocked(await import('./loadPackageJson.ts'));
-const { isRunWithinProject } = await import('./isRunWithinProject.ts');
+const { loadPackageJson } = jest.mocked(await import('#loadPackageJson.ts'));
+const { isRunWithinProject } = await import('#isRunWithinProject.ts');
 
 describe('isRunWithinProject', () => {
   beforeEach(() => {

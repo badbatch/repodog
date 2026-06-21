@@ -1,4 +1,4 @@
-import { isValidNewType } from './isValidNewType.ts';
+import { isValidNewType } from '#isValidNewType.ts';
 
 describe('isValidNewType', () => {
   describe('when "pkg" is passed in', () => {

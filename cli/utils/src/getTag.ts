@@ -1,12 +1,12 @@
-import { ReleaseTag } from './types.ts';
+import { releaseTags } from '#constants.ts';
 
 export const getTag = (version: string): string | undefined => {
-  if (version.includes(ReleaseTag.ALPHA)) {
-    return ReleaseTag.ALPHA;
+  if (version.includes(releaseTags.ALPHA)) {
+    return releaseTags.ALPHA;
   }
 
-  if (version.includes(ReleaseTag.BETA)) {
-    return ReleaseTag.BETA;
+  if (version.includes(releaseTags.BETA)) {
+    return releaseTags.BETA;
   }
 
   const matches = new RegExp(String.raw`(unstable(.*))\.\d+`).exec(version);

@@ -1,11 +1,11 @@
 import { jest } from '@jest/globals';
 
-jest.unstable_mockModule('./asyncExec.ts', () => ({
+jest.unstable_mockModule('#asyncExec.ts', () => ({
   asyncExec: jest.fn(),
 }));
 
-const { asyncExec } = jest.mocked(await import('./asyncExec.ts'));
-const { addCommitPushRelease } = await import('./addCommitPushRelease.ts');
+const { asyncExec } = jest.mocked(await import('#asyncExec.ts'));
+const { addCommitPushRelease } = await import('#addCommitPushRelease.ts');
 
 describe('addCommitPushRelease', () => {
   beforeEach(() => {

@@ -1,5 +1,5 @@
 import { jest } from '@jest/globals';
-import { Language, PackageManager } from './types.ts';
+import { Language, PackageManager } from '#types.ts';
 
 jest.unstable_mockModule('node:fs', () => ({
   existsSync: jest.fn().mockReturnValue(true),
@@ -12,13 +12,13 @@ jest.unstable_mockModule('node:os', () => ({
   homedir: jest.fn().mockReturnValue('/'),
 }));
 
-jest.unstable_mockModule('./resolveConfigPath.ts', () => ({
+jest.unstable_mockModule('#resolveConfigPath.ts', () => ({
   resolveConfigPath: jest.fn(),
 }));
 
 process.cwd = () => '/root';
 const { readFileSync, writeFileSync } = jest.mocked(await import('node:fs'));
-const { resolveConfigPath } = jest.mocked(await import('./resolveConfigPath.ts'));
+const { resolveConfigPath } = jest.mocked(await import('#resolveConfigPath.ts'));
 
 const {
   addRepodogConfigToCache,
@@ -26,7 +26,7 @@ const {
   getCachedRepodogConfig,
   loadRepodogConfig,
   writeRepodogConfig,
-} = await import('./repodogConfig.ts');
+} = await import('#repodogConfig.ts');
 
 describe('repodogConfig', () => {
   beforeEach(() => {
@@ -133,7 +133,7 @@ describe('repodogConfig', () => {
       const enrichedConfig = {
         __activeDryRun: true,
         language: Language.TYPESCRIPT,
-        questionOverridesPath: './questionOverridesPath',
+        questionOverridesPath: '#questionOverridesPath',
       };
 
       beforeEach(() => {
@@ -143,7 +143,7 @@ describe('repodogConfig', () => {
 
       it('should call resolveConfigPath with the correct arguments', () => {
         loadRepodogConfig();
-        expect(resolveConfigPath).toHaveBeenCalledWith(enrichedConfig, 'questionOverrides', './questionOverridesPath');
+        expect(resolveConfigPath).toHaveBeenCalledWith(enrichedConfig, 'questionOverrides', '#questionOverridesPath');
       });
     });
 
@@ -151,7 +151,7 @@ describe('repodogConfig', () => {
       const enrichedConfig = {
         __activeDryRun: true,
         language: Language.TYPESCRIPT,
-        templateVariablesPath: './templateVariablesPath',
+        templateVariablesPath: '#templateVariablesPath',
       };
 
       beforeEach(() => {
@@ -161,7 +161,7 @@ describe('repodogConfig', () => {
 
       it('should call resolveConfigPath with the correct arguments', () => {
         loadRepodogConfig();
-        expect(resolveConfigPath).toHaveBeenCalledWith(enrichedConfig, 'templateVariables', './templateVariablesPath');
+        expect(resolveConfigPath).toHaveBeenCalledWith(enrichedConfig, 'templateVariables', '#templateVariablesPath');
       });
     });
   });

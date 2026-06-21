@@ -1,11 +1,11 @@
 import { jest } from '@jest/globals';
 
-jest.unstable_mockModule('./getChangedFiles.ts', () => ({
+jest.unstable_mockModule('#getChangedFiles.ts', () => ({
   getChangedFiles: jest.fn().mockReturnValue([]),
 }));
 
-const { getChangedFiles } = jest.mocked(await import('./getChangedFiles.ts'));
-const { haveFilesChanged } = await import('./haveFilesChanged.ts');
+const { getChangedFiles } = jest.mocked(await import('#getChangedFiles.ts'));
+const { haveFilesChanged } = await import('#haveFilesChanged.ts');
 
 describe('haveFilesChanged', () => {
   beforeEach(() => {

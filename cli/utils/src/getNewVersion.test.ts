@@ -1,5 +1,5 @@
-import { getNewVersion } from './getNewVersion.ts';
-import { ReleaseTag } from './types.ts';
+import { getNewVersion } from '#getNewVersion.ts';
+import { ReleaseTag } from '#types.ts';
 
 describe('getNewVersion', () => {
   describe('when there is a tag', () => {

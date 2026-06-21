@@ -6,9 +6,8 @@ jest.unstable_mockModule('node:fs', () => ({
 
 const { readFileSync } = jest.mocked(await import('node:fs'));
 
-const { addPackageJsonToCache, clearPackageJsonCache, getCachedPackageJsons, loadPackageJson } = await import(
-  './loadPackageJson.ts'
-);
+const { addPackageJsonToCache, clearPackageJsonCache, getCachedPackageJsons, loadPackageJson } =
+  await import('#loadPackageJson.ts');
 
 describe('loadPackageJson', () => {
   const packageJsonPath = '/root/alpha/package.json';
