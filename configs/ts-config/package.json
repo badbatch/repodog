@@ -1,7 +1,7 @@
 {
   "name": "@repodog/ts-config",
   "description": "The Repodog Typescript config module.",
-  "version": "6.0.0",
+  "version": "6.0.1",
   "author": "miami-man",
   "license": "MIT",
   "homepage": "https://github.com/badbatch/repodog",

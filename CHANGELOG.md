@@ -1,5 +1,29 @@
 # Changelog
 
+## 2.0.26 (2026-06-21)
+
+### Chores
+
+* **ts-config:**  bump package version (f13b3524)
+
+### New Features
+
+* **ts-config:**  upgrade to v6 and update ts config (903ce19a)
+
+### Bug Fixes
+
+* **root:**
+  * linting issues (e072bb19)
+  * various build/test errors (6f71bd5f)
+* **eslint-config:**
+  * more compat issues, downgrade eslint to latest 9 (acaaa6f1)
+  * more updates to get v6 working (03ad6423)
+* **ts-config:**  more v6 compat updates (6d74d9be)
+
+### Refactors
+
+* **utils:**  fix linting (f2714b0a)
+
 ## 2.0.25 (2026-03-13)
 
 ### Bug Fixes
