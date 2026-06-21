@@ -39,7 +39,7 @@ export default tsEslint.config(
     ],
   },
   {
-    extends: [eslint.configs.recommended, importX.flatConfigs.recommended, unicorn.configs['flat/recommended']],
+    extends: [eslint.configs.recommended, importX.flatConfigs.recommended, unicorn.configs.recommended],
     files: ['**/*.{mjs,cjs,js,jsx,ts,tsx}'],
     languageOptions: {
       ecmaVersion: 'latest',
@@ -116,7 +116,7 @@ export default tsEslint.config(
       'eslint-comments/no-unused-enable': 2,
       'import-x/extensions': [2, 'ignorePackages'],
       'import-x/namespace': 0,
-      // This rule doesn't work on typescript files currently.
+      // This rule doesn't work on TypeScript files currently.
       // https://github.com/un-ts/eslint-plugin-import-x/issues/144
       'import-x/no-default-export': 2,
       'import-x/no-extraneous-dependencies': [
