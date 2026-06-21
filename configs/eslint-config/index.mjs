@@ -1,10 +1,10 @@
 import { fixupPluginRules } from '@eslint/compat';
 import eslint from '@eslint/js';
 import stylistic from '@stylistic/eslint-plugin';
+import eslintPrettier from 'eslint-config-prettier/flat';
 import eslintComments from 'eslint-plugin-eslint-comments';
 import { importX } from 'eslint-plugin-import-x';
 import preferArrow from 'eslint-plugin-prefer-arrow';
-import prettierRecommended from 'eslint-plugin-prettier/recommended';
 import sortClassMembers from 'eslint-plugin-sort-class-members';
 import sortDestructureKeys from 'eslint-plugin-sort-destructure-keys';
 import sortKeysFix from 'eslint-plugin-sort-keys-fix';
@@ -16,7 +16,7 @@ import tsEslint from 'typescript-eslint';
 const cwd = process.cwd();
 const project = './tsconfig.json';
 
-// eslint convention is to export default
+// ESLint convention is to export default
 // eslint-disable-next-line import-x/no-default-export
 export default tsEslint.config(
   {
@@ -313,10 +313,6 @@ export default tsEslint.config(
     },
   },
   {
-    extends: [prettierRecommended],
-    files: ['**/*.{mjs,cjs,js,jsx,ts,tsx}'],
-  },
-  {
     files: ['**/*.{spec,test}.*', '**/__testUtils__/**'],
     plugins: {
       '@typescript-eslint': tsEslint.plugin,
@@ -330,4 +326,5 @@ export default tsEslint.config(
       '@typescript-eslint/no-non-null-assertion': 0,
     },
   },
+  eslintPrettier,
 );
