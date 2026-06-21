@@ -16,8 +16,8 @@ sh: "<%= packageManager %> install && <%= packageManager %> add -D @repodog/cli 
   "bugs": "<%= homepage %>/issues",
   "type": "module",
   "engines": {
-    "node": "^22",
-    "pnpm": "^10"
+    "node": "^24",
+    "pnpm": "^11"
   },
   "scripts": {
     "build": "<%= packageManager %> run build:rest && <%= packageManager %> run build:core",

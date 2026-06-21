@@ -2,5 +2,5 @@
 to: .mise.toml
 ---
 [tools]
-node = "22"
-pnpm = "10"
+node = "24.17.0"
+"npm:pnpm" = "11.8.0"
