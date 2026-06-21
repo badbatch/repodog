@@ -12,6 +12,6 @@ export const isValidNewSubtype: (type: NewType, subtype: string) => boolean = (
 ): boolean => {
   // Needs to be list of strings for .includes not to throw type error
   // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
-  const values = typeToSubtypeMap[type] as unknown as string[];
+  const values = Object.values(typeToSubtypeMap[type]) as unknown as string[];
   return values.includes(subtype);
 };

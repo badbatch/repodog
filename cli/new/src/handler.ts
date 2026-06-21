@@ -1,23 +1,23 @@
 import { handler as postinstallHandler } from '@repodog/cli-postinstall';
 import { handleGlobalConfigSetup } from '@repodog/cli-setup';
 import {
-  Language,
-  NewType,
   calculateDuration,
   enrichQuestions,
   flattenTemplateVariables,
   getPackageManager,
-  getPackageManagerFilterCmd,
-  getPackageManagerTemporaryCmd,
+  getPackageManagerFilterCommand,
+  getPackageManagerTemporaryCommand,
   hasGlobalRepodogConfig,
   isRunWithinProject,
-  isValidNewSubType,
+  isValidNewSubtype,
   isValidNewType,
+  language as lang,
   loadRepodogConfig,
+  newType,
   removeEmptyAnswers,
   resolveAbsolutePath,
   setVerbose,
-  typeToSubTypeMap,
+  typeToSubtypeMap,
   verboseLog,
 } from '@repodog/cli-utils';
 import colors from 'ansi-colors';
@@ -54,12 +54,12 @@ export const handler = async (argv: NewHandlerArguments): Promise<void> => {
 
   try {
     if (!isValidNewType(argv.type)) {
-      throw new Error(`Expected type to be a valid new type: ${Object.values(NewType).join(', ')}`);
+      throw new Error(`Expected type to be a valid new type: ${Object.values(newType).join(', ')}`);
     }
 
-    if (!isValidNewSubType(argv.type, argv.subtype)) {
+    if (!isValidNewSubtype(argv.type, argv.subtype)) {
       throw new Error(
-        `Expected subtype to be a valid new subtype: ${Object.values(typeToSubTypeMap[argv.type]).join(', ')}`,
+        `Expected subtype to be a valid new subtype: ${Object.values(typeToSubtypeMap[argv.type]).join(', ')}`,
       );
     }
 
@@ -84,7 +84,7 @@ export const handler = async (argv: NewHandlerArguments): Promise<void> => {
 
     const {
       additionalTemplatesPath,
-      language = Language.JAVASCRIPT,
+      language = lang.JAVASCRIPT,
       questionOverrides,
       templateVariables,
     } = loadRepodogConfig();
@@ -138,11 +138,11 @@ export const handler = async (argv: NewHandlerArguments): Promise<void> => {
       newSubType: subtype,
       newType: type,
       packageManager,
-      packageManagerFilterCmd: getPackageManagerFilterCmd(packageManager),
-      packageManagerTemporaryCmd: getPackageManagerTemporaryCmd(packageManager),
+      packageManagerFilterCmd: getPackageManagerFilterCommand(packageManager),
+      packageManagerTemporaryCmd: getPackageManagerTemporaryCommand(packageManager),
     };
 
-    if (type === NewType.REPO) {
+    if (type === newType.REPO) {
       // cliOptions type is too generic, but the name
       // property is a string.
       // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
@@ -162,7 +162,7 @@ export const handler = async (argv: NewHandlerArguments): Promise<void> => {
       await executeHygen(additionalTemplatesPath, hygenPath, externalTypePath, cliOptions);
     }
 
-    if (argv.type === NewType.REPO) {
+    if (argv.type === newType.REPO) {
       await postinstallHandler({ subtype: argv.subtype, type: argv.type, verbose });
     }
 

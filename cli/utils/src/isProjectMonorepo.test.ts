@@ -1,5 +1,5 @@
 import { jest } from '@jest/globals';
-import { PackageManager } from '#types.ts';
+import { packageManager } from '#constants.ts';
 
 jest.unstable_mockModule('js-yaml', () => ({
   load: jest.fn<(value: string) => unknown>().mockImplementation((value: string) => JSON.parse(value)),
@@ -30,7 +30,7 @@ describe('isProjectMonorepo', () => {
       });
 
       it('should return false', () => {
-        expect(isProjectMonorepo(PackageManager.NPM)).toBe(false);
+        expect(isProjectMonorepo(packageManager.NPM)).toBe(false);
       });
     });
 
@@ -44,7 +44,7 @@ describe('isProjectMonorepo', () => {
       });
 
       it('should return true', () => {
-        expect(isProjectMonorepo(PackageManager.NPM)).toBe(true);
+        expect(isProjectMonorepo(packageManager.NPM)).toBe(true);
       });
     });
 
@@ -58,7 +58,7 @@ describe('isProjectMonorepo', () => {
       });
 
       it('should return true', () => {
-        expect(isProjectMonorepo(PackageManager.NPM)).toBe(true);
+        expect(isProjectMonorepo(packageManager.NPM)).toBe(true);
       });
     });
   });
@@ -70,7 +70,7 @@ describe('isProjectMonorepo', () => {
       });
 
       it('should return false', () => {
-        expect(isProjectMonorepo(PackageManager.YARN)).toBe(false);
+        expect(isProjectMonorepo(packageManager.YARN)).toBe(false);
       });
     });
 
@@ -84,7 +84,7 @@ describe('isProjectMonorepo', () => {
       });
 
       it('should return true', () => {
-        expect(isProjectMonorepo(PackageManager.YARN)).toBe(true);
+        expect(isProjectMonorepo(packageManager.YARN)).toBe(true);
       });
     });
 
@@ -98,7 +98,7 @@ describe('isProjectMonorepo', () => {
       });
 
       it('should return true', () => {
-        expect(isProjectMonorepo(PackageManager.YARN)).toBe(true);
+        expect(isProjectMonorepo(packageManager.YARN)).toBe(true);
       });
     });
   });
@@ -110,7 +110,7 @@ describe('isProjectMonorepo', () => {
       });
 
       it('should return false', () => {
-        expect(isProjectMonorepo(PackageManager.PNPM)).toBe(false);
+        expect(isProjectMonorepo(packageManager.PNPM)).toBe(false);
       });
     });
 
@@ -120,7 +120,7 @@ describe('isProjectMonorepo', () => {
       });
 
       it('should return true', () => {
-        expect(isProjectMonorepo(PackageManager.PNPM)).toBe(true);
+        expect(isProjectMonorepo(packageManager.PNPM)).toBe(true);
       });
     });
   });
@@ -133,7 +133,7 @@ describe('isProjectMonorepo', () => {
     });
 
     it('should return false', () => {
-      expect(isProjectMonorepo(PackageManager.PNPM)).toBe(false);
+      expect(isProjectMonorepo(packageManager.PNPM)).toBe(false);
     });
   });
 });

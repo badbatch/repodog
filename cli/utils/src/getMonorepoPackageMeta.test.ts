@@ -1,6 +1,6 @@
 import { jest } from '@jest/globals';
 import { loadPackageJsonMock } from '@repodog/cli-test-utils';
-import { PackageManager } from '#types.ts';
+import { packageManager } from '#constants.ts';
 
 jest.unstable_mockModule('#getMonorepoPackageJsonPaths.ts', () => ({
   getMonorepoPackageJsonPaths: jest
@@ -17,7 +17,7 @@ const { getMonorepoPackageMeta } = await import('#getMonorepoPackageMeta.ts');
 
 describe('getMonorepoPackageMeta', () => {
   it('should return the correct package meta', () => {
-    expect(getMonorepoPackageMeta(PackageManager.PNPM)).toEqual({
+    expect(getMonorepoPackageMeta(packageManager.PNPM)).toEqual({
       alpha: {
         checked: false,
         force: false,

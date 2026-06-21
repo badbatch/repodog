@@ -1,5 +1,5 @@
-import { Language } from '@repodog/cli-utils';
-import { WriteType } from '../types.ts';
+import { language } from '@repodog/cli-utils';
+import { WRITE_TYPE } from '#constants.ts';
 import { getMessagesByType } from './getMessagesByType.ts';
 
 describe('getMessagesByType', () => {
@@ -9,7 +9,7 @@ describe('getMessagesByType', () => {
 
     const expectedMessages = [
       {
-        content: `Write Jest unit tests for the ${Language.JAVASCRIPT} file \`./${fileName}\`:\n\`\`\`\n${fileContents}\n\`\`\``,
+        content: `Write Jest unit tests for the ${language.JAVASCRIPT} file \`./${fileName}\`:\n\`\`\`\n${fileContents}\n\`\`\``,
         role: 'user',
       },
       {
@@ -26,6 +26,6 @@ describe('getMessagesByType', () => {
       },
     ];
 
-    expect(getMessagesByType(WriteType.TEST, fileName, fileContents, Language.JAVASCRIPT)).toEqual(expectedMessages);
+    expect(getMessagesByType(WRITE_TYPE, fileName, fileContents, language.JAVASCRIPT)).toEqual(expectedMessages);
   });
 });

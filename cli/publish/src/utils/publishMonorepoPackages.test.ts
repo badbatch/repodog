@@ -1,6 +1,6 @@
 import { jest } from '@jest/globals';
 import { shelljsMock } from '@repodog/cli-test-utils';
-import { PackageManager, type ReleaseMeta } from '@repodog/cli-utils';
+import { type ReleaseMeta, packageManager } from '@repodog/cli-utils';
 
 jest.unstable_mockModule('@repodog/cli-utils', () => ({
   getMonorepoPackageMeta: jest.fn().mockReturnValue({
@@ -35,7 +35,7 @@ describe('publishMonorepoPackages', () => {
 
   describe('when packages are published successfully', () => {
     it('should change current working directory correctly', async () => {
-      await publishMonorepoPackages(PackageManager.NPM);
+      await publishMonorepoPackages(packageManager.NPM);
 
       expect(mockedProcessChdir.mock.calls).toEqual([
         ['/root/alpha'],
@@ -48,12 +48,12 @@ describe('publishMonorepoPackages', () => {
     });
 
     it('should call publishPackage with the correct arguments', async () => {
-      await publishMonorepoPackages(PackageManager.NPM);
+      await publishMonorepoPackages(packageManager.NPM);
 
       expect(publishPackage.mock.calls).toEqual([
-        ['/root/alpha/package.json', { packageManager: PackageManager.NPM }, expect.any(Function)],
-        ['/root/bravo/package.json', { packageManager: PackageManager.NPM }, expect.any(Function)],
-        ['/root/charlie/package.json', { packageManager: PackageManager.NPM }, expect.any(Function)],
+        ['/root/alpha/package.json', { packageManager: packageManager.NPM }, expect.any(Function)],
+        ['/root/bravo/package.json', { packageManager: packageManager.NPM }, expect.any(Function)],
+        ['/root/charlie/package.json', { packageManager: packageManager.NPM }, expect.any(Function)],
       ]);
     });
   });
@@ -71,20 +71,20 @@ describe('publishMonorepoPackages', () => {
 
     it('should call publishPackage with the correct arguments', async () => {
       try {
-        await publishMonorepoPackages(PackageManager.NPM);
+        await publishMonorepoPackages(packageManager.NPM);
       } catch {
         // no catch
       }
 
       expect(publishPackage.mock.calls).toEqual([
-        ['/root/alpha/package.json', { packageManager: PackageManager.NPM }, expect.any(Function)],
-        ['/root/bravo/package.json', { packageManager: PackageManager.NPM }, expect.any(Function)],
+        ['/root/alpha/package.json', { packageManager: packageManager.NPM }, expect.any(Function)],
+        ['/root/bravo/package.json', { packageManager: packageManager.NPM }, expect.any(Function)],
       ]);
     });
 
     it('should log the correct message', async () => {
       try {
-        await publishMonorepoPackages(PackageManager.NPM);
+        await publishMonorepoPackages(packageManager.NPM);
       } catch {
         // no catch
       }

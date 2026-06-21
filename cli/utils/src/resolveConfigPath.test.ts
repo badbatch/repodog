@@ -1,5 +1,5 @@
 import { jest } from '@jest/globals';
-import { Language } from '#types.ts';
+import { language } from '#constants.ts';
 
 jest.unstable_mockModule('node:fs', () => ({
   readFileSync: jest.fn(),
@@ -13,7 +13,7 @@ const { readFileSync } = jest.mocked(await import('node:fs'));
 const { resolveConfigPath } = await import('#resolveConfigPath.ts');
 
 const baseConfig = {
-  language: Language.TYPESCRIPT,
+  language: language.TYPESCRIPT,
   questionOverridesPath: '#questionOverridesPath',
   templateVariablesPath: '#templateVariablesPath',
 };

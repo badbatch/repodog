@@ -1,5 +1,6 @@
 import { jest } from '@jest/globals';
-import { Language, type RepodogConfig } from '#types.ts';
+import { language } from '#constants.ts';
+import { type RepodogConfig } from '#types.ts';
 
 jest.unstable_mockModule('#repodogConfig.ts', () => ({
   loadRepodogConfig: jest.fn(),
@@ -50,7 +51,7 @@ describe('dryRunFlag', () => {
 
   describe('setDryRunFlag', () => {
     beforeEach(() => {
-      loadRepodogConfig.mockReturnValueOnce({ alpha: 'bravo', language: Language.TYPESCRIPT } as RepodogConfig);
+      loadRepodogConfig.mockReturnValueOnce({ alpha: 'bravo', language: language.TYPESCRIPT } as RepodogConfig);
     });
 
     it('should call writeRepodogConfig with enriched existing config', () => {
@@ -59,7 +60,7 @@ describe('dryRunFlag', () => {
       expect(writeRepodogConfig).toHaveBeenCalledWith('/root', {
         __activeDryRun: true,
         alpha: 'bravo',
-        language: Language.TYPESCRIPT,
+        language: language.TYPESCRIPT,
       });
     });
   });

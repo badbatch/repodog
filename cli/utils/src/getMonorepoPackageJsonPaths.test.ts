@@ -1,6 +1,6 @@
 import { jest } from '@jest/globals';
 import { globMock } from '@repodog/cli-test-utils';
-import { PackageManager } from '#types.ts';
+import { packageManager } from '#constants.ts';
 
 jest.unstable_mockModule('glob', globMock);
 
@@ -50,7 +50,7 @@ describe('getMonorepoPackageJsonPaths', () => {
   });
 
   it('should return the correct package.json paths', () => {
-    expect(getMonorepoPackageJsonPaths(PackageManager.PNPM)).toEqual([
+    expect(getMonorepoPackageJsonPaths(packageManager.PNPM)).toEqual([
       '/root/apps/client/alpha/package.json',
       '/root/apps/server/bravo/package.json',
       '/root/configs/delta/package.json',

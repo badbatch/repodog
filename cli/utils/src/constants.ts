@@ -22,9 +22,15 @@ export const newRepoSubtype = {
   MONOREPO: 'monorepo' as const,
 };
 
-export const releaseTags = {
+export const packageManager = {
+  NPM: 'npm' as const,
+  PNPM: 'pnpm' as const,
+  YARN: 'yarn' as const,
+};
+
+export const releaseTag = {
   ALPHA: 'alpha' as const,
   BETA: 'beta' as const,
-  PR: 'pr' as const,
+  PULL_REQUEST: 'pr' as const,
   UNSTABLE: 'unstable' as const,
 };

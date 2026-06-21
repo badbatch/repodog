@@ -1,4 +1,4 @@
-import { asyncExec, getLanguageExtension, getPackageManagerTemporaryCmd } from '@repodog/cli-utils';
+import { asyncExec, getLanguageExtension, getPackageManagerTemporaryCommand } from '@repodog/cli-utils';
 import { writeFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { type WriteMeta } from '../types.ts';
@@ -17,7 +17,7 @@ export const writeTestFile = async (
   writeFileSync(testFilePath, updatedCode);
 
   if (!skipFormat) {
-    const temperaryCmd = getPackageManagerTemporaryCmd(packageManager);
+    const temperaryCmd = getPackageManagerTemporaryCommand(packageManager);
     await asyncExec(`${temperaryCmd} eslint --fix ${testFilePath}`, { silent: true });
   }
 };

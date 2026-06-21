@@ -1,5 +1,5 @@
 import { jest } from '@jest/globals';
-import { PackageManager } from '#types.ts';
+import { packageManager } from '#constants.ts';
 
 jest.unstable_mockModule('node:fs', () => ({
   existsSync: jest.fn(),
@@ -26,7 +26,7 @@ describe('getPackageManager', () => {
     });
 
     it('should return npm', () => {
-      expect(getPackageManager()).toBe(PackageManager.NPM);
+      expect(getPackageManager()).toBe(packageManager.NPM);
     });
   });
 

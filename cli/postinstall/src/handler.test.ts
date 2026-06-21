@@ -5,7 +5,7 @@ import * as cliUtils from '@repodog/cli-utils';
 jest.unstable_mockModule('@repodog/cli-utils', () => ({
   ...cliUtils,
   getPackageManager: jest.fn().mockReturnValue('pnpm'),
-  isValidNewSubType: jest.fn().mockReturnValue(true),
+  isValidNewSubtype: jest.fn().mockReturnValue(true),
   isValidNewType: jest.fn().mockReturnValue(true),
 }));
 
@@ -15,7 +15,7 @@ jest.unstable_mockModule('./utils/runCommonPostInstallTasks.ts', () => ({
   runCommonPostInstallTasks: jest.fn(),
 }));
 
-const { getPackageManager, isValidNewSubType, isValidNewType } = jest.mocked(await import('@repodog/cli-utils'));
+const { getPackageManager, isValidNewSubtype, isValidNewType } = jest.mocked(await import('@repodog/cli-utils'));
 const shelljs = jest.mocked(await import('shelljs')).default;
 const { runCommonPostInstallTasks } = jest.mocked(await import('./utils/runCommonPostInstallTasks.ts'));
 const { handler } = await import('./handler.ts');
@@ -46,7 +46,7 @@ describe('handler', () => {
 
   describe('when invalid subtype is passed in', () => {
     beforeEach(() => {
-      isValidNewSubType.mockReturnValueOnce(false);
+      isValidNewSubtype.mockReturnValueOnce(false);
     });
 
     it('should throw the correct error', async () => {
@@ -65,7 +65,7 @@ describe('handler', () => {
 
   describe('when a packageManager cannot be derived', () => {
     beforeEach(() => {
-      getPackageManager.mockReturnValueOnce(undefined); // eslint-disable-line unicorn/no-useless-undefined
+      getPackageManager.mockReturnValueOnce(undefined);
     });
 
     it('should throw the correct error', async () => {

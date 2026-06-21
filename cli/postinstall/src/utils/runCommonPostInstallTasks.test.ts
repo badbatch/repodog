@@ -1,5 +1,5 @@
 import { jest } from '@jest/globals';
-import { NewRepoSubtype, NewType } from '@repodog/cli-utils';
+import { newRepoSubtype, newType } from '@repodog/cli-utils';
 
 jest.unstable_mockModule('./installRepoDogPeerDependencies.ts', () => ({
   installRepoDogPeerDependencies: jest.fn(),
@@ -10,7 +10,7 @@ const { runCommonPostInstallTasks } = await import('./runCommonPostInstallTasks.
 
 describe('runCommonPostInstallTasks', () => {
   it('should call installRepoDogPeerDependencies', async () => {
-    await runCommonPostInstallTasks(NewType.PKG, NewRepoSubtype.LIBRARY);
+    await runCommonPostInstallTasks(newType.PKG, newRepoSubtype.LIBRARY);
     expect(installRepoDogPeerDependencies).toHaveBeenCalledWith();
   });
 });
