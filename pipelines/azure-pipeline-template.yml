@@ -1,60 +1,63 @@
 name: Repodog build and publish
 
 parameters:
-- name: package-manager
-  type: string
-  default: 'pnpm'
+  - name: package-manager
+    type: string
+    default: 'pnpm'
 
 jobs:
-- job: build-and-publish
-  pool:
-    vmImage: "ubuntu-latest"
+  - job: build-and-publish
+    pool:
+      vmImage: 'ubuntu-latest'
 
-  variables:
-    - name: is_tag
-      value: $[startsWith(variables['Build.SourceBranch'],'refs/tags/')]]
+    variables:
+      - name: is_tag
+        value: $[startsWith(variables['Build.SourceBranch'],'refs/tags/')]]
 
-  steps:
-    - checkout: self
-      displayName: "Get full Git history"
-      fetchDepth: 0
+    steps:
+      - checkout: self
+        displayName: 'Get full Git history'
+        fetchDepth: 0
 
-    - script: |
-        curl https://mise.run | sh
-        mise install
-      displayName: "Install mise"
+      - script: |
+          curl https://mise.run | sh
+          mise install
+        displayName: 'Install mise'
 
-    - task: npmAuthenticate@0
-      inputs:
-        workingFile: .npmrc
+      - task: npmAuthenticate@0
+        inputs:
+          workingFile: .npmrc
 
-    - script: mise x -- pnpm install
-      condition: eq(parameters.package-manager,'pnpm')
-      displayName: "Install dependencies with pnpm"
+      - script: mise x -- pnpm install
+        condition: eq(parameters.package-manager,'pnpm')
+        displayName: 'Install dependencies with pnpm'
 
-    - script: mise x -- yarn install
-      condition: eq(parameters.package-manager,'yarn')
-      displayName: "Install dependencies with yarn"
+      - script: mise x -- yarn install
+        condition: eq(parameters.package-manager,'yarn')
+        displayName: 'Install dependencies with yarn'
 
-    - script: npm install
-      condition: eq(parameters.package-manager,'npm')
-      displayName: "Install dependencies with npm"
+      - script: npm install
+        condition: eq(parameters.package-manager,'npm')
+        displayName: 'Install dependencies with npm'
 
-    - script: npm run --if-present syncpack
-      displayName: "Lint dependencies"
+      - script: npm run --if-present syncpack
+        displayName: 'Lint dependencies'
 
-    - script: NODE_ENV=production npm run --if-present build
-      displayName: "Build packages"
+      - script: NODE_ENV=production npm run --if-present build
+        displayName: 'Build code'
 
-    - script: npm run --if-present lint
-      displayName: "Lint packages"
+      - script: npm run --if-present format
+        displayName: 'Format code'
 
-    - script: npm run --if-present type-check
-      displayName: "Type check packages"
+      - script: npm run --if-present lint
+        displayName: 'Lint code'
 
-    - script: npm run --if-present test
-      displayName: "Run unit tests"
+      - script: npm run --if-present type-check
+        displayName: 'Type check code'
 
-    - script: npm run --if-present repodog -- publish --verbose
-      condition: eq(variables.is_tag,true)
-      displayName: "Publish packages"
+      - script: npm run --if-present test
+        displayName: 'Run unit tests'
+
+      - script: npm run --if-present repodog -- publish --verbose
+        condition: eq(variables.is_tag,true)
+        displayName: 'Publish'

@@ -1,7 +1,5 @@
 {
   "extends": ["../../configs/ts-config/index.json", "../../configs/ts-config/build.json"],
-  "include": [
-    "src/**/*"
-  ],
+  "include": ["src/**/*"],
   "references": []
 }

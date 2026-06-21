@@ -37,8 +37,8 @@ npm install @repodog/swc-config --save-dev
     "test-axe": "npm run build-storybook && axe-storybook",
     // Requires optional peer @storybook/test-runner and `concurrently`, `serve` and  `wait-on` npm packages.
     // It is better to build storybook and serve that rather than running storybook dev for performance reasons.
-    "test:storybook": "npm run build-storybook && concurrently --kill-others --success first \"serve ./storybook-static\" \"wait-on tcp:<PORT> && test-storybook --url http://localhost:<PORT>"
-  }
+    "test:storybook": "npm run build-storybook && concurrently --kill-others --success first \"serve ./storybook-static\" \"wait-on tcp:<PORT> && test-storybook --url http://localhost:<PORT>",
+  },
 }
 ```
 
@@ -98,6 +98,6 @@ Below is a script configuration for running unit tests and storybook tests and m
     "test:storybook": "npm run build-storybook && concurrently --kill-others --success first \"serve ./storybook-static\" \"wait-on tcp:<PORT> && test-storybook --url http://localhost:<PORT> --coverage --coverageDirectory coverage/storybook\"",
     // Includes saving coverage to "coverage/unit"
     "test:unit": "node --require=suppress-experimental-warnings --experimental-vm-modules node_modules/jest/bin/jest.js --coverageDirectory coverage/unit",
-  }
+  },
 }
 ```

@@ -7,11 +7,11 @@ The Repodog cli package.
 
 ## Summary
 
-* Scripts for cutting and publishing releases
-* Scripts for scaffolding new folder structures
-* Scripts for writing files with ChatGPT
-* Works with npm, yarn and pnpm
-* Works with standard repo and monorepo structures
+- Scripts for cutting and publishing releases
+- Scripts for scaffolding new folder structures
+- Scripts for writing files with ChatGPT
+- Works with npm, yarn and pnpm
+- Works with standard repo and monorepo structures
 
 ## Install package
 
@@ -127,8 +127,8 @@ Any tasks you want to run prior to package versions getting updated should be ru
 // package.json
 {
   "scripts": {
-    "cut:pre-version": "npm run pre-version-tasks"
-  }
+    "cut:pre-version": "npm run pre-version-tasks",
+  },
 }
 ```
 
@@ -140,8 +140,8 @@ Any tasks you want to run after package versions have been updated should be run
 // package.json
 {
   "scripts": {
-    "cut:post-version": "npm run post-version-tasks"
-  }
+    "cut:post-version": "npm run post-version-tasks",
+  },
 }
 ```
 
@@ -153,8 +153,8 @@ Any tasks you want to run to generate/update the changelog should be run in this
 // package.json
 {
   "scripts": {
-    "cut:changelog": "npm run changelog-tasks"
-  }
+    "cut:changelog": "npm run changelog-tasks",
+  },
 }
 ```
 
@@ -214,7 +214,7 @@ _templates/
 ```jsonc
 // <projectRoot>/.repodogrc
 {
-  "additionalTemplatesPath": "./_templates"
+  "additionalTemplatesPath": "./_templates",
 }
 ```
 
@@ -239,14 +239,14 @@ The example below adds two questions, removes one, and updates one when `repodog
                 "message": "What is the cli command?",
                 "name": "cliCommand",
                 "required": true,
-                "type": "input"
+                "type": "input",
               },
               {
                 "message": "What is the cli description?",
                 "name": "cliDescription",
                 "required": true,
-                "type": "input"
-              }
+                "type": "input",
+              },
             ],
             "remove": ["mainFilename"],
             "replace": [
@@ -254,14 +254,14 @@ The example below adds two questions, removes one, and updates one when `repodog
                 "message": "What is the homepage for the package's repository?",
                 "name": "homepage",
                 "required": true,
-                "type": "input"
-              }
-            ]
-          }
-        }
-      }
-    }
-  }
+                "type": "input",
+              },
+            ],
+          },
+        },
+      },
+    },
+  },
 }
 ```
 
@@ -286,18 +286,18 @@ Template variables are flattened and merged and the output is passed into the te
     "*": {
       "author": "miami-man",
       "homepage": "https://github.com/badbatch/repodog",
-      "org": "repodog"
+      "org": "repodog",
     },
     "new": {
       "pkg": {
         "library": {
           "cli": {
-            "mainFilename": "handler"
-          }
-        }
-      }
-    }
-  }
+            "mainFilename": "handler",
+          },
+        },
+      },
+    },
+  },
 }
 ```
 

@@ -24,9 +24,7 @@ If you are building the project from the root.
 // tsconfig.json
 {
   "extends": "@repodog/ts-config/index.json",
-  "include": [
-    "src/**/*"
-  ]
+  "include": ["src/**/*"],
 }
 ```
 
@@ -36,11 +34,9 @@ If you are building the project from the root.
   "extends": ["./tsconfig.json", "@repodog/ts-config/build.json"],
   "compilerOptions": {
     "outDir": "dist/types",
-    "rootDir": "src"
+    "rootDir": "src",
   },
-  "exclude": [
-    "**/*.test.*"
-  ]
+  "exclude": ["**/*.test.*"],
 }
 ```
 
@@ -52,9 +48,7 @@ If you are building the project from each workspace root.
 // tsconfig.json
 {
   "extends": "@repodog/ts-config/index.json",
-  "include": [
-    "packages/**/*"
-  ]
+  "include": ["packages/**/*"],
 }
 ```
 
@@ -62,10 +56,8 @@ If you are building the project from each workspace root.
 // <workspace>/tsconfig.json
 {
   "extends": ["@repodog/ts-config/index.json", "@repodog/ts-config/build.json"],
-  "include": [
-    "src/**/*"
-  ],
-  "references": []
+  "include": ["src/**/*"],
+  "references": [],
 }
 ```
 
@@ -75,11 +67,9 @@ If you are building the project from each workspace root.
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "outDir": "dist/types",
-    "rootDir": "src"
+    "rootDir": "src",
   },
-  "exclude": [
-    "**/*.test.*"
-  ]
+  "exclude": ["**/*.test.*"],
 }
 ```
 
@@ -90,7 +80,7 @@ If you are building the project from each workspace root.
 {
   "scripts": {
     "compile:types": "tsc --project ./tsconfig.build.json",
-    "type-check": "tsc --noEmit"
-  }
+    "type-check": "tsc --noEmit",
+  },
 }
 ```

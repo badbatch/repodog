@@ -32,8 +32,8 @@ npm install @swc/jest --save-dev
     // esm
     "test": "node --require=suppress-experimental-warnings --experimental-vm-modules node_modules/jest/bin/jest.js",
     // or cjs
-    "test": "MODULE_SYSTEM=cjs node node_modules/jest/bin/jest.js"
-  }
+    "test": "MODULE_SYSTEM=cjs node node_modules/jest/bin/jest.js",
+  },
 }
 ```
 
@@ -55,19 +55,17 @@ module.exports = {
       "request": "launch",
       "name": "Jest - current file",
       "program": "${workspaceFolder}/node_modules/jest/bin/jest",
-      "args": [
-        "${relativeFile}"
-      ],
+      "args": ["${relativeFile}"],
       "env": {
         "DEBUG": "true",
         // esm
         "NODE_OPTIONS": "--experimental-vm-modules",
         // or cjs
-        "MODULE_SYSTEM": "cjs"
+        "MODULE_SYSTEM": "cjs",
       },
-      "console": "integratedTerminal"
-    }
-  ]
+      "console": "integratedTerminal",
+    },
+  ],
 }
 ```
 
@@ -80,8 +78,8 @@ module.exports = {
     // esm
     "test": "COMPILER=swc node --require=suppress-experimental-warnings --experimental-vm-modules node_modules/jest/bin/jest.js",
     // or cjs
-    "test": "COMPILER=swc MODULE_SYSTEM=cjs node node_modules/jest/bin/jest.js"
-  }
+    "test": "COMPILER=swc MODULE_SYSTEM=cjs node node_modules/jest/bin/jest.js",
+  },
 }
 ```
 
@@ -104,20 +102,18 @@ module.exports = {
       "request": "launch",
       "name": "Jest - current file",
       "program": "${workspaceFolder}/node_modules/jest/bin/jest",
-      "args": [
-        "${relativeFile}"
-      ],
+      "args": ["${relativeFile}"],
       "env": {
         "DEBUG": "true",
         "COMPILER": "swc",
         // esm
         "NODE_OPTIONS": "--experimental-vm-modules",
         // or cjs
-        "MODULE_SYSTEM": "cjs"
+        "MODULE_SYSTEM": "cjs",
       },
-      "console": "integratedTerminal"
-    }
-  ]
+      "console": "integratedTerminal",
+    },
+  ],
 }
 ```
 
@@ -131,7 +127,7 @@ The config includes `prettier@^2` as a dependency so you can continue to use Jes
   "arrowParens": "avoid",
   "printWidth": 120,
   "singleQuote": true,
-  "trailingComa": "all"
+  "trailingComa": "all",
 }
 ```
 

@@ -160,7 +160,7 @@ describe('cut', () => {
 
   describe('when package manager is not found', () => {
     beforeEach(() => {
-      getPackageManager.mockReturnValueOnce(undefined);  
+      getPackageManager.mockReturnValueOnce(undefined);
     });
 
     it('should log the correct error message', () => {
@@ -200,7 +200,6 @@ describe('cut', () => {
 
   describe('when the new project version is invalid', () => {
     beforeEach(() => {
-       
       getNewVersion.mockReturnValueOnce(undefined);
     });
 

@@ -71,12 +71,12 @@ const configs = [
 ];
 
 Object.defineProperties(configs, {
-	js: {
-	  get: () => configs[1],
-	},
-	ts: {
-	  get: () => configs[0],
-	},
+  js: {
+    get: () => configs[1],
+  },
+  ts: {
+    get: () => configs[0],
+  },
 });
 
 module.exports = configs;

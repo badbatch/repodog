@@ -20,8 +20,8 @@ npm install @repodog/rollup-config rollup  --save-dev
 // package.json
 {
   "scripts": {
-    "build": "rollup -c ./rollup.config.mjs"
-  }
+    "build": "rollup -c ./rollup.config.mjs",
+  },
 }
 ```
 

@@ -33,7 +33,7 @@ describe('handler', () => {
 
   describe('when package manager is not found', () => {
     beforeEach(() => {
-      getPackageManager.mockReturnValueOnce(undefined);  
+      getPackageManager.mockReturnValueOnce(undefined);
     });
 
     it('should log the correct error message', async () => {

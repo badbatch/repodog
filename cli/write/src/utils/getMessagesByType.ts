@@ -1,7 +1,7 @@
 import { type Language } from '@repodog/cli-utils';
 import { type ChatCompletionMessageParam } from 'openai/resources/index.mjs';
 import { WRITE_TYPE } from '#constants.ts';
-import  { type WriteType } from '#types.ts';
+import { type WriteType } from '#types.ts';
 
 const testInitialMessages = (
   fileName: string,

@@ -1,4 +1,3 @@
- 
 import { jest } from '@jest/globals';
 
 export type ShellMockResult = {

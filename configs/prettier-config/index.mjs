@@ -4,5 +4,5 @@ export default {
   arrowParens: 'avoid',
   printWidth: 120,
   singleQuote: true,
-  trailingComa: 'all',
+  trailingComma: 'all',
 };

@@ -58,8 +58,8 @@
   },
   "peerDependencies": {
     "@chanzuckerberg/axe-storybook-testing": "<10",
-    "@repodog/babel-preset": "workspace:*",
-    "@repodog/swc-config": "workspace:*",
+    "@repodog/babel-preset": "<8",
+    "@repodog/swc-config": "<2",
     "@storybook/test-runner": "<1",
     "chromatic": "<14",
     "storybook": "<10"

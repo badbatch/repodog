@@ -31,6 +31,10 @@ sh: "<%= packageManager %> install"
       "import": "./dist/esm/index.mjs",
       "require": "./dist/cjs/index.cjs"
     },
+    "./ts": {
+      "types": "./src/index.ts",
+      "import": "./src/index.ts"
+    },
     "./styles.css": "./dist/styles/index.css"
   },
   "publishConfig": {

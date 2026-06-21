@@ -1,7 +1,4 @@
 {
   "extends": "./configs/ts-config/index.json",
-  "include": [
-    "cli/**/*",
-    "configs/storybook-config/**/*"
-  ]
+  "include": ["cli/**/*", "configs/storybook-config/**/*"]
 }

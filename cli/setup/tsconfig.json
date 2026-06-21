@@ -1,9 +1,6 @@
 {
   "extends": ["../../configs/ts-config/index.json", "../../configs/ts-config/build.json"],
-  "include": [
-    "src/**/*",
-    "src/**/*.json"
-  ],
+  "include": ["src/**/*", "src/**/*.json"],
   "references": [
     {
       "path": "../test-utils"

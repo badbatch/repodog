@@ -24,7 +24,7 @@ code --install-extension DavidAnson.vscode-markdownlint
 ```jsonc
 // .markdownlint.json
 {
-  "extends": "node_modules/@repodog/markdownlint-config/index.json"
+  "extends": "node_modules/@repodog/markdownlint-config/index.json",
 }
 ```
 
@@ -33,7 +33,7 @@ code --install-extension DavidAnson.vscode-markdownlint
 {
   "[markdown]": {
     "editor.wordWrapColumn": 120,
-    "editor.wordWrap": "wordWrapColumn"
+    "editor.wordWrap": "wordWrapColumn",
   },
 }
 ```
