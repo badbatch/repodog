@@ -1,3 +1,7 @@
+import { fileURLToPath } from 'node:url';
+
+const resolvePath = name => fileURLToPath(import.meta.resolve(name));
+
 const config = api => {
   const { BABEL_DISABLE_CACHE, JS_ENV, NODE_ENV } = process.env;
 
@@ -16,8 +20,10 @@ const config = api => {
 
   return {
     ignore,
-    presets: [require.resolve('@repodog/babel-preset')],
+    presets: [resolvePath('@repodog/babel-preset')],
   };
 };
 
-module.exports = config;
+// Required for Babel
+// eslint-disable-next-line import-x/no-default-export
+export default config;

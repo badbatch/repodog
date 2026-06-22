@@ -54,7 +54,7 @@
     "@repodog/cli-test-utils": "workspace:*",
     "@repodog/rollup-config": "workspace:*",
     "@repodog/swc-config": "workspace:*",
-    "@rollup/plugin-babel": "^6.0.4",
+    "@rollup/plugin-babel": "^7.1.0",
     "@rollup/plugin-swc": "^0.3.0",
     "@types/lodash-es": "^4.17.12",
     "@types/shelljs": "^0.8.17",

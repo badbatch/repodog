@@ -9,7 +9,7 @@ The Repodog Babel config.
 
 ```shell
 # terminal
-npm install @repodog/babel-config @babel/core @babel/runtime --save-dev
+npm install @repodog/babel-config @babel/core --save-dev
 ```
 
 ## Install optional peer dependency
@@ -22,10 +22,10 @@ npm install @rollup/plugin-babel --save-dev
 ## Use package
 
 ```javascript
-// babel.config.cjs
-const repodogConfig = require('@repodog/babel-config');
+// babel.config.mjs
+import repodogConfig from '@repodog/babel-config';
 
-module.exports = api => ({
+export default api => ({
   ...repodogConfig(api),
 });
 ```

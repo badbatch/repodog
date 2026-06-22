@@ -52,6 +52,6 @@
     "@types/semver": "^7.7.0",
     "@types/shelljs": "^0.8.17",
     "del-cli": "^6.0.0",
-    "type-fest": "^4.41.0"
+    "type-fest": "^5.7.0"
   }
 }

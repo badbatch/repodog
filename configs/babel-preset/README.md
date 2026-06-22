@@ -24,9 +24,9 @@ npm install core-js
 ## Use package
 
 ```javascript
-// babel.config.cjs
+// babel.config.mjs
 
-module.exports = {
+export default {
   presets: ['@repodog/babel-preset'],
 };
 ```

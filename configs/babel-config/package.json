@@ -11,12 +11,14 @@
     "url": "https://github.com/badbatch/repodog/configs/babel-config"
   },
   "bugs": "https://github.com/badbatch/repodog/issues",
-  "main": "index.cjs",
+  "main": "index.mjs",
   "exports": {
     ".": {
-      "default": "./index.cjs"
+      "default": "./index.mjs"
     },
-    "./rollup": "./rollup.cjs"
+    "./rollup": {
+      "default": "./rollup.mjs"
+    }
   },
   "publishConfig": {
     "access": "public"
@@ -26,8 +28,7 @@
   },
   "peerDependencies": {
     "@babel/core": "<8",
-    "@babel/runtime": "<8",
-    "@rollup/plugin-babel": "<7"
+    "@rollup/plugin-babel": "<8"
   },
   "peerDependenciesMeta": {
     "@rollup/plugin-babel": {
@@ -35,6 +36,6 @@
     }
   },
   "devDependencies": {
-    "@babel/core": "^7.28.0"
+    "@babel/core": "^7.29.7"
   }
 }
