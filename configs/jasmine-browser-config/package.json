@@ -18,9 +18,9 @@
   },
   "peerDependencies": {
     "@repodog/webpack-config": "<6",
-    "@types/jasmine": "<6",
-    "jasmine-browser-runner": "<4",
-    "jasmine-core": "<6",
+    "@types/jasmine": "<7",
+    "jasmine-browser-runner": "<5",
+    "jasmine-core": "<7",
     "jasmine-expect": "<6"
   }
 }

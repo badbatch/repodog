@@ -27,7 +27,7 @@ npm install swc-loader webpack-cli --save-dev
 // package.json
 {
   "scripts": {
-    "build": "webpack --config ./webpack.config.cjs",
+    "build": "webpack --config ./webpack.config.mjs",
   },
 }
 ```
@@ -35,10 +35,14 @@ npm install swc-loader webpack-cli --save-dev
 ### With Babel
 
 ```javascript
-// webpack.config.cjs
-const webpackConfig = require('@repodog/webpack-config');
+// webpack.config.mjs
+import webpackConfig from '@repodog/webpack-config';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 
-module.exports = {
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+
+export default {
   ...webpackConfig({ compiler: 'babel-loader' }),
   entry: './src/index.ts',
   // or
@@ -54,11 +58,15 @@ module.exports = {
 ### With SWC
 
 ```javascript
-// webpack.config.cjs
-const swcConfig = require('@repodog/swc-config');
-const webpackConfig = require('@repodog/webpack-config');
+// webpack.config.mjs
+import swcConfig from '@repodog/swc-config';
+import webpackConfig from '@repodog/webpack-config';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 
-module.exports = {
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+
+export default {
   ...webpackConfig({ compiler: ['swc-loader', swcConfig.ts] }),
   entry: './src/index.ts',
   // or
@@ -75,9 +83,9 @@ module.exports = {
 ### Bundle tests
 
 ```javascript
-// webpack.config.cjs
-const swcConfig = require('@repodog/swc-config');
-const webpackConfig = require('@repodog/webpack-config/test.cjs');
+// webpack.config.mjs
+import swcConfig from '@repodog/swc-config';
+import webpackConfig from '@repodog/webpack-config/test.mjs';
 
 module.exports = {
   ...webpackConfig({ compiler: 'babel-loader' }),
