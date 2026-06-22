@@ -1,8 +1,8 @@
 import { type StorybookConfig } from '@storybook/react-webpack5';
 import { globSync } from 'glob';
-import { createRequire } from 'node:module';
+import { fileURLToPath } from 'node:url';
 
-const require = createRequire(import.meta.url);
+const resolvePath = (name: string): string => fileURLToPath(import.meta.resolve(name));
 
 export type ConfigParams = {
   compiler?: string | [name: string, options: Record<string, unknown>];
@@ -39,15 +39,15 @@ export const config = ({ compiler }: ConfigParams = {}): StorybookConfig => {
             {
               test: /\.css$/,
               use: [
-                require.resolve('style-loader'),
+                resolvePath('style-loader'),
                 {
-                  loader: require.resolve('css-loader'),
+                  loader: resolvePath('css-loader'),
                   options: { importLoaders: 1 },
                 },
                 {
-                  loader: require.resolve('postcss-loader'),
+                  loader: resolvePath('postcss-loader'),
                   options: {
-                    implementation: require.resolve('postcss'),
+                    implementation: resolvePath('postcss'),
                   },
                 },
               ],
