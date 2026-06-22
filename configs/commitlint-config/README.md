@@ -23,8 +23,8 @@ echo "npx --no -- commitlint --edit \$1" > .husky/commit-msg
 ## Use package
 
 ```javascript
-// commitlint.config.cjs
-module.exports = {
+// commitlint.config.mjs
+export default {
   extends: ['@repodog/commitlint-config'],
 };
 ```
