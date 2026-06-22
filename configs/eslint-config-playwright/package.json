@@ -22,7 +22,7 @@
     "access": "public"
   },
   "dependencies": {
-    "eslint-plugin-playwright": "^2.2.2"
+    "eslint-plugin-playwright": "^2.10.4"
   },
   "peerDependencies": {
     "eslint": "<10"

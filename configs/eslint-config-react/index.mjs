@@ -8,12 +8,9 @@ export default [
   jsxA11y.flatConfigs.recommended,
   react.configs.flat.recommended,
   react.configs.flat['jsx-runtime'],
+  reactHooks.configs.flat.recommended,
   {
-    plugins: {
-      'react-hooks': reactHooks,
-    },
     rules: {
-      ...reactHooks.configs.recommended.rules,
       'react/jsx-filename-extension': [2, { extensions: ['.jsx', '.tsx'] }],
       'react/jsx-sort-props': [
         2,
