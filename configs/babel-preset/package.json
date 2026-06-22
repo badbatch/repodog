@@ -11,6 +11,7 @@
     "url": "https://github.com/badbatch/repodog/configs/babel-preset"
   },
   "bugs": "https://github.com/badbatch/repodog/issues",
+  "type": "module",
   "main": "index.mjs",
   "types": "index.d.ts",
   "publishConfig": {
