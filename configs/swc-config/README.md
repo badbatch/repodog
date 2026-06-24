@@ -28,11 +28,11 @@ npm install core-js
 
 ## Use package
 
-This package is designed to be used with `rollup`, `webpack` and `jest` as it allows the config to be a javascript file. The SWC command line library only supports a `.swcrc` json file.
+This package is designed to be used with `rollup`, `webpack` and `jest` as it allows the config to be a JavaScript file. The SWC command line library only supports a `.swcrc` json file.
 
-As a javascript file that is passed into rollup, you can override the configuration, and it can be dynamically modified based off environment variables.
+As a JavaScript file that is passed into rollup, you can override the configuration, and it can be dynamically modified based off environment variables.
 
-Whether the config transforms javascript or typescript is based on whether the config finds a `tsconfig.json` at the root of your project.
+Whether the config transforms JavaScript or TypeScript is based on whether the config finds a `tsconfig.json` at the root of your project.
 
 ### With Rollup
 
@@ -52,11 +52,15 @@ export default {
 ### With Webpack
 
 ```javascript
-// webpack.config.cjs
-const webpackConfig = require('@repodog/webpack-config');
-const swcConfig = require('@repodog/swc-config');
+// webpack.config.mjs
+import webpackConfig from '@repodog/webpack-config';
+import swcConfig from '@repodog/swc-config';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 
-module.exports = {
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+
+export default {
   ...webpackConfig({ compiler: ['swc-loader', swcConfig] }),
   entry: './src/index.ts',
   output: {
@@ -69,11 +73,11 @@ module.exports = {
 ### With Jest
 
 ```javascript
-// jest.config.cjs
-const jestConfig = require('@repodog/jest-config');
-const swcConfig = require('@repodog/swc-config');
+// jest.config.mjs
+import jestConfig from '@repodog/jest-config';
+import swcConfig from '@repodog/swc-config';
 
-module.exports = {
+export default {
   ...jestConfig({ compilerOptions: swcConfig }),
 };
 ```
