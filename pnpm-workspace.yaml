@@ -2,7 +2,7 @@ packages:
   - 'configs/*'
   - 'cli/*'
 allowBuilds:
-  '@playwright/browser-chromium': true
+  '@playwright/browser-chromium': false
   '@swc/core': false
   core-js: false
   esbuild: false
