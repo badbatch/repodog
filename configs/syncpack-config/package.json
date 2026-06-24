@@ -1,7 +1,7 @@
 {
   "name": "@repodog/syncpack-config",
   "description": "The Repodog Syncpack config module.",
-  "version": "15.0.0",
+  "version": "15.0.1",
   "author": "miami-man",
   "license": "MIT",
   "homepage": "https://github.com/badbatch/repodog",
