@@ -7,5 +7,5 @@ export const getNewVersion = (
   tag?: ReleaseTag,
   preid?: string,
 ): string | undefined => {
-  return semver.inc(version, type, tag && preid ? `${tag}-${preid}` : tag, '0') ?? undefined;
+  return semver.inc(version, type, tag && preid ? `${tag}-${preid}` : (tag ?? ''), '0') ?? undefined;
 };

@@ -83,7 +83,7 @@
   },
   "devDependencies": {
     "cts-types": "^0.0.10",
-    "del-cli": "^6.0.0",
+    "del-cli": "^7.0.0",
     "storybook": "^10.4.6"
   }
 }

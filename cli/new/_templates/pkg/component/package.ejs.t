@@ -63,7 +63,7 @@ sh: "<%= packageManager %> install"
     "@types/react": "^19.1.6",
     "@types/react-dom": "^19.1.5",
     "cts-types": "^0.0.10",
-    "del-cli": "^6.0.0",
+    "del-cli": "^7.0.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0"
   }

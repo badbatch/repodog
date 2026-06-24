@@ -56,7 +56,7 @@ sh: "<%= packageManager %> install && <%= packageManager %> add -D @repodog/cli 
     "autoprefixer": "^10.4.21",
     "concurrently": "^9.2.0",
     "css": "^3.0.0",
-    "del-cli": "^6.0.0",
+    "del-cli": "^7.0.0",
     "generate-changelog": "^1.8.0",
     "husky": "^9.1.7",
     "istanbul-merge": "^2.0.0",
