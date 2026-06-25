@@ -1,5 +1,25 @@
 # Changelog
 
+## 2.0.29 (2026-06-25)
+
+### Chores
+
+* **commitlint-config:**  fix package metadata ([06222ab2](https://github.com/badbatch/repodog/commit/06222ab2a21e9c6bedb87264374ab9a5c0e95dc5))
+
+### Bug Fixes
+
+* **eslint-config:**  stop class sorting rules clashing ([60df9e4f](https://github.com/badbatch/repodog/commit/60df9e4fb93b8cf867f966a93c55b535949ceff5))
+* **root:**
+  * inconsistencies in bug config in package jsons ([58a81eb4](https://github.com/badbatch/repodog/commit/58a81eb428ea6d3016d246f72b33b9a503eadaac))
+  * linting ([09b5972e](https://github.com/badbatch/repodog/commit/09b5972e89b30a576bab1ec1dea1a0a26f62c870))
+  * lock file ([9559acf1](https://github.com/badbatch/repodog/commit/9559acf170a4543aa1664f763414114b87048258))
+  * one more vulnerability ([0abfce8a](https://github.com/badbatch/repodog/commit/0abfce8a1f42beee01f25db5704e0fd92d589005))
+  * more vulnerabilities ([d08319f6](https://github.com/badbatch/repodog/commit/d08319f6bf1ccfa1bb46632d6f224f1216c46b2e))
+  * vulnerabilities ([356a42a5](https://github.com/badbatch/repodog/commit/356a42a5a8e8647987a3dec2ffd368f71b85c48b))
+  * update engine support version style ([b8765b11](https://github.com/badbatch/repodog/commit/b8765b11869e72633cf34d63313e4bccfb0be6fa))
+  * repository url format in package jsons ([047567aa](https://github.com/badbatch/repodog/commit/047567aa9ad17782ce57b1950533c9a3eb4a2c9d))
+* **core:**  unit test ([774575f7](https://github.com/badbatch/repodog/commit/774575f71cddf76ada451849b4e9b8cef36f82f8))
+
 ## 2.0.28 (2026-06-25)
 
 ### Bug Fixes
