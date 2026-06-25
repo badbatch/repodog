@@ -1,12 +1,14 @@
 packages:
   - 'configs/*'
   - 'cli/*'
+
 allowBuilds:
   '@playwright/browser-chromium': false
   '@swc/core': false
   core-js: false
   esbuild: false
   unrs-resolver: false
+
 minimumReleaseAgeExclude:
   - '@swc/core-darwin-arm64@1.15.43'
   - '@swc/core-darwin-x64@1.15.43'
@@ -22,14 +24,15 @@ minimumReleaseAgeExclude:
   - '@swc/core-win32-x64-msvc@1.15.43'
   - '@swc/core@1.15.43'
   - browserslist@4.28.4
+
 overrides:
-  "@babel/core": ">=7.29.6"
-  "@tootallnate/once": ">=2.0.1"
-  "axios@>=1.0.0, <1.16.0": ">=1.16.0"
-  "cookie@<0.7.0": ">=0.7.0"
-  "diff@>=5.0.0, <5.2.2": ">=5.2.2"
-  "joi": ">=17.13.4"
-  "js-yaml": ">=4.2.0"
-  "markdown-it": ">=14.2.0"
-  "picomatch": ">=2.3.2"
-  "qs@>=6.7.0, <=6.14.1": ">=6.14.2"
+  '@babel/core': '>=7.29.6'
+  '@tootallnate/once': '>=2.0.1'
+  'axios@>=1.0.0, <1.16.0': '>=1.16.0'
+  'cookie@<0.7.0': '>=0.7.0'
+  'diff@>=5.0.0, <5.2.2': '>=5.2.2'
+  'joi': '>=17.13.4'
+  'js-yaml': '>=4.2.0'
+  'markdown-it': '>=14.2.0'
+  'picomatch': '>=2.3.2'
+  'qs@>=6.7.0, <=6.14.1': '>=6.14.2'
