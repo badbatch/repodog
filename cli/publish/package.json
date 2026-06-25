@@ -8,7 +8,7 @@
   "repository": {
     "directory": "cli/publish",
     "type": "git",
-    "url": "https://github.com/badbatch/repodog/cli/publish"
+    "url": "https://github.com/badbatch/repodog.git"
   },
   "bugs": "https://github.com/badbatch/repodog/issues",
   "type": "module",

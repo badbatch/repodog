@@ -8,7 +8,7 @@
   "repository": {
     "directory": "configs/eslint-config-playwright",
     "type": "git",
-    "url": "https://github.com/badbatch/repodog/configs/eslint-config-playwright"
+    "url": "https://github.com/badbatch/repodog.git"
   },
   "bugs": "https://github.com/badbatch/repodog/issues",
   "type": "module",

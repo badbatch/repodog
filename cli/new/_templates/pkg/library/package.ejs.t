@@ -12,7 +12,7 @@ sh: "<%= packageManager %> install"
   "repository": {
     "directory": "<%= path %>",
     "type": "git",
-    "url": "<%= homepage %>/<%= path %>"
+    "url": "<%= homepage %>.git"
   },
   "bugs": "<%= homepage %>/issues",
   "type": "module",

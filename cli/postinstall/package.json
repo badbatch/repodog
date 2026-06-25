@@ -8,7 +8,7 @@
   "repository": {
     "directory": "cli/postinstall",
     "type": "git",
-    "url": "https://github.com/badbatch/repodog/cli/postinstall"
+    "url": "https://github.com/badbatch/repodog.git"
   },
   "bugs": "https://github.com/badbatch/repodog/issues",
   "type": "module",

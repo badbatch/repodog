@@ -8,7 +8,7 @@
   "repository": {
     "directory": "configs/babel-preset",
     "type": "git",
-    "url": "https://github.com/badbatch/repodog/configs/babel-preset"
+    "url": "https://github.com/badbatch/repodog.git"
   },
   "bugs": "https://github.com/badbatch/repodog/issues",
   "type": "module",

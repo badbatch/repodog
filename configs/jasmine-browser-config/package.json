@@ -8,7 +8,7 @@
   "repository": {
     "directory": "configs/jasmine-browser-config",
     "type": "git",
-    "url": "https://github.com/badbatch/repodog/configs/jasmine-browser-config"
+    "url": "https://github.com/badbatch/repodog.git"
   },
   "bugs": "https://github.com/badbatch/repodog/issues",
   "type": "module",

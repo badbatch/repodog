@@ -11,7 +11,7 @@
     "url": "https://github.com/badbatch/repodog.git"
   },
   "bugs": {
-    "url": "https://github.com/badbatch/repodog/issues"
+    "url": "https://github.com/badbatch/repodog.git"
   },
   "type": "module",
   "main": "index.mjs",
