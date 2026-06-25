@@ -1,6 +1,6 @@
 import { jest } from '@jest/globals';
 import { loadPackageJsonMock } from '@repodog/cli-test-utils';
-import { PackageManager, getInternalDependencies } from '@repodog/cli-utils';
+import { getInternalDependencies, packageManager } from '@repodog/cli-utils';
 import { type PackageJson, type SetRequired } from 'type-fest';
 
 jest.unstable_mockModule('@repodog/cli-utils', () => ({
@@ -62,7 +62,7 @@ describe('versionMonorepoPackages', () => {
     it('should version packages in which files have changed since last tag', () => {
       versionMonorepoPackages({
         force: false,
-        packageManager: PackageManager.NPM,
+        packageManager: packageManager.NPM,
         type: 'major',
       });
 
@@ -91,7 +91,7 @@ describe('versionMonorepoPackages', () => {
     it('should version packages regardless of whether files have changed', () => {
       versionMonorepoPackages({
         force: true,
-        packageManager: PackageManager.NPM,
+        packageManager: packageManager.NPM,
         type: 'major',
       });
 
@@ -153,7 +153,7 @@ describe('versionMonorepoPackages', () => {
     it('should version the package regardless of whether its files have changed', () => {
       versionMonorepoPackages({
         force: false,
-        packageManager: PackageManager.NPM,
+        packageManager: packageManager.NPM,
         type: 'major',
       });
 

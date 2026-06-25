@@ -1,11 +1,11 @@
 import { jest } from '@jest/globals';
-import { Language, PackageManager, getLanguageExtension, getPackageManagerTemporaryCmd } from '@repodog/cli-utils';
+import { getLanguageExtension, getPackageManagerTemporaryCommand, language, packageManager } from '@repodog/cli-utils';
 import { sep } from 'node:path';
 
 jest.unstable_mockModule('@repodog/cli-utils', () => ({
   asyncExec: jest.fn(),
   getLanguageExtension,
-  getPackageManagerTemporaryCmd,
+  getPackageManagerTemporaryCommand,
 }));
 
 jest.unstable_mockModule('node:fs', () => ({
@@ -33,8 +33,8 @@ const testFilePath = [directory, `${name}.test.ts`].join(sep);
 const code = 'console.log("Hello, world!");';
 
 const options = {
-  language: Language.TYPESCRIPT,
-  packageManager: PackageManager.PNPM,
+  language: language.TYPESCRIPT,
+  packageManager: packageManager.PNPM,
 };
 
 describe('writeTestFile', () => {

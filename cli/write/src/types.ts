@@ -8,9 +8,7 @@ export interface WriteHandlerArguments {
   verbose?: boolean;
 }
 
-export enum WriteType {
-  TEST = 'test',
-}
+export type WriteType = 'test';
 
 export interface WriteMeta {
   language: Language;

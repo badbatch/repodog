@@ -2,20 +2,22 @@ import { merge } from 'lodash-es';
 import { existsSync, readFileSync, writeFileSync } from 'node:fs';
 import { homedir } from 'node:os';
 import { resolve } from 'node:path';
-import { REPODOG_CONFIG_FILENAME } from './constants.ts';
-import { resolveConfigPath } from './resolveConfigPath.ts';
-import { type GlobalRepodogConfig, Language, type RepodogConfig } from './types.ts';
+import { REPODOG_CONFIG_FILENAME, language } from '#constants.ts';
+import { resolveConfigPath } from '#resolveConfigPath.ts';
+import { type GlobalRepodogConfig, type RepodogConfig } from '#types.ts';
 
 let cachedConfig: RepodogConfig | undefined;
 
 export const addRepodogConfigToCache = (config: Partial<RepodogConfig>): Partial<RepodogConfig> => {
   const newConfig = merge({}, cachedConfig ?? {}, config);
 
+  // Think this is being lagged in error based on docs examples
+  // eslint-disable-next-line unicorn/prefer-minimal-ternary
   newConfig.language ??= existsSync(resolve(process.cwd(), 'tsconfig.json'))
-    ? Language.TYPESCRIPT
-    : Language.JAVASCRIPT;
+    ? language.TYPESCRIPT
+    : language.JAVASCRIPT;
 
-  // Need to look into why this is cast in more detail.
+  // Am okay with this in the context of the cache being used in a CLI command
   // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
   cachedConfig = newConfig as RepodogConfig;
   return newConfig;

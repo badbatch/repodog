@@ -5,9 +5,8 @@ import { type ChildProcess } from 'node:child_process';
 jest.unstable_mockModule('shelljs', shelljsMock);
 const shelljs = jest.mocked(await import('shelljs')).default;
 
-const { addChangedFilesToCache, clearChangedFilesCache, getCachedChangedFiles, getChangedFiles } = await import(
-  './getChangedFiles.ts'
-);
+const { addChangedFilesToCache, clearChangedFilesCache, getCachedChangedFiles, getChangedFiles } =
+  await import('#getChangedFiles.ts');
 
 describe('getChangedFiles', () => {
   beforeEach(() => {

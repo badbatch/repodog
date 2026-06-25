@@ -16,8 +16,8 @@ sh: "<%= packageManager %> install && <%= packageManager %> add -D @repodog/cli 
   "bugs": "<%= homepage %>/issues",
   "type": "module",
   "engines": {
-    "node": "^22",
-    "pnpm": "^10"
+    "node": "^24",
+    "pnpm": "^11"
   },
   "scripts": {
     "build": "<%= packageManager %> run -r build",
@@ -26,6 +26,7 @@ sh: "<%= packageManager %> install && <%= packageManager %> add -D @repodog/cli 
     "coverage-generate": "nyc report --reporter=lcov -t coverage --report-dir coverage",
     "coverage-open": "open-cli ./coverage/lcov-report/index.html",
     "cut:changelog": "changelog",
+    "format": "prettier . --check",
     "installActivateMise": "sh shellScripts/installActivateMise.sh",
     "jest": "COMPILER=swc node --require=suppress-experimental-warnings --experimental-vm-modules node_modules/jest/bin/jest.js",
     "lint": "<%= packageManager %> run /^lint:.*/",
@@ -34,14 +35,14 @@ sh: "<%= packageManager %> install && <%= packageManager %> add -D @repodog/cli 
     "new:library": "<%= packageManager %> run repodog new pkg library",
     "prepare": "husky",
     "repodog": "repodog",
-    "syncpack": "syncpack format && syncpack list-mismatches && syncpack lint-semver-ranges",
+    "syncpack": "syncpack format --check && syncpack lint",
     "test": "del-cli ./coverage && <%= packageManager %> run jest && <%= packageManager %> run coverage-generate",
     "type-check": "tsc --noEmit",
-    "validate": "<%= packageManager %> run syncpack && <%= packageManager %> run build && <%= packageManager %> run lint && <%= packageManager %> run type-check && <%= packageManager %> run test"
+    "validate": "<%= packageManager %> run syncpack && <%= packageManager %> run build && <%= packageManager %> run lint && <%= packageManager %> run format && <%= packageManager %> run type-check && <%= packageManager %> run test"
   },
   "devDependencies": {
     "@types/node": "^24.2.1",
-    "del-cli": "^6.0.0",
+    "del-cli": "^7.0.0",
     "generate-changelog": "^1.8.0",
     "husky": "^9.1.7",
     "nyc": "^17.1.0",

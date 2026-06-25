@@ -1,7 +1,7 @@
 import { readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { type PackageJson, type SetRequired } from 'type-fest';
-import { verboseLog } from './verboseLog.ts';
+import { verboseLog } from '#verboseLog.ts';
 
 type PackageJsonWithNameVersionRequired = SetRequired<PackageJson, 'name' | 'version'>;
 
@@ -18,11 +18,9 @@ export const clearPackageJsonCache = (): void => {
 export const getCachedPackageJsons = (): Record<string, PackageJsonWithNameVersionRequired> => packageJsonCache;
 
 export const loadPackageJson = (packageJsonPath: string): PackageJsonWithNameVersionRequired => {
-  let sanitizedPackageJsonPath = packageJsonPath;
-
-  if (!packageJsonPath.endsWith('package.json')) {
-    sanitizedPackageJsonPath = resolve(packageJsonPath, 'package.json');
-  }
+  const sanitizedPackageJsonPath = packageJsonPath.endsWith('package.json')
+    ? packageJsonPath
+    : resolve(packageJsonPath, 'package.json');
 
   const cachedPackageJson = packageJsonCache[sanitizedPackageJsonPath];
 
@@ -54,7 +52,7 @@ export const loadPackageJson = (packageJsonPath: string): PackageJsonWithNameVer
     throw new Error(`Expected the package.json at "${sanitizedPackageJsonPath}" to have a version`);
   }
 
-  // typescript struggling to drive name and version are
+  // TypeScript struggling to drive name and version are
   // required after above checks.
   // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
   const validatedPackageJson = packageJson as SetRequired<PackageJson, 'name' | 'version'>;

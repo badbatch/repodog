@@ -4,7 +4,7 @@ import { type ExecCallback, type ExecFunction } from 'shelljs';
 
 jest.unstable_mockModule('shelljs', shelljsMock);
 const shelljs = jest.mocked(await import('shelljs')).default;
-const { asyncExec } = await import('./asyncExec.ts');
+const { asyncExec } = await import('#asyncExec.ts');
 
 describe('asyncExec', () => {
   beforeEach(() => {
@@ -13,7 +13,7 @@ describe('asyncExec', () => {
 
   describe('when the execution is successful', () => {
     beforeEach(() => {
-      shelljs.exec.mockImplementationOnce(((_cmd: string, callback: ExecCallback) => {
+      shelljs.exec.mockImplementationOnce(((_command: string, callback: ExecCallback) => {
         callback(0, 'success', '');
       }) as ExecFunction);
     });
@@ -26,7 +26,7 @@ describe('asyncExec', () => {
   describe('when the execution fails', () => {
     describe('when options.silent is not true', () => {
       beforeEach(() => {
-        shelljs.exec.mockImplementationOnce(((_cmd: string, callback: ExecCallback) => {
+        shelljs.exec.mockImplementationOnce(((_command: string, callback: ExecCallback) => {
           callback(1, '', 'failure');
         }) as ExecFunction);
       });
@@ -38,7 +38,7 @@ describe('asyncExec', () => {
 
     describe('when options.silent is true', () => {
       beforeEach(() => {
-        shelljs.exec.mockImplementationOnce(((_cmd: string, callback: ExecCallback) => {
+        shelljs.exec.mockImplementationOnce(((_command: string, callback: ExecCallback) => {
           callback(1, '', 'failure');
         }) as ExecFunction);
       });

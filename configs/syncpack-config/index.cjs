@@ -41,10 +41,6 @@ module.exports = {
       pinVersion: 'workspace:*',
     },
     {
-      dependencyTypes: ['pnpmOverrides'],
-      isIgnored: true,
-    },
-    {
       policy: 'sameRange',
     },
   ],

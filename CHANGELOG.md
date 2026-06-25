@@ -1,64 +1,121 @@
 # Changelog
 
+## 2.0.28 (2026-06-25)
+
+### Bug Fixes
+
+* **root:**  exclude markdown from prettier (30b0a89e)
+
+## 2.0.27 (2026-06-24)
+
+### Chores
+
+* **root:**  upgrade deps (f10167a7)
+* **storybook-config:**  bump version (3b9bfaa0)
+
+### New Features
+
+* **storybook-config:**  upgrade (5fb59007)
+* **swc-config:**  upgrade (f1114717)
+* **rollup-config:**  upgrade (bc1e8a6a)
+* **commitlint-config:**  upgrade (5ddffaeb)
+* **jasmine-browser-config,webpack-config:**  upgrade (9699fec7)
+* **eslint-config-react:**  upgrade deps (493ba60f)
+* **babel-config,babel-preset:**  upgrade and update (51616611)
+* **jest-config:**  upgrade jest (ee84b89b)
+* **prettier-config,syncpack-config:**  upgrade (b01abe10)
+* **root:**  upgrade pnpm and node (7c95d4e2)
+
+### Bug Fixes
+
+* **root:**  stop playwright download (decfc7f6)
+* **commitlint-config:**  update to mjs (9c7e0a8f)
+* **storybook-config:**  remove createRequire (b4d4f4fe)
+* **babel-config,babel-preset:**  add type module to config (3f2a39d0)
+
+## 2.0.26 (2026-06-21)
+
+### Chores
+
+* **ts-config:** bump package version (f13b3524)
+
+### New Features
+
+* **ts-config:** upgrade to v6 and update ts config (903ce19a)
+
+### Bug Fixes
+
+* **root:**
+  * linting issues (e072bb19)
+  * various build/test errors (6f71bd5f)
+* **eslint-config:**
+  * more compat issues, downgrade eslint to latest 9 (acaaa6f1)
+  * more updates to get v6 working (03ad6423)
+* **ts-config:** more v6 compat updates (6d74d9be)
+
+### Refactors
+
+* **utils:** fix linting (f2714b0a)
+
 ## 2.0.25 (2026-03-13)
 
 ### Bug Fixes
 
-* **rollup-config:**  remove source map path transformer (415c2614)
+* **rollup-config:** remove source map path transformer (415c2614)
 
 ## 2.0.24 (2026-02-27)
 
 ### Bug Fixes
 
-* **eslint-config:**  sort multiline export spacing (32424174)
+* **eslint-config:** sort multiline export spacing (32424174)
 
 ## 2.0.23 (2026-02-27)
 
 ### Reverts
 
-* **eslint-config:**  ts spacing fix attempt (14698fd9)
+* **eslint-config:** ts spacing fix attempt (14698fd9)
 
 ## 2.0.22 (2026-02-27)
 
 ### Bug Fixes
 
-* **eslint-config:**  try and get spacing working in ts (c5bdf474)
+* **eslint-config:** try and get spacing working in ts (c5bdf474)
 
 ## 2.0.21 (2026-02-27)
 
 ### Chores
 
-* **eslint-config:**  fix broken config (35600fea)
+* **eslint-config:** fix broken config (35600fea)
 
 ## 2.0.20 (2026-02-27)
 
 ### Bug Fixes
 
-* **eslint-config:**  more spacing changes (3b6c012f)
+* **eslint-config:** more spacing changes (3b6c012f)
 
 ## 2.0.19 (2026-02-27)
 
 ### Bug Fixes
 
-* **eslint-config:**  update missing spacing additions (4ef72134)
+* **eslint-config:** update missing spacing additions (4ef72134)
 
 ## 2.0.18 (2026-02-27)
 
 ### New Features
 
-* **eslint-config:**  update spacing rules (7c615b35)
+* **eslint-config:** update spacing rules (7c615b35)
 
 ## 2.0.17 (2025-12-02)
 
 ### Bug Fixes
 
-* **cut,publish:**  support npm version check for prerelease (713141c5)
+* **cut,publish:** support npm version check for prerelease (713141c5)
 
 ## 2.0.16 (2025-11-25)
 
 ### New Features
 
-* **root,cut:**  add generate coverage scripts (c7ea9a34)
+* **root,cut:** add generate coverage scripts (c7ea9a34)
 
 ### Bug Fixes
 
@@ -70,49 +127,49 @@
 
 ### Refactors
 
-* **root,cut:**  minor updates to generate coverage (95e3e97e)
+* **root,cut:** minor updates to generate coverage (95e3e97e)
 
 ## 2.0.15 (2025-09-30)
 
 ### Bug Fixes
 
-* **root:**  update ext in editorconfig (d3482e60)
+* **root:** update ext in editorconfig (d3482e60)
 
 ## 2.0.14 (2025-09-01)
 
 ### New Features
 
-* **eslint-config:**  enforce return types (3318615c)
+* **eslint-config:** enforce return types (3318615c)
 
 ## 2.0.13 (2025-08-28)
 
 ### Documentation Changes
 
-* **core:**  update ado pipeline example in readme (e1fc3bcc)
+* **core:** update ado pipeline example in readme (e1fc3bcc)
 
 ## 2.0.12 (2025-08-14)
 
 ### New Features
 
-* **storybook-config:**  handle styles (1cbbfeb0)
+* **storybook-config:** handle styles (1cbbfeb0)
 
 ## 2.0.11 (2025-08-14)
 
 ### Bug Fixes
 
-* **storybook-config:**  add configFile false flag to ignore root babel config (a54da21a)
+* **storybook-config:** add configFile false flag to ignore root babel config (a54da21a)
 
 ## 2.0.10 (2025-08-14)
 
 ### Bug Fixes
 
-* **storybook-config:**  switch out globby for glob (6c4308d3)
+* **storybook-config:** switch out globby for glob (6c4308d3)
 
 ## 2.0.9 (2025-08-14)
 
 ### Bug Fixes
 
-* **storybook-config:**  downgrade globby version (a97adae5)
+* **storybook-config:** downgrade globby version (a97adae5)
 
 ## 2.0.8 (2025-08-14)
 
@@ -126,25 +183,25 @@
 
 ### Bug Fixes
 
-* **new:**  remove invalid eslint config (88d38e56)
+* **new:** remove invalid eslint config (88d38e56)
 
 ## 2.0.6 (2025-08-13)
 
 ### Refactors
 
-* **new:**  update templates (d3c935c9)
+* **new:** update templates (d3c935c9)
 
 ## 2.0.5 (2025-08-12)
 
 ### Bug Fixes
 
-* **root:**  vulnerabilities (ff59a85f)
+* **root:** vulnerabilities (ff59a85f)
 
 ## 2.0.4 (2025-08-11)
 
 ### Bug Fixes
 
-* **eslint-config:**  change how comments plugin is used (7e30abd4)
+* **eslint-config:** change how comments plugin is used (7e30abd4)
 
 ## 2.0.3 (2025-08-11)
 
@@ -159,13 +216,13 @@
 
 ### Chores
 
-* **root:**  minor update (1115725d)
+* **root:** minor update (1115725d)
 
 ## 2.0.1 (2025-06-02)
 
 ### Bug Fixes
 
-* **new:**  move to reading file from import due to swc compiling issue (bc997488)
+* **new:** move to reading file from import due to swc compiling issue (bc997488)
 
 ## 2.0.0 (2025-05-28)
 
@@ -173,214 +230,214 @@
 
 ### Chores
 
-* **root:**  bump deps (bb3c22b0)
+* **root:** bump deps (bb3c22b0)
 
 ## 1.7.76 (2025-05-28)
 
 ### Refactors
 
-* **jasmine-browser-config:**  update deps (8c0619cf)
+* **jasmine-browser-config:** update deps (8c0619cf)
 
 ## 1.7.75 (2025-05-28)
 
 ### Bug Fixes
 
-* **root:**  update various readmes to fix examples to esm (cb2aa5b4)
+* **root:** update various readmes to fix examples to esm (cb2aa5b4)
 
 ## 1.7.74 (2025-05-23)
 
 ### Bug Fixes
 
-* **root:**  vulnerabilities (9d0a9887)
+* **root:** vulnerabilities (9d0a9887)
 
 ### Refactors
 
-* **rollup-config:**  move to .mjs and add macros plugin (63dfd72d)
+* **rollup-config:** move to .mjs and add macros plugin (63dfd72d)
 
 ## 1.7.73 (2025-03-14)
 
 ### Bug Fixes
 
-* **rollup-config:**  use on windows (33a13da4)
+* **rollup-config:** use on windows (33a13da4)
 
 ## 1.7.72 (2025-02-25)
 
 ### Bug Fixes
 
-* **root:**  vulnerabilities (76b6fb6c)
-* **new:**  replace assert with with (7e4e6ecc)
+* **root:** vulnerabilities (76b6fb6c)
+* **new:** replace assert with with (7e4e6ecc)
 
 ## 1.7.71 (2025-01-04)
 
 ### Bug Fixes
 
-* **eslint-config:**  update ignore list (1bae67c4)
+* **eslint-config:** update ignore list (1bae67c4)
 
 ## 1.7.70 (2025-01-04)
 
 ### Chores
 
-* **root:**  add asertion to json import (7dffa380)
+* **root:** add asertion to json import (7dffa380)
 
 ### Bug Fixes
 
-* **eslint-config:**  exclude next and idea folders (57e53cd7)
-* **setup:**  add import json assert (acc657d0)
+* **eslint-config:** exclude next and idea folders (57e53cd7)
+* **setup:** add import json assert (acc657d0)
 
 ## 1.7.69 (2024-12-23)
 
 ### Bug Fixes
 
-* **root:**  vulnerabilities (904176cb)
+* **root:** vulnerabilities (904176cb)
 
 ### Refactors
 
-* **babel-config:**  more back to using core-js to match swc` (297b83c9)
+* **babel-config:** more back to using core-js to match swc` (297b83c9)
 
 ## 1.7.68 (2024-12-18)
 
 ### Bug Fixes
 
-* **eslint-config:**  add test and tests folder to rule (a851c972)
+* **eslint-config:** add test and tests folder to rule (a851c972)
 
 ## 1.7.67 (2024-12-13)
 
 ### Documentation Changes
 
-* **core:**  minor update to readme (5bd50e25)
+* **core:** minor update to readme (5bd50e25)
 
 ### New Features
 
-* **core:**  support skip node version check alias (0466f9bd)
+* **core:** support skip node version check alias (0466f9bd)
 
 ## 1.7.66 (2024-12-10)
 
 ### New Features
 
-* **swc-config:**  support decorators (4af1a723)
+* **swc-config:** support decorators (4af1a723)
 
 ## 1.7.65 (2024-12-09)
 
 ### Chores
 
-* **eslint-config:**  upgrade deps (35e35c33)
+* **eslint-config:** upgrade deps (35e35c33)
 
 ## 1.7.64 (2024-11-20)
 
 ### Bug Fixes
 
-* **repodog:**  remove mise from postinstall (d27f8645)
+* **repodog:** remove mise from postinstall (d27f8645)
 
 ## 1.7.63 (2024-11-18)
 
 ### New Features
 
-* **jest-config:**  add support for inline snapshots (e8004409)
+* **jest-config:** add support for inline snapshots (e8004409)
 
 ## 1.7.62 (2024-11-17)
 
 ### Bug Fixes
 
-* **repodog:**  lock file (730d718e)
-* **rollup-config:**  sort issue with import aliases not being bundled (c3980c0d)
+* **repodog:** lock file (730d718e)
+* **rollup-config:** sort issue with import aliases not being bundled (c3980c0d)
 
 ## 1.7.61 (2024-11-17)
 
 ### New Features
 
-* **rollup-config:**  add alias plugin (d0a46762)
+* **rollup-config:** add alias plugin (d0a46762)
 
 ## 1.7.60 (2024-11-16)
 
 ### New Features
 
-* **repodog:**  support esm imports path aliases (679f49d3)
+* **repodog:** support esm imports path aliases (679f49d3)
 
 ## 1.7.59 (2024-11-09)
 
 ### Bug Fixes
 
-* **swc-config:**  js getter had wrong index (cee428c5)
-* **repodog:**  remove dependabot version updates (069514c1)
+* **swc-config:** js getter had wrong index (cee428c5)
+* **repodog:** remove dependabot version updates (069514c1)
 
 ## 1.7.58 (2024-11-09)
 
 ### Refactors
 
-* **webpack-config:**  put source map loader/plugin behind debug flag (d6f28fc2)
+* **webpack-config:** put source map loader/plugin behind debug flag (d6f28fc2)
 
 ## 1.7.57 (2024-11-08)
 
 ### Bug Fixes
 
-* **swc-config:**  add dynamic import flag (d721eca2)
+* **swc-config:** add dynamic import flag (d721eca2)
 
 ## 1.7.56 (2024-11-08)
 
 ### Bug Fixes
 
-* **webpack-config:**  update docs and test config (2556f1cc)
+* **webpack-config:** update docs and test config (2556f1cc)
 
 ## 1.7.55 (2024-11-08)
 
 ### Refactors
 
-* **webpack-config:**  add cli peer dep (ecae0ea0)
+* **webpack-config:** add cli peer dep (ecae0ea0)
 
 ## 1.7.54 (2024-11-07)
 
 ### Bug Fixes
 
-* **eslint-config-jasmine:**  another attempt at getting config to work (5d9a1a47)
+* **eslint-config-jasmine:** another attempt at getting config to work (5d9a1a47)
 
 ## 1.7.53 (2024-11-07)
 
 ### Refactors
 
-* **eslint-config-jasmine:**  update config to get working (5fa4afec)
+* **eslint-config-jasmine:** update config to get working (5fa4afec)
 
 ## 1.7.52 (2024-11-07)
 
 ### Bug Fixes
 
-* **eslint-config-jasmine:**  use new config style (a4bc1919)
+* **eslint-config-jasmine:** use new config style (a4bc1919)
 
 ## 1.7.51 (2024-11-03)
 
 ### Chores
 
-* **storybook-config:**  bump dep version (23571e6b)
+* **storybook-config:** bump dep version (23571e6b)
 
 ### Documentation Changes
 
-* **eslint-config:**  add comment to rule (2eae9f77)
+* **eslint-config:** add comment to rule (2eae9f77)
 
 ## 1.7.50 (2024-11-02)
 
 ### Bug Fixes
 
-* **eslint-config:**  sort broken rule config (ae6e9e05)
+* **eslint-config:** sort broken rule config (ae6e9e05)
 
 ## 1.7.49 (2024-11-02)
 
 ### Bug Fixes
 
-* **ts-config:**  add additional lib entry (7313a329)
+* **ts-config:** add additional lib entry (7313a329)
 
 ## 1.7.48 (2024-11-01)
 
 ### Refactors
 
-* **ts-config:**  update libs (60aa31dd)
+* **ts-config:** update libs (60aa31dd)
 
 ## 1.7.47 (2024-10-31)
 
 ### New Features
 
-* **repodog:**  enforce no casting / non-null asserting (82ed2ec3)
-* **new:**  add support for mise (05e591e8)
-* **syncpack-config:**  move to carat for peers (72e95733)
-* **eslint-config:**  add object shorthand rule (fc07df05)
+* **repodog:** enforce no casting / non-null asserting (82ed2ec3)
+* **new:** add support for mise (05e591e8)
+* **syncpack-config:** move to carat for peers (72e95733)
+* **eslint-config:** add object shorthand rule (fc07df05)
 
 ### Bug Fixes
 
@@ -401,26 +458,26 @@
 
 ### Documentation Changes
 
-* **eslint-config,prettier-config:**  use correct eslint conmment (c9f42117)
+* **eslint-config,prettier-config:** use correct eslint conmment (c9f42117)
 
 ### Refactors
 
-* **new:**  update templates (679adfac)
+* **new:** update templates (679adfac)
 
 ## 1.7.45 (2024-09-25)
 
 ### Chores
 
-* **core:**  remove unused deps (05178f7d)
+* **core:** remove unused deps (05178f7d)
 
 ### Documentation Changes
 
-* **babel-config:**  fix typo (d8ae6b34)
-* **repodog:**  change json to jsonc for code blocks (8b145730)
+* **babel-config:** fix typo (d8ae6b34)
+* **repodog:** change json to jsonc for code blocks (8b145730)
 
 ### New Features
 
-* **cut:**  enable filtering of command with glob (719dc902)
+* **cut:** enable filtering of command with glob (719dc902)
 
 ### Bug Fixes
 
@@ -438,194 +495,194 @@
 
 ### Chores
 
-* **core:**  remove unused deps (05178f7d)
+* **core:** remove unused deps (05178f7d)
 
 ### Refactors
 
-* **repodog:**  update deps and fix issues from that (3a562c4d)
+* **repodog:** update deps and fix issues from that (3a562c4d)
 
 ## 1.7.43 (2024-09-21)
 
 ### Bug Fixes
 
-* **repodog:**  bump cli packages from alpha (8ee9814d)
+* **repodog:** bump cli packages from alpha (8ee9814d)
 
 ## 1.7.42 (2024-09-21)
 
 ### New Features
 
-* **repodog:**  update version to match libs they track (8d6b5f0b)
+* **repodog:** update version to match libs they track (8d6b5f0b)
 
 ### Bug Fixes
 
-* **repodog:**  lock file (96bfab93)
+* **repodog:** lock file (96bfab93)
 
 ## 1.7.42-alpha-12345.1 (2024-09-08)
 
 ### Refactors
 
-* **jest-config:**  update deps (98abb6a5)
+* **jest-config:** update deps (98abb6a5)
 
 ## 1.7.42-alpha-12345.0 (2024-09-08)
 
 ### Chores
 
-* **ts-config:**  bump dep (3a4caf24)
+* **ts-config:** bump dep (3a4caf24)
 * **repodog:**
   * save work in progress (90fb49fa)
   * bump dep (7d0b9ac7)
 
 ### Documentation Changes
 
-* **markdownlint-config:**  update readme (6d7b0e86)
-* **jasmine-browser-config:**  update readme (19e8de5b)
+* **markdownlint-config:** update readme (6d7b0e86)
+* **jasmine-browser-config:** update readme (19e8de5b)
 
 ### New Features
 
-* **eslint-config-jest:**  update deps (3e019dba)
-* **eslint-config-jasmine:**  update deps (71d759a1)
-* **prettier-config:**  upgrade deps (acb9a6ff)
-* **commitlint-config:**  update deps (a6aba10e)
-* **babel-config:**  upgrade deps and config (433963db)
+* **eslint-config-jest:** update deps (3e019dba)
+* **eslint-config-jasmine:** update deps (71d759a1)
+* **prettier-config:** upgrade deps (acb9a6ff)
+* **commitlint-config:** update deps (a6aba10e)
+* **babel-config:** upgrade deps and config (433963db)
 
 ### Bug Fixes
 
-* **core:**  add back in missing .argv to yargs init (50f6bfbc)
-* **repodog:**  eslint peer error (6dc12e57)
+* **core:** add back in missing .argv to yargs init (50f6bfbc)
+* **repodog:** eslint peer error (6dc12e57)
 * **eslint-config:**
   * add prettier dev dep (dae5fb59)
   * get all rules working (806fe460)
 
 ### Refactors
 
-* **webpack-config:**  update package (3e3f7165)
-* **syncpack-config:**  update package (3ac44499)
-* **swc-config:**  update library (31e439d1)
-* **storybook-config,babel-preset:**  upgrade deps and update (3bf741aa)
-* **rollup-config:**  update deps (821e43ee)
-* **jest-config:**  upgrade deps (efa0a59f)
-* **eslint-config-react:**  move to v9 (d320cfa3)
-* **eslint-config-playwright:**  upgrade to v9 (36d97854)
-* **commitlint-config:**  move dep from peer (0e57d951)
-* **babel-config:**  change way plugins and presets are used (ab34eff1)
-* **repodog:**  eslint fixes (232234eb)
-* **eslint-config:**  upgrade to v9 and refactor config (b43d785d)
+* **webpack-config:** update package (3e3f7165)
+* **syncpack-config:** update package (3ac44499)
+* **swc-config:** update library (31e439d1)
+* **storybook-config,babel-preset:** upgrade deps and update (3bf741aa)
+* **rollup-config:** update deps (821e43ee)
+* **jest-config:** upgrade deps (efa0a59f)
+* **eslint-config-react:** move to v9 (d320cfa3)
+* **eslint-config-playwright:** upgrade to v9 (36d97854)
+* **commitlint-config:** move dep from peer (0e57d951)
+* **babel-config:** change way plugins and presets are used (ab34eff1)
+* **repodog:** eslint fixes (232234eb)
+* **eslint-config:** upgrade to v9 and refactor config (b43d785d)
 
 ## 1.7.41 (2024-08-09)
 
 ### Bug Fixes
 
-* **cut,publish,utils:**  stop shell commands from failing silently (384856ec)
+* **cut,publish,utils:** stop shell commands from failing silently (384856ec)
 
 ## 1.7.40 (2024-07-04)
 
 ### New Features
 
-* **eslint-config:**  exclude type def files from naming conv (35b15ced)
+* **eslint-config:** exclude type def files from naming conv (35b15ced)
 
 ### Bug Fixes
 
-* **cut:**  remove check if version is less than latest in npm (3de32505)
+* **cut:** remove check if version is less than latest in npm (3de32505)
 
 ## 1.7.39 (2024-05-23)
 
 ### Bug Fixes
 
-* **publish:**  stop preventing older version of package being published (0da62cc8)
+* **publish:** stop preventing older version of package being published (0da62cc8)
 
 ## 1.7.38 (2024-05-03)
 
 ### Bug Fixes
 
-* **jest-config:**  change ext order to cater for files in same dir (674548aa)
+* **jest-config:** change ext order to cater for files in same dir (674548aa)
 
 ## 1.7.37 (2024-04-24)
 
 ### Refactors
 
-* **babel-config,jest-config:**  remove TEST_ENV flag as redundant (214a563d)
+* **babel-config,jest-config:** remove TEST_ENV flag as redundant (214a563d)
 
 ## 1.7.36 (2024-04-22)
 
 ### Bug Fixes
 
-* **utils:**  bug in prerelease digit incrementing (17fb72f5)
+* **utils:** bug in prerelease digit incrementing (17fb72f5)
 
 ## 1.7.35 (2024-04-08)
 
 ### New Features
 
-* **syncpack-config:**  add overrides range (ec20005e)
-* **new:**  add readme generator to component library template (c6236748)
+* **syncpack-config:** add overrides range (ec20005e)
+* **new:** add readme generator to component library template (c6236748)
 
 ## 1.7.34 (2024-04-05)
 
 ### Refactors
 
-* **storybook-config:**  make some peer deps optional (e79a465f)
+* **storybook-config:** make some peer deps optional (e79a465f)
 
 ## 1.7.33 (2024-03-25)
 
 ### Bug Fixes
 
-* **new:**  update component library template (d2bd6bd6)
+* **new:** update component library template (d2bd6bd6)
 
 ## 1.7.32 (2024-03-18)
 
 ### Documentation Changes
 
-* **webpack-config:**  correct code examples (7216dfef)
+* **webpack-config:** correct code examples (7216dfef)
 
 ### Bug Fixes
 
-* **webpack-config:**  typo in method name (aa81f411)
+* **webpack-config:** typo in method name (aa81f411)
 
 ## 1.7.31 (2024-03-14)
 
 ### Chores
 
-* **repodog:**  whitespace (f618e24b)
+* **repodog:** whitespace (f618e24b)
 
 ### New Features
 
-* **storybook-config:**  add axe and chromatic deps (807b5c94)
+* **storybook-config:** add axe and chromatic deps (807b5c94)
 
 ### Bug Fixes
 
-* **repodog:**  build for prod in pipeline (2f42b4f9)
+* **repodog:** build for prod in pipeline (2f42b4f9)
 
 ## 1.7.30 (2024-03-04)
 
 ### Bug Fixes
 
-* **core:**  changelog link path (c1c002a4)
+* **core:** changelog link path (c1c002a4)
 
 ## 1.7.29 (2024-02-29)
 
 ### Chores
 
-* **deps:**  bump @types/semver from 7.5.7 to 7.5.8 (78779315)
+* **deps:** bump @types/semver from 7.5.7 to 7.5.8 (78779315)
 
 ### New Features
 
-* **new,repodog:**  add markdownlint into validate script (3d76296b)
+* **new,repodog:** add markdownlint into validate script (3d76296b)
 
 ### Bug Fixes
 
-* **cut,core,utils:**  allow pr tag and update docs (6f12f4d0)
+* **cut,core,utils:** allow pr tag and update docs (6f12f4d0)
 
 ## 1.7.28 (2024-02-28)
 
 ### Chores
 
-* **repodog:**  update package lock (ba5bd0a7)
+* **repodog:** update package lock (ba5bd0a7)
 * **deps-dev:**
   * bump eslint from 8.29.0 to 8.57.0 (ee2c19ef)
   * bump eslint-plugin-sort-class-members (35634644)
 
 ### New Features
 
-* **cut:**  enable preid to be passed in (6d945792)
+* **cut:** enable preid to be passed in (6d945792)
 
 ## 1.7.27 (2024-02-27)
 
@@ -634,48 +691,48 @@
 * **cut:**
   * changelog formatter (83634d33)
   * update changelog formatting regexes (a52b33de)
-* **repodog:**  changelog typo (b3c6fa97)
+* **repodog:** changelog typo (b3c6fa97)
 
 ### Other Changes
 
-* **cut:**  update changelog formatting regexes" (6cba0d8b)
+* **cut:** update changelog formatting regexes" (6cba0d8b)
 
 ## 1.7.26 (2024-02-27)
 
 ### Chores
 
-* **deps-dev:**  bump @typescript-eslint/parser from 5.46.0 to 5.62.0 (e975f410)
-* **deps:**  bump @types/shelljs from 0.8.11 to 0.8.15 (0ca76cb4)
+* **deps-dev:** bump @typescript-eslint/parser from 5.46.0 to 5.62.0 (e975f410)
+* **deps:** bump @types/shelljs from 0.8.11 to 0.8.15 (0ca76cb4)
 
 ### New Features
 
 * **cut:**
   * add logging to changelog normalisation code (b1e6658f)
   * format changelog (c8130539)
-* **repodog:**  add root name to commitlint scopes (d2fad937)
+* **repodog:** add root name to commitlint scopes (d2fad937)
 
 ### Bug Fixes
 
 * **cut:**
   * move markdown linting to last step (eeb6c63c)
   * use dev dependencies rather than dependencies (ed3d56df)
-* **repodog:**  package lock mismatch (d967345b)
+* **repodog:** package lock mismatch (d967345b)
 
 ### Refactors
 
-* **repodog:**  add logo and update name everywhere (38d1022f)
+* **repodog:** add logo and update name everywhere (38d1022f)
 
 ## 1.7.25 (2024-02-23)
 
 ### Bug Fixes
 
-* **new:**  update templates for component library (f5e6d91d)
+* **new:** update templates for component library (f5e6d91d)
 
 ## 1.7.24 (2024-02-23)
 
 ### Refactors
 
-* **new,postinstall,utils:**  move valid repo type code to utils (ded01dad)
+* **new,postinstall,utils:** move valid repo type code to utils (ded01dad)
 
 ## 1.7.23 (2024-02-23)
 
@@ -692,8 +749,8 @@
 
 ### New Features
 
-* **new:**  add new commitlint config to templates (e052ecf6)
-* **commitlint-config:**  dynamically generate and enforce scopes (19cc1327)
+* **new:** add new commitlint config to templates (e052ecf6)
+* **commitlint-config:** dynamically generate and enforce scopes (19cc1327)
 
 ### Bug Fixes
 
@@ -1104,7 +1161,7 @@
 
 ### Chores
 
-* **deps:**  bump @babel/traverse from 7.20.5 to 7.23.6 (daced629)
+* **deps:** bump @babel/traverse from 7.20.5 to 7.23.6 (daced629)
 
 ### Refactors
 
@@ -1668,20 +1725,20 @@
 
 ### Bug Fixes
 
-* **jest:**  change name of test folder ([c1a0efa1](https://github.com/badbatch/repodog/commit/c1a0efa14edd1860defa44dac5f0e9567197a295))
+* **jest:** change name of test folder ([c1a0efa1](https://github.com/badbatch/repodog/commit/c1a0efa14edd1860defa44dac5f0e9567197a295))
 
 ## 0.3.52 (2020-03-03)
 
 ### Bug Fixes
 
-* **new-repo:**  remove boostrap cmd from package json ([30d5d3f9](https://github.com/badbatch/repodog/commit/30d5d3f9411f28d9a99db76e49440ced4d4ab37a))
+* **new-repo:** remove boostrap cmd from package json ([30d5d3f9](https://github.com/badbatch/repodog/commit/30d5d3f9411f28d9a99db76e49440ced4d4ab37a))
 * add codecov cmd to new repo/monorepo travis files ([f2645bda](https://github.com/badbatch/repodog/commit/f2645bda30a6437a7d973d79c86572aed1b16a4d))
 
 ## 0.3.51 (2020-03-03)
 
 ### Bug Fixes
 
-* **new-repo:**  adding exists check on dir before make ([9e128870](https://github.com/badbatch/repodog/commit/9e12887053c2117cf8a656ea938117a74cbf9bc0))
+* **new-repo:** adding exists check on dir before make ([9e128870](https://github.com/badbatch/repodog/commit/9e12887053c2117cf8a656ea938117a74cbf9bc0))
 
 ## 0.3.50 (2020-03-02)
 
@@ -1706,7 +1763,7 @@
 
 ### New Features
 
-* **rollup-config:**  upgrade babel plugin to use skip checks ([b470475e](https://github.com/badbatch/repodog/commit/b470475e31f65fdfc11c156f50b32aef9b0806aa))
+* **rollup-config:** upgrade babel plugin to use skip checks ([b470475e](https://github.com/badbatch/repodog/commit/b470475e31f65fdfc11c156f50b32aef9b0806aa))
 
 ### Bug Fixes
 
@@ -1716,25 +1773,25 @@
 
 ### New Features
 
-* **rollup-config:**  upgrade babel plugin to use skip checks ([b470475e](https://github.com/badbatch/repodog/commit/b470475e31f65fdfc11c156f50b32aef9b0806aa))
+* **rollup-config:** upgrade babel plugin to use skip checks ([b470475e](https://github.com/badbatch/repodog/commit/b470475e31f65fdfc11c156f50b32aef9b0806aa))
 
 ## 0.3.45 (2020-01-21)
 
 ### Bug Fixes
 
-* **babel-config:**  remove unnecessary cache config ([e3b43dc6](https://github.com/badbatch/repodog/commit/e3b43dc63fe2246f9d885073b43c09ca4d652d08))
+* **babel-config:** remove unnecessary cache config ([e3b43dc6](https://github.com/badbatch/repodog/commit/e3b43dc63fe2246f9d885073b43c09ca4d652d08))
 
 ## 0.3.44 (2020-01-21)
 
 ### New Features
 
-* **babel-config:**  restrict caching to when babel env is same ([55b10bdd](https://github.com/badbatch/repodog/commit/55b10bdd504fb583741506a069882984a9ad0b39))
+* **babel-config:** restrict caching to when babel env is same ([55b10bdd](https://github.com/badbatch/repodog/commit/55b10bdd504fb583741506a069882984a9ad0b39))
 
 ## 0.3.43 (2019-12-31)
 
 ### Chores
 
-* **deps:**  bump handlebars from 4.1.2 to 4.5.3 ([#3](https://github.com/badbatch/repodog/pull/3)) ([0d5183df](https://github.com/badbatch/repodog/commit/0d5183df2e97f7612b92c36156d45843b30f44f1))
+* **deps:** bump handlebars from 4.1.2 to 4.5.3 ([#3](https://github.com/badbatch/repodog/pull/3)) ([0d5183df](https://github.com/badbatch/repodog/commit/0d5183df2e97f7612b92c36156d45843b30f44f1))
 
 ### Bug Fixes
 
@@ -1762,9 +1819,9 @@
 
 ### Bug Fixes
 
-* **stylelint-config:**  add support for new babel plugins ([3c8817cb](https://github.com/badbatch/repodog/commit/3c8817cb12733d684cf3a30b2bd782ac50474ca8))
+* **stylelint-config:** add support for new babel plugins ([3c8817cb](https://github.com/badbatch/repodog/commit/3c8817cb12733d684cf3a30b2bd782ac50474ca8))
 * add js and ts lints into linting npm script ([cabac679](https://github.com/badbatch/repodog/commit/cabac679e17b66484cd90739fe0171e4a8475102))
-* **eslint-config:**  correctly split airbnb base and react rulesets ([1b744c51](https://github.com/badbatch/repodog/commit/1b744c51630f00d90df1bb2f198f11be7ead722f))
+* **eslint-config:** correctly split airbnb base and react rulesets ([1b744c51](https://github.com/badbatch/repodog/commit/1b744c51630f00d90df1bb2f198f11be7ead722f))
 
 ## 0.3.38 (2019-11-12)
 
@@ -1776,7 +1833,7 @@
 
 ### Bug Fixes
 
-* **babel-config:**  update to deal with browser test env ([b5cedbce](https://github.com/badbatch/repodog/commit/b5cedbce405e10a8bac90b5948432e3939274440))
+* **babel-config:** update to deal with browser test env ([b5cedbce](https://github.com/badbatch/repodog/commit/b5cedbce405e10a8bac90b5948432e3939274440))
 
 ## 0.3.36 (2019-11-04)
 
@@ -1787,7 +1844,7 @@
 
 ### Bug Fixes
 
-* **rollup-config:**  path to babel config broken for single repo ([9f143aeb](https://github.com/badbatch/repodog/commit/9f143aeb356939ba9f781dfade206c278818af16))
+* **rollup-config:** path to babel config broken for single repo ([9f143aeb](https://github.com/badbatch/repodog/commit/9f143aeb356939ba9f781dfade206c278818af16))
 * update new repo/monorepo repo feature types ([af6eb1c7](https://github.com/badbatch/repodog/commit/af6eb1c74a06674aa5b46a6dfff6c6b54a79fd62))
 
 ## 0.3.35 (2019-10-31)
@@ -1820,11 +1877,11 @@
 
 ### New Features
 
-* **new-repo:**  add logging to get package dependencies ([f25a8dba](https://github.com/badbatch/repodog/commit/f25a8dba044d017a28a37e390a115b2dd07e5e0b))
+* **new-repo:** add logging to get package dependencies ([f25a8dba](https://github.com/badbatch/repodog/commit/f25a8dba044d017a28a37e390a115b2dd07e5e0b))
 
 ### Bug Fixes
 
-* **constants:**  type error ([6eb6b4de](https://github.com/badbatch/repodog/commit/6eb6b4decbc95ff7e08f0771d0697d7b161552a6))
+* **constants:** type error ([6eb6b4de](https://github.com/badbatch/repodog/commit/6eb6b4decbc95ff7e08f0771d0697d7b161552a6))
 * add missing tsconfig to files list ([2be17510](https://github.com/badbatch/repodog/commit/2be1751029f48142c910ed23bae810cfe941b05d))
 
 ## 0.3.30 (2019-10-23)
@@ -1857,7 +1914,7 @@
 * add dynamic dependencies to stylelint config ([b91e8d2e](https://github.com/badbatch/repodog/commit/b91e8d2e483413a2610986e3c47257f0948a9ba9))
 * update rollup config to fix bugs and add dependencies ([25eee86b](https://github.com/badbatch/repodog/commit/25eee86bf48abc6ee77531cecb6c5190879377db))
 * add writing of features to repo config ([377f23ad](https://github.com/badbatch/repodog/commit/377f23ad465709f44331f4ed4dd80ea3b6d1e71d))
-* **babel-config:**  only load plugins that match features ([98755eb3](https://github.com/badbatch/repodog/commit/98755eb3f7aa42c95dd01ecf7af4e2f18fd4558f))
+* **babel-config:** only load plugins that match features ([98755eb3](https://github.com/badbatch/repodog/commit/98755eb3f7aa42c95dd01ecf7af4e2f18fd4558f))
 
 ### Bug Fixes
 
@@ -1871,25 +1928,25 @@
 
 ### Bug Fixes
 
-* **new-repo:**  update npmignore ([37ffcf50](https://github.com/badbatch/repodog/commit/37ffcf50c15aed98f95bc386efc38dc8df1657d4))
+* **new-repo:** update npmignore ([37ffcf50](https://github.com/badbatch/repodog/commit/37ffcf50c15aed98f95bc386efc38dc8df1657d4))
 
 ## 0.3.26 (2019-09-25)
 
 ### Bug Fixes
 
-* **new-repo:**  add main fields to scaffold package.json ([67df9f97](https://github.com/badbatch/repodog/commit/67df9f9747ee33453c80d2804569b7bbb3463494))
+* **new-repo:** add main fields to scaffold package.json ([67df9f97](https://github.com/badbatch/repodog/commit/67df9f9747ee33453c80d2804569b7bbb3463494))
 
 ## 0.3.25 (2019-09-19)
 
 ### Bug Fixes
 
-* **jest:**  add default test ignore pattern ([29cffa98](https://github.com/badbatch/repodog/commit/29cffa9874b33e0e66dee34fd9393944f8fe08c7))
+* **jest:** add default test ignore pattern ([29cffa98](https://github.com/badbatch/repodog/commit/29cffa9874b33e0e66dee34fd9393944f8fe08c7))
 
 ## 0.3.24 (2019-09-18)
 
 ### Bug Fixes
 
-* **types:**  replace Val with any in utils ([e9872ed8](https://github.com/badbatch/repodog/commit/e9872ed856575a909d0417efb8befac378ce25b6))
+* **types:** replace Val with any in utils ([e9872ed8](https://github.com/badbatch/repodog/commit/e9872ed856575a909d0417efb8befac378ce25b6))
 
 ## 0.3.23 (2019-09-16)
 
@@ -1897,62 +1954,62 @@
 
 ### Bug Fixes
 
-* **ts-config:**  add module field into base config ([4f96309e](https://github.com/badbatch/repodog/commit/4f96309e591f3be25e70ac1f990188cc2f14d2d2))
+* **ts-config:** add module field into base config ([4f96309e](https://github.com/badbatch/repodog/commit/4f96309e591f3be25e70ac1f990188cc2f14d2d2))
 
 ## 0.3.21 (2019-09-15)
 
 ### Bug Fixes
 
-* **jest, tsconfig:**  update configs to resolve install bugs ([e16463f0](https://github.com/badbatch/repodog/commit/e16463f0035cc2c9b0f7453ceb056dee5b81eb41))
+* **jest, tsconfig:** update configs to resolve install bugs ([e16463f0](https://github.com/badbatch/repodog/commit/e16463f0035cc2c9b0f7453ceb056dee5b81eb41))
 
 ## 0.3.20 (2019-09-13)
 
 ### Bug Fixes
 
-* **lint:**  sort errors ([4bec627a](https://github.com/badbatch/repodog/commit/4bec627a32208930fc647c79b1bb23d6461ed8be))
+* **lint:** sort errors ([4bec627a](https://github.com/badbatch/repodog/commit/4bec627a32208930fc647c79b1bb23d6461ed8be))
 
 ## 0.3.19 (2019-09-13)
 
 ### Bug Fixes
 
-* **new-repo/monorepo:**  remove version from peer dependencies ([1397525e](https://github.com/badbatch/repodog/commit/1397525ef4fdd06eb845f8f3bf5c7a427153e98b))
+* **new-repo/monorepo:** remove version from peer dependencies ([1397525e](https://github.com/badbatch/repodog/commit/1397525ef4fdd06eb845f8f3bf5c7a427153e98b))
 
 ## 0.3.18 (2019-09-13)
 
 ### Bug Fixes
 
-* **new-repo/monorepo:**  add version into peer dependency install ([9a4e398c](https://github.com/badbatch/repodog/commit/9a4e398c3fce4e38018d1551652cca05971532cf))
+* **new-repo/monorepo:** add version into peer dependency install ([9a4e398c](https://github.com/badbatch/repodog/commit/9a4e398c3fce4e38018d1551652cca05971532cf))
 
 ## 0.3.17 (2019-09-13)
 
 ### Bug Fixes
 
-* **new-repo/monorepo:**  add load nvm to scripts ([6823fe47](https://github.com/badbatch/repodog/commit/6823fe474b0a0be14f050fdda315ef34ea4a6508))
+* **new-repo/monorepo:** add load nvm to scripts ([6823fe47](https://github.com/badbatch/repodog/commit/6823fe474b0a0be14f050fdda315ef34ea4a6508))
 
 ## 0.3.16 (2019-09-13)
 
 ### Bug Fixes
 
-* **new-repo/monorepo:**  install nvm back in ([04acceae](https://github.com/badbatch/repodog/commit/04acceae68dc7cdcf88496f4c5d873429463dbd9))
+* **new-repo/monorepo:** install nvm back in ([04acceae](https://github.com/badbatch/repodog/commit/04acceae68dc7cdcf88496f4c5d873429463dbd9))
 
 ## 0.3.15 (2019-09-13)
 
 ### Bug Fixes
 
-* **new-repo/monorepo:**  split out installation steps ([e7a7a727](https://github.com/badbatch/repodog/commit/e7a7a7279e91a2aad373f2a8a9d8f6338ccc1812))
+* **new-repo/monorepo:** split out installation steps ([e7a7a727](https://github.com/badbatch/repodog/commit/e7a7a7279e91a2aad373f2a8a9d8f6338ccc1812))
 
 ## 0.3.14 (2019-09-13)
 
 ### Bug Fixes
 
-* **new-repo:**  remove workspace args from install commands ([e8cb945c](https://github.com/badbatch/repodog/commit/e8cb945cd258d2d7868e20abf7b485b421fa7e2b))
-* **types:**  update utils types ([84b29591](https://github.com/badbatch/repodog/commit/84b2959190c744fba7253a41d325db856d4a9016))
+* **new-repo:** remove workspace args from install commands ([e8cb945c](https://github.com/badbatch/repodog/commit/e8cb945cd258d2d7868e20abf7b485b421fa7e2b))
+* **types:** update utils types ([84b29591](https://github.com/badbatch/repodog/commit/84b2959190c744fba7253a41d325db856d4a9016))
 
 ## 0.3.13 (2019-09-13)
 
 ### Bug Fixes
 
-* **types:**  update name of type ([277ef50c](https://github.com/badbatch/repodog/commit/277ef50c4c5936df674c0ac37d7e673919542814))
+* **types:** update name of type ([277ef50c](https://github.com/badbatch/repodog/commit/277ef50c4c5936df674c0ac37d7e673919542814))
 
 ## 0.3.12 (2019-09-12)
 
@@ -1960,7 +2017,7 @@
 
 ### Bug Fixes
 
-* **helpers:**  remove node version and nvm install ([6f1ee6b9](https://github.com/badbatch/repodog/commit/6f1ee6b90191225b75671dbd7e24f97ea055c85e))
+* **helpers:** remove node version and nvm install ([6f1ee6b9](https://github.com/badbatch/repodog/commit/6f1ee6b90191225b75671dbd7e24f97ea055c85e))
 
 ## 0.3.10 (2019-09-12)
 
@@ -1968,136 +2025,136 @@
 
 ### Bug Fixes
 
-* **helpers:**  nvm install still broken ([75a5e367](https://github.com/badbatch/repodog/commit/75a5e367b05efa22d09ce00c6fe70a315b6baa98))
+* **helpers:** nvm install still broken ([75a5e367](https://github.com/badbatch/repodog/commit/75a5e367b05efa22d09ce00c6fe70a315b6baa98))
 
 ## 0.3.8 (2019-09-12)
 
 ### Bug Fixes
 
-* **helpers:**  nvm install was broken ([fd5097f2](https://github.com/badbatch/repodog/commit/fd5097f2752a48f70793a7e9f77d363565cf90a4))
+* **helpers:** nvm install was broken ([fd5097f2](https://github.com/badbatch/repodog/commit/fd5097f2752a48f70793a7e9f77d363565cf90a4))
 
 ## 0.3.7 (2019-09-10)
 
 ### Bug Fixes
 
-* **new-repo/monorepo:**  load nvm into terminal session ([d24cf064](https://github.com/badbatch/repodog/commit/d24cf06466bf6719624a891b2a0ba4e606d1ea4e))
+* **new-repo/monorepo:** load nvm into terminal session ([d24cf064](https://github.com/badbatch/repodog/commit/d24cf06466bf6719624a891b2a0ba4e606d1ea4e))
 
 ## 0.3.6 (2019-09-09)
 
 ### Bug Fixes
 
-* **helpers:**  fix nvm install and use ([45ce6cf4](https://github.com/badbatch/repodog/commit/45ce6cf4396ea4629dd3a9589c3d49215a61d829))
+* **helpers:** fix nvm install and use ([45ce6cf4](https://github.com/badbatch/repodog/commit/45ce6cf4396ea4629dd3a9589c3d49215a61d829))
 
 ## 0.3.5 (2019-09-09)
 
 ### Bug Fixes
 
-* **helpers:**  fix bug in copy files ([461d3d12](https://github.com/badbatch/repodog/commit/461d3d126f7e02f3a8acc590414887da876e85ff))
+* **helpers:** fix bug in copy files ([461d3d12](https://github.com/badbatch/repodog/commit/461d3d126f7e02f3a8acc590414887da876e85ff))
 
 ## 0.3.4 (2019-09-09)
 
 ### New Features
 
-* **new-repo,new-monorepo:**  add install nvm step ([3dbcab48](https://github.com/badbatch/repodog/commit/3dbcab48d140337b517c0e8b02efcd66fc6c3ecb))
+* **new-repo,new-monorepo:** add install nvm step ([3dbcab48](https://github.com/badbatch/repodog/commit/3dbcab48d140337b517c0e8b02efcd66fc6c3ecb))
 
 ## 0.3.3 (2019-09-09)
 
 ### Bug Fixes
 
-* **new-repo:**  un-ignore private files ([e5b373ef](https://github.com/badbatch/repodog/commit/e5b373ef554e73550343417bf1807825bf9acaba))
+* **new-repo:** un-ignore private files ([e5b373ef](https://github.com/badbatch/repodog/commit/e5b373ef554e73550343417bf1807825bf9acaba))
 
 ## 0.3.2 (2019-09-09)
 
 ### Bug Fixes
 
-* **helpers:**  add missing dependency ([db0e30f5](https://github.com/badbatch/repodog/commit/db0e30f5eb10fa699afc8174252a25204dd16c87))
+* **helpers:** add missing dependency ([db0e30f5](https://github.com/badbatch/repodog/commit/db0e30f5eb10fa699afc8174252a25204dd16c87))
 
 ## 0.3.1 (2019-09-09)
 
 ### Documentation Changes
 
-* **new-monorepo, new-repo:**  update READMEs ([208aa7b5](https://github.com/badbatch/repodog/commit/208aa7b5dea5bfb5e3d12a7d89de7bbd4a48f6f0))
+* **new-monorepo, new-repo:** update READMEs ([208aa7b5](https://github.com/badbatch/repodog/commit/208aa7b5dea5bfb5e3d12a7d89de7bbd4a48f6f0))
 
 ### Bug Fixes
 
-* **helpers:**  add missing dependencies ([55e0da84](https://github.com/badbatch/repodog/commit/55e0da8446320fae36aa7b377e86e11da892ad26))
-* **readme:**  correct description ([34ea6b0d](https://github.com/badbatch/repodog/commit/34ea6b0d56788350aa45c0eeb4e40c9b15872385))
+* **helpers:** add missing dependencies ([55e0da84](https://github.com/badbatch/repodog/commit/55e0da8446320fae36aa7b377e86e11da892ad26))
+* **readme:** correct description ([34ea6b0d](https://github.com/badbatch/repodog/commit/34ea6b0d56788350aa45c0eeb4e40c9b15872385))
 
 ### 0.3.0 (2019-09-08)
 
 ### Documentation Changes
 
-* **readme:**  add new-repo link ([138221ed](https://github.com/badbatch/repodog/commit/138221edd52b3fddd673554ea1b03b66028522d0))
+* **readme:** add new-repo link ([138221ed](https://github.com/badbatch/repodog/commit/138221edd52b3fddd673554ea1b03b66028522d0))
 
 ### New Features
 
-* **new-repo:**  create new cmd to bootstrap single package repo ([5a4d07c6](https://github.com/badbatch/repodog/commit/5a4d07c69caf53b76504cc7b056fc4786d727c9d))
+* **new-repo:** create new cmd to bootstrap single package repo ([5a4d07c6](https://github.com/badbatch/repodog/commit/5a4d07c69caf53b76504cc7b056fc4786d727c9d))
 
 ### Bug Fixes
 
-* **new-repo:**  include npmignore file in scaffold ([db692d70](https://github.com/badbatch/repodog/commit/db692d7026a28f87ab9f1484fb1f27a1a9d2e8fe))
+* **new-repo:** include npmignore file in scaffold ([db692d70](https://github.com/badbatch/repodog/commit/db692d7026a28f87ab9f1484fb1f27a1a9d2e8fe))
 
 ## 0.2.34 (2019-09-06)
 
 ### New Features
 
-* **tslint:**  add no any rule ([b71d8b3a](https://github.com/badbatch/repodog/commit/b71d8b3a6d43e4f73092b91ffe24a6b493790141))
-* **new-monorepo:**  add ts-jest and move all ts packages to config ([4e178b67](https://github.com/badbatch/repodog/commit/4e178b67dc21d581c07a3a2162bf6378cf69294d))
-* **repo:**  add watch mode for ts packages ([0a678e8e](https://github.com/badbatch/repodog/commit/0a678e8ec6c12f3a511243e3aeafdc816133703d))
+* **tslint:** add no any rule ([b71d8b3a](https://github.com/badbatch/repodog/commit/b71d8b3a6d43e4f73092b91ffe24a6b493790141))
+* **new-monorepo:** add ts-jest and move all ts packages to config ([4e178b67](https://github.com/badbatch/repodog/commit/4e178b67dc21d581c07a3a2162bf6378cf69294d))
+* **repo:** add watch mode for ts packages ([0a678e8e](https://github.com/badbatch/repodog/commit/0a678e8ec6c12f3a511243e3aeafdc816133703d))
 
 ### Refactors
 
-* **packages:**  update file structure ([432037e9](https://github.com/badbatch/repodog/commit/432037e996850b7cee76fa1e197e771739b32397))
+* **packages:** update file structure ([432037e9](https://github.com/badbatch/repodog/commit/432037e996850b7cee76fa1e197e771739b32397))
 
 ## 0.2.33 (2019-09-03)
 
 ### New Features
 
-* **new-monorepo:**  adding pause to check repo before install ([f7ac3866](https://github.com/badbatch/repodog/commit/f7ac3866982611a415075ccbe7757411646447c5))
+* **new-monorepo:** adding pause to check repo before install ([f7ac3866](https://github.com/badbatch/repodog/commit/f7ac3866982611a415075ccbe7757411646447c5))
 
 ### Bug Fixes
 
-* **codecov:**  adding to installation configuration ([643f955b](https://github.com/badbatch/repodog/commit/643f955b06431d97fb820aede47b2cdc88992fe8))
+* **codecov:** adding to installation configuration ([643f955b](https://github.com/badbatch/repodog/commit/643f955b06431d97fb820aede47b2cdc88992fe8))
 
 ## 0.2.32 (2019-09-02)
 
 ### Bug Fixes
 
-* **new-monorepo:**  exception due to undefined variable ([5d63eb44](https://github.com/badbatch/repodog/commit/5d63eb4431834524e8741eaa133d14fdb7547d4d))
+* **new-monorepo:** exception due to undefined variable ([5d63eb44](https://github.com/badbatch/repodog/commit/5d63eb4431834524e8741eaa133d14fdb7547d4d))
 
 ## 0.2.31 (2019-09-02)
 
 ### Bug Fixes
 
-* **scripts:**  change way watch is called ([a84ad77b](https://github.com/badbatch/repodog/commit/a84ad77b8c1d071896576148ffe57c83b877825e))
+* **scripts:** change way watch is called ([a84ad77b](https://github.com/badbatch/repodog/commit/a84ad77b8c1d071896576148ffe57c83b877825e))
 
 ### Refactors
 
-* **new-monorepo:**  move to q&a style installation ([#2](https://github.com/badbatch/repodog/pull/2)) ([a30f8b08](https://github.com/badbatch/repodog/commit/a30f8b0811207adade6b3ed9dc61c0a6dc3adbb6))
+* **new-monorepo:** move to q&a style installation ([#2](https://github.com/badbatch/repodog/pull/2)) ([a30f8b08](https://github.com/badbatch/repodog/commit/a30f8b0811207adade6b3ed9dc61c0a6dc3adbb6))
 
 ## 0.2.30 (2019-08-30)
 
 ### Bug Fixes
 
-* **new-monorepo:**  scaffold package json path wrong ([028fda76](https://github.com/badbatch/repodog/commit/028fda76d9bc1e341ccce05144883850b2a5b258))
+* **new-monorepo:** scaffold package json path wrong ([028fda76](https://github.com/badbatch/repodog/commit/028fda76d9bc1e341ccce05144883850b2a5b258))
 
 ## 0.2.29 (2019-08-30)
 
 ### Bug Fixes
 
-* **new-monorepo:**  remove carriage returns from file lines ([54d5ea26](https://github.com/badbatch/repodog/commit/54d5ea26e97b9fb60bbe7654daa43948ee15ac6b))
+* **new-monorepo:** remove carriage returns from file lines ([54d5ea26](https://github.com/badbatch/repodog/commit/54d5ea26e97b9fb60bbe7654daa43948ee15ac6b))
 
 ## 0.2.28 (2019-08-30)
 
 ### New Features
 
-* **tslint:**  add member sort rule to config ([03426f8e](https://github.com/badbatch/repodog/commit/03426f8ed717f20b8252cada8c0a452c0411fdff))
+* **tslint:** add member sort rule to config ([03426f8e](https://github.com/badbatch/repodog/commit/03426f8ed717f20b8252cada8c0a452c0411fdff))
 
 ## 0.2.27 (2019-08-28)
 
 ### Bug Fixes
 
-* **file loading:**  change back to require ([5d53de0f](https://github.com/badbatch/repodog/commit/5d53de0f5759bf0252f347c93548351d813804c6))
+* **file loading:** change back to require ([5d53de0f](https://github.com/badbatch/repodog/commit/5d53de0f5759bf0252f347c93548351d813804c6))
 
 ## 0.2.26 (2019-08-28)
 
@@ -2105,97 +2162,97 @@
 
 ### Chores
 
-* **security:**  upgrade eslint packages ([e1b2c290](https://github.com/badbatch/repodog/commit/e1b2c290f3f7d39ffe738037883afb1caba5bc2f))
+* **security:** upgrade eslint packages ([e1b2c290](https://github.com/badbatch/repodog/commit/e1b2c290f3f7d39ffe738037883afb1caba5bc2f))
 
 ### Bug Fixes
 
-* **dependencies:**  moving internal dependencies to peer ([cc6dd9ba](https://github.com/badbatch/repodog/commit/cc6dd9bad5cd265409784d8f0157cd7b7470a4ef))
+* **dependencies:** moving internal dependencies to peer ([cc6dd9ba](https://github.com/badbatch/repodog/commit/cc6dd9bad5cd265409784d8f0157cd7b7470a4ef))
 
 ## 0.2.24 (2019-08-26)
 
 ### Bug Fixes
 
-* **linting:**  resolve type errors ([8eb64eb1](https://github.com/badbatch/repodog/commit/8eb64eb1163149b325a8d44bbc957c818a43e83b))
+* **linting:** resolve type errors ([8eb64eb1](https://github.com/badbatch/repodog/commit/8eb64eb1163149b325a8d44bbc957c818a43e83b))
 
 ## 0.2.23 (2019-08-25)
 
 ### Bug Fixes
 
-* **file loading:**  remove require in place of readFileSync ([1cf4524f](https://github.com/badbatch/repodog/commit/1cf4524f7d442dbb678e474612566c35bc9f152a))
+* **file loading:** remove require in place of readFileSync ([1cf4524f](https://github.com/badbatch/repodog/commit/1cf4524f7d442dbb678e474612566c35bc9f152a))
 
 ## 0.2.22 (2019-08-24)
 
 ### Bug Fixes
 
-* **commands:**  add error catching ([89333412](https://github.com/badbatch/repodog/commit/893334127b39bca8af7d8e3b4a8cbace10b97c7a))
+* **commands:** add error catching ([89333412](https://github.com/badbatch/repodog/commit/893334127b39bca8af7d8e3b4a8cbace10b97c7a))
 
 ## 0.2.21 (2019-08-24)
 
 ### Bug Fixes
 
-* **npmignore:**  update all packages to include src in package ([c6c65c94](https://github.com/badbatch/repodog/commit/c6c65c949f584cb722817cda3439687252016e10))
+* **npmignore:** update all packages to include src in package ([c6c65c94](https://github.com/badbatch/repodog/commit/c6c65c949f584cb722817cda3439687252016e10))
 
 ## 0.2.20 (2019-08-23)
 
 ### Bug Fixes
 
-* **new-monorepo:**  update npmignore ([ba625eb5](https://github.com/badbatch/repodog/commit/ba625eb5c58d2bde1ef18f7973b6993b1a72fcac))
+* **new-monorepo:** update npmignore ([ba625eb5](https://github.com/badbatch/repodog/commit/ba625eb5c58d2bde1ef18f7973b6993b1a72fcac))
 
 ## 0.2.19 (2019-08-23)
 
 ### Bug Fixes
 
-* **new-monorepo:**  update npmignore ([18e6fe33](https://github.com/badbatch/repodog/commit/18e6fe3363daeaea5c96d69d0d5f4da8936b0369))
+* **new-monorepo:** update npmignore ([18e6fe33](https://github.com/badbatch/repodog/commit/18e6fe3363daeaea5c96d69d0d5f4da8936b0369))
 
 ## 0.2.18 (2019-08-23)
 
 ### Bug Fixes
 
-* **new-monorepo:**  update npmignore files ([8aa99879](https://github.com/badbatch/repodog/commit/8aa998794dd6310ff732ab4e45ac0ca7e5e7ed2c))
+* **new-monorepo:** update npmignore files ([8aa99879](https://github.com/badbatch/repodog/commit/8aa998794dd6310ff732ab4e45ac0ca7e5e7ed2c))
 
 ## 0.2.17 (2019-08-23)
 
 ### Bug Fixes
 
-* **new-monorepo, build-references:**  minor bugs ([65d32dde](https://github.com/badbatch/repodog/commit/65d32ddeb5af6b701930a649fb5e4a636cc61366))
-* **new-monorepo:**  revert command back to init ([dea2af0d](https://github.com/badbatch/repodog/commit/dea2af0d07d7c3780792b9ae9c311fde97c85ecf))
+* **new-monorepo, build-references:** minor bugs ([65d32dde](https://github.com/badbatch/repodog/commit/65d32ddeb5af6b701930a649fb5e4a636cc61366))
+* **new-monorepo:** revert command back to init ([dea2af0d](https://github.com/badbatch/repodog/commit/dea2af0d07d7c3780792b9ae9c311fde97c85ecf))
 
 ## 0.2.16 (2019-08-23)
 
 ### Bug Fixes
 
-* **new-monorepo:**  various bugs in scaffold copy operation ([5770af1e](https://github.com/badbatch/repodog/commit/5770af1ee7f45adc6fad1d052a9c80f0d000f42f))
+* **new-monorepo:** various bugs in scaffold copy operation ([5770af1e](https://github.com/badbatch/repodog/commit/5770af1ee7f45adc6fad1d052a9c80f0d000f42f))
 
 ## 0.2.15 (2019-08-23)
 
 ### Bug Fixes
 
-* **new-monorepo:**  resolve errors in copying scaffold ([91ec68b4](https://github.com/badbatch/repodog/commit/91ec68b42a893d9c48133125457645bd8126c7ee))
+* **new-monorepo:** resolve errors in copying scaffold ([91ec68b4](https://github.com/badbatch/repodog/commit/91ec68b42a893d9c48133125457645bd8126c7ee))
 
 ## 0.2.14 (2019-08-21)
 
 ### New Features
 
-* **eslint:**  add new rules to config ([b44d719c](https://github.com/badbatch/repodog/commit/b44d719c8bf426b95a0bde800ab90b54ab065f9c))
+* **eslint:** add new rules to config ([b44d719c](https://github.com/badbatch/repodog/commit/b44d719c8bf426b95a0bde800ab90b54ab065f9c))
 
 ## 0.2.13 (2019-08-20)
 
 ### Bug Fixes
 
-* **rollup, babel:**  resolve minor bugs ([0a1bd96a](https://github.com/badbatch/repodog/commit/0a1bd96ae8161e5161f61bf22f937f5840e6f40d))
+* **rollup, babel:** resolve minor bugs ([0a1bd96a](https://github.com/badbatch/repodog/commit/0a1bd96ae8161e5161f61bf22f937f5840e6f40d))
 
 ## 0.2.12 (2019-08-20)
 
 ### Bug Fixes
 
-* **rollup-config,ts-config:**  minor bug fixes ([4a1e1b5f](https://github.com/badbatch/repodog/commit/4a1e1b5faad0a299dabe205942293ebd985676b3))
+* **rollup-config,ts-config:** minor bug fixes ([4a1e1b5f](https://github.com/badbatch/repodog/commit/4a1e1b5faad0a299dabe205942293ebd985676b3))
 
 ## 0.2.11 (2019-08-19)
 
 ### Bug Fixes
 
-* **new-monorepo:**  change merge order for root package json ([e26cf876](https://github.com/badbatch/repodog/commit/e26cf876e525cba74a894220f56cc7c9933c7c14))
-* **rollup-config:**  change root package json import path ([1bfd2b2a](https://github.com/badbatch/repodog/commit/1bfd2b2a443b20f4ee5667e97b0be9de3cb2ac03))
+* **new-monorepo:** change merge order for root package json ([e26cf876](https://github.com/badbatch/repodog/commit/e26cf876e525cba74a894220f56cc7c9933c7c14))
+* **rollup-config:** change root package json import path ([1bfd2b2a](https://github.com/badbatch/repodog/commit/1bfd2b2a443b20f4ee5667e97b0be9de3cb2ac03))
 
 ## 0.2.10 (2019-08-16)
 
@@ -2209,104 +2266,104 @@
 
 ### Bug Fixes
 
-* **eslint,lerna:**  update eslint version and add to lerna config ([28b997e6](https://github.com/badbatch/repodog/commit/28b997e664a25acad0a15ccf1593d48caa709e72))
+* **eslint,lerna:** update eslint version and add to lerna config ([28b997e6](https://github.com/badbatch/repodog/commit/28b997e664a25acad0a15ccf1593d48caa709e72))
 
 ## 0.2.8 (2019-08-16)
 
 ### Bug Fixes
 
-* **eslint-config:**  update rules ([0c392870](https://github.com/badbatch/repodog/commit/0c39287086248c9f4babb3f5a1e5c89a9cd5abd8))
+* **eslint-config:** update rules ([0c392870](https://github.com/badbatch/repodog/commit/0c39287086248c9f4babb3f5a1e5c89a9cd5abd8))
 
 ## 0.2.7 (2019-08-16)
 
 ### New Features
 
-* **babel-config:**  add react preset ([ce4f9d96](https://github.com/badbatch/repodog/commit/ce4f9d96a1da0fd7c45eb4bbf8e99eea027f856e))
+* **babel-config:** add react preset ([ce4f9d96](https://github.com/badbatch/repodog/commit/ce4f9d96a1da0fd7c45eb4bbf8e99eea027f856e))
 
 ### Bug Fixes
 
-* **eslint-config:**  remove unnecessary rule reset ([7f4d3718](https://github.com/badbatch/repodog/commit/7f4d371888a0f95560764fa04c80466e44a932f6))
+* **eslint-config:** remove unnecessary rule reset ([7f4d3718](https://github.com/badbatch/repodog/commit/7f4d371888a0f95560764fa04c80466e44a932f6))
 
 ## 0.2.6 (2019-08-15)
 
 ### Bug Fixes
 
-* **linting:**  update linting of various packages ([628ce483](https://github.com/badbatch/repodog/commit/628ce483ea0adcdf8a510769dbfbb8e88a328f62))
-* **new-monorepo:**  fix typo in dependency name ([d42aba65](https://github.com/badbatch/repodog/commit/d42aba65f0602bdeff123276a3e0e34b36c9c3f5))
-* **stylelint-config:**  add missing dependency ([446038cf](https://github.com/badbatch/repodog/commit/446038cf1dfb108f4683e13adb7961f9e157d903))
+* **linting:** update linting of various packages ([628ce483](https://github.com/badbatch/repodog/commit/628ce483ea0adcdf8a510769dbfbb8e88a328f62))
+* **new-monorepo:** fix typo in dependency name ([d42aba65](https://github.com/badbatch/repodog/commit/d42aba65f0602bdeff123276a3e0e34b36c9c3f5))
+* **stylelint-config:** add missing dependency ([446038cf](https://github.com/badbatch/repodog/commit/446038cf1dfb108f4683e13adb7961f9e157d903))
 
 ### Refactors
 
-* **helpers:**  create iterateDirectory helper and update types ([ebb38791](https://github.com/badbatch/repodog/commit/ebb387916bf2d69b252eeaa04a9dc9c471d0e8bf))
+* **helpers:** create iterateDirectory helper and update types ([ebb38791](https://github.com/badbatch/repodog/commit/ebb387916bf2d69b252eeaa04a9dc9c471d0e8bf))
 
 ## 0.2.5 (2019-08-15)
 
 ### New Features
 
-* **new-monorepo:**  add overwrite flag for scaffold files ([fe27fae5](https://github.com/badbatch/repodog/commit/fe27fae5be3610e5db2a415b732817453446c39e))
+* **new-monorepo:** add overwrite flag for scaffold files ([fe27fae5](https://github.com/badbatch/repodog/commit/fe27fae5be3610e5db2a415b732817453446c39e))
 
 ## 0.2.4 (2019-08-15)
 
 ### Bug Fixes
 
-* **new-monorepo:**  wrong path to write merged package.json ([3c80ee94](https://github.com/badbatch/repodog/commit/3c80ee942198ca7b814fad47edfcaf569259a5b4))
+* **new-monorepo:** wrong path to write merged package.json ([3c80ee94](https://github.com/badbatch/repodog/commit/3c80ee942198ca7b814fad47edfcaf569259a5b4))
 
 ## 0.2.3 (2019-08-15)
 
 ### Bug Fixes
 
-* **new-monorepo:**  correct scaffold path constant ([f42d606c](https://github.com/badbatch/repodog/commit/f42d606ce47bd7a20ea9b2885db53cbb77b367b5))
+* **new-monorepo:** correct scaffold path constant ([f42d606c](https://github.com/badbatch/repodog/commit/f42d606ce47bd7a20ea9b2885db53cbb77b367b5))
 
 ## 0.2.2 (2019-08-15)
 
 ### Documentation Changes
 
-* **readme:**  add stylelint config link ([f1b22923](https://github.com/badbatch/repodog/commit/f1b229237db1e5d0a86c6206fc8fadb3e81091cd))
+* **readme:** add stylelint config link ([f1b22923](https://github.com/badbatch/repodog/commit/f1b229237db1e5d0a86c6206fc8fadb3e81091cd))
 
 ### Bug Fixes
 
-* **new-monorepo:**  add missing import for constant ([02843716](https://github.com/badbatch/repodog/commit/028437164fa395ec014fdc286aed2f1ea85f8d4e))
+* **new-monorepo:** add missing import for constant ([02843716](https://github.com/badbatch/repodog/commit/028437164fa395ec014fdc286aed2f1ea85f8d4e))
 
 ## 0.2.1 (2019-08-15)
 
 ### Bug Fixes
 
-* **eslint:**  changing config file to js ([8c5ce17e](https://github.com/badbatch/repodog/commit/8c5ce17e7515e102f200af42cb8c7432f3b1f88e))
+* **eslint:** changing config file to js ([8c5ce17e](https://github.com/badbatch/repodog/commit/8c5ce17e7515e102f200af42cb8c7432f3b1f88e))
 
 ### 0.2.0 (2019-08-15)
 
 ### New Features
 
-* **stylelint:**  adding stylelint config module ([74a341e4](https://github.com/badbatch/repodog/commit/74a341e4bf80c74b12917264a108da269cbbd53b))
+* **stylelint:** adding stylelint config module ([74a341e4](https://github.com/badbatch/repodog/commit/74a341e4bf80c74b12917264a108da269cbbd53b))
 
 ## 0.1.1 (2019-08-15)
 
 ### Documentation Changes
 
-* **badges:**  adding license and npm badges to each package ([8a4b5463](https://github.com/badbatch/repodog/commit/8a4b5463eafb96c78e1937ac0eb5f1db7bbc5e30))
+* **badges:** adding license and npm badges to each package ([8a4b5463](https://github.com/badbatch/repodog/commit/8a4b5463eafb96c78e1937ac0eb5f1db7bbc5e30))
 
 ### New Features
 
-* **new-monorepo:**  add ability to exclude scaffold files from copy ([0e46d89a](https://github.com/badbatch/repodog/commit/0e46d89a328fee4d6f8c65211c8ea52a3d7d0251))
+* **new-monorepo:** add ability to exclude scaffold files from copy ([0e46d89a](https://github.com/badbatch/repodog/commit/0e46d89a328fee4d6f8c65211c8ea52a3d7d0251))
 
 ### 0.1.0 (2019-08-14)
 
 ### Breaking Changes
 
-* **repository:**  move to monorepo structure. ([#1](https://github.com/badbatch/repodog/pull/1)) ([db229878](https://github.com/badbatch/repodog/commit/db2298781d6c194a4b166f084fd0b1773305050b))
+* **repository:** move to monorepo structure. ([#1](https://github.com/badbatch/repodog/pull/1)) ([db229878](https://github.com/badbatch/repodog/commit/db2298781d6c194a4b166f084fd0b1773305050b))
 
 ### Bug Fixes
 
-* **cutoff:**  add package to repo and scaffold package.json ([4c1f6452](https://github.com/badbatch/repodog/commit/4c1f64527a0938373c6a67b5e2d39e86a53c9eea))
+* **cutoff:** add package to repo and scaffold package.json ([4c1f6452](https://github.com/badbatch/repodog/commit/4c1f64527a0938373c6a67b5e2d39e86a53c9eea))
 
 ## 0.0.3 (2018-07-15)
 
 ### Bug Fixes
 
-* **new-package:**  Removing unnecessary args and changing config dir structure. ([62f168e4](https://github.com/badbatch/repodog/commit/62f168e444aee7a3deb8ec397e7e3e85a7451ff4))
+* **new-package:** Removing unnecessary args and changing config dir structure. ([62f168e4](https://github.com/badbatch/repodog/commit/62f168e444aee7a3deb8ec397e7e3e85a7451ff4))
 
 ## 0.0.2 (2018-07-15)
 
 ### New Features
 
-* **new-package:**  Create the new package script. ([2f4a39e7](https://github.com/badbatch/repodog/commit/2f4a39e7e7f6874123ca3e7609ff63d4a498933e))
+* **new-package:** Create the new package script. ([2f4a39e7](https://github.com/badbatch/repodog/commit/2f4a39e7e7f6874123ca3e7609ff63d4a498933e))

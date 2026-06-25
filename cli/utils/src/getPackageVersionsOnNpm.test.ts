@@ -4,7 +4,7 @@ import { type ChildProcess } from 'node:child_process';
 
 jest.unstable_mockModule('shelljs', shelljsMock);
 const shelljs = jest.mocked(await import('shelljs')).default;
-const { getPackageVersionsOnNpm } = await import('./getPackageVersionsOnNpm.ts');
+const { getPackageVersionsOnNpm } = await import('#getPackageVersionsOnNpm.ts');
 
 describe('getLatestPackageVersionOnNpm', () => {
   beforeEach(() => {

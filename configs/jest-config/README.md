@@ -32,16 +32,16 @@ npm install @swc/jest --save-dev
     // esm
     "test": "node --require=suppress-experimental-warnings --experimental-vm-modules node_modules/jest/bin/jest.js",
     // or cjs
-    "test": "MODULE_SYSTEM=cjs node node_modules/jest/bin/jest.js"
-  }
+    "test": "MODULE_SYSTEM=cjs node node_modules/jest/bin/jest.js",
+  },
 }
 ```
 
 ```javascript
-// jest.config.cjs
-const jestConfig = require('@repodog/jest-config');
+// jest.config.mjs
+import jestConfig from '@repodog/jest-config';
 
-module.exports = {
+export default {
   ...jestConfig(),
 };
 ```
@@ -55,19 +55,17 @@ module.exports = {
       "request": "launch",
       "name": "Jest - current file",
       "program": "${workspaceFolder}/node_modules/jest/bin/jest",
-      "args": [
-        "${relativeFile}"
-      ],
+      "args": ["${relativeFile}"],
       "env": {
         "DEBUG": "true",
         // esm
         "NODE_OPTIONS": "--experimental-vm-modules",
         // or cjs
-        "MODULE_SYSTEM": "cjs"
+        "MODULE_SYSTEM": "cjs",
       },
-      "console": "integratedTerminal"
-    }
-  ]
+      "console": "integratedTerminal",
+    },
+  ],
 }
 ```
 
@@ -80,17 +78,17 @@ module.exports = {
     // esm
     "test": "COMPILER=swc node --require=suppress-experimental-warnings --experimental-vm-modules node_modules/jest/bin/jest.js",
     // or cjs
-    "test": "COMPILER=swc MODULE_SYSTEM=cjs node node_modules/jest/bin/jest.js"
-  }
+    "test": "COMPILER=swc MODULE_SYSTEM=cjs node node_modules/jest/bin/jest.js",
+  },
 }
 ```
 
 ```javascript
-// jest.config.cjs
-const jestConfig = require('@repodog/jest-config');
-const swcConfig = require('@repodog/swc-config');
+// jest.config.mjs
+import jestConfig from '@repodog/jest-config';
+import swcConfig from '@repodog/swc-config';
 
-module.exports = {
+export default {
   ...jestConfig({ compilerOptions: swcConfig }),
 };
 ```
@@ -104,34 +102,18 @@ module.exports = {
       "request": "launch",
       "name": "Jest - current file",
       "program": "${workspaceFolder}/node_modules/jest/bin/jest",
-      "args": [
-        "${relativeFile}"
-      ],
+      "args": ["${relativeFile}"],
       "env": {
         "DEBUG": "true",
         "COMPILER": "swc",
         // esm
         "NODE_OPTIONS": "--experimental-vm-modules",
         // or cjs
-        "MODULE_SYSTEM": "cjs"
+        "MODULE_SYSTEM": "cjs",
       },
-      "console": "integratedTerminal"
-    }
-  ]
-}
-```
-
-### Inline snapshots
-
-The config includes `prettier@^2` as a dependency so you can continue to use Jest inline snapshots without much additional configuration. All that is needed is to add a `.prettierrc` to the root of your project. This file will not conflict with the `prettier.config.mjs` file used by `@repodog/eslint-config` to format the rest of your code.
-
-```jsonc
-// .prettierrc
-{
-  "arrowParens": "avoid",
-  "printWidth": 120,
-  "singleQuote": true,
-  "trailingComa": "all"
+      "console": "integratedTerminal",
+    },
+  ],
 }
 ```
 

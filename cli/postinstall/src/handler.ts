@@ -1,12 +1,12 @@
 import {
   type NewRepoSubtype,
-  NewType,
   calculateDuration,
   getPackageManager,
-  isValidNewSubType,
+  isValidNewSubtype,
   isValidNewType,
+  newType,
   setVerbose,
-  typeToSubTypeMap,
+  typeToSubtypeMap,
   verboseLog,
 } from '@repodog/cli-utils';
 import colors from 'ansi-colors';
@@ -26,12 +26,12 @@ export const handler = async (argv: PostInstallHandlerArguments): Promise<void> 
 
   try {
     if (!isValidNewType(argv.type)) {
-      throw new Error(`Expected type to be a valid new type: ${Object.values(NewType).join(', ')}`);
+      throw new Error(`Expected type to be a valid new type: ${Object.values(newType).join(', ')}`);
     }
 
-    if (!isValidNewSubType(argv.type, argv.subtype)) {
+    if (!isValidNewSubtype(argv.type, argv.subtype)) {
       throw new Error(
-        `Expected subtype to be a valid new subtype: ${Object.values(typeToSubTypeMap[argv.type]).join(', ')}`,
+        `Expected subtype to be a valid new subtype: ${Object.values(typeToSubtypeMap[argv.type]).join(', ')}`,
       );
     }
 

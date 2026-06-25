@@ -1,10 +1,10 @@
 import { fixupPluginRules } from '@eslint/compat';
 import eslint from '@eslint/js';
 import stylistic from '@stylistic/eslint-plugin';
+import eslintPrettier from 'eslint-config-prettier/flat';
 import eslintComments from 'eslint-plugin-eslint-comments';
 import { importX } from 'eslint-plugin-import-x';
 import preferArrow from 'eslint-plugin-prefer-arrow';
-import prettierRecommended from 'eslint-plugin-prettier/recommended';
 import sortClassMembers from 'eslint-plugin-sort-class-members';
 import sortDestructureKeys from 'eslint-plugin-sort-destructure-keys';
 import sortKeysFix from 'eslint-plugin-sort-keys-fix';
@@ -16,7 +16,7 @@ import tsEslint from 'typescript-eslint';
 const cwd = process.cwd();
 const project = './tsconfig.json';
 
-// eslint convention is to export default
+// ESLint convention is to export default
 // eslint-disable-next-line import-x/no-default-export
 export default tsEslint.config(
   {
@@ -39,7 +39,7 @@ export default tsEslint.config(
     ],
   },
   {
-    extends: [eslint.configs.recommended, importX.flatConfigs.recommended, unicorn.configs['flat/recommended']],
+    extends: [eslint.configs.recommended, importX.flatConfigs.recommended, unicorn.configs.recommended],
     files: ['**/*.{mjs,cjs,js,jsx,ts,tsx}'],
     languageOptions: {
       ecmaVersion: 'latest',
@@ -116,7 +116,7 @@ export default tsEslint.config(
       'eslint-comments/no-unused-enable': 2,
       'import-x/extensions': [2, 'ignorePackages'],
       'import-x/namespace': 0,
-      // This rule doesn't work on typescript files currently.
+      // This rule doesn't work on TypeScript files currently.
       // https://github.com/un-ts/eslint-plugin-import-x/issues/144
       'import-x/no-default-export': 2,
       'import-x/no-extraneous-dependencies': [
@@ -213,6 +213,7 @@ export default tsEslint.config(
             camelCase: true,
             pascalCase: true,
           },
+          checkDirectories: false,
           ignore: ['^module-defs.d.ts$', '^next-env.d.ts$'],
         },
       ],
@@ -313,10 +314,6 @@ export default tsEslint.config(
     },
   },
   {
-    extends: [prettierRecommended],
-    files: ['**/*.{mjs,cjs,js,jsx,ts,tsx}'],
-  },
-  {
     files: ['**/*.{spec,test}.*', '**/__testUtils__/**'],
     plugins: {
       '@typescript-eslint': tsEslint.plugin,
@@ -330,4 +327,5 @@ export default tsEslint.config(
       '@typescript-eslint/no-non-null-assertion': 0,
     },
   },
+  eslintPrettier,
 );

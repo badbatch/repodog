@@ -1,7 +1,7 @@
 {
   "name": "@repodog/babel-preset",
   "description": "The Repodog Babel preset module.",
-  "version": "7.0.6",
+  "version": "7.0.7",
   "author": "miami-man",
   "license": "MIT",
   "homepage": "https://github.com/badbatch/repodog",
@@ -11,18 +11,19 @@
     "url": "https://github.com/badbatch/repodog/configs/babel-preset"
   },
   "bugs": "https://github.com/badbatch/repodog/issues",
-  "main": "index.cjs",
-  "types": "index.d.cts",
+  "type": "module",
+  "main": "index.mjs",
+  "types": "index.d.ts",
   "publishConfig": {
     "access": "public"
   },
   "dependencies": {
-    "@babel/core": "^7.28.0",
-    "@babel/plugin-proposal-decorators": "^7.28.0",
-    "@babel/plugin-syntax-import-attributes": "^7.27.1",
-    "@babel/preset-env": "^7.28.0",
-    "@babel/preset-react": "^7.27.1",
-    "@babel/preset-typescript": "^7.27.1",
+    "@babel/core": "^7.29.7",
+    "@babel/plugin-proposal-decorators": "^7.29.7",
+    "@babel/plugin-syntax-import-attributes": "^7.29.7",
+    "@babel/preset-env": "^7.29.7",
+    "@babel/preset-react": "^7.29.7",
+    "@babel/preset-typescript": "^7.29.7",
     "babel-plugin-codegen": "^4.1.5",
     "babel-plugin-macros": "^3.1.0"
   },
@@ -36,6 +37,6 @@
     }
   },
   "devDependencies": {
-    "@babel/core": "^7.25.2"
+    "@babel/core": "^7.29.7"
   }
 }

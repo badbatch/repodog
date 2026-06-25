@@ -10,7 +10,8 @@ export const compileAdditionalTemplateOverrides = (
 
   const overrides = additionalfiles.reduce<Record<string, boolean>>((acc, fileName) => {
     if (internalFiles.includes(fileName)) {
-      acc[`overrideTemplate_${fileName.replaceAll('.', '_')}`] = true;
+      const key = `overrideTemplate_${fileName.replaceAll('.', '_')}`;
+      acc[key] = true;
     }
 
     return acc;

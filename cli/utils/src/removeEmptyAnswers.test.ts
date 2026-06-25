@@ -1,4 +1,4 @@
-import { removeEmptyAnswers } from './removeEmptyAnswers.ts';
+import { removeEmptyAnswers } from '#removeEmptyAnswers.ts';
 
 describe('removeEmptyAnswers', () => {
   it('should remove empty string values from the answers object', () => {

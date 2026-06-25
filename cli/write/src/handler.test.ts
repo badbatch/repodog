@@ -3,7 +3,7 @@ import { shelljsMock } from '@repodog/cli-test-utils';
 import * as cliUtils from '@repodog/cli-utils';
 import * as fs from 'node:fs';
 import * as path from 'node:path';
-import { WriteType } from './types.ts';
+import { WRITE_TYPE } from '#constants.ts';
 
 jest.unstable_mockModule('@repodog/cli-utils', () => ({
   ...cliUtils,
@@ -47,7 +47,7 @@ const { extractCode } = jest.mocked(await import('./utils/extractCode.ts'));
 const { writeTestFile } = jest.mocked(await import('./utils/writeTestFile.ts'));
 const { handler } = await import('./handler.ts');
 const filePath = 'alpha.test.ts';
-const type = WriteType.TEST;
+const type = WRITE_TYPE;
 
 describe('handler', () => {
   beforeEach(() => {
@@ -71,7 +71,7 @@ describe('handler', () => {
 
   describe('when no code is extracted', () => {
     beforeEach(() => {
-      extractCode.mockReturnValueOnce(undefined); // eslint-disable-line unicorn/no-useless-undefined
+      extractCode.mockReturnValueOnce(undefined);
     });
 
     it('should throw the correct error', async () => {

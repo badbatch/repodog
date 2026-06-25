@@ -18,11 +18,12 @@ const outputExtension = MODULE_SYSTEM === 'esm' ? 'mjs' : 'cjs';
 
 const config = (options = {}) => {
   console.log(`> Using @repodog/${options.compiler.name}-config`);
-  const extensions = ['.mjs', '.cjs', '.js', '.jsx', '.json', '.ts', '.tsx'];
 
   if (!options.compiler) {
     throw new Error('config.compiler is a required option. Both babel and swc rollup plugins are supported.');
   }
+
+  const extensions = ['.mjs', '.cjs', '.js', '.jsx', '.json', '.ts', '.tsx'];
 
   const plugins = [
     json(),

@@ -1,3 +1,7 @@
+import { fileURLToPath } from 'node:url';
+
+const resolvePath = name => fileURLToPath(import.meta.resolve(name));
+
 const config = () => {
   const { BABEL_MODULE_SYSTEM, DEBUG, JS_ENV, NODE_ENV } = process.env;
   const isDebug = DEBUG === 'true';
@@ -13,15 +17,15 @@ const config = () => {
   }
 
   const plugins = [
-    [require.resolve('@babel/plugin-proposal-decorators'), { legacy: true }],
-    [require.resolve('@babel/plugin-syntax-import-attributes'), { deprecatedAssertSyntax: true }],
-    require.resolve('babel-plugin-codegen'),
-    require.resolve('babel-plugin-macros'),
+    [resolvePath('@babel/plugin-proposal-decorators'), { version: '2023-11' }],
+    resolvePath('@babel/plugin-syntax-import-attributes'),
+    resolvePath('babel-plugin-codegen'),
+    resolvePath('babel-plugin-macros'),
   ];
 
   const presets = [
     [
-      require.resolve('@babel/preset-env'),
+      resolvePath('@babel/preset-env'),
       {
         corejs: '3.38.0',
         debug: isDebug,
@@ -31,7 +35,7 @@ const config = () => {
       },
     ],
     [
-      require.resolve('@babel/preset-react'),
+      resolvePath('@babel/preset-react'),
       {
         development: !isProdEnv,
         runtime: 'automatic',
@@ -40,12 +44,10 @@ const config = () => {
       },
     ],
     [
-      require.resolve('@babel/preset-typescript'),
+      resolvePath('@babel/preset-typescript'),
       {
         allowDeclareFields: true,
-        allowNamespaces: true,
         onlyRemoveTypeImports: false,
-        optimizeConstEnums: true,
       },
     ],
   ];
@@ -57,4 +59,6 @@ const config = () => {
   };
 };
 
-module.exports = config;
+// Required for Babel
+// eslint-disable-next-line import-x/no-default-export
+export default config;

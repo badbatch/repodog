@@ -1,4 +1,4 @@
-import { isValidReleaseType } from './isValidReleaseType.ts';
+import { isValidReleaseType } from '#isValidReleaseType.ts';
 
 describe('isValidReleaseType', () => {
   describe('when valid release type is passed in', () => {

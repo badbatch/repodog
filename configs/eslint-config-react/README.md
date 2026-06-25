@@ -18,7 +18,5 @@ npm install @repodog/eslint-config-react eslint --save-dev
 // eslint.config.mjs
 import config from '@repodog/eslint-config-react';
 
-export default [
-  ...config,
-];
+export default [...config];
 ```

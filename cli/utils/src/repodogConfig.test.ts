@@ -1,9 +1,9 @@
 import { jest } from '@jest/globals';
-import { Language, PackageManager } from './types.ts';
+import { language, packageManager } from '#constants.ts';
 
 jest.unstable_mockModule('node:fs', () => ({
   existsSync: jest.fn().mockReturnValue(true),
-  readFileSync: jest.fn().mockReturnValue(JSON.stringify({ __activeDryRun: true, language: Language.TYPESCRIPT })),
+  readFileSync: jest.fn().mockReturnValue(JSON.stringify({ __activeDryRun: true, language: language.TYPESCRIPT })),
   unlinkSync: jest.fn(),
   writeFileSync: jest.fn(),
 }));
@@ -12,13 +12,13 @@ jest.unstable_mockModule('node:os', () => ({
   homedir: jest.fn().mockReturnValue('/'),
 }));
 
-jest.unstable_mockModule('./resolveConfigPath.ts', () => ({
+jest.unstable_mockModule('#resolveConfigPath.ts', () => ({
   resolveConfigPath: jest.fn(),
 }));
 
 process.cwd = () => '/root';
 const { readFileSync, writeFileSync } = jest.mocked(await import('node:fs'));
-const { resolveConfigPath } = jest.mocked(await import('./resolveConfigPath.ts'));
+const { resolveConfigPath } = jest.mocked(await import('#resolveConfigPath.ts'));
 
 const {
   addRepodogConfigToCache,
@@ -26,7 +26,7 @@ const {
   getCachedRepodogConfig,
   loadRepodogConfig,
   writeRepodogConfig,
-} = await import('./repodogConfig.ts');
+} = await import('#repodogConfig.ts');
 
 describe('repodogConfig', () => {
   beforeEach(() => {
@@ -34,7 +34,7 @@ describe('repodogConfig', () => {
   });
 
   describe('loadRepodogConfig', () => {
-    const config = { __activeDryRun: true, language: Language.TYPESCRIPT };
+    const config = { __activeDryRun: true, language: language.TYPESCRIPT };
 
     describe('when there is a cached .repodogrc', () => {
       beforeEach(() => {
@@ -119,12 +119,12 @@ describe('repodogConfig', () => {
         });
 
         it('should return a partial config', () => {
-          expect(loadRepodogConfig()).toEqual({ language: Language.TYPESCRIPT });
+          expect(loadRepodogConfig()).toEqual({ language: language.TYPESCRIPT });
         });
 
         it('should cache the partial config', () => {
           loadRepodogConfig();
-          expect(getCachedRepodogConfig()).toEqual({ language: Language.TYPESCRIPT });
+          expect(getCachedRepodogConfig()).toEqual({ language: language.TYPESCRIPT });
         });
       });
     });
@@ -132,8 +132,8 @@ describe('repodogConfig', () => {
     describe('when questionOverridesPath is present in the config', () => {
       const enrichedConfig = {
         __activeDryRun: true,
-        language: Language.TYPESCRIPT,
-        questionOverridesPath: './questionOverridesPath',
+        language: language.TYPESCRIPT,
+        questionOverridesPath: '#questionOverridesPath',
       };
 
       beforeEach(() => {
@@ -143,15 +143,15 @@ describe('repodogConfig', () => {
 
       it('should call resolveConfigPath with the correct arguments', () => {
         loadRepodogConfig();
-        expect(resolveConfigPath).toHaveBeenCalledWith(enrichedConfig, 'questionOverrides', './questionOverridesPath');
+        expect(resolveConfigPath).toHaveBeenCalledWith(enrichedConfig, 'questionOverrides', '#questionOverridesPath');
       });
     });
 
     describe('when templateVariablesPath is present in the config', () => {
       const enrichedConfig = {
         __activeDryRun: true,
-        language: Language.TYPESCRIPT,
-        templateVariablesPath: './templateVariablesPath',
+        language: language.TYPESCRIPT,
+        templateVariablesPath: '#templateVariablesPath',
       };
 
       beforeEach(() => {
@@ -161,7 +161,7 @@ describe('repodogConfig', () => {
 
       it('should call resolveConfigPath with the correct arguments', () => {
         loadRepodogConfig();
-        expect(resolveConfigPath).toHaveBeenCalledWith(enrichedConfig, 'templateVariables', './templateVariablesPath');
+        expect(resolveConfigPath).toHaveBeenCalledWith(enrichedConfig, 'templateVariables', '#templateVariablesPath');
       });
     });
   });
@@ -173,7 +173,7 @@ describe('repodogConfig', () => {
 
     describe('when there is a cached config', () => {
       beforeEach(() => {
-        addRepodogConfigToCache({ packageManager: PackageManager.NPM });
+        addRepodogConfigToCache({ packageManager: packageManager.NPM });
       });
 
       it('should call writeFileSync with the correct arguments', () => {
@@ -183,7 +183,7 @@ describe('repodogConfig', () => {
           '/root/.repodogrc',
           JSON.stringify(
             // eslint-disable-next-line sort-keys-fix/sort-keys-fix
-            { packageManager: PackageManager.NPM, language: Language.TYPESCRIPT, templateVariables: { new: {} } },
+            { packageManager: packageManager.NPM, language: language.TYPESCRIPT, templateVariables: { new: {} } },
             undefined,
             2,
           ),

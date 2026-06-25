@@ -1,34 +1,14 @@
 import { type ReleaseType } from 'semver';
 
-export enum Language {
-  JAVASCRIPT = 'javascript',
-  TYPESCRIPT = 'typescript',
-}
+export type Language = 'javascript' | 'typescript';
 
-export enum NewPkgSubtype {
-  COMPONENT = 'component',
-  CONFIG = 'config',
-  LIBRARY = 'library',
-}
+export type NewPackageSubtype = 'component' | 'config' | 'library';
 
-export enum NewRepoSubtype {
-  COMPONENT_LIBRARY = 'componentLibrary',
-  // APP = 'app',
-  LIBRARY = 'library',
-  MONOREPO = 'monorepo',
-  // SERVER = 'server',
-}
+export type NewRepoSubtype = 'componentLibrary' | 'library' | 'monorepo';
 
-export enum NewType {
-  PKG = 'pkg',
-  REPO = 'repo',
-}
+export type NewType = 'pkg' | 'repo';
 
-export enum PackageManager {
-  NPM = 'npm',
-  PNPM = 'pnpm',
-  YARN = 'yarn',
-}
+export type PackageManager = 'npm' | 'pnpm' | 'yarn';
 
 export interface PackageMeta {
   checked: boolean;
@@ -76,12 +56,7 @@ export interface ReleaseMeta {
   type: ReleaseType;
 }
 
-export enum ReleaseTag {
-  ALPHA = 'alpha',
-  BETA = 'beta',
-  PULL_REQUEST = 'pr',
-  UNSTABLE = 'unstable',
-}
+export type ReleaseTag = 'alpha' | 'beta' | 'pr' | 'unstable';
 
 export interface GlobalRepodogConfig {
   additionalTemplatesPath?: string;

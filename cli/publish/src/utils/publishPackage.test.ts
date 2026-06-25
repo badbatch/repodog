@@ -1,6 +1,6 @@
 import { jest } from '@jest/globals';
 import { loadPackageJsonMock } from '@repodog/cli-test-utils';
-import { PackageManager } from '@repodog/cli-utils';
+import { packageManager } from '@repodog/cli-utils';
 
 jest.unstable_mockModule('@repodog/cli-utils', () => ({
   asyncExec: jest.fn(),
@@ -38,7 +38,7 @@ describe('publishPackage', () => {
     });
 
     it('should not call getLatestPackageVersionOnNpm', async () => {
-      await publishPackage(packageJsonPath, { packageManager: PackageManager.NPM });
+      await publishPackage(packageJsonPath, { packageManager: packageManager.NPM });
       expect(getLatestPackageVersionOnNpm).not.toHaveBeenCalled();
     });
   });
@@ -49,7 +49,7 @@ describe('publishPackage', () => {
     });
 
     it('should throw the correct error', async () => {
-      await publishPackage(packageJsonPath, { packageManager: PackageManager.NPM });
+      await publishPackage(packageJsonPath, { packageManager: packageManager.NPM });
 
       expect(verboseLog).toHaveBeenCalledWith(
         'The new alpha package verison 1.0.0 is equal to a version on npm. Skipping publish.',
@@ -63,8 +63,8 @@ describe('publishPackage', () => {
     });
 
     it('should run the correct publish command', async () => {
-      await publishPackage(packageJsonPath, { packageManager: PackageManager.NPM });
-      expect(getPublishCmd).toHaveBeenCalledWith(PackageManager.NPM, '1.0.0', undefined);
+      await publishPackage(packageJsonPath, { packageManager: packageManager.NPM });
+      expect(getPublishCmd).toHaveBeenCalledWith(packageManager.NPM, '1.0.0', undefined);
     });
   });
 });

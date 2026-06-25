@@ -1,0 +1,5 @@
+{
+  "extends": ["../../configs/ts-config/index.json"],
+  "include": ["index.d.ts"],
+  "references": []
+}

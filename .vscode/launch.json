@@ -6,9 +6,7 @@
       "name": "Jest - current file",
       "program": "${workspaceFolder}/node_modules/jest/bin/jest",
       "runtimeVersion": "20.17.0",
-      "args": [
-        "${relativeFile}"
-      ],
+      "args": ["${relativeFile}"],
       "env": {
         "COMPILER": "swc",
         "NODE_OPTIONS": "--experimental-vm-modules"
@@ -20,11 +18,7 @@
       "request": "launch",
       "name": "Repodog - cut",
       "program": "${workspaceFolder}/cli/core/bin/repodog.mjs",
-      "args": [
-        "cut",
-        "patch",
-        "--dry-run"
-      ],
+      "args": ["cut", "patch", "--dry-run"],
       "console": "integratedTerminal",
       "internalConsoleOptions": "neverOpen"
     },
@@ -35,12 +29,7 @@
       "program": "${workspaceFolder}/cli/core/bin/repodog.mjs",
       // "cwd": "/Users/dylan.aubrey/workspaces/personal",
       "runtimeVersion": "20.17.0",
-      "args": [
-        "new",
-        "pkg",
-        "library",
-        "--verbose"
-      ],
+      "args": ["new", "pkg", "library", "--verbose"],
       "console": "integratedTerminal",
       "internalConsoleOptions": "neverOpen"
     },
@@ -49,10 +38,7 @@
       "request": "launch",
       "name": "Repodog - publish",
       "program": "${workspaceFolder}/cli/core/bin/repodog.mjs",
-      "args": [
-        "publish",
-        "--verbose"
-      ],
+      "args": ["publish", "--verbose"],
       "console": "integratedTerminal",
       "internalConsoleOptions": "neverOpen"
     },
@@ -61,12 +47,7 @@
       "request": "launch",
       "name": "Repodog - write",
       "program": "${workspaceFolder}/cli/core/bin/repodog.mjs",
-      "args": [
-        "write",
-        "test",
-        "./cli/write/src/handler.ts",
-        "--verbose"
-      ],
+      "args": ["write", "test", "./cli/write/src/handler.ts", "--verbose"],
       "console": "integratedTerminal",
       "internalConsoleOptions": "neverOpen"
     },
@@ -76,11 +57,7 @@
       "name": "Repodog - postinstall",
       "program": "${workspaceFolder}/cli/core/bin/repodog.mjs",
       "cwd": "/Users/dylan.aubrey/workspaces/personal/test",
-      "args": [
-        "postinstall",
-        "repo",
-        "library"
-      ],
+      "args": ["postinstall", "repo", "library"],
       "console": "integratedTerminal",
       "internalConsoleOptions": "neverOpen"
     },
@@ -89,9 +66,7 @@
       "request": "launch",
       "name": "syncpack",
       "program": "${workspaceFolder}/node_modules/syncpack/dist/bin.js",
-      "args": [
-        "list-mismatches"
-      ],
+      "args": ["lint"],
       "console": "integratedTerminal",
       "internalConsoleOptions": "neverOpen"
     },
@@ -103,14 +78,22 @@
       "args": [
         "repo",
         "library",
-        "--name", "name",
-        "--desc", "desc",
-        "--author", "miami-man",
-        "--homepage", "https://github.com/org/name",
-        "--mainFilename", "main",
-        "--language", "typescript",
-        "--packageManager", "pnpm",
-        "--packageManagerTemporaryCmd", "pnpm dlx",
+        "--name",
+        "name",
+        "--desc",
+        "desc",
+        "--author",
+        "miami-man",
+        "--homepage",
+        "https://github.com/org/name",
+        "--mainFilename",
+        "main",
+        "--language",
+        "typescript",
+        "--packageManager",
+        "pnpm",
+        "--packageManagerTemporaryCmd",
+        "pnpm dlx"
       ],
       "env": {
         "DEBUG": "true",
@@ -118,6 +101,6 @@
       },
       "console": "integratedTerminal",
       "internalConsoleOptions": "neverOpen"
-    },
+    }
   ]
 }

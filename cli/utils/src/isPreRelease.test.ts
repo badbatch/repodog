@@ -1,4 +1,4 @@
-import { isPreRelease } from './isPreRelease.ts';
+import { isPreRelease } from '#isPreRelease.ts';
 
 describe('isPreRelease', () => {
   describe('when valid pre release type is passed in', () => {

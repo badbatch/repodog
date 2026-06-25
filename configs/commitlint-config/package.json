@@ -1,7 +1,7 @@
 {
   "name": "@repodog/commitlint-config",
   "description": "The Repodog Commitlint config module.",
-  "version": "19.0.5",
+  "version": "21.0.1",
   "author": "miami-man",
   "license": "MIT",
   "homepage": "https://github.com/badbatch/repodog",
@@ -13,15 +13,16 @@
   "bugs": {
     "url": "https://github.com/badbatch/repodog/issues"
   },
-  "main": "index.cjs",
+  "type": "module",
+  "main": "index.mjs",
   "publishConfig": {
     "access": "public"
   },
   "dependencies": {
-    "@commitlint/config-conventional": "^19.8.1"
+    "@commitlint/config-conventional": "^21.1.0"
   },
   "peerDependencies": {
-    "@commitlint/cli": "<20",
+    "@commitlint/cli": "<22",
     "husky": "<10"
   }
 }

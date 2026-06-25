@@ -1,4 +1,4 @@
-import { getTag } from './getTag.ts';
+import { getTag } from '#getTag.ts';
 
 describe('getTag', () => {
   describe('version includes alpha', () => {

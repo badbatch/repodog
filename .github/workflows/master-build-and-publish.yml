@@ -45,13 +45,16 @@ jobs:
       - name: Lint dependencies
         run: npm run --if-present syncpack
 
-      - name: Build packages
+      - name: Build code
         run: NODE_ENV=production npm run --if-present build
 
-      - name: Lint packages
+      - name: Format code
+        run: npm run --if-present format
+
+      - name: Lint code
         run: npm run --if-present lint
 
-      - name: Type check packages
+      - name: Type check code
         run: npm run --if-present type-check
 
       - name: Run unit tests

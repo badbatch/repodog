@@ -10,37 +10,37 @@ An command line module for managing repositories and a set of configs for popula
 
 ## Summary
 
-* Cut and publish releases, scaffold new folders and write test files with [`@repodog/cli`](./cli/core//README.md)
-* Build code with [`@repodog/rollup-config`](./configs/rollup-config/README.md) and [`@repodog/swc-config`](./configs/swc-config/README.md) or [`@repodog/babel-config`](./configs/babel-config/README.md)
-* Lint code with [`@repodog/eslint-config`](./configs/eslint-config/README.md) and [`@repodog/prettier-config`](./configs/prettier-config/README.md)
-* Test code with [`@repodog/jest-config`](./configs/jest-config/README.md)
+- Cut and publish releases, scaffold new folders and write test files with [`@repodog/cli`](./cli/core//README.md)
+- Build code with [`@repodog/rollup-config`](./configs/rollup-config/README.md) and [`@repodog/swc-config`](./configs/swc-config/README.md) or [`@repodog/babel-config`](./configs/babel-config/README.md)
+- Lint code with [`@repodog/eslint-config`](./configs/eslint-config/README.md) and [`@repodog/prettier-config`](./configs/prettier-config/README.md)
+- Test code with [`@repodog/jest-config`](./configs/jest-config/README.md)
 
 ## Documentation
 
 ### CLI
 
-* [@repodog/cli](./cli/core/README.md)
+- [@repodog/cli](./cli/core/README.md)
 
 ### Configs
 
-* [@repodog/babel-config](./configs/babel-config/README.md)
-* [@repodog/babel-preset](./configs/babel-preset/README.md)
-* [@repodog/commitlint-config](./configs/commitlint-config/README.md)
-* [@repodog/eslint-config](./configs/eslint-config/README.md)
-* [@repodog/eslint-config-jasmine](./configs/eslint-config-jasmine/README.md)
-* [@repodog/eslint-config-jest](./configs/eslint-config-jest/README.md)
-* [@repodog/eslint-config-playwright](./configs/eslint-config-playwright/README.md)
-* [@repodog/eslint-config-react](./configs/eslint-config-react/README.md)
-* [@repodog/jasmine-browser-config](./configs/jasmine-browser-config/README.md)
-* [@repodog/jest-config](./configs/jest-config/README.md)
-* [@repodog/markdownlint-config](./configs/markdownlint-config/README.md)
-* [@repodog/prettier-config](./configs/prettier-config/README.md)
-* [@repodog/rollup-config](./configs/rollup-config/README.md)
-* [@repodog/storybook-config](./configs/storybook-config/README.md)
-* [@repodog/swc-config](./configs/swc-config/README.md)
-* [@repodog/syncpack-config](./configs/syncpack-config/README.md)
-* [@repodog/ts-config](./configs/ts-config/README.md)
-* [@repodog/webpack-config](./configs/webpack-config/README.md)
+- [@repodog/babel-config](./configs/babel-config/README.md)
+- [@repodog/babel-preset](./configs/babel-preset/README.md)
+- [@repodog/commitlint-config](./configs/commitlint-config/README.md)
+- [@repodog/eslint-config](./configs/eslint-config/README.md)
+- [@repodog/eslint-config-jasmine](./configs/eslint-config-jasmine/README.md)
+- [@repodog/eslint-config-jest](./configs/eslint-config-jest/README.md)
+- [@repodog/eslint-config-playwright](./configs/eslint-config-playwright/README.md)
+- [@repodog/eslint-config-react](./configs/eslint-config-react/README.md)
+- [@repodog/jasmine-browser-config](./configs/jasmine-browser-config/README.md)
+- [@repodog/jest-config](./configs/jest-config/README.md)
+- [@repodog/markdownlint-config](./configs/markdownlint-config/README.md)
+- [@repodog/prettier-config](./configs/prettier-config/README.md)
+- [@repodog/rollup-config](./configs/rollup-config/README.md)
+- [@repodog/storybook-config](./configs/storybook-config/README.md)
+- [@repodog/swc-config](./configs/swc-config/README.md)
+- [@repodog/syncpack-config](./configs/syncpack-config/README.md)
+- [@repodog/ts-config](./configs/ts-config/README.md)
+- [@repodog/webpack-config](./configs/webpack-config/README.md)
 
 ## Changelog
 

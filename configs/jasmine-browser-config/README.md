@@ -23,7 +23,7 @@ npm install @repodog/jasmine-browser-config @repodog/webpack-config @types/jasmi
     "test:browser:debug": "jasmine-browser-runner serve --config=jasmineBrowser.config.mjs --browser chrome",
     "test:browser:remove": "del-cli ./tests/browser/dist",
     "test:browser:run": "jasmine-browser-runner runSpecs --config=jasmineBrowser.config.mjs",
-  }
+  },
 }
 ```
 

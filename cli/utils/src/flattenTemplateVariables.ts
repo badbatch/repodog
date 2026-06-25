@@ -1,4 +1,4 @@
-import { type TemplateVariables, type TemplateVariablesLeaf } from './types.ts';
+import { type TemplateVariables, type TemplateVariablesLeaf } from '#types.ts';
 
 const isTemplateVariablesLeaf = (
   slice: string | number | boolean | TemplateVariables | undefined,
@@ -35,7 +35,7 @@ export const flattenTemplateVariables = (
       break;
     }
 
-    // typescript struggling to derive correct type of subslice.
+    // TypeScript struggling to derive correct type of subslice.
     // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
     const templateVariablesBranch = subslice as Record<string, TemplateVariables>;
 

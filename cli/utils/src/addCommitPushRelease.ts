@@ -1,4 +1,4 @@
-import { asyncExec } from './asyncExec.ts';
+import { asyncExec } from '#asyncExec.ts';
 
 export const addCommitPushRelease = async (version: string): Promise<void> => {
   await asyncExec('git add --all');

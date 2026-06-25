@@ -11,10 +11,10 @@ pr:
 
 resources:
   repositories:
-  - repository: repodog
-    type: github
-    name: badbatch/repodog
-    ref: main
+    - repository: repodog
+      type: github
+      name: badbatch/repodog
+      ref: main
 
 jobs:
-- template: pipelines/azure-pipeline-template.yml@repodog
+  - template: pipelines/azure-pipeline-template.yml@repodog

@@ -16,8 +16,8 @@ sh: "<%= packageManager %> install && <%= packageManager %> add -D @repodog/cli 
   "bugs": "<%= homepage %>/issues",
   "type": "module",
   "engines": {
-    "node": "^22",
-    "pnpm": "^10"
+    "node": "^24",
+    "pnpm": "^11"
   },
   "scripts": {
     "build": "<%= packageManager %> run build:rest && <%= packageManager %> run build:core",
@@ -33,6 +33,7 @@ sh: "<%= packageManager %> install && <%= packageManager %> add -D @repodog/cli 
     "coverage-merge": "istanbul-merge --out coverage/coverage.json coverage/unit/coverage-final.json coverage/storybook/coverage-storybook.json",
     "coverage-open": "open-cli ./coverage/lcov-report/index.html",
     "cut:changelog": "changelog",
+    "format": "prettier . --check",
     "installActivateMise": "sh shellScripts/installActivateMise.sh",
     "lint": "<%= packageManager %> run /^lint:.*/",
     "lint:code": "eslint .",
@@ -42,20 +43,20 @@ sh: "<%= packageManager %> install && <%= packageManager %> add -D @repodog/cli 
     "prepare": "husky",
     "repodog": "repodog",
     "storybook": "storybook dev -p 6006",
-    "syncpack": "syncpack format && syncpack list-mismatches && syncpack lint-semver-ranges",
+    "syncpack": "syncpack format --check && syncpack lint",
     "test": "del-cli ./coverage && <%= packageManager %> run /^test:.*/ && <%= packageManager %> run coverage-merge && <%= packageManager %> run coverage-generate",
     "test-axe": "axe-storybook",
     "test:storybook": "concurrently --kill-others --success first \"serve ./storybook-static\" \"wait-on tcp:3000 && test-storybook --url http://localhost:3000 --coverage --coverageDirectory coverage/storybook\"",
     "test:unit": "COMPILER=swc node --require=suppress-experimental-warnings --experimental-vm-modules node_modules/jest/bin/jest.js --coverageDirectory coverage/unit",
     "type-check": "tsc --noEmit",
-    "validate": "<%= packageManager %> run syncpack && <%= packageManager %> run build:rest:prod && <%= packageManager %> run build:core:prod && <%= packageManager %> run lint && <%= packageManager %> run type-check && <%= packageManager %> run build-storybook && <%= packageManager %> run test && <%= packageManager %> run test-axe"
+    "validate": "<%= packageManager %> run syncpack && <%= packageManager %> run build:rest:prod && <%= packageManager %> run build:core:prod && <%= packageManager %> run lint && <%= packageManager %> run format && <%= packageManager %> run type-check && <%= packageManager %> run build-storybook && <%= packageManager %> run test && <%= packageManager %> run test-axe"
   },
   "devDependencies": {
     "@types/node": "^24.2.1",
     "autoprefixer": "^10.4.21",
     "concurrently": "^9.2.0",
     "css": "^3.0.0",
-    "del-cli": "^6.0.0",
+    "del-cli": "^7.0.0",
     "generate-changelog": "^1.8.0",
     "husky": "^9.1.7",
     "istanbul-merge": "^2.0.0",

@@ -1,7 +1,7 @@
 import {
-  Language,
   calculateDuration,
   getPackageManager,
+  language as lang,
   loadRepodogConfig,
   setVerbose,
   verboseLog,
@@ -48,7 +48,7 @@ export const handler = async (argv: WriteHandlerArguments): Promise<void> => {
     verboseLog(`File path: ${filePath}`);
     verboseLog('>>>> DERIVED VALUES END <<<<\n');
 
-    const { environmentVariablesPath = '.env', language = Language.JAVASCRIPT } = loadRepodogConfig();
+    const { environmentVariablesPath = '.env', language = lang.JAVASCRIPT } = loadRepodogConfig();
 
     verboseLog('>>>> CONFIG VALUES START <<<<');
     verboseLog(`Environment variables path: ${environmentVariablesPath}`);

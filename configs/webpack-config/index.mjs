@@ -1,5 +1,7 @@
-const webpack = require('webpack');
+import { fileURLToPath } from 'node:url';
+import webpack from 'webpack';
 
+const resolvePath = name => fileURLToPath(import.meta.resolve(name));
 const { DEBUG, NODE_ENV } = process.env;
 const isDebug = DEBUG === 'true';
 const isProdEnv = NODE_ENV === 'production';
@@ -12,7 +14,7 @@ const handleSwcConfigArray = (name, options) => {
   return castOptions.map(({ test = String.raw`\.(mjs|cjs|jsx?|tsx?)$`, ...rest }) => ({
     test: new RegExp(test),
     use: {
-      loader: require.resolve(name),
+      loader: resolvePath(name),
       options: rest,
     },
   }));
@@ -33,7 +35,7 @@ const config = ({ compiler } = {}) => {
               {
                 test: /\.(mjs|cjs|jsx?|tsx?)$/,
                 use: {
-                  loader: require.resolve(name),
+                  loader: resolvePath(name),
                   options,
                 },
               },
@@ -44,7 +46,7 @@ const config = ({ compiler } = {}) => {
                 enforce: 'pre',
                 test: /\.(mjs|cjs|jsx?|tsx?)$/,
                 use: {
-                  loader: require.resolve('source-map-loader'),
+                  loader: resolvePath('source-map-loader'),
                 },
               },
             ]
@@ -69,4 +71,6 @@ const config = ({ compiler } = {}) => {
   };
 };
 
-module.exports = config;
+// Required for Webpack
+// eslint-disable-next-line import-x/no-default-export
+export default config;

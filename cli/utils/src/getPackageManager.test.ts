@@ -1,11 +1,11 @@
 import { jest } from '@jest/globals';
-import { PackageManager } from './types.ts';
+import { packageManager } from '#constants.ts';
 
 jest.unstable_mockModule('node:fs', () => ({
   existsSync: jest.fn(),
 }));
 
-jest.unstable_mockModule('./repodogConfig.ts', () => ({
+jest.unstable_mockModule('#repodogConfig.ts', () => ({
   loadRepodogConfig: () => ({
     packageManager: 'npm',
   }),
@@ -13,7 +13,7 @@ jest.unstable_mockModule('./repodogConfig.ts', () => ({
 
 process.cwd = jest.fn().mockReturnValue('/root') as jest.Mocked<() => string>;
 const { existsSync } = jest.mocked(await import('node:fs'));
-const { getPackageManager } = await import('./getPackageManager.ts');
+const { getPackageManager } = await import('#getPackageManager.ts');
 
 describe('getPackageManager', () => {
   beforeEach(() => {
@@ -26,7 +26,7 @@ describe('getPackageManager', () => {
     });
 
     it('should return npm', () => {
-      expect(getPackageManager()).toBe(PackageManager.NPM);
+      expect(getPackageManager()).toBe(packageManager.NPM);
     });
   });
 

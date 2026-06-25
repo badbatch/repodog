@@ -1,12 +1,12 @@
-import { Language } from './types.ts';
+import { type Language } from '#types.ts';
 
 export const getLanguageExtension = (language: Language): 'js' | 'ts' => {
   switch (language) {
-    case Language.JAVASCRIPT: {
+    case 'javascript': {
       return 'js';
     }
 
-    case Language.TYPESCRIPT: {
+    case 'typescript': {
       return 'ts';
     }
   }

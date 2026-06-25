@@ -1,5 +1,4 @@
 import { jest } from '@jest/globals';
-import { type AbbreviatedMetadata } from 'package-json';
 
 jest.unstable_mockModule(
   '@repodog/alpha/package.json',
@@ -29,7 +28,6 @@ jest.unstable_mockModule(
 );
 
 jest.unstable_mockModule('package-json', () => ({
-  // eslint-disable-next-line unicorn/no-useless-undefined
   default: jest.fn<() => Promise<undefined>>().mockResolvedValue(undefined),
 }));
 
@@ -55,7 +53,7 @@ describe('getPeerDependenciesToInstall', () => {
 
   describe('when a package.json has no peerDependencies', () => {
     it('should return an empty tuples array', async () => {
-      getPackageJsonFromNpmRegistry.mockResolvedValueOnce({} as AbbreviatedMetadata);
+      getPackageJsonFromNpmRegistry.mockResolvedValueOnce({});
       await expect(getPeerDependenciesToInstall('@repodog/bravo')).resolves.toEqual([]);
     });
   });
@@ -68,7 +66,7 @@ describe('getPeerDependenciesToInstall', () => {
           'alpha-1': '<10',
           'alpha-2': '<3',
         },
-      } as unknown as AbbreviatedMetadata);
+      });
 
       await expect(getPeerDependenciesToInstall('@repodog/alpha')).resolves.toEqual([
         ['alpha-0', '^4.0.0'],

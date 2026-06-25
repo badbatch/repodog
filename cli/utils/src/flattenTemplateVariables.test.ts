@@ -1,4 +1,4 @@
-import { flattenTemplateVariables } from './flattenTemplateVariables.ts';
+import { flattenTemplateVariables } from '#flattenTemplateVariables.ts';
 
 describe('flattenTemplateVariables', () => {
   it('should convert the object correctly', () => {

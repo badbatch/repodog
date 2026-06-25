@@ -1,5 +1,5 @@
 import { jest } from '@jest/globals';
-import { PackageManager } from './types.ts';
+import { packageManager } from '#constants.ts';
 
 jest.unstable_mockModule('js-yaml', () => ({
   load: jest.fn<(value: string) => unknown>().mockImplementation((value: string) => JSON.parse(value)),
@@ -10,14 +10,14 @@ jest.unstable_mockModule('node:fs', () => ({
   readFileSync: jest.fn(),
 }));
 
-jest.unstable_mockModule('./loadPackageJson.ts', () => ({
+jest.unstable_mockModule('#loadPackageJson.ts', () => ({
   loadPackageJson: jest.fn(),
 }));
 
 process.cwd = jest.fn().mockReturnValue('/root') as jest.Mocked<() => string>;
 const { readFileSync } = jest.mocked(await import('node:fs'));
-const { loadPackageJson } = jest.mocked(await import('./loadPackageJson.ts'));
-const { getPackagePatterns } = await import('./getPackagePatterns.ts');
+const { loadPackageJson } = jest.mocked(await import('#loadPackageJson.ts'));
+const { getPackagePatterns } = await import('#getPackagePatterns.ts');
 
 describe('getPackagePatterns', () => {
   beforeEach(() => {
@@ -31,7 +31,7 @@ describe('getPackagePatterns', () => {
       });
 
       it('should return the correct patterns', () => {
-        expect(getPackagePatterns(PackageManager.NPM)).toEqual([]);
+        expect(getPackagePatterns(packageManager.NPM)).toEqual([]);
       });
     });
 
@@ -45,7 +45,7 @@ describe('getPackagePatterns', () => {
       });
 
       it('should return the correct patterns', () => {
-        expect(getPackagePatterns(PackageManager.NPM)).toEqual(['apps/**', 'configs/*', 'graphql/*']);
+        expect(getPackagePatterns(packageManager.NPM)).toEqual(['apps/**', 'configs/*', 'graphql/*']);
       });
     });
 
@@ -59,7 +59,7 @@ describe('getPackagePatterns', () => {
       });
 
       it('should return the correct patterns', () => {
-        expect(getPackagePatterns(PackageManager.NPM)).toEqual(['apps/**', 'configs/*', 'graphql/*']);
+        expect(getPackagePatterns(packageManager.NPM)).toEqual(['apps/**', 'configs/*', 'graphql/*']);
       });
     });
   });
@@ -71,7 +71,7 @@ describe('getPackagePatterns', () => {
       });
 
       it('should return the correct patterns', () => {
-        expect(getPackagePatterns(PackageManager.YARN)).toEqual([]);
+        expect(getPackagePatterns(packageManager.YARN)).toEqual([]);
       });
     });
 
@@ -85,7 +85,7 @@ describe('getPackagePatterns', () => {
       });
 
       it('should return the correct patterns', () => {
-        expect(getPackagePatterns(PackageManager.YARN)).toEqual(['apps/**', 'configs/*', 'graphql/*']);
+        expect(getPackagePatterns(packageManager.YARN)).toEqual(['apps/**', 'configs/*', 'graphql/*']);
       });
     });
 
@@ -99,7 +99,7 @@ describe('getPackagePatterns', () => {
       });
 
       it('should return the correct patterns', () => {
-        expect(getPackagePatterns(PackageManager.YARN)).toEqual(['apps/**', 'configs/*', 'graphql/*']);
+        expect(getPackagePatterns(packageManager.YARN)).toEqual(['apps/**', 'configs/*', 'graphql/*']);
       });
     });
   });
@@ -110,7 +110,7 @@ describe('getPackagePatterns', () => {
     });
 
     it('should return the correct patterns', () => {
-      expect(getPackagePatterns(PackageManager.PNPM)).toEqual(['apps/**', 'configs/*', 'graphql/*']);
+      expect(getPackagePatterns(packageManager.PNPM)).toEqual(['apps/**', 'configs/*', 'graphql/*']);
     });
   });
 
@@ -122,7 +122,7 @@ describe('getPackagePatterns', () => {
     });
 
     it('should return an empty array', () => {
-      expect(getPackagePatterns(PackageManager.PNPM)).toEqual([]);
+      expect(getPackagePatterns(packageManager.PNPM)).toEqual([]);
     });
   });
 });

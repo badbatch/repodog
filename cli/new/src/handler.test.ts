@@ -1,15 +1,15 @@
 import { jest } from '@jest/globals';
 import { shelljsMock } from '@repodog/cli-test-utils';
 import {
-  Language,
-  NewType,
   type PromptOption,
   type QuestionOverride,
   type QuestionOverrides,
   flattenTemplateVariables,
-  getPackageManagerFilterCmd,
-  getPackageManagerTemporaryCmd,
-  typeToSubTypeMap,
+  getPackageManagerFilterCommand,
+  getPackageManagerTemporaryCommand,
+  language,
+  newType,
+  typeToSubtypeMap,
 } from '@repodog/cli-utils';
 
 const repodogConfig = {
@@ -57,23 +57,23 @@ jest.unstable_mockModule('@repodog/cli-setup', () => ({
 }));
 
 jest.unstable_mockModule('@repodog/cli-utils', () => ({
-  Language,
-  NewType,
   calculateDuration: jest.fn().mockReturnValue('1'),
   enrichQuestions: jest.fn().mockImplementation(value => value),
   flattenTemplateVariables,
   getPackageManager: jest.fn().mockReturnValue('pnpm'),
-  getPackageManagerFilterCmd,
-  getPackageManagerTemporaryCmd,
+  getPackageManagerFilterCommand,
+  getPackageManagerTemporaryCommand,
   hasGlobalRepodogConfig: jest.fn().mockReturnValue(false),
   isRunWithinProject: jest.fn().mockReturnValue(true),
-  isValidNewSubType: jest.fn().mockReturnValue(true),
+  isValidNewSubtype: jest.fn().mockReturnValue(true),
   isValidNewType: jest.fn().mockReturnValue(true),
+  language,
   loadRepodogConfig: jest.fn().mockReturnValue(repodogConfig),
+  newType,
   removeEmptyAnswers: jest.fn().mockImplementation(value => value),
   resolveAbsolutePath: jest.fn().mockImplementation(value => `/root/${String(value)}`),
   setVerbose: jest.fn(),
-  typeToSubTypeMap,
+  typeToSubtypeMap,
   verboseLog: jest.fn(),
 }));
 
@@ -119,7 +119,6 @@ jest.unstable_mockModule('./utils/executeHygen.ts', () => ({
 }));
 
 jest.unstable_mockModule('./utils/getLeafAdditionalTemplatesPath.ts', () => ({
-  // eslint-disable-next-line unicorn/no-useless-undefined
   getLeafAdditionalTemplatesPath: jest.fn().mockReturnValue(undefined),
 }));
 
@@ -150,7 +149,7 @@ jest.unstable_mockModule('./utils/loadQuestions.ts', () => ({
 const { handler: postinstallHandler } = jest.mocked(await import('@repodog/cli-postinstall'));
 const { handleGlobalConfigSetup } = jest.mocked(await import('@repodog/cli-setup'));
 
-const { getPackageManager, isRunWithinProject, isValidNewSubType, isValidNewType, loadRepodogConfig } = jest.mocked(
+const { getPackageManager, isRunWithinProject, isValidNewSubtype, isValidNewType, loadRepodogConfig } = jest.mocked(
   await import('@repodog/cli-utils'),
 );
 
@@ -194,7 +193,7 @@ describe('handler', () => {
 
   describe('when given invalid subtype', () => {
     beforeEach(() => {
-      isValidNewSubType.mockReturnValueOnce(false);
+      isValidNewSubtype.mockReturnValueOnce(false);
     });
 
     it('should throw an error', async () => {
@@ -335,7 +334,7 @@ describe('handler', () => {
 
     describe('when the package manager cannot be derived', () => {
       beforeEach(() => {
-        getPackageManager.mockReturnValueOnce(undefined); // eslint-disable-line unicorn/no-useless-undefined
+        getPackageManager.mockReturnValueOnce(undefined);
       });
 
       it('should throw an error', async () => {

@@ -1,4 +1,4 @@
-import { formatListLogMessage } from './formatListLogMessage.ts';
+import { formatListLogMessage } from '#formatListLogMessage.ts';
 
 describe('formatListLogMessage', () => {
   describe('when there are no field values', () => {

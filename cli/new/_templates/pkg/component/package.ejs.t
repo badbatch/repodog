@@ -31,6 +31,10 @@ sh: "<%= packageManager %> install"
       "import": "./dist/esm/index.mjs",
       "require": "./dist/cjs/index.cjs"
     },
+    "./ts": {
+      "types": "./src/index.ts",
+      "import": "./src/index.ts"
+    },
     "./styles.css": "./dist/styles/index.css"
   },
   "publishConfig": {
@@ -55,11 +59,11 @@ sh: "<%= packageManager %> install"
     "react-dom": "<20"
   },
   "devDependencies": {
-    "@jest/globals": "^29.7.0",
+    "@jest/globals": "^30.4.1",
     "@types/react": "^19.1.6",
     "@types/react-dom": "^19.1.5",
     "cts-types": "^0.0.10",
-    "del-cli": "^6.0.0",
+    "del-cli": "^7.0.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0"
   }

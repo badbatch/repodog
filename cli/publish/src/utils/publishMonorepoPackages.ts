@@ -15,7 +15,7 @@ export const publishMonorepoPackages = async (packageManager: PackageManager): P
     verboseLog(`Publishing package: ${name}`);
 
     try {
-      // typescript struggling to derive packageMeta[name]
+      // TypeScript struggling to derive packageMeta[name]
       // cannot be undefined.
       // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
       const { path } = packageMeta[name]!;

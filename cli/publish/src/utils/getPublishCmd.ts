@@ -1,18 +1,18 @@
-import { PackageManager } from '@repodog/cli-utils';
+import { type PackageManager } from '@repodog/cli-utils';
 
 export const getPublishCmd = (packageManager: PackageManager, version: string, tag?: string): string => {
   const tagArgument = tag ? ` --tag ${tag}` : '';
 
   switch (packageManager) {
-    case PackageManager.NPM: {
+    case 'npm': {
       return `npm publish${tagArgument}`;
     }
 
-    case PackageManager.PNPM: {
+    case 'pnpm': {
       return `pnpm publish --no-git-checks${tagArgument}`;
     }
 
-    case PackageManager.YARN: {
+    case 'yarn': {
       return `yarn publish --new-version ${version}${tagArgument}`;
     }
   }

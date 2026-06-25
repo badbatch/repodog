@@ -1,18 +1,18 @@
-import { PackageManager } from './types.ts';
+import { type PackageManager } from '#types.ts';
 
-export const getPackageManagerFilterCmd = (
+export const getPackageManagerFilterCommand = (
   packageManager: PackageManager,
 ): '--workspace' | '--filter' | 'workspaces foreach --from' => {
   switch (packageManager) {
-    case PackageManager.NPM: {
+    case 'npm': {
       return '--workspace';
     }
 
-    case PackageManager.PNPM: {
+    case 'pnpm': {
       return '--filter';
     }
 
-    case PackageManager.YARN: {
+    case 'yarn': {
       return 'workspaces foreach --from';
     }
   }
