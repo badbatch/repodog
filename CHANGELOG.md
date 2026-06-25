@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.0.30 (2026-06-25)
+
+### New Features
+
+* **root:**  support source export key ([d8c28e7f](https://github.com/badbatch/repodog/commit/d8c28e7f0121d6da4319033df9717a908a47bb87))
+
 ## 2.0.29 (2026-06-25)
 
 ### Chores
