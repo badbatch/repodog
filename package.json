@@ -6,7 +6,10 @@
   "license": "MIT",
   "private": true,
   "homepage": "https://github.com/badbatch/repodog",
-  "repository": "badbatch/repodog",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/badbatch/repodog.git"
+  },
   "bugs": "https://github.com/badbatch/repodog/issues",
   "type": "module",
   "engines": {
