@@ -5,7 +5,6 @@ import eslintPrettier from 'eslint-config-prettier/flat';
 import eslintComments from 'eslint-plugin-eslint-comments';
 import { importX } from 'eslint-plugin-import-x';
 import preferArrow from 'eslint-plugin-prefer-arrow';
-import sortClassMembers from 'eslint-plugin-sort-class-members';
 import sortDestructureKeys from 'eslint-plugin-sort-destructure-keys';
 import sortKeysFix from 'eslint-plugin-sort-keys-fix';
 import typescriptSortKeys from 'eslint-plugin-typescript-sort-keys';
@@ -56,7 +55,6 @@ export default tsEslint.config(
       '@stylistic': stylistic,
       'eslint-comments': fixupPluginRules(eslintComments),
       'prefer-arrow': fixupPluginRules(preferArrow),
-      'sort-class-members': fixupPluginRules(sortClassMembers),
       'sort-destructure-keys': fixupPluginRules(sortDestructureKeys),
       'sort-keys-fix': fixupPluginRules(sortKeysFix),
     },
@@ -156,43 +154,6 @@ export default tsEslint.config(
           classPropertiesAllowed: false,
           disallowPrototype: true,
           singleReturnOnly: false,
-        },
-      ],
-      'sort-class-members/sort-class-members': [
-        2,
-        {
-          accessorPairPositioning: 'getThenSet',
-          groups: {
-            'arrow-function-properties': [
-              { propertyType: 'ArrowFunctionExpression', sort: 'alphabetical', type: 'property' },
-            ],
-            methods: [{ sort: 'alphabetical', type: 'method' }],
-            'private-arrow-function-properties': [
-              { name: '/_.+/', propertyType: 'ArrowFunctionExpression', type: 'property' },
-            ],
-            'private-methods': [{ name: '/_.+/', sort: 'alphabetical', type: 'method' }],
-            'private-properties': [{ name: '/_.+/', sort: 'alphabetical', type: 'property' }],
-            properties: [{ sort: 'alphabetical', type: 'property' }],
-            'static-methods': [{ sort: 'alphabetical', static: true, type: 'method' }],
-            'static-private-methods': [{ name: '/_.+/', sort: 'alphabetical', static: true, type: 'method' }],
-            'static-private-properties': [{ name: '/_.+/', sort: 'alphabetical', static: true, type: 'property' }],
-            'static-properties': [{ sort: 'alphabetical', static: true, type: 'property' }],
-          },
-          order: [
-            '[static-properties]',
-            '[static-private-properties]',
-            '[static-methods]',
-            '[static-private-methods]',
-            '[arrow-function-properties]',
-            '[properties]',
-            '[private-arrow-function-properties]',
-            '[private-properties]',
-            'constructor',
-            'getters',
-            'setters',
-            '[methods]',
-            '[private-methods]',
-          ],
         },
       ],
       'sort-destructure-keys/sort-destructure-keys': [2, { caseSensitive: true }],
