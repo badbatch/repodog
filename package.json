@@ -10,8 +10,8 @@
   "bugs": "https://github.com/badbatch/repodog/issues",
   "type": "module",
   "engines": {
-    "node": "^24",
-    "pnpm": "^11"
+    "node": ">=20",
+    "pnpm": ">=9"
   },
   "scripts": {
     "build": "pnpm run -r build",
