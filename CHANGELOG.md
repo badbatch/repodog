@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.0.28 (2026-06-25)
+
+### Bug Fixes
+
+* **root:**  exclude markdown from prettier (30b0a89e)
+
 ## 2.0.27 (2026-06-24)
 
 ### Chores
