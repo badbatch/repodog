@@ -8,9 +8,11 @@
   "repository": {
     "directory": "configs/commitlint-config",
     "type": "git",
-    "url": "https://github.com/badbatch/repodog/configs/commitlint-config"
+    "url": "https://github.com/badbatch/repodog.git"
   },
-  "bugs": "https://github.com/badbatch/repodog/issues",
+  "bugs": {
+    "url": "https://github.com/badbatch/repodog/issues"
+  },
   "type": "module",
   "main": "index.mjs",
   "publishConfig": {
