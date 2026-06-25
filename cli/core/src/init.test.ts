@@ -63,7 +63,7 @@ describe('init', () => {
       init();
 
       expect(shelljs.echo).toHaveBeenCalledWith(
-        expect.stringContaining('Error: node version 16.19.0 does not satisfy package requirement of ^24'),
+        expect.stringContaining('Error: node version 16.19.0 does not satisfy package requirement of >=20'),
       );
     });
 
