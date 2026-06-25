@@ -1,4 +1,6 @@
-module.exports = {
+// Required for SyncPack
+// eslint-disable-next-line import-x/no-default-export
+export default {
   semverGroups: [
     {
       dependencyTypes: ['!peer', '!pnpmOverrides'],
@@ -8,6 +10,25 @@ module.exports = {
       dependencyTypes: ['peer'],
       range: '<',
     },
+    {
+      dependencyTypes: ['pnpmOverrides'],
+      range: '>=',
+    },
+  ],
+  sortExports: [
+    'source',
+    'types',
+    'node-addons',
+    'node',
+    'browser',
+    'module',
+    'import',
+    'require',
+    'svelte',
+    'development',
+    'production',
+    'script',
+    'default',
   ],
   sortFirst: [
     'name',

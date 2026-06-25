@@ -15,8 +15,8 @@ npm install @repodog/syncpack-config syncpack --save-dev
 ## Use package
 
 ```javascript
-// .syncpackrc.cjs
-const repodogConfig = require('@repodog/syncpack-config');
+// .syncpackrc.mjs
+import repodogConfig from '@repodog/syncpack-config';
 
 module.exports = {
   ...repodogConfig,

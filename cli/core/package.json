@@ -23,12 +23,9 @@
   },
   "exports": {
     ".": {
+      "source": "./src/index.ts",
       "types": "./dist/types/index.d.ts",
       "import": "./dist/esm/index.mjs"
-    },
-    "./ts": {
-      "types": "./src/index.ts",
-      "import": "./src/index.ts"
     }
   },
   "publishConfig": {

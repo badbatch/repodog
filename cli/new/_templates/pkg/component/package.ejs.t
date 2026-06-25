@@ -24,16 +24,13 @@ sh: "<%= packageManager %> install"
   },
   "exports": {
     ".": {
+      "source": "./src/index.ts",
       "types": {
         "import": "./dist/types/esm/index.d.ts",
         "require": "./dist/types/cjs/index.d.cts"
       },
       "import": "./dist/esm/index.mjs",
       "require": "./dist/cjs/index.cjs"
-    },
-    "./ts": {
-      "types": "./src/index.ts",
-      "import": "./src/index.ts"
     },
     "./styles.css": "./dist/styles/index.css"
   },

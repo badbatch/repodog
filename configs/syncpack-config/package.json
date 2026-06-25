@@ -11,7 +11,8 @@
     "url": "https://github.com/badbatch/repodog.git"
   },
   "bugs": "https://github.com/badbatch/repodog/issues",
-  "main": "index.cjs",
+  "type": "module",
+  "main": "index.mjs",
   "publishConfig": {
     "access": "public"
   },
