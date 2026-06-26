@@ -25,13 +25,9 @@ npm install @repodog/cli --save-dev
 ```jsonc
 // package.json
 {
-  ...
   "scripts": {
-    ...
     "repodog": "repodog",
-    ...
-  },
-  ...
+  }
 }
 ```
 
@@ -128,7 +124,7 @@ Any tasks you want to run prior to package versions getting updated should be ru
 {
   "scripts": {
     "cut:pre-version": "npm run pre-version-tasks",
-  },
+  }
 }
 ```
 
@@ -141,7 +137,7 @@ Any tasks you want to run after package versions have been updated should be run
 {
   "scripts": {
     "cut:post-version": "npm run post-version-tasks",
-  },
+  }
 }
 ```
 
@@ -154,7 +150,7 @@ Any tasks you want to run to generate/update the changelog should be run in this
 {
   "scripts": {
     "cut:changelog": "npm run changelog-tasks",
-  },
+  }
 }
 ```
 
