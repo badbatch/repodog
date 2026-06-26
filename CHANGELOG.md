@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.0.31 (2026-06-26)
+
+### Bug Fixes
+
+* **core:**  readme code snippet ([8009607a](https://github.com/badbatch/repodog/commit/8009607a43991a410aac9025d1efa23fb12bd19d))
+
 ## 2.0.30 (2026-06-25)
 
 ### New Features
