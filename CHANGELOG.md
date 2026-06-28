@@ -1,5 +1,15 @@
 # Changelog
 
+## 2.0.32 (2026-06-28)
+
+### New Features
+
+* **jest-config:**  fail on console output ([61012752](https://github.com/badbatch/repodog/commit/61012752d7fd9705eab28162a1daa8164b884bbf))
+
+### Bug Fixes
+
+* **root:**  overrides version syntax ([ec472430](https://github.com/badbatch/repodog/commit/ec472430f9a72f073c97a9d4346233ac2537ceb1))
+
 ## 2.0.31 (2026-06-26)
 
 ### Bug Fixes
