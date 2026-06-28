@@ -90,7 +90,8 @@ const config = ({ compilerOptions = {} } = {}) => {
     moduleNameMapper,
     prettierPath: require.resolve('prettier'),
     rootDir: packageDir,
-    testEnvironment: isJsEnvWeb ? 'jsdom' : 'node',
+    setupFilesAfterEnv: [path.resolve(dirname, 'setup.mjs')],
+    testEnvironment: isJsEnvWeb ? path.resolve(dirname, 'jest.environment.mjs') : 'node',
     testMatch,
     testPathIgnorePatterns: [
       '/build/',

@@ -2,6 +2,12 @@ import { jest } from '@jest/globals';
 import type OpenAIApi from 'openai';
 import { type ChatCompletionMessageParam } from 'openai/resources/index.mjs';
 
+jest.unstable_mockModule('dotenv', () => ({
+  default: {
+    config: jest.fn(),
+  },
+}));
+
 const mockCreateChatCompletion = jest.fn<InstanceType<typeof OpenAIApi>['chat']['completions']['create']>();
 
 jest.unstable_mockModule('openai', () => ({

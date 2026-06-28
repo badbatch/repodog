@@ -117,6 +117,12 @@ export default {
 }
 ```
 
+### Fail on console output
+
+The config is set up to fail a test run if anything is printed out to the console. When using JSDom, this includes any DOM warnings or errors.
+
+If you do not want this behaviour, you need to override the `setupFilesAfterEnv` and `testEnvironment` options exported by the config.
+
 ### Environment variables
 
 #### `COMPILER` = `'babel' || 'swc'`

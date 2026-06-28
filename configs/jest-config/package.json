@@ -12,19 +12,29 @@
   },
   "bugs": "https://github.com/badbatch/repodog/issues",
   "type": "module",
-  "main": "index.mjs",
+  "exports": {
+    ".": {
+      "default": "./index.mjs"
+    },
+    "./setup": {
+      "default": "./setup.mjs"
+    },
+    "./FailOnJsdomConsoleEnvironment": {
+      "default": "./FailOnJsdomConsoleEnvironment.mjs"
+    }
+  },
   "publishConfig": {
     "access": "public"
   },
   "dependencies": {
-    "identity-obj-proxy": "^3.0.0"
+    "identity-obj-proxy": "^3.0.0",
+    "jest-environment-jsdom": "^30.4.1"
   },
   "peerDependencies": {
     "@jest/globals": "<31",
     "@swc/jest": "<1",
     "babel-jest": "<31",
     "jest": "<31",
-    "jest-environment-jsdom": "<31",
     "jest-environment-node": "<31",
     "suppress-experimental-warnings": "<3"
   },
@@ -35,5 +45,8 @@
     "babel-jest": {
       "optional": true
     }
+  },
+  "devDependencies": {
+    "@jest/globals": "^30.4.1"
   }
 }
