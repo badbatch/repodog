@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.0.33 (2026-07-03)
+
+### Bug Fixes
+
+* **rollup-config:**  downgrade macros plugin to babel 7 ([b007fae7](https://github.com/badbatch/repodog/commit/b007fae740c438737d06160617c0ee1246acead3))
+
 ## 2.0.32 (2026-06-28)
 
 ### New Features
