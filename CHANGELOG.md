@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.0.34 (2026-07-03)
+
+### Bug Fixes
+
+* **rollup-config:**  pin version of macros dep ([6a6ac053](https://github.com/badbatch/repodog/commit/6a6ac053cb195aabfabc5d3df472cb156b09482a))
+
 ## 2.0.33 (2026-07-03)
 
 ### Bug Fixes
