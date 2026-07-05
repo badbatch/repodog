@@ -16,10 +16,10 @@
     ".": {
       "default": "./index.mjs"
     },
-    "./setup": {
+    "./setup.mjs": {
       "default": "./setup.mjs"
     },
-    "./FailOnJsdomConsoleEnvironment": {
+    "./FailOnJsdomConsoleEnvironment.mjs": {
       "default": "./FailOnJsdomConsoleEnvironment.mjs"
     }
   },

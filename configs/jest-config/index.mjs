@@ -88,10 +88,9 @@ const config = ({ compilerOptions = {} } = {}) => {
     extensionsToTreatAsEsm: isCjs ? [] : ['.jsx', '.ts', '.tsx'],
     moduleFileExtensions: ['ts', 'tsx', 'js', 'mjs', 'cjs', 'jsx', 'json'],
     moduleNameMapper,
-    prettierPath: require.resolve('prettier'),
     rootDir: packageDir,
     setupFilesAfterEnv: [path.resolve(dirname, 'setup.mjs')],
-    testEnvironment: isJsEnvWeb ? path.resolve(dirname, 'jest.environment.mjs') : 'node',
+    testEnvironment: isJsEnvWeb ? path.resolve(dirname, 'FailOnJsdomConsoleEnvironment.mjs') : 'node',
     testMatch,
     testPathIgnorePatterns: [
       '/build/',
