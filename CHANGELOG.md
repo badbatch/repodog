@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.0.35 (2026-07-05)
+
+### Bug Fixes
+
+* **jest-config:**  add ext back into export sub path to help with Jest resolution ([b88d1869](https://github.com/badbatch/repodog/commit/b88d18695579afc407b5f7ec97679b084564ac24))
+
 ## 2.0.34 (2026-07-03)
 
 ### Bug Fixes
