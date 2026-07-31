@@ -1,5 +1,17 @@
 # Changelog
 
+## 2.0.36 (2026-07-31)
+
+### Chores
+
+* **root:**  update deps ([033128a3](https://github.com/badbatch/repodog/commit/033128a322ddf8e4a8dcfc074cbea07a6c89bc56))
+
+### Bug Fixes
+
+* **root:**
+  * eslint errors after upgrade ([4ac7b71f](https://github.com/badbatch/repodog/commit/4ac7b71f75912c038bccbb25c603a3512eb2c854))
+  * vulnerabilities ([0fb7e890](https://github.com/badbatch/repodog/commit/0fb7e89060245de0207bd7bdc4f5e97dc5ccb260))
+
 ## 2.0.35 (2026-07-05)
 
 ### Bug Fixes
