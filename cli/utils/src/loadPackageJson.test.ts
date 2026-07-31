@@ -63,7 +63,7 @@ describe('loadPackageJson', () => {
 
     it('should throw the correct error', () => {
       expect(() => loadPackageJson(packageJsonPath)).toThrow(
-        new Error(`Could not resolve the package.json at: ${packageJsonPath}`),
+        new Error(`Could not resolve the package.json at: ${packageJsonPath}`, { cause: { message: 'oops' } }),
       );
     });
   });

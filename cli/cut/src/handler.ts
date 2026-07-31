@@ -35,20 +35,20 @@ import { versionPackage } from './utils/versionPackage.ts';
 
 export const handler = async (argv: CutHandlerArguments): Promise<void> => {
   const startTime = performance.now();
-  const dryRun = argv['dry-run'] ?? false;
+  const isDryRun = argv['dry-run'] ?? false;
   const filter = argv.filter;
-  const force = argv.force ?? false;
-  const skipPosthook = argv['skip-posthook'] ?? false;
-  const skipPrehook = argv['skip-prehook'] ?? false;
-  const verbose = argv.verbose ?? false;
+  const toForce = argv.force ?? false;
+  const toSkipPosthook = argv['skip-posthook'] ?? false;
+  const toSkipPrehook = argv['skip-prehook'] ?? false;
+  const isVerbose = argv.verbose ?? false;
 
-  setVerbose(verbose);
+  setVerbose(isVerbose);
   verboseLog('>>>> USER CONFIG START <<<<');
-  verboseLog(`dryRun: ${String(dryRun)}`);
+  verboseLog(`dryRun: ${String(isDryRun)}`);
   verboseLog(`filter: ${filter ?? 'none'}`);
-  verboseLog(`force: ${String(force)}`);
-  verboseLog(`skipPosthook: ${String(skipPosthook)}`);
-  verboseLog(`skipPrehook: ${String(skipPrehook)}`);
+  verboseLog(`force: ${String(toForce)}`);
+  verboseLog(`skipPosthook: ${String(toSkipPosthook)}`);
+  verboseLog(`skipPrehook: ${String(toSkipPrehook)}`);
   verboseLog(`tag: ${argv.tag ?? 'undefined'}`);
   verboseLog(`type: ${argv.type}`);
   verboseLog('>>>> USER CONFIG END <<<<\n');
@@ -106,22 +106,22 @@ export const handler = async (argv: CutHandlerArguments): Promise<void> => {
     verboseLog('>>>> DERIVED VALUES START <<<<');
     verboseLog(`Package manager: ${packageManager}`);
     verboseLog(`Last release tag: ${lastReleaseTag}`);
-    const filesChanged = haveFilesChanged(lastReleaseTag);
+    const isFilesChanged = haveFilesChanged(lastReleaseTag);
 
-    if (lastReleaseTag && !force && !filesChanged) {
+    if (lastReleaseTag && !toForce && !isFilesChanged) {
       throw new Error(`No files have changed since the last release tag: ${lastReleaseTag}`);
     }
 
-    verboseLog(`Have files changed: ${String(filesChanged)}`);
+    verboseLog(`Have files changed: ${String(isFilesChanged)}`);
     verboseLog('>>>> DERIVED VALUES END <<<<\n');
     verboseLog('>>>> PROJECT ROOT START <<<<');
     const { devDependencies = {}, scripts = {}, version } = packageJson;
 
-    if (!skipPrehook && scripts['cut:pre-version']) {
+    if (!toSkipPrehook && scripts['cut:pre-version']) {
       verboseLog(`Running cut:pre-version script: ${scripts['cut:pre-version']}\n`);
       await asyncExec(`${packageManager} run cut:pre-version`);
       shelljs.echo('\n');
-    } else if (skipPrehook && scripts['cut:pre-version']) {
+    } else if (toSkipPrehook && scripts['cut:pre-version']) {
       verboseLog(`cut:pre-version script skipped, skipPrehook set to true`);
     } else {
       verboseLog(`cut:pre-version script not provided`);
@@ -129,7 +129,7 @@ export const handler = async (argv: CutHandlerArguments): Promise<void> => {
 
     if (isProjectMonorepo(packageManager)) {
       verboseLog('Project is monorepo');
-      versionMonorepoPackages({ filter, force, packageManager, preid, tag, type });
+      versionMonorepoPackages({ filter, force: toForce, packageManager, preid, tag, type });
       verboseLog('>>>> PROJECT ROOT STARTS <<<<\n');
     } else {
       verboseLog('Project is standard repo structure');
@@ -144,11 +144,11 @@ export const handler = async (argv: CutHandlerArguments): Promise<void> => {
       });
     }
 
-    if (!skipPosthook && scripts['cut:post-version']) {
+    if (!toSkipPosthook && scripts['cut:post-version']) {
       verboseLog(`Running cut:post-version script: ${scripts['cut:post-version']}\n`);
       await asyncExec(`${packageManager} run cut:post-version`);
       shelljs.echo('\n');
-    } else if (skipPosthook && scripts['cut:post-version']) {
+    } else if (toSkipPosthook && scripts['cut:post-version']) {
       verboseLog(`cut:post-version skipped, skipPosthook set to true`);
     } else {
       verboseLog(`cut:post-version script not provided`);
@@ -171,7 +171,7 @@ export const handler = async (argv: CutHandlerArguments): Promise<void> => {
         // always be of type Error.
         // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
         verboseLog(`Package.json output error: ${(error as Error).name}, ${(error as Error).message}`);
-        throw new Error(`Could not write the package.json to: ${packageJsonPath}`);
+        throw new Error(`Could not write the package.json to: ${packageJsonPath}`, { cause: error });
       }
     }
 
@@ -181,7 +181,7 @@ export const handler = async (argv: CutHandlerArguments): Promise<void> => {
       await normaliseChangelog(devDependencies);
     }
 
-    if (dryRun) {
+    if (isDryRun) {
       verboseLog('Exiting process as dry-run set to true');
       verboseLog(`Handler duration: ${String(calculateDuration(startTime))}sec`);
       verboseLog('>>>> PROJECT ROOT END <<<<\n');

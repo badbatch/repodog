@@ -37,6 +37,6 @@ export const versionPackage = (
     // always be of type Error.
     // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
     verboseLog(`Package.json output error: ${(error as Error).name}, ${(error as Error).message}`);
-    throw new Error(`Could not write the package.json to: ${packageJsonPath}`);
+    throw new Error(`Could not write the package.json to: ${packageJsonPath}`, { cause: error });
   }
 };

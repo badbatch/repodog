@@ -20,13 +20,13 @@ import { writeTestFile } from './utils/writeTestFile.ts';
 
 export const handler = async (argv: WriteHandlerArguments): Promise<void> => {
   const startTime = performance.now();
-  const skipFormat = argv['skip-format'] ?? false;
-  const verbose = argv.verbose ?? false;
+  const toSkipFormat = argv['skip-format'] ?? false;
+  const isVerbose = argv.verbose ?? false;
 
-  setVerbose(verbose);
+  setVerbose(isVerbose);
   verboseLog('>>>> USER CONFIG START <<<<');
   verboseLog(`filePath: ${argv['file-path']}`);
-  verboseLog(`skipFormat: ${String(skipFormat)}`);
+  verboseLog(`skipFormat: ${String(toSkipFormat)}`);
   verboseLog(`type: ${argv.type}`);
   verboseLog('>>>> USER CONFIG END <<<<\n');
 
@@ -71,7 +71,7 @@ export const handler = async (argv: WriteHandlerArguments): Promise<void> => {
     }
 
     verboseLog(`Answer code:\n${code}`);
-    await writeTestFile(dir, name, code, { language, packageManager, skipFormat });
+    await writeTestFile(dir, name, code, { language, packageManager, skipFormat: toSkipFormat });
 
     verboseLog(`Handler duration: ${String(calculateDuration(startTime))}sec`);
     return shelljs.exit(0);

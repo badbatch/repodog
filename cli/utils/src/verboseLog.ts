@@ -2,10 +2,10 @@ import colors from 'ansi-colors';
 import shelljs from 'shelljs';
 
 let namespace = 'Repodog';
-let verbose = false;
+let isVerbose = false;
 
-export const setVerbose = (value: boolean, name?: string): void => {
-  verbose = value;
+export const setVerbose = (isVerbose_: boolean, name?: string): void => {
+  isVerbose = isVerbose_;
 
   if (name) {
     namespace = name;
@@ -17,7 +17,7 @@ export const log = (message: string): void => {
 };
 
 export const verboseLog = (message: string): void => {
-  if (verbose) {
+  if (isVerbose) {
     shelljs.echo(`${colors.magenta(namespace)} ${colors.dim('=>')} ${message}`);
   }
 };

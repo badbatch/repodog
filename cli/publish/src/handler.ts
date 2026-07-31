@@ -9,9 +9,9 @@ import { publishPackage } from './utils/publishPackage.ts';
 
 export const handler = async (argv: PublishHandlerArguments = {}): Promise<void> => {
   const startTime = performance.now();
-  const verbose = argv.verbose ?? false;
+  const isVerbose = argv.verbose ?? false;
 
-  setVerbose(verbose);
+  setVerbose(isVerbose);
 
   try {
     const packageManager = getPackageManager();

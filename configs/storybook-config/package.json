@@ -43,13 +43,13 @@
     "compile:types": "tsc --project ./tsconfig.build.json && cts-types build dist/types/esm dist/types/cjs"
   },
   "dependencies": {
-    "@storybook/addon-a11y": "^10.4.6",
-    "@storybook/addon-coverage": "^3.0.1",
-    "@storybook/addon-docs": "^10.4.6",
+    "@storybook/addon-a11y": "^10.5.5",
+    "@storybook/addon-coverage": "^3.0.2",
+    "@storybook/addon-docs": "^10.5.5",
     "@storybook/addon-styling-webpack": "^3.0.2",
     "@storybook/addon-webpack5-compiler-babel": "^4.0.1",
     "@storybook/addon-webpack5-compiler-swc": "^4.0.3",
-    "@storybook/react-webpack5": "^10.4.6",
+    "@storybook/react-webpack5": "^10.5.5",
     "css-loader": "^7.1.4",
     "glob": "^13.0.6",
     "postcss": "^8.5.15",
@@ -82,8 +82,8 @@
     }
   },
   "devDependencies": {
-    "cts-types": "^0.0.10",
+    "cts-types": "^0.0.11",
     "del-cli": "^7.0.0",
-    "storybook": "^10.4.6"
+    "storybook": "^10.5.5"
   }
 }

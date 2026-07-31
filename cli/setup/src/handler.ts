@@ -7,8 +7,8 @@ import { handleGlobalConfigSetup } from './utils/handleGlobalConfigSetup.ts';
 
 export const handler = async (argv: SetupHandlerArguments = {}): Promise<void> => {
   const startTime = performance.now();
-  const verbose = argv.verbose ?? false;
-  setVerbose(verbose);
+  const isVerbose = argv.verbose ?? false;
+  setVerbose(isVerbose);
 
   try {
     await handleGlobalConfigSetup();

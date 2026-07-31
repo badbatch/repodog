@@ -36,18 +36,18 @@ import { loadQuestions } from './utils/loadQuestions.ts';
 
 export const handler = async (argv: NewHandlerArguments): Promise<void> => {
   const startTime = performance.now();
-  const verbose = argv.verbose ?? false;
+  const isVerbose = argv.verbose ?? false;
   const customTypePath = argv['custom-type-path'] ?? undefined;
-  const excludeBuiltinTemplates = argv['exclude-builtin-templates'] ?? false;
+  const toExcludeBuiltinTemplates = argv['exclude-builtin-templates'] ?? false;
 
   if (!isRunWithinProject() && !hasGlobalRepodogConfig()) {
     await handleGlobalConfigSetup();
   }
 
-  setVerbose(verbose);
+  setVerbose(isVerbose);
   verboseLog('>>>> USER CONFIG START <<<<');
   verboseLog(`customTypePath: ${customTypePath ?? 'undefined'}`);
-  verboseLog(`excludeBuiltinTemplates: ${String(excludeBuiltinTemplates)}`);
+  verboseLog(`excludeBuiltinTemplates: ${String(toExcludeBuiltinTemplates)}`);
   verboseLog(`subtype: ${argv.subtype}`);
   verboseLog(`type: ${argv.type}`);
   verboseLog('>>>> USER CONFIG END <<<<\n');
@@ -149,7 +149,7 @@ export const handler = async (argv: NewHandlerArguments): Promise<void> => {
 
     verboseLog(`Hygen cli options:\n${JSON.stringify(cliOptions, undefined, 2)}\n`);
 
-    if (excludeBuiltinTemplates) {
+    if (toExcludeBuiltinTemplates) {
       verboseLog('Built-in templates have been excluded from scaffolding.');
     } else {
       await executeHygen(templatesPath, hygenPath, internalTypePath, cliOptions);
@@ -161,7 +161,7 @@ export const handler = async (argv: NewHandlerArguments): Promise<void> => {
     }
 
     if (argv.type === newType.REPO) {
-      await postinstallHandler({ subtype: argv.subtype, type: argv.type, verbose });
+      await postinstallHandler({ subtype: argv.subtype, type: argv.type, verbose: isVerbose });
     }
 
     verboseLog(`Handler duration: ${String(calculateDuration(startTime))}sec`);

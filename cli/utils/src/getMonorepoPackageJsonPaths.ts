@@ -40,7 +40,7 @@ export const getMonorepoPackageJsonPaths = (
 
   verboseLog(formatListLogMessage('Excluded package paths', [...excludedPackagePaths]));
 
-  const packagePaths = [...includedPackagePaths].filter(file => !excludedPackagePaths.has(file));
-  verboseLog(formatListLogMessage('Package paths', packagePaths));
-  return packagePaths;
+  const packagePaths = includedPackagePaths.difference(excludedPackagePaths);
+  verboseLog(formatListLogMessage('Package paths', [...packagePaths]));
+  return [...packagePaths];
 };

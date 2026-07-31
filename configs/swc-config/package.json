@@ -17,7 +17,7 @@
     "access": "public"
   },
   "dependencies": {
-    "browserslist": "^4.28.4"
+    "browserslist": "^4.28.7"
   },
   "peerDependencies": {
     "@rollup/plugin-swc": "<1",
@@ -33,6 +33,6 @@
     }
   },
   "devDependencies": {
-    "@swc/core": "^1.15.43"
+    "@swc/core": "^1.15.47"
   }
 }

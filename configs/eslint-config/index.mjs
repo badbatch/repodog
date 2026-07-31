@@ -55,7 +55,7 @@ export default tsEslint.config(
       '@stylistic': stylistic,
       'eslint-comments': fixupPluginRules(eslintComments),
       'prefer-arrow': fixupPluginRules(preferArrow),
-      'sort-destructure-keys': fixupPluginRules(sortDestructureKeys),
+      'sort-destructure-keys': sortDestructureKeys,
       'sort-keys-fix': fixupPluginRules(sortKeysFix),
     },
     rules: {
@@ -166,6 +166,14 @@ export default tsEslint.config(
       'sort-keys': 0,
       'sort-keys-fix/sort-keys-fix': [2, 'asc', { caseSensitive: true, natural: true }],
       'sort-vars': [2, { ignoreCase: false }],
+      'unicorn/consistent-boolean-name': [
+        'error',
+        {
+          prefixes: {
+            to: true,
+          },
+        },
+      ],
       'unicorn/consistent-function-scoping': [2, { checkArrowFunctions: false }],
       'unicorn/filename-case': [
         2,
@@ -179,7 +187,9 @@ export default tsEslint.config(
         },
       ],
       'unicorn/import-style': 0,
+      'unicorn/name-replacements': 0,
       'unicorn/no-array-reduce': 0,
+      'unicorn/no-top-level-assignment-in-function': 0,
       'unicorn/prevent-abbreviations': 0,
     },
   },

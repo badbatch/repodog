@@ -11,8 +11,6 @@ let cachedConfig: RepodogConfig | undefined;
 export const addRepodogConfigToCache = (config: Partial<RepodogConfig>): Partial<RepodogConfig> => {
   const newConfig = merge({}, cachedConfig ?? {}, config);
 
-  // Think this is being lagged in error based on docs examples
-  // eslint-disable-next-line unicorn/prefer-minimal-ternary
   newConfig.language ??= existsSync(resolve(process.cwd(), 'tsconfig.json'))
     ? language.TYPESCRIPT
     : language.JAVASCRIPT;

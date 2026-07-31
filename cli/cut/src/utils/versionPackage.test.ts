@@ -68,7 +68,9 @@ describe('versionPackage', () => {
     it('should throw the correct error', () => {
       expect(() => {
         versionPackage(packageJson, { packageJsonPath, type: 'minor' });
-      }).toThrow(new Error('Could not write the package.json to: /root/alpha/package.json'));
+      }).toThrow(
+        new Error('Could not write the package.json to: /root/alpha/package.json', { cause: { message: 'oops' } }),
+      );
     });
   });
 });

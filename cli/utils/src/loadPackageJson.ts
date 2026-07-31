@@ -39,7 +39,7 @@ export const loadPackageJson = (packageJsonPath: string): PackageJsonWithNameVer
     // always be of type Error.
     // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
     verboseLog(`Package.json read error: ${(error as Error).name}, ${(error as Error).message}`);
-    throw new Error(`Could not resolve the package.json at: ${sanitizedPackageJsonPath}`);
+    throw new Error(`Could not resolve the package.json at: ${sanitizedPackageJsonPath}`, { cause: error });
   }
 
   const { name, version } = packageJson;

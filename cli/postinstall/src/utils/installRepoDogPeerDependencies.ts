@@ -9,7 +9,7 @@ export const installRepoDogPeerDependencies = async (): Promise<string | undefin
   verboseLog('Getting @repodog devDependency names');
   const names = getRepoDogDevDependencyNames();
   verboseLog(`@repodog devDependency names: ${names.length > 0 ? names.join(', ') : 'none'}`);
-  const toInstall: string[] = [];
+  const install: string[] = [];
 
   for (const name of names) {
     verboseLog(`Getting peerDependencies to install for ${name}`);
@@ -22,15 +22,15 @@ export const installRepoDogPeerDependencies = async (): Promise<string | undefin
         peerDependencies.push(`${peerName}@^${peerSemver}`);
       }
 
-      toInstall.push(...peerDependencies);
+      install.push(...peerDependencies);
     }
   }
 
-  if (toInstall.length === 0) {
+  if (install.length === 0) {
     return;
   }
 
-  const cmd = `${packageManager} add ${isProjectMonorepo(packageManager) ? '-w ' : ''}-D ${toInstall.join(' ')}`;
+  const cmd = `${packageManager} add ${isProjectMonorepo(packageManager) ? '-w ' : ''}-D ${install.join(' ')}`;
   verboseLog(`Executing cmd: "${cmd}`);
   return asyncExec(cmd);
 };

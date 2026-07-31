@@ -16,9 +16,9 @@ import { runCommonPostInstallTasks } from './utils/runCommonPostInstallTasks.ts'
 
 export const handler = async (argv: PostInstallHandlerArguments): Promise<void> => {
   const startTime = performance.now();
-  const verbose = argv.verbose ?? false;
+  const isVerbose = argv.verbose ?? false;
 
-  setVerbose(verbose);
+  setVerbose(isVerbose);
   verboseLog('>>>> USER CONFIG START <<<<');
   verboseLog(`subtype: ${argv.subtype}`);
   verboseLog(`type: ${argv.type}`);

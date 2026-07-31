@@ -13,7 +13,7 @@ import macros from 'unplugin-macros/rollup';
 const { MODULE_SYSTEM = 'esm', NODE_ENV } = process.env;
 const isProdEnv = NODE_ENV === 'production';
 const packageDir = process.cwd();
-const external = id => !id.startsWith('.') && !id.startsWith('#') && !isAbsolute(id);
+const isExternal = id => !id.startsWith('.') && !id.startsWith('#') && !isAbsolute(id);
 const outputExtension = MODULE_SYSTEM === 'esm' ? 'mjs' : 'cjs';
 
 const config = (options = {}) => {
@@ -53,14 +53,12 @@ const config = (options = {}) => {
         },
       }),
     );
-  }
-
-  if (!isProdEnv) {
+  } else {
     plugins.push(sourcemaps());
   }
 
   return {
-    external,
+    external: isExternal,
     input: resolve(packageDir, 'src', 'index'),
     onwarn: ({ code, message }) => {
       if (code !== 'THIS_IS_UNDEFINED') {

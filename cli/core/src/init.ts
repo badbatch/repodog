@@ -20,12 +20,12 @@ export const init = (): void => {
   >;
 
   const cliOptions = argv.parseSync();
-  const skipNodeVersionCheck = cliOptions['skip-node-version-check'] ?? false;
-  const verbose = cliOptions.verbose ?? false;
-  setVerbose(verbose);
+  const toSkipNodeVersionCheck = cliOptions['skip-node-version-check'] ?? false;
+  const isVerbose = cliOptions.verbose ?? false;
+  setVerbose(isVerbose);
   verboseLog(`cli options:\n${JSON.stringify(cliOptions, undefined, 2)}\n`);
 
-  if (skipNodeVersionCheck || semver.satisfies(process.versions.node, packageJson.engines.node)) {
+  if (toSkipNodeVersionCheck || semver.satisfies(process.versions.node, packageJson.engines.node)) {
     verboseLog('Passed node version check, executing command.');
 
     void argv
