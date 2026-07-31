@@ -41,11 +41,11 @@ sh: "<%= packageManager %> install && <%= packageManager %> add -D @repodog/cli 
     "validate": "<%= packageManager %> run syncpack && <%= packageManager %> run build && <%= packageManager %> run lint && <%= packageManager %> run format && <%= packageManager %> run type-check && <%= packageManager %> run test"
   },
   "devDependencies": {
-    "@types/node": "^24.2.1",
+    "@types/node": "^26.1.2",
     "del-cli": "^7.0.0",
     "generate-changelog": "^1.8.0",
     "husky": "^9.1.7",
-    "nyc": "^17.1.0",
-    "open-cli": "^8.0.0"
+    "nyc": "^18.0.0",
+    "open-cli": "^9.0.0"
   }
 }

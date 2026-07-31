@@ -46,7 +46,6 @@
     "@repodog/cli-publish": "workspace:*",
     "@repodog/cli-setup": "workspace:*",
     "@repodog/cli-utils": "workspace:*",
-    "@repodog/cli-write": "workspace:*",
     "@types/lodash-es": "^4.17.12",
     "@types/semver": "^7.7.1",
     "@types/shelljs": "^0.10.0",

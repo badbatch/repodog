@@ -52,7 +52,7 @@ sh: "<%= packageManager %> install && <%= packageManager %> add -D @repodog/cli 
     "validate": "<%= packageManager %> run syncpack && <%= packageManager %> run build:rest:prod && <%= packageManager %> run build:core:prod && <%= packageManager %> run lint && <%= packageManager %> run format && <%= packageManager %> run type-check && <%= packageManager %> run build-storybook && <%= packageManager %> run test && <%= packageManager %> run test-axe"
   },
   "devDependencies": {
-    "@types/node": "^24.2.1",
+    "@types/node": "^26.1.2",
     "autoprefixer": "^10.4.21",
     "concurrently": "^9.2.0",
     "css": "^3.0.0",
@@ -61,8 +61,8 @@ sh: "<%= packageManager %> install && <%= packageManager %> add -D @repodog/cli 
     "husky": "^9.1.7",
     "istanbul-merge": "^2.0.0",
     "lodash-es": "^4.17.21",
-    "open-cli": "^8.0.0",
-    "nyc": "^17.1.0",
+    "open-cli": "^9.0.0",
+    "nyc": "^18.0.0",
     "postcss": "^8.5.6",
     "react": "^19.1.0",
     "react-docgen-typescript": "^2.4.0",

@@ -62,12 +62,12 @@ sh: "<%= packageManager %> install && <%= packageManager %> add -D @repodog/cli 
   "dependencies": {},
   "peerDependencies": {},
   "devDependencies": {
-    "@types/node": "^24.2.1",
-    "cts-types": "^0.0.10",
+    "@types/node": "^26.1.2",
+    "cts-types": "^0.0.11",
     "del-cli": "^7.0.0",
     "generate-changelog": "^1.8.0",
     "husky": "^9.1.7",
-    "nyc": "^17.1.0",
-    "open-cli": "^8.0.0"
+    "nyc": "^18.0.0",
+    "open-cli": "^9.0.0"
   }
 }

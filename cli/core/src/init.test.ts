@@ -7,7 +7,6 @@ jest.unstable_mockModule('@repodog/cli-new', () => ({ command: jest.fn() }));
 jest.unstable_mockModule('@repodog/cli-publish', () => ({ command: jest.fn() }));
 jest.unstable_mockModule('@repodog/cli-setup', () => ({ command: jest.fn() }));
 jest.unstable_mockModule('@repodog/cli-utils', () => ({ ...cliUtils, setVerbose: jest.fn(), verboseLog: jest.fn() }));
-jest.unstable_mockModule('@repodog/cli-write', () => ({ command: jest.fn() }));
 jest.unstable_mockModule('shelljs', shelljsMock);
 
 const command = jest
@@ -44,7 +43,7 @@ describe('init', () => {
 
     it('should call yargs.command', () => {
       init();
-      expect(command).toHaveBeenCalledTimes(6);
+      expect(command).toHaveBeenCalledTimes(5);
     });
   });
 
@@ -86,7 +85,7 @@ describe('init', () => {
 
     it('should call yargs.command', () => {
       init();
-      expect(command).toHaveBeenCalledTimes(6);
+      expect(command).toHaveBeenCalledTimes(5);
     });
   });
 });

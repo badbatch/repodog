@@ -4,7 +4,6 @@ import { type PostInstallHandlerArguments, command as postinstallCommand } from 
 import { command as publishCommand } from '@repodog/cli-publish';
 import { command as setupCommand } from '@repodog/cli-setup';
 import { setVerbose, verboseLog } from '@repodog/cli-utils';
-import { type WriteHandlerArguments, command as writeCommand } from '@repodog/cli-write';
 import colors from 'ansi-colors';
 import semver from 'semver';
 import shelljs from 'shelljs';
@@ -16,7 +15,7 @@ export const init = (): void => {
   // yargs does not provide a way to pass generic to type args.
   // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
   const argv = yargs(hideBin(process.argv)) as Argv<
-    CutHandlerArguments & NewHandlerArguments & PostInstallHandlerArguments & WriteHandlerArguments
+    CutHandlerArguments & NewHandlerArguments & PostInstallHandlerArguments
   >;
 
   const cliOptions = argv.parseSync();
@@ -34,7 +33,6 @@ export const init = (): void => {
       .command(postinstallCommand)
       .command(publishCommand)
       .command(setupCommand)
-      .command(writeCommand)
       .help()
       .parseAsync();
   } else {
