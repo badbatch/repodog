@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.1.0 (2026-07-31)
+
+### Refactors
+
+* **root:**  remove write package as now outdated ([0fc9b217](https://github.com/badbatch/repodog/commit/0fc9b21782cbb432815abb1cce40ff0bf5a0d2f0))
+
 ## 2.0.36 (2026-07-31)
 
 ### Chores
