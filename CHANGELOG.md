@@ -1,5 +1,15 @@
 # Changelog
 
+## 2.1.1 (2026-08-06)
+
+### Chores
+
+* **root:**  update deps ([d7289042](https://github.com/badbatch/repodog/commit/d7289042aa50a27f96f4db6e9a6c44ff5e0c869d))
+
+### Refactors
+
+* **eslint-config-react:**  change base config ([14197f5f](https://github.com/badbatch/repodog/commit/14197f5f619a0dd88e418cc452d5c87f95f58989))
+
 ## 2.1.0 (2026-07-31)
 
 ### Refactors
