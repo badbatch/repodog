@@ -1,18 +1,20 @@
+import eslintReact from '@eslint-react/eslint-plugin';
+import stylistic from '@stylistic/eslint-plugin';
 import jsxA11y from 'eslint-plugin-jsx-a11y';
-import react from 'eslint-plugin-react';
 import reactHooks from 'eslint-plugin-react-hooks';
 
 // ESLint convention is to export default
 // eslint-disable-next-line import-x/no-default-export
 export default [
+  stylistic.configs.customize({
+    jsx: true,
+  }),
+  eslintReact.configs['recommended-type-checked'],
   jsxA11y.flatConfigs.recommended,
-  react.configs.flat.recommended,
-  react.configs.flat['jsx-runtime'],
   reactHooks.configs.flat.recommended,
   {
     rules: {
-      'react/jsx-filename-extension': [2, { extensions: ['.jsx', '.tsx'] }],
-      'react/jsx-sort-props': [
+      '@stylistic/jsx-sort-props': [
         2,
         {
           callbacksLast: false,
@@ -23,7 +25,7 @@ export default [
           shorthandLast: false,
         },
       ],
-      'react/jsx-wrap-multilines': [
+      '@stylistic/jsx-wrap-multilines': [
         2,
         {
           arrow: 'parens-new-line',
