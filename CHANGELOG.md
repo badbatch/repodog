@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.1.3 (2026-08-07)
+
+### Bug Fixes
+
+* **eslint-config:**  remove stylistic recommended rules ([b1a4d4cb](https://github.com/badbatch/repodog/commit/b1a4d4cb1be408ac9aea6752d5089116820b7007))
+
 ## 2.1.2 (2026-08-06)
 
 ## 2.1.1 (2026-08-06)
