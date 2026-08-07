@@ -6,13 +6,13 @@ import reactHooks from 'eslint-plugin-react-hooks';
 // ESLint convention is to export default
 // eslint-disable-next-line import-x/no-default-export
 export default [
-  stylistic.configs.customize({
-    jsx: true,
-  }),
   eslintReact.configs['recommended-type-checked'],
   jsxA11y.flatConfigs.recommended,
   reactHooks.configs.flat.recommended,
   {
+    plugins: {
+      '@stylistic': stylistic,
+    },
     rules: {
       '@stylistic/jsx-sort-props': [
         2,

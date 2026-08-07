@@ -38,12 +38,7 @@ export default tsEslint.config(
     ],
   },
   {
-    extends: [
-      stylistic.configs.recommended,
-      eslint.configs.recommended,
-      importX.flatConfigs.recommended,
-      unicorn.configs.recommended,
-    ],
+    extends: [eslint.configs.recommended, importX.flatConfigs.recommended, unicorn.configs.recommended],
     files: ['**/*.{mjs,cjs,js,jsx,ts,tsx}'],
     languageOptions: {
       ecmaVersion: 'latest',
@@ -57,6 +52,7 @@ export default tsEslint.config(
       sourceType: 'module',
     },
     plugins: {
+      '@stylistic': stylistic,
       'eslint-comments': fixupPluginRules(eslintComments),
       'prefer-arrow': fixupPluginRules(preferArrow),
       'sort-destructure-keys': sortDestructureKeys,
