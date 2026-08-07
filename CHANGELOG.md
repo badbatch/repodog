@@ -1,5 +1,13 @@
 # Changelog
 
+## 2.1.4 (2026-08-07)
+
+### Chores
+
+* **root:**
+  * sort out deps ([b848a649](https://github.com/badbatch/repodog/commit/b848a64936306a1e310d194346b958fa6f0e680c))
+  * update pnpm config ([4255e3d2](https://github.com/badbatch/repodog/commit/4255e3d201e1f22358d2c65fc002619eaf6a5240))
+
 ## 2.1.3 (2026-08-07)
 
 ### Bug Fixes
