@@ -7,12 +7,12 @@ on:
         default: 'pnpm'
         required: false
         type: string
-    secrets:
-      npm_auth_token:
-        required: true
 
 jobs:
   build-and-publish:
+    permissions:
+      id-token: write
+      contents: read
     runs-on: ubuntu-latest
     steps:
       - name: Log build trigger
@@ -62,8 +62,5 @@ jobs:
 
       - name: Publish packages
         if: github.ref_type == 'tag'
-        env:
-          NPM_AUTH_TOKEN: ${{ secrets.npm_auth_token }}
         run: |
-          echo "//registry.npmjs.org/:_authToken=${NPM_AUTH_TOKEN}" >> .npmrc
           npm run --if-present repodog -- publish --verbose

@@ -15,8 +15,7 @@ on:
 
 jobs:
   build-and-publish:
+    permissions:
+      id-token: write
+      contents: read
     uses: badbatch/repodog/.github/workflows/master-build-and-publish.yml@main
-    with:
-      package-manager-version: '10.9.0'
-    secrets:
-      npm_auth_token: ${{ secrets.NPM_AUTH_TOKEN }}
