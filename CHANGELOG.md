@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.1.5 (2026-08-24)
+
+### Refactors
+
+* **root:**  change how we publish to npm ([b9d14f0b](https://github.com/badbatch/repodog/commit/b9d14f0bf12fb56f4836e69728a231d9b4a1ec82))
+
 ## 2.1.4 (2026-08-07)
 
 ### Chores
