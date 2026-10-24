@@ -1,8 +1,12 @@
 import { type StorybookConfig } from '@storybook/react-webpack5';
 import { globSync } from 'glob';
+import { dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const resolvePath = (name: string): string => fileURLToPath(import.meta.resolve(name));
+
+const resolveAddOnPath = (packageName: string): string =>
+  dirname(fileURLToPath(import.meta.resolve(`${packageName}/package.json`)));
 
 export type ConfigParams = {
   compiler?: string | [name: string, options: Record<string, unknown>];
@@ -16,13 +20,13 @@ export const config = ({ compiler }: ConfigParams = {}): StorybookConfig => {
 
   return {
     addons: [
-      '@storybook/addon-docs',
-      '@storybook/addon-a11y',
+      resolveAddOnPath('@storybook/addon-docs'),
+      resolveAddOnPath('@storybook/addon-a11y'),
       ...(isCompilerBabel
         ? [
-            '@storybook/addon-webpack5-compiler-babel',
+            resolveAddOnPath('@storybook/addon-webpack5-compiler-babel'),
             {
-              name: '@storybook/addon-coverage',
+              name: resolveAddOnPath('@storybook/addon-coverage'),
               options: {
                 istanbul: {
                   exclude: ['.storybook/**', '**/dist/**', '**/node_modules/**'],
@@ -31,9 +35,9 @@ export const config = ({ compiler }: ConfigParams = {}): StorybookConfig => {
             },
           ]
         : []),
-      ...(isCompilerSwc ? ['@storybook/addon-webpack5-compiler-swc'] : []),
+      ...(isCompilerSwc ? [resolveAddOnPath('@storybook/addon-webpack5-compiler-swc')] : []),
       {
-        name: '@storybook/addon-styling-webpack',
+        name: resolveAddOnPath('@storybook/addon-styling-webpack'),
         options: {
           rules: [
             {
@@ -59,7 +63,7 @@ export const config = ({ compiler }: ConfigParams = {}): StorybookConfig => {
       enableCrashReports: false,
     },
     framework: {
-      name: '@storybook/react-webpack5',
+      name: resolveAddOnPath('@storybook/react-webpack5'),
       options: {},
     },
     stories: globSync([`../components/**/*.stories.@(js|jsx|ts|tsx)`, '!../**/node_modules/**/*', '!../**/dist/**/*'], {
