@@ -1,5 +1,13 @@
 # Changelog
 
+## 2.1.9 (2026-10-24)
+
+### Bug Fixes
+
+* **storybook-config:**
+  * another attempt to fix path references ([cb9dcbe2](https://github.com/badbatch/repodog/commit/cb9dcbe281ec7344eba582f0e044cad37faa6c4d))
+  * revert previous changes ([1841015d](https://github.com/badbatch/repodog/commit/1841015dd4e424b2cc4469c5e878063f2deaa8c6))
+
 ## 2.1.8 (2026-10-24)
 
 ### Bug Fixes
