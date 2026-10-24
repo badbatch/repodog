@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.1.10 (2026-10-24)
+
+### Bug Fixes
+
+* **storybook-config:**  type that got reverted ([7d736590](https://github.com/badbatch/repodog/commit/7d7365900e7a49b4507cec38b2492dfb27440510))
+
 ## 2.1.9 (2026-10-24)
 
 ### Bug Fixes
