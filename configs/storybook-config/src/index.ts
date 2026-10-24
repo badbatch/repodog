@@ -16,13 +16,13 @@ export const config = ({ compiler }: ConfigParams = {}): StorybookConfig => {
 
   return {
     addons: [
-      '@storybook/addon-docs',
-      '@storybook/addon-a11y',
+      resolvePath('@storybook/addon-docs'),
+      resolvePath('@storybook/addon-a11y'),
       ...(isCompilerBabel
         ? [
-            '@storybook/addon-webpack5-compiler-babel',
+            resolvePath('@storybook/addon-webpack5-compiler-babel'),
             {
-              name: '@storybook/addon-coverage',
+              name: resolvePath('@storybook/addon-coverage'),
               options: {
                 istanbul: {
                   exclude: ['.storybook/**', '**/dist/**', '**/node_modules/**'],
@@ -31,9 +31,9 @@ export const config = ({ compiler }: ConfigParams = {}): StorybookConfig => {
             },
           ]
         : []),
-      ...(isCompilerSwc ? ['@storybook/addon-webpack5-compiler-swc'] : []),
+      ...(isCompilerSwc ? [resolvePath('@storybook/addon-webpack5-compiler-swc')] : []),
       {
-        name: '@storybook/addon-styling-webpack',
+        name: resolvePath('@storybook/addon-styling-webpack'),
         options: {
           rules: [
             {
@@ -59,7 +59,7 @@ export const config = ({ compiler }: ConfigParams = {}): StorybookConfig => {
       enableCrashReports: false,
     },
     framework: {
-      name: '@storybook/react-webpack5',
+      name: resolvePath('@storybook/react-webpack5'),
       options: {},
     },
     stories: globSync([`../components/**/*.stories.@(js|jsx|ts|tsx)`, '!../**/node_modules/**/*', '!../**/dist/**/*'], {
