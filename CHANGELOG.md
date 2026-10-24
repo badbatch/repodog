@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.1.8 (2026-10-24)
+
+### Bug Fixes
+
+* **storybook-config:**  change addon resolution ([b9232faa](https://github.com/badbatch/repodog/commit/b9232faa117d365de189bef19bb4e43e2afb0e53))
+
 ## 2.1.7 (2026-10-24)
 
 ## 2.1.6 (2026-10-24)
