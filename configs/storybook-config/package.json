@@ -52,7 +52,6 @@
     "@storybook/react-webpack5": "^10.5.5",
     "css-loader": "^7.1.4",
     "glob": "^13.0.6",
-    "postcss": "^8.5.15",
     "postcss-loader": "^8.2.1",
     "style-loader": "^4.0.0"
   },
@@ -62,6 +61,7 @@
     "@repodog/swc-config": "<2",
     "@storybook/test-runner": "<1",
     "chromatic": "<18",
+    "postcss": "<9",
     "storybook": "<11"
   },
   "peerDependenciesMeta": {
@@ -84,6 +84,7 @@
   "devDependencies": {
     "cts-types": "^0.0.11",
     "del-cli": "^7.0.0",
+    "postcss": "^8.5.15",
     "storybook": "^10.5.5"
   }
 }
