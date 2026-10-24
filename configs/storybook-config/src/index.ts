@@ -5,7 +5,7 @@ import { fileURLToPath } from 'node:url';
 const resolvePath = (name: string): string => fileURLToPath(import.meta.resolve(name));
 
 export type ConfigParams = {
-  compiler?: string | [name: string, options: object];
+  compiler?: string | [name: string, options: Record<string, unknown>];
 };
 
 export const config = ({ compiler }: ConfigParams = {}): StorybookConfig => {
@@ -16,13 +16,13 @@ export const config = ({ compiler }: ConfigParams = {}): StorybookConfig => {
 
   return {
     addons: [
-      resolvePath('@storybook/addon-docs'),
-      resolvePath('@storybook/addon-a11y'),
+      '@storybook/addon-docs',
+      '@storybook/addon-a11y',
       ...(isCompilerBabel
         ? [
-            resolvePath('@storybook/addon-webpack5-compiler-babel'),
+            '@storybook/addon-webpack5-compiler-babel',
             {
-              name: resolvePath('@storybook/addon-coverage'),
+              name: '@storybook/addon-coverage',
               options: {
                 istanbul: {
                   exclude: ['.storybook/**', '**/dist/**', '**/node_modules/**'],
@@ -31,9 +31,9 @@ export const config = ({ compiler }: ConfigParams = {}): StorybookConfig => {
             },
           ]
         : []),
-      ...(isCompilerSwc ? [resolvePath('@storybook/addon-webpack5-compiler-swc')] : []),
+      ...(isCompilerSwc ? ['@storybook/addon-webpack5-compiler-swc'] : []),
       {
-        name: resolvePath('@storybook/addon-styling-webpack'),
+        name: '@storybook/addon-styling-webpack',
         options: {
           rules: [
             {
@@ -59,7 +59,7 @@ export const config = ({ compiler }: ConfigParams = {}): StorybookConfig => {
       enableCrashReports: false,
     },
     framework: {
-      name: resolvePath('@storybook/react-webpack5'),
+      name: '@storybook/react-webpack5',
       options: {},
     },
     stories: globSync([`../components/**/*.stories.@(js|jsx|ts|tsx)`, '!../**/node_modules/**/*', '!../**/dist/**/*'], {
