@@ -1,5 +1,14 @@
 # Changelog
 
+## 2.1.6 (2026-10-24)
+
+### Bug Fixes
+
+* **root:**  package lock mismatch ([3134b13b](https://github.com/badbatch/repodog/commit/3134b13b0d2f37f3d57df190f6ce1e12fee4294d))
+* **storybook-config:**
+  * move postcss to peer ([5bbdc9db](https://github.com/badbatch/repodog/commit/5bbdc9dbd7898527525e96c2a12f5a6f7d069063))
+  * postcss loader error ([8153cd89](https://github.com/badbatch/repodog/commit/8153cd895d463dc3922b922123326773b955f255))
+
 ## 2.1.5 (2026-08-24)
 
 ### Refactors
