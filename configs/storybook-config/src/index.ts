@@ -5,7 +5,7 @@ import { fileURLToPath } from 'node:url';
 const resolvePath = (name: string): string => fileURLToPath(import.meta.resolve(name));
 
 export type ConfigParams = {
-  compiler?: string | [name: string, options: Record<string, unknown>];
+  compiler?: string | [name: string, options: object];
 };
 
 export const config = ({ compiler }: ConfigParams = {}): StorybookConfig => {
@@ -46,9 +46,6 @@ export const config = ({ compiler }: ConfigParams = {}): StorybookConfig => {
                 },
                 {
                   loader: resolvePath('postcss-loader'),
-                  options: {
-                    implementation: resolvePath('postcss'),
-                  },
                 },
               ],
             },
@@ -56,6 +53,11 @@ export const config = ({ compiler }: ConfigParams = {}): StorybookConfig => {
         },
       },
     ],
+    core: {
+      disableTelemetry: true,
+      disableWhatsNewNotifications: true,
+      enableCrashReports: false,
+    },
     framework: {
       name: '@storybook/react-webpack5',
       options: {},
