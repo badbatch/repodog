@@ -9,7 +9,7 @@ const resolveAddOnPath = (packageName: string): string =>
   dirname(fileURLToPath(import.meta.resolve(`${packageName}/package.json`)));
 
 export type ConfigParams = {
-  compiler?: string | [name: string, options: Record<string, unknown>];
+  compiler?: string | [name: string, options: object];
 };
 
 export const config = ({ compiler }: ConfigParams = {}): StorybookConfig => {
