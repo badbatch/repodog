@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.1.15 (2026-10-25)
+
+### Bug Fixes
+
+* **publish:**  npm auth issue ([f4282be5](https://github.com/badbatch/repodog/commit/f4282be55554dac9aee0c56595057915fba917d5))
+
 ## 2.1.14 (2026-10-25)
 
 ### Bug Fixes
