@@ -63,6 +63,17 @@ jobs:
       - name: Run unit tests
         run: npm run --if-present test
 
+      - name: Check npm token availability
+        if: github.ref_type == 'tag'
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
+        run: |
+          if [ -z "$NPM_AUTH_TOKEN" ]; then
+            echo "NPM_AUTH_TOKEN is missing"
+            exit 1
+          fi
+          echo "NPM_AUTH_TOKEN is available"
+
       - name: Publish packages
         if: github.ref_type == 'tag'
         env:

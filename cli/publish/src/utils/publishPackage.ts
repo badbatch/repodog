@@ -28,6 +28,7 @@ export const publishPackage = async (
   verboseLog(`New version: ${version}`);
   verboseLog(`Latest non-prerelease version on npm: ${latestNpmPackageVersion || 'None'}`);
   verboseLog(`First publication/use token: ${String(isTokenRequired)}`);
+  verboseLog(`NPM_AUTH_TOKEN available: ${String(Boolean(process.env.NPM_AUTH_TOKEN))}`);
 
   if (packageVersionsOnNpm.includes(version)) {
     verboseLog(`The new ${name} package verison ${version} is equal to a version on npm. Skipping publish.`);
