@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.1.13 (2026-10-25)
+
+### Chores
+
+* **publish:**  add logging ([37d8c20c](https://github.com/badbatch/repodog/commit/37d8c20c56fa2fc907ffb2e3def3f8715f97d4f9))
+
 ## 2.1.12 (2026-10-25)
 
 ### Bug Fixes
