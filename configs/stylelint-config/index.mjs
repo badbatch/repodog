@@ -7,6 +7,7 @@ const resolvePath = name => fileURLToPath(import.meta.resolve(name));
 export default {
   extends: [
     resolvePath('stylelint-config-standard'),
+    resolvePath('stylelint-config-standard-scss'),
     resolvePath('stylelint-config-recess-order'),
     resolvePath('stylelint-config-css-modules'),
   ],
