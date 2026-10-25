@@ -1,5 +1,18 @@
 # Changelog
 
+## 2.1.11 (2026-10-25)
+
+### New Features
+
+* **stylelint-config:**  create package ([86df84d1](https://github.com/badbatch/repodog/commit/86df84d131f076c2bf35f26f56213ffb4165427b))
+* **storybook-config:**
+  * expose storybook types through config ([61472de7](https://github.com/badbatch/repodog/commit/61472de70298af771a9baff7c2074794d1f3dd56))
+  * update configuration to support css modules ([e20a2ff0](https://github.com/badbatch/repodog/commit/e20a2ff055c956178fdf311aa00ad6699340fb61))
+
+### Bug Fixes
+
+* **root:**  sort package lock ([77c96100](https://github.com/badbatch/repodog/commit/77c96100b70185e871fd3c27aad8019c5f66d974))
+
 ## 2.1.10 (2026-10-24)
 
 ### Bug Fixes
