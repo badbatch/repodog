@@ -17,4 +17,4 @@ jobs:
       contents: read
     uses: ./.github/workflows/master-build-and-publish.yml
     secrets:
-      NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
+      npm_auth_token: ${{ secrets.NPM_AUTH_TOKEN }}

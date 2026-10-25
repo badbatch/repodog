@@ -8,7 +8,7 @@ on:
         required: false
         type: string
     secrets:
-      NPM_AUTH_TOKEN:
+      npm_auth_token:
         required: false
 
 jobs:
@@ -66,7 +66,7 @@ jobs:
       - name: Check npm token availability
         if: github.ref_type == 'tag'
         env:
-          NPM_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
+          NPM_AUTH_TOKEN: ${{ secrets.npm_auth_token }}
         run: |
           if [ -z "$NPM_AUTH_TOKEN" ]; then
             echo "NPM_AUTH_TOKEN is missing"
@@ -77,6 +77,6 @@ jobs:
       - name: Publish packages
         if: github.ref_type == 'tag'
         env:
-          NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
+          NPM_AUTH_TOKEN: ${{ secrets.npm_auth_token }}
         run: |
           npm run --if-present repodog -- publish --verbose
