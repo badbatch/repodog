@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.1.14 (2026-10-25)
+
+### Bug Fixes
+
+* **root:**  update pipeline script to fix typo ([4fce15d1](https://github.com/badbatch/repodog/commit/4fce15d19bd3127304c5daa2ac4d89ab289386d5))
+
 ## 2.1.13 (2026-10-25)
 
 ### Chores
