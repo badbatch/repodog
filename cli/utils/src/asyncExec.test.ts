@@ -13,7 +13,7 @@ describe('asyncExec', () => {
 
   describe('when the execution is successful', () => {
     beforeEach(() => {
-      shelljs.exec.mockImplementationOnce(((_command: string, callback: ExecCallback) => {
+      shelljs.exec.mockImplementationOnce(((_command: string, _env: Record<string, string>, callback: ExecCallback) => {
         callback(0, 'success', '');
       }) as ExecFunction);
     });
@@ -26,7 +26,11 @@ describe('asyncExec', () => {
   describe('when the execution fails', () => {
     describe('when options.silent is not true', () => {
       beforeEach(() => {
-        shelljs.exec.mockImplementationOnce(((_command: string, callback: ExecCallback) => {
+        shelljs.exec.mockImplementationOnce(((
+          _command: string,
+          _env: Record<string, string>,
+          callback: ExecCallback,
+        ) => {
           callback(1, '', 'failure');
         }) as ExecFunction);
       });
@@ -38,7 +42,11 @@ describe('asyncExec', () => {
 
     describe('when options.silent is true', () => {
       beforeEach(() => {
-        shelljs.exec.mockImplementationOnce(((_command: string, callback: ExecCallback) => {
+        shelljs.exec.mockImplementationOnce(((
+          _command: string,
+          _env: Record<string, string>,
+          callback: ExecCallback,
+        ) => {
           callback(1, '', 'failure');
         }) as ExecFunction);
       });

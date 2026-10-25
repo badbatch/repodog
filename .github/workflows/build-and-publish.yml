@@ -16,3 +16,5 @@ jobs:
       id-token: write
       contents: read
     uses: ./.github/workflows/master-build-and-publish.yml
+    secrets:
+      NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}

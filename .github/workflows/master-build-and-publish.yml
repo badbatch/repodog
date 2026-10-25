@@ -7,6 +7,9 @@ on:
         default: 'pnpm'
         required: false
         type: string
+    secrets:
+      NPM_AUTH_TOKEN:
+        required: false
 
 jobs:
   build-and-publish:
@@ -62,5 +65,7 @@ jobs:
 
       - name: Publish packages
         if: github.ref_type == 'tag'
+        env:
+          NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
         run: |
           npm run --if-present repodog -- publish --verbose

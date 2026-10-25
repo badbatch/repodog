@@ -7,6 +7,7 @@ import {
   loadPackageJson,
   verboseLog,
 } from '@repodog/cli-utils';
+import { publishWithToken } from '#utils/publishWithToken.ts';
 import { getPublishCmd } from './getPublishCmd.ts';
 
 export const publishPackage = async (
@@ -23,8 +24,10 @@ export const publishPackage = async (
 
   const latestNpmPackageVersion = getLatestPackageVersionOnNpm(name);
   const packageVersionsOnNpm = getPackageVersionsOnNpm(name);
+  const isTokenRequired = packageVersionsOnNpm.length === 0;
   verboseLog(`New version: ${version}`);
   verboseLog(`Latest non-prerelease version on npm: ${latestNpmPackageVersion || 'None'}`);
+  verboseLog(`First publication/use token: ${String(isTokenRequired)}`);
 
   if (packageVersionsOnNpm.includes(version)) {
     verboseLog(`The new ${name} package verison ${version} is equal to a version on npm. Skipping publish.`);
@@ -34,5 +37,11 @@ export const publishPackage = async (
   changeWorkingDirCallback?.();
   const tag = getTag(version);
   verboseLog(`Tag: ${tag ?? 'None'}`);
-  await asyncExec(getPublishCmd(packageManager, version, tag));
+  const publishCmd = getPublishCmd(packageManager, version, tag);
+
+  if (isTokenRequired) {
+    await publishWithToken(publishCmd);
+  } else {
+    await asyncExec(publishCmd);
+  }
 };
