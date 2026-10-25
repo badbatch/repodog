@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.1.12 (2026-10-25)
+
+### Bug Fixes
+
+* **publish:**  support publishing with token and without ([7fbc8097](https://github.com/badbatch/repodog/commit/7fbc8097265b3f6cc6f675404969fe73dcb6fb8c))
+
 ## 2.1.11 (2026-10-25)
 
 ### New Features
