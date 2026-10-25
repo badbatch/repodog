@@ -1,7 +1,7 @@
 {
   "name": "@repodog/cli-publish",
   "description": "The Repodog cli publish module.",
-  "version": "1.4.35",
+  "version": "1.4.36",
   "author": "miami-man",
   "license": "MIT",
   "homepage": "https://github.com/badbatch/repodog",

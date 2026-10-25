@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.1.16 (2026-10-25)
+
+### New Features
+
+* **publish,storybook-config:**  support npm, yarn / export more types ([c27d189a](https://github.com/badbatch/repodog/commit/c27d189acf9b38753def670f107459ea0525e726))
+
 ## 2.1.15 (2026-10-25)
 
 ### Bug Fixes
