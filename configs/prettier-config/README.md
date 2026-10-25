@@ -14,6 +14,15 @@ npm install @repodog/prettier-config prettier --save-dev
 
 ## Use package
 
+```jsonc
+// package.json
+{
+  "scripts": {
+    "format": "prettier . --check"
+  },
+}
+```
+
 ```javascript
 // prettier.config.mjs
 import config from '@repodog/prettier-config';

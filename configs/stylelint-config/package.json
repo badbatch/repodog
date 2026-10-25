@@ -1,0 +1,30 @@
+{
+  "name": "@repodog/stylelint-config",
+  "description": "The Repodog stylelint config module.",
+  "version": "1.0.0",
+  "author": "miami-man",
+  "license": "MIT",
+  "homepage": "https://github.com/badbatch/repodog",
+  "repository": {
+    "directory": "configs/stylelint-config",
+    "type": "git",
+    "url": "https://github.com/badbatch/repodog.git"
+  },
+  "bugs": "https://github.com/badbatch/repodog/issues",
+  "type": "module",
+  "main": "index.mjs",
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "stylelint-config-css-modules": "^4.6.0",
+    "stylelint-config-recess-order": "^7.9.0",
+    "stylelint-config-standard": "^40.0.0"
+  },
+  "peerDependencies": {
+    "stylelint": "<18"
+  },
+  "devDependencies": {
+    "stylelint": "^17.16.0"
+  }
+}
