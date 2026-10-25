@@ -41,12 +41,31 @@ export const config = ({ compiler }: ConfigParams = {}): StorybookConfig => {
         options: {
           rules: [
             {
+              test: /\.module\.css$/,
+              use: [
+                resolvePath('style-loader'),
+                {
+                  loader: resolvePath('css-loader'),
+                  options: {
+                    importLoaders: 1,
+                    modules: true,
+                  },
+                },
+                {
+                  loader: resolvePath('postcss-loader'),
+                },
+              ],
+            },
+            {
+              exclude: /\.module\.css$/,
               test: /\.css$/,
               use: [
                 resolvePath('style-loader'),
                 {
                   loader: resolvePath('css-loader'),
-                  options: { importLoaders: 1 },
+                  options: {
+                    importLoaders: 1,
+                  },
                 },
                 {
                   loader: resolvePath('postcss-loader'),
