@@ -41,7 +41,7 @@ export const publishPackage = async (
   const publishCmd = getPublishCmd(packageManager, version, tag);
 
   if (isTokenRequired) {
-    await publishWithToken(publishCmd);
+    await publishWithToken(packageManager, publishCmd);
   } else {
     await asyncExec(publishCmd);
   }
