@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.1.17 (2026-10-25)
+
+### New Features
+
+* **stylelint-config:**  add scss support ([85e6446d](https://github.com/badbatch/repodog/commit/85e6446d1b9b0e61247311560fd0cd5c20784e2a))
+
 ## 2.1.16 (2026-10-25)
 
 ### New Features
