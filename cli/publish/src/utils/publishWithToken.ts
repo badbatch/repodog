@@ -12,7 +12,7 @@ export const publishWithToken = async (publishCommand: string): Promise<void> =>
 
     await asyncExec(publishCommand, {
       env: {
-        NPM_CONFIG_USERCONFIG: npmrcPath,
+        PNPM_CONFIG_NPMRC_AUTH_FILE: npmrcPath,
       },
     });
   } finally {
