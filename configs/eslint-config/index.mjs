@@ -114,8 +114,6 @@ export default tsEslint.config(
       'eslint-comments/no-unused-enable': 2,
       'import-x/extensions': [2, 'ignorePackages'],
       'import-x/namespace': 0,
-      // This rule doesn't work on TypeScript files currently.
-      // https://github.com/un-ts/eslint-plugin-import-x/issues/144
       'import-x/no-default-export': 2,
       'import-x/no-extraneous-dependencies': [
         2,

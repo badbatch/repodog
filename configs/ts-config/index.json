@@ -21,7 +21,6 @@
     "sourceMap": true,
     "strict": true,
     "target": "ESNext",
-    "types": ["*"],
     "verbatimModuleSyntax": true
   },
   "$schema": "http://json.schemastore.org/tsconfig"
