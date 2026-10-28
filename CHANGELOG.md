@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.1.22 (2026-10-28)
+
+### Bug Fixes
+
+* **jest-config:**  css and file mocking ([d7d20ed3](https://github.com/badbatch/repodog/commit/d7d20ed3c5667a9ce9904066c7352840e5ce9655))
+
 ## 2.1.21 (2026-10-28)
 
 ### Bug Fixes
