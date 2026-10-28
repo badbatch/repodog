@@ -27,14 +27,14 @@ if (isCjs) {
 const isDebug = DEBUG === 'true';
 const isJsEnvWeb = JS_ENV === 'web';
 const isSwc = COMPILER === 'swc';
-const moduleNameMapper = {};
-const transform = {};
 
-if (isJsEnvWeb) {
-  moduleNameMapper[String.raw`^.+\.css$`] = require.resolve('identity-obj-proxy');
-  transform[String.raw`^.+\.css$`] = `${dirname}/cssTransformer.mjs`;
-  transform[String.raw`^(?!.*\.(css|mjs|cjs|js|jsx|json|ts|tsx)$)`] = `${dirname}/fileTransformer.mjs`;
-}
+const moduleNameMapper = {
+  [String.raw`^.+\.css$`]: require.resolve('identity-obj-proxy'),
+};
+
+const transform = {
+  [String.raw`^(?!.*\.(css|mjs|cjs|js|jsx|json|ts|tsx)$)`]: `${dirname}/fileTransformer.mjs`,
+};
 
 const testMatch = [
   '<rootDir>/src/**/*.spec.{mjs,cjs,js,jsx,ts,tsx}',
