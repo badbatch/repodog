@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.1.19 (2026-10-28)
+
+### Bug Fixes
+
+* **publish:**  silence package publish errors to capture all in one run ([f92fb514](https://github.com/badbatch/repodog/commit/f92fb514eba0955b5a3e67cc0a1c0bd674f605bc))
+
 ## 2.1.18 (2026-10-28)
 
 ### Bug Fixes
