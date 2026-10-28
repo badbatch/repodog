@@ -31,7 +31,7 @@ const moduleNameMapper = {};
 const transform = {};
 
 if (isJsEnvWeb) {
-  moduleNameMapper[String.raw`^.+\.css$`] = 'identity-obj-proxy';
+  moduleNameMapper[String.raw`^.+\.css$`] = require.resolve('identity-obj-proxy');
   transform[String.raw`^.+\.css$`] = `${dirname}/cssTransformer.mjs`;
   transform[String.raw`^(?!.*\.(css|mjs|cjs|js|jsx|json|ts|tsx)$)`] = `${dirname}/fileTransformer.mjs`;
 }
