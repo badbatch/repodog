@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.1.21 (2026-10-28)
+
+### Bug Fixes
+
+* **jest-config:**  bug in dependency resolution ([537a6d0c](https://github.com/badbatch/repodog/commit/537a6d0c0b7679851344586a5221a08dfb823b66))
+
 ## 2.1.20 (2026-10-28)
 
 ### Bug Fixes
