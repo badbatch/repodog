@@ -1,3 +1,4 @@
+import { describe, expect, it } from '@jest/globals';
 import { getPackageManagerFilterCommand } from '#getPackageManagerFilterCommand.ts';
 
 describe('getPackageManagerFilterCommand', () => {

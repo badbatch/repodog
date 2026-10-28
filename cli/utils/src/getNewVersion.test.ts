@@ -1,3 +1,4 @@
+import { describe, expect, it } from '@jest/globals';
 import { releaseTag } from '#constants.ts';
 import { getNewVersion } from '#getNewVersion.ts';
 

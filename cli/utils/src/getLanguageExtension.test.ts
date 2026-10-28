@@ -1,3 +1,4 @@
+import { describe, expect, it } from '@jest/globals';
 import { language } from '#constants.ts';
 import { getLanguageExtension } from '#getLanguageExtension.ts';
 

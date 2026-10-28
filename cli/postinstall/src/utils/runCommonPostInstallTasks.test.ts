@@ -1,4 +1,4 @@
-import { jest } from '@jest/globals';
+import { describe, expect, it, jest } from '@jest/globals';
 import { newRepoSubtype, newType } from '@repodog/cli-utils';
 
 jest.unstable_mockModule('./installRepoDogPeerDependencies.ts', () => ({

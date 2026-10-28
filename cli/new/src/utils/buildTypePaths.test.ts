@@ -1,3 +1,4 @@
+import { describe, expect, it } from '@jest/globals';
 import { buildTypePaths } from './buildTypePaths.ts';
 
 describe('buildTypePaths', () => {

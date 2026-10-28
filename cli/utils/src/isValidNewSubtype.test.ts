@@ -1,3 +1,4 @@
+import { describe, expect, it } from '@jest/globals';
 import { newRepoSubtype, newType } from '#constants.ts';
 import { isValidNewSubtype } from '#isValidNewSubtype.ts';
 

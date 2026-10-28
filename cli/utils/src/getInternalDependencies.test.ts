@@ -1,3 +1,4 @@
+import { describe, expect, it } from '@jest/globals';
 import { getInternalDependencies } from '#getInternalDependencies.ts';
 
 describe('getInternalDependencies', () => {

@@ -1,4 +1,4 @@
-import { jest } from '@jest/globals';
+import { describe, expect, it, jest } from '@jest/globals';
 
 jest.unstable_mockModule('@repodog/cli-utils', () => ({
   verboseLog: jest.fn(),

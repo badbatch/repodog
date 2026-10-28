@@ -1,3 +1,4 @@
+import { describe, expect, it } from '@jest/globals';
 import { isValidNewType } from '#isValidNewType.ts';
 
 describe('isValidNewType', () => {

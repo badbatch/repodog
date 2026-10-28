@@ -1,4 +1,4 @@
-import { jest } from '@jest/globals';
+import { beforeEach, describe, expect, it, jest } from '@jest/globals';
 import { loadPackageJsonMock } from '@repodog/cli-test-utils';
 import { getInternalDependencies, packageManager } from '@repodog/cli-utils';
 import { type PackageJson, type SetRequired } from 'type-fest';

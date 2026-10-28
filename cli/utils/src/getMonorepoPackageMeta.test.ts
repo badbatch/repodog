@@ -1,4 +1,4 @@
-import { jest } from '@jest/globals';
+import { describe, expect, it, jest } from '@jest/globals';
 import { loadPackageJsonMock } from '@repodog/cli-test-utils';
 import { packageManager } from '#constants.ts';
 

@@ -1,4 +1,4 @@
-import { jest } from '@jest/globals';
+import { beforeEach, describe, expect, it, jest } from '@jest/globals';
 
 jest.unstable_mockModule('node:fs', () => ({
   readFileSync: jest.fn().mockReturnValue('{ "name": "alpha", "version": "1.0.0" }'),

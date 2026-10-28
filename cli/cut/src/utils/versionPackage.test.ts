@@ -1,4 +1,4 @@
-import { jest } from '@jest/globals';
+import { beforeEach, describe, expect, it, jest } from '@jest/globals';
 
 jest.unstable_mockModule('@repodog/cli-utils', () => ({
   getLatestPackageVersionOnNpm: jest.fn().mockReturnValue('1.0.0'),

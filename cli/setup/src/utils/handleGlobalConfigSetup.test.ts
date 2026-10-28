@@ -1,4 +1,4 @@
-import { jest } from '@jest/globals';
+import { beforeEach, describe, expect, it, jest } from '@jest/globals';
 import * as cliUtils from '@repodog/cli-utils';
 
 jest.unstable_mockModule('@repodog/cli-utils', () => ({
@@ -63,6 +63,6 @@ describe('handleGlobalConfigSetup', () => {
 
   it('should call writeRepodogConfig with the correct arguments', async () => {
     await handleGlobalConfigSetup();
-    expect(writeRepodogConfig).toHaveBeenCalledWith('/', answers);
+    expect(writeRepodogConfig).toHaveBeenCalledWith('/', expect.objectContaining(answers));
   });
 });

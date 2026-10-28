@@ -1,3 +1,4 @@
+import { describe, expect, it } from '@jest/globals';
 import { packageManager } from '@repodog/cli-utils';
 import { getPublishCmd } from './getPublishCmd.ts';
 

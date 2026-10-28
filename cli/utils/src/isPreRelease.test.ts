@@ -1,3 +1,4 @@
+import { describe, expect, it } from '@jest/globals';
 import { isPreRelease } from '#isPreRelease.ts';
 
 describe('isPreRelease', () => {

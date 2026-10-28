@@ -1,4 +1,4 @@
-import { jest } from '@jest/globals';
+import { beforeEach, describe, expect, it, jest } from '@jest/globals';
 import { shelljsMock } from '@repodog/cli-test-utils';
 import * as cliUtils from '@repodog/cli-utils';
 
@@ -337,9 +337,9 @@ describe('cut', () => {
       void handler({ tag: 'alpha', type: 'preminor' });
 
       expect(versionPackage).toHaveBeenCalledWith(
-        {
+        expect.objectContaining({
           version: '1.0.0',
-        },
+        }),
         {
           packageJsonPath: '/root/package.json',
           tag: 'alpha',

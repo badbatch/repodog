@@ -86,6 +86,7 @@ const config = ({ compilerOptions = {} } = {}) => {
     coverageReporters: ['json', 'lcov', 'text-summary'],
     displayName: packageName,
     extensionsToTreatAsEsm: isCjs ? [] : ['.jsx', '.ts', '.tsx'],
+    injectGlobals: false,
     moduleFileExtensions: ['ts', 'tsx', 'js', 'mjs', 'cjs', 'jsx', 'json'],
     moduleNameMapper,
     rootDir: packageDir,

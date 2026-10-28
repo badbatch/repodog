@@ -1,3 +1,4 @@
+import { describe, expect, it } from '@jest/globals';
 import { stringifyCliOptions } from '#stringifyCliOptions.ts';
 
 describe('stringifyCliOptions', () => {

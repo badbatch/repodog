@@ -1,3 +1,4 @@
+import { describe, expect, it } from '@jest/globals';
 import { packageManager } from '#constants.ts';
 import { getPackageManagerTemporaryCommand } from '#getPackageManagerTemporaryCommand.ts';
 
