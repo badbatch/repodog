@@ -1,5 +1,16 @@
 # Changelog
 
+## 2.1.18 (2026-10-28)
+
+### Bug Fixes
+
+* **root:**  error masked by misconfigured tsconfig ([f042eec3](https://github.com/badbatch/repodog/commit/f042eec38a427ebfced151d34021d24ed7b07fd9))
+* **ts-config:**  remove types definition that is wrong ([7557567c](https://github.com/badbatch/repodog/commit/7557567c6c996283dbc0fe5510457718097efeee))
+
+### Reverts
+
+* **storybook-config:**  remove type export ([6d2cbef7](https://github.com/badbatch/repodog/commit/6d2cbef7d10584e7b2db7b3ec6f9f4ef33019d39))
+
 ## 2.1.17 (2026-10-25)
 
 ### New Features
