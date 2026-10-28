@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.1.20 (2026-10-28)
+
+### Bug Fixes
+
+* **utils,eslint-config:**  change silent error behaviour and update eslint var spacing ([ae64e023](https://github.com/badbatch/repodog/commit/ae64e023612accfb7ecf579254f63d317b988b49))
+
 ## 2.1.19 (2026-10-28)
 
 ### Bug Fixes
