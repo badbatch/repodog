@@ -14,12 +14,7 @@ export default [
           withinDescribe: 'it',
         },
       ],
-      'jest/max-expects': [
-        2,
-        {
-          max: 1,
-        },
-      ],
+      'jest/max-expects': 0,
       'jest/max-nested-describe': [
         2,
         {
