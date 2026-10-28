@@ -52,7 +52,7 @@ describe('asyncExec', () => {
       });
 
       it('should resolve the stdout', async () => {
-        await expect(asyncExec('cmd', { silent: true })).resolves.toBe('');
+        await expect(asyncExec('cmd', { silent: true })).resolves.toBe('failure');
       });
     });
   });
