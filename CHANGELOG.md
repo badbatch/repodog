@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.1.23 (2026-10-29)
+
+### Refactors
+
+* **eslint-config-jest:**  remove max expects ([2f038610](https://github.com/badbatch/repodog/commit/2f03861009da81108f5770867b46bccead0136a0))
+
 ## 2.1.22 (2026-10-28)
 
 ### Bug Fixes
