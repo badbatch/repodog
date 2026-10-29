@@ -1,19 +1,29 @@
 import { releaseTag } from '#constants.ts';
 
+const alphaRegex = /-alpha(?:\.|$)/;
+const betaRegex = /-beta(?:\.|$)/;
+const pullRequestRegex = /-pr-(\d+)(?:\.\d+)*$/;
+const unstableRegex = /-unstable(.*)\.\d+$/;
+
 export const getTag = (version: string): string | undefined => {
-  if (version.includes(releaseTag.ALPHA)) {
+  if (alphaRegex.test(version)) {
     return releaseTag.ALPHA;
   }
 
-  if (version.includes(releaseTag.BETA)) {
+  if (betaRegex.test(version)) {
     return releaseTag.BETA;
   }
 
-  const regex = new RegExp(String.raw`(unstable(.*))\.\d+`);
-  const matches = regex.exec(version);
+  const pullRequestMatches = pullRequestRegex.exec(version);
 
-  if (matches) {
-    return matches[1];
+  if (pullRequestMatches) {
+    return `${releaseTag.PULL_REQUEST}-${String(pullRequestMatches[1])}`;
+  }
+
+  const unstableMatches = unstableRegex.exec(version);
+
+  if (unstableMatches) {
+    return `${releaseTag.UNSTABLE}${String(unstableMatches[1])}`;
   }
 
   return undefined;

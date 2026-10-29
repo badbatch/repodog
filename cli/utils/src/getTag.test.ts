@@ -14,6 +14,12 @@ describe('getTag', () => {
     });
   });
 
+  describe('version includes pr', () => {
+    it('should return pr', () => {
+      expect(getTag('1.2.3-pr-48732.0')).toBe('pr-48732');
+    });
+  });
+
   describe('version includes unstable', () => {
     it('should return unstable tag', () => {
       expect(getTag('1.2.3-unstable233.0')).toBe('unstable233');
