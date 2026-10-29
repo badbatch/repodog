@@ -1,5 +1,19 @@
 # Changelog
 
+## 2.1.24 (2026-10-29)
+
+### Chores
+
+* **root:**  upgrade node version ([5cba409a](https://github.com/badbatch/repodog/commit/5cba409a1ba67c4adf650722684cd00d418afdf0))
+
+### New Features
+
+* **stylelint-config:**  update class name rule ([18ee1e24](https://github.com/badbatch/repodog/commit/18ee1e245ca4c26d782ff82e07046a55bf1cc0b7))
+
+### Bug Fixes
+
+* **utils:**  update how npm tagging works ([1e032a92](https://github.com/badbatch/repodog/commit/1e032a92c97de2eb847ffdd54ceeb6d2119ab36a))
+
 ## 2.1.23 (2026-10-29)
 
 ### Refactors
