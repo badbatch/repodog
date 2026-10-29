@@ -11,4 +11,12 @@ export default {
     resolvePath('stylelint-config-recess-order'),
     resolvePath('stylelint-config-css-modules'),
   ],
+  rules: {
+    'selector-class-pattern': [
+      '^[a-z][a-zA-Z0-9]*$',
+      {
+        message: 'Expected class selector to be camelCase',
+      },
+    ],
+  },
 };
