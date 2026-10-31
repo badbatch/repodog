@@ -11,7 +11,7 @@ export default [
     input: input.replace('index', 'preview'),
     output: {
       ...output,
-      file: output.file.replace('index', 'preview'),
+      dir: `${output.dir}/preview`,
     },
   },
 ];

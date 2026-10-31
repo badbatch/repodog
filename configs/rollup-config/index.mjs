@@ -7,6 +7,7 @@ import { existsSync, mkdirSync, writeFileSync } from 'node:fs';
 import { isAbsolute, resolve } from 'node:path';
 import analyzer from 'rollup-plugin-analyzer';
 import copy from 'rollup-plugin-copy';
+import { preserveDirectives } from 'rollup-plugin-preserve-directives';
 import sourcemaps from 'rollup-plugin-sourcemaps';
 import macros from 'unplugin-macros/rollup';
 
@@ -33,6 +34,7 @@ const config = (options = {}) => {
     commonjs(),
     macros(),
     options.compiler,
+    preserveDirectives(),
     image(),
   ];
 
@@ -66,8 +68,12 @@ const config = (options = {}) => {
       }
     },
     output: {
-      file: `${packageDir}/dist/${MODULE_SYSTEM}/index.${outputExtension}`,
+      chunkFileNames: `[name]-[hash].${outputExtension}`,
+      dir: `${packageDir}/dist/${MODULE_SYSTEM}`,
+      entryFileNames: `[name].${outputExtension}`,
       format: MODULE_SYSTEM,
+      preserveModules: true,
+      preserveModulesRoot: 'src',
       sourcemap: true,
     },
     plugins,
