@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.1.25 (2026-10-31)
+
+### New Features
+
+* **rollup-config:**  move to stop bundling into one file to support file directives ([11d738ef](https://github.com/badbatch/repodog/commit/11d738ef6e463c9db909cae1b60f5c0933d6e623))
+
 ## 2.1.24 (2026-10-29)
 
 ### Chores
