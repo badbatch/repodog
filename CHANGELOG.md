@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.1.26 (2026-11-03)
+
+### Bug Fixes
+
+* **syncpack-config:**  add more ranges ([c6a03d1a](https://github.com/badbatch/repodog/commit/c6a03d1a54e650e7c7a44503544fcb66ed041b4c))
+
 ## 2.1.25 (2026-10-31)
 
 ### New Features
