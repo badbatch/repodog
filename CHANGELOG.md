@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.1.27 (2026-11-03)
+
+### Refactors
+
+* **syncpack-config:**  simplify peer rules ([41690772](https://github.com/badbatch/repodog/commit/41690772e26ad5f1e904c757e571a150a979f741))
+
 ## 2.1.26 (2026-11-03)
 
 ### Bug Fixes
