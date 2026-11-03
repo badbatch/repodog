@@ -6,22 +6,6 @@ export default {
       dependencyTypes: ['!peer', '!pnpmOverrides'],
       range: '^',
     },
-    {
-      dependencyTypes: ['!peer', '!pnpmOverrides'],
-      range: '~',
-    },
-    {
-      dependencyTypes: ['peer', '!pnpmOverrides'],
-      range: '<',
-    },
-    {
-      dependencyTypes: ['peer', '!pnpmOverrides'],
-      range: '>=',
-    },
-    {
-      dependencyTypes: ['peer', '!pnpmOverrides'],
-      range: '^',
-    },
   ],
   sortExports: [
     'source',

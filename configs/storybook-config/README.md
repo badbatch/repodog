@@ -44,11 +44,7 @@ npm install @repodog/swc-config --save-dev
 
 ```typescript
 // .storybook/preview.ts
-import { preview as repodogPreview } from '@repodog/storybook-config/preview';
-
-export default {
-  ...repodogPreview,
-};
+export { default } from '@repodog/storybook-config/preview';
 ```
 
 ### With Babel

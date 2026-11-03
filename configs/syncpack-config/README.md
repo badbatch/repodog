@@ -16,9 +16,5 @@ npm install @repodog/syncpack-config syncpack --save-dev
 
 ```javascript
 // .syncpackrc.mjs
-import repodogConfig from '@repodog/syncpack-config';
-
-module.exports = {
-  ...repodogConfig,
-};
+export { default } from '@repodog/syncpack-config';
 ```

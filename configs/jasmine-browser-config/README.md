@@ -29,11 +29,7 @@ npm install @repodog/jasmine-browser-config @repodog/webpack-config @types/jasmi
 
 ```javascript
 // jasmineBrowser.config.mjs
-import repodogConfig from '@repodog/jasmine-browser-config';
-
-export default {
-  ...repodogConfig,
-};
+export { default } from '@repodog/jasmine-browser-config';
 ```
 
 ```javascript
