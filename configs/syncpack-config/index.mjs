@@ -7,8 +7,20 @@ export default {
       range: '^',
     },
     {
+      dependencyTypes: ['!peer', '!pnpmOverrides'],
+      range: '~',
+    },
+    {
       dependencyTypes: ['peer', '!pnpmOverrides'],
       range: '<',
+    },
+    {
+      dependencyTypes: ['peer', '!pnpmOverrides'],
+      range: '>=',
+    },
+    {
+      dependencyTypes: ['peer', '!pnpmOverrides'],
+      range: '^',
     },
   ],
   sortExports: [
