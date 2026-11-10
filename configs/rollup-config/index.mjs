@@ -77,6 +77,7 @@ const config = (options = {}) => {
       sourcemap: true,
     },
     plugins,
+    treeshake: false,
   };
 };
 
