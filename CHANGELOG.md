@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.1.28 (2026-11-10)
+
+### Bug Fixes
+
+* **rollup-config:**  turn off treeshaking ([d33cfe72](https://github.com/badbatch/repodog/commit/d33cfe72c856dcaeecf04b18bcb3039ed86601e4))
+
 ## 2.1.27 (2026-11-03)
 
 ### Refactors
