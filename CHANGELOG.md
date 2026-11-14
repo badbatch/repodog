@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.1.29 (2026-11-14)
+
+### Bug Fixes
+
+* **markdownlint-config:**  update docs ([bf50d121](https://github.com/badbatch/repodog/commit/bf50d1212e81eed2e62b07f11ea98f8a90ad95dc))
+
 ## 2.1.28 (2026-11-10)
 
 ### Bug Fixes
