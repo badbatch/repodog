@@ -5,12 +5,12 @@ export const builder: CommandBuilder<NewHandlerArguments, NewHandlerArguments> =
   argv
     .positional('type', {
       demandOption: true,
-      desc: 'The type of folder to scaffold: repo | pkg',
+      desc: 'The type of folder to scaffold: app | repo | pkg',
       type: 'string',
     })
     .positional('subtype', {
       demandOption: true,
-      desc: 'The subtype of folder to scaffold; repo: componentLibrary | library | monorepo; pkg: component | config | library',
+      desc: 'The subtype of folder to scaffold; app: nextjs | dotnet; repo: componentLibrary | library | monorepo; pkg: component | config | library',
       type: 'string',
     })
     .positional('custom-type-path', {
@@ -19,7 +19,7 @@ export const builder: CommandBuilder<NewHandlerArguments, NewHandlerArguments> =
       type: 'string',
     })
     .option('exclude-builtin-templates', {
-      desc: 'To skip the node version check',
+      desc: 'Skip built-in Hygen templates (repo/pkg only)',
       type: 'boolean',
     })
     .option('skip-node-version-check', {

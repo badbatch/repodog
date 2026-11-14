@@ -164,7 +164,7 @@ repodog new <type> [subtype]
 Scaffold new folder structure
 
 Positionals:
-  type              The type of folder to scaffold: repo | pkg
+  type              The type of folder to scaffold: app | repo | pkg
                                                              [string] [required]
   subtype           The subtype of folder to scaffold; repo: componentLibrary |
                     library | monorepo; pkg: component | config | library
@@ -180,6 +180,61 @@ Options:
   --skip-node-version-check    To skip the node version check          [boolean]
   --verbose                    Whether to output verbose logs          [boolean]
 ```
+
+#### Application bootstraps
+
+```sh
+repodog new app nextjs
+repodog new app dotnet
+```
+
+Application scaffolding downloads the corresponding GitHub kickstarter, asks for its name, description, GitHub owner and optional counterpart repository, and applies the starter's `.repodog-bootstrap.json` manifest. The two application commands create separate folders. Supplying a counterpart wires the Next.js/.NET pair together; leaving it blank keeps validation independent and omits cross-repository E2E workflows and paired Docker tooling. The Next.js app still expects a backend implementing its endpoint contract; that backend need not be .NET. Paired generation is not included yet.
+
+The default sources are `badbatch/repodog-nextjs-kickstarter` and `badbatch/repodog-dotnet-kickstarter`, both at `main`. Git must be installed; private sources use the credentials already configured for Git. No GitHub token is stored in Repodog configuration.
+
+Override sources in a project or global `.repodogrc` to choose a branch, release tag or commit:
+
+```json
+{
+  "appBootstraps": {
+    "nextjs": {
+      "repository": "your-owner/repodog-nextjs-kickstarter",
+      "ref": "v1.0.0"
+    },
+    "dotnet": {
+      "repository": "your-owner/repodog-dotnet-kickstarter",
+      "ref": "v1.0.0"
+    }
+  }
+}
+```
+
+Existing `questionOverrides` and `templateVariables` conventions apply under `new.app.nextjs` and `new.app.dotnet`. An optional custom type path selects more specific configuration defaults; application generation does not apply Hygen overlays or `additionalTemplatesPath`. `--exclude-builtin-templates` is rejected for applications.
+
+The answers provide `name`, `description`, `owner` and `counterpartRepository`. The generator also supplies `repository`, `counterpartPath`, `namespace` and `configPrefix`. Namespace defaults to the PascalCase application name; the configuration prefix defaults to its uppercase name, with hyphens replaced by underscores and a trailing underscore. Override these through template variables or added questions.
+
+Each starter owns a versioned manifest. Its `files` array lists UTF-8 files to customize; `replacements` apply literal substitutions within those files, and ordered `renamePaths` rules rename projects and directories. `exclude` lists files or directories to omit. Paths must stay inside the application, symbolic links are rejected, and the manifest never executes commands.
+
+```json
+{
+  "version": 1,
+  "files": ["package.json"],
+  "replacements": [
+    { "from": "starter-name", "to": "{{name}}" },
+    { "from": "\"starter description\"", "to": "{{description|json}}" }
+  ],
+  "renamePaths": [],
+  "exclude": []
+}
+```
+
+Use `{{variable}}` for literal values and `{{variable|json}}` when replacing an entire JSON string value. Missing variables fail generation. Files not listed for replacement, including binary assets, are copied unchanged. List child-file renames before their parent-directory renames.
+
+Generation prepares a temporary copy before creating the destination, refuses existing folders, and records the repository, requested ref and resolved commit in `.repodog-origin.json`. Source Git history and the bootstrap manifest are omitted. No dependency installation, lifecycle scripts, Git initialization, commits, pushes or GitHub repository creation run automatically. The command prints the next setup steps; a .NET application does not require JavaScript package-manager configuration.
+
+`whenMissing` optionally maps a variable name to `exclude` paths and `fileReplacements` (`file`, `from`, `to`). These apply before normal substitutions when that variable is missing or blank. The supplied starters use it to remove counterpart-dependent tooling and update workflows and documentation for standalone generation.
+
+When generating a paired setup, after publishing the repositories, configure `CROSS_REPO_READ_TOKEN` and reusable-workflow access for their cross-repository E2E jobs.
 
 #### `new` config
 

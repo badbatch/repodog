@@ -12,7 +12,7 @@ export default {
   ...rollupConfig({
     compiler: COMPILER === 'swc' ? swcPlugin({ swc: swcConfig.ts }) : babelPlugin(babelConfig),
     copy: {
-      targets: [{ dest: 'dist/questions', src: 'src/questions/*' }],
+      targets: [{ dest: 'dist/esm/questions', src: 'src/questions/*' }],
     },
   }),
 };

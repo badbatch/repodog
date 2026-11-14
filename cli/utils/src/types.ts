@@ -6,7 +6,14 @@ export type NewPackageSubtype = 'component' | 'config' | 'library';
 
 export type NewRepoSubtype = 'componentLibrary' | 'library' | 'monorepo';
 
-export type NewType = 'pkg' | 'repo';
+export type NewAppSubtype = 'nextjs' | 'dotnet';
+
+export interface AppBootstrapSource {
+  ref: string;
+  repository: string;
+}
+
+export type NewType = 'app' | 'pkg' | 'repo';
 
 export type PackageManager = 'npm' | 'pnpm' | 'yarn';
 
@@ -60,6 +67,7 @@ export type ReleaseTag = 'alpha' | 'beta' | 'pr' | 'unstable';
 
 export interface GlobalRepodogConfig {
   additionalTemplatesPath?: string;
+  appBootstraps?: Partial<Record<NewAppSubtype, AppBootstrapSource>>;
   environmentVariablesPath?: string;
   language: Language;
   packageManager?: PackageManager;

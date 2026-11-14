@@ -1,0 +1,26 @@
+[
+  {
+    "message": "What is the application repository name?",
+    "name": "name",
+    "required": true,
+    "type": "input"
+  },
+  {
+    "message": "What is the application description?",
+    "name": "description",
+    "required": true,
+    "type": "input"
+  },
+  {
+    "message": "What is the GitHub owner?",
+    "name": "owner",
+    "required": true,
+    "type": "input"
+  },
+  {
+    "message": "What is the counterpart repository name? (optional; leave blank for standalone)",
+    "name": "counterpartRepository",
+    "required": false,
+    "type": "input"
+  }
+]

@@ -26,6 +26,7 @@ import { dirname, resolve as resolvePath, sep } from 'node:path';
 import { performance } from 'node:perf_hooks';
 import { fileURLToPath } from 'node:url';
 import shelljs from 'shelljs';
+import { generateApp } from './app/generateApp.ts';
 import { type CliOptions, type NewHandlerArguments } from './types.ts';
 import { buildTypePaths } from './utils/buildTypePaths.ts';
 import { compileAdditionalTemplateOverrides } from './utils/compileAdditionalTemplateOverrides.ts';
@@ -40,7 +41,7 @@ export const handler = async (argv: NewHandlerArguments): Promise<void> => {
   const customTypePath = argv['custom-type-path'] ?? undefined;
   const toExcludeBuiltinTemplates = argv['exclude-builtin-templates'] ?? false;
 
-  if (!isRunWithinProject() && !hasGlobalRepodogConfig()) {
+  if (argv.type !== newType.APP && !isRunWithinProject() && !hasGlobalRepodogConfig()) {
     await handleGlobalConfigSetup();
   }
 
@@ -61,6 +62,11 @@ export const handler = async (argv: NewHandlerArguments): Promise<void> => {
       throw new Error(
         `Expected subtype to be a valid new subtype: ${Object.values(typeToSubtypeMap[argv.type]).join(', ')}`,
       );
+    }
+
+    if (argv.type === newType.APP) {
+      await generateApp(argv);
+      return shelljs.exit(0);
     }
 
     const subtype = argv.subtype;

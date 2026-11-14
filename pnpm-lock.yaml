@@ -263,6 +263,9 @@ importers:
       lodash-es:
         specifier: ^4.18.1
         version: 4.18.1
+      remeda:
+        specifier: ^2.61.0
+        version: 2.61.0
       shelljs:
         specifier: ^0.10.0
         version: 0.10.0
@@ -7052,6 +7055,10 @@ packages:
   release-zalgo@1.0.0:
     resolution: {integrity: sha512-gUAyHVHPPC5wdqX/LG4LWtRYtgjxyX78oanFNTMMyFEfOqdC54s3eE82imuWKbOeqYht2CrNf64Qb8vgmmtZGA==}
     engines: {node: '>=4'}
+
+  remeda@2.61.0:
+    resolution: {integrity: sha512-x8v7/slXeMnUy4izdZecOVlorISUQC5sHbc2GIdaf2pNYQUKt30NREbGa68Ag/3bjkaK64e9qDu1X4S47bUZAQ==}
+    engines: {node: '>=18.0.0'}
 
   renderkid@3.0.0:
     resolution: {integrity: sha512-q/7VIQA8lmM1hF+jn+sFSPWGlMkSAeNYcPLmDQx2zzuiDfaLrOmumR8iaUKlenFgh0XRPIUeSPlH3A+AW3Z5pg==}
@@ -15562,6 +15569,8 @@ snapshots:
   release-zalgo@1.0.0:
     dependencies:
       es6-error: 4.1.1
+
+  remeda@2.61.0: {}
 
   renderkid@3.0.0:
     dependencies:

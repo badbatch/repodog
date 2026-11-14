@@ -25,6 +25,10 @@ export const handler = async (argv: PostInstallHandlerArguments): Promise<void> 
   verboseLog('>>>> USER CONFIG END <<<<\n');
 
   try {
+    if (argv.type === newType.APP) {
+      throw new Error('Application bootstraps do not use repodog postinstall. Follow their printed setup steps.');
+    }
+
     if (!isValidNewType(argv.type)) {
       throw new Error(`Expected type to be a valid new type: ${Object.values(newType).join(', ')}`);
     }

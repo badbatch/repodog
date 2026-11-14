@@ -1,7 +1,8 @@
-import { newPackageSubtype, newRepoSubtype, newType } from '#constants.ts';
+import { newAppSubtype, newPackageSubtype, newRepoSubtype, newType } from '#constants.ts';
 import { type NewType } from '#types.ts';
 
 export const typeToSubtypeMap = {
+  [newType.APP]: newAppSubtype,
   [newType.PKG]: newPackageSubtype,
   [newType.REPO]: newRepoSubtype,
 };

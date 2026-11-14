@@ -25,6 +25,16 @@ describe('handler', () => {
     jest.clearAllMocks();
   });
 
+  it('When an app is passed to postinstall, then Node dependency setup is skipped', async () => {
+    // Arrange / Act
+    await handler({ subtype: 'dotnet', type: 'app' });
+
+    // Assert
+    expect(runCommonPostInstallTasks).not.toHaveBeenCalled();
+    expect(getPackageManager).not.toHaveBeenCalled();
+    expect(shelljs.exit).toHaveBeenCalledWith(1);
+  });
+
   describe('when invalid type is passed in', () => {
     beforeEach(() => {
       isValidNewType.mockReturnValueOnce(false);
@@ -34,7 +44,7 @@ describe('handler', () => {
       await handler({ subtype: 'library', type: 'alpha' });
 
       expect(shelljs.echo).toHaveBeenCalledWith(
-        expect.stringContaining('Error: Expected type to be a valid new type: pkg, repo'),
+        expect.stringContaining('Error: Expected type to be a valid new type: app, pkg, repo'),
       );
     });
 

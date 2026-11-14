@@ -5,7 +5,13 @@ export const language = {
   TYPESCRIPT: 'typescript' as const,
 };
 
+export const newAppSubtype = {
+  DOTNET: 'dotnet' as const,
+  NEXTJS: 'nextjs' as const,
+};
+
 export const newType = {
+  APP: 'app' as const,
   PKG: 'pkg' as const,
   REPO: 'repo' as const,
 };

@@ -92,6 +92,8 @@ jest.unstable_mockModule('enquirer', () => ({
   },
 }));
 
+jest.unstable_mockModule('./app/generateApp.ts', () => ({ generateApp: jest.fn() }));
+
 jest.unstable_mockModule('node:fs', () => ({
   existsSync: jest.fn().mockReturnValue(true),
 }));
@@ -157,12 +159,32 @@ const shelljs = jest.mocked(await import('shelljs')).default;
 const { loadQuestions } = jest.mocked(await import('./utils/loadQuestions.ts'));
 const { executeHygen } = jest.mocked(await import('./utils/executeHygen.ts'));
 const { getLeafAdditionalTemplatesPath } = jest.mocked(await import('./utils/getLeafAdditionalTemplatesPath.ts'));
+const { generateApp } = jest.mocked(await import('./app/generateApp.ts'));
 const { handler } = await import('./handler.ts');
 
 describe('handler', () => {
   beforeEach(() => {
     jest.clearAllMocks();
   });
+
+  it.each(['nextjs', 'dotnet'])(
+    'When an app of subtype %s is requested, then generation bypasses Hygen and package-manager setup',
+    async subtype => {
+      // Arrange
+      jest.clearAllMocks();
+
+      // Act
+      await handler({ subtype, type: 'app' });
+
+      // Assert
+      expect(generateApp).toHaveBeenCalledWith({ subtype, type: 'app' });
+      expect(executeHygen).not.toHaveBeenCalled();
+      expect(getPackageManager).not.toHaveBeenCalled();
+      expect(postinstallHandler).not.toHaveBeenCalled();
+      expect(handleGlobalConfigSetup).not.toHaveBeenCalled();
+      expect(shelljs.exit).toHaveBeenCalledWith(0);
+    },
+  );
 
   describe('when isRunWithinProject is false and hasGlobalRepodogConfig is false', () => {
     beforeEach(() => {
