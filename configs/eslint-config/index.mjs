@@ -59,6 +59,18 @@ export default tsEslint.config(
       'sort-keys-fix': fixupPluginRules(sortKeysFix),
     },
     rules: {
+      '@stylistic/lines-around-comment': [
+        'error',
+        {
+          afterBlockComment: false,
+          afterLineComment: false,
+          allowArrayStart: true,
+          allowBlockStart: true,
+          allowObjectStart: true,
+          beforeBlockComment: true,
+          beforeLineComment: true,
+        },
+      ],
       '@stylistic/lines-between-class-members': [2, 'always', { exceptAfterSingleLine: true }],
       '@stylistic/max-len': [
         2,
