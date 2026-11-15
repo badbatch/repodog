@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.2.1 (2026-11-15)
+
+### New Features
+
+* **eslint-config:**  add rule for comment space above ([a699b2ff](https://github.com/badbatch/repodog/commit/a699b2ff5636464b5286b8002c86656e7e7f7655))
+
 ## 2.2.0 (2026-11-15)
 
 ### New Features
