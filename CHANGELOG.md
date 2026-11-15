@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.2.0 (2026-11-15)
+
+### New Features
+
+* **new:**  add new app command with next.js and or .net bootstraps ([5e7ee152](https://github.com/badbatch/repodog/commit/5e7ee152c92911bb67981118be90bed77f673bf8))
+
 ## 2.1.29 (2026-11-14)
 
 ### Bug Fixes
