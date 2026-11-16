@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.2.2 (2026-11-16)
+
+### Tests
+
+* **new:**  adding e2e for app generators ([4ca0acf4](https://github.com/badbatch/repodog/commit/4ca0acf4f738e6aa6eb3f0f6fd30b1338aba0859))
+
 ## 2.2.1 (2026-11-15)
 
 ### New Features
