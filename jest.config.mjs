@@ -19,6 +19,6 @@ const config = jestConfig({ compilerOptions: swcConfig });
 // eslint-disable-next-line import-x/no-default-export
 export default {
   ...config,
-  collectCoverageFrom: ['cli/**/*.ts', ...config.collectCoverageFrom.slice(1)],
+  collectCoverageFrom: ['cli/**/*.ts', '!cli/new/e2e/**', ...config.collectCoverageFrom.slice(1)],
   ...(!isDebug && { testMatch: ['**/src/**/*.test.ts'] }),
 };

@@ -33,6 +33,7 @@
     "repodog": "repodog",
     "syncpack": "syncpack format --check && syncpack lint",
     "test": "del-cli ./coverage && pnpm run jest && pnpm run coverage-generate",
+    "test:e2e:cli": "pnpm run build && pnpm run jest --runInBand --coverage=false --testPathIgnorePatterns=node_modules --testMatch \"<rootDir>/cli/new/e2e/**/*.test.ts\" --testTimeout=1800000",
     "type-check": "tsc --noEmit",
     "validate": "pnpm run syncpack && pnpm run validate:babel && pnpm run validate:swc && pnpm run lint && pnpm run format && pnpm run type-check",
     "validate:babel": "COMPILER=babel pnpm run build && COMPILER=babel pnpm run test",
