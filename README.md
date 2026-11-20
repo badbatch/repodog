@@ -1,6 +1,8 @@
 <div align="center">
   <img alt="Repodog logo" src="./assets/repodog-blue.png">
-  <h1>Repodog</h1>
+  <div>
+    <img src="./assets/repodog-text-logo.svg" alt="Repodog Logo" width="500" height="auto" />
+  </div>
 </div>
 
 An command line module for managing repositories and a set of configs for popular tooling.
