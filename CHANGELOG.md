@@ -1,5 +1,15 @@
 # Changelog
 
+## 2.2.3 (2026-11-23)
+
+### New Features
+
+* **root:**  add logo text ([b2cfe5c9](https://github.com/badbatch/repodog/commit/b2cfe5c9e7db23ea0867621727812be82b68ef3b))
+
+### Bug Fixes
+
+* **storybook-config:**  wrong export ([4e6a6609](https://github.com/badbatch/repodog/commit/4e6a6609571ccf32f0d4bc1a1c5647bf29a87668))
+
 ## 2.2.2 (2026-11-16)
 
 ### Tests
