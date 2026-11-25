@@ -1,6 +1,10 @@
 import { beforeAll, jest } from '@jest/globals';
 
 beforeAll(() => {
+  jest.spyOn(process.stdout, 'write').mockImplementation(chunk => {
+    throw new Error(`Unexpected process.stdout.write: ${chunk}`);
+  });
+
   jest.spyOn(console, 'error').mockImplementation((...args) => {
     throw new Error(`Unexpected console.error: ${args.join(' ')}`);
   });

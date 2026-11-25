@@ -119,7 +119,7 @@ export default {
 
 ### Fail on console output
 
-The config is set up to fail a test run if anything is printed out to the console. When using JSDom, this includes any DOM warnings or errors.
+The config fails tests on calls to `console.error`, `console.warn`, `console.info`, `console.debug`, `console.log`, and direct writes through `process.stdout.write`. When using JSDom, this includes DOM warnings and errors.
 
 If you do not want this behaviour, you need to override the `setupFilesAfterEnv` and `testEnvironment` options exported by the config.
 
