@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.2.4 (2026-11-25)
+
+### Bug Fixes
+
+* **jest-config:**  fail tests if process.stdout.write triggered ([f8ebb071](https://github.com/badbatch/repodog/commit/f8ebb071617ecfc7c2ed14fd67fde12899f934e8))
+
 ## 2.2.3 (2026-11-23)
 
 ### New Features
